@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>鲸宝汽车网</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      /* Custom container */
+      .container {
+        margin: 0 auto;
+        max-width: 960px;
+      }
+      .footer {
+		text-align: center;
+		padding: 30px 0;
+		margin-top: 70px;
+		border-top: 1px solid #E5E5E5;
+		background-color: whiteSmoke;
+	  }
+	  .jumbotron:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+  opacity: .4;
+}
+.jumbotron {
+  position: relative;
+  padding: 40px 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+  background: #020031; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #020031 0%, #6d3353 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* IE10+ */
+  background: linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+}
+.jumbotron h1 {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.jumbotron p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+    </style>
+  </head>
+  <body>
+    <!-- navbar start-->
+  	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">鲸宝汽车网</a>
+          <ul class="nav">
+            <li class="active">
+            	<a href="./building.html">汽车频道</a>
+            </li>
+            <li>
+                <a href="./building.html">4s店频道</a>
+            </li>
+            <li>
+                <a href="./building.html">移动应用</a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+  	            <a href="./building.html">关于我们</a>
+            </li>
+          </ul>
+         </div>
+      </div>
+    </div>
+    <!-- navbar end -->
+    <!-- header 
+    <header class="jumbotron subhead" id="overview">
+  		<div class="container">
+    		<h1>Components</h1>
+    		<p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
+  		</div>
+	</header>
+	-->
+    <!--header end -->
+    <!-- condition -->
+    <div class="container" style="padding: 45px 0;">
+      <div class="row-fluid">
+      <div class="span8">
+    	<ul class="nav nav-pills">
+    		<!-- 城市 -->
+    		<li class="dropdown">
+    			<a id="cityButton" data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#"><span id="cityName">城市</span><b class="caret"></b></a>
+    			<ul class="dropdown-menu">
+    				<li><a onClick="$('#cityName').html('城市')" href="#">不限</a></li>
+      				<li><a onClick="$('#cityName').html('宁波')" href="#">宁波</a></li>
+    			</ul>
+  			</li>
+  			<!-- 品牌 -->
+    		<li class="dropdown">
+    			<a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#"><span id="brandValue">品牌</span><b class="caret"></b></a>
+    			<ul class="dropdown-menu">
+    				<li><a onClick="$('#brandValue').html('品牌')" href="#">不限</a></li>
+      				<li><a onClick="$('#brandValue').html('大众')" href="#">大众</a></li>
+    			</ul>
+  			</li>
+    		<!-- 车型 -->
+    		<li class="dropdown">
+    			<a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#">车型<b class="caret"></b></a>
+    			<ul class="dropdown-menu">
+    				<li><a href="#">不限</a></li>
+      				<li><a href="#">捷达</a></li>
+      				<li><a href="#">高尔夫</a></li>
+    			</ul>
+  			</li>
+  			<!-- 价格区间 -->
+  			<li class="dropdown">
+    			<a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#">价格
+    				<b class="caret"></b>
+    			</a>
+    			<ul class="dropdown-menu">
+    				<li><a href="#">不限</a></li>
+      				<li><a href="#">1万 ~ 5万</a></li>
+      				<li><a href="#">5万 ~ 10万</a></li>
+      				<li><a href="#">10万 ~ 20万</a></li>
+      				<li><a href="#">20万 ~ 50万</a></li>
+      				<li><a href="#">50万以上</a></li>
+    			</ul>
+  			</li>
+		</ul>
+	  </div>
+		<!-- 
+		<ul class="breadcrumb">
+			<li>宁波 <span class="divider">></span></li>
+			<li>大众<span class="divider">></span></li>
+			<li>高尔夫<span class="divider">></span></li>
+			<li>所有</li>
+		</ul>
+		-->
+	  <div class="span4">
+	  	<div class="pagination pagination-small" style="margin:5px auto;">
+  		<ul>
+    		<li class="disabled"><a href="#">前一页</a></li>
+    		<li class="active"><a href="#">1</a></li>
+    		<li><a href="#">2</a></li>
+    		<li><a href="#">3</a></li>
+    		<li><a href="#">4</a></li>
+    		<li><a href="#">5</a></li>
+    		<li><a href="#">后一页</a></li>
+  		</ul>
+		</div>
+	  </div>
+	  </div>
+  		<hr style="margin:0px 0px 17px;"/>
+  		<!-- 列表 -->
+  		<div class="row-fluid">
+            <ul class="thumbnails">
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="thumbnails">
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="thumbnails">
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h5>市场价:123000 鲸宝价:119000</h5>
+                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>杭州鲸硅科技有限公司出品</p>
+      </div>
+    </footer>
+    <script src="js/jquery-1.10.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/twitter-bootstrap-hover-dropdown.min.js"></script>
+    <script>
+    	$('.dropdown-toggle').dropdown();
+    	function test1(){
+    		alert("1");
+    		$('#test1').addClass='open';
+    	}
+    </script>
+  </body>
+</html>
