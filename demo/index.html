@@ -19,7 +19,7 @@
 		border-top: 1px solid #E5E5E5;
 		background-color: whiteSmoke;
 	  }
-	  .jumbotron:after {
+      .jumbotron:after {
   content: '';
   display: block;
   position: absolute;
@@ -152,10 +152,10 @@ p {
           <a class="brand" href="./index.html">鲸宝汽车网</a>
           <ul class="nav">
             <li class="active">
-            	<a href="./building.html">汽车频道</a>
+            	<a href="./index.html">汽车频道</a>
             </li>
             <li>
-                <a href="./building.html">4s店频道</a>
+                <a href="./shoplist.html">4s店频道</a>
             </li>
             <li>
                 <a href="./building.html">移动应用</a>
@@ -164,18 +164,24 @@ p {
             <li>
   	            <a href="./building.html">关于我们</a>
             </li>
-          </ul>
+	  </ul>
+	  <form class="navbar-form pull-right">
+		<input type="text" class="input-small" placeholder="用户名">
+		<input type="password" class="input-small" placeholder="密码">
+		<input type="submit" class="btn" value="登陆" />
+		<input onclick="window.location.href='./register.html'" type="button" class="btn" value="注册" />
+	  </form>
          </div>
       </div>
     </div>
     <!-- navbar end -->
     <!-- header 	-->
     <header class="jumbotron subhead" id="overview">
-  		<div class="container">
-    		<h1>Components</h1>
-    		<p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
-  		</div>
-	</header>
+      <div class="container">
+      <h1>Components</h1>
+      <p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
+      </div>
+    </header>
     <!--header end -->
     <!-- condition -->
     <div class="container" style="padding: 45px 0;">
@@ -232,7 +238,7 @@ p {
 		</ul>
 		-->
 	  <div class="span4">
-	  	<div class="pagination pagination-small" style="margin:5px auto;">
+	    <div class="pagination pagination-small pagination-right" style="margin:5px auto;">
   		<ul>
     		<li class="disabled"><a href="#">前一页</a></li>
     		<li class="active"><a href="#">1</a></li>
@@ -242,7 +248,7 @@ p {
     		<li><a href="#">5</a></li>
     		<li><a href="#">后一页</a></li>
   		</ul>
-		</div>
+	    </div>
 	  </div>
 	  </div>
   		<hr style="margin:0px 0px 17px;"/>
@@ -341,7 +347,7 @@ p {
               </li>
             </ul>
             <ul class="thumbnails">
-	                    <li class="span3">
+	      <li class="span3">
                 <a href="./carinfo.html" class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
