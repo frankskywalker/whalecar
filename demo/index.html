@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <style type="text/css">
       /* Custom container */
       .container {
@@ -60,7 +60,89 @@
   line-height: 1.25;
   margin-bottom: 30px;
 }
-    </style>
+
+/*.navbar-inverse .brand{*/
+/*  color: #7CC576;*/
+/*}*/
+
+a {
+    color: #999999;
+}
+
+b {
+  color:#0088cc;
+}
+
+body {
+    background-color: #F0F0F0;
+    color: #333333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+element.style {
+    margin: 0 0 17px;
+    color: #999999;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #999999;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0;
+    text-rendering: optimizelegibility;
+}
+.navbar-inverse .navbar-inner {
+    /*background-color: #333333;*/
+    background-image: linear-gradient(to bottom, #333333, #222222);
+    background-repeat: repeat-x;
+    border-color: #252525;
+}
+
+.nav .dropdown-toggle .caret {
+    border-top-color: #999999;
+}
+
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+    background-color: #222222;
+    color: #FFFFFF;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bold;
+}
+
+.thumbnail{
+  padding:10px;
+  padding-bottom: 0;
+  background-color: #FFFFFF;
+}
+
+.thumbnail .caption {
+    color: #555555;
+    padding: 0px;
+}
+
+p {
+    margin: 0 0 0px;
+}
+
+.dropdown-menu > li >a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-submenu:hover >li>a,
+.dropdown-submenu:focus > a{
+  background-color: #444444;
+  background-image:linear-gradient(to bottom,#666666,#666666);
+}
+
+.dropdown-menu {
+    background-color: #444444;
+}
+
+.dropdown-menu > li > a {
+    color: #ffffff;
+}
+</style>
   </head>
   <body>
     <!-- navbar start-->
@@ -78,7 +160,7 @@
             <li>
                 <a href="./building.html">移动应用</a>
             </li>
-            <li class="divider-vertical"></li>
+<!--            <li class="divider-vertical"></li>-->
             <li>
   	            <a href="./building.html">关于我们</a>
             </li>
@@ -87,14 +169,13 @@
       </div>
     </div>
     <!-- navbar end -->
-    <!-- header 
+    <!-- header 	-->
     <header class="jumbotron subhead" id="overview">
   		<div class="container">
     		<h1>Components</h1>
     		<p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
   		</div>
 	</header>
-	-->
     <!--header end -->
     <!-- condition -->
     <div class="container" style="padding: 45px 0;">
@@ -172,113 +253,137 @@
                 <div class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
+	      </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </div>
-              </li>
-              <li class="span3">
-                <div class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
-                  <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <ul class="thumbnails">
-              <li class="span3">
-                <div class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
-                  <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span3">
-                <div class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
-                  <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span3">
-                <div class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
-                  <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span3">
-                <div class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
-                  <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
-                  </div>
-                </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
               </li>
             </ul>
             <ul class="thumbnails">
-              <li class="span3">
+	                    <li class="span3">
                 <div class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
+	      </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
+              </li>
+            </ul>
+            <ul class="thumbnails">
+	                    <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
               </li>
               <li class="span3">
                 <div class="thumbnail">
                   <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h5>市场价:123000 鲸宝价:119000</h5>
-                    <p><a href="#">宁波市恭喜发财大众旗舰4s店</a></p>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
+	      </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
+              </li>
+              <li class="span3">
+                <div class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </div>
+		<div>
+		  <p class="text-left"><b href="#">宁波市大众旗舰4s店</b></p>
+		</div>
               </li>
             </ul>
           </div>
