@@ -12,6 +12,40 @@
         margin: 0 auto;
         max-width: 960px;
       }
+            .navbar-inverse .navbar-inner {
+      /*background-color: #333333;*/
+      background-image: linear-gradient(to bottom, #333333, #222222);
+      background-repeat: repeat-x;
+      border-color: #252525;
+      }
+      .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+        background-color: #222222;
+        color: #FFFFFF;
+        border-radius: 10px 10px 10px 10px;
+        font-weight: bold;
+      }
+      body {
+        background-color: #F0F0F0;
+        color: #333333;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0;
+      }
+
+      tbody{
+	color: #555555;
+      }
+      
+      .carousel{
+	  padding:15px;
+	  /*padding-bottom: 0;*/
+	  border-radius: 4px;
+	  background-color: #FFFFFF;
+      }
+      div a1a1a1{
+	color: #a1a1a1;
+      }
     </style>
   </head>
   <body>
@@ -42,7 +76,7 @@
 	      <div class="span9">
 		<div class="row-fluid">
 		  <!-- 汽车图片 -->
-		  <h3>大众 2012款 1.4TSI 手动两驱都会版</h3>
+		  <h4>大众 2012款 1.4TSI 手动两驱都会版</h4>
 		  <div class="span7">
 		    <div id="myCarousel" class="carousel slide">
 		     
@@ -56,27 +90,30 @@
 		      <!-- Carousel nav -->
 		      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 		      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-		      <ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-			<li data-target="#myCarousel" data-slide-to="3"></li>
-		      </ol>
+		<!--      <ol class="carousel-indicators">-->
+		<!--	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+		<!--	<li data-target="#myCarousel" data-slide-to="1"></li>-->
+		<!--	<li data-target="#myCarousel" data-slide-to="2"></li>-->
+		<!--	<li data-target="#myCarousel" data-slide-to="3"></li>-->
+		<!--      </ol>-->
 		    </div>
 		  </div>
 		  <!-- 汽车详情 -->
 		  <div class="span4">
-		    <h4>宁波xxxxx旗舰4s店</h4>
+		    <a1a1a1>
+		    <h5>宁波xxxxx旗舰4s店</h5>
 		    <h6>地址：之江路25号<br/>联系电话:12321312312</h6>
 		    <ul>
 		      <li>市场指导价：155万</li>
 		      <li>市场行情价：155万</li>
 		      <li>网站知道价：151万</li>
 		      <li>颜色：红 黄</li>
+		      <li>内饰颜色：红 黄</li>
 		    </ul>
 		    <button>地图显示</button>
 		    <button>在线咨询</button>
 		    <button>投诉</button>
+		    </a1a1a1>
 		  </div>
 		</div>
 		<!-- 库存列表 -->
@@ -169,7 +206,7 @@
 	      </div>
 	      <div class="span3">
 		<!-- 相关其他车辆 -->
-		<legend>相关车型</legend>
+		<legend><h5>相关车型</h5></legend>
 		<ul class="thumbnails">
 		  <li class="span6" style="">
 		    <a class="thumbnail">
@@ -194,7 +231,7 @@
 		    </a>
 		  </li>
 		</ul>
-		<legend>4s店其他车型</legend>
+		<legend><h5>4s店其他车型</h5></legend>
 		<ul class="thumbnails">
 		  <li class="span6" style="">
 		    <a class="thumbnail">
