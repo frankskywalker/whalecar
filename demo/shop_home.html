@@ -121,114 +121,115 @@
       <div class="row">
 	<div class="span3">
 	  <ul class="nav nav-pills nav-stacked" style="width:210px;">
-	    <li class="text-center active"><a onclick="" href="#orderlist" data-toggle="pill">订单管理</a></li>
-	    <li class="text-center"><a href="#myinfo" data-toggle="pill">我的信息</a></li>
-	    <li class="text-center"><a href="#changepsw" data-toggle="pill">修改密码</a></li>
+	    <li class="text-center active"><a onclick="" href="#car_manager" data-toggle="pill">销售销售库存管理</a></li>
+	    <li class="text-center"><a href="#car_order" data-toggle="pill">预约订单管理</a></li>
+	    <li class="text-center"><a href="#shop_info" data-toggle="pill">信息维护</a></li>
+	    <li class="text-center"><a href="#change_psw" data-toggle="pill">修改密码</a></li>
 	  </ul>
 	</div>
 	<div class="span9 tab-content">
-	  <div id="orderlist" class="tab-pane active">
-	    <legend>订单管理</legend>
-	    <ul class="nav nav-tabs">
-	      <li class="active"><a href="#order_car" data-toggle="tab">预定购买订单</a></li>
-	      <li><a href="#my_price" data-toggle="tab">我的价格记录</a></li>
-	      <li><a href="#off_price" data-toggle="tab">领取优惠券记录</a></li>
-	    </ul>
-	    <div class="tab-content">
-	      <div class="tab-pane active" id="order_car">
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th>订单序号</th>
-		      <th>订单名称</th>
-		      <th>订单类型</th>
-		      <th>订单日期</th>
-		      <th>汽车金额</th>
-		      <th>备注</th>
-		      <th>操作</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>20130612A010201</td>
-		      <td>预定大众速腾2012款 1.6L 手动时尚型 黄色</td>
-		      <td>预约</td>
-		      <td>2013.06.12</td>
-		      <td>12.18万</td>
-		      <td>无</td>
-		      <td width="65px"><a href="#">取消</a>/<a href="#">付款</a></td>
-		    </tr>
-		    <tr>
-		      <td>20130612A087652</td>
-		      <td>预定大众速腾2012款 1.6L 手动时尚型 黄色</td>
-		      <td>预约</td>
-		      <td>2013.06.12</td>
-		      <td>12.18万</td>
-		      <td>无</td>
-		      <td width="65px"><a href="#">取消</a>/<a href="#">付款</a></td>
-		    </tr>
-		  </tbody>
-		</table>
-	      </div>
-	      <div class="tab-pane" id="my_price">
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th>提交日期</th>
-		      <th>车型</th>
-		      <th>我提交的价格</th>
-		      <th>是否已回复</th>
-		      <th>操作</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>2012.06.15</td>
-		      <td>大众速腾2012款 1.6L 手动时尚型 黄色</td>
-		      <td>10.16万</td>
-		      <td>未回复</td>
-		      <td><a href="#">留言/取消</a></td>
-		    </tr>
-		  </tbody>
+	  <div id="car_manager" class="tab-pane active">
+	    <legend>销售库存管理</legend>
+	    <input type="button" onClick="window.location.href='./edit_car.html'" class="btn btn-primary pull-right span2" value="新建"></input>
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>型号</th>
+		  <th>外观颜色</th>
+		  <th>内饰颜色</th>
+		  <th>备注</th>
+		  <th>库存(现货/在途)</th>
+		  <th>操作</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td>大众速腾2012款 1.6L 手动时尚型</td>
+		  <td>黑色</td>
+		  <td>红色</td>
+		  <td>赠送 进口贴膜，油卡</td>
+		  <td>2/0</td>
+		  <td><a href="#">修改</a></td>
+		</tr
+		<tr>
+		  <td>大众速腾2012款 1.6L 手动时尚型</td>
+		  <td>蓝色</td>
+		  <td>黑色</td>
+		  <td>赠送 进口贴膜，油卡</td>
+		  <td>1/2</td>
+		  <td><a href="#">修改</a></td>
+		</tr>
+	      </tbody>
 	    </table>
-	      </div>
-	      <div class="tab-pane" id="off_price">
-		<table class="table">
-		  <thead>
-		    <tr>
-		      <th>领取日期</th>
-		      <th>车型</th>
-		      <th>优惠券金额</th>
-		      <th>优惠卷号码</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-		      <td>2012.06.15</td>
-		      <td>大众速腾2012款 1.6L 手动时尚型 黄色</td>
-		      <td>500元</td>
-		      <td>AS30850138759232357</td>
-		    </tr>
-		  </tbody>
-		</table>
-	      </div>
-	    </div>
 	  </div>
-	  <div id="myinfo" class="tab-pane">
-	    <legend>我的信息</legend>
-	    <div class="span4">
-	      <dl class="dl-horizontal" style="font-size: 12pt;">
-		<dt>姓名</dt>
-		<dd>陈曦</dd>
-		<dt>电话</dt>
-		<dd>1861237808272</dd>
-		<dt>邮箱地址</dt>
-		<dd>abel@gmail.com</dd>
-	      </dl>
-	      <button class="pull-right">修改</button>
-	    </div>
+	  <div id="car_order" class="tab-pane">
+	    <legend>预约订单管理</legend>
+	    <table class="table">
+	      <thead>
+		<tr>
+		  <th>订单序号</th>
+		  <th>订单名称</th>
+		  <th>订单类型</th>
+		  <th>订单日期</th>
+		  <th>汽车金额</th>
+		  <th>备注</th>
+		</tr>
+	      </thead>
+	      <tbody>
+		<tr>
+		  <td>20130612A010201</td>
+		  <td>预定大众速腾2012款 1.6L 手动时尚型 黄色</td>
+		  <td>预约</td>
+		  <td>2013.06.12</td>
+		  <td>12.18万</td>
+		  <td>无</td>
+		</tr>
+		<tr>
+		  <td>20130612A087652</td>
+		  <td>预定大众速腾2012款 1.6L 手动时尚型 黄色</td>
+		  <td>预约</td>
+		  <td>2013.06.12</td>
+		  <td>12.18万</td>
+		  <td>无</td>
+		</tr>
+	      </tbody>
+	    </table>
 	  </div>
-	  <div id="changepsw" class="tab-pane">
+	  <div id="shop_info" class="tab-pane">
+	    <legend>信息维护</legend>
+	    <form class="form-horizontal">
+	      <div class="control-group">
+		<label class="control-label" for="shopname">4s店名</label>
+		<div class="controls">
+		  <input type="text" id="shopname" value="上海大众宁波兴宁达众汽车销售服务有限公司">
+		</div>
+	      </div>
+	      <div class="control-group">
+		<label class="control-label" for="tel">电话</label>
+		<div class="controls">
+		  <input type="text" id="tel" value="186312375008">
+		</div>
+	      </div>
+	      <div class="control-group">
+		<label class="control-label" for="mail">邮箱</label>
+		<div class="controls">
+		  <input type="text" id="mail" value="autocar@sina.com">
+		</div>
+	      </div>
+	      <div class="control-group">
+		<label class="control-label" for="addr">地址</label>
+		<div class="controls">
+		  <textarea id="addr" placeholder="地址" rows="3">浙江宁波市江东兴宁路178号</textarea>
+		</div>
+	      </div>
+	      <div class="control-group">
+		<div class="controls">
+		  <button type="submit" class="btn">修改</button>
+		</div>
+	      </div>
+	    </form>
+	  </div>
+	  <div id="change_psw" class="tab-pane">
 	    <legend>修改密码</legend>
 	    <div class="span5">
 	      <form class="form-horizontal">
