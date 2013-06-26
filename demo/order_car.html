@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>鲸宝汽车网</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      /* Custom container */
+      .container {
+        margin: 0 auto;
+        max-width: 960px;
+      }
+      li > a {
+	  color: #999999;
+      }
+      
+      b {
+	color:#0088cc;
+      }
+      
+      body {
+	  background-color: #F0F0F0;
+	  color: #333333;
+	  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	  font-size: 14px;
+	  line-height: 20px;
+	  margin: 0;
+      }
+      
+      element.style {
+	  margin: 0 0 17px;
+	  color: #999999;
+      }
+      h1, h2, h3, h4, h5, h6 {
+	  color: #999999;
+	  font-family: inherit;
+	  font-weight: bold;
+	  line-height: 20px;
+	  margin: 0;
+	  text-rendering: optimizelegibility;
+      }
+      .navbar-inverse .navbar-inner {
+	  /*background-color: #333333;*/
+	  background-image: linear-gradient(to bottom, #333333, #222222);
+	  background-repeat: repeat-x;
+	  border-color: #252525;
+      }
+      
+      .nav .dropdown-toggle .caret {
+	  border-top-color: #999999;
+      }
+      
+      .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+	  background-color: #222222;
+	  color: #FFFFFF;
+	  border-radius: 10px 10px 10px 10px;
+	  font-weight: bold;
+      }
+      
+      .thumbnail{
+	padding:10px;
+	padding-bottom: 0;
+	background-color: #FFFFFF;
+      }
+      
+      .thumbnail .caption {
+	  color: #555555;
+	  padding: 0px;
+      }
+      
+      p {
+	  margin: 0 0 0px;
+      }
+      
+      .dropdown-menu > li >a:hover,
+      .dropdown-menu>li>a:focus,
+      .dropdown-submenu:hover >li>a,
+      .dropdown-submenu:focus > a{
+	background-color: #444444;
+	background-image:linear-gradient(to bottom,#666666,#666666);
+      }
+      
+      .dropdown-menu {
+	  background-color: #444444;
+      }
+      
+      .dropdown-menu > li > a {
+	  color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar start-->
+  	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">鲸宝汽车网</a>
+          <ul class="nav">
+            <li>
+            	<a href="./index.html">汽车频道</a>
+            </li>
+            <li>
+                <a href="./shoplist.html">4s店频道</a>
+            </li>
+            <li>
+                <a href="./building.html">移动应用</a>
+            </li>
+<!--            <li class="divider-vertical"></li>-->
+            <li>
+  	            <a href="./building.html">关于我们</a>
+            </li>
+          </ul>
+         </div>
+      </div>
+    </div>
+    <!-- navbar end -->
+    <!-- condition -->
+    <div class="container" style="padding: 70px 0;">
+      <div class="row-Fluid">
+	<div class="span8 offset2">
+	  <div class="text-center"> <h2>订单号：1285387628</h2></div>
+	  <legend>商品信息</legend>
+	  <dl class="dl-horizontal" style="font-size: 12pt;">
+	    <dt>车型</dt>
+	    <dd>大众 速腾 1.6</dd>
+	    <dt>品种</dt>
+	    <dd>2011款 1.6 自动挡</dd>
+	    <dt>配置描述</dt>
+	    <dd>导航、真皮</dd>
+	    <dt>外观颜色</dt>
+	    <dd>红色</dd>
+	    <dt>内饰颜色</dt>
+	    <dd>棕色</dd>
+	    <dt>库存数量</dt>
+	    <dd>1</dd>
+	    <dt>备注</dt>
+	    <dd>送xxxxxxx</dd>
+	  </dl>
+	  <form class="form-horizontal">
+	    <legend>订购人信息</legend>
+	      <div class="control-group">
+		<label class="control-label" for="name">订购人姓名</label>
+		<div class="controls">
+		  <input type="text" id="name" placeholder="姓名">
+		</div>
+	      </div>
+	      <div class="control-group">
+		<label class="control-label" for="tel">订购人手机</label>
+		<div class="controls">
+		  <input type="text" id="tel" placeholder="手机号码">
+		</div>
+	      </div>
+	      <div class="control-group">
+		<label class="control-label" for="mail">订购人电子邮件</label>
+		<div class="controls">
+		  <input type="text" id="mail" placeholder="电子邮件">
+		</div>
+	      </div>
+	      <div class="control-group">
+		<label class="control-label" for="addr">订购人地址</label>
+		<div class="controls">
+		  <input type="text" id="addr" placeholder="地址">
+		</div>
+	      </div>
+	      <legend>支付方式</legend>
+	      <label class="radio">
+		<input type="radio" name="optionsRadios" value="option1" checked>
+		不支付定金，仅预约
+	      </label>
+	      <label class="radio">
+		<input type="radio" name="optionsRadios" value="">
+		支付定金，进行留车预定（使用支付宝支付）
+	      </label>
+	    </form>
+	    <legend>备注</legend>
+	    <ul>
+	      <li>订单有效期为3天</li>
+	      <li>费用交付xxxx公司,网站未收取任何费用</li>
+	    </ul>
+	    <input type="button" onclick="window.history.go(-1)" value="取消" class="btn span2 pull-right" />
+	    <input type="button" onclick="window.location.href='./order_car_finish.html'" value="确认" class="btn btn-primary span2 pull-right" />
+	</div>
+      </div>
+    </div>
+    <script src="js/jquery-1.10.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/twitter-bootstrap-hover-dropdown.min.js"></script>
+  </body>
+</html>
