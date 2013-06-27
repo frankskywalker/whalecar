@@ -76,7 +76,7 @@
 	      <div class="span9">
 		<div class="row-fluid">
 		  <!-- 汽车图片 -->
-		  <h4>大众 速腾 1.6</h4>
+		  <h4>一汽大众 速腾</h4>
 		  <div class="span7">
 		    <div id="myCarousel" class="carousel slide">
 		     
@@ -100,362 +100,182 @@
 		  </div>
 		  <!-- 汽车详情 -->
 		  <div class="span4">
-		    <ul>
-		      <li>市场指导价：155万</li>
-		      <li>市场行情价：155万</li>
-		      <li>网站知道价：151万</li>
-		      <li>颜色：红 黄</li>
-		      <li>内饰颜色：红 黄</li>
+		    <br/>
+		    <ul class="nav nav-tabs nav-stacked">
+		      <li>市场指导价：13.18万 ～ 22.58万</li>
+		      <li>网站指导价：12.18万 ～ 20.58万</li>
+		      <li>发动机排量：1.6L 1.4T 1.8T 2.0T</li>
+		      <li>外观颜色：红 蓝 黑</li>
 		    </ul>
+		    <img src="img/chart.png">
 		  </div>
 		</div>
 		<!-- 库存列表 -->
-		<legend>库存列表
-		  <select class="span2 btn-small pull-right">
-		  <option>选择库存...</option>
-		  <option>有库存</option>
-		  <option>无库存</option>
-		  </select>
-		  <select class="span2 btn-small pull-right">
-		    <option>选择车型...</option>
-		    <option>1.6舒适型</option>
-		    <option>1.2经济型</option>
-		    <option>2.0T全能型</option>
-		  </select>
-		</legend>
-		
+		<legend>库存列表</legend>
 		<table class="table">
 		  <thead>
 		    <tr>
-		      <th>车型</th>
 		      <th>品种</th>
-		      <th>配置描述</th>
-		      <th>外观颜色</th>
-		      <th>内饰颜色</th>
+		      <th>价格范围</th>
 		      <th>库存数量</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr style="cursor:pointer"  onClick="$('#tr1').toggle();$(document).scrollTop($('#tr1').offset().top-80);">
-		      <td>速腾</td>
-		      <td>2011款 1.6 自动挡</td>
-		      <td>导航、真皮</td>
-		      <td>珠光黑</td>
-		      <td>白色</td>
-		      <td>1</td>
+		    <tr style="cursor:pointer"  onClick="$(body).animate({scrollTop: $(this).offset().top-80},1000);$('#tr2').fadeToggle();">
+		      <td>1.6L 自然呼吸 105马力</td>
+		      <td>12.18万 ～ 14.68万</td>
+		      <td>12</td>
 		    </tr>
-		    <tr id="tr1" style="display: none;">
-		      <td colspan="6">
-			<table class="table table-striped table-hover">
-			  <tbody>
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input onclick="window.location.href='./submit_price.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input onclick="window.open('./off_price.html')" data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			    
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			  </tbody>
-			</table>
+		    <tr id="tr2" style="display: none;background-color: rgb(210,210,200);">
+		      <td colspan="3">
+			<select class="span2 btn-small">
+			  <option>车型...</option>
+			  <option>手动时尚型</option>
+			  <option>自动时尚型</option>
+			  <option>手动豪华型</option>
+			  <option>自动豪华型</option>
+			</select>
+			
+			<select class="span2 btn-small">
+			  <option>外观颜色...</option>
+			  <option>红色</option>
+			  <option>蓝色</option>
+			  <option>黑色</option>
+			  <option>白色</option>
+			</select>
+			<select class="span2 btn-small">
+			  <option>内饰颜色...</option>
+			  <option>黑色</option>
+			  <option>黄色</option>
+			</select>
+			  <!--
+			  <select class="span2 btn-small">
+			    <option>内饰颜色...</option>
+			    <option>白色</option>
+			    <option>黑色</option>
+			    <option>红色</option>
+			  </select>
+			  -->
+			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
+			    <table class="table" style="margin-bottom: 10px;">
+			      <thead>
+				<tr>
+				  <th>车型</th>
+				  <th>变速箱</th>
+				  <th>发动机</th>
+				  <th>外观颜色</th
+				  <th>内饰颜色</th>
+				  <th>库存</th>
+				  <th>价格</th>
+				</tr>
+			      </thead>
+			      <tbody>
+				<tr>
+				  <td><b>速腾 2012款 1.6L 手动时尚型</b></td>
+				  <td>5档手动</td>
+				  <td>1.6L 105马力 L4</td>
+				  <td>黑色</td>
+				  <td>黄色</td>
+				  <td>8</td>
+				  <td width="110px"><span style="color:blue;font-size:20pt">12.18万</span></td>
+				</tr>
+				<tr>
+				  <td colspan="8"><h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5></td>
+				</tr>
+			      </tbody>
+			    </table>
+			    <div style="height: 22px;">
+			      <input onclick="window.location.href='./off_price.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="优惠500元购买" type="button" class="btn pull-right" value="优惠500元购买"/>	
+			      <input onclick="window.location.href='./submit_price.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="提交我的价格" type="button" class="btn pull-right" value="提交我的价格"/>
+			      <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="网站指导价购买" type="button" class="btn pull-right" value="网站指导价购买"/>
+			    </div>
+			  </div>
+			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
+			    <table class="table" style="margin-bottom: 10px;">
+			      <thead>
+				<tr>
+				  <th>车型</th>
+				  <th>变速箱</th>
+				  <th>发动机</th>
+				  <th>外观颜色</th>
+				  <th>内饰颜色</th>
+				  <th>库存</th>
+				  <th>价格</th>
+				</tr>
+			      </thead>
+			      <tbody>
+				<tr>
+				  <td><b>速腾 2012款 1.6L 自动时尚型</b></td>
+				  <td>6档手自一体</td>
+				  <td>1.6L 105马力 L4</td>
+				  <td>蓝色</td>
+				  <td>黄色</td>
+				  <td>2</td>
+				  <td width="110px"><span style="color:blue;font-size:20pt">13.58万</span></td>
+				</tr>
+				<tr>
+				  <td colspan="8"><h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5></td>
+				</tr>
+			      </tbody>
+			    </table>
+			    <div style="height: 22px;">
+			      <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="网站指导价购买" type="button" class="btn pull-right" value="网站指导价购买"/>
+			      <input data-toggle="tooltip" data-placement="top" title="" data-original-title="提交我的价格" type="button" class="btn pull-right" value="提交我的价格"/>
+			      <input data-toggle="tooltip" data-placement="top" title="" data-original-title="优惠500元购买" type="button" class="btn pull-right" value="优惠500元购买"/>	
+			    </div>
+			  </div>
+			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
+			    <table class="table" style="margin-bottom: 10px;">
+			      <thead>
+				<tr>
+				  <th>车型</th>
+				  <th>变速箱</th>
+				  <th>发动机</th>
+				  <th>外观颜色</th>
+				  <th>内饰颜色</th>
+				  <th>库存</th>
+				  <th>价格</th>
+				</tr>
+			      </thead>
+			      <tbody>
+				<tr>
+				  <td><b>速腾 2012款 1.6L 自动舒适型</b></td>
+				  <td>6档手自一体</td>
+				  <td>1.6L 105马力 L4</td>
+				  <td>红色</td>
+				  <td>黑色</td>
+				  <td>1</td>
+				  <td width="110px"><span style="color:blue;font-size:20pt">14.68万</span></td>
+				</tr>
+				<tr>
+				  <td colspan="8"><h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5></td>
+				</tr>
+			      </tbody>
+			    </table>
+			    <div style="height: 22px;">
+			      <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="网站指导价购买" type="button" class="btn pull-right" value="网站指导价购买"/>
+			      <input data-toggle="tooltip" data-placement="top" title="" data-original-title="提交我的价格" type="button" class="btn pull-right" value="提交我的价格"/>
+			      <input data-toggle="tooltip" data-placement="top" title="" data-original-title="优惠500元购买" type="button" class="btn pull-right" value="优惠500元购买"/>	
+			    </div>
+			  </div>
+			  
 		      </td>
 		    </tr>
-		    <tr style="cursor:pointer"  onClick="$('#tr2').toggle();$(document).scrollTop($('#tr2').offset().top-80);">
-		      <td>速腾</td>
-		      <td>2011款 1.8t 自动挡</td>
-		      <td>导航、真皮</td>
-		      <td>珠光黑</td>
-		      <td>白色</td>
-		      <td>2</td>
-		    </tr>
-		    <tr id="tr2" style="display: none;">
-		      <td colspan="6">
-			<table class="table table-striped table-hover">
-			  <tbody>
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td>
-				<div class="row-fluid">
-				  <div class="span10">
-				    <table class="table table-bordered">
-				      <thead>
-					<tr>
-					  <th>店名</th>
-					  <th>款式</th>
-					  <th>库存</th>
-					</tr>
-				      </thead>
-				      <tbody>
-					<tr>
-					  <td>上海大众宁波兴宁达众汽车销售服务有限公司</td>
-					  <td>真皮 导航</td>
-					  <td>1</td>
-					</tr>
-				      </tbody>
-				    </table>
-				    <p>备注：送进口贴膜，2年免费维护以及100公里油卡</p>
-				    
-				  </div>
-				  <div class="span2">
-				    <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="right" title="" data-original-title="网站指导价购买" type="button" class="btn btn-small span12" value="网站指导价购买"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="提交我的价格" type="button" class="btn btn-small span12" value="提交我的价格"/>
-				    <input data-toggle="tooltip" data-placement="right" title="" data-original-title="优惠500元购买" type="button" class="btn btn-small span12" value="优惠500元购买"/>	
-				  </div>
-				</div>
-			      </td>
-			    </tr>
-			  </tbody>
-			</table>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>迈腾</td>
-		      <td>2012款 1.6t 手动挡</td>
-		      <td>真皮</td>
-		      <td>红</td>
-		      <td>黑色</td>
-		      <td>5</td>
-		    </tr>
-		    <tr>
-		      <td>速腾</td>
-		      <td>2013款 1.6t 自动挡</td>
-		      <td>导航</td>
-		      <td>蓝</td>
-		      <td>黄色</td>
+		    
+		    <tr style="cursor:pointer"  onClick="$(body).animate({scrollTop: $(this).offset().top-80},1000);$('#tr2').fadeToggle();">
+		      <td>1.4T 涡轮增压 131马力</td>
+		      <td>14.18万 ～ 17.78万</td>
 		      <td>10</td>
 		    </tr>
-		    <tr>
-		      <td>速腾</td>
-		      <td>2011款 1.7 自动挡</td>
-		      <td>真皮</td>
-		      <td>珠光黑</td>
-		      <td>白色</td>
-		      <td>1</td>
-		    </tr>
-		    <tr>
-		      <td>速腾</td>
-		      <td>2011款 1.8 自动挡</td>
-		      <td>导航、真皮</td>
-		      <td>珠光黑</td>
-		      <td>白色</td>
+		    <tr style="cursor:pointer"  onClick="$(body).animate({scrollTop: $(this).offset().top-80},1000);$('#tr2').fadeToggle();">
+		      <td>1.8T 涡轮增压 160马力</td>
+		      <td>18.58万 ～ 19.58万</td>
 		      <td>0</td>
 		    </tr>
-		    <tr>
-		      <td>速腾</td>
-		      <td>2011款 1.8 自动挡</td>
-		      <td>导航、真皮</td>
-		      <td>珠光黑</td>
-		      <td>白色</td>
-		      <td>5</td>
+		    <tr style="cursor:pointer"  onClick="$(body).animate({scrollTop: $(this).offset().top-80},1000);$('#tr2').fadeToggle();">
+		      <td>2.0T 涡轮增压 200马力</td>
+		      <td>22.58万 ～ 22.58万</td>
+		      <td>2</td>
 		    </tr>
 		  </tbody>
               </thead>
