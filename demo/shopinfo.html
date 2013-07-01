@@ -113,16 +113,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .thumbnail{
-  background-color: #FFFFFF;
-  border-color: #ffffff;
-  width: 220;
-  height: 190;
-  padding: 10px;
-  padding-bottom: 0;
-  border: 0px;
-}
-
-.thumbnail:hover{
   padding:10px;
   padding-bottom: 0;
   background-color: #FFFFFF;
@@ -152,32 +142,16 @@ p {
 .dropdown-menu > li > a {
     color: #ffffff;
 }
-
-strong {
-    color: #444444;
-}
-
-li h5{
-  font-weight: bold;
-  color: #4083A9;
-  margin: 10px 0 0;
-  max-height: 16px;
-  padding: 0 0 0 10px;
-}
-
-.alpha1{
-  color: rgba(255, 255, 255, 0.85);
-}
 </style>
-  </head>		
+  </head>
   <body>
     <!-- navbar start-->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="./index.html">鲸宝汽车网</a>
           <ul class="nav">
-            <li class="active">
+            <li>
             	<a href="./index.html">汽车频道</a>
             </li>
             <li>
@@ -201,59 +175,42 @@ li h5{
       </div>
     </div>
     <!-- navbar end -->
-    <!-- header 	
+    <!-- header
     <header class="jumbotron subhead" id="overview">
       <div class="container">
       <h1>Components</h1>
       <p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>
       </div>
     </header>
-	-->
+    -->
     <!--header end -->
-    <!-- condition -->
-    <div class="container" style="padding: 45px 0;">
+    
+    
+    <div class="container" style="padding: 45px 0px 0px 0px;">
+      <!-- shop header -->
+      <div class="media" style="padding: 20px 0px 20px 0px;">
+	<a class="pull-left" href="#">
+	  <img class="media-object" src="img/dasauto-logo.jpg">
+	</a>
+	<div class="media-body">
+	  <h4 class="media-heading">上海大众宁波兴宁达众汽车销售服务有限公司</h4>
+	  地址：浙江宁波市江东兴宁路178号[查看地图]<br/>
+	  电话：4008189666-2173
+	</div>
+      </div>
+      <!-- condition -->
       <div class="row-fluid">
       <div class="span8">
     	<ul class="nav nav-pills">
-    		<!-- 城市 -->
-    		<li class="dropdown">
-    			<a id="cityButton" data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#"><span id="cityName">城市</span><b class="caret"></b></a>
-    			<ul class="dropdown-menu">
-    				<li><a onClick="$('#cityName').html('城市')" href="#">不限</a></li>
-      				<li><a onClick="$('#cityName').html('宁波')" href="#">宁波</a></li>
-    			</ul>
-  			</li>
-  			<!-- 品牌 -->
-    		<li class="dropdown">
-    			<a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#"><span id="brandValue">品牌</span><b class="caret"></b></a>
-    			<ul class="dropdown-menu">
-    				<li><a onClick="$('#brandValue').html('品牌')" href="#">不限</a></li>
-      				<li><a onClick="$('#brandValue').html('大众')" href="#">大众</a></li>
-    			</ul>
-  			</li>
     		<!-- 车型 -->
     		<li class="dropdown">
-    			<a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#">车型<b class="caret"></b></a>
-    			<ul class="dropdown-menu">
-    				<li><a href="#">不限</a></li>
-      				<li><a href="#">捷达</a></li>
-      				<li><a href="#">高尔夫</a></li>
-    			</ul>
-  			</li>
-  			<!-- 价格区间 -->
-  			<li class="dropdown">
-    			<a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#">价格
-    				<b class="caret"></b>
-    			</a>
-    			<ul class="dropdown-menu">
-    				<li><a href="#">不限</a></li>
-      				<li><a href="#">1万 ~ 5万</a></li>
-      				<li><a href="#">5万 ~ 10万</a></li>
-      				<li><a href="#">10万 ~ 20万</a></li>
-      				<li><a href="#">20万 ~ 50万</a></li>
-      				<li><a href="#">50万以上</a></li>
-    			</ul>
-  			</li>
+		  <a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#">车型<b class="caret"></b></a>
+		  <ul class="dropdown-menu">
+			  <li><a href="#">不限</a></li>
+			  <li><a href="#">捷达</a></li>
+			  <li><a href="#">高尔夫</a></li>
+		  </ul>
+		</li>
 		</ul>
 	  </div>
 		<!-- 
@@ -264,7 +221,6 @@ li h5{
 			<li>所有</li>
 		</ul>
 		-->
-	  <img src="img/步进图片.jpg"></img>
 	  <div class="span4">
 	    <div class="pagination pagination-small pagination-right" style="margin:5px auto;">
   		<ul>
@@ -279,81 +235,112 @@ li h5{
 	    </div>
 	  </div>
 	  </div>
-	  <hr style="margin:0px 0px 17px;"/>
-	  <!-- 列表 -->
-	  <div class="row-fluid">
+  		<hr style="margin:0px 0px 17px;"/>
+  		<!-- 列表 -->
+  		<div class="row-fluid">
             <ul class="thumbnails">
               <li class="span3">
                 <a href="./carinfo.html" class="thumbnail">
-		  <!--<p>一汽大众 速腾</p>-->
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/suteng.jpg">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h6 class="text-center">市场价:13.18万 ～ 22.58万</h6>
-		    <h6 class="text-center">网站价:12.18万 ～ 20.58万</h6>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </a>
-		<h5>一汽大众 速腾</h5>
               </li>
-	      <li class="span3">
-                <a href="./carinfo.html" class="thumbnail" >
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;"src="img/jieda.jpg">
-                  <div class="caption">
-                    <h6 class="text-center">市场价:7.98万 ～ 11.53万</h6>
-		    <h6 class="text-center">网站价:6.59万 ～ 10.55万</h6>
-                  </div>
-                </a>
-		<h5>一汽大众 捷达</h5>
-              </li>
-	      <li class="span3">
+              <li class="span3">
                 <a href="./carinfo.html" class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/baolai.jpg">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h6 class="text-center">市场价:10.78万 ～ 14.83万</h6>
-		    <h6 class="text-center">网站价:9.08万 ～ 12.48万</h6>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </a>
-		<h5>一汽大众 宝来</h5>
 	      </li>
+              <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
+              </li>
+              <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <ul class="thumbnails">
+	                    <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
+              </li>
+              <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
+	      </li>
+              <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
+              </li>
+              <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <ul class="thumbnails">
 	      <li class="span3">
                 <a href="./carinfo.html" class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/golf.jpg">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h6 class="text-center">市场价:11.89万 ～ 23.58万</h6>
-		    <h6 class="text-center">网站价:10.11万 ～ 20.13万</h6>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </a>
-		<h5>一汽大众 高尔夫</h5>
               </li>
-	    </ul>
-	    <ul class="thumbnails">
-	      <li class="span3">
-                <a href="./carinfo.html" class="thumbnail alpha1" style="padding: 0px;">
-		  <div style="height: 190px;width: 220px;">
-		  <div style="height: 110px;padding:20px"><strong>一汽大众 迈腾</strong>
-		  <h6>1.4T 1.8T 2.0T</h6>
-		  <h6>横置前驱</h6>
-		  <h6>7档双离合</h6>
-		  </div>
-                  <div class="caption" style="background-image: linear-gradient(to bottom, #888888, #777777);padding: 0px; border-radius: 0px 0px 4px 4px;">
-                    <h6 class="text-center" style="color: #ffffff;">市场价:19.98万 ～ 33.48万</h6>
-		    <h6 class="text-center" style="color: #ffffff; border-radius: 4px 4px 4px 4px;">网站价:18.30万 ～ 30.20万</h6>
-                  </div>
-		  </div>
-                </a>
-		<h5>一汽大众 迈腾</h5>
-              </li>
-	      <li class="span3">
+              <li class="span3">
                 <a href="./carinfo.html" class="thumbnail">
-                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/dzcc.jpg">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
                   <div class="caption">
-                    <h6 class="text-center">市场价:25.18万 ～ 34.98万</h6>
-		    <h6 class="text-center">网站价:19.98万 ～ 30.88万</h6>
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
                   </div>
                 </a>
-		<h5>一汽大众 大众CC</h5>
+	      </li>
+              <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
               </li>
-	    </ul>
-      </div>
+              <li class="span3">
+                <a href="./carinfo.html" class="thumbnail">
+                  <img data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 140px;" src="img/car.jpg">
+                  <div class="caption">
+                    <h6 class="text-center">市场价:123000&nbsp;&nbsp;&nbsp;鲸宝价:119000</h6>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
     </div>
     <footer class="footer">
       <div class="container">
