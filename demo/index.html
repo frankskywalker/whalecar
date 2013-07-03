@@ -326,20 +326,25 @@ li h5{
               </li>
 	    </ul>
 	    <ul class="thumbnails">
-	      <li class="span3">
-                <a href="./carinfo.html" class="thumbnail alpha1" style="padding: 0px;">
-		  <div style="height: 190px;width: 220px;">
-		  <div style="height: 110px;padding:20px"><strong>一汽大众 迈腾</strong>
-		  <h6>1.4T 1.8T 2.0T</h6>
-		  <h6>横置前驱</h6>
-		  <h6>7档双离合</h6>
-		  </div>
-                  <div class="caption" style="background-image: linear-gradient(to bottom, #888888, #777777);padding: 0px; border-radius: 0px 0px 4px 4px;">
-                    <h6 class="text-center" style="color: #ffffff;">市场价:19.98万 ～ 33.48万</h6>
-		    <h6 class="text-center" style="color: #ffffff; border-radius: 4px 4px 4px 4px;">网站价:18.30万 ～ 30.20万</h6>
-                  </div>
-		  </div>
-                </a>
+	      <li id='testhover' class="span3">
+            <a  href="./carinfo.html" class="thumbnail" style="padding: 0px;">
+                
+		  		<div style="height: 190px;width: 220px;">
+		  			<div style="height:140px;width:200">
+		  				<img id="testimg1" data-src="holder.js/210x140" alt="210x140" style="position:absolute;width: 210px; height: 140px;" src="img/golf.jpg">
+		  				<div id="testdiv1" style="height: 110px;padding:20px;position:absolute;display:none;">
+		  					<strong>一汽大众 迈腾</strong>
+		  					<h6>1.4T 1.8T 2.0T</h6>
+		  					<h6>横置前驱</h6>
+		  					<h6>7档双离合</h6>
+		  				</div>
+		  			</div>
+                	<div class="caption" style="background-image: linear-gradient(to bottom, #888888, #777777);padding: 0px; border-radius: 0px 0px 4px 4px;">
+                    	<h6 class="text-center" style="color: #ffffff;">市场价:19.98万 ～ 33.48万</h6>
+		    			<h6 class="text-center" style="color: #ffffff; border-radius: 4px 4px 4px 4px;">网站价:18.30万 ～ 30.20万</h6>
+                	</div>
+		  		</div>
+            </a>
 		<h5>一汽大众 迈腾</h5>
               </li>
 	      <li class="span3">
@@ -365,10 +370,10 @@ li h5{
     <script src="js/twitter-bootstrap-hover-dropdown.min.js"></script>
     <script>
     	$('.dropdown-toggle').dropdown();
-    	function test1(){
-    		alert("1");
-    		$('#test1').addClass='open';
-    	}
+    	$('#testhover').hover(function(){
+    		$('#testimg1').fadeTo('slow',0.02);
+    		$('#testdiv1').fadeToggle('slow');
+    	});
     </script>
   </body>
 </html>
