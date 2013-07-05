@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whalecar.persistence.CarBrandMapper">
+
+  <cache />
+
+  <select id="getAllBrand" resultType="CarBrand">   
+    SELECT
+        id, cname, ename, logo_path, order_index, flag_useable
+    FROM
+        Car_Brand
+  </select>
+
+</mapper>
