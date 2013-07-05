@@ -185,9 +185,7 @@
 			      </tbody>
 			    </table>
 			    <div style="height: 22px;">
-			      <input onclick="window.location.href='./off_price.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="优惠500元购买" type="button" class="btn pull-right" value="优惠500元购买"/>	
-			      <input onclick="window.location.href='./submit_price.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="提交我的价格" type="button" class="btn pull-right" value="提交我的价格"/>
-			      <input onclick="window.location.href='./order_car.html'" data-toggle="tooltip" data-placement="top" title="" data-original-title="网站指导价购买" type="button" class="btn pull-right" value="网站指导价购买"/>
+			      <input data-toggle="modal" data-target="#myModal" type="button" class="btn pull-right" value="预定"/>	
 			    </div>
 			  </div>
 			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
@@ -337,6 +335,45 @@
 	      </div>
 	    </div>
 	</div>
+	<div id="myModal" class="modal hide fade" style="left:40%;width:730px;">
+		<div class="modal-body">
+					<ul class="thumbnails">
+				<li class="span3" >
+					<div class="thumbnail" style="height:260px;">
+                  		<div class="caption">
+                  			<div style="height:200px">
+                    			<h3>网站指导价购买</h3>
+                    			<p>进行订金的支付，即可预定该车。。。。。。</p>
+                    		</div>
+                    		<p><a href="#" class="btn btn-primary pull-right">进入</a></p>
+                  		</div>
+                	</div>
+				</li>
+				<li class="span3">
+					<div class="thumbnail" style="height:260px;">
+                  		<div class="caption">
+                  			<div style="height:200px">
+                    			<h3>提交我的价格</h3>
+                    			<p>提交我理想的价格，如果有4s店有合适的活动会主动联系您。。。。。。</p>
+                    		</div>
+                    	<p><a href="#" class="btn btn-primary pull-right">进入</a></p>
+                  		</div>
+                	</div>
+				</li>
+				<li class="span3" >
+					<div class="thumbnail" style="height:260px;">
+                  		<div class="caption">
+                  			<div style="height:200px">
+                    			<h3>优惠500元购买</h3>
+		                    	<p>领取优惠券，在谈好价格的基础上出示可以直接抵用现金。</p>
+		                    </div>
+                    	<p><a href="#" class="btn btn-primary pull-right">进入</a></p>
+                  		</div>
+                	</div>
+				</li>
+			</ul>
+		</div>
+      </div>
 	<script src="js/jquery-1.10.1.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/twitter-bootstrap-hover-dropdown.min.js"></script>

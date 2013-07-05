@@ -8,16 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whalecar.domain.CarBrand;
+import com.whalecar.domain.CarSubBrand;
 import com.whalecar.persistence.CarBrandMapper;
 
 @Controller
 public class HelloWorld {
-	
+
 	@Autowired
 	CarBrandMapper carBrandMapper;
-	
-	@RequestMapping("/getBrand")
-	public @ResponseBody List<CarBrand> getBrand(){
+
+	@RequestMapping("/getAllBrand")
+	public @ResponseBody List<CarBrand> getAllBrand(){
 		return carBrandMapper.getAllBrand();
 	}
+
+	@RequestMapping("/getBrand")
+	public @ResponseBody List<CarSubBrand> getSubBrand(int carBrandId){
+		return carBrandMapper.getSubBrandByBrandId(carBrandId);
+	}
+
 }
