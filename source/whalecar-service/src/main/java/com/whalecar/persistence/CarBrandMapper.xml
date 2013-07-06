@@ -8,7 +8,7 @@
 
   <select id="getAllBrand" resultType="CarBrand">   
     SELECT
-        id, cname, ename, logo_path
+        *
     FROM
         Car_Brand
     Where flag_useable  = 'yes'
@@ -17,7 +17,7 @@
   
   <select id="getSubBrandByBrandId" parameterType="integer"  resultType="CarSubBrand">   
     SELECT
-        id, cname, ename
+        *
     FROM
         Car_Sub_Brand
     Where Car_Brand = #{param1} and flag_useable  = 'yes'
