@@ -118,34 +118,27 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.0.0.RC2</version>
-				<configuration>
-					<stopPort>9966</stopPort>
-					<stopKey>stopkeykeykey</stopKey>
-				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<!-- here the phase you need -->
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/target/extra-resources</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/resources</directory>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-resources-plugin</artifactId>
+		        <version>2.6</version>
+		        <configuration>
+		          <overwrite>true</overwrite>
+		          <resources>
+						<resource>
+					       	<directory>src/main/resources</directory>
+					     </resource>
+					     <!-- 为了将mybatis的sqlMapper复制到classpath中 -->
+					     <resource>
+          					<directory>src/main/java</directory>  
+          					<includes>  
+              					<include>**/*.xml</include>  
+          					</includes>  
+       					</resource>  
+					</resources>
+		        </configuration>
+	      	</plugin>
 		</plugins>
 	</build>
 </project>

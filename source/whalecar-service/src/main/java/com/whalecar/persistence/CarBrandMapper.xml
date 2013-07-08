@@ -20,7 +20,7 @@
         *
     FROM
         Car_Sub_Brand
-    Where Car_Brand = #{param1} and flag_useable  = 'yes'
+    Where Car_Brand = #{parameter} and flag_useable  = 'yes'
     Order by order_index
   </select>
 
