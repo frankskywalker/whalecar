@@ -68,13 +68,29 @@
       .thumbnail {
 	border: 0px;
       }
-      
-/*      .table th, .table td {
-        padding: 6px;
-      }*/
-      
+
       td h5{
 	color: #999999;
+	margin: 5px;
+      }
+      
+      .well{
+        margin-bottom: 3px;
+        padding: 0px 10px 0 10px;
+      }
+      
+      .table{
+	margin-bottom: 0px;
+      }
+      
+      .table th, .table td {
+	border-top: 1px solid #DDDDDD;
+	line-height: 20px;
+	padding: 4px;
+      }
+      
+      tr th,tr td{
+	height: 25px;
       }
     </style>
   </head>
@@ -156,11 +172,14 @@
 		      <td>1.6L 自然呼吸 105马力</td>
 		      <td>12.18万 ～ 14.68万</td>
 		      <td>12</td>
+		      <td>
+			<i class="icon-chevron-right"></i>
+		      </td>
 		    </tr>
 		    <tr id="tr2" style="display: none;background-color: rgb(210,210,200);">
 		      <td colspan="3">
 			<select class="span2 btn-small">
-			  <option>车型...</option>
+			  <option>车型</option>
 			  <option>手动时尚型</option>
 			  <option>自动时尚型</option>
 			  <option>手动豪华型</option>
@@ -168,7 +187,7 @@
 			</select>
 			
 			<select class="span2 btn-small">
-			  <option>外观颜色...</option>
+			  <option>外观颜色</option>
 			  <option>红色</option>
 			  <option>蓝色</option>
 			  <option>黑色</option>
@@ -188,13 +207,13 @@
 			  </select>
 			  -->
 			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
-			    <table class="table" style="margin-bottom: 10px;background-color: inherit;">
+			    <table class="table" style="/*margin-bottom: 10px;*/background-color: inherit;">
 			      <thead>
 				<tr>
 				  <th>车型</th>
 				  <th>变速箱</th>
 				  <th>发动机</th>
-				  <th>外观颜色</th
+				  <th>外观颜色</th>
 				  <th>内饰颜色</th>
 				  <th>库存</th>
 				  <th>价格</th>
@@ -211,16 +230,19 @@
 				  <td width="110px"><span style="color:#ec6197;font-size:20pt">12.18万</span></td>
 				</tr>
 				<tr>
-				  <td colspan="8"><h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5></td>
+				  <td colspan="6">
+				    <h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5>
+				  </td> 
+				  <td colspan="6">
+				      <input data-toggle="modal" data-target="#myModal" type="button" class="btn pull-right" value="预定"/>
+				  </td>
 				</tr>
+				
 			      </tbody>
 			    </table>
-			    <div style="height: 22px;">
-			      <input data-toggle="modal" data-target="#myModal" type="button" class="btn pull-right" value="预定"/>	
-			    </div>
 			  </div>
-			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
-			    <table class="table" style="margin-bottom: 10px;">
+			  			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
+			    <table class="table" style="/*margin-bottom: 10px;*/background-color: inherit;">
 			      <thead>
 				<tr>
 				  <th>车型</th>
@@ -234,56 +256,61 @@
 			      </thead>
 			      <tbody>
 				<tr>
-				  <td><b>速腾 2012款 1.6L 自动时尚型</b></td>
-				  <td>6档手自一体</td>
+				  <td><b>速腾 2012款 1.6L 手动时尚型</b></td>
+				  <td>5档手动</td>
 				  <td>1.6L 105马力 L4</td>
-				  <td>蓝色</td>
-				  <td>黄色</td>
-				  <td>2</td>
-				  <td width="110px"><span style="color:blue;font-size:20pt">13.58万</span></td>
-				</tr>
-				<tr>
-				  <td colspan="8"><h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5></td>
-				</tr>
-			      </tbody>
-			    </table>
-			    <div style="height: 22px;">
-			     <input data-toggle="modal" data-target="#myModal" type="button" class="btn pull-right" value="预定"/>
-			    </div>
-			  </div>
-			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
-			    <table class="table" style="margin-bottom: 10px;">
-			      <thead>
-				<tr>
-				  <th>车型</th>
-				  <th>变速箱</th>
-				  <th>发动机</th>
-				  <th>外观颜色</th>
-				  <th>内饰颜色</th>
-				  <th>库存</th>
-				  <th>价格</th>
-				</tr>
-			      </thead>
-			      <tbody>
-				<tr>
-				  <td><b>速腾 2012款 1.6L 自动舒适型</b></td>
-				  <td>6档手自一体</td>
-				  <td>1.6L 105马力 L4</td>
-				  <td>红色</td>
 				  <td>黑色</td>
-				  <td>1</td>
-				  <td width="110px"><span style="color:blue;font-size:20pt">14.68万</span></td>
+				  <td>黄色</td>
+				  <td>8</td>
+				  <td width="110px"><span style="color:#ec6197;font-size:20pt">12.18万</span></td>
 				</tr>
 				<tr>
-				  <td colspan="8"><h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5></td>
+				  <td colspan="6">
+				    <h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5>
+				  </td> 
+				  <td colspan="6">
+				      <input data-toggle="modal" data-target="#myModal" type="button" class="btn pull-right" value="预定"/>
+				  </td>
 				</tr>
+				
 			      </tbody>
 			    </table>
-			    <div style="height: 22px;">
-			     <input data-toggle="modal" data-target="#myModal" type="button" class="btn pull-right" value="预定"/>
-			    </div>
 			  </div>
-			  
+						  			  <div class="well"><a href="./shopinfo.html"><h4>一汽大众宁波兴宁达众汽车销售服务有限公司</h4></a>
+			    <table class="table" style="/*margin-bottom: 10px;*/background-color: inherit;">
+			      <thead>
+				<tr>
+				  <th>车型</th>
+				  <th>变速箱</th>
+				  <th>发动机</th>
+				  <th>外观颜色</th>
+				  <th>内饰颜色</th>
+				  <th>库存</th>
+				  <th>价格</th>
+				</tr>
+			      </thead>
+			      <tbody>
+				<tr>
+				  <td><b>速腾 2012款 1.6L 手动时尚型</b></td>
+				  <td>5档手动</td>
+				  <td>1.6L 105马力 L4</td>
+				  <td>黑色</td>
+				  <td>黄色</td>
+				  <td>8</td>
+				  <td width="110px"><span style="color:#ec6197;font-size:20pt">12.18万</span></td>
+				</tr>
+				<tr>
+				  <td colspan="6">
+				    <h5>附赠信息：送进口贴膜，2年免费维护以及100公里油卡</h5>
+				  </td> 
+				  <td colspan="6">
+				      <input data-toggle="modal" data-target="#myModal" type="button" class="btn pull-right" value="预定"/>
+				  </td>
+				</tr>
+				
+			      </tbody>
+			    </table>
+			  </div> 
 		      </td>
 		    </tr>
 		    
@@ -291,16 +318,25 @@
 		      <td>1.4T 涡轮增压 131马力</td>
 		      <td>14.18万 ～ 17.78万</td>
 		      <td>10</td>
+		      <td>
+			<i class="icon-chevron-right"></i>
+		      </td>
 		    </tr>
 		    <tr style="cursor:pointer"  onClick="$(body).animate({scrollTop: $(this).offset().top-80},1000);$('#tr2').fadeToggle();">
 		      <td>1.8T 涡轮增压 160马力</td>
 		      <td>18.58万 ～ 19.58万</td>
 		      <td>0</td>
+		      <td>
+			<i class="icon-chevron-right"></i>
+		      </td>
 		    </tr>
 		    <tr style="cursor:pointer"  onClick="$(body).animate({scrollTop: $(this).offset().top-80},1000);$('#tr2').fadeToggle();">
 		      <td>2.0T 涡轮增压 200马力</td>
 		      <td>22.58万 ～ 22.58万</td>
 		      <td>2</td>
+		      <td>
+			<i class="icon-chevron-right"></i>
+		      </td>
 		    </tr>
 		  </tbody>
               </thead>
