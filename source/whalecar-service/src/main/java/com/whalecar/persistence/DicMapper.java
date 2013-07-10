@@ -7,7 +7,7 @@ import com.whalecar.domain.DicColor;
 
 public interface DicMapper {
 
-	public List<DicCity> getAllDicCity();
+	public List<DicCity> queryAllDicCity();
 	
-	public List<DicColor> getAllDicColor();
+	public List<DicColor> queryAllDicColor();
 }

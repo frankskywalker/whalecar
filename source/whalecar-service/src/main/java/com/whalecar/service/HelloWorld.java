@@ -19,12 +19,12 @@ public class HelloWorld {
 
 	@RequestMapping("/getAllBrand")
 	public @ResponseBody List<CarBrand> getAllBrand(){
-		return carBrandMapper.getAllBrand();
+		return carBrandMapper.queryAllBrand();
 	}
 
 	@RequestMapping("/getBrand")
 	public @ResponseBody List<CarSubBrand> getSubBrand(int carBrandId){
-		return carBrandMapper.getSubBrandByBrandId(carBrandId);
+		return carBrandMapper.querySubBrandByBrandId(carBrandId);
 	}
 
 }

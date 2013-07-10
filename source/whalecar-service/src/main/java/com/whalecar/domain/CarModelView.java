@@ -2,12 +2,12 @@ package com.whalecar.domain;
 
 import java.math.BigDecimal;
 
-public class CarModelView {
+public class CarModelView  implements java.io.Serializable{
 	
 	/**
 	 * 品牌名称
 	 */
-	private String brandCName;
+	private String brandCname;
 	
 	/**
 	 * 型号名称
@@ -39,14 +39,16 @@ public class CarModelView {
 	 */
 	private String shopPriceMax;
 	
+	public CarModelView(){
+		
+	}
 	
-
-	public String getBrandCName() {
-		return brandCName;
+	public String getBrandCname() {
+		return brandCname;
 	}
 
-	public void setBrandCName(String brandCName) {
-		this.brandCName = brandCName;
+	public void setBrandCname(String brandCname) {
+		this.brandCname = brandCname;
 	}
 
 	public String getCname() {

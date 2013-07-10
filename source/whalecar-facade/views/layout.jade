@@ -1,7 +1,14 @@
 doctype 5
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title 鲸宝汽车网
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(charset='utf-8')
+    block css
+      link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+    block js
+      script(src='js/jquery-1.10.1.min.js')
+      script(src='js/bootstrap.min.js')
+      script(src='js/twitter-bootstrap-hover-dropdown.min.js')
   body
     block content

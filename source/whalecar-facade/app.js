@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , restify = require('restify');
 
 var app = express();
 
@@ -29,7 +30,8 @@ if ('development' == app.get('env')) {
 
 //create json restful service client
 var service_client = restify.createJsonClient({
-  url: 'http://localhost:8080'
+  url: 'https://api.us-west-1.joyentcloud.com',
+  version: '*'
 });
 
 app.get('/', routes.index);

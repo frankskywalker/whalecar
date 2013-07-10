@@ -2,17 +2,111 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="com.whalecar.persistence.CarModelMapper">
 
 	<cache />
 	
-	<select parameterType="string" id="getCarModelLv1ByBrandId">
+	<select parameterType="string" id="queryCarModelLv1ByBrandId" resultType="CarModelLv1">
 		SELECT 
 			*
 		FROM Car_Model_Lv1
-		WHERE Car_Brand.id = #{parameter} 
-				and flag_useable = 'yes'
-		ORDER BY order_index
+		WHERE CarBrand = #{parameter} 
+				and flagUseable = 'yes'
+		ORDER BY orderIndex
+	</select>
+	
+	<select parameterType="map" id="queryModelView" resultType="CarModelView">
+		SELECT 
+		    Car_Brand.cname as brandCname,
+		    Car_Model_Lv1.cname as cname,
+		    Car_Model_Lv1.imgPath as imgPath,
+		    min(Car_Model_Lv3.factoryPrice) as factoryPriceMin,
+		    max(Car_Model_Lv3.factoryPrice) as factoryPriceMax,
+		    min(Shop_Stock.carPrice) as shopPriceMin,
+		    max(Shop_Stock.carPrice) as shopPriceMax
+		FROM
+		    (select * from Car_Model_Lv1 where flagUseable = 'yes') Car_Model_Lv1
+		        LEFT JOIN
+		    Car_Model_Lv2 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+				AND Car_Model_Lv2.flagUseable = 'yes'
+		        LEFT JOIN
+		    Car_Model_Lv3 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+				AND Car_Model_Lv3.flagUseable = 'yes'
+		        LEFT JOIN
+		    Car_Brand ON Car_Model_Lv1.carBrand = Car_Brand.id
+				AND Car_Brand.flagUseable = 'yes'
+		        LEFT JOIN
+		    Shop_Stock ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+		    	LEFT JOIN
+		    Shop ON Shop_Stock.shop = Shop.id
+		    AND Shop.flagUseable = 'yes'
+		<where>
+			<if test="carBrand != null">
+				Car_Brand.id = #{carBrand}
+			</if>
+			<if test="carModelLv1 != null">
+				Car_Model_Lv1.id = #{carModelLv1}
+			</if>
+			<if test="priceMin != null">
+				Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
+				or 
+				Shop_Stock.carPrice &gt;=  #{priceMin}
+			</if>
+			<if test="priceMax != null">
+				Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
+				or 
+				Shop_Stock.carPrice  &lt;=  #{priceMax}
+			</if>
+			<if test="city != null">
+				Shop.shopCity = #{city}
+			</if>
+		</where>
+		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname
+		LIMIT #{startIndex},#{endIndex}
+	</select>
+	
+	<select parameterType="map" id="queryModelViewCount" resultType="int">
+		SELECT 
+		    COUNT(Car_Model_Lv1.id)
+		FROM
+		    (select * from Car_Model_Lv1 where flagUseable = 'yes') Car_Model_Lv1
+		        LEFT JOIN
+		    Car_Model_Lv2 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+				AND Car_Model_Lv2.flagUseable = 'yes'
+		        LEFT JOIN
+		    Car_Model_Lv3 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+				AND Car_Model_Lv3.flagUseable = 'yes'
+		        LEFT JOIN
+		    Car_Brand ON Car_Model_Lv1.carBrand = Car_Brand.id
+				AND Car_Brand.flagUseable = 'yes'
+		        LEFT JOIN
+		    Shop_Stock ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+		    	LEFT JOIN
+		    Shop ON Shop_Stock.shop = Shop.id
+		    AND Shop.flagUseable = 'yes'
+		<where>
+			<if test="carBrand != null">
+				Car_Brand.id = #{carBrand}
+			</if>
+			<if test="carModelLv1 != null">
+				Car_Model_Lv1.id = #{carModelLv1}
+			</if>
+			<if test="priceMin != null">
+				Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
+				or 
+				Shop_Stock.carPrice &gt;=  #{priceMin}
+			</if>
+			<if test="priceMax != null">
+				Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
+				or 
+				Shop_Stock.carPrice  &lt;=  #{priceMax}
+			</if>
+			<if test="city != null">
+				Shop.shopCity = #{city}
+			</if>
+		</where>
+		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname
 	</select>
 
 </mapper>

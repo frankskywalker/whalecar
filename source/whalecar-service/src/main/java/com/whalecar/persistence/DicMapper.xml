@@ -6,20 +6,20 @@
 
   <cache />
   
-  <select id="getAllDicCity" resultType="DicCity">
+  <select id="queryAllDicCity" resultType="DicCity">
   	SELECT
   		* 
   	FROM Dic_City
-  	Where flag_useable = 'yes'
-  	Order by order_index
+  	Where flagUseable = 'yes'
+  	Order by orderIndex
   </select>
 
-  <select id="getAllDicColor" resultType="DicColor">
+  <select id="queryAllDicColor" resultType="DicColor">
   	SELECT
   		* 
   	FROM Dic_Color
-  	Where flag_useable = 'yes'
-  	Order by order_index
+  	Where flagUseable = 'yes'
+  	Order by orderIndex
   </select>
 
 </mapper>

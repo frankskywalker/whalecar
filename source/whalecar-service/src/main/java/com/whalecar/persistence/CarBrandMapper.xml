@@ -6,22 +6,22 @@
 
   <cache />
 
-  <select id="getAllBrand" resultType="CarBrand">   
+  <select id="queryAllBrand" resultType="CarBrand">   
     SELECT
         *
     FROM
         Car_Brand
-    Where flag_useable  = 'yes'
-    Order by order_index
+    Where flagUseable  = 'yes'
+    Order by orderIndex
   </select>
   
-  <select id="getSubBrandByBrandId" parameterType="integer"  resultType="CarSubBrand">   
+  <select id="querySubBrandByBrandId" parameterType="integer"  resultType="CarSubBrand">   
     SELECT
         *
     FROM
         Car_Sub_Brand
-    Where Car_Brand = #{parameter} and flag_useable  = 'yes'
-    Order by order_index
+    Where CarBrand = #{parameter} and flagUseable  = 'yes'
+    Order by orderIndex
   </select>
 
 </mapper>

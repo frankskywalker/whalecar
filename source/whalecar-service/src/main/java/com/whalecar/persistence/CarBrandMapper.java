@@ -7,8 +7,8 @@ import com.whalecar.domain.CarSubBrand;
 
 public interface CarBrandMapper{
 	
-	public List<CarBrand> getAllBrand();
+	public List<CarBrand> queryAllBrand();
 	
-	public List<CarSubBrand> getSubBrandByBrandId(int id);
+	public List<CarSubBrand> querySubBrandByBrandId(int id);
 
 }

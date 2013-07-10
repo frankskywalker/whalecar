@@ -23,7 +23,7 @@ public class DicService {
 	 */
 	@RequestMapping("/getAllDicCity")
 	public @ResponseBody List<DicCity> getAllDicCity(){
-		return dicMapper.getAllDicCity();
+		return dicMapper.queryAllDicCity();
 	}
 
 	/**
@@ -32,6 +32,6 @@ public class DicService {
 	 */
 	@RequestMapping("/getAllDicColor")
 	public @ResponseBody List<DicColor> getAllDicColor(){
-		return dicMapper.getAllDicColor();
+		return dicMapper.queryAllDicColor();
 	}
 }
