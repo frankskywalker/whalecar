@@ -172,15 +172,23 @@ li h5{
 a.thumbnail:hover, a.thumbnail:focus {
     box-shadow: 0 1px 4px rgba(64, 131, 169, 0.5);
 }
+
+li {
+    line-height: 10px;
+}
+
+.nav {
+    margin-bottom: 10px;
+}
 </style>
   </head>		
   <body>
     <!-- navbar start-->
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
+      <div class="navbar-inner" style="height: 58px">
+        <div class="container" style="margin-bottom: 9px;margin-top: 9px">
           <a class="brand" href="./index.html">鲸宝汽车网</a>
-          <ul class="nav">
+          <ul class="nav" style="margin-bottom: 5px;margin-top: 5px">
             <li class="active">
             	<a href="./index.html">汽车频道</a>
             </li>
@@ -466,11 +474,11 @@ a.thumbnail:hover, a.thumbnail:focus {
     	$('.dropdown-toggle').dropdown();
     	$("div[name='hoverdiv']").each(function(index,value){
     		$(value).hover(function(){
-    			$(this).find("div[name='imgdiv']").fadeTo('slow',0.03);
-    			$(this).find("div[name='coverdiv']").fadeToggle('slow');
+    			$(this).find("div[name='imgdiv']").fadeTo('fast',0.04);
+    			$(this).find("div[name='coverdiv']").fadeToggle('fast');
     		},function(){
-    			$(this).find("div[name='imgdiv']").fadeTo('slow',1);
-    			$(this).find("div[name='coverdiv']").fadeToggle('slow');
+    			$(this).find("div[name='imgdiv']").fadeTo('fast',1);
+    			$(this).find("div[name='coverdiv']").fadeToggle('fast');
     		});
     	});
     </script>
