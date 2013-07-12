@@ -7,8 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path')
-  , restify = require('restify');
+  , path = require('path');
 
 var app = express();
 
@@ -21,6 +20,11 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
+app.use(function(err, req, res, next){
+	res.status(500);
+	console.error(err.stack);
+	res.render('error', { error: err });
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
@@ -28,14 +32,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-//create json restful service client
-var service_client = restify.createJsonClient({
-  url: 'https://api.us-west-1.joyentcloud.com',
-  version: '*'
-});
-
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/', routes.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

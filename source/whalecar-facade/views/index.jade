@@ -39,8 +39,9 @@ block content
               ul.dropdown-menu
                 li
                   a(onclick="$('#cityName').html('城市')", href="#") 不限
-                li
-                  a(onclick="$('#cityName').html('宁波')", href="#") 宁波
+                each city in allDicCity
+                  li
+                    a(href="#")= city.cityCname
             li.dropdown
               a.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
                 span#brandValue 品牌
@@ -102,130 +103,40 @@ block content
       hr(style='margin: 0px 0px 17px;')
       //列表 
       .row-fluid
-        ul.thumbnails
+        each carModelView, i in carModelViews.items
+          if i % 4 == 0
+            <ul class='thumbnails'> 
           li.span3
             a.thumbnail(href='./carinfo.html', style='padding: 0px;')
               div(name='hoverdiv', style='height: 190px; width: 220px;')
                 div(name='imgdiv', style='width: 200; position: absolute;')
                   img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;', src='img/suteng.jpg')
                   .caption
-                    h6.text-center 市场价:13.18万 ～ 22.58万
-                    h6.text-center 网站价:12.18万 ～ 20.58万
+                    h6.text-center 市场价:#{carModelView.factoryPriceMin}万 ～ #{carModelView.factoryPriceMax}万
+                    h6.text-center 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万
                 div(name='coverdiv', style='width: 200; position: absolute; display: none;')
                   div(style='height: 110px; padding: 20px;')
-                    strong 一汽大众 速腾
+                    strong #{carModelView.brandCname} #{carModelView.cname}
                     h6 1.4T 1.8T 2.0T
                     h6 横置前驱
                     h6 7档双离合
                   .caption(style='background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;')
                     h6.text-center(style='color: #ffffff;') 市场价:13.18万 ～ 22.58万
                     h6.text-center(style='color: #ffffff; border-radius: 4px 4px 4px 4px;') 网站价:12.18万 ～ 20.58万
-            h5 一汽大众 速腾
-          li.span3
-            a.thumbnail(href='./carinfo.html', style='padding: 0px;')
-              div(name='hoverdiv', style='height: 190px; width: 220px;')
-                div(name='imgdiv', style='width: 200; position: absolute;')
-                  img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;', src='img/jieda.jpg')
-                  .caption
-                    h6.text-center 市场价:7.98万 ～ 11.53万
-                    h6.text-center 网站价:网站价:6.59万 ～ 10.55万
-                div(name='coverdiv', style='width: 200; position: absolute; display: none;')
-                  div(style='height: 110px; padding: 20px;')
-                    strong 一汽大众 捷达
-                    h6 1.4T 1.8T 2.0T
-                    h6 横置前驱
-                    h6 7档双离合
-                  .caption(style='background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;')
-                    h6.text-center(style='color: #ffffff;') 市场价:7.98万 ～ 11.53万
-                    h6.text-center(style='color: #ffffff; border-radius: 4px 4px 4px 4px;') 网站价:6.59万 ～ 10.55万
-            h5 一汽大众 捷达
-          li.span3
-            a.thumbnail(href='./carinfo.html', style='padding: 0px;')
-              div(name='hoverdiv', style='height: 190px; width: 220px;')
-                div(name='imgdiv', style='width: 200; position: absolute;')
-                  img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;', src='img/baolai.jpg')
-                  .caption
-                    h6.text-center 市场价:10.78万 ～ 14.83万
-                    h6.text-center 网站价:网站价:9.08万 ～ 12.48万
-                div(name='coverdiv', style='width: 200px; position: absolute; display: none;')
-                  div(style='height: 110px; padding: 20px;')
-                    strong 一汽大众 宝来
-                    h6 1.4T 1.8T 2.0T
-                    h6 横置前驱
-                    h6 7档双离合
-                  .caption(style='background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;')
-                    h6.text-center(style='color: #ffffff;') 市场价:10.78万 ～ 14.83万
-                    h6.text-center(style='color: #ffffff; border-radius: 4px 4px 4px 4px;') 网站价:9.08万 ～ 12.48万
-            h5 一汽大众 宝来
-          li.span3
-            a.thumbnail(href='./carinfo.html', style='padding: 0px;')
-              div(name='hoverdiv', style='height: 190px; width: 220px;')
-                div(name='imgdiv', style='width: 200; position: absolute;')
-                  img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;', src='img/golf.jpg')
-                  .caption
-                    h6.text-center 市场价:11.89万 ～ 23.58万
-                    h6.text-center 网站价:10.11万 ～ 20.13万
-                div(name='coverdiv', style='width: 200; position: absolute; display: none;')
-                  div(style='height: 110px; padding: 20px;')
-                    strong 一汽大众 高尔夫
-                    h6 1.4T 1.8T 2.0T
-                    h6 横置前驱
-                    h6 7档双离合
-                  .caption(style='background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;')
-                    h6.text-center(style='color: #ffffff;') 市场价:11.89万 ～ 23.58万
-                    h6.text-center(style='color: #ffffff; border-radius: 4px 4px 4px 4px;') 网站价:10.11万 ～ 20.13万
-            h5 一汽大众 高尔夫
-        ul.thumbnails
-          li.span3
-            a.thumbnail(href='./carinfo.html', style='padding: 0px;')
-              div(name='hoverdiv', style='height: 190px; width: 220px;')
-                div(name='imgdiv', style='width: 200; position: absolute;')
-                  img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;', src='img/golf.jpg')
-                  .caption
-                    h6.text-center 市场价:11.89万 ～ 23.58万
-                    h6.text-center 网站价:10.11万 ～ 20.13万
-                div(name='coverdiv', style='width: 200; position: absolute; display: none;')
-                  div(style='height: 110px; padding: 20px;')
-                    strong 一汽大众 迈腾
-                    h6 1.4T 1.8T 2.0T
-                    h6 横置前驱
-                    h6 7档双离合
-                  .caption(style='background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;')
-                    h6.text-center(style='color: #ffffff;') 市场价:19.98万 ～ 33.48万
-                    h6.text-center(style='color: #ffffff; border-radius: 4px 4px 4px 4px;') 网站价:18.30万 ～ 30.20万
-            h5 一汽大众 迈腾
-          li.span3
-            a.thumbnail(href='./carinfo.html', style='padding: 0px;')
-              div(name='hoverdiv', style='height: 190px; width: 220px;')
-                div(name='imgdiv', style='width: 200; position: absolute;')
-                  img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;', src='img/dzcc.jpg')
-                  .caption
-                    h6.text-center 市场价:25.18万 ～ 34.98万
-                    h6.text-center 网站价:19.98万 ～ 30.88万
-                div(name='coverdiv', style='width: 200; position: absolute; display: none;')
-                  div(style='height: 110px; padding: 20px;')
-                    strong 一汽大众 大众CC
-                    h6 1.4T 1.8T 2.0T
-                    h6 横置前驱
-                    h6 7档双离合
-                  .caption(style='background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;')
-                    h6.text-center(style='color: #ffffff;') 市场价:25.18万 ～ 34.98万
-                    h6.text-center(style='color: #ffffff; border-radius: 4px 4px 4px 4px;') 网站价:19.98万 ～ 30.88万
-            h5 一汽大众 大众CC
-      ul.pager
-        li.previous.disabled
-          a(href='#') ← Older
+            h5 #{carModelView.brandCname} #{carModelView.cname}
+          if i % 4 == 0
+            </ul>
     footer.footer
       .container
         p 杭州鲸硅科技有限公司出品
     script
       $('.dropdown-toggle').dropdown();
       $("div[name='hoverdiv']").each(function(index,value){
-      $(value).hover(function(){
-      $(this).find("div[name='imgdiv']").fadeTo('slow',0.03);
-      $(this).find("div[name='coverdiv']").fadeToggle('slow');
+        $(value).hover(function(){
+        $(this).find("div[name='imgdiv']").fadeTo('slow',0.03);
+        $(this).find("div[name='coverdiv']").fadeToggle('slow');
       },function(){
-      $(this).find("div[name='imgdiv']").fadeTo('slow',1);
-      $(this).find("div[name='coverdiv']").fadeToggle('slow');
-      });
+        $(this).find("div[name='imgdiv']").fadeTo('slow',1);
+        $(this).find("div[name='coverdiv']").fadeToggle('slow');
+        });
       });

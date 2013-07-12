@@ -12,7 +12,7 @@ import com.whalecar.domain.CarSubBrand;
 import com.whalecar.persistence.CarBrandMapper;
 
 @Controller
-public class HelloWorld {
+public class CarBrandSerivce {
 
 	@Autowired
 	CarBrandMapper carBrandMapper;
@@ -26,5 +26,4 @@ public class HelloWorld {
 	public @ResponseBody List<CarSubBrand> getSubBrand(int carBrandId){
 		return carBrandMapper.querySubBrandByBrandId(carBrandId);
 	}
-
 }

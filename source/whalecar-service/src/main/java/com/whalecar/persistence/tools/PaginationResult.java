@@ -1,17 +1,13 @@
-package com.whalecar.persistence.tool;
+package com.whalecar.persistence.tools;
 
 import java.util.List;
 
 public class PaginationResult<E> {
-	/**
-	 * 默认每页记录数
-	 */
-	public final static int PAGESIZE = 12;
 
 	/**
 	 * 分页记录数
 	 */
-	private int pageSize = PAGESIZE;
+	private int pageSize = PaginationUtils.DEFAULT_PAGESIZE;
 
 	/**
 	 * 总记录数
@@ -40,7 +36,7 @@ public class PaginationResult<E> {
 	}
 
 	public PaginationResult(List<E> items, int totalCount) {
-		setPageSize(PAGESIZE);
+		setPageSize(PaginationUtils.DEFAULT_PAGESIZE);
 		setTotalCount(totalCount);
 		setItems(items);
 		setStartIndex(0);
@@ -48,7 +44,7 @@ public class PaginationResult<E> {
 	}
 
 	public PaginationResult(List<E> items, int totalCount, int startIndex) {
-		setPageSize(PAGESIZE);
+		setPageSize(PaginationUtils.DEFAULT_PAGESIZE);
 		setTotalCount(totalCount);
 		setItems(items);
 		setStartIndex(startIndex);
