@@ -106,7 +106,6 @@
 				Shop.shopCity = #{city}
 			</if>
 		</where>
-		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname
 	</select>
 
 </mapper>

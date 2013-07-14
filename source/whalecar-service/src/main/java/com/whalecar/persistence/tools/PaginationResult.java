@@ -23,47 +23,57 @@ public class PaginationResult<E> {
 	 * 每页的记录起始位置
 	 */
 	private int[] indexes = new int[0];
+	
+	/**
+	 * 每页的页码，从1开始
+	 */
+	private int[] pageIndexs = new int[0];
+	
+	private int currentPage = 1;
 
 	/**
 	 * 记录数据
 	 */
 	private List<E> items;
-	
-	public PaginationResult(int pageSize, int startIndex) {
-		setPageSize(pageSize);
-		setStartIndex(startIndex);
-
-	}
-
-	public PaginationResult(List<E> items, int totalCount) {
-		setPageSize(PaginationUtils.DEFAULT_PAGESIZE);
-		setTotalCount(totalCount);
-		setItems(items);
-		setStartIndex(0);
-
-	}
 
 	public PaginationResult(List<E> items, int totalCount, int startIndex) {
-		setPageSize(PaginationUtils.DEFAULT_PAGESIZE);
-		setTotalCount(totalCount);
-		setItems(items);
-		setStartIndex(startIndex);
-
+		init(items,totalCount,PaginationUtils.DEFAULT_PAGESIZE,startIndex);
 	}
-
+	
 	public PaginationResult(List<E> items, int totalCount, int pageSize,
 			int startIndex) {
-		setPageSize(pageSize);
+		init(items, totalCount, pageSize, startIndex);
+	}
+	
+	/**
+	 * init
+	 * @param items2
+	 * @param totalCount2
+	 * @param defaultPagesize
+	 * @param startIndex2
+	 */
+	private void init(List<E> items, int totalCount,
+			int pageSize, int startIndex) {
+		this.pageSize = pageSize;
 		setTotalCount(totalCount);
-		setItems(items);
+		this.items = items;
 		setStartIndex(startIndex);
+		setCurrentPage(getStartIndex() / pageSize + 1);
+	}
+	
+	/**
+	 * 设置当前页数
+	 * @param currentPage
+	 */
+	private void setCurrentPage(int currentPage){
+		this.currentPage = currentPage;
 	}
 
 	/**
 	 * 设置总记录数
 	 * @param totalCount
 	 */
-	public void setTotalCount(int totalCount) {
+	private void setTotalCount(int totalCount) {
 		if (totalCount > 0) {
 			this.totalCount = totalCount;
 			int count = totalCount / pageSize;
@@ -73,8 +83,28 @@ public class PaginationResult<E> {
 			for (int i = 0; i < count; i++) {
 				indexes[i] = pageSize * i;
 			}
+			pageIndexs = new int[count];
+			for (int i = 0; i < count; i++) {
+				pageIndexs[i] = i + 1;
+			}
 		} else {
 			this.totalCount = 0;
+		}
+	}
+	
+	/**
+	 * 设置起始位置
+	 * @param startIndex
+	 */
+	private void setStartIndex(int startIndex) {
+		if (totalCount <= 0)
+			this.startIndex = 0;
+		else if (startIndex >= totalCount)
+			this.startIndex = indexes[indexes.length - 1];
+		else if (startIndex < 0)
+			this.startIndex = 0;
+		else {
+			this.startIndex = indexes[startIndex / pageSize];
 		}
 	}
 
@@ -87,35 +117,11 @@ public class PaginationResult<E> {
 	}
 
 	/**
-	 * 设置每页起始位置列表
-	 * @param indexes
-	 */
-	public void setIndexes(int[] indexes) {
-		this.indexes = indexes;
-	}
-
-	/**
 	 * 获取每页起始位置列表
 	 * @return
 	 */
 	public int[] getIndexes() {
 		return indexes;
-	}
-
-	/**
-	 * 设置起始位置
-	 * @param startIndex
-	 */
-	public void setStartIndex(int startIndex) {
-		if (totalCount <= 0)
-			this.startIndex = 0;
-		else if (startIndex >= totalCount)
-			this.startIndex = indexes[indexes.length - 1];
-		else if (startIndex < 0)
-			this.startIndex = 0;
-		else {
-			this.startIndex = indexes[startIndex / pageSize];
-		}
 	}
 
 	/**
@@ -166,7 +172,7 @@ public class PaginationResult<E> {
 	 * @return
 	 */
 	public int getCurrentPage() {
-		return getStartIndex() / pageSize + 1;
+		return currentPage;
 	}
 
 	/**
@@ -186,14 +192,6 @@ public class PaginationResult<E> {
 	}
 
 	/**
-	 * 获取当前页大小
-	 * @param pageSize
-	 */
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	/**
 	 * 获取数据内容
 	 * @return
 	 */
@@ -201,13 +199,8 @@ public class PaginationResult<E> {
 		return items;
 	}
 
-	/**
-	 * 存储数据内容
-	 * @param items
-	 */
-	public void setItems(List<E> items) {
-		this.items = items;
+	public int[] getPageIndexs() {
+		return pageIndexs;
 	}
 
-	
 }
