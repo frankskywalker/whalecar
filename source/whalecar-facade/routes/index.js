@@ -5,7 +5,7 @@ var service = require("./tools/service-header");
 var async = require("async");
 
 //index page
-exports.index = function(req, res) {
+exports.page = function(req, res) {
   
   //set Param
   var modelViewConditionParams =  {pageIndex:0};
@@ -36,12 +36,4 @@ exports.index = function(req, res) {
 	//render peage
 	res.render("index",{allDicCity:results.allDicCity,allBrand:results.allBrand,carModelViews:results.carModelViews});
   });
-};
-
-//Get CarModel By BrandId
-exports.getCarModelByBrandId = function(req,res){
-	service.client.post("/getCarModelLv1ByBrandId",{brandId:req.params.brandId},function(err, req, res, data){
-        console.log("getCarModelLv1ByBrandId ok");
-        res.send(data);
-    });
 };
