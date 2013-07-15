@@ -42,23 +42,23 @@
 		    Shop ON Shop_Stock.shop = Shop.id
 		    AND Shop.flagUseable = 'yes'
 		<where>
-			<if test="carBrand != null">
+			<if test="carBrand != null and carBrand != ''">
 				Car_Brand.id = #{carBrand}
 			</if>
-			<if test="carModelLv1 != null">
+			<if test="carModelLv1 != null and carModelLv1 != ''">
 				Car_Model_Lv1.id = #{carModelLv1}
 			</if>
-			<if test="priceMin != null">
+			<if test="priceMin != null and priceMin != ''">
 				Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
 				or 
 				Shop_Stock.carPrice &gt;=  #{priceMin}
 			</if>
-			<if test="priceMax != null">
+			<if test="priceMax != null and priceMax != ''">
 				Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
 				or 
 				Shop_Stock.carPrice  &lt;=  #{priceMax}
 			</if>
-			<if test="city != null">
+			<if test="city != null and city !=''">
 				Shop.shopCity = #{city}
 			</if>
 		</where>
@@ -86,26 +86,26 @@
 		    Shop ON Shop_Stock.shop = Shop.id
 		    AND Shop.flagUseable = 'yes'
 		<where>
-			<if test="carBrand != null">
-				Car_Brand.id = #{carBrand}
-			</if>
-			<if test="carModelLv1 != null">
-				Car_Model_Lv1.id = #{carModelLv1}
-			</if>
-			<if test="priceMin != null">
-				Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
-				or 
-				Shop_Stock.carPrice &gt;=  #{priceMin}
-			</if>
-			<if test="priceMax != null">
-				Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
-				or 
-				Shop_Stock.carPrice  &lt;=  #{priceMax}
-			</if>
-			<if test="city != null">
-				Shop.shopCity = #{city}
-			</if>
-		</where>
+            <if test="carBrand != null and carBrand != ''">
+                Car_Brand.id = #{carBrand}
+            </if>
+            <if test="carModelLv1 != null and carModelLv1 != ''">
+                Car_Model_Lv1.id = #{carModelLv1}
+            </if>
+            <if test="priceMin != null and priceMin != ''">
+                Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
+                or 
+                Shop_Stock.carPrice &gt;=  #{priceMin}
+            </if>
+            <if test="priceMax != null and priceMax != ''">
+                Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
+                or 
+                Shop_Stock.carPrice  &lt;=  #{priceMax}
+            </if>
+            <if test="city != null and city !=''">
+                Shop.shopCity = #{city}
+            </if>
+        </where>
 	</select>
 
 </mapper>

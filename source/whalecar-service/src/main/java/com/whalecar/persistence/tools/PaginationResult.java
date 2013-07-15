@@ -8,6 +8,11 @@ public class PaginationResult<E> {
 	 * 分页记录数
 	 */
 	private int pageSize = PaginationUtils.DEFAULT_PAGESIZE;
+	
+	/**
+	 * 总页数
+	 */
+	private int pageCount;
 
 	/**
 	 * 总记录数
@@ -29,7 +34,20 @@ public class PaginationResult<E> {
 	 */
 	private int[] pageIndexs = new int[0];
 	
+	/**
+	 * 当前页数，从1开始
+	 */
 	private int currentPage = 1;
+	
+	/**
+	 * 是否为第一页
+	 */
+	private boolean isFirstPage;
+	
+	/**
+	 * 是否是最后一页
+	 */
+	private boolean isLastPage;
 
 	/**
 	 * 记录数据
@@ -58,15 +76,30 @@ public class PaginationResult<E> {
 		setTotalCount(totalCount);
 		this.items = items;
 		setStartIndex(startIndex);
+		setPageCount();
 		setCurrentPage(getStartIndex() / pageSize + 1);
+		
 	}
 	
 	/**
-	 * 设置当前页数
+	 * 设置当前页数并且设置 是否第一页和是否最后一页
 	 * @param currentPage
 	 */
 	private void setCurrentPage(int currentPage){
 		this.currentPage = currentPage;
+		if(currentPage == 1){
+			this.isFirstPage = true;
+		}
+		else{
+			this.isFirstPage = false;
+		}
+		
+		if(currentPage == this.pageCount){
+			this.isLastPage = true;
+		}
+		else{
+			this.isLastPage = false;
+		}
 	}
 
 	/**
@@ -160,11 +193,12 @@ public class PaginationResult<E> {
 	 * 获取总页数
 	 * @return
 	 */
-	public int getPageCount() {
+	private void setPageCount() {
 		int count = totalCount / pageSize;
-		if (totalCount % pageSize > 0)
+		if (totalCount % pageSize > 0){
 			count++;
-		return count;
+		}
+		this.pageCount = count;
 	}
 
 	/**
@@ -202,5 +236,19 @@ public class PaginationResult<E> {
 	public int[] getPageIndexs() {
 		return pageIndexs;
 	}
+
+	public boolean isFirstPage() {
+		return isFirstPage;
+	}
+
+	public boolean isLastPage() {
+		return isLastPage;
+	}
+
+	public int getPageCount() {
+		return pageCount;
+	}
+
+	
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysql.jdbc.StringUtils;
 import com.whalecar.domain.CarModelLv1;
 import com.whalecar.domain.CarModelView;
 import com.whalecar.persistence.CarModelMapper;
@@ -45,7 +46,7 @@ public class CarModelService {
 	public @ResponseBody PaginationResult<CarModelView> getModelView(@RequestBody Map<String,Object> conditionMap){
 		
 		//init pageIndex
-		int pageIndex = (int) conditionMap.get("pageIndex");
+		int pageIndex = Integer.valueOf(String.valueOf(conditionMap.get("pageIndex")));
 		
 		//init pageSize
 		int pageSize = PaginationUtils.DEFAULT_PAGESIZE;//default pagesize
@@ -62,7 +63,7 @@ public class CarModelService {
 		int resultCount = carModelMapper.queryModelViewCount(conditionMap);
 		
 		//fill PaginationResult
-		PaginationResult<CarModelView> result = new PaginationResult<CarModelView>(resultList,resultCount,pageIndex * pageSize);
+		PaginationResult<CarModelView> result = new PaginationResult<CarModelView>(resultList,resultCount,PaginationUtils.getStartIndex(pageIndex, pageSize));
 		
 		return result;
 	}

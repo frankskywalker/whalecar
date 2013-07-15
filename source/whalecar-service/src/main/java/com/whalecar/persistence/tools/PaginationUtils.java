@@ -14,6 +14,6 @@ public class PaginationUtils {
 	 * @return
 	 */
 	public static int getStartIndex(int pageIndex,int pageSize){
-		return pageIndex * pageSize;
+		return (pageIndex - 1) * pageSize;
 	}
 }

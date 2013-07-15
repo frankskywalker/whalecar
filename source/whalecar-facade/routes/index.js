@@ -7,8 +7,25 @@ var async = require("async");
 //index page
 exports.page = function(req, res) {
   
-  //set Param
-  var modelViewConditionParams =  {pageIndex:0};
+  //get request Params
+  var pageIndex = req.query.pageIndex;
+  var carBrand = req.query.carBrand;
+  var carModelLv1 = req.query.carModelLv1;
+  var priceMin = req.query.priceMin;
+  var priceMax = req.query.priceMax;
+  var city = req.query.city;
+  
+  //set default Params
+  if(!pageIndex) pageIndex = 1;//默认为1
+  if(!carBrand) carBrand = '';
+  if(!carModelLv1) carModelLv1 = '';
+  if(!priceMin) priceMin = '';
+  if(!priceMax) priceMax = '';
+  if(!city) city = '';
+  
+  
+  
+  var modelViewConditionParams =  {pageIndex:pageIndex,carBrand:carBrand,carModelLv1:carModelLv1,priceMin:priceMin,priceMax:priceMax,city:city};
   
   //call service
   async.parallel(
@@ -34,6 +51,6 @@ exports.page = function(req, res) {
   },
   function(err, results){
 	//render peage
-	res.render("index",{allDicCity:results.allDicCity,allBrand:results.allBrand,carModelViews:results.carModelViews});
+	res.render("index",{allDicCity:results.allDicCity,allBrand:results.allBrand,carModelViews:results.carModelViews,conditionParams:modelViewConditionParams});
   });
 };
