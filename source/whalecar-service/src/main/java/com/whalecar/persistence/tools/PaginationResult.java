@@ -94,7 +94,7 @@ public class PaginationResult<E> {
 			this.isFirstPage = false;
 		}
 		
-		if(currentPage == this.pageCount){
+		if(this.pageCount == 0 || currentPage == this.pageCount){
 			this.isLastPage = true;
 		}
 		else{
@@ -183,10 +183,13 @@ public class PaginationResult<E> {
 	 */
 	public int getPreviousIndex() {
 		int previousIndex = getStartIndex() - pageSize;
-		if (previousIndex < 0)
+		if (previousIndex < 0){
 			return 0;
-		else
+		}
+		else{
 			return previousIndex;
+		}
+			
 	}
 
 	/**
@@ -207,14 +210,6 @@ public class PaginationResult<E> {
 	 */
 	public int getCurrentPage() {
 		return currentPage;
-	}
-
-	/**
-	 * 获取页起始位置
-	 * @return
-	 */
-	public int getLastIndex() {
-		return indexes[indexes.length - 1];
 	}
 
 	/**

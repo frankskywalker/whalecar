@@ -34,14 +34,22 @@ block content
       .span8
         div(style="height: 10px;padding-top: 15px;") 
           ul.nav.nav-tabs(style="border-bottom:0px;")
-            li.active(id="city")
-              a(href="#") 城市
+            li(id="city")
+              a(href="#")
+                h4 城市
+                h6 不限
             li(id="brand")
-              a(href="#") 品牌
+              a(href="#")
+                h4 品牌
+                h6 不限
             li(id="model")
-              a(href="#") 车型
+              a(href="#") 
+                h4 车型
+                h6 不限
             li(id="price")
-              a(href="#") 价格
+              a(href="#") 
+                h4 价格
+                h6 不限
       //
         ul.nav.nav-pills
           li.dropdown
@@ -92,7 +100,7 @@ block content
               li
                 a(href='#') 50万以上
       .span4
-        .pagination.pagination-small.pagination-right(style='margin: 5px auto;float:right;width:170px;')
+        .pagination.pagination-small.pagination-right(style='float:right;width:170px;margin: 20px 0 0 0;')
            span(style='float:left;height: 25px;padding:2px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
            ul
              if carModelViews.firstPage
@@ -108,24 +116,24 @@ block content
              -else
                li
                  a(href='#',onclick="conditionSelect('pageIndex','#{carModelViews.currentPage + 1}',true)") 后一页
-               
-    div(id="cityDiv",style="background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
-      each city in allDicCity
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;")= city.cityCname
-    div(id="brandDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
-      each brand in allBrand
-       a(href="#",style="color: #FFFFFF;padding-left: 7px;")= brand.cname
-    div(id="modelDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
-    div(id="priceDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 1万 ~ 5万
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 5万 ~ 10万
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 10万 ~ 20万
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 20万 ~ 50万
-      a(href="#",style="color: #FFFFFF;padding-left: 7px;") 5万以上
+    div(id="divHolder",style="display:none;height: 30px;")
+      div(id="cityDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
+        a(href="#",onClick="conditionSelect('city','',true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
+        each city in allDicCity
+          a(href="#",onClick="conditionSelect('city','#{city.id}',true);",style="color: #FFFFFF;padding-left: 7px;")= city.cityCname
+      div(id="brandDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
+        each brand in allBrand
+         a(href="#",style="color: #FFFFFF;padding-left: 7px;")= brand.cname
+      div(id="modelDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
+      div(id="priceDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 1万 ~ 5万
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 5万 ~ 10万
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 10万 ~ 20万
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 20万 ~ 50万
+        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 5万以上
     hr(style='margin: 0px 0px 17px;')
     //列表 
     .row-fluid
@@ -154,27 +162,27 @@ block content
       </ul>
       
   form(action="/",method="get",id="conditionform")
-    input(type="hidden",name="pageIndex",id="pageIndex",value="#{conditionParams.pageIndex}")
-    input(type="hidden",name="carBrand",id="carBrand",value="#{conditionParams.carBrand}")
-    input(type="hidden",name="carModelLv1",id="carModelLv1",value="#{conditionParams.carModelLv1}")
-    input(type="hidden",name="priceMin",name="priceMin",value="#{conditionParams.priceMin}")
-    input(type="hidden",name="priceMax",name="priceMax",value="#{conditionParams.priceMax}")
-    input(type="hidden",name="city",name="city",value="#{conditionParams.city}")
-    #{carModelViews.totalCount}
-    
-    
+    input(type="hidden",name="pageIndex",id="from_pageIndex",value="#{conditionParams.pageIndex}")
+    input(type="hidden",name="carBrand",id="from_carBrand",value="#{conditionParams.carBrand}")
+    input(type="hidden",name="carModelLv1",id="from_carModelLv1",value="#{conditionParams.carModelLv1}")
+    input(type="hidden",name="priceMin",id="from_priceMin",value="#{conditionParams.priceMin}")
+    input(type="hidden",name="priceMax",id="from_priceMax",value="#{conditionParams.priceMax}")
+    input(type="hidden",name="city",id="from_city",value="#{conditionParams.city}")
+        
   footer.footer
     .container
       p 杭州鲸硅科技有限公司出品
       
-  script
+  script.
+    //提交筛选事件
     function conditionSelect(type,value,needSubmit){
-      $("#" + type).val(value);
+      $("#from_" + type).val(value);
       if(needSubmit == true){
         $("#conditionform").submit();
       }
     }
     
+    //筛选条件选择效果
     var currentHoverBtn = null;
     var tabNames = ["city","brand","model","price"];
     function initEventForTabs(){
@@ -192,25 +200,35 @@ block content
     }
     initEventForTabs();
     $(document).click(function(){
+      //为了效果，如果需要显示菜单就用div撑住高度，避免页面乱动
+      if(currentHoverBtn != null){
+        //$("#divHolder").css({height:"30px",display:""});
+        $("#divHolder").slideDown();
+      }
+      else{
+        $("#divHolder").slideUp('slow');
+      }
+
       //先隐藏
       for(i in tabNames){
         var name = tabNames[i];
         if(currentHoverBtn != name){
           $("#" + name).removeClass("active");
-          $("#" + name + "Div").hide();
+          $("#" + name + "Div").slideUp();
         }
       }
+      
       //再显示
       for(i in tabNames){
         var name = tabNames[i];
         if(currentHoverBtn == name){
           $("#" + name).addClass("active");
-          $("#" + name + "Div").fadeIn();
+          $("#" + name + "Div").slideDown();
         }
       }
     });
     
-  
+    //汽车图片浮动效果
     $("div[name='hoverdiv']").each(function(index,value){
       $(value).hover(function(){
         $(this).find("div[name='imgdiv']").fadeTo('slow',0.03);

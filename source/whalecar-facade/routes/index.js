@@ -5,7 +5,7 @@ var service = require("./tools/service-header");
 var async = require("async");
 
 //index page
-exports.page = function(req, res) {
+exports.page = function(req, res,next) {
   
   //get request Params
   var pageIndex = req.query.pageIndex;
@@ -50,6 +50,7 @@ exports.page = function(req, res) {
     }
   },
   function(err, results){
+    if(err) next(err);
 	//render peage
 	res.render("index",{allDicCity:results.allDicCity,allBrand:results.allBrand,carModelViews:results.carModelViews,conditionParams:modelViewConditionParams});
   });

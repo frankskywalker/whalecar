@@ -1,5 +1,6 @@
 package com.whalecar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mysql.jdbc.StringUtils;
 import com.whalecar.domain.CarModelLv1;
 import com.whalecar.domain.CarModelView;
 import com.whalecar.persistence.CarModelMapper;
@@ -59,8 +59,14 @@ public class CarModelService {
 		conditionMap.put("pageSize", pageSize);
 		
 		//query db
-		List<CarModelView> resultList = carModelMapper.queryModelView(conditionMap);
 		int resultCount = carModelMapper.queryModelViewCount(conditionMap);
+		List<CarModelView> resultList = null;
+		if(resultCount != 0){
+			resultList = carModelMapper.queryModelView(conditionMap);
+		}
+		else{
+			resultList = new ArrayList<CarModelView>();
+		}
 		
 		//fill PaginationResult
 		PaginationResult<CarModelView> result = new PaginationResult<CarModelView>(resultList,resultCount,PaginationUtils.getStartIndex(pageIndex, pageSize));
