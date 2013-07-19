@@ -32,8 +32,9 @@ public class CarModelService {
 	 * @param brandid
 	 * @return
 	 */
-	@RequestMapping("getCarModelLv1ByBrandId")
-	public @ResponseBody List<CarModelLv1> getCarModelLv1ByBrandId(int brandId){
+	@RequestMapping(method=RequestMethod.POST,value="getCarModelLv1ByBrandId")
+	public @ResponseBody List<CarModelLv1> getCarModelLv1ByBrandId(@RequestBody Map<String,Object> conditionMap){
+		Integer brandId = Integer.valueOf((String)conditionMap.get("brandId"));
 		return carModelMapper.queryCarModelLv1ByBrandId(brandId);
 	}
 
@@ -42,7 +43,7 @@ public class CarModelService {
 	 * @param conditionMap 
 	 * @return
 	 */
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST,value="getModelView")
 	public @ResponseBody PaginationResult<CarModelView> getModelView(@RequestBody Map<String,Object> conditionMap){
 		
 		//init pageIndex

@@ -78,7 +78,7 @@ public class PaginationResult<E> {
 		setStartIndex(startIndex);
 		setPageCount();
 		setCurrentPage(getStartIndex() / pageSize + 1);
-		
+		setIsFastAndLastPage();
 	}
 	
 	/**
@@ -86,7 +86,18 @@ public class PaginationResult<E> {
 	 * @param currentPage
 	 */
 	private void setCurrentPage(int currentPage){
-		this.currentPage = currentPage;
+		if(totalCount == 0){
+			this.currentPage = 0;
+		}
+		else{
+			this.currentPage = currentPage;
+		}
+	}
+	
+	/**
+	 * 计算是否为第一页或者最后一页
+	 */
+	private void setIsFastAndLastPage(){
 		if(currentPage == 1){
 			this.isFirstPage = true;
 		}

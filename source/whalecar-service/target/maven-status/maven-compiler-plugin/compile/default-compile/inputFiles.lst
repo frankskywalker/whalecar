@@ -1,3 +1,4 @@
+/Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/persistence/UserMapper.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/domain/CarBrand.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/persistence/CarBrandMapper.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/domain/CarModelLv1.java
@@ -8,9 +9,10 @@
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/domain/User.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/domain/DicColor.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/domain/CarModelLv3.java
-/Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/service/DicService.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/domain/UserOrder.java
+/Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/service/DicService.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/persistence/tools/PaginationUtils.java
+/Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/service/UserService.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/domain/CarModelLv2.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/persistence/DicMapper.java
 /Users/ruihuang/dev/project/whalecar/source/whalecar-service/src/main/java/com/whalecar/service/CarModelService.java

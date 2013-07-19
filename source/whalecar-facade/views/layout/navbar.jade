@@ -1,0 +1,24 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.brand(href='./index.html') 鲸宝汽车网
+      ul.nav
+        li
+          a(href='/') 汽车频道
+        li
+          a(href='/shoplist') 4s店频道
+        li
+          a(href='/buildingl') 移动应用
+        li
+          a(href='/building') 关于我们
+      ul.nav.pull-right
+        li
+          a(href="#loginModal",role="button",data-toggle="modal") 登陆
+include user
+
+script.
+  $(function(){
+    var path = window.location.pathname;
+    $($("ul.nav li a[href='/']").parents('li')).addClass('active')
+  });
+

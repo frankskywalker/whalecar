@@ -6,9 +6,15 @@ import java.util.Map;
 import com.whalecar.domain.CarModelLv1;
 import com.whalecar.domain.CarModelView;
 
+
+/**
+ * 汽车型号相关 Table = Car_Model_**
+ * @author ruihuang
+ *
+ */
 public interface CarModelMapper {
 	
-	public List<CarModelLv1> queryCarModelLv1ByBrandId(int brandid);
+	public List<CarModelLv1> queryCarModelLv1ByBrandId(Integer brandid);
 	
 	/**
 	 * 分页查询ModelView

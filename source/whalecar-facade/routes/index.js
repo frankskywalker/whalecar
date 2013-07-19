@@ -23,24 +23,33 @@ exports.page = function(req, res,next) {
   if(!priceMax) priceMax = '';
   if(!city) city = '';
   
-  
-  
   var modelViewConditionParams =  {pageIndex:pageIndex,carBrand:carBrand,carModelLv1:carModelLv1,priceMin:priceMin,priceMax:priceMax,city:city};
   
   //call service
   async.parallel(
   {
-    allDicCity:function(callback){
+    allDicCitys:function(callback){
       service.client.get("/getAllDicCity",function(err, req, res, data){
         console.log("getAllDicCity ok");
         callback(err, data);
       });
     },
-    allBrand:function(callback){
+    allBrands:function(callback){
       service.client.get("/getAllBrand",function(err, req, res, data){
         console.log("getAllBrand ok");
         callback(err, data);
       });
+    },
+    carModels:function(callback){
+      if(carBrand !== ""){
+        service.client.post("/getCarModelLv1ByBrandId",{brandId:carBrand},function(err, req, res, data){
+          console.log("getCarModelLv1ByBrandId ok");
+          callback(err, data);
+        });
+      }
+      else{
+        callback(null, []);
+      }
     },
     carModelViews:function(callback){
       service.client.post("/getModelView",modelViewConditionParams,function(err, req, res, data){
@@ -52,6 +61,6 @@ exports.page = function(req, res,next) {
   function(err, results){
     if(err) next(err);
 	//render peage
-	res.render("index",{allDicCity:results.allDicCity,allBrand:results.allBrand,carModelViews:results.carModelViews,conditionParams:modelViewConditionParams});
+	res.render("index",{allDicCitys:results.allDicCitys,allBrands:results.allBrands,carModels:results.carModels,carModelViews:results.carModelViews,conditionParams:modelViewConditionParams});
   });
 };

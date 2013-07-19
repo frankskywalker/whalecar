@@ -7,12 +7,12 @@
 
 	<cache />
 	
-	<select parameterType="string" id="queryCarModelLv1ByBrandId" resultType="CarModelLv1">
+	<select parameterType="Integer" id="queryCarModelLv1ByBrandId" resultType="CarModelLv1">
 		SELECT 
 			*
 		FROM Car_Model_Lv1
-		WHERE CarBrand = #{parameter} 
-				and flagUseable = 'yes'
+		WHERE CarBrand = #{brandid} 
+		and flagUseable = 'yes'
 		ORDER BY orderIndex
 	</select>
 	
@@ -46,20 +46,24 @@
 				Car_Brand.id = #{carBrand}
 			</if>
 			<if test="carModelLv1 != null and carModelLv1 != ''">
-				Car_Model_Lv1.id = #{carModelLv1}
+				AND Car_Model_Lv1.id = #{carModelLv1}
 			</if>
 			<if test="priceMin != null and priceMin != ''">
-				Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
-				or 
-				Shop_Stock.carPrice &gt;=  #{priceMin}
+				AND (
+				  Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
+				 or 
+				  Shop_Stock.carPrice &gt;=  #{priceMin}
+				)
 			</if>
 			<if test="priceMax != null and priceMax != ''">
-				Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
-				or 
-				Shop_Stock.carPrice  &lt;=  #{priceMax}
+				AND (
+				  Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
+				 or 
+				  Shop_Stock.carPrice  &lt;=  #{priceMax}
+				)
 			</if>
 			<if test="city != null and city !=''">
-				Shop.shopCity = #{city}
+				AND Shop.shopCity = #{city}
 			</if>
 		</where>
 		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname
@@ -90,20 +94,24 @@
                 Car_Brand.id = #{carBrand}
             </if>
             <if test="carModelLv1 != null and carModelLv1 != ''">
-                Car_Model_Lv1.id = #{carModelLv1}
+                AND Car_Model_Lv1.id = #{carModelLv1}
             </if>
             <if test="priceMin != null and priceMin != ''">
-                Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
-                or 
-                Shop_Stock.carPrice &gt;=  #{priceMin}
+                AND (
+                  Car_Model_Lv3.factoryPrice &gt;= #{priceMin}
+                 or 
+                  Shop_Stock.carPrice &gt;=  #{priceMin}
+                )
             </if>
             <if test="priceMax != null and priceMax != ''">
-                Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
-                or 
-                Shop_Stock.carPrice  &lt;=  #{priceMax}
+                AND (
+                  Car_Model_Lv3.factoryPrice  &lt;= #{priceMax}
+                 or 
+                  Shop_Stock.carPrice  &lt;=  #{priceMax}
+                )
             </if>
             <if test="city != null and city !=''">
-                Shop.shopCity = #{city}
+                AND Shop.shopCity = #{city}
             </if>
         </where>
 	</select>

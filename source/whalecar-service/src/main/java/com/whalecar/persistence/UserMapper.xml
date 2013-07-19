@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whalecar.persistence.UserMapper">
+
+  <cache />
+  
+  <select id="queryByNameAndPsw" resultType="User">
+  	SELECT
+  		* 
+  	FROM User
+  	Where flagUseable = 'yes'
+  	and (loginName = #{loginName} and loginPassword = PASSWORD(#{password}))
+  	LIMIT 1
+  </select>
+
+  <insert id="createUser" parameterType="map">
+    insert into 
+    User (loginName,loginPassword,userCity,userEmail,userName,userTel)
+    values (#{loginName},#{loginPassword},#{userCity},#{userEmail},#{userName},#{userTel})
+  </insert>
+  
+</mapper>

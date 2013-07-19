@@ -1,27 +1,9 @@
-extends layout
+extends layout/mainFrame
 
 block append css
   link(href='css/index.css', rel='stylesheet', media='screen')
 
-block content
-  .navbar.navbar-inverse.navbar-fixed-top
-    .navbar-inner
-      .container
-        a.brand(href='./index.html') 鲸宝汽车网
-        ul.nav
-          li.active
-            a(href='./index.html') 汽车频道
-          li
-            a(href='./shoplist.html') 4s店频道
-          li
-            a(href='./building.html') 移动应用
-          li
-            a(href='./building.html') 关于我们
-        form.navbar-form.pull-right
-          input.input-small(type='text', placeholder='用户名')
-          input.input-small(type='password', placeholder='密码')
-          input.btn(type='submit', value='登陆')
-          a.btn(href='./register.html') 注册
+block append content
   //
     header#overview.jumbotron.subhead
       .container
@@ -37,71 +19,41 @@ block content
             li(id="city")
               a(href="#")
                 h4 城市
-                h6 不限
+                - var cityname = "不限"
+                each dicCity in allDicCitys
+                  if dicCity.id == conditionParams.city
+                    - cityname = dicCity.cityCname
+                h6 #{cityname}
             li(id="brand")
               a(href="#")
                 h4 品牌
-                h6 不限
+                - var brandname = "不限"
+                each brand in allBrands
+                  if brand.id == conditionParams.carBrand
+                    - brandname = brand.cname
+                h6 #{brandname}
             li(id="model")
               a(href="#") 
                 h4 车型
-                h6 不限
+                - var carmodelname = "不限"
+                each carModel in carModels
+                  if carModel.id == conditionParams.carModelLv1
+                    - carmodelname = carModel.cname
+                h6 #{carmodelname}
             li(id="price")
               a(href="#") 
                 h4 价格
-                h6 不限
-      //
-        ul.nav.nav-pills
-          li.dropdown
-            a#cityButton.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
-              span#cityName 城市
-              b.caret
-            ul.dropdown-menu
-              li
-               a(onclick="$('#cityName').html('城市')", href="#") 不限
-              each city in allDicCity
-                li
-                  a(href="#")= city.cityCname
-          li.dropdown
-            a.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
-              span#brandValue 品牌
-              b.caret
-            ul.dropdown-menu
-              li
-                a(onclick="$('#brandValue').html('品牌')", href='#') 不限
-              li
-                a(onclick="$('#brandValue').html('大众')", href='#') 大众
-          li.dropdown
-            a.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
-              | 车型
-              b.caret
-            ul.dropdown-menu
-              li
-                a(href='#') 不限
-              li
-                a(href='#') 捷达
-              li
-                a(href='#') 高尔夫
-          li.dropdown
-            a.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
-              | 价格
-              b.caret
-            ul.dropdown-menu
-              li
-                a(href='#') 不限
-              li
-                a(href='#') 1万 ~ 5万
-              li
-                a(href='#') 5万 ~ 10万
-              li
-                a(href='#') 10万 ~ 20万
-              li
-                a(href='#') 20万 ~ 50万
-              li
-                a(href='#') 50万以上
+                - var priceName = "不限"
+                if !!conditionParams.priceMin
+                  - priceName = conditionParams.priceMin + "万"
+                  if conditionParams.priceMin == '50'
+                    - priceName = priceName + "以上"
+                  else
+                    - priceName = priceName + "~" + conditionParams.priceMax + "万" ;
+                h6 #{priceName}
       .span4
-        .pagination.pagination-small.pagination-right(style='float:right;width:170px;margin: 20px 0 0 0;')
-           span(style='float:left;height: 25px;padding:2px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
+        .pagination.pagination-small.pagination-right(style='float:right;width:175px;margin: 35px 0 0 0;')
+           span(style='float:left;height: 25px;padding:6px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
            ul
              if carModelViews.firstPage
                li.disabled
@@ -116,26 +68,28 @@ block content
              -else
                li
                  a(href='#',onclick="conditionSelect('pageIndex','#{carModelViews.currentPage + 1}',true)") 后一页
-    div(id="divHolder",style="display:none;height: 30px;")
-      div(id="cityDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-        a(href="#",onClick="conditionSelect('city','',true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
-        each city in allDicCity
-          a(href="#",onClick="conditionSelect('city','#{city.id}',true);",style="color: #FFFFFF;padding-left: 7px;")= city.cityCname
-      div(id="brandDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
-        each brand in allBrand
-         a(href="#",style="color: #FFFFFF;padding-left: 7px;")= brand.cname
-      div(id="modelDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
-      div(id="priceDiv",style="display:none;background-image: url(img/condition-bg.png);height: 20px;padding:5px;")
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 不限
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 1万 ~ 5万
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 5万 ~ 10万
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 10万 ~ 20万
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 20万 ~ 50万
-        a(href="#",style="color: #FFFFFF;padding-left: 7px;") 5万以上
+    div(id="divHolder",style="display:none;height: 30px;background-image: url(img/condition-bg.png);")
+      div(id="cityDiv",style="display:none;height: 20px;padding:5px;")
+        a(href="#",onClick="conditionSelect('city','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+        each dicCity in allDicCitys
+          a(href="#",onClick="conditionSelect('city','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")= dicCity.cityCname
+      div(id="brandDiv",style="display:none;height: 20px;padding:5px;")
+        a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+        each brand in allBrands
+          a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")= brand.cname
+      div(id="modelDiv",style="display:none;height: 20px;padding:5px;")
+        a(href="#",onClick="conditionSelect('carModel','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+        each carModel in carModels
+          a(href="#",onClick="conditionSelect('carModel','#{carModel.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")= carModel.cname
+      div(id="priceDiv",style="display:none;height: 20px;padding:5px;")
+        a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+        a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);",style="color: #FFFFFF;padding-left: 7px;") 1万 ~ 5万
+        a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);",style="color: #FFFFFF;padding-left: 7px;") 5万 ~ 10万
+        a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);",style="color: #FFFFFF;padding-left: 7px;") 10万 ~ 20万
+        a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);",style="color: #FFFFFF;padding-left: 7px;") 20万 ~ 50万
+        a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 50万以上
     hr(style='margin: 0px 0px 17px;')
-    //列表 
+     //列表
     .row-fluid
       <ul class='thumbnails'> 
       each carModelView, i in carModelViews.items
@@ -143,7 +97,7 @@ block content
           a.thumbnail(href='./carinfo.html', style='padding: 0px;')
             div(name='hoverdiv', style='height: 190px; width: 220px;')
               div(name='imgdiv', style='width: 200; position: absolute;')
-                img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;', src='img/suteng.jpg')
+                img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;padding: 2px 2px 0px;', src='img/suteng.jpg')
                 .caption
                   h6.text-center 市场价:#{carModelView.factoryPriceMin}万 ～ #{carModelView.factoryPriceMax}万
                   h6.text-center 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万
@@ -160,23 +114,28 @@ block content
         if i != 0 && (i+1) % 4 == 0
           </ul><ul class='thumbnails'>
       </ul>
-      
+
   form(action="/",method="get",id="conditionform")
-    input(type="hidden",name="pageIndex",id="from_pageIndex",value="#{conditionParams.pageIndex}")
-    input(type="hidden",name="carBrand",id="from_carBrand",value="#{conditionParams.carBrand}")
-    input(type="hidden",name="carModelLv1",id="from_carModelLv1",value="#{conditionParams.carModelLv1}")
-    input(type="hidden",name="priceMin",id="from_priceMin",value="#{conditionParams.priceMin}")
-    input(type="hidden",name="priceMax",id="from_priceMax",value="#{conditionParams.priceMax}")
-    input(type="hidden",name="city",id="from_city",value="#{conditionParams.city}")
+    input(type="hidden",name="pageIndex",id="form_pageIndex",value="#{conditionParams.pageIndex}")
+    input(type="hidden",name="carBrand",id="form_carBrand",value="#{conditionParams.carBrand}")
+    input(type="hidden",name="carModelLv1",id="form_carModel",value="#{conditionParams.carModelLv1}")
+    input(type="hidden",name="priceMin",id="form_priceMin",value="#{conditionParams.priceMin}")
+    input(type="hidden",name="priceMax",id="form_priceMax",value="#{conditionParams.priceMax}")
+    input(type="hidden",name="city",id="form_city",value="#{conditionParams.city}")
         
   footer.footer
     .container
       p 杭州鲸硅科技有限公司出品
-      
+
   script.
     //提交筛选事件
-    function conditionSelect(type,value,needSubmit){
-      $("#from_" + type).val(value);
+    function conditionSelect(type,value,needSubmit,needInitPage){
+      $("#form_" + type).val(value);
+      
+      if(needInitPage){
+        $("#form_pageIndex").val('');
+      }
+      
       if(needSubmit == true){
         $("#conditionform").submit();
       }
@@ -214,7 +173,7 @@ block content
         var name = tabNames[i];
         if(currentHoverBtn != name){
           $("#" + name).removeClass("active");
-          $("#" + name + "Div").slideUp();
+          $("#" + name + "Div").hide();
         }
       }
       
@@ -223,7 +182,7 @@ block content
         var name = tabNames[i];
         if(currentHoverBtn == name){
           $("#" + name).addClass("active");
-          $("#" + name + "Div").slideDown();
+          $("#" + name + "Div").show();
         }
       }
     });

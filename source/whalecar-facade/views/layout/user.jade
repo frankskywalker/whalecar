@@ -1,0 +1,80 @@
+div(id="loginModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
+  .modal-header
+    button(type="button",class="close",data-dismiss="modal",aria-hidden="true") X
+    h3 登陆
+  .modal-body
+    form.form-horizontal#loginfrom(id="loginForm",action="/login",method="post")
+      div.control-group
+        label.control-label(for="loginName")用户名
+        div.controls
+          input(type="text",id="loginName",name="loginName",placeholder="用户名")
+      div.control-group
+        label.control-label(for="password")密码
+        div.controls
+          input(type="password",id="loginName",name="password",placeholder="密码")
+      div.alert.alert-error.hide#login-error 用户名密码错误，请重新输入!
+      div.alert.alert-success.hide#login-succee 登陆成功
+           
+  .modal-footer
+   
+    a(href="#",class="btn",onClick="switchLoginAndRegist('login');") 注册
+    a(href="#",class="btn btn-primary",onclick="login();") 登陆
+
+div(id="registModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
+  .modal-header
+    button(type="button",class="close",data-dismiss="modal",aria-hidden="true") X
+    h3 注册
+  .modal-body
+    from.form-horizontal#registfrom(action="/regist",method="post")
+      div.control-group
+        label.control-label(for="loginName")用户名
+        div.controls
+          input(type="text",id="loginName",name="loginName",placeholder="用户名")
+      div.control-group
+        label.control-label(for="loginName")密码
+        div.controls
+          input(type="password",id="password",name="password",placeholder="密码")
+      div.control-group
+        label.control-label(for="loginNameConfirm")密码确认
+        div.controls
+          input(type="password",id="passwordConfirm",name="passwordConfirm",placeholder="再输入一遍密码")
+      div.control-group
+        label.control-label(for="tel")手机号码
+        div.controls
+          input(type="text",id="tel",name="tel",placeholder="手机号码")
+      div.control-group
+        label.control-label(for="mail")邮箱地址
+        div.controls
+          input(type="text",id="mail",name="mail",placeholder="邮箱地址")
+  .modal-footer
+    a(href="#",class="btn",onClick="switchLoginAndRegist('regist');") 返回
+    a(href="#",class="btn btn-primary") 注册
+
+script.
+  function switchLoginAndRegist(selected){
+    if(selected == "login"){
+      $('#loginModal').modal('hide');
+      $("#registModal").modal('show');
+    }
+    else if(selected == "regist"){
+      $('#loginModal').modal('show');
+      $("#registModal").modal('hide');
+    }
+  }
+
+  function login(){
+    $.post("/user?type=login", $("#loginForm").serialize())
+      .done(function(data) {
+      if(data.loginSuc){
+        $("#login-succee").show();
+        $("#login-error").hide();
+      }
+      else{
+        $("#login-succee").slideUp();
+        $("#login-error").slideDown();
+      }
+    });
+  }
+  function regist(){
+  
+  }
