@@ -3,7 +3,7 @@ div(id="loginModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hid
     button(type="button",class="close",data-dismiss="modal",aria-hidden="true") X
     h3 登陆
   .modal-body
-    form.form-horizontal#loginfrom(id="loginForm",action="/login",method="post")
+    form.form-horizontal#loginForm(action="/login",method="post")
       div.control-group
         label.control-label(for="loginName")用户名
         div.controls
@@ -14,9 +14,8 @@ div(id="loginModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hid
           input(type="password",id="loginName",name="password",placeholder="密码")
       div.alert.alert-error.hide#login-error 用户名密码错误，请重新输入!
       div.alert.alert-success.hide#login-succee 登陆成功
-           
+    div(style="display:none")
   .modal-footer
-   
     a(href="#",class="btn",onClick="switchLoginAndRegist('login');") 注册
     a(href="#",class="btn btn-primary",onclick="login();") 登陆
 
@@ -25,30 +24,41 @@ div(id="registModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hi
     button(type="button",class="close",data-dismiss="modal",aria-hidden="true") X
     h3 注册
   .modal-body
-    from.form-horizontal#registfrom(action="/regist",method="post")
+    form.form-horizontal#registForm(action="/regist",method="post")
       div.control-group
         label.control-label(for="loginName")用户名
         div.controls
           input(type="text",id="loginName",name="loginName",placeholder="用户名")
       div.control-group
-        label.control-label(for="loginName")密码
+        label.control-label(for="loginPassword")密码
         div.controls
-          input(type="password",id="password",name="password",placeholder="密码")
+          input(type="password",id="loginPassword",name="loginPassword",placeholder="密码")
       div.control-group
-        label.control-label(for="loginNameConfirm")密码确认
+        label.control-label(for="loginPasswordConfirm")密码确认
         div.controls
-          input(type="password",id="passwordConfirm",name="passwordConfirm",placeholder="再输入一遍密码")
+          input(type="password",id="loginPasswordConfirm",name="loginPasswordConfirm",placeholder="再输入一遍密码")
       div.control-group
-        label.control-label(for="tel")手机号码
+        label.control-label(for="userName")姓名
         div.controls
-          input(type="text",id="tel",name="tel",placeholder="手机号码")
+          input(type="text",id="userName",name="userName",placeholder="姓名")
       div.control-group
-        label.control-label(for="mail")邮箱地址
+        label.control-label(for="userCity")城市
         div.controls
-          input(type="text",id="mail",name="mail",placeholder="邮箱地址")
+          select(id="userCity",name="userCity")
+            option(value="") 选择城市
+      div.control-group
+        label.control-label(for="userTel")手机号码
+        div.controls
+          input(type="text",id="userTel",name="userTel",placeholder="手机号码")
+      div.control-group
+        label.control-label(for="userEmail")邮箱地址
+        div.controls
+          input(type="text",id="userEmail",name="userEmail",placeholder="邮箱地址")
+      div.alert.alert-error.hide#regist-error 注册失败
+      div.alert.alert-success.hide#regist-succee 注册成功
   .modal-footer
-    a(href="#",class="btn",onClick="switchLoginAndRegist('regist');") 返回
-    a(href="#",class="btn btn-primary") 注册
+    a(href="#",class="btn",onClick="switchLoginAndRegist('regist');") 登陆
+    a(href="#",class="btn btn-primary",onClick="regist()") 提交注册
 
 script.
   function switchLoginAndRegist(selected){
@@ -68,6 +78,7 @@ script.
       if(data.loginSuc){
         $("#login-succee").show();
         $("#login-error").hide();
+        window.location.reload();
       }
       else{
         $("#login-succee").slideUp();
@@ -76,5 +87,23 @@ script.
     });
   }
   function regist(){
-  
+    $.post("/user?type=regist", $("#registForm").serialize())
+      .done(function(data) {
+      if(data.loginSuc){
+        $("#login-succee").show();
+        $("#login-error").hide();
+      }
+      else{
+        $("#login-succee").slideUp();
+        $("#login-error").slideDown();
+      }
+    });
   }
+  
+  $(document).ready(function(){
+    $.getJSON("/dic?type=DicCity",function(data){
+      $.each(data,function(i,e){
+        $("#userCity").append("<option value=" + e.id + ">" + e.cityCname +  "</option>");
+      });
+    });
+  });

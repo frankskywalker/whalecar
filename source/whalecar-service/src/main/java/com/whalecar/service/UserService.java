@@ -27,8 +27,8 @@ public class UserService {
 	 * @return
 	 */
 	@RequestMapping(method=RequestMethod.POST,value="queryByNameAndPsw")
-	public @ResponseBody User queryByNameAndPsw(@RequestBody Map<String,Object> userMap){
-		return userMapper.queryByNameAndPsw(userMap);
+	public @ResponseBody User queryByNameAndPsw(@RequestBody Map<String,Object> conditionMap){
+		return userMapper.queryByNameAndPsw(conditionMap);
 	}
 	
 	/**

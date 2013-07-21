@@ -13,7 +13,10 @@
           a(href='/building') 关于我们
       ul.nav.pull-right
         li
-          a(href="#loginModal",role="button",data-toggle="modal") 登陆
+          if !session.currentUser
+            a(href="#loginModal",role="button",data-toggle="modal") 登陆
+          -else
+            a(href="#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
 include user
 
 script.
