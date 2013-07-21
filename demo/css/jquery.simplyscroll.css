@@ -151,13 +151,13 @@ Note all DIVs are generated and should not be hard-coded
 		
 		.simply-scroll .simply-scroll-list li {
 			float: left;
-			width: 180px;
+			width: 200px;
 			height: 140px;
 			padding : 5px;
 			border-radius:4px;
 		}
 		.simply-scroll .simply-scroll-list li img {
-		  width: 180px;
+		  width: 200px;
           height: 140px;
 		  border-radius:4px;
 		}
