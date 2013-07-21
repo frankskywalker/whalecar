@@ -8,19 +8,23 @@ block append js
   
 
 block append content
-  header#overview.jumbotron.subhead
+  header#overview.jumbotron.subhead(style="padding-bottom: 0px;")
     .container
       ul#scroller(style='margin: 25px 0 0 0;')
         li
-          img(src="img/car1.jpg")
+          div
+            img(src="img/scrollimg/golfgti.png")
         li
-          img(src="img/car2.jpg")
+          div 
+            img(src="img/scrollimg/jieda.png")
         li
-          img(src="img/car3.jpg")
+          img(src="img/scrollimg/langyi.png")
         li
-          img(src="img/car2.jpg")
+          img(src="img/scrollimg/maiteng.png")
         li
-          img(src="img/car2.jpg")
+          img(src="img/scrollimg/sangtana.png")
+        li
+          img(src="img/scrollimg/suteng.png")
 
   .container(style='padding: 0px 0;')
     //
@@ -212,4 +216,4 @@ block append content
       });
     });
     
-    $("#scroller").simplyScroll();
+    $("#scroller").simplyScroll({speed:1});
