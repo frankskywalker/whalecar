@@ -180,8 +180,7 @@ li {
 .nav {
     margin-bottom: 10px;
 }
-</style>
-  </head>		
+</style>	
   <body>
     <!-- navbar start-->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -198,7 +197,6 @@ li {
             <li>
                 <a href="./building.html">移动应用</a>
             </li>
-<!--            <li class="divider-vertical"></li>-->
             <li>
   	            <a href="./building.html">关于我们</a>
             </li>
@@ -212,11 +210,12 @@ li {
          </div>
       </div>
     </div>
+    
     <!-- navbar end -->
     <!-- header -->	
-    <header class="jumbotron subhead" id="overview">
+    <header class="jumbotron subhead" id="overview" style="height: 100px">
       <div class="container">
-      <h2 style="margin: 25px 0 0 0">网站广告位</h2>
+      <h2 style="margin: 65px 0 0 0">网站广告位</h2>
       <!--<p class="lead">Dozens of reusable components built to provide navigation, alerts, popovers, and more.</p>-->
       </div>
     </header>
@@ -298,29 +297,28 @@ li {
             <ul class="thumbnails">
               <li class="span3">
                 <a  href="./carinfo.html" class="thumbnail" style="padding: 0px;">
-		  		<div name='hoverdiv' style="height: 190px;width: 220px;">
-		  			<div name="imgdiv" style="width:200;position:absolute;">
-		  				<img  data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 150px;" src="img/suteng.jpg">
-		  				 <div class="caption">
-                    		<h6 class="text-center">市场价:13.18万 ～ 22.58万</h6>
-							<h6 class="text-center">网站价:12.18万 ～ 20.58万</h6>
-                  		</div>
-		  			</div>
-		  			<div name="coverdiv" style="width:200;position:absolute;display:none;">
-		  				<div style="height:110px;padding:20px;">
-		  					<strong>一汽大众 速腾</strong>
-		  					<h6>1.4T 1.8T 2.0T</h6>
-		  					<h6>横置前驱</h6>
-		  					<h6>7档双离合</h6>
-		  				</div>
-		  				<div class="caption" style="background-image: url(img/hover-price.png);padding: 0px;width: 220px; border-radius: 0px 0px 4px 4px;">
-                    		<h6 class="text-center" style="color: #ffffff;">市场价:13.18万 ～ 22.58万</h6>
-		    				<h6 class="text-center" style="color: #ffffff; border-radius: 4px 4px 4px 4px;">网站价:12.18万 ～ 20.58万</h6>
-                		</div>
-		  			</div>
-		  		</div>
-            	</a>
-				<h5>一汽大众 速腾</h5>
+		  <div name='hoverdiv' style="height: 190px;width: 220px;">
+		    <div name="imgdiv" style="width:200;position:absolute;">
+		      <img  data-src="holder.js/210x140" alt="210x140" style="width: 210px; height: 150px;" src="img/suteng.jpg">
+		      <div class="caption" style="padding: 10px">
+                    	<h4 class="text-center">市场价13.18万起</h4>
+                      </div>
+		    </div>
+		    <div name="coverdiv" style="width:200;position:absolute;display:none;">
+		      <div style="height:110px;padding:20px;">
+		        <strong>一汽大众 速腾</strong>
+		        <h6>1.4T 1.8T 2.0T</h6>
+		        <h6>横置前驱</h6>
+		        <h6>7档双离合</h6>
+		      </div>
+		      <div class="caption" style="background-image: url(img/hover-price.png);padding: 0px;width: 220px;height: 40px; border-radius: 0px 0px 4px 4px;">
+                        <h4 class="text-center" style="color: #ffffff;padding: 10px">网站最低12.18万起</h4>
+		        <!--<h4 class="text-center" style="color: #ffffff; border-radius: 4px 4px 4px 4px;padding: 10px">网站价:12.18万起</h4>-->
+                      </div>
+		    </div>
+		  </div>
+		</a>
+	        <h5>一汽大众 速腾</h5>
               </li>
 	      <li class="span3">
                 <a href="./carinfo.html" class="thumbnail" style="padding: 0px;">
@@ -479,7 +477,7 @@ li {
     		},function(){
     			$(this).find("div[name='imgdiv']").fadeTo('fast',1);
     			$(this).find("div[name='coverdiv']").fadeToggle('fast');
-    		});
+    		}); 
     	});
     </script>
   </body>
