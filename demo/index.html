@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>鲸宝汽车网</title>
+<title>teecar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -12,20 +12,27 @@
 <script src="js/jquery-1.10.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.simplyscroll.min.js"></script>
+<style type="text/css">
+  footer h5{
+    padding: 0px;
+    margin-bottom: 10px;
+  }
+</style>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div style="height: 58px" class="navbar-inner">
-			<div style="margin-bottom: 9px; margin-top: 9px" class="container">
-				<a href="./index.html" class="brand">鲸宝汽车网</a>
-				<ul style="margin-bottom: 5px; margin-top: 5px" class="nav">
+			<div style="margin-bottom: 9px; margin-top: 0px" class="container">
+				<div class="brand"><img src="img/logo.png" alt="logo"></div>
+				<ul style="margin-bottom: 5px; margin-top: 12px" class="nav">
 					<li><a href="/">汽车频道</a></li>
 					<li><a href="/shoplist.html">4s店频道</a></li>
 					<li><a href="/buildingl">移动应用</a></li>
 					<li><a href="/building">关于我们</a></li>
 				</ul>
-				<ul class="nav pull-right">
-					<li><a href="#loginModal" role="button" data-toggle="modal">登陆</a></li>
+				<ul class="nav pull-right" style="margin-top:12px">
+				  <!--<li><img src="img/注册按钮.png" alt="logo"></li>-->
+				  <li><a href="#loginModal" role="button" data-toggle="modal"><img src="img/注册按钮.png" alt="logo">   登陆</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,6 +40,7 @@
 	<div id="loginModal" tabindex="-1" role="dialog" aria-hidden="true"
 		class="modal hide fade">
 		<div class="modal-header">
+		  <div class="brand"><img src="img/注册按钮.png" alt="logo"></div>
 			<button type="button" data-dismiss="modal" aria-hidden="true"
 				class="close">X</button>
 			<h3>登陆</h3>
@@ -139,7 +147,6 @@
 				$("#registModal").modal('hide');
 			}
 		}
-
 		function login() {
 			$.post("/user?type=login", $("#loginForm").serialize()).done(
 					function(data) {
@@ -551,9 +558,9 @@
 								<img data-src="holder.js/210x140" alt="210x140"
 									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
 									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+								<div class="caption" style="height: 40px; padding: 5px;">
+									<h4 class="text-center">市场价:15万 ～ 18万</h4>
+									<!--<h6 class="text-center">网站价:万 ～ 万</h6>-->
 								</div>
 							</div>
 							<div name="coverdiv"
@@ -565,12 +572,10 @@
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding:10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+								    <h4 style="color: #ffffff;" class="text-center;">市场价:13.2万～ 22.5万</h4>
+								    <!--<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"class="text-center">网站价:12.18万 ～ 20.58万</h6>-->
 								</div>
 							</div>
 						</div></a>
@@ -933,9 +938,40 @@
 			type="hidden" name="city" id="form_city" value="">
 	</form>
 	<footer class="footer">
-		<div class="container">
-			<p>杭州鲸硅科技有限公司出品</p>
+	  <div class="row-fluid">
+	    <div class="span6 offset3">
+	      <div class="row-fluid">
+		<div class="span4">
+		  <ul class="unstyled text-left">
+		    <li><h5><img src="img/direction.png" alt="derection"> 购车保障</h5></li>
+		    <li><h6> 三天内无条件退款</h6></li>
+		    <li><h6> 4s店新车保证</h6></li>
+		    <li><h6> 低价保证</h6></li>
+		    <li><h6> 无任何强制性消费</h6></li>
+		  </ul>
 		</div>
+		<div class="span4">
+		  <ul class="unstyled text-left">
+		    <li><h5><img src="img/heart.png" alt="heart"> 网站购车方式</h5></li>
+		    <li><h6> 按网站指导价购买</h6></li>
+		    <li><h6> 提交自己的价格购买</h6></li>
+		    <li><h6> 优惠500元购买</h6></li>
+		  </ul>
+		</div>
+		<div class="span4">
+		  <ul class="unstyled text-left">
+		    <li><h5><img src="img/tag.png" alt="tag"> 4s店入住</h5></li>
+		    <li><h6> 4s店推广</h6></li>
+		    <li><h6> 4s店加入流程</h6></li>
+		    <li><h6> 4s店加入规则</h6></li>
+		  </ul>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="container">
+	    <h6>杭州鲸硅科技有限公司出品</h6>
+	  </div>
 	</footer>
 	<script>
 		//提交筛选事件
@@ -996,11 +1032,11 @@
 		//汽车图片浮动效果
 		$("div[name='hoverdiv']").each(function(index, value) {
 			$(value).hover(function() {
-				$(this).find("div[name='imgdiv']").fadeTo('slow', 0.03);
-				$(this).find("div[name='coverdiv']").fadeToggle('slow');
+				$(this).find("div[name='imgdiv']").fadeTo('fast', 0.03);
+				$(this).find("div[name='coverdiv']").fadeToggle('fast');
 			}, function() {
-				$(this).find("div[name='imgdiv']").fadeTo('slow', 1);
-				$(this).find("div[name='coverdiv']").fadeToggle('slow');
+				$(this).find("div[name='imgdiv']").fadeTo('fast', 1);
+				$(this).find("div[name='coverdiv']").fadeToggle('fast');
 			});
 		});
 
