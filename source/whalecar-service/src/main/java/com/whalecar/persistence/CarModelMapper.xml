@@ -18,6 +18,7 @@
 	
 	<select parameterType="map" id="queryModelView" resultType="CarModelView">
 		SELECT 
+		    Car_Model_Lv1.id as carModelLv1,
 		    Car_Brand.cname as brandCname,
 		    Car_Model_Lv1.cname as cname,
 		    Car_Model_Lv1.imgPath as imgPath,

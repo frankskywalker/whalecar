@@ -110,7 +110,7 @@ block append content
       <ul class='thumbnails'> 
       each carModelView, i in carModelViews.items
         li.span3
-          a.thumbnail(href='./carinfo.html', style='padding: 0px;')
+          a.thumbnail(href='./car?id=#{carModelView.carModelLv1}', style='padding: 0px;')
             div(name='hoverdiv', style='height: 190px; width: 220px;')
               div(name='imgdiv', style='width: 200; position: absolute;')
                 img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;padding: 2px 2px 0px;', src='img/suteng.jpg')
