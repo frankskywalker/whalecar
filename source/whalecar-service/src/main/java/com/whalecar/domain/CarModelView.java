@@ -5,6 +5,11 @@ import java.math.BigDecimal;
 public class CarModelView  implements java.io.Serializable{
 	
 	/**
+	 * carModelLv2 id
+	 */
+	private Integer carModelLv2;
+	
+	/**
 	 * 品牌名称
 	 */
 	private String brandCname;
@@ -98,4 +103,13 @@ public class CarModelView  implements java.io.Serializable{
 	public void setShopPriceMax(String shopPriceMax) {
 		this.shopPriceMax = shopPriceMax;
 	}
+
+	public Integer getCarModelLv2() {
+		return carModelLv2;
+	}
+
+	public void setCarModelLv2(Integer carModelLv2) {
+		this.carModelLv2 = carModelLv2;
+	}
+	
 }

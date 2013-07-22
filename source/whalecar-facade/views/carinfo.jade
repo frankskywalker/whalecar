@@ -1,4 +1,14 @@
-.container(style='padding: 45px 0px;')
+extends layout/mainFrame
+
+block append css
+  link(href='css/index.css', rel='stylesheet', media='screen')
+  link(rel="stylesheet",href="css/jquery.simplyscroll.css",media="all",type="text/css")
+block append js
+  script(type="text/javascript",src="js/jquery.simplyscroll.min.js")
+  
+
+block append content
+  .container(style='padding: 65px 0px;')
     .row-fluid
         .span9
           .row-fluid
@@ -84,13 +94,6 @@
                     option 内饰颜色
                     option 黑色
                     option 黄色
-                  //
-                                  <select class="span2 btn-small">
-                                    <option>内饰颜色...</option>
-                                    <option>白色</option>
-                                    <option>黑色</option>
-                                    <option>红色</option>
-                                  </select>
                                   
                   .well
                     a(href='./shopinfo.html')
@@ -253,46 +256,6 @@
               p(style='color: #ffffff;') 领取优惠券，在谈好价格的基础上出示可以直接抵用现金。
             //
               <p><a href="off_price.html" class="btn btn-primary pull-right">进入</a></p>
-    //
-        <div id="myModal" class="modal hide fade" style="left:40%;width:750px;">
-          <div class="modal-body">
-            <ul class="thumbnails">
-              <li class="span3" >
-            <div class="thumbnail" style="height:260px;">
-                        <div class="caption">
-                          <div style="height:200px">
-                            <h3>网站指导价购买</h3>
-                            <p>进行订金的支付，即可预定该车。。。。。。</p>
-                          </div>
-                          <p><a href="order_car.html" class="btn btn-primary pull-right">进入</a></p>
-                        </div>
-                      </div>
-              </li>
-              <li class="span3">
-            <div class="thumbnail" style="height:260px;">
-                        <div class="caption">
-                          <div style="height:200px">
-                            <h3>提交我的价格</h3>
-                            <p>提交我理想的价格，如果有4s店有合适的活动会主动联系您。。。。。。</p>
-                          </div>
-                          <p><a href="submit_price.html" class="btn btn-primary pull-right">进入</a></p>
-                        </div>
-                      </div>
-              </li>
-              <li class="span3" >
-            <div class="thumbnail" style="height:260px;">
-                        <div class="caption">
-                          <div style="height:200px">
-                            <h3>优惠500元购买</h3>
-                  <p>领取优惠券，在谈好价格的基础上出示可以直接抵用现金。</p>
-                </div>
-                          <p><a href="off_price.html" class="btn btn-primary pull-right">进入</a></p>
-                        </div>
-                      </div>
-              </li>
-            </ul>
-          </div>
-        </div>
     script
       $('.carousel').carousel();
       $('td input').tooltip();

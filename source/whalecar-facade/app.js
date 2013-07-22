@@ -5,7 +5,8 @@ var express = require('express')
 
 var index = require('./routes/index')
 , dic = require('./routes/dic')
-, user = require('./routes/user');
+, user = require('./routes/user')
+, car = require('./routes/car');
 
 
 var app = express();
@@ -46,6 +47,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.page);
 app.get('/dic', dic.query);
 app.post('/user', user.router);
+app.get('/car', car.page);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
