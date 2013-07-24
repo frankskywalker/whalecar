@@ -3,26 +3,19 @@ extends layout/mainFrame
 block append css
   link(href='css/index.css', rel='stylesheet', media='screen')
   link(rel="stylesheet",href="css/jquery.simplyscroll.css",media="all",type="text/css")
+  link(rel="stylesheet",href="css/carousel.css",media="all",type="text/css")
 block append js
   script(type="text/javascript",src="js/jquery.simplyscroll.min.js")
+  script(type="text/javascript",src="js/jquery.carouFredSel-6.0.4-packed.js")
   
 
 block append content
-  header#overview.jumbotron.subhead(style="padding-bottom: 0px;")
-    .container
-      ul#scroller(style='margin: 25px 0 0 0;')
-        li
-          img(src="img/scrollimg/golfgti.png")
-        li
-          img(src="img/scrollimg/jieda.png")
-        li
-          img(src="img/scrollimg/langyi.png")
-        li
-          img(src="img/scrollimg/maiteng.png")
-        li
-          img(src="img/scrollimg/sangtana.png")
-        li
-          img(src="img/scrollimg/suteng.png")
+  div#wrapper
+    div#carousel
+      img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height="450" )
+      img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
+      img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height="450" )
+      img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
 
   .container(style='padding: 0px 0;')
     //
@@ -105,27 +98,25 @@ block append content
         a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);",style="color: #FFFFFF;padding-left: 7px;") 20万 ~ 50万
         a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 50万以上
     hr(style='margin: 0px 0px 17px;')
-     //列表
+     // 列表
     .row-fluid
       <ul class='thumbnails'> 
       each carModelView, i in carModelViews.items
         li.span3
           a.thumbnail(href='./car?id=#{carModelView.carModelLv1}', style='padding: 0px;')
             div(name='hoverdiv', style='height: 190px; width: 220px;')
-              div(name='imgdiv', style='width: 200; position: absolute;')
-                img(data-src='holder.js/210x140', alt='210x140', style='border-radius:4px 4px 0px 0px;width: 220px; height: 150px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
-                .caption
-                  h6.text-center 市场价:#{carModelView.factoryPriceMin}万 ～ #{carModelView.factoryPriceMax}万
-                  h6.text-center 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万
-              div(name='coverdiv', style='width: 200; position: absolute; display: none;')
+              div(name='imgdiv', style='width: 220px; position: absolute;')
+                img(data-src='holder.js/210x140', alt='210x140', style='border-radius:4px 4px 0px 0px;width: 230px; height: 150px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
+                .caption(style="height: 40px; padding: 10px;")
+                  h4.text-center 市场价:#{!carModelView.factoryPriceMin? "12.5" :carModelView.factoryPriceMin }万 ～ #{!carModelView.factoryPriceMax ? 15.3 : carModelView.factoryPriceMax }万
+              div(name='coverdiv', style='position: absolute; display: none;')
                 div(style='height: 110px; padding: 20px;')
                   strong #{carModelView.brandCname} #{carModelView.cname}
                   h6 1.4T 1.8T 2.0T
                   h6 横置前驱
                   h6 7档双离合
-                .caption(style='background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;')
-                  h6.text-center(style='color: #ffffff;') 市场价:13.18万 ～ 22.58万
-                  h6.text-center(style='color: #ffffff; border-radius: 4px 4px 4px 4px;') 网站价:12.18万 ～ 20.58万
+                .caption(style='background-image: url(img/hover-price.png);padding:10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;')
+                  h4.text-center(style='color: #ffffff;') 网站价:13.1万 ～ 22.5万
           h5 #{carModelView.brandCname} #{carModelView.cname}
         if i != 0 && (i+1) % 4 == 0
           </ul><ul class='thumbnails'>
@@ -138,13 +129,9 @@ block append content
     input(type="hidden",name="priceMin",id="form_priceMin",value="#{conditionParams.priceMin}")
     input(type="hidden",name="priceMax",id="form_priceMax",value="#{conditionParams.priceMax}")
     input(type="hidden",name="city",id="form_city",value="#{conditionParams.city}")
-        
-  footer.footer
-    .container
-      p 杭州鲸硅科技有限公司出品
 
   script.
-    //提交筛选事件
+    // 提交筛选事件
     function conditionSelect(type,value,needSubmit,needInitPage){
       $("#form_" + type).val(value);
       
@@ -157,7 +144,7 @@ block append content
       }
     }
     
-    //筛选条件选择效果
+    // 筛选条件选择效果
     var currentHoverBtn = null;
     var tabNames = ["city","brand","model","price"];
     function initEventForTabs(){
@@ -175,16 +162,16 @@ block append content
     }
     initEventForTabs();
     $(document).click(function(){
-      //为了效果，如果需要显示菜单就用div撑住高度，避免页面乱动
+      // 为了效果，如果需要显示菜单就用div撑住高度，避免页面乱动
       if(currentHoverBtn != null){
-        //$("#divHolder").css({height:"30px",display:""});
+        // $("#divHolder").css({height:"30px",display:""});
         $("#divHolder").slideDown();
       }
       else{
         $("#divHolder").slideUp('slow');
       }
 
-      //先隐藏
+      // 先隐藏
       for(i in tabNames){
         var name = tabNames[i];
         if(currentHoverBtn != name){
@@ -193,7 +180,7 @@ block append content
         }
       }
       
-      //再显示
+      // 再显示
       for(i in tabNames){
         var name = tabNames[i];
         if(currentHoverBtn == name){
@@ -203,7 +190,7 @@ block append content
       }
     });
     
-    //汽车图片浮动效果
+    // 汽车图片浮动效果
     $("div[name='hoverdiv']").each(function(index,value){
       $(value).hover(function(){
         $(this).find("div[name='imgdiv']").fadeTo('slow',0.03);
@@ -214,4 +201,23 @@ block append content
       });
     });
     
-    $("#scroller").simplyScroll({speed:1});
+    $(function() {
+      $('#carousel').carouFredSel({
+        width: '100%',
+        items: {
+          visible: 3,
+          start: -1
+        },
+        scroll: {
+          items: 1,
+          duration: 1000,
+          timeoutDuration: 3000
+        },
+        prev: '#prev',
+        next: '#next',
+        pagination: {
+          container: '#pager',
+          deviation: 1
+        }
+      });
+    });

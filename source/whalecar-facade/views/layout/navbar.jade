@@ -1,20 +1,21 @@
 .navbar.navbar-inverse.navbar-fixed-top
   .navbar-inner(style="height: 58px")
-    .container(style="margin-bottom: 9px;margin-top: 9px")
-      a.brand(href='./index.html') 鲸宝汽车网
-      ul.nav(style="margin-bottom: 5px;margin-top: 5px")
-        li
+    .container(style="margin-bottom: 0px;margin-top: 0px")
+      div.brand
+        img(src="img/logo2.png",alt="logo",width="100px",height="40px")
+      ul.nav(style="margin-bottom: 5px;margin-top: 18px")
+        li(style="padding: 0px 5px;")
           a(href='/') 汽车频道
-        li
+        li(style="padding: 0px 5px;")
           a(href='/shoplist') 4s店频道
-        li
+        li(style="padding: 0px 5px;")
           a(href='/buildingl') 移动应用
-        li
+        li(style="padding: 0px 5px;")
           a(href='/building') 关于我们
-      ul.nav.pull-right
+      ul.nav.pull-right(style="margin-top:15px")
         li
           if !session.currentUser
-            a(href="#loginModal",role="button",data-toggle="modal") 登陆
+            a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆
           -else
             a(href="#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
 include user

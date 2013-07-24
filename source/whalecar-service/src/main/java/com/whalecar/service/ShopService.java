@@ -49,7 +49,7 @@ public class ShopService {
 	 * @param shopStock
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "getShopStockByCarModelLv2")
+	@RequestMapping(method = RequestMethod.POST, value = "saveOrUpdateShopStock")
 	public @ResponseBody
 	boolean saveOrUpdateShopStock(@RequestBody Map<String, Object> shopStock) {
 		String shopStockId = String.valueOf(shopStock.get("id"));

@@ -2,63 +2,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>teecar</title>
+<title>鲸宝汽车网</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="css/index.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="css/jquery.simplyscroll.css" media="all"type="text/css">
-<link rel="stylesheet" href="css/carousel.css" media="all"type="text/css">
-  
+<link rel="stylesheet" href="css/jquery.simplyscroll.css" media="all"
+	type="text/css">
+<link rel="stylesheet" href="css/carousel.css" media="all"
+	type="text/css">
 <script src="js/jquery-1.10.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.simplyscroll.min.js"></script>
-<script src="js/jquery.carouFredSel-6.0.4-packed.js" type="text/javascript"></script>
-<style type="text/css">
-  footer h5{
-    padding: 0px;
-    margin-bottom: 10px;
-  }
-  
-  body {
-    background-color: #ececec;
-  }
-  
-  .navbar .nav>li>a {
-    padding: 5px 10px 5px;
-  }
-  
-  .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
-    background-color: #222222;
-    color: #FFFFFF;
-    border-radius: 6px 6px 6px 6px;
-    font-weight: normal;
-  }
-
-  .navbar-inverse .nav>li>a:focus, .navbar-inverse .nav>li>a:hover {
-    color: #fff;
-    background-color: rgba(136,136,136,0.5);
-    background-image: linear-gradient(to bottom, #888888, #666666);  /*如何在渐变里面来设置透明度？？*/
-    border-radius: 6px 6px 6px 6px;
-  }
-
-
-</style>
+<script type="text/javascript"
+	src="js/jquery.carouFredSel-6.0.4-packed.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div style="height: 58px" class="navbar-inner">
 			<div style="margin-bottom: 0px; margin-top: 0px" class="container">
-				<div class="brand"><img src="img/logo1.png" alt="logo" width="40px" height="40px"></div>
+				<div class="brand">
+					<img src="img/logo2.png" alt="logo" width="100px" height="40px">
+				</div>
 				<ul style="margin-bottom: 5px; margin-top: 18px" class="nav">
 					<li style="padding: 0px 5px;"><a href="/">汽车频道</a></li>
-					<li style="padding: 0px 5px;"><a href="/shoplist.html">4s店频道</a></li>
+					<li style="padding: 0px 5px;"><a href="./shoplist.html">4s店频道</a></li>
 					<li style="padding: 0px 5px;"><a href="/buildingl">移动应用</a></li>
 					<li style="padding: 0px 5px;"><a href="/building">关于我们</a></li>
 				</ul>
-				<ul class="nav pull-right" style="margin-top:15px">
-				  <!--<li><img src="img/注册按钮.png" alt="logo"></li>-->
-				  <li><a href="#loginModal" role="button" data-toggle="modal"><img src="img/注册按钮.png" alt="logo">   Sign in</a></li>
+				<ul style="margin-top: 15px" class="nav pull-right">
+					<li><a href="#loginModal" role="button" data-toggle="modal"><img
+							src="img/login.png" alt="logo"> 登陆</a></li>
 				</ul>
 			</div>
 		</div>
@@ -66,10 +40,9 @@
 	<div id="loginModal" tabindex="-1" role="dialog" aria-hidden="true"
 		class="modal hide fade">
 		<div class="modal-header">
-		  <div class="brand"><img src="img/注册按钮.png" alt="logo"></div>
 			<button type="button" data-dismiss="modal" aria-hidden="true"
 				class="close">X</button>
-			<h3>Sign in</h3>
+			<h3>登陆</h3>
 		</div>
 		<div class="modal-body">
 			<form id="loginForm" action="/login" method="post"
@@ -173,6 +146,7 @@
 				$("#registModal").modal('hide');
 			}
 		}
+
 		function login() {
 			$.post("/user?type=login", $("#loginForm").serialize()).done(
 					function(data) {
@@ -213,30 +187,18 @@
 	<script>
 		$(function() {
 			var path = window.location.pathname;
-			$($("ul.nav li a[href='/']").parents('li')).addClass('active')
+			$($("ul.nav li a[href='" + path + "']").parents('li')).addClass(
+					'active')
 		});
 	</script>
-	
-	
-	  <div id="wrapper">
-	    <div id="carousel">
-	      <img src="img/scrollimg/adv1.jpg" alt="adv1" width="990" height="450" />
-	      <img src="img/scrollimg/adv2.jpg" alt="adv2" width="990" height="450" />
-	      <img src="img/scrollimg/adv1.jpg" alt="adv1" width="990" height="450" />
-	      <img src="img/scrollimg/adv2.jpg" alt="adv2" width="990" height="450" />
-	    </div>
-	    <div id="pager"></div>
-	  </div>
-	  
-<!--	<header id="overview" style="padding-bottom: 0px;"class="jumbotron subhead">
-	  <div class="container">
-	    <ul id="scroller" style="margin:25px 0 0 0;">
-	      <li><img src="img/scrollimg/广告1.jpg"></li>
-	      <li><img src="img/scrollimg/广告2.jpg"></li>
-	    </ul>
-	  </div>
-	</header>-->
-	
+	<div id="wrapper">
+		<div id="carousel">
+			<img src="img/scrollimg/adv1.jpg" alt="adv1" width="990" height="450"><img
+				src="img/scrollimg/adv2.jpg" alt="adv1" width="990" height="450"><img
+				src="img/scrollimg/adv1.jpg" alt="adv1" width="990" height="450"><img
+				src="img/scrollimg/adv2.jpg" alt="adv1" width="990" height="450">
+		</div>
+	</div>
 	<div style="padding: 0px 0;" class="container">
 		<!--<div align="center"><img src="img/progress.png"></div>-->
 		<div class="row-fluid">
@@ -261,8 +223,7 @@
 			<div class="span4">
 				<div style="float: right; width: 180px; margin: 35px 0 0 0;"
 					class="pagination pagination-small pagination-right">
-					<span style="float: left; height: 25px; padding: 6px;">1 /
-						152</span>
+					<span style="float: left; height: 25px; padding: 6px;">1 / 2</span>
 					<ul>
 						<li class="disabled"><a href="#">前一页</a></li>
 						<li><a href="#"
@@ -283,280 +244,8 @@
 				<a href="#"
 					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);"
 					style="color: #FFFFFF; padding-left: 7px;">不限</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','70',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">科尼赛克</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','88',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">马自达</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','89',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">玛莎拉蒂</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','90',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">迈巴赫</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','91',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">迈凯伦</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','92',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">纳智捷</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','93',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">讴歌</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','94',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">欧宝</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','95',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">欧朗</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','96',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">帕加尼</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','97',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">奇瑞</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','98',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">启辰</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','99',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">起亚</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','100',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">日产</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','101',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">荣威</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','102',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">如虎</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','87',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">MINI</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','86',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">MG</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','71',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">克莱斯勒</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','72',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">LUXGEN</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','73',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">兰博基尼</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','74',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">劳斯莱斯</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','75',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">雷克萨斯</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','76',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">雷诺</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','77',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">理念</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','78',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">力帆</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','79',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">莲花汽车</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','80',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">猎豹汽车</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','81',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">林肯</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','82',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">铃木</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','83',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">陆风</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','84',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">路虎</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','85',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">路特斯</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','103',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">瑞麒</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','104',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">Scion</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','122',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">沃尔沃</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','123',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">沃克斯豪尔</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','124',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">五菱汽车</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','125',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">五十铃</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','126',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">西雅特</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','127',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">现代</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','128',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">雪佛兰</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','129',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">雪铁龙</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','130',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">一汽</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','131',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">依维柯</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','132',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">英菲尼迪</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','133',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">永源</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','134',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">中华</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','135',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">中兴</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','136',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">众泰</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','121',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">威兹曼</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','120',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">威麟</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','105',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">smart</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','106',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">SPIRRA</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','107',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">SSC</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','108',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">萨博</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','109',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">三菱</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','110',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">上汽大通</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','111',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">绅宝</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','112',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">世爵</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','113',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">双环</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','114',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">双龙</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','115',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">思铭</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','116',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">斯巴鲁</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','117',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">斯柯达</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','118',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">TESLA</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','119',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">腾势</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','137',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">阿斯顿·马丁</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','69',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">凯迪拉克</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','1',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">阿尔法罗密欧</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','19',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">昌河</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','20',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">长安</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','21',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">长安商用</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','22',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">长城</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','23',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">川汽野马</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','24',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">DS</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','25',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">大发</a><a href="#"
 					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','26',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">大众</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','27',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">道奇</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','28',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">东风</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','29',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">东风风度</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','30',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">东风风神</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','31',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">东风小康</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','32',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">东南</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','33',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">Fisker</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','18',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">布加迪</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','17',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">宾利</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','2',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">阿斯顿・马丁</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','3',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">奥迪</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','4',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">巴博斯</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','5',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">宝骏</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','6',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">宝马</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','7',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">保时捷</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','8',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">北京汽车</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','9',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">北汽威旺</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','10',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">北汽制造</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','11',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">奔驰</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','12',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">奔腾</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','13',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">本田</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','14',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">比亚迪</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','15',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">标致</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','16',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">别克</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','34',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">法拉利</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','35',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">菲亚特</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','53',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">华普</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','54',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">华泰</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','55',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">黄海</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','56',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">Jeep</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','57',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">吉利</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','58',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">吉利帝豪</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','59',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">吉利全球鹰</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','60',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">吉利英伦</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','61',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">江淮</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','62',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">江铃</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','63',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">捷豹</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','64',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">金杯</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','65',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">KTM</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','66',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">卡尔森</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','67',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">开瑞</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','52',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">红旗</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','51',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">恒天</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','36',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">丰田</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','37',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">风行</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','38',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">福迪</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','39',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">福特</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','40',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">福田</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','41',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">GMC</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','42',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">观致</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','43',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">广汽传祺</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','44',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">广汽吉奥</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','45',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">Hennessey</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','46',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">哈飞</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','47',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">哈弗</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','48',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">海格</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','49',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">海马</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','50',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">悍马</a><a href="#"
-					onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','68',true,true);"
-					style="color: #FFFFFF; padding-left: 7px;">凯佰赫</a>
+					style="color: #FFFFFF; padding-left: 7px;">大众</a>
 			</div>
 			<div id="modelDiv" style="display: none; height: 20px; padding: 5px;">
 				<a href="#" onClick="conditionSelect('carModel','',true,true);"
@@ -581,380 +270,334 @@
 		<hr style="margin: 0px 0px 17px;">
 		<div class="row-fluid">
 			<ul class='thumbnails'>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<li class="span3"><a href="./car?id=232" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption" style="height: 40px; padding: 5px;">
-									<h4 class="text-center">市场价:15万 ～ 18万</h4>
-									<!--<h6 class="text-center">网站价:万 ～ 万</h6>-->
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/232.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>丰田 4Runner</strong>
+									<strong>大众 Amarok</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding:10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-								    <h4 style="color: #ffffff;" class="text-center;">市场价:13.2万～ 22.5万</h4>
-								    <!--<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"class="text-center">网站价:12.18万 ～ 20.58万</h6>-->
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>丰田 4Runner</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 Amarok</h5></li>
+				<li class="span3"><a href="./car?id=233" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/233.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>标致 5 by Peugeot</strong>
+									<strong>大众 BlueSport</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>标致 5 by Peugeot</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 BlueSport</h5></li>
+				<li class="span3"><a href="./car?id=234" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/234.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>宝马 Active Tourer</strong>
+									<strong>大众 Bulli</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>宝马 Active Tourer</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 Bulli</h5></li>
+				<li class="span3"><a href="./car?id=235" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/235.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>欧宝 Adam</strong>
+									<strong>大众 Cross Coupe</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>欧宝 Adam</h5></li>
+				<h5>大众 Cross Coupe</h5></li>
 			</ul>
 			<ul class='thumbnails'>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<li class="span3"><a href="./car?id=236" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/236.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>科尼赛克 Agera</strong>
+									<strong>大众 CrossBlue</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>科尼赛克 Agera</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 CrossBlue</h5></li>
+				<li class="span3"><a href="./car?id=237" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/237.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>阿尔法罗密欧 ALFA 147</strong>
+									<strong>大众 Jetta</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>阿尔法罗密欧 ALFA 147</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 Jetta</h5></li>
+				<li class="span3"><a href="./car?id=238" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/238.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>阿尔法罗密欧 ALFA 156</strong>
+									<strong>大众 Passat</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>阿尔法罗密欧 ALFA 156</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 Passat</h5></li>
+				<li class="span3"><a href="./car?id=218" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/218.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>阿尔法罗密欧 ALFA 4C</strong>
+									<strong>大众 POLO</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>阿尔法罗密欧 ALFA 4C</h5></li>
+				<h5>大众 POLO</h5></li>
 			</ul>
 			<ul class='thumbnails'>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<li class="span3"><a href="./car?id=225" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/225.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>阿尔法罗密欧 ALFA Giulietta</strong>
+									<strong>大众 一汽-大众CC</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>阿尔法罗密欧 ALFA Giulietta</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 一汽-大众CC</h5></li>
+				<li class="span3"><a href="./car?id=226" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/226.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>阿尔法罗密欧 ALFA GT</strong>
+									<strong>大众 宝来</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>阿尔法罗密欧 ALFA GT</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 宝来</h5></li>
+				<li class="span3"><a href="./car?id=227" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/227.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>阿尔法罗密欧 ALFA MiTo</strong>
+									<strong>大众 宝来/宝来经典</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>阿尔法罗密欧 ALFA MiTo</h5></li>
-				<li class="span3"><a href="./carinfo.html"
-					style="padding: 0px;" class="thumbnail"><div name="hoverdiv"
+				<h5>大众 宝来/宝来经典</h5></li>
+				<li class="span3"><a href="./car?id=219" style="padding: 0px;"
+					class="thumbnail"><div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 200; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;">
 								<img data-src="holder.js/210x140" alt="210x140"
-									style="width: 210px; height: 150px; padding: 2px 2px 0px;"
-									src="img/suteng.jpg">
-								<div class="caption">
-									<h6 class="text-center">市场价:万 ～ 万</h6>
-									<h6 class="text-center">网站价:万 ～ 万</h6>
+									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
+									src="img/car/219.png">
+								<div style="height: 40px; padding: 10px;" class="caption">
+									<h4 class="text-center">市场价:12.5万 ～ 15.3万</h4>
 								</div>
 							</div>
-							<div name="coverdiv"
-								style="width: 200; position: absolute; display: none;">
+							<div name="coverdiv" style="position: absolute; display: none;">
 								<div style="height: 110px; padding: 20px;">
-									<strong>雷诺 Alpine</strong>
+									<strong>大众 帕萨特</strong>
 									<h6>1.4T 1.8T 2.0T</h6>
 									<h6>横置前驱</h6>
 									<h6>7档双离合</h6>
 								</div>
 								<div
-									style="background-image: url(img/hover-price.png); padding: 0px; width: 220px; border-radius: 0px 0px 4px 4px;"
+									style="background-image: url(img/hover-price.png); padding: 10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;"
 									class="caption">
-									<h6 style="color: #ffffff;" class="text-center">市场价:13.18万
-										～ 22.58万</h6>
-									<h6 style="color: #ffffff; border-radius: 4px 4px 4px 4px;"
-										class="text-center">网站价:12.18万 ～ 20.58万</h6>
+									<h4 style="color: #ffffff;" class="text-center">网站价:13.1万
+										～ 22.5万</h4>
 								</div>
 							</div>
 						</div></a>
-				<h5>雷诺 Alpine</h5></li>
+				<h5>大众 帕萨特</h5></li>
 			</ul>
 			<ul class='thumbnails'></ul>
 		</div>
@@ -967,44 +610,8 @@
 			type="hidden" name="priceMax" id="form_priceMax" value=""><input
 			type="hidden" name="city" id="form_city" value="">
 	</form>
-	<footer class="footer">
-	  <div class="row-fluid">
-	    <div class="span6 offset3">
-	      <div class="row-fluid">
-		<div class="span4">
-		  <ul class="unstyled text-left" style="width:60%;margin:auto;">
-		    <li><h5><img src="img/direction.png" alt="derection"> 购车保障</h5></li>
-		    <li><h6> 三天内无条件退款</h6></li>
-		    <li><h6> 4s店新车保证</h6></li>
-		    <li><h6> 低价保证</h6></li>
-		    <li><h6> 无任何强制性消费</h6></li>
-		  </ul>
-		</div>
-		<div class="span4">
-		  <ul class="unstyled text-left" style="width:60%;margin:auto;">
-		    <li><h5><img src="img/heart.png" alt="heart"> 网站购车方式</h5></li>
-		    <li><h6> 按网站指导价购买</h6></li>
-		    <li><h6> 提交自己的价格购买</h6></li>
-		    <li><h6> 优惠500元购买</h6></li>
-		  </ul>
-		</div>
-		<div class="span4">
-		  <ul class="unstyled text-left" style="width:60%;margin:auto;">
-		    <li><h5><img src="img/tag.png" alt="tag"> 4s店入住</h5></li>
-		    <li><h6> 4s店推广</h6></li>
-		    <li><h6> 4s店加入流程</h6></li>
-		    <li><h6> 4s店加入规则</h6></li>
-		  </ul>
-		</div>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="container">
-	    <h5 style="color: #555555">杭州鲸硅科技有限公司出品</h5>
-	  </div>
-	</footer>
 	<script>
-		//提交筛选事件
+		// 提交筛选事件
 		function conditionSelect(type, value, needSubmit, needInitPage) {
 			$("#form_" + type).val(value);
 
@@ -1017,7 +624,7 @@
 			}
 		}
 
-		//筛选条件选择效果
+		// 筛选条件选择效果
 		var currentHoverBtn = null;
 		var tabNames = [ "city", "brand", "model", "price" ];
 		function initEventForTabs() {
@@ -1032,15 +639,15 @@
 		}
 		initEventForTabs();
 		$(document).click(function() {
-			//为了效果，如果需要显示菜单就用div撑住高度，避免页面乱动
+			// 为了效果，如果需要显示菜单就用div撑住高度，避免页面乱动
 			if (currentHoverBtn != null) {
-				//$("#divHolder").css({height:"30px",display:""});
+				// $("#divHolder").css({height:"30px",display:""});
 				$("#divHolder").slideDown();
 			} else {
 				$("#divHolder").slideUp('slow');
 			}
 
-			//先隐藏
+			// 先隐藏
 			for (i in tabNames) {
 				var name = tabNames[i];
 				if (currentHoverBtn != name) {
@@ -1049,7 +656,7 @@
 				}
 			}
 
-			//再显示
+			// 再显示
 			for (i in tabNames) {
 				var name = tabNames[i];
 				if (currentHoverBtn == name) {
@@ -1059,41 +666,81 @@
 			}
 		});
 
-		//汽车图片浮动效果
+		// 汽车图片浮动效果
 		$("div[name='hoverdiv']").each(function(index, value) {
 			$(value).hover(function() {
-				$(this).find("div[name='imgdiv']").fadeTo('fast', 0.03);
-				$(this).find("div[name='coverdiv']").fadeToggle('fast');
+				$(this).find("div[name='imgdiv']").fadeTo('slow', 0.03);
+				$(this).find("div[name='coverdiv']").fadeToggle('slow');
 			}, function() {
-				$(this).find("div[name='imgdiv']").fadeTo('fast', 1);
-				$(this).find("div[name='coverdiv']").fadeToggle('fast');
+				$(this).find("div[name='imgdiv']").fadeTo('slow', 1);
+				$(this).find("div[name='coverdiv']").fadeToggle('slow');
 			});
 		});
 
-		$("#scroller").simplyScroll({
-			speed : 1
-		});
-		
 		$(function() {
-		  $('#carousel').carouFredSel({
-		    width: '100%',
-		    items: {
-		      visible: 3,
-		      start: -1
-		      },
-		      scroll: {
-			items: 1,
-			duration: 1000,
-			timeoutDuration: 3000
-			},
-			prev: '#prev',
-			next: '#next',
-			pagination: {
-			  container: '#pager',
-			  deviation: 1
-			  }
-		    });
-		  });
+			$('#carousel').carouFredSel({
+				width : '100%',
+				items : {
+					visible : 3,
+					start : -1
+				},
+				scroll : {
+					items : 1,
+					duration : 1000,
+					timeoutDuration : 3000
+				},
+				prev : '#prev',
+				next : '#next',
+				pagination : {
+					container : '#pager',
+					deviation : 1
+				}
+			});
+		});
 	</script>
+	<footer class="footer">
+		<div class="row-fluid">
+			<div class="span6 offset3">
+				<div class="row-fluid">
+					<div class="span4">
+						<ul style="width: 60%; margin: auto;" class="unstyled text-left">
+							<li><h5>
+									<img src="img/direction.png" alt="derection"
+										style="padding-bottom: 4px;">购车保障
+								</h5></li>
+							<li><h6>三天内无条件退款</h6></li>
+							<li><h6>4s店新车保证</h6></li>
+							<li><h6>低价保证</h6></li>
+							<li><h6>无任何强制性消费</h6></li>
+						</ul>
+					</div>
+					<div class="span4">
+						<ul style="width: 60%; margin: auto;" class="unstyled text-left">
+							<li><h5>
+									<img src="img/heart.png" alt="heart"
+										style="padding-bottom: 4px;">网站购车方式
+								</h5></li>
+							<li><h6>按网站指导价购买</h6></li>
+							<li><h6>提交自己的价格购买</h6></li>
+							<li><h6>优惠500元购买</h6></li>
+						</ul>
+					</div>
+					<div class="span4">
+						<ul style="width: 60%; margin: auto;" class="unstyled text-left">
+							<li><h5>
+									<img src="img/tag.png" alt="tag" style="padding-bottom: 4px;">4s店入住
+								</h5></li>
+							<li><h6>4s店推广</h6></li>
+							<li><h6>4s店加入流程</h6></li>
+							<li><h6>4s店加入规则</h6></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<h5 style="color: #555555;">杭州鲸硅科技有限公司出品</h5>
+		</div>
+	</footer>
 </body>
 </html>
