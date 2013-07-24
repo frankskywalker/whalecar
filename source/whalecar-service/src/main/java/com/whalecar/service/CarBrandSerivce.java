@@ -11,19 +11,38 @@ import com.whalecar.domain.CarBrand;
 import com.whalecar.domain.CarSubBrand;
 import com.whalecar.persistence.CarBrandMapper;
 
+/**
+ * CarBrand Service
+ * 
+ * @author ruihuang
+ * 
+ */
 @Controller
 public class CarBrandSerivce {
 
 	@Autowired
 	CarBrandMapper carBrandMapper;
 
+	/**
+	 * 获取所有 Brand
+	 * 
+	 * @return
+	 */
 	@RequestMapping("/getAllBrand")
-	public @ResponseBody List<CarBrand> getAllBrand(){
+	public @ResponseBody
+	List<CarBrand> getAllBrand() {
 		return carBrandMapper.queryAllBrand();
 	}
 
+	/**
+	 * 根据Brand id获取子Brand
+	 * 
+	 * @param carBrandId
+	 * @return
+	 */
 	@RequestMapping("/getBrand")
-	public @ResponseBody List<CarSubBrand> getSubBrand(int carBrandId){
+	public @ResponseBody
+	List<CarSubBrand> getSubBrand(int carBrandId) {
 		return carBrandMapper.querySubBrandByBrandId(carBrandId);
 	}
 }

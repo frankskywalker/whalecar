@@ -17,30 +17,33 @@ public class UserService {
 
 	@Autowired
 	private UserMapper userMapper;
-	
-	
+
 	/**
-	 * 根据用户名密码查询用户信息
-	 * 如果没有查询到，说明用户名或密码错误
+	 * 根据用户名密码查询用户信息 如果没有查询到，说明用户名或密码错误
+	 * 
 	 * @param loginName
 	 * @param password
 	 * @return
 	 */
-	@RequestMapping(method=RequestMethod.POST,value="queryByNameAndPsw")
-	public @ResponseBody User queryByNameAndPsw(@RequestBody Map<String,Object> conditionMap){
+	@RequestMapping(method = RequestMethod.POST, value = "queryByNameAndPsw")
+	public @ResponseBody
+	User queryByNameAndPsw(@RequestBody Map<String, Object> conditionMap) {
 		return userMapper.queryByNameAndPsw(conditionMap);
 	}
-	
+
 	/**
 	 * 创建新用户
+	 * 
+	 * @param userMap
+	 * @return
 	 */
-	@RequestMapping(method=RequestMethod.POST,value="createUser")
-	public @ResponseBody Boolean createUser(@RequestBody Map<String,Object> userMap){
+	@RequestMapping(method = RequestMethod.POST, value = "createUser")
+	public @ResponseBody
+	Boolean createUser(@RequestBody Map<String, Object> userMap) {
 		int i = userMapper.createUser(userMap);
-		if(i == 1){
+		if (i == 1) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
 	}

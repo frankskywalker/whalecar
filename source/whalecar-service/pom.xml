@@ -125,6 +125,10 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.0.0.RC2</version>
+				<configuration>
+				    <stopPort>9966</stopPort>
+				    <stopKey>foo</stopKey>
+			    </configuration>
 			</plugin>
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>

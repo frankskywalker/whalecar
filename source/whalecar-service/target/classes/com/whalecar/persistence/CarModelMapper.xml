@@ -11,13 +11,31 @@
 		SELECT 
 			*
 		FROM Car_Model_Lv1
-		WHERE CarBrand = #{brandid} 
-		and flagUseable = 'yes'
+		WHERE flagUseable = 'yes' and CarBrand = #{brandid}
 		ORDER BY orderIndex
+	</select>
+	<select parameterType="Integer" id="queryCarModelLv1ViewById" resultType="CarModelLv1View">
+	   SELECT
+	       Car_Model_Lv1.* ,
+	       Car_Brand.ename as brandEname,
+	       Car_Brand.cname as brandCname
+	   FROM Car_Model_Lv1 LEFT JOIN  Car_Brand
+	     ON Car_Model_Lv1.id = #{id} and Car_Model_Lv1.carBrand = Car_Brand.id
+	   WHERE Car_Model_Lv1.flagUseable = 'yes' and Car_Model_Lv1.id = #{id}
+       ORDER BY orderIndex
+	</select>
+	
+	<select parameterType="Integer" id="queryCarModelLv2ByLv1Id" resultType="CarModelLv2">
+       SELECT
+           *
+       FROM Car_Model_Lv2
+       WHERE flagUseable = 'yes' and carModelLv1 = #{carModelLv1Id}
+       ORDER BY orderIndex
 	</select>
 	
 	<select parameterType="map" id="queryModelView" resultType="CarModelView">
 		SELECT 
+		    Car_Model_Lv1.id as carModelLv1,
 		    Car_Brand.cname as brandCname,
 		    Car_Model_Lv1.cname as cname,
 		    Car_Model_Lv1.imgPath as imgPath,
@@ -72,7 +90,7 @@
 	
 	<select parameterType="map" id="queryModelViewCount" resultType="int">
 		SELECT 
-		    COUNT(Car_Model_Lv1.id)
+		    count(distinct Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname)
 		FROM
 		    (select * from Car_Model_Lv1 where flagUseable = 'yes') Car_Model_Lv1
 		        LEFT JOIN

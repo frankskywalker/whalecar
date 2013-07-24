@@ -113,7 +113,7 @@ block append content
           a.thumbnail(href='./car?id=#{carModelView.carModelLv1}', style='padding: 0px;')
             div(name='hoverdiv', style='height: 190px; width: 220px;')
               div(name='imgdiv', style='width: 200; position: absolute;')
-                img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 150px;padding: 2px 2px 0px;', src='img/suteng.jpg')
+                img(data-src='holder.js/210x140', alt='210x140', style='border-radius:4px 4px 0px 0px;width: 220px; height: 150px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
                 .caption
                   h6.text-center 市场价:#{carModelView.factoryPriceMin}万 ～ #{carModelView.factoryPriceMax}万
                   h6.text-center 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万

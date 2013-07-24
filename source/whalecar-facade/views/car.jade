@@ -12,15 +12,13 @@ block append content
     .row-fluid
         .span9
           .row-fluid
-            //
-               汽车图片 
+            //汽车图片 
             h4(style='color: #4083A9;')
-              | 一汽大众
-              h4 速腾
+              | #{carModelLv1.brandCname}
+              h4 #{carModelLv1.cname}
             .span7(style='margin: 0px; height: 340px; width: 440px;')
               #myCarousel.carousel.slide
-                //
-                   Carousel items 
+                //Carousel items 
                 .carousel-inner
                   .active.item
                     img(src='img/car1.jpg')
@@ -30,39 +28,18 @@ block append content
                     img(src='img/car3.jpg')
                   .item
                     img(src='img/car4.jpg')
-                //
-                   Carousel nav 
+                //Carousel nav 
                 a.carousel-control.left(href='#myCarousel', data-slide='prev') ‹
                 a.carousel-control.right(href='#myCarousel', data-slide='next') ›
-                //
-                        <ol class="carousel-indicators">
-                //
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                //
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                //
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                //
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                //
-                        </ol>
-            //
-               汽车详情 
+               //汽车详情 
             .span4
-              //
-                <br/>
               ul.nav.nav-tabs.nav-stacked.padding12px
                 li 市场价：13.18万 ～ 22.58万
                 li 网站价：12.18万 ～ 20.58万
                 li 排量：1.6L 1.4T 1.8T 2.0T
                 li 颜色：红 蓝 黑
-              //
-                <img src="img/chart.png">
-          //
-             库存列表 
-          //
-            <legend>库存列表</legend>
-          br
+          //库存列表 
+          <legend>库存列表</legend>
           table.table
             thead
               tr
@@ -70,136 +47,61 @@ block append content
                 th 价格范围
                 th 库存数量
             tbody
-              tr(style='cursor: pointer;', onclick='$(body).animate({scrollTop: $(this).offset().top-80},1000);$(\'#tr2\').fadeToggle();')
-                td 1.6L 自然呼吸 105马力
-                td 12.18万 ～ 14.68万
-                td 12
-                td
-                  i.icon-chevron-right
-              tr#tr2(style='display: none; background-color: rgb(210,210,200);')
-                td(colspan='3')
-                  select.span2.btn-small
-                    option 车型
-                    option 手动时尚型
-                    option 自动时尚型
-                    option 手动豪华型
-                    option 自动豪华型
-                  select.span2.btn-small
-                    option 外观颜色
-                    option 红色
-                    option 蓝色
-                    option 黑色
-                    option 白色
-                  select.span2.btn-small
-                    option 内饰颜色
-                    option 黑色
-                    option 黄色
-                                  
-                  .well
-                    a(href='./shopinfo.html')
+              each item,index in carModelLv2
+                tr(style='cursor: pointer;', onclick="focusTr(this,'tr#{index}')")
+                  td #{item.fullName}
+                  td #{item.carPriceMin}万 ~ #{item.carPriceMax}万 
+                  td #{item.stockCount}
+                  td
+                    i.icon-chevron-right
+                tr(id="tr#{index}",style='display: none; background-color: rgb(210,210,200);')
+                  td(colspan='4')
+                    select.span2.btn-small
+                      option 车型
+                      option 手动时尚型
+                      option 自动时尚型
+                      option 手动豪华型
+                      option 自动豪华型
+                    select.span2.btn-small
+                      option 外观颜色
+                      option 红色
+                      option 蓝色
+                      option 黑色
+                      option 白色
+                    select.span2.btn-small
+                      option 内饰颜色
+                      option 黑色
+                      option 黄色
+                    .well
+                      a(href='./shopinfo.html')
                       h4 一汽大众宁波兴宁达众汽车销售服务有限公司
-                    table.table(style='background-color: inherit;')
-                      thead
-                        tr
-                          th 车型
-                          th 变速箱
-                          th 发动机
-                          th 外观颜色
-                          th 内饰颜色
-                          th 库存
-                          th 价格
-                      tbody
-                        tr
-                          td
-                            b 速腾 2012款 1.6L 手动时尚型
-                          td 5档手动
-                          td 1.6L 105马力 L4
-                          td 黑色
-                          td 黄色
-                          td 8
-                          td(width='110px')
-                            span(style='color: #ec6197; font-size: 20pt;') 12.18万
-                        tr
-                          td(colspan='6')
-                            h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
-                          td(colspan='6')
-                            input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
-                  .well
-                    a(href='./shopinfo.html')
-                      h4 一汽大众宁波兴宁达众汽车销售服务有限公司
-                    table.table(style='background-color: inherit;')
-                      thead
-                        tr
-                          th 车型
-                          th 变速箱
-                          th 发动机
-                          th 外观颜色
-                          th 内饰颜色
-                          th 库存
-                          th 价格
-                      tbody
-                        tr
-                          td
-                            b 速腾 2012款 1.6L 手动时尚型
-                          td 5档手动
-                          td 1.6L 105马力 L4
-                          td 黑色
-                          td 黄色
-                          td 8
-                          td(width='110px')
-                            span(style='color: #ec6197; font-size: 20pt;') 12.18万
-                        tr
-                          td(colspan='6')
-                            h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
-                          td(colspan='6')
-                            input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
-                  .well
-                    a(href='./shopinfo.html')
-                      h4 一汽大众宁波兴宁达众汽车销售服务有限公司
-                    table.table(style='background-color: inherit;')
-                      thead
-                        tr
-                          th 车型
-                          th 变速箱
-                          th 发动机
-                          th 外观颜色
-                          th 内饰颜色
-                          th 库存
-                          th 价格
-                      tbody
-                        tr
-                          td
-                            b 速腾 2012款 1.6L 手动时尚型
-                          td 5档手动
-                          td 1.6L 105马力 L4
-                          td 黑色
-                          td 黄色
-                          td 8
-                          td(width='110px')
-                            span(style='color: #ec6197; font-size: 20pt;') 12.18万
-                        tr
-                          td(colspan='6')
-                            h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
-                          td(colspan='6')
-                            input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
-              tr(style='cursor: pointer;', onclick='$(body).animate({scrollTop: $(this).offset().top-80},1000);$(\'#tr2\').fadeToggle();')
-                td 1.4T 涡轮增压 131马力
-                td 14.18万 ～ 17.78万
-                td 10
-                td
-                  i.icon-chevron-right
-              tr(style='cursor: pointer;', onclick='$(body).animate({scrollTop: $(this).offset().top-80},1000);$(\'#tr2\').fadeToggle();')
-                td 1.8T 涡轮增压 160马力
-                td 18.58万 ～ 19.58万
-                td 0
-                td
-                  i.icon-chevron-right
-              tr(style='cursor: pointer;', onclick='$(body).animate({scrollTop: $(this).offset().top-80},1000);$(\'#tr2\').fadeToggle();')
-                td 2.0T 涡轮增压 200马力
-                td 22.58万 ～ 22.58万
-                td 2
-                td
-                  i.icon-chevron-right
+                      table.table(style='background-color: inherit;')
+                        thead
+                          tr
+                            th 车型
+                            th 变速箱
+                            th 发动机
+                            th 外观颜色
+                            th 内饰颜色
+                            th 库存
+                            th 价格
+                        tbody
+                          tr
+                            td
+                              b 速腾 2012款 1.6L 手动时尚型
+                            td 5档手动
+                            td 1.6L 105马力 L4
+                            td 黑色
+                            td 黄色
+                            td 8
+                            td(width='110px')
+                              span(style='color: #ec6197; font-size: 20pt;') 12.18万
+                          tr
+                            td(colspan='6')
+                              h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
+                            td(colspan='6')
+                              input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
+          
         .span3
           //
              相关其他车辆 
@@ -256,6 +158,24 @@ block append content
               p(style='color: #ffffff;') 领取优惠券，在谈好价格的基础上出示可以直接抵用现金。
             //
               <p><a href="off_price.html" class="btn btn-primary pull-right">进入</a></p>
-    script
+    script.
+      var currentFocusTr = "";
+      function focusTr(elment,trId){
+        //如果现在已经选择了则关闭
+        if(currentFocusTr != ""){
+          if(currentFocusTr != trId){
+            $("#" + currentFocusTr).hide();
+          }
+          else{
+            $("#" + trId).fadeOut();
+          }
+        }
+        //如果选择的不是当前tr才显示focus新的tr
+        if(currentFocusTr != trId){
+          $("body").animate({scrollTop: $(elment).offset().top -58},1000);
+          $("#" + trId).fadeIn();
+        }
+        currentFocusTr = trId;
+      }
       $('.carousel').carousel();
       $('td input').tooltip();
