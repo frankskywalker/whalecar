@@ -10,4 +10,4 @@ ehthumbs.db
 Thumbs.db
 
 *.class
-source/whalecar-service/target
+whalecar-service/target
