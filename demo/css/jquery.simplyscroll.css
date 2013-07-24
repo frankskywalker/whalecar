@@ -138,38 +138,34 @@ Note all DIVs are generated and should not be hard-coded
 
 .simply-scroll { /* Customisable base class for style override DIV */
 	width: 935px;
-	height: 150px;
+	height: 571px;
 	margin-bottom: 1em;
 }
 
-	.simply-scroll .simply-scroll-clip {
-		width: 935px;
-		height: 150px;
+.simply-scroll .simply-scroll-clip {
+	width: 935px;
+	height: 571px;
+	}
+.simply-scroll .simply-scroll-list {}
+.simply-scroll .simply-scroll-list li {
+	float: left;
+	width: 935px;
+	height: 561px;
+	padding : 5px;
+	border-radius:4px;
+	}
+.simply-scroll .simply-scroll-list li img {
+	width: 935px;
+	height: 561px;
+	border-radius:4px;
 	}
 	
-		.simply-scroll .simply-scroll-list {}
-		
-		.simply-scroll .simply-scroll-list li {
-			float: left;
-			width: 200px;
-			height: 120px;
-			padding : 5px;
-			border-radius:4px;
-		}
-		.simply-scroll .simply-scroll-list li img {
-		  width: 200px;
-          height: 120px;
-		  border-radius:4px;
-		}
-	
-	.simply-scroll .simply-scroll-btn {}
-	
-	.simply-scroll .simply-scroll-btn-left {}
-	.simply-scroll .simply-scroll-btn-left.disabled {}
-	.simply-scroll .simply-scroll-btn-left:hover {}
-	
-	.simply-scroll .simply-scroll-btn-right {}
-	.simply-scroll .simply-scroll-btn-right.disabled {}
+.simply-scroll .simply-scroll-btn {}
+.simply-scroll .simply-scroll-btn-left {}
+.simply-scroll .simply-scroll-btn-left.disabled {}
+.simply-scroll .simply-scroll-btn-left:hover {}
+.simply-scroll .simply-scroll-btn-right {}
+.simply-scroll .simply-scroll-btn-right.disabled {}
 	.simply-scroll .simply-scroll-btn-right:hover {}
 	
 	.simply-scroll .simply-scroll-btn-up {}
