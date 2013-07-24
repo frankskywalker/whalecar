@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whalecar.persistence.ShopMapper">
+
+    <cache />
+    
+    <!-- 根据CarModelLv2 查询ShopStockView -->
+    <select id="queryShopStockViewByCarModelLv2" parameterType="Integer" resultType="ShopStockView">
+        SELECT 
+		    Shop_Stock.*,
+		    Car_Model_Lv3.shortName as carModelLv3ShortName,
+		    Car_Model_Lv3.fullName as carModelLv3FullName,
+		    Car_Model_Lv3.FactoryPrice as FactoryPrice
+		FROM
+		    Shop_Stock
+		LEFT JOIN
+		    Car_Model_Lv3 ON Shop_Stock.carModelLv3 = Car_Model_Lv3.id
+		WHERE
+		    Car_Model_Lv3.carModelLv2 = #{carModelLv2Id}
+    </select>
+    
+    <!-- 根据ShopId查询ShopStockView -->
+    <select id="queryShopStockViewByShop" parameterType="Integer" resultType="ShopStockView">
+        SELECT 
+            Shop_Stock.*,
+            Car_Model_Lv3.shortName as carModelLv3ShortName,
+            Car_Model_Lv3.fullName as carModelLv3FullName,
+            Car_Model_Lv3.FactoryPrice as FactoryPrice
+        FROM
+            Shop_Stock
+        LEFT JOIN
+            Car_Model_Lv3 ON Shop_Stock.carModelLv3 = Car_Model_Lv3.id
+        WHERE
+            Shop_Stock.shop = #{shopId}
+    </select>
+    
+    <!-- 保存ShopStock -->
+    <insert id="saveShopStock" parameterType="map">
+        INSERT INTO 
+          ShopStock 
+            (shop, 
+            carModelLv3, 
+            carOutsideColor, 
+            carInsideColor, 
+            <if test="carAddition != null and carAddition != ''">
+                carAddition, 
+            </if>
+            carPrice, 
+            carOnOrderNum, 
+            carOnHandeNum)
+          VALUES
+            (#{shop, 
+            #{carModelLv3}, 
+            #{carOutsideColor}, 
+            #{carInsideColor}, 
+            <if test="carAddition != null and carAddition != ''">
+                #{carAddition}, 
+            </if>
+            #{carPrice}, 
+            #{carOnOrderNum}, 
+            #{carOnHandeNum})
+    </insert>
+    
+    <!-- 更新ShopStock -->
+    <update id="updateShopStock" parameterType="map">
+        UPDATE Shop_Stock
+			SET
+			`shop` = #{shop},
+			`carModelLv3` = #{carModelLv3},
+			`carOutsideColor` = #{carOutsideColor},
+			`carInsideColor` = #{carInsideColor},
+			<if test="carAddition != null and carAddition != ''">
+			   `carAddition` = #{carAddition},
+			</if>
+			`carPrice` = #{carPrice},
+			`carOnOrderNum` = #{carOnOrderNum},
+			`carOnHandeNum` = #{carOnHandeNum}
+			WHERE `id` = #{id};
+    </update>
+    
+    <!-- 删除ShopStock -->
+    <delete id="deleteShopStockById" parameterType="Integer">
+        DELETE FROM Shop_Stock        
+            WHERE WHERE `id` = #{id};
+    </delete>
+    
+
+</mapper>
