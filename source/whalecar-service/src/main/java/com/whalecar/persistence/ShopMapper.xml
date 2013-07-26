@@ -6,6 +6,50 @@
 
     <cache />
     
+    <!-- 根据id查询shop -->
+    <select id="queryShopById" parameterType="Integer" resultType="Shop">
+        SELECT 
+		    *
+		FROM
+		    Shop
+		WHERE
+		    id = #{shopId}
+    </select>
+    
+    <!-- 根据用户名密码查询shop -->
+    <select id="queryByNameAndPsw" resultType="Shop">
+	    SELECT
+	        * 
+	    FROM Shop
+	    Where flagUseable = 'yes'
+	    and (loginName = #{loginName} and loginPassword = PASSWORD(#{loginPassword}))
+	    LIMIT 1
+	</select>
+	
+	<!-- 更新shop信息 -->
+	<update id="updateShop" parameterType="map">
+	   UPDATE Shop
+		SET
+			`shopName` = #{shopName},
+			`shopAddress` = #{shopAddress},
+			`shopTel` = #{shopTel},
+			`shopEmail` = #{shopEmail},
+			`shopCity` = #{shopCity}
+			<if test="shopLocationLongtude != null and shopLocationLongtude != ''">
+			    ,`shopLocationLongtude` = #{shopLocationLongtude}
+			</if>
+			<if test="shopLocationDimensiong != null and shopLocationDimensiong != ''">
+			    ,`shopLocationDimensiong` = #{shopLocationDimensiong}
+			</if>
+			<if test="loginName != null and loginName != ''">
+			    ,`loginName` = #{loginName}
+			</if>
+			<if test="loginPassword != null and loginPassword != ''">
+			    ,`loginPassword` = #{loginPassword}
+			</if>
+		WHERE id = #{id}
+	</update>
+    
     <!-- 根据CarModelLv2 查询ShopStockView -->
     <select id="queryShopStockViewByCarModelLv2" parameterType="Integer" resultType="ShopStockView">
         SELECT 
@@ -67,16 +111,16 @@
     <update id="updateShopStock" parameterType="map">
         UPDATE Shop_Stock
 			SET
-			`shop` = #{shop},
-			`carModelLv3` = #{carModelLv3},
-			`carOutsideColor` = #{carOutsideColor},
-			`carInsideColor` = #{carInsideColor},
-			<if test="carAddition != null and carAddition != ''">
-			   `carAddition` = #{carAddition},
-			</if>
-			`carPrice` = #{carPrice},
-			`carOnOrderNum` = #{carOnOrderNum},
-			`carOnHandeNum` = #{carOnHandeNum}
+				`shop` = #{shop},
+				`carModelLv3` = #{carModelLv3},
+				`carOutsideColor` = #{carOutsideColor},
+				`carInsideColor` = #{carInsideColor},
+				<if test="carAddition != null and carAddition != ''">
+				   `carAddition` = #{carAddition},
+				</if>
+				`carPrice` = #{carPrice},
+				`carOnOrderNum` = #{carOnOrderNum},
+				`carOnHandeNum` = #{carOnHandeNum}
 			WHERE `id` = #{id};
     </update>
     
@@ -85,6 +129,5 @@
         DELETE FROM Shop_Stock        
             WHERE WHERE `id` = #{id};
     </delete>
-    
 
 </mapper>

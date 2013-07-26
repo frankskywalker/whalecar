@@ -7,11 +7,15 @@
 
 	<cache />
 	
-	<select parameterType="Integer" id="queryCarModelLv1ByBrandId" resultType="CarModelLv1">
+	<select parameterType="map" id="queryCarModelLv1ByBrand" resultType="CarModelLv1">
 		SELECT 
 			*
 		FROM Car_Model_Lv1
-		WHERE flagUseable = 'yes' and CarBrand = #{brandid}
+		WHERE flagUseable = 'yes' 
+		and CarBrand = #{carBrand}
+		<if test="carSubBrand != null and carSubBrand != ''">
+		  and carSubBrand = #{carSubBrand}
+		</if>
 		ORDER BY orderIndex
 	</select>
 	<select parameterType="Integer" id="queryCarModelLv1ViewById" resultType="CarModelLv1View">
@@ -32,6 +36,14 @@
        WHERE flagUseable = 'yes' and carModelLv1 = #{carModelLv1Id}
        ORDER BY orderIndex
 	</select>
+	
+	<select parameterType="Integer" id="queryCarModelLv3ByLv2Id" resultType="CarModelLv3">
+       SELECT
+           *
+       FROM Car_Model_Lv3
+       WHERE flagUseable = 'yes' and carModelLv1 = #{carModelLv2Id}
+       ORDER BY orderIndex
+    </select>
 	
 	<select parameterType="map" id="queryModelView" resultType="CarModelView">
 		SELECT 

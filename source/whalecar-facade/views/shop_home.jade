@@ -1,4 +1,8 @@
-.container(style='padding: 70px 0;')
+extends layout/mainFrame
+
+
+block append content
+  .container(style='padding: 70px 0;')
     .row
         .span3
           ul.nav.nav-pills.nav-stacked(style='width: 210px;')
@@ -13,7 +17,7 @@
         .span9.tab-content
           #car_manager.tab-pane.active
             legend 销售库存管理
-            input.btn.btn-primary.pull-right.span2(type='button', onclick='window.location.href=\'./edit_car.html\'', value='新建')
+            input.btn.btn-primary.pull-right.span2(type='button', onclick="window.location.href='/stockeditor'", value='新建')
             table.table
               thead
                 tr
@@ -24,22 +28,15 @@
                   th 库存(现货/在途)
                   th 操作
               tbody
-                tr
-                  td 大众速腾2012款 1.6L 手动时尚型
-                  td 黑色
-                  td 红色
-                  td 赠送 进口贴膜，油卡
-                  td 2/0
-                  td
-                    a(href='#') 修改
-                tr
-                  td 大众速腾2012款 1.6L 手动时尚型
-                  td 蓝色
-                  td 黑色
-                  td 赠送 进口贴膜，油卡
-                  td 1/2
-                  td
-                    a(href='#') 修改
+                each item in shopStockView
+                  tr
+                    td #{item.carModelLv3FullName}
+                    td #{item.carOutsideColor}
+                    td #{item.carInsideColor}
+                    td #{item.carAddition}
+                    td #{item.carOnHandeNum} / #{carOnOrderNum}
+                    td
+                      a(href="#") 修改
           #car_order.tab-pane
             legend 预约订单管理
             table.table
@@ -68,26 +65,33 @@
                   td 无
           #shop_info.tab-pane
             legend 信息维护
-            form.form-horizontal
+            form.form-horizontal#saveshopForm(method="post",action="/shop?type=saveshop",style="width:400px;")
               .control-group
-                label.control-label(for='shopname') 4s店名
+                label.control-label(for='shopName') 4s店名
                 .controls
-                  input#shopname(type='text', value='上海大众宁波兴宁达众汽车销售服务有限公司')
+                  input#shopName(name="shopName",type='text', value='#{shop.shopName}')
               .control-group
-                label.control-label(for='tel') 电话
+                label.control-label(for="shopCity")城市
                 .controls
-                  input#tel(type='text', value='186312375008')
+                  select(id="shopCity",name="shopCity")
+                    option(value="") 选择城市
               .control-group
-                label.control-label(for='mail') 邮箱
+                label.control-label(for='shopTel') 电话
                 .controls
-                  input#mail(type='text', value='autocar@sina.com')
+                  input#shopTel(name="shopTel",type='text', value='#{shop.shopTel}')
               .control-group
-                label.control-label(for='addr') 地址
+                label.control-label(for='shopEmail') 邮箱
                 .controls
-                  textarea#addr(placeholder='地址', rows='3') 浙江宁波市江东兴宁路178号
+                  input#shopEmail(name="shopEmail",type='text', value='#{shop.shopEmail}')
+              .control-group
+                label.control-label(for='shopAddress') 地址
+                .controls
+                  textarea#shopAddress(name="shopAddress",placeholder='地址', rows='3') #{shop.shopAddress}
+              div.alert.alert-error.hide#save-error 修改失败
+              div.alert.alert-success.hide#save-succee 修改成功
               .control-group
                 .controls
-                  button.btn(type='submit') 修改
+                  a(href="#",class="btn btn-primary pull-right",onclick="saveshop()") 保存
           #change_psw.tab-pane
             legend 修改密码
             .span5
@@ -107,3 +111,25 @@
                 .control-group
                   .controls
                     button.btn.btn-primary.pull-right.span2 提交
+  script.
+    function saveshop(){
+        $.post("/shop?type=saveshop", $("#saveshopForm").serialize())
+        .done(function(data) {
+             if(data.saveSuc){
+                 $("#save-succee").show();
+                 $("#save-error").hide();
+             }
+             else{
+                 $("#save-succee").slideUp();
+                 $("#save-error").slideDown();
+             }
+         });
+     }
+     $(document).ready(function(){
+        $.getJSON("/dic?type=DicCity",function(data){
+            $.each(data,function(i,e){
+               $("#shopCity").append("<option value=" + e.id + ">" + e.cityCname +  "</option>");
+            });
+            $("#shopCity").val("#{shop.shopCity}");
+        });
+     });

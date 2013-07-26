@@ -18,6 +18,8 @@ public class Shop implements java.io.Serializable {
 	private String loginName;
 	private String loginPassword;
 	private String flagUseable;
+	private int carBrand;
+	private int carSubBrand;
 
 	public Shop() {
 	}
@@ -126,4 +128,19 @@ public class Shop implements java.io.Serializable {
 		this.flagUseable = flagUseable;
 	}
 
+	public int getCarBrand() {
+		return carBrand;
+	}
+
+	public void setCarBrand(int carBrand) {
+		this.carBrand = carBrand;
+	}
+
+	public int getCarSubBrand() {
+		return carSubBrand;
+	}
+
+	public void setCarSubBrand(int carSubBrand) {
+		this.carSubBrand = carSubBrand;
+	}
 }

@@ -6,10 +6,12 @@ html
     meta(charset='utf-8')
     block css
       link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+      link(href='css/style.css', rel='stylesheet', media='screen')
     block js
       script(src='js/jquery-1.10.1.min.js')
       script(src='js/bootstrap.min.js')
   body
-    block content
-      include navbar
+    div(style="min-height:550px;　height:100%")
+      block content
+        include navbar
     include footer

@@ -40,5 +40,42 @@ footer.footer
                   h6  4s店加入流程
                 li
                   h6  4s店加入规则
+                li
+                  h6
+                    a(href="#shopLogin",data-toggle="modal")  4s点登陆入口
       .container
-        h5(style='color: #555555;') 杭州鲸硅科技有限公司出品
+        h5(style='color: #555555;text-align:center') 杭州鲸硅科技有限公司出品
+  div(id="shopLogin",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
+    .modal-header
+      button(type="button",class="close",data-dismiss="modal",aria-hidden="true") X
+      h3 4S店管理员登陆
+    .modal-body
+      form.form-horizontal#userLoginForm(action="/shop?type=login",method="post")
+        div.control-group
+          label.control-label(for="loginName")用户名
+          div.controls
+            input(type="text",id="loginName",name="loginName",placeholder="用户名")
+        div.control-group
+          label.control-label(for="loginPasword")密码
+          div.controls
+            input(type="password",id="loginPasword",name="loginPassword",placeholder="密码")
+        div.alert.alert-error.hide#shoplogin-error 用户名密码错误，请重新输入!
+        div.alert.alert-success.hide#shoplogin-succee 登陆成功
+      div(style="display:none")
+    .modal-footer
+      a(href="#",class="btn btn-primary",onclick="shopLogin();") 登陆
+    script.
+      function shopLogin(){
+        $.post("/shop?type=login", $("#userLoginForm").serialize()).done(function(data) {
+          $("#shoplogin-error").slideUp();
+          if(data.loginSuc){
+            $("#shoplogin-succee").show();
+            $("#shoplogin-error").hide();
+            window.location.href = "/shophome"
+          }
+          else{
+            $("#shoplogin-succee").slideUp();
+            $("#shoplogin-error").slideDown();
+          }
+        });
+      }

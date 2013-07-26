@@ -3,6 +3,7 @@ package com.whalecar.persistence;
 import java.util.List;
 import java.util.Map;
 
+import com.whalecar.domain.Shop;
 import com.whalecar.domain.ShopStockView;
 
 /**
@@ -53,4 +54,29 @@ public interface ShopMapper {
 	 * @return
 	 */
 	public int deleteShopStockById(Integer shopStockId);
+
+	/**
+	 * 根据id查询Shop信息
+	 * 
+	 * @param shopId
+	 * @return
+	 */
+	public Shop queryShopById(Integer shopId);
+
+	/**
+	 * 根据用户名密码查询Shop信息 如果没有查询到，说明用户名或密码错误
+	 * 
+	 * @param loginName
+	 * @param password
+	 * @return
+	 */
+	public Shop queryByNameAndPsw(Map<String, Object> conditionMap);
+
+	/**
+	 * 更新shop对象
+	 * 
+	 * @param shop
+	 * @return
+	 */
+	public int updateShop(Map<String, Object> shop);
 }

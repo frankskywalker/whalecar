@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.whalecar.domain.CarModelLv1;
 import com.whalecar.domain.CarModelLv1View;
 import com.whalecar.domain.CarModelLv2;
+import com.whalecar.domain.CarModelLv3;
 import com.whalecar.domain.CarModelView;
 import com.whalecar.persistence.CarModelMapper;
 import com.whalecar.persistence.tools.PaginationResult;
@@ -41,12 +42,11 @@ public class CarModelService {
 	 * @param brandid
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "getCarModelLv1ByBrandId")
+	@RequestMapping(method = RequestMethod.POST, value = "getCarModelLv1ByBrand")
 	public @ResponseBody
-	List<CarModelLv1> getCarModelLv1ByBrandId(
+	List<CarModelLv1> getCarModelLv1ByBrand(
 			@RequestBody Map<String, Object> conditionMap) {
-		Integer brandId = Integer.valueOf((String) conditionMap.get("brandId"));
-		return carModelMapper.queryCarModelLv1ByBrandId(brandId);
+		return carModelMapper.queryCarModelLv1ByBrand(conditionMap);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class CarModelService {
 	/**
 	 * 根据lv1id查询carModelLv2
 	 * 
-	 * @param lv1Id
+	 * @param {carModelLv1Id:value}
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "getCarModelLv2ByLv1Id")
@@ -77,6 +77,20 @@ public class CarModelService {
 		Integer carModelLv1Id = Integer.valueOf((String) conditionMap
 				.get("carModelLv1Id"));
 		return carModelMapper.queryCarModelLv2ByLv1Id(carModelLv1Id);
+	}
+
+	/**
+	 * 根据lv2id查询carModelLv3
+	 * 
+	 * @param {carModelLv2Id:value}
+	 * @return
+	 */
+	public @ResponseBody
+	List<CarModelLv3> queryCarModelLv3ByLv2Id(
+			@RequestBody Map<String, Object> conditionMap) {
+		Integer carModelLv2Id = Integer.valueOf((String) conditionMap
+				.get("carModelLv2Id"));
+		return carModelMapper.queryCarModelLv3ByLv2Id(carModelLv2Id);
 	}
 
 	/**

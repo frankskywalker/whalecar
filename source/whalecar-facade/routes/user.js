@@ -18,7 +18,6 @@ function login(req, res, next) {
         loginName: req.body.loginName,
         password: req.body.password
     };
-    req.session.currentUser = null;
     service.client.post("/queryByNameAndPsw", condition, function(error,
     request, response, data) {
         console.log("queryByNameAndPsw ok");

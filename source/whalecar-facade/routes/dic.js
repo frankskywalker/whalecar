@@ -3,7 +3,7 @@ var service = require("./tools/service-header");
 exports.query = function(req, res) {
     var type = req.query.type;
     if (type == 'CarModelLv1') {
-        getCarModelLv1ByBrandId(req, res);
+        getCarModelLv1ByBrand(req, res);
     } else if (type == 'DicCity') {
         getDicCity(req, res);
     } else {
@@ -12,9 +12,9 @@ exports.query = function(req, res) {
 };
 
 // Get CarModel By BrandId
-function getCarModelLv1ByBrandId(request, response) {
-    service.client.post("/getCarModelLv1ByBrandId", {
-        brandId: req.query.brandId
+function getCarModelLv1ByBrand(request, response) {
+    service.client.post("/getCarModelLv1ByBrand", {
+        carBrand: req.query.brandId
     }, function(err, req, res, data) {
         if (err) {
             next(err);

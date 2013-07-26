@@ -49,6 +49,9 @@ app.get('/', index.page);
 app.get('/dic', dic.query);
 app.post('/user', user.router);
 app.get('/car', car.page);
+app.get('/shophome', shop.homepage);
+app.post('/shop',shop.action);
+app.get('/stockeditor',shop.stockeditor);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));

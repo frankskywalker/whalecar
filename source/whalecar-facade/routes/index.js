@@ -46,8 +46,8 @@ exports.page = function(req, res, next) {
         },
         carModels: function(callback) {
             if (carBrand !== "") {
-                service.client.post("/getCarModelLv1ByBrandId", {
-                    brandId: carBrand
+                service.client.post("/getCarModelLv1ByBrand", {
+                    carBrand: carBrand
                 }, function(err, req, res, data) {
                     callback(err, data);
                 });

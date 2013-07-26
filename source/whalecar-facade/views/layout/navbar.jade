@@ -15,7 +15,10 @@
       ul.nav.pull-right(style="margin-top:15px")
         li
           if !session.currentUser
-            a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆
+            if !session.currentShop
+              a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆
+            -else
+              a(href="/shophome",role="button",data-toggle="modal") 4s店管理页面
           -else
             a(href="#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
 include user

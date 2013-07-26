@@ -6,6 +6,7 @@ import java.util.Map;
 import com.whalecar.domain.CarModelLv1;
 import com.whalecar.domain.CarModelLv1View;
 import com.whalecar.domain.CarModelLv2;
+import com.whalecar.domain.CarModelLv3;
 import com.whalecar.domain.CarModelView;
 
 /**
@@ -16,7 +17,8 @@ import com.whalecar.domain.CarModelView;
  */
 public interface CarModelMapper {
 
-	public List<CarModelLv1> queryCarModelLv1ByBrandId(Integer brandid);
+	public List<CarModelLv1> queryCarModelLv1ByBrand(
+			Map<String, Object> conditionMap);
 
 	/**
 	 * 分页查询ModelView
@@ -49,4 +51,13 @@ public interface CarModelMapper {
 	 * @return
 	 */
 	public List<CarModelLv2> queryCarModelLv2ByLv1Id(Integer lv1Id);
+
+	/**
+	 * 根据lv2id查询carModelLv3
+	 * 
+	 * @param lv2Id
+	 * @return
+	 */
+	public List<CarModelLv3> queryCarModelLv3ByLv2Id(Integer lv2Id);
+
 }

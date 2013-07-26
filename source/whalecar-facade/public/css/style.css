@@ -1,3 +1,4 @@
+/* override css */
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,4 +6,158 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+    background-color: whiteSmoke;
+    width:100%;
+}
+
+/*.navbar-inverse .brand{*/
+/*  color: #7CC576;*/
+/*}*/
+a {
+    color: #999999;
+}
+
+b {
+    color: #0088cc;
+}
+
+body {
+    background-color: #F0F0F0;
+    color: #333333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+element.style {
+    margin: 0 0 17px;
+    color: #999999;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #999999;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0;
+    text-rendering: optimizelegibility;
+}
+
+.navbar-inverse .navbar-inner {
+    /*background-color: #333333;*/
+    background-image: linear-gradient(to bottom, #333333, #222222);
+    background-repeat: repeat-x;
+    border-color: #252525;
+}
+
+.nav .dropdown-toggle .caret {
+    border-top-color: #999999;
+}
+
+.navbar-inverse .nav .active>a,.navbar-inverse .nav .active>a:hover,.navbar-inverse .nav .active>a:focus{
+    background-color: #222222;
+    color: #FFFFFF;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bold;
+}
+
+.thumbnail {
+    background-color: #FFFFFF;
+    border-color: #ffffff;
+    width: 220;
+    height: 190;
+    padding: 10px;
+    padding-bottom: 0;
+    border: 0px;
+}
+
+.thumbnail:hover {
+    padding: 10px;
+    padding-bottom: 0;
+    background-color: #FFFFFF;
+}
+
+.thumbnail .caption {
+    color: #555555;
+    padding: 0px;
+}
+
+p {
+    margin: 0 0 0px;
+}
+
+.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-submenu:hover>li>a,.dropdown-submenu:focus>a
+    {
+    background-color: #444444;
+    background-image: linear-gradient(to bottom, #666666, #666666);
+}
+
+.dropdown-menu {
+    background-color: #444444;
+}
+
+.dropdown-menu>li>a {
+    color: #ffffff;
+}
+
+strong {
+    color: #444444;
+}
+
+li h5 {
+    font-weight: bold;
+    color: #4083A9;
+    margin: 10px 0 0;
+    max-height: 16px;
+    padding: 0 0 0 10px;
+}
+
+.alpha1 {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+a.thumbnail:hover,a.thumbnail:focus {
+    box-shadow: 0 1px 4px rgba(64, 131, 169, 0.5);
+}
+
+footer h5 {
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+body {
+    background-color: #ececec;
+}
+
+.navbar .nav>li>a {
+    padding: 5px 10px 5px;
+}
+
+.navbar-inverse .nav .active>a,.navbar-inverse .nav .active>a:hover,.navbar-inverse .nav .active>a:focus{
+    background-color: #222222;
+    color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    font-weight: normal;
+}
+
+.navbar-inverse .nav>li>a:focus,.navbar-inverse .nav>li>a:hover {
+    color: #fff;
+    background-color: rgba(136, 136, 136, 0.5);
+    background-image: linear-gradient(to bottom, #888888, #666666);
+    /*如何在渐变里面来设置透明度？？*/
+    border-radius: 6px 6px 6px 6px;
 }
