@@ -14,8 +14,58 @@
 <script src="js/jquery-1.10.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.simplyscroll.min.js"></script>
-<script type="text/javascript"
-	src="js/jquery.carouFredSel-6.0.4-packed.js"></script>
+<script type="text/javascript"src="js/jquery.carouFredSel-6.0.4-packed.js"></script>
+<style type="text/css">
+  .footer {
+    background-color: #ffffff;
+    }
+    
+  li h5{
+    padding-bottom: 5px;
+  }
+  
+  #footer h5{
+    color: #555555;
+  }
+  
+/*  div.secondary.extra {
+    clear: both;
+    float: left;
+    width: 960px;
+    margin: 55px 0 0 0;
+    padding: 45px 0 0 0;
+    border-top: 2px solid #ddd;
+    }
+    
+  .group {
+    position: relative;
+    }
+    
+  div.col-33 {
+    float: left;
+    width: 31.27147766323%;
+    margin: 0 3.092783505155% 0 0;
+    }
+    
+  div.col-33-last {
+    margin-right: 0;
+    }
+  
+  #advertisement{
+    max-width: 970px;
+    position: relative;
+    margin:0 auto;
+    padding: 0;
+    }
+    
+    div.secondary.extra h3, div.secondary.extra h3.tab {
+margin: 0 0 10px 0;
+padding: 0;
+background: none;
+}*/
+
+
+</style>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,8 +81,13 @@
 					<li style="padding: 0px 5px;"><a href="/building">关于我们</a></li>
 				</ul>
 				<ul style="margin-top: 15px" class="nav pull-right">
-					<li><a href="#loginModal" role="button" data-toggle="modal"><img
-							src="img/login.png" alt="logo"> 登陆</a></li>
+					<li>
+					  <a href="#loginModal" role="button" data-toggle="modal">
+					    <img src="img/login.png" alt="logo">
+					      登陆
+					    <img src="img/RSS.PNG" alt="RSS">
+					  </a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -271,9 +326,10 @@
 		<div class="row-fluid">
 			<ul class='thumbnails'>
 				<li class="span3"><a href="./car?id=232" style="padding: 0px;"
-					class="thumbnail"><div name="hoverdiv"
+					class="thumbnail">
+						    <div name="hoverdiv"
 							style="height: 190px; width: 220px;">
-							<div name="imgdiv" style="width: 220px; position: absolute;">
+							<div name="imgdiv" style="width: 220px; position: absolute;                                                                                            ">
 								<img data-src="holder.js/210x140" alt="210x140"
 									style="border-radius: 4px 4px 0px 0px; width: 230px; height: 150px; padding: 0px 0px 0px;"
 									src="img/car/232.png">
@@ -610,6 +666,120 @@
 			type="hidden" name="priceMax" id="form_priceMax" value=""><input
 			type="hidden" name="city" id="form_city" value="">
 	</form>
+	
+<!--	<div class="secondary extra group" id="advertisement">
+	  <div class="col-33 group">
+	    <p>12345</p>
+	  </div>
+	  <div class="col-33 group">
+	    <h3 class="tab">
+	      站点公告
+	    </h3>
+	    <ul>
+	      <li>
+		<h5>
+		  <img src="img/paper_plane.png" alt="paper_plane"style="padding-bottom: 4px;">Teecar网诚招英才。
+		</h5>
+	      </li>
+	      <li>
+		<h5>
+		  <img src="img/paper_plane.png" alt="paper_plane"style="padding-bottom: 4px;">Teecar网诚招英才。
+		</h5>
+	      </li>
+	      <li>
+		<h5>
+		  <img src="img/paper_plane.png" alt="paper_plane"style="padding-bottom: 4px;">Teecar网诚招英才。
+		</h5>
+	      </li>
+	    </ul>
+	  </div>
+	  <div class="col-33 col-33-last group">
+	    <p>123456</p>
+	  </div>
+	</div>-->
+	<div class="row-fluid"style="padding-bottom: 30px">
+	  <div class="span8 offset2">
+	    <div style="border-top: 2px solid #ddd;">
+	    <div class="row-fluid">
+	      <div class="span4">
+		<ul style="margin: auto;" class="unstyled text-left">
+		  <li>
+		    <h4 id="bottomh4">
+		      4S冰点购车
+		    </h4>
+		  </li>
+		  <div class="row-fluid">
+		    <div class="span4">
+		      <img src="img/haibao.jpg" alt="haibao">
+		    </div>
+		    <div class="span8">
+		      <ul class="unstyled text-left" style="margin-left: 10px;">
+			<li>
+			  <h6>斯柯达团购季这个盛夏大礼</h6>
+			</li>
+			<li>
+			  <h6>长安福特感恩回馈购车季大礼</h6>
+			</li>
+			<li>
+			  <h6>宁波长安铃木低优惠无下限</h6>
+			</li>
+			<li>
+			  <h6>宁波Mini团购低价尽享名流之爱</h6>
+			</li>
+		      </ul>
+		    </div>
+		  </div>
+		</ul>
+	      </div>
+	      <div class="span4">
+		<ul style="width: 60%; margin: auto;" class="unstyled text-left">
+		  <li>
+		    <h4 id="bottomh4">
+		      站点公告
+		    </h4>
+		  </li>
+		  <li>
+		    <h6>
+		      <img src="img/paper_plane.png" alt="paper_plane" style="padding-bottom: 4px; margin-right: 10px;">新车抢购页面全新改版通知。
+		    </h6>
+		  </li>
+		  <li>
+		    <h6>
+		      <img src="img/paper_plane.png" alt="paper_plane" style="padding-bottom: 4px; margin-right: 10px;">Teecar网诚招英才。
+		    </h6>
+		  </li>
+		  <li>
+		    <h6>
+		      <img src="img/paper_plane.png" alt="paper_plane" style="padding-bottom: 4px; margin-right: 10px;">Teecar新浪官微正式开通
+		    </h6>
+		  </li>
+		</ul>
+	      </div>
+	      <div class="span4">
+		<ul style="margin: auto;" class="unstyled text-left">
+		  <li>
+		    <h4 id="bottomh4">
+		      优惠栏目
+		    </h4>
+		  </li>
+		  <div class="row-fluid">
+		    <div class="span4">
+		      <img src="img/TEECARlogo.png" alt="TEECARlogo">
+		    </div>
+		    <div class="span8">
+		      <ul class="unstyled text-left" style="margin-left: 10px;">
+			<li><h6><img src="img/location.png" alt="location" style="padding-bottom: 4px; margin-right: 10px;">LEON 2012款 2.0TSI CUPRA 降11.48万</h6></li>
+			<li><h6><img src="img/location.png" alt="location" style="padding-bottom: 4px; margin-right: 10px;">卡罗拉 2011款 1.6L 手动GL 降4.3万</h6></li>
+			<li><h6><img src="img/location.png" alt="location" style="padding-bottom: 4px; margin-right: 10px;">林肯MKT 2010款 3.5L EcoBoost AWD 降38万</h6></li>
+		      </ul>
+		    </div>
+		  </div>
+		</ul>
+	      </div>
+	    </div>
+	    </div>
+	  </div>
+	</div>
 	<script>
 		// 提交筛选事件
 		function conditionSelect(type, value, needSubmit, needInitPage) {
@@ -698,38 +868,50 @@
 			});
 		});
 	</script>
-	<footer class="footer">
+	<footer class="footer" style="background-color: #e0e0e0;">
 		<div class="row-fluid">
-			<div class="span6 offset3">
-				<div class="row-fluid">
-					<div class="span4">
+			<div class="span8 offset2">
+				<div class="row-fluid"  style="border-bottom: 2px solid #ddd;margin-bottom: 10px;padding-bottom: 10px;">
+					<div class="span3">
+						<ul style="margin: auto;" class="unstyled text-left">
+							<li>
+							    <img src="img/logo2.png" alt="derection"style="padding-bottom: 0px; width: 70px; color: #999999;">
+							</li>
+							<h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teecar(梯卡网) 全国首家涵盖真实4s店的B2C电商平台，业务涵盖新车销售、二手车销售、汽车维修保养、汽配百货销售。24小时全天候营业。</h6>
+						</ul>
+					</div>
+					<div class="span3">
 						<ul style="width: 60%; margin: auto;" class="unstyled text-left">
-							<li><h5>
-									<img src="img/direction.png" alt="derection"
-										style="padding-bottom: 4px;">购车保障
-								</h5></li>
+							<li>
+							  <h5>
+							    <img src="img/direction.png" alt="derection"style="padding-bottom: 4px;">购车保障
+							  </h5>
+							</li>
 							<li><h6>三天内无条件退款</h6></li>
 							<li><h6>4s店新车保证</h6></li>
 							<li><h6>低价保证</h6></li>
 							<li><h6>无任何强制性消费</h6></li>
 						</ul>
 					</div>
-					<div class="span4">
+					<div class="span3">
 						<ul style="width: 60%; margin: auto;" class="unstyled text-left">
-							<li><h5>
-									<img src="img/heart.png" alt="heart"
-										style="padding-bottom: 4px;">网站购车方式
-								</h5></li>
+							<li>
+							  <h5>
+							    <img src="img/heart.png" alt="heart" style="padding-bottom: 4px;">网站购车方式
+							  </h5>
+							</li>
 							<li><h6>按网站指导价购买</h6></li>
 							<li><h6>提交自己的价格购买</h6></li>
 							<li><h6>优惠500元购买</h6></li>
 						</ul>
 					</div>
-					<div class="span4">
+					<div class="span3">
 						<ul style="width: 60%; margin: auto;" class="unstyled text-left">
-							<li><h5>
-									<img src="img/tag.png" alt="tag" style="padding-bottom: 4px;">4s店入住
-								</h5></li>
+							<li>
+							  <h5>
+							    <img src="img/tag.png" alt="tag" style="padding-bottom: 4px;">4s店入住
+							  </h5>
+							</li>
 							<li><h6>4s店推广</h6></li>
 							<li><h6>4s店加入流程</h6></li>
 							<li><h6>4s店加入规则</h6></li>
@@ -738,9 +920,46 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<h5 style="color: #555555;">杭州鲸硅科技有限公司出品</h5>
-		</div>
+		
+		
+	<div class="row-fluid" style="background-color: #e0e0e0;" id="footer">
+	  <div class="span6 offset3">
+	    <div class="row-fluid">
+	      <div class="span4">
+		<ul style="margin-left: -30px;" class="unstyled text-left">
+		  <li>
+		    <h5>
+		      支付方式
+		      <img src="img/bottom_logo/bottom_logo_1.jpg" alt="环讯支付"style="padding-bottom: 4px; height: 30px;">
+		      <img src="img/bottom_logo/bottom_logo_2.jpg" alt="支付宝"style="padding-bottom: 4px; height: 30px;">
+		    </h5>
+		  </li>
+		</ul>
+	      </div>
+	      <div class="span4">
+		<ul style="margin: auto;" class="unstyled text-left">
+		  <li>
+		    <h5>
+		      诚信证书
+		      <img src="img/bottom_logo/bottom_logo_3.jpg" alt="诚信证书"style="padding-bottom: 4px; height: 30px;">
+		      <img src="img/bottom_logo/bottom_logo_4.jpg" alt="网站网信诚信证书"style="padding-bottom: 4px; height: 30px;">
+		    </h5>
+		  </li>
+		</ul>
+	      </div>
+	      <div class="span4">
+		<ul style="margin: 0,0,0,-20PX;" class="unstyled text-left">
+		  <li>
+		    <h5>
+		      咨询热线 XXXX-XXX-XXX
+		    </h5>
+		  </li>
+		</ul>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<h5 style="color: #555555;">杭州鲸硅科技有限公司出品</h5>
 	</footer>
 </body>
 </html>
