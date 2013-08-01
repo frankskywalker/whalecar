@@ -1,50 +1,78 @@
-footer.footer
-    .row-fluid
-        .span6.offset3
-          .row-fluid
-            .span4
-              ul.unstyled.text-left(style='width: 60%; margin: auto;')
-                li
-                  h5
-                    img(src='img/direction.png', alt='derection',style="padding-bottom: 4px;")
-                    | 购车保障
-                li
-                  h6  三天内无条件退款
-                li
-                  h6  4s店新车保证
-                li
-                  h6  低价保证
-                li
-                  h6  无任何强制性消费
-            .span4
-              ul.unstyled.text-left(style='width: 60%; margin: auto;')
-                li
-                  h5
-                    img(src='img/heart.png', alt='heart',style="padding-bottom: 4px;")
-                    | 网站购车方式
-                li
-                  h6  按网站指导价购买
-                li
-                  h6  提交自己的价格购买
-                li
-                  h6  优惠500元购买
-            .span4
-              ul.unstyled.text-left(style='width: 60%; margin: auto;')
-                li
-                  h5
-                    img(src='img/tag.png', alt='tag',style="padding-bottom: 4px;")
-                    | 4s店入住
-                li
-                  h6  4s店推广
-                li
-                  h6  4s店加入流程
-                li
-                  h6  4s店加入规则
-                li
-                  h6
-                    a(href="#shopLogin",data-toggle="modal")  4s点登陆入口
-      .container
-        h5(style='color: #555555;text-align:center') 杭州鲸硅科技有限公司出品
+footer.footer(style="background-color: #e0e0e0;")
+  .row-fluid
+    .span8.offset2
+        .row-fluid(style='border-bottom: 2px solid #ddd; margin-bottom: 10px; padding-bottom: 10px;')
+          .span3
+            ul.unstyled.text-left(style='margin: auto;')
+              li
+                img(src='img/logo2.png', alt='derection', style='padding-bottom: 0px; width: 70px; color: #999999;')
+              h6       Teecar(梯卡网) 全国首家涵盖真实4s店的B2C电商平台，业务涵盖新车销售、二手车销售、汽车维修保养、汽配百货销售。24小时全天候营业。
+          .span3
+            ul.unstyled.text-left(style='width: 60%; margin: auto;')
+              li
+                h5
+                  img(src='img/direction.png', alt='derection', style='padding-bottom: 4px;')
+                  | 购车保障
+              li
+                h6 三天内无条件退款
+              li
+                h6 4s店新车保证
+              li
+                h6 低价保证
+              li
+                h6 无任何强制性消费
+          .span3
+            ul.unstyled.text-left(style='width: 60%; margin: auto;')
+              li
+                h5
+                  img(src='img/heart.png', alt='heart', style='padding-bottom: 4px;')
+                  | 网站购车方式
+              li
+                h6 按网站指导价购买
+              li
+                h6 提交自己的价格购买
+              li
+                h6 优惠500元购买
+          .span3
+            ul.unstyled.text-left(style='width: 60%; margin: auto;')
+              li
+                h5
+                  img(src='img/tag.png', alt='tag', style='padding-bottom: 4px;')
+                  | 4s店入住
+              li
+                h6 4s店推广
+              li
+                h6 4s店加入流程
+              li
+                h6 4s店加入规则
+              li
+                h6
+                  a(href="#shopLogin",data-toggle="modal")  4s点登陆入口
+  #footer.row-fluid(style='background-color: #e0e0e0;')
+    .span6.offset3
+        .row-fluid
+          .span4
+            ul.unstyled.text-left(style='margin-left: -30px;')
+              li
+                h5
+                  | 支付方式
+                  img(src='img/bottom_logo/bottom_logo_1.jpg', alt='环讯支付', style='padding-bottom: 4px; height: 30px;')
+                  img(src='img/bottom_logo/bottom_logo_2.jpg', alt='支付宝', style='padding-bottom: 4px; height: 30px;')
+          .span4
+            ul.unstyled.text-left(style='margin: auto;')
+              li
+                h5
+                  | 诚信证书
+                  img(src='img/bottom_logo/bottom_logo_3.jpg', alt='诚信证书', style='padding-bottom: 4px; height: 30px;')
+                  img(src='img/bottom_logo/bottom_logo_4.jpg', alt='网站网信诚信证书', style='padding-bottom: 4px; height: 30px;')
+          .span4
+            ul.unstyled.text-left(style='margin: 0,0,0,-20PX;')
+              li
+                h5
+                  | 咨询热线 XXXX-XXX-XXX
+  </br>
+  h5(style='color: #555555;') 杭州鲸硅科技有限公司出品
+
   div(id="shopLogin",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
     .modal-header
       button(type="button",class="close",data-dismiss="modal",aria-hidden="true") X

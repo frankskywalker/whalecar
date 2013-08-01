@@ -11,21 +11,21 @@ block append content
   div#banner
     div#wrapper(style="display:#{!isRefresh ? '':'none'}")
      div#carousel
-        img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height="450" )
-        img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
-        img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height=" 450")
-        img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
+        img(src="img/scrollimg/adv1.png",alt="adv1",width="990",height="450" )
+        img(src="img/scrollimg/adv2.png",alt="adv1",width="990",height="450" )
+        img(src="img/scrollimg/adv1.png",alt="adv1",width="990",height="450")
+        img(src="img/scrollimg/adv2.png",alt="adv1",width="990",height="450" )
     div#wrapperOpener(href="#",style="padding-top:59px;display:#{!isRefresh ? 'none':''}")
-      hr
+      img(src="img/sildedown.png",class="pull-right",style="width:25px")
     
 
   .container(style='padding: 0px 0;')
     //
       div(align='center')
         img(src='img/progress.png')
-    .row-fluid
+    .row-fluid(heigth)
       .span8
-          div.btn-toolbar(style="height: 10px;padding-top: 20px;")
+          div.btn-toolbar(style="height: 10px;padding-top: 0px;margin-left:10px;")
               .btn-group
                    //城市
                    div.btn-group
@@ -106,46 +106,9 @@ block append content
                                    h4(style="color: rgb(170, 61, 70);") 50万以上
                                else
                                    | 50万以上
-        // div(style="height: 10px;padding-top: 15px;") 
-          ul.nav.nav-tabs(style="border-bottom:0px;")
-            li(id="city")
-              a(href="#")
-                h4 城市
-                - var cityname = "不限"
-                each dicCity in allDicCitys
-                  if dicCity.id == conditionParams.city
-                    - cityname = dicCity.cityCname
-                h6 #{cityname}
-            li(id="brand")
-              a(href="#")
-                h4 品牌
-                - var brandname = "不限"
-                each brand in allBrands
-                  if brand.id == conditionParams.carBrand
-                    - brandname = brand.cname
-                h6 #{brandname}
-            li(id="model")
-              a(href="#") 
-                h4 车型
-                - var carmodelname = "不限"
-                each carModel in carModels
-                  if carModel.id == conditionParams.carModelLv1
-                    - carmodelname = carModel.cname
-                h6 #{carmodelname}
-            li(id="price")
-              a(href="#") 
-                h4 价格
-                - var priceName = "不限"
-                if !!conditionParams.priceMin
-                  - priceName = conditionParams.priceMin + "万"
-                  if conditionParams.priceMin == '50'
-                    - priceName = priceName + "以上"
-                  else
-                    - priceName = priceName + "~" + conditionParams.priceMax + "万" ;
-                h6 #{priceName}
       .span4
-        .pagination.pagination-small.pagination-right(style='float:right;width:180px;margin: 35px 0 0 0;')
-           span(style='float:left;height: 25px;padding:6px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
+        .pagination.pagination-small.pagination-right(style='float:right;width:180px;margin: 10px 10px 0 0;')
+           span(style='float:left;height: 25px;padding-top:6px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
            ul
              if carModelViews.firstPage
                li.disabled
@@ -160,26 +123,6 @@ block append content
              -else
                li
                  a(href='#',onclick="conditionSelect('pageIndex','#{carModelViews.currentPage + 1}',true)") 后一页
-    div(id="divHolder",style="display:none;height: 30px;background-image: url(img/condition-bg.png);")
-      div(id="cityDiv",style="display:none;height: 20px;padding:5px;")
-        a(href="#",onClick="conditionSelect('city','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-        each dicCity in allDicCitys
-          a(href="#",onClick="conditionSelect('city','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")= dicCity.cityCname
-      div(id="brandDiv",style="display:none;height: 20px;padding:5px;")
-        a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-        each brand in allBrands
-          a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")= brand.cname
-      div(id="modelDiv",style="display:none;height: 20px;padding:5px;")
-        a(href="#",onClick="conditionSelect('carModel','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-        each carModel in carModels
-          a(href="#",onClick="conditionSelect('carModel','#{carModel.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")= carModel.cname
-      div(id="priceDiv",style="display:none;height: 20px;padding:5px;")
-        a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-        a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);",style="color: #FFFFFF;padding-left: 7px;") 1万 ~ 5万
-        a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);",style="color: #FFFFFF;padding-left: 7px;") 5万 ~ 10万
-        a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);",style="color: #FFFFFF;padding-left: 7px;") 10万 ~ 20万
-        a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);",style="color: #FFFFFF;padding-left: 7px;") 20万 ~ 50万
-        a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 50万以上
     hr(style='margin: 0px 0px 17px;')
      // 列表
     .row-fluid
@@ -204,6 +147,66 @@ block append content
         if i != 0 && (i+1) % 4 == 0
           </ul><ul class='thumbnails'>
       </ul>
+    div(style='padding-bottom: 30px;')
+          div(style='border-top: 2px solid #ddd;')
+            .row-fluid
+              .span4
+                ul.unstyled.text-left(style='margin: auto;')
+                  li
+                    h4#bottomh4
+                      | 4S冰点购车
+                  .row-fluid
+                    .span4
+                      img(src='img/haibao.jpg', alt='haibao')
+                    .span8
+                      ul.unstyled.text-left(style='margin-left: 10px;')
+                        li
+                          h6 斯柯达团购季这个盛夏大礼
+                        li
+                          h6 长安福特感恩回馈购车季大礼
+                        li
+                          h6 宁波长安铃木低优惠无下限
+                        li
+                          h6 宁波Mini团购低价尽享名流之爱
+              .span4
+                ul.unstyled.text-left(style='width: 60%; margin: auto;')
+                  li
+                    h4#bottomh4
+                      | 站点公告
+                  li
+                    h6
+                      img(src='img/paper_plane.png', alt='paper_plane', style='padding-bottom: 4px; margin-right: 10px;')
+                      | 新车抢购页面全新改版通知。
+                  li
+                    h6
+                      img(src='img/paper_plane.png', alt='paper_plane', style='padding-bottom: 4px; margin-right: 10px;')
+                      | Teecar网诚招英才。
+                  li
+                    h6
+                      img(src='img/paper_plane.png', alt='paper_plane', style='padding-bottom: 4px; margin-right: 10px;')
+                      | Teecar新浪官微正式开通
+              .span4
+                ul.unstyled.text-left(style='margin: auto;')
+                  li
+                    h4#bottomh4
+                      | 优惠栏目
+                  .row-fluid
+                    .span4
+                      img(src='img/TEECARlogo.png', alt='TEECARlogo')
+                    .span8
+                      ul.unstyled.text-left(style='margin-left: 10px;')
+                        li
+                          h6
+                            img(src='img/location.png', alt='location', style='padding-bottom: 4px; margin-right: 10px;')
+                            | LEON 2012款 2.0TSI CUPRA 降11.48万
+                        li
+                          h6
+                            img(src='img/location.png', alt='location', style='padding-bottom: 4px; margin-right: 10px;')
+                            | 卡罗拉 2011款 1.6L 手动GL 降4.3万
+                        li
+                          h6
+                            img(src='img/location.png', alt='location', style='padding-bottom: 4px; margin-right: 10px;')
+                            | 林肯MKT 2010款 3.5L EcoBoost AWD 降38万
 
   form(action="/",method="get",id="conditionform")
     input(type="hidden",name="pageIndex",id="form_pageIndex",value="#{conditionParams.pageIndex}")
@@ -227,52 +230,6 @@ block append content
         $("#conditionform").submit();
       }
     }
-    
-    // 筛选条件选择效果
-    var currentHoverBtn = null;
-    var tabNames = ["city","brand","model","price"];
-    function initEventForTabs(){
-      for(i in tabNames){
-        var name = tabNames[i];
-        $("#" + name).hover(
-          function(){
-            currentHoverBtn = $(this).attr("id");
-          },
-          function(){
-            currentHoverBtn = null;
-          }
-        );
-      }
-    }
-    initEventForTabs();
-    $(document).click(function(){
-      // 为了效果，如果需要显示菜单就用div撑住高度，避免页面乱动
-      if(currentHoverBtn != null){
-        // $("#divHolder").css({height:"30px",display:""});
-        $("#divHolder").slideDown();
-      }
-      else{
-        $("#divHolder").slideUp('slow');
-      }
-
-      // 先隐藏
-      for(i in tabNames){
-        var name = tabNames[i];
-        if(currentHoverBtn != name){
-          $("#" + name).removeClass("active");
-          $("#" + name + "Div").hide();
-        }
-      }
-      
-      // 再显示
-      for(i in tabNames){
-        var name = tabNames[i];
-        if(currentHoverBtn == name){
-          $("#" + name).addClass("active");
-          $("#" + name + "Div").show();
-        }
-      }
-    });
     
     // 汽车图片浮动效果
     $("div[name='hoverdiv']").each(function(index,value){
@@ -319,8 +276,9 @@ block append content
     });
     $(document).click(function(){
         if(!carouselIsHover){
-            $("#wrapper").slideUp('slow');
-            $("#wrapperOpener").show();
+            $("#wrapper").slideUp('slow',function(){
+                $("#wrapperOpener").show();
+            });
         }
     });
     $('.dropdown-toggle').dropdown();
