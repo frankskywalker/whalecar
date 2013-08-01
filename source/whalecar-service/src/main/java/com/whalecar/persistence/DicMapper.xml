@@ -10,7 +10,7 @@
   	SELECT
   		* 
   	FROM Dic_City
-  	Where flagUseable = 'yes'
+  	WHERE flagUseable = 'yes'
   	Order by orderIndex
   </select>
 
@@ -18,8 +18,25 @@
   	SELECT
   		* 
   	FROM Dic_Color
-  	Where flagUseable = 'yes'
+  	WHERE flagUseable = 'yes'
   	Order by orderIndex
+  </select>
+  
+  <select id="queryDicColorBycarModelLv3" parameterType="int" resultType="DicColor">
+    SELECT 
+      *
+    FROM
+      Dic_Color
+    WHERE 
+    FIND_IN_SET(
+      Dic_Color.id,
+      (SELECT 
+         colorOutsideCollection
+       FROM
+         Car_Model_Lv3
+       WHERE
+         Car_Model_Lv3.id = #{carModelLv3Id})
+      )
   </select>
 
 </mapper>

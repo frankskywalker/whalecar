@@ -56,52 +56,48 @@ block append content
                     i.icon-chevron-right
                 tr(id="tr#{index}",style='display: none; background-color: rgb(210,210,200);')
                   td(colspan='4')
-                    select.span2.btn-small
+                    select.span2.btn-small(name="carModelLv3Name")
                       option 车型
-                      option 手动时尚型
-                      option 自动时尚型
-                      option 手动豪华型
-                      option 自动豪华型
-                    select.span2.btn-small
+                      each carModelLv3Name in item.carModelLv3NameList
+                        option #{carModelLv3Name}
+                    select.span2.btn-small(name="outsideColorName")
                       option 外观颜色
-                      option 红色
-                      option 蓝色
-                      option 黑色
-                      option 白色
-                    select.span2.btn-small
+                      each outsideColorName in item.outsideColorList
+                        option #{outsideColorName}
+                    select.span2.btn-small(name="insideColorName")
                       option 内饰颜色
-                      option 黑色
-                      option 黄色
-                    .well
-                      a(href='./shopinfo.html')
-                      h4 一汽大众宁波兴宁达众汽车销售服务有限公司
-                      table.table(style='background-color: inherit;')
-                        thead
-                          tr
-                            th 车型
-                            th 变速箱
-                            th 发动机
-                            th 外观颜色
-                            th 内饰颜色
-                            th 库存
-                            th 价格
-                        tbody
-                          tr
-                            td
-                              b 速腾 2012款 1.6L 手动时尚型
-                            td 5档手动
-                            td 1.6L 105马力 L4
-                            td 黑色
-                            td 黄色
-                            td 8
-                            td(width='110px')
-                              span(style='color: #ec6197; font-size: 20pt;') 12.18万
-                          tr
-                            td(colspan='6')
-                              h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
-                            td(colspan='6')
-                              input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
-          
+                      each insideColorName in item.insideColorList
+                        option #{insideColorName}
+                    each shopStockView in item.shopStockList
+                      .well(mode="#{shopStockView.carModelLv3FullName}",outColor="#{shopStockView.carOutsideColorName}",inColor="#{shopStockView.carInsideColorName}")
+                        a(href='./shopinfo.html')
+                          h4 #{shopStockView.shopName}
+                        table.table(style='background-color: inherit;')
+                          thead
+                            tr
+                              th 车型
+                              th 变速箱
+                              th 发动机
+                              th 外观颜色
+                              th 内饰颜色
+                              th 库存(现货/在途)
+                              th 价格
+                          tbody
+                            tr
+                              td
+                                b #{shopStockView.carModelLv3FullName}
+                              td #{shopStockView.driveType}
+                              td #{shopStockView.gearType}
+                              td #{shopStockView.carOutsideColorName}
+                              td #{shopStockView.carInsideColorName}
+                              td #{shopStockView.carOnOrderNum} / #{shopStockView.carOnHandeNum}
+                              td(width='110px')
+                                span(style='color: #ec6197; font-size: 20pt;')  #{shopStockView.carPrice}万
+                            tr
+                              td(colspan='7')
+                                h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
+                              td(colspan='7')
+                                input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
         .span3
           //
              相关其他车辆 
@@ -137,7 +133,7 @@ block append content
             li.span6(style='')
               a.thumbnail
                 img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-    #myModal.modal.hide.fade(style='left: 40%; width: 750px;')
+    #myModal.modal.hide.fade(style='left: 40%; width: 780px;')
       .modal-body(style='border-radius: 4px 4px 4px 4px;')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')
           li.span3(style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;')
@@ -174,8 +170,15 @@ block append content
         if(currentFocusTr != trId){
           $("body").animate({scrollTop: $(elment).offset().top -58},1000);
           $("#" + trId).fadeIn();
+           currentFocusTr = trId;
         }
-        currentFocusTr = trId;
+        else{
+         currentFocusTr = "";
+        }
       }
       $('.carousel').carousel();
       $('td input').tooltip();
+      $("select[name='carModelLv3Name'],select[name='outsideColorName'],select[name='insideColorName']")
+      function changeStockCondition(){
+         
+      }

@@ -56,11 +56,18 @@
 		    Shop_Stock.*,
 		    Car_Model_Lv3.shortName as carModelLv3ShortName,
 		    Car_Model_Lv3.fullName as carModelLv3FullName,
-		    Car_Model_Lv3.FactoryPrice as FactoryPrice
+		    Car_Model_Lv3.FactoryPrice as FactoryPrice,
+		    Car_Model_Lv3.driveType as driveType,
+		    Car_Model_Lv3.gearType as gearType,
+		    (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
+            (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
+		    Shop.shopName as shopName
 		FROM
 		    Shop_Stock
 		LEFT JOIN
-		    Car_Model_Lv3 ON Shop_Stock.carModelLv3 = Car_Model_Lv3.id
+		    Car_Model_Lv3 ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+		LEFT JOIN
+		    Shop ON Shop.id = Shop_Stock.shop
 		WHERE
 		    Car_Model_Lv3.carModelLv2 = #{carModelLv2Id}
     </select>
@@ -71,11 +78,18 @@
             Shop_Stock.*,
             Car_Model_Lv3.shortName as carModelLv3ShortName,
             Car_Model_Lv3.fullName as carModelLv3FullName,
-            Car_Model_Lv3.FactoryPrice as FactoryPrice
+            Car_Model_Lv3.FactoryPrice as FactoryPrice,
+            Car_Model_Lv3.driveType as driveType,
+            Car_Model_Lv3.gearType as gearType,
+            (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
+            (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
+            Shop.shopName as shopName
         FROM
             Shop_Stock
         LEFT JOIN
-            Car_Model_Lv3 ON Shop_Stock.carModelLv3 = Car_Model_Lv3.id
+            Car_Model_Lv3 ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+        LEFT JOIN
+            Shop ON Shop.id = Shop_Stock.shop
         WHERE
             Shop_Stock.shop = #{shopId}
     </select>
@@ -83,8 +97,9 @@
     <!-- 保存ShopStock -->
     <insert id="saveShopStock" parameterType="map">
         INSERT INTO 
-          ShopStock 
-            (shop, 
+          Shop_Stock 
+          (
+            shop, 
             carModelLv3, 
             carOutsideColor, 
             carInsideColor, 
@@ -93,9 +108,11 @@
             </if>
             carPrice, 
             carOnOrderNum, 
-            carOnHandeNum)
+            carOnHandeNum
+          )
           VALUES
-            (#{shop, 
+          (
+            #{shop}, 
             #{carModelLv3}, 
             #{carOutsideColor}, 
             #{carInsideColor}, 
@@ -104,7 +121,8 @@
             </if>
             #{carPrice}, 
             #{carOnOrderNum}, 
-            #{carOnHandeNum})
+            #{carOnHandeNum}
+          )
     </insert>
     
     <!-- 更新ShopStock -->

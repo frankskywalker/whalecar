@@ -3,59 +3,105 @@ extends layout/mainFrame
 block append content
   .container(style='padding: 60px 0;')
     legend 用户注册
-    form.form-horizontal.span6
+    form.form-horizontal.span6#saveShopStockForm
         .control-group
-          label.control-label(for='car_type') 车型
+          label.control-label(for='carModelLv1') 车型
           .controls
-            select#car_type
-              option(value="") 请选择车型..
+            select#carModelLv1(name="carModelLv1")
+              option(value="") 请选择车型...
               each item in carModelLv1
                 option(value="#{item.id}") #{item.cname}
             br
             br
-            select
-              option 1.6L 自然呼吸 105马力
-              option 1.4T 涡轮增压 131马力
-              option 1.8T 涡轮增压 160马力
-              option 2.0T 涡轮增压 200马力
+            select#carModelLv2(name="carModelLv2")
+              option(value="") 请选择...
+            br
+            br
+            select#carModelLv3(name="carModelLv3")
+              option(value="") 请选择...
+              
         .control-group
-          label.control-label(for='car_look_color') 外观颜色
+          label.control-label(for='carOutsideColor') 外观颜色
           .controls
-            select#car_look_color
-              option 白色
-              option 黑色
-              option 蓝色
+            select#carOutsideColor(name="carOutsideColor")
+              option(value="0") 白色
+              option(value="1") 黑色
+              option(value="2") 蓝色
         .control-group
-          label.control-label(for='car_inner_color') 内饰颜色
+          label.control-label(for='carInsideColor') 内饰颜色
           .controls
-            select#car_inner_color
-              option 黑色
-              option 灰色
+            select#carInsideColor(name="carInsideColor")
+              option(value="1") 黑色
+              option(value="3") 灰色
         .control-group
-          label.control-label(for='addon') 附加信息
+          label.control-label(for='carAddition : String') 附加信息
           .controls
-            input#inlineCheckbox(type='checkbox', value='option1')
-            | 送进口贴膜
-            input#inlineCheckbox2(type='checkbox', value='option2')
-            | 导航
-            input#inlineCheckbox3(type='checkbox', value='option3')
-            | 100公里油卡
+            // TODO 附加信息
         .control-group
-          label.control-label(for='price') 价格
+          label.control-label(for='carPrice') 价格
           .controls
-            input#price(type='text', placeholder='价格')
+            input#carPrice(name="carPrice",type='text', placeholder='价格')
         .control-group
-          label.control-label(for='price') 库存(现货/在途)
+          label.control-label(for='carOnHandeNum') 库存(现货/在途)
           .controls
-            input#price.span1(type='text', placeholder='现货')
+            input#carOnHandeNum.span1(name="carOnHandeNum",type='text', placeholder='现货')
             | /
-            input#price.span1(type='text', placeholder='在途')
+            input#carOnOrderNum.span1(name="carOnOrderNum",type='text', placeholder='在途')
         .control-group
           .controls
-            a.btn.pull-right(href='./shop_home.html') 返回
-            a.btn.pull-right.btn-primary(href='#', data-toggle='modal', data-target='#myModal') 保存
-      #myModal.modal.hide.fade
+            a.btn.pull-right(href='./shophome') 返回
+            a.btn.pull-right.btn-primary(href='#', onClick="saveStock()") 保存
+      #saveSucModal.modal.hide.fade
         .modal-body
           p 保存成功
         .modal-footer
-          a.btn(href='#', onclick='window.location.href=\'./shop_home.html\'', data-dismiss='modal', aria-hidden='true') 确定
+          a.btn(href='#', onclick='window.location.href="./shophome"', data-dismiss='modal', aria-hidden='true') 确定
+  script.
+    $("#carModelLv1").change(function(){
+        var carModelLv1Id = $("#carModelLv1 option:selected").val();
+        $.getJSON("/dic?type=getCarModelLv2ByLv1Id&carModelLv1Id=" + carModelLv1Id,function(data){
+            $("#carModelLv2").empty();
+            $("#carModelLv2").append("<option value=''>请选择...</option>");
+            $.each(data,function(index,carModelLv2){
+                $("#carModelLv2").append("<option value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");
+            });
+        });
+    });
+    
+    $("#carModelLv2").change(function(){
+        var carModelLv2Id = $("#carModelLv2 option:selected").val();
+        $.getJSON("/dic?type=getCarModelLv3ByLv2Id&carModelLv2Id=" + carModelLv2Id,function(data){
+            $("#carModelLv3").empty();
+            $("#carModelLv3").append("<option value=''>请选择...</option>");
+            $.each(data,function(index,carModelLv3){
+                $("#carModelLv3").append("<option value='" + carModelLv3.id + "'>" + carModelLv3.fullName+ "</option>");
+            });
+        });
+    });
+    
+    $("#carModelLv3").change(function(){
+        var carModelLv3Id = $("#carModelLv3 option:selected").val();
+        $.getJSON("/dic?type=getDicColorByCarModelLv3&carModelLv3Id=" + carModelLv3Id,function(data){
+            $("#carOutsideColor").empty();
+            $("#carInsideColor").empty();
+            $("#carOutsideColor").append("<option value=''>请选择...</option>");
+            $("#carInsideColor").append("<option value=''>请选择...</option>");
+            $.each(data,function(index,dicColor){
+                $("#carOutsideColor").append("<option value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
+                $("#carInsideColor").append("<option value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
+            });
+        });
+    });
+
+    function saveStock(){
+         $.post("/shop?type=saveShopStock", $("#saveShopStockForm").serialize())
+        .done(function(data) {
+             alert(data.saveSuc);
+             if(data.saveSuc == true){
+                 $("#saveSucModal").modal("show");
+             }
+             else{
+                alert(data);
+             }
+         });
+    }

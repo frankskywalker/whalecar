@@ -16,4 +16,6 @@ public interface DicMapper {
 	public List<DicCity> queryAllDicCity();
 
 	public List<DicColor> queryAllDicColor();
+
+	public List<DicColor> queryDicColorBycarModelLv3(Integer carModelLv3Id);
 }

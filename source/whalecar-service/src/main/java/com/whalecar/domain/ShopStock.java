@@ -1,5 +1,7 @@
 package com.whalecar.domain;
 
+import java.math.BigDecimal;
+
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
 /**
@@ -13,7 +15,7 @@ public class ShopStock implements java.io.Serializable {
 	private int carOutsideColor;
 	private int carInsideColor;
 	private String carAddition;
-	private long carPrice;
+	private BigDecimal carPrice;
 	private int carOnOrderNum;
 	private int carOnHandeNum;
 
@@ -21,7 +23,7 @@ public class ShopStock implements java.io.Serializable {
 	}
 
 	public ShopStock(int shop, int carModelLv3, int carOutsideColor,
-			int carInsideColor, long carPrice, int carOnOrderNum,
+			int carInsideColor, BigDecimal carPrice, int carOnOrderNum,
 			int carOnHandeNum) {
 		this.shop = shop;
 		this.carModelLv3 = carModelLv3;
@@ -33,7 +35,7 @@ public class ShopStock implements java.io.Serializable {
 	}
 
 	public ShopStock(int shop, int carModelLv3, int carOutsideColor,
-			int carInsideColor, String carAddition, long carPrice,
+			int carInsideColor, String carAddition, BigDecimal carPrice,
 			int carOnOrderNum, int carOnHandeNum) {
 		this.shop = shop;
 		this.carModelLv3 = carModelLv3;
@@ -93,11 +95,11 @@ public class ShopStock implements java.io.Serializable {
 		this.carAddition = carAddition;
 	}
 
-	public long getCarPrice() {
+	public BigDecimal getCarPrice() {
 		return this.carPrice;
 	}
 
-	public void setCarPrice(long carPrice) {
+	public void setCarPrice(BigDecimal carPrice) {
 		this.carPrice = carPrice;
 	}
 

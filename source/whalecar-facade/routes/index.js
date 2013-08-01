@@ -72,7 +72,8 @@ exports.page = function(req, res, next) {
             allBrands: results.allBrands,
             carModels: results.carModels,
             carModelViews: results.carModelViews,
-            conditionParams: modelViewConditionParams
+            conditionParams: modelViewConditionParams,
+            isRefresh : req.query.isRefresh
         });
     });
 };

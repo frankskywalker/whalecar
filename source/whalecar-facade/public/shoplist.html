@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>鲸宝汽车网</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      /* Custom container */
+      .container {
+        margin: 0 auto;
+        max-width: 960px;
+      }
+      li > a {
+	  color: #999999;
+      }
+      
+      b {
+	color:#0088cc;
+      }
+      
+      body {
+	  background-color: #F0F0F0;
+	  color: #333333;
+	  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	  font-size: 14px;
+	  line-height: 20px;
+	  margin: 0;
+      }
+      
+      element.style {
+	  margin: 0 0 17px;
+	  color: #999999;
+      }
+      h1, h2, h3, h4, h5, h6 {
+	  color: #999999;
+	  font-family: inherit;
+	  font-weight: bold;
+	  line-height: 20px;
+	  margin: 0;
+	  text-rendering: optimizelegibility;
+      }
+      .navbar-inverse .navbar-inner {
+	  /*background-color: #333333;*/
+	  background-image: linear-gradient(to bottom, #333333, #222222);
+	  background-repeat: repeat-x;
+	  border-color: #252525;
+      }
+      
+      .nav .dropdown-toggle .caret {
+	  border-top-color: #999999;
+      }
+      
+      .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+	  background-color: #222222;
+	  color: #FFFFFF;
+	  border-radius: 10px 10px 10px 10px;
+	  font-weight: bold;
+      }
+      
+      .thumbnail{
+	padding:10px;
+	padding-bottom: 0;
+	background-color: #FFFFFF;
+      }
+      
+      .thumbnail .caption {
+	  color: #555555;
+	  padding: 0px;
+      }
+      
+      p {
+	  margin: 0 0 0px;
+	  color: #555555;
+      }
+      
+      .dropdown-menu > li >a:hover,
+      .dropdown-menu>li>a:focus,
+      .dropdown-submenu:hover >li>a,
+      .dropdown-submenu:focus > a{
+	background-color: #444444;
+	background-image:linear-gradient(to bottom,#666666,#666666);
+      }
+      
+      .dropdown-menu {
+	  background-color: #444444;
+      }
+      
+      .dropdown-menu > li > a {
+	  color: #ffffff;
+      }
+      
+      .nav {
+	margin-bottom: 0px;
+	}
+    </style>
+  </head>
+  <body>
+    <!-- navbar start-->
+  	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">鲸宝汽车网</a>
+          <ul class="nav">
+            <li>
+            	<a href="/">汽车频道</a>
+            </li>
+            <li class="active">
+                <a href="./shoplist.html">4s店频道</a>
+            </li>
+            <li>
+                <a href="./building.html">移动应用</a>
+            </li>
+<!--            <li class="divider-vertical"></li>-->
+            <li>
+  	            <a href="./building.html">关于我们</a>
+            </li>
+          </ul>
+	  <ul class="nav pull-right">
+            <li>
+            	<a href="./user_home.html">订单管理</a>
+            </li>
+	    <li>
+            	<a href="./shop_home.html">4s店管理</a>
+            </li>
+         </div>
+      </div>
+    </div>
+    <!-- navbar end -->
+    <!-- condition -->
+    <div class="container" style="padding: 45px 0;">
+      <div class="row-fluid">
+	<div class="span8">
+	    <ul class="nav nav-pills">
+	      <!-- 城市 -->
+	      <li class="dropdown">
+		<a id="cityButton" data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#"><span id="cityName">城市</span><b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a onClick="$('#cityName').html('城市')" href="#">不限</a></li>
+			<li><a onClick="$('#cityName').html('宁波')" href="#">宁波</a></li>
+		</ul>
+	      </li>
+	      <!-- 品牌 -->
+	      <li class="dropdown">
+		<a data-hover="dropdown" data-delay="300" class="dropdown-toggle" data-toggle="dropdown" href="#"><span id="brandValue">品牌</span><b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a onClick="$('#brandValue').html('品牌')" href="#">不限</a></li>
+			<li><a onClick="$('#brandValue').html('大众')" href="#">大众</a></li>
+		</ul>
+	      </li>
+	    </ul>
+	</div>
+	<div class="span4">
+	      <div class="pagination pagination-small pagination-right" style="margin:5px auto;">
+	      <ul>
+	      <li class="disabled"><a href="#">前一页</a></li>
+	      <li class="active"><a href="#">1</a></li>
+	      <li><a href="#">2</a></li>
+	      <li><a href="#">3</a></li>
+	      <li><a href="#">4</a></li>
+	      <li><a href="#">5</a></li>
+	      <li><a href="#">后一页</a></li>
+	      </ul>
+	      </div>
+	</div>
+      </div>
+      <hr style="margin:0px 0px 17px;">
+      <div class="row-fluid">
+	<div class="span9">
+	  <ul class="media-list">
+	    <li class="media">
+	      <div class="pull-left">
+		<img class="media-object" data-src="holder.js/32x32" width="80px" src="img/dasauto-logo.jpg">
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car10.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="media-body">
+		<a href="./shopinfo.html"><h5 class="media-heading">上海大众宁波兴宁达众汽车销售服务有限公司</h5></a>
+		<h6>地址：浙江宁波市江东兴宁路178号[查看地图]<br/>
+		电话：4008189666-2173</h6>	
+	      </div>
+	    </li>
+	    <li class="media">
+	      <div class="pull-left">
+		<img class="media-object" data-src="holder.js/32x32" width="80px" src="img/dasauto-logo.jpg">
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car10.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="media-body">
+		<a href="./shopinfo.html"><h5 class="media-heading">上海大众宁波兴宁达众汽车销售服务有限公司</h5></a>
+		<h6>地址：浙江宁波市江东兴宁路178号[查看地图]<br/>
+		电话：4008189666-2173</h6>	
+	      </div>
+	    </li>
+	    <li class="media">
+	      <div class="pull-left">
+		<img class="media-object" data-src="holder.js/32x32" width="80px" src="img/dasauto-logo.jpg">
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car10.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="media-body">
+		<a href="./shopinfo.html"><h5 class="media-heading">上海大众宁波兴宁达众汽车销售服务有限公司</h5></a>
+		<h6>地址：浙江宁波市江东兴宁路178号[查看地图]<br/>
+		电话：4008189666-2173</h6>	
+	      </div>
+	    </li>
+	    <li class="media">
+	      <div class="pull-left">
+		<img class="media-object" data-src="holder.js/32x32" width="80px" src="img/dasauto-logo.jpg">
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car10.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="pull-right">
+		<img class="media-object" data-src="holder.js/64x64" width="100px" src="img/car11.jpg">
+		<p>库存：10</p>
+	      </div>
+	      <div class="media-body">
+		<a href="./shopinfo.html"><h5 class="media-heading">上海大众宁波兴宁达众汽车销售服务有限公司</h5></a>
+		<h6>地址：浙江宁波市江东兴宁路178号[查看地图]<br/>
+		电话：4008189666-2173</h6>	
+	      </div>
+	    </li>
+	  </ul>
+	</div>
+	<div class="span3">
+	  <legend>促销信息</legend>
+	  <ul>
+	    <li><a href="#">进口大众尚酷23万元起 6月10日有活动</a></li>
+	    <li><a href="#">进口大众尚酷23万元起 6月10日有活动</a></li>
+	    <li><a href="#">进口大众尚酷23万元起 6月10日有活动</a></li>
+	    <li><a href="#">进口大众尚酷23万元起 6月10日有活动</a></li>
+	  </ul>
+	</div>
+      </div>
+    </div>
+    <script src="js/jquery-1.10.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/twitter-bootstrap-hover-dropdown.min.js"></script>
+  </body>
+</html>

@@ -2,6 +2,7 @@ package com.whalecar.service;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,5 +44,26 @@ public class DicService {
 	public @ResponseBody
 	List<DicColor> getAllDicColor() {
 		return dicMapper.queryAllDicColor();
+	}
+
+	/**
+	 * 
+	 * @param carModelLv3Id
+	 * @param outOrInColor
+	 *            eumn : "out"/"in"
+	 * @return
+	 */
+	@RequestMapping("/getDicColorByCarModelLv3")
+	public @ResponseBody
+	List<DicColor> getDicColorByCarModelLv3(Integer carModelLv3Id,
+			String outOrInColor) {
+		if (StringUtils.equals(outOrInColor, "out")) {
+			return dicMapper.queryDicColorBycarModelLv3(carModelLv3Id);
+		} else if (StringUtils.equals(outOrInColor, "in")) {
+			// TODO 补充内饰颜色查询
+			return null;
+		} else {
+			return null;
+		}
 	}
 }

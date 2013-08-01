@@ -4,17 +4,20 @@ block append css
   link(href='css/index.css', rel='stylesheet', media='screen')
   link(rel="stylesheet",href="css/carousel.css",media="all",type="text/css")
 block append js
-  script(type="text/javascript",src="js/jquery.simplyscroll.min.js")
   script(type="text/javascript",src="js/jquery.carouFredSel-6.0.4-packed.js")
   
 
 block append content
-  div#wrapper
-    div#carousel
-      img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height="450" )
-      img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
-      img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height="450" )
-      img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
+  div#banner
+    div#wrapper(style="display:#{!isRefresh ? '':'none'}")
+     div#carousel
+        img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height="450" )
+        img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
+        img(src="img/scrollimg/adv1.jpg",alt="adv1",width="990",height=" 450")
+        img(src="img/scrollimg/adv2.jpg",alt="adv1",width="990",height="450" )
+    div#wrapperOpener(href="#",style="padding-top:59px;display:#{!isRefresh ? 'none':''}")
+      hr
+    
 
   .container(style='padding: 0px 0;')
     //
@@ -22,7 +25,88 @@ block append content
         img(src='img/progress.png')
     .row-fluid
       .span8
-        div(style="height: 10px;padding-top: 15px;") 
+          div.btn-toolbar(style="height: 10px;padding-top: 20px;")
+              .btn-group
+                   //城市
+                   div.btn-group
+                       a(type="button",href="#",class="btn dropdown-toggle",data-toggle="dropdown",style="color: #555555;") 城 市
+                           span.caret
+                       ul.dropdown-menu(role="menu",aria-labelledby="dLabel")
+                          li
+                            a(href="#",onClick="conditionSelect('city','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                            each dicCity in allDicCitys
+                               li
+                                 a(href="#",onClick="conditionSelect('city','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                                     if dicCity.id == conditionParams.city
+                                         h4(style="color: rgb(170, 61, 70);")= dicCity.cityCname
+                                     else
+                                         | #{dicCity.cityCname}
+                   //品牌
+                   div.btn-group
+                       a(type="button",href="#",class="btn dropdown-toggle",data-toggle="dropdown",style="color: #555555;") 品 牌
+                          span.caret
+                       ul.dropdown-menu
+                          li
+                            a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                            each brand in allBrands
+                              li
+                                a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                                  if brand.id == conditionParams.carBrand
+                                    h4(style="color: rgb(170, 61, 70);")= brand.cname	
+                                  else
+                                    | #{brand.cname}
+                   //车型
+                   div.btn-group
+                       a(type="button",href="#",class="btn dropdown-toggle",data-toggle="dropdown",style="color: #555555;") 车 型
+                         span.caret
+                       ul.dropdown-menu
+                         li
+                           a(href="#",onClick="conditionSelect('carModel','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                           each carModel in carModels
+                             li
+                               a(href="#",onClick="conditionSelect('carModel','#{carModel.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                                   if carModel.id == conditionParams.carModelLv1
+                                       h4(style="color: rgb(170, 61, 70);")= carModel.cname
+                                   else
+                                       | #{carModel.cname}
+                   //价格
+                   div.btn-group
+                       a(type="button",href="#",class="btn dropdown-toggle",data-toggle="dropdown",style="color: #555555;") 价 格
+                          span.caret
+                       ul.dropdown-menu
+                         li
+                           a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                         li
+                           a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                               if conditionParams.priceMax == 5
+                                  h4(style="color: rgb(170, 61, 70);") 1万 ~ 5万
+                               else
+                                  | 1万 ~ 5万
+                         li
+                           a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                               if conditionParams.priceMax == 10
+                                   h4(style="color: rgb(170, 61, 70);") 5万 ~ 10万
+                               else
+                                   | 5万 ~ 10万
+                         li
+                           a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                               if conditionParams.priceMax == 20
+                                   h4(style="color: rgb(170, 61, 70);") 10万 ~ 20万
+                               else
+                                   | 10万 ~ 20万
+                         li
+                           a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                               if conditionParams.priceMax == 50
+                                   h4(style="color: rgb(170, 61, 70);") 20万 ~ 50万
+                               else
+                                   | 20万 ~ 50万
+                         li
+                           a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                               if conditionParams.priceMin == 50
+                                   h4(style="color: rgb(170, 61, 70);") 50万以上
+                               else
+                                   | 50万以上
+        // div(style="height: 10px;padding-top: 15px;") 
           ul.nav.nav-tabs(style="border-bottom:0px;")
             li(id="city")
               a(href="#")
@@ -99,23 +183,23 @@ block append content
     hr(style='margin: 0px 0px 17px;')
      // 列表
     .row-fluid
-      <ul class='thumbnails'> 
+      <ul class='thumbnails'>
       each carModelView, i in carModelViews.items
-        li.span3
+        li.span3(style="width:210px;margin-right: 13px;margin-left: 12px;")
           a.thumbnail(href='./car?id=#{carModelView.carModelLv1}', style='padding: 0px;')
-            div(name='hoverdiv', style='height: 190px; width: 220px;')
-              div(name='imgdiv', style='width: 220px; position: absolute;')
-                img(data-src='holder.js/210x140', alt='210x140', style='border-radius:4px 4px 0px 0px;width: 230px; height: 150px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
-                .caption(style="height: 40px; padding: 10px;")
-                  h4.text-center 市场价:#{!carModelView.factoryPriceMin? "12.5" :carModelView.factoryPriceMin }万 ～ #{!carModelView.factoryPriceMax ? 15.3 : carModelView.factoryPriceMax }万
+            div(name='hoverdiv', style='height: 170px; width: 200px;')
+              div(name='imgdiv', style='width: 190px; position: absolute;padding: 10px;')
+                img(data-src='holder.js/210x140', alt='210x140', style='border-radius:4px 4px 0px 0px;width: 190px; height: 140px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
+                .caption(style="height: 20px; padding: 0px;")
+                  h4.text-center(style="font-size:15px") 市场价:#{carModelView.factoryPriceMin}万 ～ #{carModelView.factoryPriceMax }万
               div(name='coverdiv', style='position: absolute; display: none;')
                 div(style='height: 110px; padding: 20px;')
                   strong #{carModelView.brandCname} #{carModelView.cname}
                   h6 1.4T 1.8T 2.0T
                   h6 横置前驱
                   h6 7档双离合
-                .caption(style='background-image: url(img/hover-price.png);padding:10px 10px 10px 10px; width: 200px; border-radius: 0px 0px 4px 4px;')
-                  h4.text-center(style='color: #ffffff;') 网站价:13.1万 ～ 22.5万
+                .caption(style='background-image: url(img/hover-price.png);padding:0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                  h4.text-center(style='color: #ffffff;font-size:15px;') 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万
           h5 #{carModelView.brandCname} #{carModelView.cname}
         if i != 0 && (i+1) % 4 == 0
           </ul><ul class='thumbnails'>
@@ -128,6 +212,7 @@ block append content
     input(type="hidden",name="priceMin",id="form_priceMin",value="#{conditionParams.priceMin}")
     input(type="hidden",name="priceMax",id="form_priceMax",value="#{conditionParams.priceMax}")
     input(type="hidden",name="city",id="form_city",value="#{conditionParams.city}")
+    input(type="hidden",name="isRefresh",id="isRefresh",value="true")
 
   script.
     // 提交筛选事件
@@ -200,7 +285,7 @@ block append content
       });
     });
     
-    $(function() {
+    $(document).ready(function() {
       $('#carousel').carouFredSel({
         width: '100%',
         items: {
@@ -220,3 +305,26 @@ block append content
         }
       });
     });
+    //广告栏鼠标悬停效果
+    var carouselIsHover = false;
+    $("#banner").hover(function(){
+        carouselIsHover = true;
+    },function(){
+        carouselIsHover = false;
+    });
+    $("#banner").click(function(){
+        $("#wrapperOpener").hide();
+        $("#wrapper").slideDown('slow');
+        
+    });
+    $(document).click(function(){
+        if(!carouselIsHover){
+            $("#wrapper").slideUp('slow');
+            $("#wrapperOpener").show();
+        }
+    });
+    $('.dropdown-toggle').dropdown();
+    $("div.btn-toolbar div.btn-group>.dropdown-toggle").bind("mouseenter",function(){
+        $(this).click();
+    });
+    

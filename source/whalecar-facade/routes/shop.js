@@ -7,11 +7,14 @@ var async = require("async");
 
 exports.action = function(req, res, next) {
     var type = req.query.type;
-    console.info("type:" + type);
+    console.log("type:" + type);
     if (type == "login") {
         login(req, res, next);
     } else if (type == "saveshop") {
-        saveshop(req, res, next);
+        saveShop(req, res, next);
+    }
+    else if(type=="saveShopStock"){
+	saveShopStock(req,res,next);
     }
 };
 
@@ -26,6 +29,7 @@ exports.stockeditor = function(req, res, next) {
             });
         }
     },
+
     function(err, results) {
         if (err) {
             next(err);
@@ -101,10 +105,25 @@ function login(req, res, next) {
     });
 }
 
-function saveshop(req, res, next) {
+function saveShop(req, res, next) {
     var shopMap = req.body;
     shopMap.id = req.session.currentShop.id;
     service.client.post("/updateShop", shopMap, function(error,
+    request, response, data) {
+        if (error) {
+            next(error);
+        } else {
+            res.send({
+                saveSuc: data
+            });
+        }
+    });
+}
+
+function saveShopStock(req, res, next) {
+    var shopStock = req.body;
+    shopStock.shop = req.session.currentShop.id;
+    service.client.post("/saveOrUpdateShopStock", shopStock, function(error,
     request, response, data) {
         if (error) {
             next(error);

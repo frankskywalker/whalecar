@@ -41,7 +41,7 @@
        SELECT
            *
        FROM Car_Model_Lv3
-       WHERE flagUseable = 'yes' and carModelLv1 = #{carModelLv2Id}
+       WHERE flagUseable = 'yes' and carModelLv2 = #{carModelLv2Id}
        ORDER BY orderIndex
     </select>
 	

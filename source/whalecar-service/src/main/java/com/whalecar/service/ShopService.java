@@ -3,7 +3,6 @@ package com.whalecar.service;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -65,9 +64,8 @@ public class ShopService {
 	@RequestMapping(method = RequestMethod.POST, value = "/saveOrUpdateShopStock")
 	public @ResponseBody
 	boolean saveOrUpdateShopStock(@RequestBody Map<String, Object> shopStock) {
-		String shopStockId = String.valueOf(shopStock.get("id"));
 		int result;
-		if (StringUtils.isBlank(shopStockId)) {
+		if (shopStock.get("id") == null) {
 			result = shopMapper.saveShopStock(shopStock);
 		} else {
 			result = shopMapper.updateShopStock(shopStock);

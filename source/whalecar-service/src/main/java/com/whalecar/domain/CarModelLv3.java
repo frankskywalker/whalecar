@@ -1,5 +1,7 @@
 package com.whalecar.domain;
 
+import java.math.BigDecimal;
+
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
 /**
@@ -13,16 +15,24 @@ public class CarModelLv3 implements java.io.Serializable {
 	private String fullName;
 	private String colorOutsideCollection;
 	private String colorInsideCollection;
-	private long factoryPrice;
+	private BigDecimal factoryPrice;
 	private Integer orderIndex;
 	private String flagUseable;
+	/**
+	 * 驱动类型
+	 */
+	private String driveType;
+	/**
+	 * 变速箱类型
+	 */
+	private String gearType;
 
 	public CarModelLv3() {
 	}
 
 	public CarModelLv3(int carModelLv2, String shortName, String fullName,
 			String colorOutsideCollection, String colorInsideCollection,
-			long factoryPrice, String flagUseable) {
+			BigDecimal factoryPrice, String flagUseable) {
 		this.carModelLv2 = carModelLv2;
 		this.shortName = shortName;
 		this.fullName = fullName;
@@ -34,7 +44,7 @@ public class CarModelLv3 implements java.io.Serializable {
 
 	public CarModelLv3(int carModelLv2, String shortName, String fullName,
 			String colorOutsideCollection, String colorInsideCollection,
-			long factoryPrice, Integer orderIndex, String flagUseable) {
+			BigDecimal factoryPrice, Integer orderIndex, String flagUseable) {
 		this.carModelLv2 = carModelLv2;
 		this.shortName = shortName;
 		this.fullName = fullName;
@@ -93,11 +103,11 @@ public class CarModelLv3 implements java.io.Serializable {
 		this.colorInsideCollection = colorInsideCollection;
 	}
 
-	public long getFactoryPrice() {
+	public BigDecimal getFactoryPrice() {
 		return this.factoryPrice;
 	}
 
-	public void setFactoryPrice(long factoryPrice) {
+	public void setFactoryPrice(BigDecimal factoryPrice) {
 		this.factoryPrice = factoryPrice;
 	}
 
@@ -115,6 +125,22 @@ public class CarModelLv3 implements java.io.Serializable {
 
 	public void setFlagUseable(String flagUseable) {
 		this.flagUseable = flagUseable;
+	}
+
+	public String getDriveType() {
+		return driveType;
+	}
+
+	public void setDriveType(String driveType) {
+		this.driveType = driveType;
+	}
+
+	public String getGearType() {
+		return gearType;
+	}
+
+	public void setGearType(String gearType) {
+		this.gearType = gearType;
 	}
 
 }
