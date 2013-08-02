@@ -11,3 +11,5 @@ Thumbs.db
 
 *.class
 source/whalecar-service/target
+source/whalecar-service/.settings
+source/whalecar-service/.project

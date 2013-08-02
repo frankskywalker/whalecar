@@ -11,7 +11,7 @@
 	<properties>
 		<org.springframework.version>3.2.3.RELEASE</org.springframework.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<dependencies>
@@ -97,10 +97,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
+			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.12</version>
 		</dependency>
-		
+
 		<!-- tools -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -126,30 +126,52 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.0.0.RC2</version>
 				<configuration>
-				    <stopPort>9966</stopPort>
-				    <stopKey>foo</stopKey>
-			    </configuration>
+					<stopPort>9966</stopPort>
+					<stopKey>foo</stopKey>
+				</configuration>
 			</plugin>
 			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-resources-plugin</artifactId>
-		        <version>2.6</version>
-		        <configuration>
-		          <overwrite>true</overwrite>
-		          <resources>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<overwrite>true</overwrite>
+					<resources>
 						<resource>
-					       	<directory>src/main/resources</directory>
-					     </resource>
-					     <!-- 为了将mybatis的sqlMapper复制到classpath中 -->
-					     <resource>
-          					<directory>src/main/java</directory>  
-          					<includes>  
-              					<include>**/*.xml</include>  
-          					</includes>  
-       					</resource>  
+							<directory>src/main/resources</directory>
+						</resource>
+						<!-- 为了将mybatis的sqlMapper复制到classpath中 -->
+						<resource>
+							<directory>src/main/java</directory>
+							<includes>
+								<include>**/*.xml</include>
+							</includes>
+						</resource>
 					</resources>
-		        </configuration>
-	      	</plugin>
+				</configuration>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/java</directory>
+									<includes>
+		                                <include>**/*.xml</include>
+		                            </includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
