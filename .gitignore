@@ -13,3 +13,5 @@ Thumbs.db
 source/whalecar-service/target
 source/whalecar-service/.settings
 source/whalecar-service/.project
+
+source/whalecar-facade/node-modules
