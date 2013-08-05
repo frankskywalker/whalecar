@@ -6,7 +6,9 @@ var index = require('./routes/index'),
     dic = require('./routes/dic'),
     user = require('./routes/user'),
     car = require('./routes/car'),
-    shop = require('./routes/shop');
+    shop = require('./routes/shop'),
+    navbar = require('./routes/navbar');
+    
 
 var app = express();
 
@@ -25,6 +27,7 @@ app.use(function(req, res, next) {
     res.locals.session = req.session;
     next();
 });
+app.use(navbar.initData);
 app.use(app.router);
 // process error
 app.use(function(err, req, res, next) {

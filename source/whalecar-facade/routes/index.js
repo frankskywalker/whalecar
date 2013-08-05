@@ -66,11 +66,10 @@ exports.page = function(req, res, next) {
         if (err) {
             next(err);
         }
+        //放到session里面，保证每个页面都能获取到当前条件
+        res.locals.session.conditionParams = modelViewConditionParams;
         // render peage
         res.render("index", {
-            allDicCitys: results.allDicCitys,
-            allBrands: results.allBrands,
-            carModels: results.carModels,
             carModelViews: results.carModelViews,
             conditionParams: modelViewConditionParams,
             isRefresh : req.query.isRefresh
