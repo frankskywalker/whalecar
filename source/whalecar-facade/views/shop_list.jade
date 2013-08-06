@@ -1,0 +1,137 @@
+extends layout/mainFrame
+
+block append content
+  .container(style='padding: 45px 0;')
+    .row-fluid
+        .span8
+          ul.nav.nav-pills
+            //
+               城市 
+            li.dropdown
+              a#cityButton.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
+                span#cityName 城市
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(onclick='$(\'#cityName\').html(\'城市\')', href='#') 不限
+                li
+                  a(onclick='$(\'#cityName\').html(\'宁波\')', href='#') 宁波
+            //
+               品牌 
+            li.dropdown
+              a.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
+                span#brandValue 品牌
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(onclick='$(\'#brandValue\').html(\'品牌\')', href='#') 不限
+                li
+                  a(onclick='$(\'#brandValue\').html(\'大众\')', href='#') 大众
+        .span4
+          .pagination.pagination-small.pagination-right(style='margin: 5px auto;')
+            ul
+              li.disabled
+                a(href='#') 前一页
+              li.active
+                a(href='#') 1
+              li
+                a(href='#') 2
+              li
+                a(href='#') 3
+              li
+                a(href='#') 4
+              li
+                a(href='#') 5
+              li
+                a(href='#') 后一页
+      hr(style='margin: 0px 0px 17px;')
+      .row-fluid
+        .span9
+          ul.media-list
+            li.media
+              .pull-left
+                img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car10.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .media-body
+                a(href='./shopinfo.html')
+                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
+                h6
+                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
+                  br
+                  | 电话：4008189666-2173
+            li.media
+              .pull-left
+                img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car10.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .media-body
+                a(href='./shopinfo.html')
+                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
+                h6
+                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
+                  br
+                  | 电话：4008189666-2173
+            li.media
+              .pull-left
+                img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car10.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .media-body
+                a(href='./shopinfo.html')
+                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
+                h6
+                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
+                  br
+                  | 电话：4008189666-2173
+            li.media
+              .pull-left
+                img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car10.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .pull-right
+                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
+                p 库存：10
+              .media-body
+                a(href='./shopinfo.html')
+                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
+                h6
+                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
+                  br
+                  | 电话：4008189666-2173
+        .span3
+          legend 促销信息
+          ul
+            li
+              a(href='#') 进口大众尚酷23万元起 6月10日有活动
+            li
+              a(href='#') 进口大众尚酷23万元起 6月10日有活动
+            li
+              a(href='#') 进口大众尚酷23万元起 6月10日有活动
+            li
+              a(href='#') 进口大众尚酷23万元起 6月10日有活动

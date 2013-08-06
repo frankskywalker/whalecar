@@ -24,46 +24,12 @@ block append content
       div(align='center')
         img(src='img/progress.png')
     .row-fluid(heigth)
-      .span8
-          div.btn-toolbar(style="height: 10px;padding-top: 0px;margin-left:10px;")
+      .span7
+          div.btn-toolbar(style="height: 10px;padding-top: 0px;margin-left:10px;") 
               .btn-group
-                   //价格
-                   //div.btn-group
-                       a(type="button",href="#",class="btn dropdown-toggle",data-toggle="dropdown",style="color: #555555;") 价 格
-                          span.caret
-                       ul.dropdown-menu
-                         li
-                           a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-                         li
-                           a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 5
-                                  h4(style="color: rgb(170, 61, 70);") 1万 ~ 5万
-                               else
-                                  | 1万 ~ 5万
-                         li
-                           a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 10
-                                   h4(style="color: rgb(170, 61, 70);") 5万 ~ 10万
-                               else
-                                   | 5万 ~ 10万
-                         li
-                           a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 20
-                                   h4(style="color: rgb(170, 61, 70);") 10万 ~ 20万
-                               else
-                                   | 10万 ~ 20万
-                         li
-                           a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 50
-                                   h4(style="color: rgb(170, 61, 70);") 20万 ~ 50万
-                               else
-                                   | 20万 ~ 50万
-                         li
-                           a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMin == 50
-                                   h4(style="color: rgb(170, 61, 70);") 50万以上
-                               else
-                                   | 50万以上
+                   button.btn.btn-small(style="color: #555555;",onClick="orderSelect") 价格
+                   button.btn.btn-small(style="color: #555555;") 销量
+                       
       .span4
         .pagination.pagination-small.pagination-right(style='float:right;width:180px;margin: 10px 10px 0 0;')
            span(style='float:left;height: 25px;padding-top:6px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}

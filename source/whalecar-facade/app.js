@@ -62,6 +62,7 @@ app.all('/car', car.page);
 app.all('/shophome', shop.homepage);
 app.all('/shop',shop.action);
 app.all('/stockeditor',shop.stockeditor);
+app.all('/shoplist',shop.shoplist);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));

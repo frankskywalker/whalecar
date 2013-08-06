@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,15 +23,131 @@
 						<img src="img/logo2.png" alt="logo" width="100px" height="40px">
 					</div>
 					<ul style="margin-bottom: 5px; margin-top: 18px" class="nav">
-						<li style="padding: 0px 5px;"><a href="/">汽车频道</a></li>
+						<li style="padding: 0px 5px;"><div
+								class="nav-collapse collapse">
+								<ul class="nav">
+									<li><a data-toggle="dropdown" href="/" id="navCarLink"
+										class="dropdown-toggle">汽车频道<span class="caret"></span></a>
+										<ul role="menu" class="dropdown-menu">
+											<li class="dropdown-submenu"><a tabindex="-1" href="#">城市</a>
+												<ul class="dropdown-menu">
+													<li><a href="#"
+														onClick="conditionSelect('city','',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">不限</a></li>
+													<li><a href="#"
+														onClick="conditionSelect('city','1',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">杭州</a></li>
+												</ul></li>
+											<li class="dropdown-submenu"><a tabindex="-1" href="#">品牌</a>
+												<ul class="dropdown-menu">
+													<li><a href="#"
+														onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);"
+														style="color: #FFFFFF; padding-left: 7px;">不限</a></li>
+													<li class="dropdown-submenu"><a href="#"
+														onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','26',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">大众</a>
+														<ul class="dropdown-menu">
+															<li><a href="#"
+																onClick="conditionSelect('carModel','',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">不限</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','218',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">POLO</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','219',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">帕萨特</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','220',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">新桑塔纳</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','221',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">朗行</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','222',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">朗逸</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','223',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">途安</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','224',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">途观</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','225',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">一汽-大众CC</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','226',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">宝来</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','227',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">宝来/宝来经典</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','228',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">捷达</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','229',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">迈腾</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','230',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">速腾</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','231',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">高尔夫</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','232',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">Amarok</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','233',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">BlueSport</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','234',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">Bulli</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','235',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">Cross
+																	Coupe</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','236',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">CrossBlue</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','237',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">Jetta</a></li>
+															<li><a href="#"
+																onClick="conditionSelect('carModel','238',true,true);"
+																style="color: #FFFFFF; padding-left: 7px;">Passat</a></li>
+														</ul></li>
+												</ul></li>
+											<li class="dropdown-submenu"><a tabindex="-1" href="#">价格</a>
+												<ul class="dropdown-menu">
+													<li><a href="#"
+														onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">不限</a></li>
+													<li><a href="#"
+														onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">1万 ~ 5万</a></li>
+													<li><a href="#"
+														onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">5万 ~ 10万</a></li>
+													<li><a href="#"
+														onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">10万 ~ 20万</a></li>
+													<li><a href="#"
+														onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">20万 ~ 50万</a></li>
+													<li><a href="#"
+														onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);"
+														style="color: #FFFFFF; padding-left: 7px;">50万以上</a></li>
+												</ul></li>
+										</ul></li>
+								</ul>
+							</div></li>
 						<li style="padding: 0px 5px;"><a href="/shoplist">4s店频道</a></li>
 						<li style="padding: 0px 5px;"><a href="/buildingl">移动应用</a></li>
 						<li style="padding: 0px 5px;"><a href="/building">关于我们</a></li>
 					</ul>
 					<ul style="margin-top: 15px" class="nav pull-right">
 						<li><a href="#loginModal" role="button" data-toggle="modal"><img
-								src="img/login.png" alt="logo"> 登陆 <img src="img/RSS.PNG"
-								alt="RSS"></a></li>
+								src="img/login.png" alt="logo"> 登陆 <img src="img/rss.png"
+								alt="登陆"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -64,7 +179,6 @@
 					<div id="login-error" class="alert alert-error hide">用户名密码错误，请重新输入!</div>
 					<div id="login-succee" class="alert alert-success hide">登陆成功</div>
 				</form>
-				<div style="display: none"></div>
 			</div>
 			<div class="modal-footer">
 				<a href="#" onClick="switchLoginAndRegist('login');" class="btn">注册</a><a
@@ -190,6 +304,9 @@
 		$($("ul.nav li a[href='" + path + "']").parents('li'))
 			.addClass('active')
 	    });
+	    $("#navCarLink").bind("mouseenter", function() {
+		$(this).click();
+	    });
 	</script>
 		<div id="banner">
 			<div id="wrapper" style="display:">
@@ -201,96 +318,33 @@
 						src="img/scrollimg/adv2.png" alt="adv1" width="990" height="450">
 				</div>
 			</div>
-			<div id="wrapperOpener" href="#" style="padding-top: 59px; display:none">
+			<div id="wrapperOpener" href="#"
+				style="padding-top: 59px; display: none">
 				<img src="img/sildedown.png" style="width: 25px" class="pull-right">
 			</div>
 		</div>
 		<div style="padding: 0px 0;" class="container">
 			<!--<div align="center"><img src="img/progress.png"></div>-->
 			<div heigth class="row-fluid">
-				<div class="span8">
+				<div class="span7">
 					<div style="height: 10px; padding-top: 0px; margin-left: 10px;"
 						class="btn-toolbar">
 						<div class="btn-group">
-							<!--城市-->
-							<div class="btn-group">
-								<a type="button" href="#" data-toggle="dropdown"
-									style="color: #555555;" class="btn dropdown-toggle">城 市<span
-									class="caret"></span></a>
-								<ul role="menu" aria-labelledby="dLabel" class="dropdown-menu">
-									<li><a href="#"
-										onClick="conditionSelect('city','',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">不限</a>
-									<li><a href="#"
-										onClick="conditionSelect('city','1',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">杭州</a></li>
-									</li>
-								</ul>
-							</div>
-							<!--品牌-->
-							<div class="btn-group">
-								<a type="button" href="#" data-toggle="dropdown"
-									style="color: #555555;" class="btn dropdown-toggle">品 牌<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#"
-										onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);"
-										style="color: #FFFFFF; padding-left: 7px;">不限</a>
-									<li><a href="#"
-										onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','26',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">大众</a></li>
-									</li>
-								</ul>
-							</div>
-							<!--车型-->
-							<div class="btn-group">
-								<a type="button" href="#" data-toggle="dropdown"
-									style="color: #555555;" class="btn dropdown-toggle">车 型<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#"
-										onClick="conditionSelect('carModel','',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">不限</a></li>
-								</ul>
-							</div>
-							<!--价格-->
-							<div class="btn-group">
-								<a type="button" href="#" data-toggle="dropdown"
-									style="color: #555555;" class="btn dropdown-toggle">价 格<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="#"
-										onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">不限</a></li>
-									<li><a href="#"
-										onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">1万 ~ 5万</a></li>
-									<li><a href="#"
-										onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">5万 ~ 10万</a></li>
-									<li><a href="#"
-										onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">10万 ~ 20万</a></li>
-									<li><a href="#"
-										onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">20万 ~ 50万</a></li>
-									<li><a href="#"
-										onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);"
-										style="color: #FFFFFF; padding-left: 7px;">50万以上</a></li>
-								</ul>
-							</div>
+							<button style="color: #555555;" onClick="orderSelect"
+								class="btn btn-small">价格</button>
+							<button style="color: #555555;" class="btn btn-small">销量</button>
 						</div>
 					</div>
 				</div>
 				<div class="span4">
 					<div style="float: right; width: 180px; margin: 10px 10px 0 0;"
 						class="pagination pagination-small pagination-right">
-						<span style="float: left; height: 25px; padding-top: 6px;">2
+						<span style="float: left; height: 25px; padding-top: 6px;">1
 							/ 2</span>
 						<ul>
+							<li class="disabled"><a href="#">前一页</a></li>
 							<li><a href="#"
-								onclick="conditionSelect('pageIndex','1',true)">前一页</a></li>
-							<li class="disabled"><a href="#">后一页</a></li>
+								onclick="conditionSelect('pageIndex','2',true)">后一页</a></li>
 						</ul>
 					</div>
 				</div>
@@ -299,21 +353,21 @@
 			<div class="row-fluid">
 				<ul class='thumbnails'>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=219" style="padding: 0px;"
+						class="span3"><a href="./car?id=232" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/219.png">
+										src="img/car/232.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 帕萨特</strong>
+										<strong>大众 Amarok</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -326,53 +380,23 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 帕萨特</h5></li>
+						<h5>大众 Amarok</h5></li>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=228" style="padding: 0px;"
+						class="span3"><a href="./car?id=233" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/228.png">
-									<div style="height: 20px; padding: 0px;" class="caption">
-										<h4 style="font-size: 15px" class="text-center">市场价:51.98万
-											～ 51.98万</h4>
-									</div>
-								</div>
-								<div name="coverdiv" style="position: absolute; display: none;">
-									<div style="height: 110px; padding: 20px;">
-										<strong>大众 捷达</strong>
-										<h6>1.4T 1.8T 2.0T</h6>
-										<h6>横置前驱</h6>
-										<h6>7档双离合</h6>
-									</div>
-									<div
-										style="background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;"
-										class="caption">
-										<h4 style="color: #ffffff; font-size: 15px;"
-											class="text-center">网站价:1.00万 ～ 32.00万</h4>
-									</div>
-								</div>
-							</div></a>
-					<h5>大众 捷达</h5></li>
-					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=220" style="padding: 0px;"
-						class="thumbnail"><div name="hoverdiv"
-								style="height: 170px; width: 200px;">
-								<div name="imgdiv"
-									style="width: 190px; position: absolute; padding: 10px;">
-									<img data-src="holder.js/210x140" alt="210x140"
-										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/220.png">
+										src="img/car/233.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 新桑塔纳</strong>
+										<strong>大众 BlueSport</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -385,23 +409,23 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 新桑塔纳</h5></li>
+						<h5>大众 BlueSport</h5></li>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=221" style="padding: 0px;"
+						class="span3"><a href="./car?id=234" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/221.png">
+										src="img/car/234.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 朗行</strong>
+										<strong>大众 Bulli</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -414,25 +438,54 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 朗行</h5></li>
+						<h5>大众 Bulli</h5></li>
+					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
+						class="span3"><a href="./car?id=235" style="padding: 0px;"
+						class="thumbnail"><div name="hoverdiv"
+								style="height: 170px; width: 200px;">
+								<div name="imgdiv"
+									style="width: 190px; position: absolute; padding: 10px;">
+									<img data-src="holder.js/210x140" alt="210x140"
+										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
+										src="img/car/235.png">
+									<div style="height: 20px; padding: 0px;" class="caption">
+										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
+									</div>
+								</div>
+								<div name="coverdiv" style="position: absolute; display: none;">
+									<div style="height: 110px; padding: 20px;">
+										<strong>大众 Cross Coupe</strong>
+										<h6>1.4T 1.8T 2.0T</h6>
+										<h6>横置前驱</h6>
+										<h6>7档双离合</h6>
+									</div>
+									<div
+										style="background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;"
+										class="caption">
+										<h4 style="color: #ffffff; font-size: 15px;"
+											class="text-center">网站价:万 ～ 万</h4>
+									</div>
+								</div>
+							</div></a>
+						<h5>大众 Cross Coupe</h5></li>
 				</ul>
 				<ul class='thumbnails'>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=222" style="padding: 0px;"
+						class="span3"><a href="./car?id=236" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/222.png">
+										src="img/car/236.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 朗逸</strong>
+										<strong>大众 CrossBlue</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -445,23 +498,23 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 朗逸</h5></li>
+						<h5>大众 CrossBlue</h5></li>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=229" style="padding: 0px;"
+						class="span3"><a href="./car?id=237" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/229.png">
+										src="img/car/237.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 迈腾</strong>
+										<strong>大众 Jetta</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -474,23 +527,23 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 迈腾</h5></li>
+						<h5>大众 Jetta</h5></li>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=223" style="padding: 0px;"
+						class="span3"><a href="./car?id=238" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/223.png">
+										src="img/car/238.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 途安</strong>
+										<strong>大众 Passat</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -503,23 +556,23 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 途安</h5></li>
+						<h5>大众 Passat</h5></li>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=224" style="padding: 0px;"
+						class="span3"><a href="./car?id=218" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/224.png">
+										src="img/car/218.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 途观</strong>
+										<strong>大众 POLO</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -532,25 +585,25 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 途观</h5></li>
+						<h5>大众 POLO</h5></li>
 				</ul>
 				<ul class='thumbnails'>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=230" style="padding: 0px;"
+						class="span3"><a href="./car?id=225" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/230.png">
+										src="img/car/225.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 速腾</strong>
+										<strong>大众 一汽-大众CC</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -563,23 +616,23 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 速腾</h5></li>
+						<h5>大众 一汽-大众CC</h5></li>
 					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
-						class="span3"><a href="./car?id=231" style="padding: 0px;"
+						class="span3"><a href="./car?id=1244" style="padding: 0px;"
 						class="thumbnail"><div name="hoverdiv"
 								style="height: 170px; width: 200px;">
 								<div name="imgdiv"
 									style="width: 190px; position: absolute; padding: 10px;">
 									<img data-src="holder.js/210x140" alt="210x140"
 										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
-										src="img/car/231.png">
+										src="img/car/1244.png">
 									<div style="height: 20px; padding: 0px;" class="caption">
 										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
 									</div>
 								</div>
 								<div name="coverdiv" style="position: absolute; display: none;">
 									<div style="height: 110px; padding: 20px;">
-										<strong>大众 高尔夫</strong>
+										<strong> 奥迪A3(进口)</strong>
 										<h6>1.4T 1.8T 2.0T</h6>
 										<h6>横置前驱</h6>
 										<h6>7档双离合</h6>
@@ -592,8 +645,67 @@
 									</div>
 								</div>
 							</div></a>
-					<h5>大众 高尔夫</h5></li>
+						<h5>奥迪A3(进口)</h5></li>
+					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
+						class="span3"><a href="./car?id=226" style="padding: 0px;"
+						class="thumbnail"><div name="hoverdiv"
+								style="height: 170px; width: 200px;">
+								<div name="imgdiv"
+									style="width: 190px; position: absolute; padding: 10px;">
+									<img data-src="holder.js/210x140" alt="210x140"
+										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
+										src="img/car/226.png">
+									<div style="height: 20px; padding: 0px;" class="caption">
+										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
+									</div>
+								</div>
+								<div name="coverdiv" style="position: absolute; display: none;">
+									<div style="height: 110px; padding: 20px;">
+										<strong>大众 宝来</strong>
+										<h6>1.4T 1.8T 2.0T</h6>
+										<h6>横置前驱</h6>
+										<h6>7档双离合</h6>
+									</div>
+									<div
+										style="background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;"
+										class="caption">
+										<h4 style="color: #ffffff; font-size: 15px;"
+											class="text-center">网站价:万 ～ 万</h4>
+									</div>
+								</div>
+							</div></a>
+						<h5>大众 宝来</h5></li>
+					<li style="width: 210px; margin-right: 13px; margin-left: 12px;"
+						class="span3"><a href="./car?id=227" style="padding: 0px;"
+						class="thumbnail"><div name="hoverdiv"
+								style="height: 170px; width: 200px;">
+								<div name="imgdiv"
+									style="width: 190px; position: absolute; padding: 10px;">
+									<img data-src="holder.js/210x140" alt="210x140"
+										style="border-radius: 4px 4px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;"
+										src="img/car/227.png">
+									<div style="height: 20px; padding: 0px;" class="caption">
+										<h4 style="font-size: 15px" class="text-center">市场价:万 ～ 万</h4>
+									</div>
+								</div>
+								<div name="coverdiv" style="position: absolute; display: none;">
+									<div style="height: 110px; padding: 20px;">
+										<strong>大众 宝来/宝来经典</strong>
+										<h6>1.4T 1.8T 2.0T</h6>
+										<h6>横置前驱</h6>
+										<h6>7档双离合</h6>
+									</div>
+									<div
+										style="background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;"
+										class="caption">
+										<h4 style="color: #ffffff; font-size: 15px;"
+											class="text-center">网站价:万 ～ 万</h4>
+									</div>
+								</div>
+							</div></a>
+						<h5>大众 宝来/宝来经典</h5></li>
 				</ul>
+				<ul class='thumbnails'></ul>
 			</div>
 			<div style="padding-bottom: 30px;">
 				<div style="border-top: 2px solid #ddd;">
@@ -667,7 +779,7 @@
 			</div>
 		</div>
 		<form action="/" method="get" id="conditionform">
-			<input type="hidden" name="pageIndex" id="form_pageIndex" value="2"><input
+			<input type="hidden" name="pageIndex" id="form_pageIndex" value="1"><input
 				type="hidden" name="carBrand" id="form_carBrand" value=""><input
 				type="hidden" name="carModelLv1" id="form_carModel" value=""><input
 				type="hidden" name="priceMin" id="form_priceMin" value=""><input
@@ -700,7 +812,7 @@
 		});
 	    });
 
-
+	    $(document).ready(function() {
 		$('#carousel').carouFredSel({
 		    width : '100%',
 		    items : {
@@ -719,6 +831,7 @@
 			deviation : 1
 		    }
 		});
+	    });
 	    //广告栏鼠标悬停效果
 	    var carouselIsHover = false;
 	    $("#banner").hover(function() {
@@ -840,25 +953,24 @@
 			</div>
 			<div class="modal-body">
 				<form id="userLoginForm" action="/shop?type=login" method="post"
-					class="form-horizontal">
+					style="text-align: left" class="form-horizontal">
 					<div class="control-group">
-						<label for="loginName" class="control-label">用户名</label>
+						<label for="shopLoginName" class="control-label">用户名</label>
 						<div class="controls">
-							<input type="text" id="loginName" name="loginName"
+							<input type="text" id="shopLoginName" name="loginName"
 								placeholder="用户名">
 						</div>
 					</div>
 					<div class="control-group">
-						<label for="loginPasword" class="control-label">密码</label>
+						<label for="shopLoginPasword" class="control-label">密码</label>
 						<div class="controls">
-							<input type="password" id="loginPasword" name="loginPassword"
+							<input type="password" id="shopLoginPasword" name="loginPassword"
 								placeholder="密码">
 						</div>
 					</div>
 					<div id="shoplogin-error" class="alert alert-error hide">用户名密码错误，请重新输入!</div>
 					<div id="shoplogin-succee" class="alert alert-success hide">登陆成功</div>
 				</form>
-				<div style="display: none"></div>
 			</div>
 			<div class="modal-footer">
 				<a href="#" onclick="shopLogin();" class="btn btn-primary">登陆</a>

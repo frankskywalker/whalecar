@@ -79,6 +79,10 @@ exports.homepage = function(req, res, next) {
     });
 };
 
+exports.shoplist = function(req,res,next){
+    res.render("shop_list");
+};
+
 //4s店登陆
 function login(req, res, next) {
     var condition = {
