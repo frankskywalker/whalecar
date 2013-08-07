@@ -175,7 +175,7 @@ a.thumbnail:hover, a.thumbnail:focus {
 }
 
 #slider_div_1{ position:relative;}
-#slider_div_1 .pagination_p{ background:url('http://www.myaln.com/templates/zh/default/images/banner_down_bg.png') repeat-x; width:100%;  height:35px; position:absolute; bottom:0;z-index:99;}
+#slider_div_1 .pagination_p{ background:url('../img/banner_down_bg.png') repeat-x; width:100%;  height:35px; position:absolute; bottom:0;z-index:99;}
 #slider_div_1 .pagination_p ul { width:961px; margin:auto;}
 #slider_div_1 .pagination_p ul li { float:left; width:190px; margin-right:1px; color:#fff; text-align:center; border-left:1px solid #fff; font-size:14px;}
 #slider_div_1 .pagination_p ul li a{ width:190px; height:25px; padding-top:10px; display:block; color:#fff;font-size:14px;text-decoration：none;}
@@ -193,4 +193,15 @@ a.thumbnail:hover, a.thumbnail:focus {
 }
 .Limg2{
     display:none;
+}
+.navbar {
+        margin-bottom: 0px;
+}
+.navbar-inner {
+    border-radius: 0px;
+    min-height: 20px;
+}
+
+#toptab{
+    border-bottom: 1px solid #666666;
 }

@@ -242,8 +242,8 @@ public class CarModelService {
 
 		// fill PaginationResult
 		PaginationResult<CarModelView> result = new PaginationResult<CarModelView>(
-				resultList, resultCount, PaginationUtils.getStartIndex(
-						pageIndex, pageSize));
+				resultList, resultCount, pageSize,
+				PaginationUtils.getStartIndex(pageIndex, pageSize));
 
 		return result;
 	}

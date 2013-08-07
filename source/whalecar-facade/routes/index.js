@@ -35,7 +35,8 @@ exports.page = function(req, res, next) {
         priceMax: priceMax,
         city: city,
         orderByName: orderByName,
-        orderType: orderType
+        orderType: orderType,
+        pageSize : 30
     };
 
     // call service
