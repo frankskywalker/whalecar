@@ -3,36 +3,90 @@ extends layout/mainFrame
 block append css
   link(href='css/index.css', rel='stylesheet', media='screen')
   link(rel="stylesheet",href="css/carousel.css",media="all",type="text/css")
+
 block append js
-  script(type="text/javascript",src="js/jquery.carouFredSel-6.0.4-packed.js")
-  
+  script(type="text/javascript",src="js/jquery.carouFredSel-6.2.1-packed.js")
+  script(type="text/javascript",src="js/slides.min.jquery.js")
 
 block append content
-  div#banner
-    div#wrapper(style="display:#{!isRefresh ? '':'none'}")
-     div#carousel
-        img(src="img/scrollimg/adv1.png",alt="adv1",width="990",height="450" )
-        img(src="img/scrollimg/adv2.png",alt="adv1",width="990",height="450" )
-        img(src="img/scrollimg/adv1.png",alt="adv1",width="990",height="450")
-        img(src="img/scrollimg/adv2.png",alt="adv1",width="990",height="450" )
-    div#wrapperOpener(href="#",style="padding-top:59px;display:#{!isRefresh ? 'none':''}")
-      img(src="img/sildedown.png",class="pull-right",style="width:25px")
-    
+  #slider_div_1(style='padding: 0px 0px; 0px; 0px;')
+     .slides_container(style="list-style:none;")
+        li.bitter0.glume
+          span.Limg.slide_pic
+            a(href='#', target='_blank')
+              img.img_c_1(src='img/banner/scrollimg1.jpg')
+          span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
+            a(href='http://www.myaln.com/hotels.php?models=159&a=h', target='_blank')
+              img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
+
+        li.bitter1.glume
+          span.Limg.slide_pic
+            a(href='#', target='_blank')
+              img.img_c_1(src='img/banner/scrollimg2.jpg')
+          span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
+            a(href='http://www.myaln.com/hotels.php?models=159&a=h', target='_blank')
+              img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
+        li.bitter2.glume
+          span.Limg.slide_pic
+            a(href='#', target='_blank')
+              img.img_c_1(src='img/banner/scrollimg1.jpg')
+          span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
+            a(href='http://www.myaln.com/hotels.php?models=159&a=h', target='_blank')
+              img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
+        li.bitter3.glume
+          span.Limg.slide_pic
+            a(href='#', target='_blank')
+              img.img_c_1(src='img/banner/scrollimg2.jpg')
+          span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
+            a(href='http://www.myaln.com/hotels.php?models=159&a=h', target='_blank')
+              img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
+        li.bitter4.glume
+          span.Limg.slide_pic
+            a(href='#', target='_blank')
+              img.img_c_1(src='img/banner/scrollimg1.jpg')
+          span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
+            a(href='http://www.myaln.com/hotels.php?models=159&a=h', target='_blank')
+              img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
+     .pagination_p
+        ul.pagination(style="list-style:none;")
+          li(style="display: list-item;")
+            a.page_a_1(target='_blank', link='#',style="text-decoration: none;") 全新迈腾试驾享
+          li(style="display: list-item;")
+            a.page_a_1(target='_blank', link='#',style="text-decoration: none;") T动未来
+          li(style="display: list-item;")
+            a.page_a_1(target='_blank', link='#',style="text-decoration: none;") 全新迈腾试驾享
+          li(style="display: list-item;")
+            a.page_a_1(target='_blank', link='#',style="text-decoration: none;") T动未来
+          li(style='border-right: 1px solid #FFFFFF;')
+            a.page_a_1(target='_blank', link='#',style="text-decoration: none;") 全新迈腾试驾享
+
+
 
   .container(style='padding: 0px 0;')
     //
       div(align='center')
         img(src='img/progress.png')
     .row-fluid(heigth)
-      .span7
-          div.btn-toolbar(style="height: 10px;padding-top: 0px;margin-left:10px;") 
+      .span8
+          div.btn-toolbar(style="height: 10px;padding-top: 2px;margin-left:10px;") 
               .btn-group
-                   button.btn.btn-small(style="color: #555555;",onClick="orderSelect") 价格
-                   button.btn.btn-small(style="color: #555555;") 销量
-                       
+                 if(conditionParams.orderByName == 'sellNum')
+                     button.btn.btn-small.btn-inverse#orderSellNumBtn(onclick="orderSelect('sellNum')") 销量
+                        i.icon-chevron-down.icon-white
+                 else
+                     button.btn.btn-small#orderSellNumBtn(onclick="orderSelect('sellNum')") 销量
+                 
+                 if(conditionParams.orderByName == 'price' && conditionParams.orderType == 'asc')
+                     button.btn.btn-inverse.btn-small#orderPriceBtn(onclick="orderSelect('price')") 价格
+                        i.icon-chevron-down.icon-white
+                 else if(conditionParams.orderByName == 'price' && conditionParams.orderType == 'desc')
+                     button.btn.btn-inverse.btn-small#orderPriceBtn(onclick="orderSelect('price')") 价格
+                        i.icon-chevron-up.icon-white
+                 else
+                     button.btn.btn-small#orderPriceBtn(onclick="orderSelect('price')") 价格
       .span4
         .pagination.pagination-small.pagination-right(style='float:right;width:180px;margin: 10px 10px 0 0;')
-           span(style='float:left;height: 25px;padding-top:6px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
+           span(style='float:left;height: 25px;padding-top:0px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
            ul
              if carModelViews.firstPage
                li.disabled
@@ -139,6 +193,8 @@ block append content
     input(type="hidden",name="priceMin",id="form_priceMin",value="#{conditionParams.priceMin}")
     input(type="hidden",name="priceMax",id="form_priceMax",value="#{conditionParams.priceMax}")
     input(type="hidden",name="city",id="form_city",value="#{conditionParams.city}")
+    input(type="hidden",name="orderByName",id="form_orderByName",value="#{conditionParams.orderByName}")
+    input(type="hidden",name="orderType",id="form_orderType",value="#{conditionParams.orderType}")
     input(type="hidden",name="isRefresh",id="isRefresh",value="true")
 
   script.
@@ -155,6 +211,37 @@ block append content
       }
     }
     
+    //排序事件
+    var currentPrice = '';
+    function orderSelect(type,id){
+        //三种情况：无排序,正序，倒序,其中销量只有无排序和正序
+        if(type == 'sellNum'){
+            if($("#orderByName").val() == 'sellNum'){
+                //do nothing
+            }
+            else{
+                conditionSelect('orderByName','sellNum',false,false);
+                conditionSelect('orderType','asc',true,true);
+            }
+        }
+        else if(type == 'price'){
+            var ordertype;
+            if($("#form_orderByName").val() == 'price'){
+                if($("#form_orderType").val() == 'asc'){
+                    ordertype = "desc";
+                }
+                else{
+                    ordertype = "asc";
+                }
+            }
+            else{
+                ordertype = "asc";
+            }
+            conditionSelect('orderByName','price',false,false);
+            conditionSelect('orderType',ordertype,true,true);
+        }
+    }
+    
     // 汽车图片浮动效果
     $("div[name='hoverdiv']").each(function(index,value){
       $(value).hover(function(){
@@ -166,38 +253,20 @@ block append content
       });
     });
     
-    $(document).ready(function() {
-      $('#carousel').carouFredSel({
-        width: '100%',
-        items: {
-          visible: 3,
-          start: -1
-        },
-        scroll: {
-          items: 1,
-          duration: 1000,
-          timeoutDuration: 3000
-        },
-        prev: '#prev',
-        next: '#next',
-        pagination: {
-          container: '#pager',
-          deviation: 1
-        }
-      });
-    });
     //广告栏鼠标悬停效果
     var carouselIsHover = false;
+    
     $("#banner").hover(function(){
         carouselIsHover = true;
     },function(){
         carouselIsHover = false;
     });
+    
     $("#banner").click(function(){
         $("#wrapperOpener").hide();
         $("#wrapper").slideDown('slow');
-        
     });
+    
     $(document).click(function(){
         if(!carouselIsHover){
             $("#wrapper").slideUp('slow',function(){
@@ -205,8 +274,75 @@ block append content
             });
         }
     });
+    
     $('.dropdown-toggle').dropdown();
+    
     $("div.btn-toolbar div.btn-group>.dropdown-toggle").bind("mouseenter",function(){
         $(this).click();
+    });
+    $(window).load(function(){
+       $("#show_olark").click(function(){
+          olark('api.box.expand');
+       });
+    });
+    $(function(){
+        var original_w=1453;
+        var original_h=528;
+        var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
+        //var w=window.screen.width;
+        if(original_w>w){//如果实际图片宽度大于分辨率
+             //$(".img_c_1").css({"width":w});
+        }
+        else{
+            $(".img_c_1").css({"width":w});
+            var h=w*original_h/original_w+78;
+            $(".img_c_1").css({"height":h});	
+        }
+        $('#slider_div_1').slides({
+           //autoHeight:true,
+           play: 5000,//5秒钟自动切换一次
+           effect: 'fade',
+           crossfade: true,
+           fadeSpeed: 500,
+           hoverPause: true,
+           pause: 250,
+           //generateNextPrev: true,
+           animationStart: function() {
+               var original_w=1453;
+               var original_h=528;
+               var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
+               //var w=window.screen.width;
+               if(original_w>w){//如果实际图片宽度大于分辨率
+                  //$(".img_c_1").css({"width":w});
+               }
+               else{
+                   $(".img_c_1").css({"width":w});
+                   var h=w*original_h/original_w+78;
+                   $(".img_c_1").css({"height":h});
+               }
+            },
+            generatePagination: false
+         });
+        
+         $(".Limg2").css({'display':'block'});
+         
+         $('.page_a_1').click(function(event){
+            event.preventDefault();
+            window.open($(this).attr('link'),'name_1');
+         });
+         
+         $(window).resize(function(e){
+            var original_w=1453;
+            var original_h=528;
+            var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
+            //var w=window.screen.width;
+            if(original_w>w){//如果实际图片宽度大于分辨率
+            }
+            else{
+               $(".img_c_1").css({"width":w});
+               var h=w*original_h/original_w+78;
+               $(".img_c_1").css({"height":h});	
+            }
+         });
     });
     

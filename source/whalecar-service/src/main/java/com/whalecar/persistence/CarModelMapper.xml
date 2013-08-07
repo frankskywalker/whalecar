@@ -97,7 +97,13 @@
 			</if>
 		</where>
 		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname
-		LIMIT #{startIndex},#{pageSize}
+	    <if test="orderByName == 'price' and orderType == 'asc'">
+	    ORDER BY shopPriceMin asc
+	    </if>
+	    <if test="orderByName == 'price' and orderType == 'desc'">
+        ORDER BY shopPriceMin desc
+        </if>
+        LIMIT #{startIndex},#{pageSize}
 	</select>
 	
 	<select parameterType="map" id="queryModelViewCount" resultType="int">

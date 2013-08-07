@@ -14,6 +14,8 @@ exports.page = function(req, res, next) {
     var priceMin = req.query.priceMin;
     var priceMax = req.query.priceMax;
     var city = req.query.city;
+    var orderByName = req.query.orderByName;
+    var orderType = req.query.orderType;
 
     // set default Params
     if (!pageIndex) pageIndex = 1; // 默认为1
@@ -22,6 +24,8 @@ exports.page = function(req, res, next) {
     if (!priceMin) priceMin = '';
     if (!priceMax) priceMax = '';
     if (!city) city = '';
+    if (!orderByName) orderByName = 'sellNum';
+    if (!orderType) orderType = 'asc';
 
     var modelViewConditionParams = {
         pageIndex: pageIndex,
@@ -29,7 +33,9 @@ exports.page = function(req, res, next) {
         carModelLv1: carModelLv1,
         priceMin: priceMin,
         priceMax: priceMax,
-        city: city
+        city: city,
+        orderByName: orderByName,
+        orderType: orderType
     };
 
     // call service
@@ -57,7 +63,6 @@ exports.page = function(req, res, next) {
         },
         carModelViews: function(callback) {
             service.client.post("/getModelView", modelViewConditionParams,
-
             function(err, req, res, data) {
                 callback(err, data);
             });

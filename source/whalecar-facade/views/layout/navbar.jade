@@ -1,4 +1,4 @@
-.navbar.navbar-inverse.navbar-fixed-top
+.navbar.navbar-inverse(style="margin-bottom: 79px;")
   .navbar-inner(style="height: 58px")
     .container(style="margin-bottom: 0px;margin-top: 0px")
       div.brand
@@ -52,31 +52,31 @@
                            a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
                          li
                            a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 5
+                               if session.conditionParams.priceMax == 5
                                   h4(style="color: rgb(170, 61, 70);") 1万 ~ 5万
                                else
                                   | 1万 ~ 5万
                          li
                            a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 10
+                               if session.conditionParams.priceMax == 10
                                    h4(style="color: rgb(170, 61, 70);") 5万 ~ 10万
                                else
                                    | 5万 ~ 10万
                          li
                            a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 20
+                               if session.conditionParams.priceMax == 20
                                    h4(style="color: rgb(170, 61, 70);") 10万 ~ 20万
                                else
                                    | 10万 ~ 20万
                          li
                            a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMax == 50
+                               if session.conditionParams.priceMax == 50
                                    h4(style="color: rgb(170, 61, 70);") 20万 ~ 50万
                                else
                                    | 20万 ~ 50万
                          li
                            a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                               if conditionParams.priceMin == 50
+                               if session.conditionParams.priceMin == 50
                                    h4(style="color: rgb(170, 61, 70);") 50万以上
                                else
                                    | 50万以上
