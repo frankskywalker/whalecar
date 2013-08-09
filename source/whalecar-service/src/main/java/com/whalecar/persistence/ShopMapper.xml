@@ -147,5 +147,35 @@
         DELETE FROM Shop_Stock        
             WHERE WHERE `id` = #{id};
     </delete>
+    
+    <!-- 分页查询shop -->
+    <select id="queryShop" parameterType="map" resultType="Shop">
+        SELECT *
+        FROM Shop
+        <where>
+	        <if test="shopCity != null and shopCity != ''">
+	            shopCity = #{shopCity}
+	        </if>
+	        <if test="carBrand != null and carBrand != ''">
+	            AND FIND_IN_SET(#{shopCity},carBrand)
+	        </if>
+	    </where>
+        LIMIT #{startIndex},#{pageSize}
+    </select>
+    
+    
+    <!-- 分页查询shop -->
+    <select id="queryShopCount" resultType="int">
+        SELECT count(id)
+        FROM Shop
+        <where>
+            <if test="shopCity != null and shopCity != ''">
+                shopCity = #{shopCity}
+            </if>
+            <if test="carBrand != null and carBrand != ''">
+                AND FIND_IN_SET(#{shopCity},carBrand)
+            </if>
+        </where>
+    </select>
 
 </mapper>

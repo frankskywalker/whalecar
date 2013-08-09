@@ -56,6 +56,7 @@ app.configure('production', function(){
 // router~
 // ===============================
 app.all('/', index.page);
+app.all('/index', index.page);
 app.all('/dic', dic.query);
 app.all('/user', user.router);
 app.all('/car', car.page);

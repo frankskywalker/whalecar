@@ -12,9 +12,8 @@ exports.action = function(req, res, next) {
         login(req, res, next);
     } else if (type == "saveshop") {
         saveShop(req, res, next);
-    }
-    else if(type=="saveShopStock"){
-	saveShopStock(req,res,next);
+    } else if (type == "saveShopStock") {
+        saveShopStock(req, res, next);
     }
 };
 
@@ -79,8 +78,40 @@ exports.homepage = function(req, res, next) {
     });
 };
 
-exports.shoplist = function(req,res,next){
-    res.render("shop_list");
+exports.shoplist = function(req, res, next) {
+    
+    // get request Params
+    var pageIndex = req.query.pageIndex;
+    var carBrand = req.query.carBrand;
+    var shopCity = req.query.shopCity;
+    var orderByName = req.query.orderByName;
+    var orderType = req.query.orderType;
+
+    // set default Params
+    if (!pageIndex) pageIndex = 1; // 默认为1
+    if (!carBrand) carBrand = '';
+    if (!shopCity) shopCity = '';
+    if (!orderByName) orderByName = '';
+    if (!orderType) orderType = '';
+    
+    var modelViewConditionParams = {
+        pageIndex: pageIndex,
+        carBrand: carBrand,
+        shopCity: shopCity,
+        orderByName: orderByName,
+        orderType: orderType,
+        pageSize : 15
+    };
+    
+    service.client.post("/getShopView", modelViewConditionParams,
+        function(error, request, response, data) {
+           if (error) {
+               next(error);
+           }
+           res.render("shop_list",{ shopViewList: data,
+               conditionParams: modelViewConditionParams});
+    });
+    
 };
 
 //4s店登陆

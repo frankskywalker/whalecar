@@ -1,8 +1,10 @@
 package com.whalecar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whalecar.domain.Shop;
 import com.whalecar.domain.ShopStockView;
+import com.whalecar.domain.ShopView;
 import com.whalecar.persistence.ShopMapper;
+import com.whalecar.persistence.tools.PaginationResult;
+import com.whalecar.persistence.tools.PaginationUtils;
 
 /**
  * Shop service
@@ -141,4 +146,53 @@ public class ShopService {
 		}
 	}
 
+	/**
+	 * 根据条件分页查询ShopView
+	 * 
+	 * @param shop
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = "/getShopView")
+	public @ResponseBody
+	PaginationResult<ShopView> getShopView(
+			@RequestBody Map<String, Object> shopCondition) {
+
+		// init pageIndex
+		int pageIndex = Integer.valueOf(String.valueOf(shopCondition
+				.get("pageIndex")));
+
+		// init pageSize
+		int pageSize = PaginationUtils.DEFAULT_PAGESIZE;// default pagesize
+		if (shopCondition.get("pageSize") != null) {
+			pageSize = (int) shopCondition.get("pageSize");
+		}
+
+		// convert pagesize to recordIndex
+		shopCondition.put("startIndex",
+				PaginationUtils.getStartIndex(pageIndex, pageSize));
+		shopCondition.put("pageSize", pageSize);
+
+		// 查询db
+		// 查询count
+		int resultCount = shopMapper.queryShopCount(shopCondition);
+
+		// 填充shopstock,组装 shopViewList
+		List<ShopView> shopViewList = new ArrayList<ShopView>();
+
+		// 查询shop列表
+		List<Shop> shopList = shopMapper.queryShop(shopCondition);
+		for (Shop shop : shopList) {
+			ShopView shopView = new ShopView();
+			BeanUtils.copyProperties(shop, shopView);
+			shopView.setShopStockViewList(shopMapper
+					.queryShopStockViewByShop(shop.getId()));
+			shopViewList.add(shopView);
+		}
+
+		// fill PaginationResult
+		PaginationResult<ShopView> result = new PaginationResult<ShopView>(
+				shopViewList, resultCount, pageSize,
+				PaginationUtils.getStartIndex(pageIndex, pageSize));
+
+		return result;
+	}
 }

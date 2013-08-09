@@ -79,4 +79,16 @@ public interface ShopMapper {
 	 * @return
 	 */
 	public int updateShop(Map<String, Object> shop);
+
+	/**
+	 * 分页查询Shop
+	 */
+	public List<Shop> queryShop(Map<String, Object> shopCondition);
+
+	/**
+	 * 分页查询Shop，求Count
+	 * 
+	 * @return
+	 */
+	public int queryShopCount(Map<String, Object> shopCondition);
 }

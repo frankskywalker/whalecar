@@ -1,7 +1,11 @@
 extends layout/mainFrame
 
+block append css
+
+block append js
+
 block append content
-  .container(style='padding: 65px 0;')
+  .container(style='padding: 10px 0;')
     .row-fluid
         .span8
           ul.nav.nav-pills
@@ -13,9 +17,14 @@ block append content
                 b.caret
               ul.dropdown-menu
                 li
-                  a(onclick='$(\'#cityName\').html(\'城市\')', href='#') 不限
-                li
-                  a(onclick='$(\'#cityName\').html(\'宁波\')', href='#') 宁波
+                   a(href="#",onClick="conditionSelect('shopCity','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                each dicCity in allDicCitys
+                   li
+                      a(href="#",onClick="conditionSelect('shopCity','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                         if !!conditionParams  && dicCity.id == conditionParams.shopCity
+                             span(style="color: rgb(170, 61, 70);")= dicCity.cityCname
+                         else
+                             | #{dicCity.cityCname}
             //
                品牌 
             li.dropdown
@@ -23,31 +32,37 @@ block append content
                 span#brandValue 品牌
                 b.caret
               ul.dropdown-menu
-                li
-                  a(onclick='$(\'#brandValue\').html(\'品牌\')', href='#') 不限
-                li
-                  a(onclick='$(\'#brandValue\').html(\'大众\')', href='#') 大众
+                 li
+                    a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                 each brand in allBrands
+                    li
+                      a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                        if !!session.conditionParams  &&  brand.id == session.conditionParams.carBrand
+                          span(style="color: rgb(170, 61, 70);")= brand.cname 
+                        else
+                          | #{brand.cname}
         .span4
-          .pagination.pagination-small.pagination-right(style='margin: 5px auto;')
-            ul
-              li.disabled
-                a(href='#') 前一页
-              li.active
-                a(href='#') 1
-              li
-                a(href='#') 2
-              li
-                a(href='#') 3
-              li
-                a(href='#') 4
-              li
-                a(href='#') 5
-              li
-                a(href='#') 后一页
-      hr(style='margin: 0px 0px 17px;')
-      .row-fluid
-        .span9
-          ul.media-list
+          .pagination.pagination-small.pagination-right(style='float:right;width:180px;margin: 10px 10px 0 0;')
+           span(style='float:left;height: 25px;padding-top:0px;') #{shopViewList.currentPage} / #{shopViewList.pageCount}
+           ul
+             if shopViewList.firstPage
+               li.disabled
+                 a(href='#') 前一页
+             -else
+               li
+                 a(href='#',onclick="conditionSelect('pageIndex','#{shopViewList.currentPage - 1}',true)") 前一页
+                 
+             if shopViewList.lastPage
+               li.disabled
+                 a(href='#') 后一页
+             -else
+               li
+                 a(href='#',onclick="conditionSelect('pageIndex','#{shopViewList.currentPage + 1}',true)") 后一页
+    hr(style='margin: 0px 0px 17px;')
+    .row-fluid
+      .span9
+        ul.media-list
+          each shopView in shopViewList.items
             li.media
               .pull-left
                 img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
@@ -62,76 +77,50 @@ block append content
                 p 库存：10
               .media-body
                 a(href='./shopinfo.html')
-                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
+                   h5.media-heading #{shopView.shopName}
                 h6
-                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
+                  | 地址：#{shopView.shopAddress}
                   br
-                  | 电话：4008189666-2173
-            li.media
-              .pull-left
-                img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car10.jpg')
-                p 库存：10
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
-                p 库存：10
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
-                p 库存：10
-              .media-body
-                a(href='./shopinfo.html')
-                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
-                h6
-                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
-                  br
-                  | 电话：4008189666-2173
-            li.media
-              .pull-left
-                img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car10.jpg')
-                p 库存：10
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
-                p 库存：10
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
-                p 库存：10
-              .media-body
-                a(href='./shopinfo.html')
-                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
-                h6
-                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
-                  br
-                  | 电话：4008189666-2173
-            li.media
-              .pull-left
-                img.media-object(data-src='holder.js/32x32', width='80px', src='img/dasauto-logo.jpg')
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car10.jpg')
-                p 库存：10
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
-                p 库存：10
-              .pull-right
-                img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
-                p 库存：10
-              .media-body
-                a(href='./shopinfo.html')
-                  h5.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
-                h6
-                  | 地址：浙江宁波市江东兴宁路178号[查看地图]
-                  br
-                  | 电话：4008189666-2173
-        .span3
-          legend 促销信息
-          ul
-            li
-              a(href='#') 进口大众尚酷23万元起 6月10日有活动
-            li
-              a(href='#') 进口大众尚酷23万元起 6月10日有活动
-            li
-              a(href='#') 进口大众尚酷23万元起 6月10日有活动
-            li
-              a(href='#') 进口大众尚酷23万元起 6月10日有活动
+                  | 电话：#{shopView.shopTel}
+        form(action="./shoplist",method="get",id="conditionform")
+            input(type="hidden",name="pageIndex",id="form_pageIndex",value="#{conditionParams.pageIndex}")
+            input(type="hidden",name="carBrand",id="form_carBrand",value="#{conditionParams.carBrand}")
+            input(type="hidden",name="shopCity",id="form_shopCity",value="#{conditionParams.shopCity}")
+            input(type="hidden",name="orderByName",id="form_orderByName",value="#{conditionParams.orderByName}")
+            input(type="hidden",name="orderType",id="form_orderType",value="#{conditionParams.orderType}")
+          
+      .span3
+        legend 促销信息
+        ul
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动   
+          
+        legend 促销信息
+        ul
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动
+          li
+            a(href='#') 进口大众尚酷23万元起 6月10日有活动
+  script.
+    // 提交筛选事件
+    function conditionSelect(type,value,needSubmit,needInitPage){
+      $("#form_" + type).val(value);
+      
+      if(needInitPage){
+        $("#form_pageIndex").val('');
+      }
+      
+      if(needSubmit == true){
+        $("#conditionform").submit();
+      }
+    }
