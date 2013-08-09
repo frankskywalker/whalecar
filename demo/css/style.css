@@ -161,3 +161,33 @@ body {
     /*如何在渐变里面来设置透明度？？*/
     border-radius: 6px 6px 6px 6px;
 }
+
+.nav .dropdown-toggle:hover .caret ,.nav .dropdown-toggle:focus .caret{
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+
+.navbar {
+        margin-bottom: 0px;
+}
+.navbar-inner {
+    border-radius: 0px;
+    min-height: 20px;
+}
+.navbar-inverse .navbar-inner {
+    /*background-color: #333333;*/
+    background-image: linear-gradient(to bottom, #333333, #222222);
+    background-repeat: repeat-x;
+    border-color: #252525;
+}
+
+.nav .dropdown-toggle .caret {
+    border-top-color: #999999;
+}
+
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+    background-color: #222222;
+    color: #FFFFFF;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bold;
+}
