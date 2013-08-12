@@ -157,7 +157,7 @@
 	            shopCity = #{shopCity}
 	        </if>
 	        <if test="carBrand != null and carBrand != ''">
-	            AND FIND_IN_SET(#{shopCity},carBrand)
+	            AND FIND_IN_SET(#{carBrand},carBrand)
 	        </if>
 	    </where>
         LIMIT #{startIndex},#{pageSize}
