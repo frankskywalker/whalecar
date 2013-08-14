@@ -8,4 +8,3 @@ var async = require("async");
 exports.page = function(req, res, next) {
     res.render("index");
 };
-
