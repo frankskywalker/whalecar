@@ -60,6 +60,7 @@ app.all('/index', index.page);
 app.all('/dic', dic.query);
 app.all('/user', user.router);
 app.all('/car', car.page);
+app.all('/cardata',car.action);
 app.all('/shophome', shop.homepage);
 app.all('/shop',shop.action);
 app.all('/stockeditor',shop.stockeditor);
