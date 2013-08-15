@@ -113,50 +113,18 @@ exports.shoplist = function(req, res, next) {
     });
 };
 
-exports.shop_info = function(req, res, next){
-    // get request Params
-    var pageIndex = req.query.pageIndex;
-    var carBrand = req.query.carBrand;
-    var carModelLv1 = req.query.carModelLv1;
-    var orderByName = req.query.orderByName;
-    var orderType = req.query.orderType;
-
-    // set default Params
-    if (!pageIndex) pageIndex = 1; // 默认为1
-    if (!carBrand) carBrand = '';
-    if (!carModelLv1) carModelLv1 = '';
-    if (!orderByName) orderByName = 'sellNum';
-    if (!orderType) orderType = 'asc';
-
-    var modelViewConditionParams = {
-        pageIndex: pageIndex,
-        carBrand: carBrand,
-        carModelLv1: carModelLv1,
-        orderByName: orderByName,
-        orderType: orderType,
-        pageSize : 30
-    };
-    
-    // call service
-    async.parallel({
-        carModelViews: function(callback) {
-            service.client.post("/getModelView", modelViewConditionParams,
-            function(err, req, res, data) {
-                callback(err, data);
-            });
+exports.shopinfo = function(req, res, next){
+    var id = req.query.id;
+    if(!id){
+        next("id is null!");
+    }
+    service.client.post("/getShopById",{id:id},function(error, request, response, data){
+        if(error){
+            next(error);
         }
-    }, function(err, results) {
-        if (err) {
-            next(err);
+        else{
+            res.render("shop_info",{shop:data});
         }
-        //放到session里面，保证每个页面都能获取到当前条件
-        res.locals.session.conditionParams = modelViewConditionParams;
-        // render peage
-        res.render("index", {
-            carModelViews: results.carModelViews,
-            conditionParams: modelViewConditionParams,
-            isRefresh : req.query.isRefresh
-        });
     });
 };
 

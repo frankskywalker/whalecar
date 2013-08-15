@@ -65,6 +65,7 @@ app.all('/shophome', shop.homepage);
 app.all('/shop',shop.action);
 app.all('/stockeditor',shop.stockeditor);
 app.all('/shoplist',shop.shoplist);
+app.all('/shopinfo',shop.shopinfo);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));

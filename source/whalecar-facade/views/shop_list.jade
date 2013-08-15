@@ -76,7 +76,7 @@ block append content
                 img.media-object(data-src='holder.js/64x64', width='100px', src='img/car11.jpg')
                 p 库存：10
               .media-body
-                a(href='./shopinfo.html')
+                a(href='./shopinfo?id=#{shopView.id}')
                    h5.media-heading #{shopView.shopName}
                 h6
                   | 地址：#{shopView.shopAddress}
