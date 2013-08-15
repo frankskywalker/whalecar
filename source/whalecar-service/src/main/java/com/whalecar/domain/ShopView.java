@@ -15,5 +15,4 @@ public class ShopView extends Shop {
 	public void setShopStockViewList(List<ShopStockView> shopStockViewList) {
 		this.shopStockViewList = shopStockViewList;
 	}
-
 }
