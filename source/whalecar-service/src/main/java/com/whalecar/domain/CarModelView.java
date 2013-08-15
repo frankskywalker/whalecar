@@ -8,7 +8,7 @@ public class CarModelView implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 765027789411987876L;
-
+	
 	/**
 	 * carModelLv1 id
 	 */
