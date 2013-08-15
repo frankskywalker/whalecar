@@ -7,6 +7,10 @@ package com.whalecar.domain;
  */
 public class CarSubBrand implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1859311162908270580L;
 	private Integer id;
 	private int carBrand;
 	private String cname;

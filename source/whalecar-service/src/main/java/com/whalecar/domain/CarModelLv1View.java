@@ -2,6 +2,11 @@ package com.whalecar.domain;
 
 public class CarModelLv1View extends CarBrand {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2482311618563362459L;
+
 	private String brandCname;
 
 	private String brandEname;

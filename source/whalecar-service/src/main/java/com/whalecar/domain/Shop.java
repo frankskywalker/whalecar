@@ -7,6 +7,10 @@ package com.whalecar.domain;
  */
 public class Shop implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4625128522259383947L;
 	private Integer id;
 	private String shopName;
 	private String shopAddress;
@@ -18,8 +22,8 @@ public class Shop implements java.io.Serializable {
 	private String loginName;
 	private String loginPassword;
 	private String flagUseable;
-	private int carBrand;
-	private int carSubBrand;
+	private String carBrand;
+	private String carSubBrand;
 
 	public Shop() {
 	}
@@ -128,19 +132,19 @@ public class Shop implements java.io.Serializable {
 		this.flagUseable = flagUseable;
 	}
 
-	public int getCarBrand() {
+	public String getCarBrand() {
 		return carBrand;
 	}
 
-	public void setCarBrand(int carBrand) {
+	public void setCarBrand(String carBrand) {
 		this.carBrand = carBrand;
 	}
 
-	public int getCarSubBrand() {
+	public String getCarSubBrand() {
 		return carSubBrand;
 	}
 
-	public void setCarSubBrand(int carSubBrand) {
+	public void setCarSubBrand(String carSubBrand) {
 		this.carSubBrand = carSubBrand;
 	}
 }

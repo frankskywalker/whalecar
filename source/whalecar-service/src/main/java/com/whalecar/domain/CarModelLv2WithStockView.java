@@ -6,6 +6,11 @@ import java.util.List;
 
 public class CarModelLv2WithStockView extends CarModelLv2 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9172052435075443512L;
+
 	private List<ShopStockView> shopStockList;
 
 	private BigDecimal factoryPriceMin;

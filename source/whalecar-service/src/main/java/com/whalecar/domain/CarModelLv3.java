@@ -9,6 +9,10 @@ import java.math.BigDecimal;
  */
 public class CarModelLv3 implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2716119698662324229L;
 	private Integer id;
 	private int carModelLv2;
 	private String shortName;

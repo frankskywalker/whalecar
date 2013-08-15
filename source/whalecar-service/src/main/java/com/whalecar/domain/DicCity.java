@@ -7,6 +7,10 @@ package com.whalecar.domain;
  */
 public class DicCity implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6251263106374331353L;
 	private Integer id;
 	private String provinceCname;
 	private String provinceEname;

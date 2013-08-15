@@ -7,6 +7,10 @@ package com.whalecar.domain;
  */
 public class User implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5114094581321998769L;
 	private Integer id;
 	private String userName;
 	private String userTel;

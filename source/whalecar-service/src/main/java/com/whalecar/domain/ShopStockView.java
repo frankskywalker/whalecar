@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 
 public class ShopStockView extends ShopStock {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5932867829507068205L;
 	private String carModelLv3ShortName;
 	private String carModelLv3FullName;
 	private BigDecimal FactoryPrice;

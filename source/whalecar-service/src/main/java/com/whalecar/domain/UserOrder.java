@@ -9,6 +9,10 @@ import java.util.Date;
  */
 public class UserOrder implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8307812557929287368L;
 	private Integer id;
 	private String orderSn;
 	private String orderTitle;

@@ -7,6 +7,10 @@ package com.whalecar.domain;
  */
 public class DicColor implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5945668528815691878L;
 	private Integer id;
 	private String colorCname;
 	private String colorEname;
