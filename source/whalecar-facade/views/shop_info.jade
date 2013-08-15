@@ -22,5 +22,5 @@ block append content
   script.
     $(document).ready(function(){
       //初始化汽车数据
-      $("#carModelView").load("./cardata?type=getCarModelPagination");
+      $("#carModelView").load("./cardata?type=getCarModelPagination&shop=#{shop.id}&shide=city,brand");
     });
