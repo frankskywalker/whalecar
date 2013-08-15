@@ -157,8 +157,8 @@ a.thumbnail:hover, a.thumbnail:focus {
 #slider_div_1 .pagination_p{ background:url('../img/banner_down_bg.png') repeat-x; width:100%;  height:35px; position:absolute; bottom:0;z-index:99;}
 #slider_div_1 .pagination_p ul { width:961px; margin:auto;}
 #slider_div_1 .pagination_p ul li { float:left; width:190px; margin-right:1px; color:#fff; text-align:center; border-left:1px solid #fff; font-size:14px;}
-#slider_div_1 .pagination_p ul li a{ width:190px; height:25px; padding-top:10px; display:block; color:#fff;font-size:14px;text-decoration：none;}
-#slider_div_1 .pagination_p ul li a:hover{width:190px; height:25px; padding-top:10px; background-color:#111716; color:#fff; display:block;font-size:14px;text-decoration：none;}
+#slider_div_1 .pagination_p ul li a{ width:190px; height:25px; padding-top:10px; display:block; color:#fff;font-size:14px;text-decoration���none;}
+#slider_div_1 .pagination_p ul li a:hover{width:190px; height:25px; padding-top:10px; background-color:#111716; color:#fff; display:block;font-size:14px;text-decoration���none;}
 #slider_div_1 .pagination_p ul li.current{width:190px; height:35px; display:block;background-color:#111716; }
 #slider_div_1{
 	padding: 1px 0px;
@@ -249,3 +249,39 @@ box-shadow: none;
 	vertical-align: text-top;
 	background-image: url("../img/arrowdown.png");
 }
+
+#cheap{
+	background-image:url("../img/cheapBackground.png");
+}
+
+#focus{
+  margin-top: 25px;
+  background-image:url("../img/cheapBackground.png");
+}
+
+#cheap h5{
+	color:#ffffff;
+}
+
+#focus h5{
+  color:#ffffff;
+}
+
+h5{
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

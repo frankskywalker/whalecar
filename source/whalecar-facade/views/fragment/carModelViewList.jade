@@ -1,5 +1,7 @@
 .span8
   .nav.btngroupLite#carFilter(style="float:left;margin: 10px 10px 0 0px;padding-left:12px;")
+    li
+      a#orderSellNumBtn(style="background:#eeeeee")筛选
     li.dropdown
       a.dropdown-toggle(data-toggle="dropdown",href="#") 城市
         span.caret
@@ -76,6 +78,8 @@
        | &nbsp;&nbsp;&nbsp;
        ul
          li
+           a#orderSellNumBtn(style="background:#eeeeee") 排序
+         li
            if(conditionParams.orderByName == 'sellNum')
              a#orderSellNumBtn(href="#",onclick="return orderSelect('sellNum')") 销量
                img(src="img/arrowdown.png")
@@ -118,7 +122,7 @@
             div(name='imgdiv', style='width: 190px; position: absolute;padding: 10px;')
               img(data-src='holder.js/210x140', alt='210x140', style='width: 190px; height: 140px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
               .caption(style="height: 20px; padding: 0px;")
-                h4.text-center(style="font-size:15px") 市场价:#{carModelView.factoryPriceMin}万 ～ #{carModelView.factoryPriceMax }万
+                h4.text-center(style="font-size:13px") 市场价:#{carModelView.factoryPriceMin}万 ～ #{carModelView.factoryPriceMax }万
             div(name='coverdiv', style='position: absolute; display: none;')
               div(style='height: 110px; padding: 20px;')
                 strong #{carModelView.brandCname} #{carModelView.cname}
@@ -126,8 +130,12 @@
                 h6 横置前驱
                 h6 7档双离合
               .caption(style='background-image: url(img/hover-price.png);padding:0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
-                h4.text-center(style='color: #ffffff;font-size:15px;') 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万
-        h5 #{carModelView.brandCname} #{carModelView.cname}
+                h4.text-center(style='color: #ffffff;font-size:13px;') 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万
+        h5
+          img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
+          | #{carModelView.brandCname} #{carModelView.cname}
+          img.pull-right(src="../img/focusBand.png")
+          img.pull-right(src="../img/cheapBand.png")
       if i != 0 && (i+1) % 4 == 0
         </ul><ul class='thumbnails'>
     </ul>
@@ -194,11 +202,11 @@ script.
     // 汽车图片浮动效果
     $("div[name='hoverdiv']").each(function(index,value){
       $(value).hover(function(){
-        $(this).find("div[name='imgdiv']").fadeTo('slow',0.03);
-        $(this).find("div[name='coverdiv']").fadeToggle('slow');
+        $(this).find("div[name='imgdiv']").fadeTo(100,0.1);
+        $(this).find("div[name='coverdiv']").fadeToggle(100);
       },function(){
-        $(this).find("div[name='imgdiv']").fadeTo('slow',1);
-        $(this).find("div[name='coverdiv']").fadeToggle('slow');
+        $(this).find("div[name='imgdiv']").fadeTo(100,1);
+        $(this).find("div[name='coverdiv']").fadeToggle(100);
       });
     });
     
