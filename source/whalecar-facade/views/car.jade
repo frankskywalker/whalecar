@@ -1,8 +1,8 @@
 extends layout/mainFrame
 
 block append css
-  link(href='css/index.css', rel='stylesheet', media='screen')
   link(rel="stylesheet",href="css/jquery.simplyscroll.css",media="all",type="text/css")
+  link(href='css/car.css', rel='stylesheet', media='screen')
 block append js
   script(type="text/javascript",src="js/jquery.simplyscroll.min.js")
   
@@ -13,31 +13,46 @@ block append content
         .span9
           .row-fluid
             //汽车图片 
-            h4(style='color: #4083A9;')
-              | #{carModelLv1.brandCname}
-              h4 #{carModelLv1.cname}
-            .span7(style='margin: 0px; height: 340px; width: 440px;')
-              #myCarousel.carousel.slide
-                //Carousel items 
-                .carousel-inner
-                  .active.item
-                    img(src='img/car1.jpg')
-                  .item
-                    img(src='img/car2.jpg')
-                  .item
-                    img(src='img/car3.jpg')
-                  .item
-                    img(src='img/car4.jpg')
-                //Carousel nav 
-                a.carousel-control.left(href='#myCarousel', data-slide='prev') ‹
-                a.carousel-control.right(href='#myCarousel', data-slide='next') ›
-               //汽车详情 
+            h4(style='color: #4083A9;margin-bottom:10px')
+              img(src='img/dasAuto.png', alt='dasAuto',style="padding:0 5px 3px 0")
+              span(style="color:#666666") #{carModelLv1.brandCname}
+              &nbsp;
+              span #{carModelLv1.cname}
+            .span8(style='margin: 0px;padding:20px;width:440px;background-color:#ffffff;border-radius:3px')
+              #myCarousel.carousel.slide(style="margin-bottom:0px")
+                //Carousel items
+                #single(style="height: 300px; width: 400px")
+                  .carousel-inner
+                    .active.item
+                      img(src='img/car1.jpg')
+                    .item
+                      img(src='img/car2.jpg')
+                    .item
+                      img(src='img/car3.jpg')
+                    .item
+                      img(src='img/car4.jpg')
+                  //Carousel nav
+                  a.carousel-control.left(href='#myCarousel', data-slide='prev') ‹
+                  a.carousel-control.right(href='#myCarousel', data-slide='next') ›
+                 //汽车详情
+                #description(style="margin-top:20px;padding-left:18px;width:400;height:30px")
+                  h4 车型外观图片
+
             .span4
               ul.nav.nav-tabs.nav-stacked.padding12px
-                li 市场价：13.18万 ～ 22.58万
-                li 网站价：12.18万 ～ 20.58万
-                li 排量：1.6L 1.4T 1.8T 2.0T
-                li 颜色：红 蓝 黑
+                li
+                  h5 市场价：13.18万 - 22.58万
+                li
+                  h5 网站价：12.18万 - 20.58万
+                li
+                  h5 排量：1.6L 1.4T 1.8T 2.0T
+                li
+                  h5 颜色：
+                    p(style="color:red;display:inline")&nbsp;&nbsp;红
+                    p(style="color:blue;display:inline")&nbsp;&nbsp;蓝
+                    p(style="color:back;display:inline")&nbsp;&nbsp;黑
+                li
+                  h6(style="padding-left:10px;margin-top:10px;padding-right:10px")&nbsp;&nbsp;大众CC是一款标准的轿跑车，将轿车的稳定性与跑车的灵敏度完美结合。它采用4门设计，舒适动感；内饰具有明显运动风格，延续了大众汽车高档商务轿车系列车型的风格，色彩鲜明的高级真皮跑车座椅以及真皮智能运动型方向盘彰显了大众CC速度与动感的特征。此外，大众CC和 配备了许多高科技配置，为驾乘者提供尽可能方便舒适的驾乘体验。
           //库存列表 
           <legend>库存列表</legend>
           table.table
@@ -50,7 +65,7 @@ block append content
               each item,index in carModelLv2
                 tr(style='cursor: pointer;', onclick="focusTr(this,'tr#{index}')")
                   td #{item.fullName}
-                  td #{item.carPriceMin}万 ~ #{item.carPriceMax}万 
+                  td #{item.carPriceMin}万 - #{item.carPriceMax}万
                   td #{item.stockCount}
                   td
                     i.icon-chevron-right
@@ -102,7 +117,9 @@ block append content
           //
              相关其他车辆 
           legend
-            h5 相关车型
+            h5
+              p(style="color:#444444;display:inline")更多&nbsp;&nbsp;
+              相关车型
           ul.thumbnails
             li.span6(style='')
               a.thumbnail
@@ -118,7 +135,9 @@ block append content
               a.thumbnail
                 img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
           legend
-            h5 4s店其他车型
+            h5
+              p(style="color:#444444;display:inline")更多&nbsp;&nbsp;
+              该4s店其他车型
           ul.thumbnails
             li.span6(style='')
               a.thumbnail

@@ -1,0 +1,39 @@
+
+
+li h5{
+    color:#888888;
+    font-size: 14px;
+}
+
+legend{
+    margin-top: 20px;
+    font-size:15px;
+    color:#777777;
+    margin-bottom: 0px;
+}
+
+td{
+    color: #777777;
+}
+
+th{
+    color: #666666;
+}
+.thumbnail{
+    padding:5px;
+    width:85px;
+    height:63.75px;
+}
+.thumbnail:hover {
+    padding: 5px;
+    background-color: #FFFFFF;
+}
+
+.span3 h5{
+    color: #4083a9;
+    margin-bottom: 5px;
+}
+
+.span3 ul{
+    margin-bottom: 0;
+}
