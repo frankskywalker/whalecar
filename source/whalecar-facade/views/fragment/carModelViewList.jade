@@ -2,42 +2,44 @@
   .nav.btngroupLite#carFilter(style="float:left;margin: 10px 10px 0 0px;padding-left:12px;")
     li
       a#orderSellNumBtn(style="background:#eeeeee")筛选
-    li.dropdown
-      a.dropdown-toggle(data-toggle="dropdown",href="#") 城市
-        span.caret
-      ul.dropdown-menu
-        li
-           a(href="#",onClick="return conditionSelect('city','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-        each dicCity in allDicCitys
-           li
-             a(href="#",onClick="return conditionSelect('city','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                 if !!session.conditionParams  && dicCity.id == session.conditionParams.city
-                     span(style="color: rgb(170, 61, 70);")= dicCity.cityCname
-                 else
-                     | #{dicCity.cityCname}
-    li.dropdown
-      a.dropdown-toggle(data-toggle="dropdown",href="#") 品牌
-        span.caret
-      ul.dropdown-menu
-          li
-            a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
-          each brand in allBrands
-            li.dropdown-submenu
-              a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
-                if !!session.conditionParams  &&  brand.id == session.conditionParams.carBrand
-                  span(style="color: rgb(170, 61, 70);")= brand.cname 
-                else
-                  | #{brand.cname}
-              ul.dropdown-menu
-                li
-                  a(href="#",onClick="return conditionSelect('carModel','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-                each carModelLv1 in brand.carModelLv1List
-                  li
-                    a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                       if carModelLv1.id == session.conditionParams.carModelLv1
-                           span(style="color: rgb(170, 61, 70);")= carModelLv1.cname
-                       else
-                           | #{carModelLv1.cname}
+    if !shide || shide.indexOf("city") == -1
+        li.dropdown
+          a.dropdown-toggle(data-toggle="dropdown",href="#") 城市
+            span.caret
+          ul.dropdown-menu
+            li
+               a(href="#",onClick="return conditionSelect('city','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+            each dicCity in allDicCitys
+               li
+                 a(href="#",onClick="return conditionSelect('city','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                     if !!session.conditionParams  && dicCity.id == session.conditionParams.city
+                         span(style="color: rgb(170, 61, 70);")= dicCity.cityCname
+                     else
+                         | #{dicCity.cityCname}
+    if !shide || shide.indexOf("brand") == -1
+        li.dropdown
+          a.dropdown-toggle(data-toggle="dropdown",href="#") 品牌
+            span.caret
+          ul.dropdown-menu
+              li
+                a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
+              each brand in allBrands
+                li.dropdown-submenu
+                  a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
+                    if !!session.conditionParams  &&  brand.id == session.conditionParams.carBrand
+                      span(style="color: rgb(170, 61, 70);")= brand.cname
+                    else
+                      | #{brand.cname}
+                  ul.dropdown-menu
+                    li
+                      a(href="#",onClick="return conditionSelect('carModel','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                    each carModelLv1 in brand.carModelLv1List
+                      li
+                        a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
+                           if carModelLv1.id == session.conditionParams.carModelLv1
+                               span(style="color: rgb(170, 61, 70);")= carModelLv1.cname
+                           else
+                               | #{carModelLv1.cname}
     li.dropdown
       a.dropdown-toggle(data-toggle="dropdown",href="#") 价格
         span.caret
@@ -100,14 +102,14 @@
      ul
        if carModelViews.firstPage
          li.disabled
-           a(href='#') 前一页
+           a(href='#',onclick="return false;") 前一页
        -else
          li
            a(href='#',onclick="return conditionSelect('pageIndex','#{carModelViews.currentPage - 1}',true)") 前一页
            
        if carModelViews.lastPage
          li.disabled
-           a(href='#') 后一页
+           a(href='#',onclick="return false;") 后一页
        -else
          li
            a(href='#',onclick="return conditionSelect('pageIndex','#{carModelViews.currentPage + 1}',true)") 后一页
@@ -146,8 +148,10 @@ form(action="/",method="get",id="conditionform")
     input(type="hidden",name="priceMin",id="form_priceMin",value="#{conditionParams.priceMin}")
     input(type="hidden",name="priceMax",id="form_priceMax",value="#{conditionParams.priceMax}")
     input(type="hidden",name="city",id="form_city",value="#{conditionParams.city}")
+    input(type="hidden",name="shop",id="form_shop",value="#{conditionParams.shop}")
     input(type="hidden",name="orderByName",id="form_orderByName",value="#{conditionParams.orderByName}")
     input(type="hidden",name="orderType",id="form_orderType",value="#{conditionParams.orderType}")
+    input(type="hidden",name="shide",value="#{shide}")
 script.
     // 提交筛选事件
     function conditionSelect(type,value,needSubmit,needInitPage){

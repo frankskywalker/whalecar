@@ -2,52 +2,57 @@ package com.whalecar.domain;
 
 import java.math.BigDecimal;
 
-public class CarModelView  implements java.io.Serializable{
+public class CarModelView implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 765027789411987876L;
 	
 	/**
 	 * carModelLv1 id
 	 */
 	private Integer carModelLv1;
-	
+
 	/**
 	 * 品牌名称
 	 */
 	private String brandCname;
-	
+
 	/**
 	 * 型号名称
 	 */
 	private String cname;
-	
+
 	/**
 	 * 图片相对路径
 	 */
 	private String imgPath;
-	
+
 	/**
 	 * 官方指导价格最低价
 	 */
 	private BigDecimal factoryPriceMin;
-	
+
 	/**
 	 * 官方指导价格最高价
 	 */
 	private BigDecimal factoryPriceMax;
-	
+
 	/**
 	 * 4s店最高报价
 	 */
 	private String shopPriceMin;
-	
+
 	/**
 	 * 4s店最低报价
 	 */
 	private String shopPriceMax;
-	
-	public CarModelView(){
-		
+
+	public CarModelView() {
+
 	}
-	
+
 	public String getBrandCname() {
 		return brandCname;
 	}
@@ -111,6 +116,5 @@ public class CarModelView  implements java.io.Serializable{
 	public void setCarModelLv1(Integer carModelLv1) {
 		this.carModelLv1 = carModelLv1;
 	}
-	
-	
+
 }

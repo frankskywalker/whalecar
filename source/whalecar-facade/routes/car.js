@@ -59,8 +59,10 @@ function getCarModelPagination(req, res, next) {
     var priceMin = req.query.priceMin;
     var priceMax = req.query.priceMax;
     var city = req.query.city;
+    var shop = req.query.shop;
     var orderByName = req.query.orderByName;
     var orderType = req.query.orderType;
+
 
     // set default Params
     if (!pageIndex) pageIndex = 1; // 默认为1
@@ -69,6 +71,7 @@ function getCarModelPagination(req, res, next) {
     if (!priceMin) priceMin = '';
     if (!priceMax) priceMax = '';
     if (!city) city = '';
+    if (!shop) shop = '';
     if (!orderByName) orderByName = 'sellNum';
     if (!orderType) orderType = 'asc';
 
@@ -79,9 +82,10 @@ function getCarModelPagination(req, res, next) {
         priceMin: priceMin,
         priceMax: priceMax,
         city: city,
+        shop:shop,
         orderByName: orderByName,
         orderType: orderType,
-        pageSize: 30
+        pageSize: 24
     };
 
     async.parallel({
@@ -122,7 +126,8 @@ function getCarModelPagination(req, res, next) {
                 allDicCitys: results.allDicCitys,
                 allBrands: results.allBrands,
                 carModels: results.carModels,
-                conditionParams: modelViewConditionParams
+                conditionParams: modelViewConditionParams,
+                shide:req.query.shide
             });
         }
     });

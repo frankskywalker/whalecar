@@ -111,7 +111,7 @@
 	
 	<select parameterType="map" id="queryModelViewCount" resultType="int">
 		SELECT 
-		    count(distinct Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname)
+		    count(distinct Car_Model_Lv1.id)
 		FROM
 		    (select * from Car_Model_Lv1 where flagUseable = 'yes') Car_Model_Lv1
 		        LEFT JOIN

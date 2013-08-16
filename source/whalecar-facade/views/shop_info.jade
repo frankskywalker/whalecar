@@ -12,118 +12,15 @@ block append content
         a.pull-left(href='#')
           img.media-object(src='img/dasauto-logo.jpg')
         .media-body
-          h4.media-heading 上海大众宁波兴宁达众汽车销售服务有限公司
-          | 地址：浙江宁波市江东兴宁路178号[查看地图]
+          h4.media-heading #{shop.shopName}
+          | 地址：#{shop.shopAddress}[查看地图]
           br
-          | 电话：4008189666-2173
+          | 电话：#{shop.shopTel}
       //
          condition 
-      .row-fluid
-        .span8
-          ul.nav.nav-pills
-            //
-               车型 
-            li.dropdown
-              a.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
-                | 车型
-                b.caret
-              ul.dropdown-menu
-                li
-                  a(href='#') 不限
-                li
-                  a(href='#') 捷达
-                li
-                  a(href='#') 高尔夫
-        //
-           
-                <ul class="breadcrumb">
-                    <li>宁波 <span class="divider">></span></li>
-                    <li>大众<span class="divider">></span></li>
-                    <li>高尔夫<span class="divider">></span></li>
-                    <li>所有</li>
-                </ul>
-                
-        .span4
-          .pagination.pagination-small.pagination-right(style='margin: 5px auto;')
-            ul
-              li.disabled
-                a(href='#') 前一页
-              li.active
-                a(href='#') 1
-              li
-                a(href='#') 2
-              li
-                a(href='#') 3
-              li
-                a(href='#') 4
-              li
-                a(href='#') 5
-              li
-                a(href='#') 后一页
-      hr(style='margin: 0px 0px 17px;')
-      //
-         列表 
-      .row-fluid
-        ul.thumbnails
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-        ul.thumbnails
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-        ul.thumbnails
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
-          li.span3
-            a.thumbnail(href='./carinfo.html')
-              img(data-src='holder.js/210x140', alt='210x140', style='width: 210px; height: 140px;', src='img/car.jpg')
-              .caption
-                h6.text-center 市场价:123000   鲸宝价:119000
+      .row-fluid#carModelView
+  script.
+    $(document).ready(function(){
+      //初始化汽车数据
+      $("#carModelView").load("./cardata?type=getCarModelPagination&shop=#{shop.id}&shide=city,brand");
+    });
