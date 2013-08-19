@@ -53,66 +53,7 @@ block append content
                     p(style="color:back;display:inline")&nbsp;&nbsp;黑
                 li
                   h6(style="padding-left:10px;margin-top:10px;padding-right:10px")&nbsp;&nbsp;大众CC是一款标准的轿跑车，将轿车的稳定性与跑车的灵敏度完美结合。它采用4门设计，舒适动感；内饰具有明显运动风格，延续了大众汽车高档商务轿车系列车型的风格，色彩鲜明的高级真皮跑车座椅以及真皮智能运动型方向盘彰显了大众CC速度与动感的特征。此外，大众CC和 配备了许多高科技配置，为驾乘者提供尽可能方便舒适的驾乘体验。
-          //库存列表 
-          <legend>库存列表</legend>
-          table.table
-            thead
-              tr
-                th 品种
-                th 价格范围
-                th 库存数量
-            tbody
-              each item,index in carModelLv2
-                tr(style='cursor: pointer;', onclick="focusTr(this,'tr#{index}')")
-                  td #{item.fullName}
-                  td #{item.carPriceMin}万 - #{item.carPriceMax}万
-                  td #{item.stockCount}
-                  td
-                    i.icon-chevron-right
-                tr(id="tr#{index}",style='display: none; background-color: rgb(210,210,200);')
-                  td(colspan='4')
-                    select.span2.btn-small(name="carModelLv3Name")
-                      option 车型
-                      each carModelLv3Name in item.carModelLv3NameList
-                        option #{carModelLv3Name}
-                    select.span2.btn-small(name="outsideColorName")
-                      option 外观颜色
-                      each outsideColorName in item.outsideColorList
-                        option #{outsideColorName}
-                    select.span2.btn-small(name="insideColorName")
-                      option 内饰颜色
-                      each insideColorName in item.insideColorList
-                        option #{insideColorName}
-                    each shopStockView in item.shopStockList
-                      .well(mode="#{shopStockView.carModelLv3FullName}",outColor="#{shopStockView.carOutsideColorName}",inColor="#{shopStockView.carInsideColorName}")
-                        a(href='./shopinfo.html')
-                          h4 #{shopStockView.shopName}
-                        table.table(style='background-color: inherit;')
-                          thead
-                            tr
-                              th 车型
-                              th 变速箱
-                              th 发动机
-                              th 外观颜色
-                              th 内饰颜色
-                              th 库存(现货/在途)
-                              th 价格
-                          tbody
-                            tr
-                              td
-                                b #{shopStockView.carModelLv3FullName}
-                              td #{shopStockView.driveType}
-                              td #{shopStockView.gearType}
-                              td #{shopStockView.carOutsideColorName}
-                              td #{shopStockView.carInsideColorName}
-                              td #{shopStockView.carOnOrderNum} / #{shopStockView.carOnHandeNum}
-                              td(width='110px')
-                                span(style='color: #ec6197; font-size: 20pt;')  #{shopStockView.carPrice}万
-                            tr
-                              td(colspan='7')
-                                h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
-                              td(colspan='7')
-                                input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
+
         .span3
           //
              相关其他车辆 
@@ -134,7 +75,7 @@ block append content
             li.span6(style='')
               a.thumbnail
                 img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-          legend
+          legend(style="margin-top:0px")
             h5
               p(style="color:#444444;display:inline")更多&nbsp;&nbsp;
               该4s店其他车型
@@ -152,6 +93,87 @@ block append content
             li.span6(style='')
               a.thumbnail
                 img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
+
+    //库存列表
+    legend 库存列表
+    ul.nav.nav-pills#list
+      each item,index in carModelLv2
+        li
+          a(href="##{item.id}") #{item.fullName}
+
+    div.tab-content
+      each item,index in carModelLv2
+        div.tab-pane(id=item.id)
+          table.table
+            thead
+              tr
+                th(style="width:250px")
+                  p 经销商
+                th(style="width:180px")
+                  p 车型
+                th(style="width:100px")
+                  p 变速箱
+                th(style="width:65px")
+                  p 内饰
+                th(style="width:65px")
+                  p 外饰
+                th(style="width:100px")
+                  p 配置说明
+                th(style="width:80px")
+                  p 库存
+                th(style="width:20px")
+                  p
+            tbody
+              each shopStockView in item.shopStockList
+                tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
+                  td((style="background: url(../img/cornerBand.png) top left no-repeat;")) #{shopStockView.shopName}
+                  td #{shopStockView.carModelLv3FullName}
+                  td #{shopStockView.gearType}
+                  td #{shopStockView.carInsideColorName}
+                  td #{shopStockView.carOutsideColorName}
+                  td 点击展开
+                  td #{shopStockView.carOnHandeNum + shopStockView.carOnOrderNum}
+                  td
+                tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
+                  td(colspan='5')  阿斯兰的开发；sldfk
+                  td(colspan='1')  120w
+                  td(colspan='1')  预定
+                  td(colspan='1')
+
+                  //each shopStockView in item.shopStockList
+                  //  .well(mode="#{shopStockView.carModelLv3FullName}",outColor="#{shopStockView.carOutsideColorName}",inColor="#{shopStockView.carInsideColorName}")
+                  //    a(href='./shopinfo.html')
+                  //      //h4 #{shopStockView.shopName}
+                  //    table.table(style='background-color: inherit;')
+                  //      thead
+                  //        tr
+                  //          th 真皮座椅
+                  //          th 导航
+                  //          th 天窗
+                  //          th 定速巡航
+                  //          th 倒车雷达
+                  //          th 电动座椅
+                  //          th 座椅加热
+                  //          th 倒车影像
+                  //          th 多功能方向盘
+                  //      tbody
+                  //        tr
+                  //          td
+                  //            b #{shopStockView.carModelLv3FullName}
+                  //          td #{shopStockView.driveType}
+                  //          td #{shopStockView.gearType}
+                  //          td #{shopStockView.carOutsideColorName}
+                  //          td #{shopStockView.carInsideColorName}
+                  //          td #{shopStockView.carOnOrderNum} / #{shopStockView.carOnHandeNum}
+                  //          td(width='110px')
+                  //            span(style='color: #ec6197; font-size: 20pt;')  #{shopStockView.carPrice}万
+                  //        tr
+                  //          td(colspan='7')
+                  //            h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
+                  //          td(colspan='7')
+                  //            input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
+
+
     #myModal.modal.hide.fade(style='left: 40%; width: 780px;')
       .modal-body(style='border-radius: 4px 4px 4px 4px;')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')
@@ -182,13 +204,13 @@ block append content
             $("#" + currentFocusTr).hide();
           }
           else{
-            $("#" + trId).fadeOut();
+            $("#" + trId).fadeOut(0);
           }
         }
         //如果选择的不是当前tr才显示focus新的tr
         if(currentFocusTr != trId){
-          $("body").animate({scrollTop: $(elment).offset().top -58},1000);
-          $("#" + trId).fadeIn();
+          //$("body").animate({scrollTop: $(elment).offset().top -58},1000);
+          $("#" + trId).fadeIn(0);
            currentFocusTr = trId;
         }
         else{
@@ -201,3 +223,11 @@ block append content
       function changeStockCondition(){
          
       }
+
+
+
+      $('#list a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+      })
+

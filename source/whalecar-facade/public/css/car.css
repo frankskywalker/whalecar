@@ -37,3 +37,38 @@ th{
 .span3 ul{
     margin-bottom: 0;
 }
+
+tr th{
+    height:30px;
+    background-color: #e6e6e6;
+    font-size: 14px;
+}
+
+#shopStockTr td{
+    /*height:60px;*/
+    font-size: 12px;
+    padding: 24px 8px;
+    background: #f8f8f8;
+}
+
+th p{
+    margin:5px 8px;
+}
+
+td p{
+    margin: 20px 8px;
+}
+
+.table th, .table td {
+    padding: 0px;
+}
+
+#list{
+    margin-bottom: 0;
+}
+
+.shopStockTr td{
+    background-color: #e6e6e6;
+    font-size: 14px;
+    padding: 12px 8px;
+}
