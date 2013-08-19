@@ -1,16 +1,15 @@
 package com.whalecar.service;
 
-import java.util.List;
-
+import com.whalecar.domain.DicCity;
+import com.whalecar.domain.DicColor;
+import com.whalecar.persistence.DicMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.whalecar.domain.DicCity;
-import com.whalecar.domain.DicColor;
-import com.whalecar.persistence.DicMapper;
+import java.util.List;
 
 /**
  * Dic Sercvice

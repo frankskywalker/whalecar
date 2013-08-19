@@ -96,7 +96,6 @@ block append content
     function saveStock(){
          $.post("/shop?type=saveShopStock", $("#saveShopStockForm").serialize())
         .done(function(data) {
-             alert(data.saveSuc);
              if(data.saveSuc == true){
                  $("#saveSucModal").modal("show");
              }

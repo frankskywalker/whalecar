@@ -1,10 +1,10 @@
 package com.whalecar.persistence;
 
-import java.util.List;
-import java.util.Map;
-
 import com.whalecar.domain.Shop;
 import com.whalecar.domain.ShopStockView;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 4s店相关 Table = Shop & Shop_Stock
