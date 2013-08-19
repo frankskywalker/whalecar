@@ -1,5 +1,5 @@
 .nide
-.settings
-node_modules
+.settings/
+node_modules/
 .project
 .idea
