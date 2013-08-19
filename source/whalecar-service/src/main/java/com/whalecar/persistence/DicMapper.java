@@ -1,9 +1,9 @@
 package com.whalecar.persistence;
 
-import java.util.List;
-
 import com.whalecar.domain.DicCity;
 import com.whalecar.domain.DicColor;
+
+import java.util.List;
 
 /**
  * 字典表相关，Table = Dic***

@@ -1,12 +1,10 @@
 package com.whalecar.service;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.whalecar.domain.*;
+import com.whalecar.persistence.CarModelMapper;
+import com.whalecar.persistence.ShopMapper;
+import com.whalecar.persistence.tools.PaginationResult;
+import com.whalecar.persistence.tools.PaginationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -17,17 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.whalecar.domain.CarModelLv1;
-import com.whalecar.domain.CarModelLv1View;
-import com.whalecar.domain.CarModelLv2;
-import com.whalecar.domain.CarModelLv2WithStockView;
-import com.whalecar.domain.CarModelLv3;
-import com.whalecar.domain.CarModelView;
-import com.whalecar.domain.ShopStockView;
-import com.whalecar.persistence.CarModelMapper;
-import com.whalecar.persistence.ShopMapper;
-import com.whalecar.persistence.tools.PaginationResult;
-import com.whalecar.persistence.tools.PaginationUtils;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * CarModel Service
@@ -49,7 +38,7 @@ public class CarModelService {
 	/**
 	 * 根据brandId获取所有第1级carModel
 	 * 
-	 * @param brandid
+	 * @param conditionMap
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "getCarModelLv1ByBrand")
@@ -62,7 +51,7 @@ public class CarModelService {
 	/**
 	 * 根据id查询 CarModelLv1
 	 * 
-	 * @param id
+	 * @param conditionMap
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "getCarModelLv1ViewById")

@@ -1,9 +1,11 @@
 package com.whalecar.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import com.whalecar.domain.Shop;
+import com.whalecar.domain.ShopStockView;
+import com.whalecar.domain.ShopView;
+import com.whalecar.persistence.ShopMapper;
+import com.whalecar.persistence.tools.PaginationResult;
+import com.whalecar.persistence.tools.PaginationUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.whalecar.domain.Shop;
-import com.whalecar.domain.ShopStockView;
-import com.whalecar.domain.ShopView;
-import com.whalecar.persistence.ShopMapper;
-import com.whalecar.persistence.tools.PaginationResult;
-import com.whalecar.persistence.tools.PaginationUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Shop service

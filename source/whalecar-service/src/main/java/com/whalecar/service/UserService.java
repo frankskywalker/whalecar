@@ -1,7 +1,7 @@
 package com.whalecar.service;
 
-import java.util.Map;
-
+import com.whalecar.domain.User;
+import com.whalecar.persistence.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.whalecar.domain.User;
-import com.whalecar.persistence.UserMapper;
+import java.util.Map;
 
 @Controller
 public class UserService {
@@ -21,8 +20,7 @@ public class UserService {
 	/**
 	 * 根据用户名密码查询用户信息 如果没有查询到，说明用户名或密码错误
 	 * 
-	 * @param loginName
-	 * @param password
+	 * @param conditionMap
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "queryByNameAndPsw")

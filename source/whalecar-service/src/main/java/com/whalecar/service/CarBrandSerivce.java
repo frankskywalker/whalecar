@@ -1,22 +1,21 @@
 package com.whalecar.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.whalecar.domain.CarBrand;
 import com.whalecar.domain.CarBrandView;
 import com.whalecar.domain.CarModelLv1;
 import com.whalecar.domain.CarSubBrand;
 import com.whalecar.persistence.CarBrandMapper;
 import com.whalecar.persistence.CarModelMapper;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * CarBrand Service
@@ -32,11 +31,10 @@ public class CarBrandSerivce {
 	@Autowired
 	CarModelMapper carModelMapper;
 
-	/**
-	 * 获取所有 Brand
-	 * 
-	 * @return
-	 */
+    /**
+     * 获取所有 Brand
+     * @return  List<CarBrand>
+     */
 	@RequestMapping("/getAllBrand")
 	public @ResponseBody
 	List<CarBrand> getAllBrand() {

@@ -1,13 +1,9 @@
 package com.whalecar.persistence;
 
+import com.whalecar.domain.*;
+
 import java.util.List;
 import java.util.Map;
-
-import com.whalecar.domain.CarModelLv1;
-import com.whalecar.domain.CarModelLv1View;
-import com.whalecar.domain.CarModelLv2;
-import com.whalecar.domain.CarModelLv3;
-import com.whalecar.domain.CarModelView;
 
 /**
  * 汽车型号相关 Table = Car_Model_**

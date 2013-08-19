@@ -1,8 +1,8 @@
 package com.whalecar.persistence;
 
-import java.util.Map;
-
 import com.whalecar.domain.User;
+
+import java.util.Map;
 
 /**
  * 用户相关 Table = User

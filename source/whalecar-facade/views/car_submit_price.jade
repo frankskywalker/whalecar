@@ -1,0 +1,34 @@
+//
+    Created with JetBrains WebStorm.
+    User: ruihuang
+    Date: 13-8-18
+    Time: 下午1:56
+.container(style='padding: 70px 0;')
+    .row-Fluid
+        .span8.offset2
+            .text-center
+                h2 订单号：1285387628
+            legend 商品信息
+            dl.dl-horizontal(style='font-size: 12pt;')
+                dt 车型
+                dd 大众 速腾 1.6
+                dt 品种
+                dd 2011款 1.6 自动挡
+                dt 配置描述
+                dd 导航、真皮
+                dt 外观颜色
+                dd 红色
+                dt 内饰颜色
+                dd 棕色
+                dt 库存数量
+                dd 1
+                dt 备注
+                dd 送xxxxxxx
+            form.form-horizontal
+                legend 提交我的价位
+                .control-group
+                    label.control-label(for='price') 价格
+                    .controls
+                        input#price(type='text', placeholder='价格')
+            input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')
+            input.btn.btn-primary.span2.pull-right(type='button', onclick='window.location.href="./submit_price_finish.html"', value='确认')
