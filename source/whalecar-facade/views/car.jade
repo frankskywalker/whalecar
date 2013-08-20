@@ -107,7 +107,7 @@ block append content
           table.table
             thead
               tr
-                th(style="width:250px")
+                th(style="width:300px")
                   p 经销商
                 th(style="width:180px")
                   p 车型
@@ -117,16 +117,16 @@ block append content
                   p 内饰
                 th(style="width:65px")
                   p 外饰
-                th(style="width:100px")
+                th(style="width:90px")
                   p 配置说明
-                th(style="width:80px")
+                th(style="width:50px")
                   p 库存
-                th(style="width:20px")
+                th(style="width:10px")
                   p
             tbody
               each shopStockView in item.shopStockList
                 tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
-                  td((style="background: url(../img/cornerBand.png) top left no-repeat;")) #{shopStockView.shopName}
+                  td(style="background: url(../img/cornerBand.png) top left no-repeat;font-size:14px") #{shopStockView.shopName}
                   td #{shopStockView.carModelLv3FullName}
                   td #{shopStockView.gearType}
                   td #{shopStockView.carInsideColorName}
@@ -135,45 +135,28 @@ block append content
                   td #{shopStockView.carOnHandeNum + shopStockView.carOnOrderNum}
                   td
                 tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
-                  td(colspan='5')  阿斯兰的开发；sldfk
-                  td(colspan='1')  120w
-                  td(colspan='1')  预定
-                  td(colspan='1')
-
-                  //each shopStockView in item.shopStockList
-                  //  .well(mode="#{shopStockView.carModelLv3FullName}",outColor="#{shopStockView.carOutsideColorName}",inColor="#{shopStockView.carInsideColorName}")
-                  //    a(href='./shopinfo.html')
-                  //      //h4 #{shopStockView.shopName}
-                  //    table.table(style='background-color: inherit;')
-                  //      thead
-                  //        tr
-                  //          th 真皮座椅
-                  //          th 导航
-                  //          th 天窗
-                  //          th 定速巡航
-                  //          th 倒车雷达
-                  //          th 电动座椅
-                  //          th 座椅加热
-                  //          th 倒车影像
-                  //          th 多功能方向盘
-                  //      tbody
-                  //        tr
-                  //          td
-                  //            b #{shopStockView.carModelLv3FullName}
-                  //          td #{shopStockView.driveType}
-                  //          td #{shopStockView.gearType}
-                  //          td #{shopStockView.carOutsideColorName}
-                  //          td #{shopStockView.carInsideColorName}
-                  //          td #{shopStockView.carOnOrderNum} / #{shopStockView.carOnHandeNum}
-                  //          td(width='110px')
-                  //            span(style='color: #ec6197; font-size: 20pt;')  #{shopStockView.carPrice}万
-                  //        tr
-                  //          td(colspan='7')
-                  //            h5 附赠信息：送进口贴膜，2年免费维护以及100公里油卡
-                  //          td(colspan='7')
-                  //            input.btn.pull-right(data-toggle='modal', data-target='#myModal', type='button', value='预定')
-
-
+                  td(colspan='4')
+                    table
+                      tbody
+                        tr.detail
+                          td(style="color:#555555;font-weight: bold") 详细配置说明
+                          td 真皮座椅
+                          td 导航
+                          td 天窗
+                          td 定速巡航
+                          td 倒车雷达
+                          td 电动座椅
+                          td 座椅加热
+                          td 倒车影像
+                          td 多功能方向盘
+                    table
+                      tbody
+                        tr.detail
+                          td 鼎强汽车酷夏促销进行中，凡购车即送万元装潢大礼包，可办理贷款，0首付低利率！
+                  td(colspan='1',style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through")  150w
+                  td(colspan='1',style="vertical-align: middle;color:#ec6197;font-size:20px")  120w
+                  td(colspan='1',style="vertical-align: middle")  预定
+                  td(colspan='1',style="vertical-align: middle")
     #myModal.modal.hide.fade(style='left: 40%; width: 780px;')
       .modal-body(style='border-radius: 4px 4px 4px 4px;')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')

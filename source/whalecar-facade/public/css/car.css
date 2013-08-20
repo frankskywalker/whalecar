@@ -47,8 +47,11 @@ tr th{
 #shopStockTr td{
     /*height:60px;*/
     font-size: 12px;
-    padding: 24px 8px;
-    background: #f8f8f8;
+    padding: 20px 8px;
+}
+
+#shopStockTr{
+    background-color: #f8f8f8;
 }
 
 th p{
@@ -61,6 +64,8 @@ td p{
 
 .table th, .table td {
     padding: 0px;
+    border-top: 0;
+    border-bottom: 1px solid #ddd;
 }
 
 #list{
@@ -69,6 +74,16 @@ td p{
 
 .shopStockTr td{
     background-color: #e6e6e6;
-    font-size: 14px;
+    font-size: 12px;
     padding: 12px 8px;
 }
+
+.detail td{
+    border:0;
+    padding: 0 8px;
+}
+
+/*#firstTd{*/
+    /*font-size: 14px;*/
+    /*background: url(../img/cornerBand.png) top left no-repeat;*/
+/*}*/
