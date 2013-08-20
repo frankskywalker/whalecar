@@ -65,7 +65,6 @@ function regist(req, res, next) {
 }
 
 function validator(req, res, next){
-    req.assert
     req.assert('loginPassword', 'Invalid loginPassword').isAlpha();
     var errors = req.validationErrors();
     if (errors) {
