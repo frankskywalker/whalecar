@@ -9,6 +9,7 @@
     "express": "*",
     "jade": "*",
     "restify" : "*",
-    "async" : "*"
+    "async" : "*",
+    "express-validator" : "*"
   }
 }
