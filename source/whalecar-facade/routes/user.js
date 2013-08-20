@@ -3,12 +3,15 @@
  */
 
 var service = require("./tools/service-header");
+var expressValidator = require('express-validator');
 
 exports.router = function(req, res, next) {
     if (req.query.type == "login") {
         login(req, res, next);
     } else if (req.query.type == "regist") {
         regist(req, res, next);
+    } else if(req.query.type == "registerValidator"){
+        validator(req, res, next);
     }
 };
 
@@ -59,4 +62,15 @@ function regist(req, res, next) {
             });
         }
     });
+}
+
+function validator(req, res, next){
+    req.assert
+    req.assert('loginPassword', 'Invalid loginPassword').isAlpha();
+    var errors = req.validationErrors();
+    if (errors) {
+        console.log(errors);
+        res.send(errors);
+        return;
+    }
 }

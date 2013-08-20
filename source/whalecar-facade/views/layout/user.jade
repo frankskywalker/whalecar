@@ -86,6 +86,12 @@ script.
     });
   }
   function regist(){
+    $.post("/user?type=registerValidator", $("#registForm").serialize())
+      .done(function(data) {
+      alert(data);
+    });
+  }
+  function regist2(){
     $.post("/user?type=regist", $("#registForm").serialize())
       .done(function(data) {
       if(data.loginSuc){

@@ -1,6 +1,7 @@
 var express = require('express'),
     http = require('http'),
-    path = require('path');
+    path = require('path'),
+    expressValidator = require('express-validator');
 
 var index = require('./routes/index'),
     dic = require('./routes/dic'),
@@ -27,6 +28,8 @@ app.use(function(req, res, next) {
     res.locals.session = req.session;
     next();
 });
+//validator middleware
+app.use(expressValidator());
 app.use(navbar.initData);
 app.use(app.router);
 // process error
