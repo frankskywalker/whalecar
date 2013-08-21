@@ -35,9 +35,5 @@ include user
 script.
   $(function(){
     var path = window.location.pathname;
-    $($("ul.nav li a[href='" + path + "']").parents('li')).addClass('active')
+    $("ul.nav li a[href='" + path + "']").parent('li').addClass('active')
   });
-  $("#navCarLink").bind("mouseenter",function(){
-    $(this).click();
-  });
-

@@ -27,4 +27,12 @@ public interface UserMapper {
 	 * @param userMap
 	 */
 	public int createUser(Map<String, Object> userMap);
+
+
+    /**
+     * 根据条件查询用户数量，可用于验证
+     * @param userMap
+     * @return 符合条间总数
+     */
+    public int queryCountByCondition(Map<String, Object> userMap);
 }

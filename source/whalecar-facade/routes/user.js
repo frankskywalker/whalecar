@@ -63,13 +63,3 @@ function regist(req, res, next) {
         }
     });
 }
-
-function validator(req, res, next){
-    req.assert('loginPassword', 'Invalid loginPassword').isAlpha();
-    var errors = req.validationErrors();
-    if (errors) {
-        console.log(errors);
-        res.send(errors);
-        return;
-    }
-}

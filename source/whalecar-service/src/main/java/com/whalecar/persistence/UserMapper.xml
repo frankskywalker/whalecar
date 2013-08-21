@@ -20,5 +20,31 @@
     User (loginName,loginPassword,userCity,userEmail,userName,userTel)
     values (#{loginName},PASSWORD(#{loginPassword}),#{userCity},#{userEmail},#{userName},#{userTel})
   </insert>
+
+  <select id="queryCountByCondition" resultType="int">
+    SELECT
+      count(id)
+    FROM User
+    <where>
+        <if test="loginName != null and loginName != ''">
+          loginName =  #{loginName}
+        </if>
+        <if test="loginPassword != null and loginPassword != ''">
+            loginPassword =  PASSWORD(#{loginPassword})
+        </if>
+        <if test="userCity != null and userCity != ''">
+            userCity =  #{userCity}
+        </if>
+        <if test="userEmail != null and userEmail != ''">
+            userEmail =  #{userEmail}
+        </if>
+        <if test="userName != null and userName != ''">
+            userName =  #{userName}
+        </if>
+        <if test="userTel != null and userTel != ''">
+            userTel =  #{userTel}
+        </if>
+    </where>
+  </select>
   
 </mapper>
