@@ -1,0 +1,20 @@
+.media a img{
+    width: 80px;
+    height: 80px;
+    border-radius: 2px;
+}
+
+.media-body{
+    padding: 10px 5px;
+    color: #888888;
+}
+
+.media-body h4{
+    color: #666666;
+}
+
+.media-body img{
+    height: 17px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+}

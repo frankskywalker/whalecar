@@ -1,7 +1,7 @@
 extends layout/mainFrame
 
 block append css
-
+  link(href='css/shop_info.css', rel='stylesheet')
 block append js
 
 block append content
@@ -10,14 +10,18 @@ block append content
          shop header 
       .media(style='padding: 20px 0px 20px 0px;')
         a.pull-left(href='#')
-          img.media-object(src='img/dasauto-logo.jpg')
+          img.media-object(src='img/benz4ssss.jpg')
         .media-body
           h4.media-heading #{shop.shopName}
-          | 地址：#{shop.shopAddress}[查看地图]
+          | 地址：#{shop.shopAddress}
+          span(style="color:#4083a9") &nbsp;&nbsp;&nbsp;&nbsp;[查看地图]
+          img(src="img/icon_map.png")
           br
           | 电话：#{shop.shopTel}
+          img(src="img/icon_phone.png")
       //
-         condition 
+         condition
+
       .row-fluid#carModelView
   script.
     $(document).ready(function(){
