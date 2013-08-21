@@ -57,7 +57,7 @@ div(id="registModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hi
       div.alert.alert-success.hide#regist-succee 注册成功
   .modal-footer
     a(href="#",class="btn",onClick="switchLoginAndRegist('regist');") 登陆
-    a(href="#",class="btn btn-primary",onClick="regist()") 提交注册
+    a(href="#",class="btn btn-primary",onClick="regist();return false;") 提交注册
 
 script.
   function switchLoginAndRegist(selected){
@@ -85,13 +85,12 @@ script.
       }
     });
   }
+
   function regist(){
-    $.post("/user?type=registerValidator", $("#registForm").serialize())
-      .done(function(data) {
-      alert(data);
+    formValidate("registForm","validateUserRegister",function(data){
+     alert(data);
     });
-  }
-  function regist2(){
+    return;
     $.post("/user?type=regist", $("#registForm").serialize())
       .done(function(data) {
       if(data.loginSuc){
