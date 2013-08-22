@@ -22,8 +22,6 @@ exports.validate = function(req,res,next){
             res.json(req.validationErrors());
         });
     }
-
-
 }
 
 function validateLoginName(req,res,next,callback){
@@ -51,5 +49,4 @@ function validateUserRegister(req,res,next,callback){
         req.assert("userEmail","格式不正确").isEmail();
         callback();
     });
-
 }

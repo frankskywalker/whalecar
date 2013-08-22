@@ -30,13 +30,12 @@ public class ShopService {
 	@Autowired
 	private ShopMapper shopMapper;
 
-	/**
-	 * 根据用户名密码查询Shop信息 如果没有查询到，说明用户名或密码错误
-	 * 
-	 * @param loginName
-	 * @param password
-	 * @return
-	 */
+    /**
+     * 根据用户名密码查询Shop信息 如果没有查询到，说明用户名或密码错误
+     *
+     * @param conditionMap
+     * @return
+     */
 	@RequestMapping(method = RequestMethod.POST, value = "/getShopByNameAndPsw")
 	public @ResponseBody
 	Shop getShopByNameAndPsw(@RequestBody Map<String, Object> conditionMap) {
@@ -114,12 +113,12 @@ public class ShopService {
 		return shopMapper.queryShopById(shopId);
 	}
 
-	/**
-	 * 根据ShopId查询ShopStock
-	 * 
-	 * @param shopId
-	 * @return
-	 */
+    /**
+     * 根据ShopId查询ShopStock
+     *
+     * @param shop
+     * @return
+     */
 	@RequestMapping(method = RequestMethod.POST, value = "/getShopStockViewByShop")
 	public @ResponseBody
 	List<ShopStockView> getShopStockViewByShop(
@@ -145,11 +144,26 @@ public class ShopService {
 		}
 	}
 
-	/**
-	 * 根据条件分页查询ShopView
-	 * 
-	 * @param shop
-	 */
+    /**
+     * 根据id查询ShopStockView列表
+     *
+     * @param shopStockondition 结构：{id:@shopStockId}
+     * @return shopStockView列表
+     */
+    @RequestMapping(method = RequestMethod.POST,value="/getShopStockViewById")
+    public @ResponseBody
+    ShopStockView getShopStockViewById(@RequestBody Map<String, Object> shopStockondition){
+        int id = Integer.valueOf(String.valueOf(shopStockondition
+                .get("id")));
+        return shopMapper.queryShopStockViewById(id);
+    }
+
+    /**
+     * 根据条件分页查询ShopView
+     *
+     * @param shopCondition
+     * @return
+     */
 	@RequestMapping(method = RequestMethod.POST, value = "/getShopView")
 	public @ResponseBody
 	PaginationResult<ShopView> getShopView(

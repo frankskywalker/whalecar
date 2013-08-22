@@ -3,7 +3,6 @@
  */
 
 var service = require("./tools/service-header");
-var expressValidator = require('express-validator');
 
 exports.router = function(req, res, next) {
     if (req.query.type == "login") {

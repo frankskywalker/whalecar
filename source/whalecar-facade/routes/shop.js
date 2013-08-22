@@ -7,38 +7,11 @@ var async = require("async");
 
 exports.action = function(req, res, next) {
     var type = req.query.type;
-    console.log("type:" + type);
     if (type == "login") {
         login(req, res, next);
     } else if (type == "saveshop") {
         saveShop(req, res, next);
-    } else if (type == "saveShopStock") {
-        saveShopStock(req, res, next);
     }
-};
-
-exports.stockeditor = function(req, res, next) {
-    async.parallel({
-        carModelLv1: function(callback) {
-            service.client.post("/getCarModelLv1ByBrand", {
-                carBrand: req.session.currentShop.carBrand,
-                carSubBrand: req.session.currentShop.carSubBrand
-            }, function(err, req, res, data) {
-                callback(err, data);
-            });
-        }
-    },
-
-    function(err, results) {
-        if (err) {
-            next(err);
-        } else {
-            res.render("shop_stock_editor", {
-                carModelLv1: results.carModelLv1
-            });
-        }
-    });
-
 };
 
 exports.homepage = function(req, res, next) {
@@ -169,17 +142,4 @@ function saveShop(req, res, next) {
     });
 }
 
-function saveShopStock(req, res, next) {
-    var shopStock = req.body;
-    shopStock.shop = req.session.currentShop.id;
-    service.client.post("/saveOrUpdateShopStock", shopStock, function(error,
-    request, response, data) {
-        if (error) {
-            next(error);
-        } else {
-            res.send({
-                saveSuc: data
-            });
-        }
-    });
-}
+

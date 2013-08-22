@@ -11,6 +11,9 @@ public class BooleanResult {
          this.processResult = processResult;
      }
 
+     /**
+      * 处理结果
+      */
      private Boolean processResult;
 
      public Boolean getProcessResult() {

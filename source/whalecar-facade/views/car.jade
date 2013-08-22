@@ -155,30 +155,33 @@ block append content
                           td 鼎强汽车酷夏促销进行中，凡购车即送万元装潢大礼包，可办理贷款，0首付低利率！
                   td(colspan='1',style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through")  150w
                   td(colspan='1',style="vertical-align: middle;color:#ec6197;font-size:20px")  120w
-                  td(colspan='1',style="vertical-align: middle")  预定
+                  td(colspan='1',style="vertical-align: middle;padding-left: 0px;padding-right: 0px;")
+                    a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
                   td(colspan='1',style="vertical-align: middle")
     #myModal.modal.hide.fade(style='left: 40%; width: 780px;')
       .modal-body(style='border-radius: 4px 4px 4px 4px;')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')
-          li.span3(style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;')
+          li.span3(onclick="$('#carOrderForm').submit();",style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               h3(style='color: #ffffff;') 网站指导价购买
               p(style='color: #ffffff;') 进行订金的支付，即可预定该车。。。。。。
-            //
-              <p><a href="order_car.html" class="btn btn-primary pull-right">进入</a></p>
-          li.span3(style='background-color: #888888; width: 250px; margin-left: 0px; margin-bottom: 0px;')
+          li.span3(style='background-color: #888888; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               h3(style='color: #ffffff;') 提交我的价格
               p(style='color: #ffffff;') 提交我理想的价格，如果有4s店有合适的活动会主动联系您。。。。。。
-            //
-              <p><a href="submit_price.html" class="btn btn-primary pull-right">进入</a></p>
-          li.span3(style='background-color: #4083a9; width: 250px; margin-left: 0px; margin-bottom: 0px;')
+          li.span3(style='background-color: #4083a9; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               h3(style='color: #ffffff;') 优惠500元购买
               p(style='color: #ffffff;') 领取优惠券，在谈好价格的基础上出示可以直接抵用现金。
-            //
-              <p><a href="off_price.html" class="btn btn-primary pull-right">进入</a></p>
+    form(id="carOrderForm",method="GET",action="./carorder")
+      input(type="hidden",name="type",value="init")
+      input(type="hidden",id="currentOrderShopStockId",name="id",value="")
     script.
+      //预定按钮事件
+      function orderClick(id){
+        $("#carOrderForm #currentOrderShopStockId").val(id);
+      }
+      //tr下滑效果
       var currentFocusTr = "";
       function focusTr(elment,trId){
         //如果现在已经选择了则关闭
@@ -203,12 +206,8 @@ block append content
       $('.carousel').carousel();
       $('td input').tooltip();
       $("select[name='carModelLv3Name'],select[name='outsideColorName'],select[name='insideColorName']")
-      function changeStockCondition(){
-         
-      }
 
-
-
+      //tab页切换
       $('#list a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
