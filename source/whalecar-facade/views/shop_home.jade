@@ -1,44 +1,66 @@
 extends layout/mainFrame
-
+block append css
+  link(rel="stylesheet",href="css/jquery.simplyscroll.css",media="all",type="text/css")
+  link(href='css/shop_home.css', rel='stylesheet', media='screen')
 
 block append content
   .container(style='padding: 10px 0;')
     .row
-        .span3
-          ul.nav.nav-pills.nav-stacked(style='width: 210px;')
+        .span2
+          ul.nav.nav-pills.nav-stacked(style='width: 150px;')
             li.text-center.active
-              a(onclick='', href='#car_manager', data-toggle='pill') 销售销售库存管理
+              a.text-left(onclick='', href='#car_manager', data-toggle='pill') 销售销售库存管理
             li.text-center
-              a(href='#car_order', data-toggle='pill') 预约订单管理
+              a.text-left(href='#car_order', data-toggle='pill') 预约订单管理
             li.text-center
-              a(href='#shop_info', data-toggle='pill') 信息维护
+              a.text-left(href='#shop_info', data-toggle='pill') 信息维护
             li.text-center
-              a(href='#change_psw', data-toggle='pill') 修改密码
-        .span9.tab-content
+              a.text-left(href='#change_psw', data-toggle='pill') 修改密码
+        .span10.tab-content
           #car_manager.tab-pane.active
             legend 销售库存管理
             input.btn.btn-primary.pull-right.span2(type='button', onclick="window.location.href='/stockeditor'", value='新建')
-            table.table
+            table.table.stockTable
               thead
                 tr
-                  th 型号
-                  th 外观颜色
-                  th 内饰颜色
-                  th 价格
-                  th 库存(现货/在途)
-                  th 备注
-                  th 操作
+                  th  型号
+                  th  外观颜色
+                  th  内饰颜色
+                  th  价格
+                  th  库存(现货/在途)
+                  th  备注
+                  th  操作
               tbody
                 each item in shopStockView
-                  tr
-                    td #{item.carModelLv3FullName}
-                    td #{item.carOutsideColorName}
-                    td #{item.carInsideColorName}
-                    td #{item.carPrice}万
-                    td #{item.carOnHandeNum} / #{item.carOnOrderNum}
-                    td #{item.carAddition}
+                  tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{item.id}')")
+                    td  #{item.carModelLv3FullName}
+                    td  #{item.carOutsideColorName}
+                    td  #{item.carInsideColorName}
+                    td  #{item.carPrice}万
+                    td  #{item.carOnHandeNum} / #{item.carOnOrderNum}
+                    td  #{item.carAddition}
                     td
                       a(href="#") 修改
+                  tr.shopStockTr(id="tr#{item.id}",style='display: none')
+                    td(colspan='7')
+                      table
+                        tbody
+                          tr.detail
+                            td(style="color:#555555;font-weight: bold") 详细配置说明
+                            td 真皮座椅
+                            td 导航
+                            td 天窗
+                            td 定速巡航
+                            td 倒车雷达
+                            td 电动座椅
+                            td 座椅加热
+                            td 倒车影像
+                            td 多功能方向盘
+                      table
+                        tbody
+                          tr.detail
+                            td 鼎强汽车酷夏促销进行中，凡购车即送万元装潢大礼包，可办理贷款，0首付低利率！
+
           #car_order.tab-pane
             legend 预约订单管理
             table.table
@@ -127,11 +149,33 @@ block append content
              }
          });
      }
-     $(document).ready(function(){
-        $.getJSON("/dic?type=DicCity",function(data){
-            $.each(data,function(i,e){
-               $("#shopCity").append("<option value=" + e.id + ">" + e.cityCname +  "</option>");
-            });
-            $("#shopCity").val("#{shop.shopCity}");
-        });
-     });
+
+
+    $(document).ready(function(){
+      $.getJSON("/dic?type=DicCity",function(data){
+          $.each(data,function(i,e){
+             $("#shopCity").append("<option value=" + e.id + ">" + e.cityCname +  "</option>");
+          });
+          $("#shopCity").val("#{shop.shopCity}");
+      });
+    });
+
+
+    var currentFocusTr = "";
+    function focusTr(elment,trId){
+      if(currentFocusTr != ""){
+        if(currentFocusTr != trId){
+          $("#" + currentFocusTr).hide();
+        }
+        else{
+          $("#" + trId).fadeOut(0);
+        }
+      }
+      if(currentFocusTr != trId){
+        $("#" + trId).fadeIn(0);
+        currentFocusTr = trId;
+      }
+      else{
+        currentFocusTr = "";
+      }
+    }
