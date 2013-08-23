@@ -14,6 +14,8 @@ exports.carorder = function(req,res,next){
            console.log(sData);
            res.render("car_order",{shopStockView:sData});
         });
+    }else if (type == "create"){
+
     }
 
 }
