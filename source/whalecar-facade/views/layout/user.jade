@@ -88,19 +88,19 @@ script.
 
   function regist(){
     formValidate("registForm","validateUserRegister",function(data){
-     alert(data);
-    });
-    return;
-    $.post("/user?type=regist", $("#registForm").serialize())
-      .done(function(data) {
-      if(data.loginSuc){
-        $("#login-succee").show();
-        $("#login-error").hide();
-      }
-      else{
-        $("#login-succee").slideUp();
-        $("#login-error").slideDown();
-      }
+     if(data){
+        $.post("/user?type=regist", $("#registForm").serialize())
+             .done(function(data) {
+             if(data.loginSuc){
+               $("#login-succee").show();
+               $("#login-error").hide();
+             }
+             else{
+               $("#login-succee").slideUp();
+               $("#login-error").slideDown();
+             }
+           });
+     }
     });
   }
   

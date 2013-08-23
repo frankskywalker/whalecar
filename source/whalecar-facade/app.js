@@ -8,7 +8,9 @@ var index = require('./routes/index'),
     user = require('./routes/user'),
     car = require('./routes/car'),
     shop = require('./routes/shop'),
+    shopstock = require('./routes/shopstock'),
     navbar = require('./routes/navbar'),
+    order = require('./routes/order'),
     validator = require('./routes/validator');
     
 
@@ -30,11 +32,13 @@ app.use(function(req, res, next) {
     res.locals.session = req.session;
     next();
 });
+
 //validator middleware start
 //添加fail方法，用于自定义检查
 expressValidator.Validator.prototype.fail = function() {
     this.error(this.msg);
 };
+
 //isTel判断是否为号码
 expressValidator.Validator.prototype.isTel = function() {
     //电话：1开头，并且11位
@@ -42,6 +46,8 @@ expressValidator.Validator.prototype.isTel = function() {
         this.error(this.msg);
     }
 };
+
+
 //isValidPassword判断是否是合法密码
 expressValidator.Validator.prototype.isValidPassword = function() {
     //密码：6位及以上
@@ -88,9 +94,10 @@ app.all('/car', car.page);
 app.all('/cardata',car.action);
 app.all('/shophome', shop.homepage);
 app.all('/shop',shop.action);
-app.all('/stockeditor',shop.stockeditor);
+app.all('/stockeditor',shopstock.stockeditor);
 app.all('/shoplist',shop.shoplist);
 app.all('/shopinfo',shop.shopinfo);
+app.all('/carorder',order.carorder);
 app.all('/validator',validator.validate);
 
 http.createServer(app).listen(app.get('port'), function() {

@@ -63,13 +63,12 @@ public interface ShopMapper {
 	 */
 	public Shop queryShopById(Integer shopId);
 
-	/**
-	 * 根据用户名密码查询Shop信息 如果没有查询到，说明用户名或密码错误
-	 * 
-	 * @param loginName
-	 * @param password
-	 * @return
-	 */
+    /**
+     * 根据用户名密码查询Shop信息 如果没有查询到，说明用户名或密码错误
+     *
+     * @param conditionMap
+     * @return
+     */
 	public Shop queryByNameAndPsw(Map<String, Object> conditionMap);
 
 	/**
@@ -80,15 +79,27 @@ public interface ShopMapper {
 	 */
 	public int updateShop(Map<String, Object> shop);
 
-	/**
-	 * 分页查询Shop
-	 */
+    /**
+     * 分页查询Shop
+     *
+     * @param shopCondition
+     * @return
+     */
 	public List<Shop> queryShop(Map<String, Object> shopCondition);
 
-	/**
-	 * 分页查询Shop，求Count
-	 * 
-	 * @return
-	 */
+    /**
+     * 分页查询Shop，求Count
+     *
+     * @param shopCondition
+     * @return
+     */
 	public int queryShopCount(Map<String, Object> shopCondition);
+
+    /**
+     * 根据id查询shopStockView列表
+     *
+     * @param id shopStockView对象的id
+     * @return shopStockView列表
+     */
+    public ShopStockView queryShopStockViewById(int id);
 }

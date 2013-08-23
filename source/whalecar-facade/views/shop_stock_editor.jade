@@ -94,7 +94,7 @@ block append content
     });
 
     function saveStock(){
-         $.post("/shop?type=saveShopStock", $("#saveShopStockForm").serialize())
+         $.post("/shopstock?type=saveShopStock", $("#saveShopStockForm").serialize())
         .done(function(data) {
              if(data.saveSuc == true){
                  $("#saveSucModal").modal("show");

@@ -3,45 +3,43 @@
     User: ruihuang
     Date: 13-8-16
     Time: 下午3:12
-.container(style='padding: 70px 0;')
+extends layout/mainFrame
+
+block append content
+ .container(style='padding: 70px 0;')
     .row-Fluid
         .span8.offset2
             .text-center
-                h2 订单号：1285387628
             legend 商品信息
             dl.dl-horizontal(style='font-size: 12pt;')
                 dt 车型
-                dd 大众 速腾 1.6
+                dd #{shopStockView.carBrandCname} #{shopStockView.carModelLv2FullName}
                 dt 品种
-                dd 2011款 1.6 自动挡
+                dd #{shopStockView.carModelLv3FullName}
                 dt 配置描述
-                dd 导航、真皮
+                dd &nbsp;
                 dt 外观颜色
-                dd 红色
+                dd #{shopStockView.carOutsideColorName}
                 dt 内饰颜色
-                dd 棕色
+                dd #{shopStockView.carInsideColorName}
                 dt 库存数量
-                dd 1
+                dd #{shopStockView.carOnOrderNum + shopStockView.carOnHandeNum}
                 dt 备注
-                dd 送xxxxxxx
+                dd &nbsp;
             form.form-horizontal
                 legend 订购人信息
                 .control-group
                     label.control-label(for='name') 订购人姓名
                     .controls
-                        input#name(type='text', placeholder='姓名')
+                        input#name(type='text', placeholder='姓名' ,value="#{session.currentUser.userName}")
                 .control-group
                     label.control-label(for='tel') 订购人手机
                     .controls
-                        input#tel(type='text', placeholder='手机号码')
+                        input#tel(type='text', placeholder='手机号码',value="#{session.currentUser.userTel}")
                 .control-group
                     label.control-label(for='mail') 订购人电子邮件
                     .controls
-                        input#mail(type='text', placeholder='电子邮件')
-                .control-group
-                    label.control-label(for='addr') 订购人地址
-                    .controls
-                        input#addr(type='text', placeholder='地址')
+                        input#mail(type='text', placeholder='电子邮件',value="#{session.currentUser.userEmail}")
                 legend 支付方式
                 label.radio
                     input(type='radio', name='optionsRadios', value='option1', checked='checked')

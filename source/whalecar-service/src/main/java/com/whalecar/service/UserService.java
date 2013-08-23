@@ -18,12 +18,12 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 
-	/**
-	 * 根据用户名密码查询用户信息 如果没有查询到，说明用户名或密码错误
-	 * 
-	 * @param conditionMap
-	 * @return
-	 */
+    /**
+     *  根据用户名密码查询用户信息 如果没有查询到，说明用户名或密码错误
+     *
+     * @param conditionMap
+     * @return
+     */
 	@RequestMapping(method = RequestMethod.POST, value = "queryByNameAndPsw")
 	public @ResponseBody
 	User queryByNameAndPsw(@RequestBody Map<String, Object> conditionMap) {
@@ -51,7 +51,7 @@ public class UserService {
      * 根据条件查询用户数量，可用于验证
      * @param userMap
      * @return 符合条间总数
-    */
+     */
     @RequestMapping(method = RequestMethod.POST, value = "userIsExist")
     public @ResponseBody
     BooleanResult userIsExist(@RequestBody Map<String, Object> userMap){

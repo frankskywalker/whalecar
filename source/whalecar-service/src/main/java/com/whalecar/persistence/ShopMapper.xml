@@ -178,4 +178,35 @@
         </where>
     </select>
 
+    <select id="queryShopStockViewById" parameterType="Integer" resultType="ShopStockView">
+        SELECT
+            Shop_Stock.*,
+            Car_Model_Lv3.shortName as carModelLv3ShortName,
+            Car_Model_Lv3.fullName as carModelLv3FullName,
+            Car_Model_Lv3.FactoryPrice as FactoryPrice,
+            Car_Model_Lv3.driveType as driveType,
+            Car_Model_Lv3.gearType as gearType,
+            (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
+            (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
+            Shop.shopName as shopName,
+            Car_Model_Lv2.shortName as carModelLv2ShortName,
+            Car_Model_Lv2.fullName as carModelLv2FullName,
+            Car_Model_Lv1.cname as carModelLv1Cname,
+            Car_Brand.cname as carBrandCname
+        FROM
+            Shop_Stock
+        LEFT JOIN
+            Shop ON Shop.id = Shop_Stock.shop
+        LEFT JOIN
+            Car_Model_Lv3 ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+        LEFT JOIN
+            Car_Model_Lv2 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+        LEFT JOIN
+            Car_Model_Lv1 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+        LEFT JOIN
+            Car_Brand ON Car_Brand.id = Car_Model_Lv1.carBrand
+        WHERE
+            Shop_Stock.id = #{id}
+    </select>
+
 </mapper>
