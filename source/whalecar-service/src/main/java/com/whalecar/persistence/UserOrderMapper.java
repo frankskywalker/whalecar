@@ -1,5 +1,6 @@
 package com.whalecar.persistence;
 
+import java.util.List;
 import com.whalecar.domain.UserOrder;
 
 /**
@@ -14,5 +15,7 @@ public interface UserOrderMapper {
     public int createOrder(UserOrder userOrder);
 
     public UserOrder queryUserOrderBySn(String sn);
+
+    public List<UserOrder> queryUserOrderByUser(Integer userId);
 
 }

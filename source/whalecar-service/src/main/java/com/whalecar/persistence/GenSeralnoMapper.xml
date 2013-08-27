@@ -4,8 +4,7 @@
 
 <mapper namespace="com.whalecar.persistence.GenSeralnoMapper">
 
-  <cache />
-  <select id="GenUserOrderSN" resultType="string">
+  <select id="genUserOrderSN" resultType="string">
     SELECT gen_seralno('UO',now())
   </select>
  

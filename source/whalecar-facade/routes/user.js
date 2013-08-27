@@ -14,6 +14,14 @@ exports.router = function(req, res, next) {
     }
 };
 
+exports.homepage = function(req,res,next){
+    var userId = req.session.currentUser.id;
+    service.client.get("/getUserOrderByUser?userId="+ userId, function(error,
+                                                                  request, response, data) {
+        res.render("user_home",{userOrder:data});
+    });
+};
+
 // 用户登陆
 function login(req, res, next) {
     var condition = {

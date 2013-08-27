@@ -1,0 +1,112 @@
+//
+   Created by ruihuang on 13-8-27.
+
+extends layout/mainFrame
+
+block append content
+    .container(style='padding: 10px 0;')
+        .row
+            .span3
+                ul.nav.nav-pills.nav-stacked(style='width: 210px;')
+                    li.text-center.active
+                        a(href='#orderlist', data-toggle='pill') 订单管理
+                    li.text-center
+                        a(href='#myinfo', data-toggle='pill') 我的信息
+                    li.text-center
+                        a(href='#changepsw', data-toggle='pill') 修改密码
+            .span9.tab-content
+                #orderlist.tab-pane.active
+                    legend 订单管理
+                    ul.nav.nav-tabs
+                        li.active
+                            a(href='#order_car', data-toggle='tab') 预定购买订单
+                        li
+                            a(href='#my_price', data-toggle='tab') 我的价格记录
+                        li
+                            a(href='#off_price', data-toggle='tab') 领取优惠券记录
+                    .tab-content
+                        #order_car.tab-pane.active
+                            table.table
+                                thead
+                                    tr
+                                        th 订单序号
+                                        th 订单名称
+                                        th 订单类型
+                                        th 订单日期
+                                        th 汽车金额
+                                        th 备注
+                                        th 操作
+                                tbody
+                                    each item in userOrder
+                                        tr
+                                            td= item.orderSn
+                                            td= item.orderTitle
+                                            td
+                                            td= item.orderCreateDate
+                                            td= item.orderPrice
+                                            td
+                                            td(width='65px')
+                                                a(href='#') 取消
+                                                | /
+                                                a(href='#') 付款
+                        #my_price.tab-pane
+                            table.table
+                                thead
+                                    tr
+                                        th 提交日期
+                                        th 车型
+                                        th 我提交的价格
+                                        th 是否已回复
+                                        th 操作
+                                tbody
+                                    tr
+                                        td 2012.06.15
+                                        td 大众速腾2012款 1.6L 手动时尚型 黄色
+                                        td 10.16万
+                                        td 未回复
+                                        td
+                                            a(href='#') 留言/取消
+                        #off_price.tab-pane
+                            table.table
+                                thead
+                                    tr
+                                        th 领取日期
+                                        th 车型
+                                        th 优惠券金额
+                                        th 优惠卷号码
+                                tbody
+                                    tr
+                                        td 2012.06.15
+                                        td 大众速腾2012款 1.6L 手动时尚型 黄色
+                                        td 500元
+                                        td AS30850138759232357
+                #myinfo.tab-pane
+                    legend 我的信息
+                    .span4
+                        dl.dl-horizontal(style='font-size: 12pt;')
+                            dt 姓名
+                            dd= session.currentUser.userName
+                            dt 电话
+                            dd= session.currentUser.userTel
+                            dt 邮箱地址
+                            dd= session.currentUser.userEmail
+                        button.pull-right 修改
+                #changepsw.tab-pane
+                    legend 修改密码
+                    .span5
+                        form.form-horizontal
+                            .control-group
+                                label.control-label(for='oldpsw') 原密码
+                                .controls
+                                    input#oldpsw(type='text', placeholder='原密码')
+                            .control-group
+                                label.control-label(for='newpsw') 新密码
+                                .controls
+                                    input#newpsw(type='text', placeholder='新密码')
+                            .control-group
+                                label.control-label(for='confnewpsw') 确认新密码
+                                .controls
+                                    input#confnewpsw(type='text', placeholder='确认新密码')
+                            .control-group
+                                .controls
+                                    button.btn.btn-primary.pull-right.span2 提交

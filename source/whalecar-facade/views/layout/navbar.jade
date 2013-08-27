@@ -29,7 +29,7 @@
             -else
               a(href="/shophome",role="button",data-toggle="modal") 4s店管理页面
           -else
-            a(href="#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
+            a(href="/userhome",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
 include user
 
 script.

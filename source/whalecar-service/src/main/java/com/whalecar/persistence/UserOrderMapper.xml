@@ -16,6 +16,12 @@
       FROM  User_Order
       WHERE orderSn = #{orderSn}
   </select>
+
+  <select id="queryUserOrderByUser" resultType="UserOrder">
+     SELECT *
+        FROM  User_Order
+        WHERE user = #{userId}
+  </select>
  
 
 </mapper>

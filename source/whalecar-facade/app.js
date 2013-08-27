@@ -98,6 +98,7 @@ app.all('/stockeditor',shopstock.stockeditor);
 app.all('/shoplist',shop.shoplist);
 app.all('/shopinfo',shop.shopinfo);
 app.all('/carorder',order.carorder);
+app.all('/userhome',user.homepage);
 app.all('/validator',validator.validate);
 
 http.createServer(app).listen(app.get('port'), function() {
