@@ -3,6 +3,7 @@ package com.whalecar.domain;
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -23,7 +24,7 @@ public class UserOrder implements Serializable {
 	private Date orderConfirmDate;
 	private Date orderCompleteDate;
 	private Date orderCancelDate;
-	private long orderPrice;
+	private BigDecimal orderPrice;
 	private int shopStock;
 	private int shop;
     private int user;
@@ -33,7 +34,7 @@ public class UserOrder implements Serializable {
 
 	public UserOrder(String orderSn, String orderTitle, String orderState,
 			Date orderCreateDate, Date orderPayDate, Date orderConfirmDate,
-			Date orderCompleteDate, Date orderCancelDate, long orderPrice,
+			Date orderCompleteDate, Date orderCancelDate, BigDecimal orderPrice,
 			int shopStock, int shop) {
 		this.orderSn = orderSn;
 		this.orderTitle = orderTitle;
@@ -120,11 +121,11 @@ public class UserOrder implements Serializable {
 		this.orderCancelDate = orderCancelDate;
 	}
 
-	public long getOrderPrice() {
+	public BigDecimal getOrderPrice() {
 		return this.orderPrice;
 	}
 
-	public void setOrderPrice(long orderPrice) {
+	public void setOrderPrice(BigDecimal orderPrice) {
 		this.orderPrice = orderPrice;
 	}
 
