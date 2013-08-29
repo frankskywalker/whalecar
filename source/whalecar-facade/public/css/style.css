@@ -36,7 +36,7 @@ b {
 body {
     background-color: #F0F0F0;
     color: #333333;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Arial, "微软雅黑", sans-serif;;
     font-size: 14px;
     line-height: 20px;
     margin: 0;
@@ -50,7 +50,6 @@ element.style {
 
 h1,h2,h3,h4,h5,h6 {
     color: #999999;
-    font-family: inherit;
     font-weight: bold;
     line-height: 20px;
     margin: 0;
