@@ -85,7 +85,7 @@ function getCarModelPagination(req, res, next) {
         shop:shop,
         orderByName: orderByName,
         orderType: orderType,
-        pageSize: 24
+        pageSize: 20
     };
 
     async.parallel({

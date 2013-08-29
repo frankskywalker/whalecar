@@ -15,13 +15,6 @@ exports.action = function(req, res, next) {
 };
 
 exports.homepage = function(req, res, next) {
-    //判断是否是4S店用户
-    if (!req.session.currentShop) {
-        //4s店用户未登陆
-        res.send("请使用4S店用户登陆后重新访问页面！");
-        return;
-    }
-
     // call service
     async.parallel({
         shopStockView: function(callback) {

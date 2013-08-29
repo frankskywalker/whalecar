@@ -22,6 +22,10 @@ exports.homepage = function(req,res,next){
     });
 };
 
+exports.loginpage = function(req,res,next){
+    res.render("user_login");
+}
+
 // 用户登陆
 function login(req, res, next) {
     var condition = {

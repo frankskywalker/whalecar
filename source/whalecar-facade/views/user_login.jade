@@ -1,0 +1,42 @@
+//
+   Created by ruihuang on 13-8-29.
+
+extends layout/mainFrame
+
+block append content
+    .container(style='padding: 10px 0;')
+        .row-Fluid
+            .span8.offset2
+                .text-center
+                legend 登陆
+                form.form-horizontal#userloginForm(action="/login",method="post")
+                    div.control-group
+                        label.control-label(for="loginName")用户名
+                        div.controls
+                            input(type="text",id="loginName",name="loginName",placeholder="用户名")
+                    div.control-group
+                        label.control-label(for="password")密码
+                        div.controls
+                            input(type="password",id="loginName",name="password",placeholder="密码")
+                    div.alert.alert-error.hide#login-error 用户名密码错误，请重新输入!
+                    div.alert.alert-success.hide#login-succee 登陆成功
+                    div.control-group
+                        div.controls
+                            input.btn.btn-primary.span2(onclick="userlogin();",value="登陆")
+                    input(type="hidden",name="prePage",id="prePage",value="#{prePage}")
+
+    script.
+        function userlogin(){
+            $.post("/user?type=login", $("#userloginForm").serialize())
+                .done(function(data) {
+                    if(data.loginSuc){
+                        $("#userloginForm #login-succee").show();
+                        $("#userloginForm #login-error").hide();
+                        window.location.href = $("#prePage").val();
+                    }
+                    else{
+                        $("#userloginForm #login-succee").slideUp();
+                        $("#userloginForm #login-error").slideDown();
+                    }
+            });
+        }
