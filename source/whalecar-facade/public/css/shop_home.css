@@ -33,7 +33,7 @@
 
 
 
-li a{
+.row li a{
     font-size: 12px;
 }
 
@@ -48,4 +48,8 @@ li a{
 
 .detail td p{
     padding: 0 8px;
+}
+
+.control-group label{
+    color: #666666;
 }

@@ -65,28 +65,28 @@ block append content
             legend 预约订单管理
             table.table
               thead
-                tr
-                  th 订单序号
-                  th 订单名称
-                  th 订单类型
-                  th 订单日期
-                  th 汽车金额
-                  th 备注
+                tr(style="height: 30px;background-color: #e6e6e6")
+                  th(style="font-size:14px;color:#666666") 订单序号
+                  th(style="font-size:14px;color:#666666") 订单名称
+                  th(style="font-size:14px;color:#666666") 订单类型
+                  th(style="font-size:14px;color:#666666") 订单日期
+                  th(style="font-size:14px;color:#666666") 汽车金额
+                  th(style="font-size:14px;color:#666666") 备注
               tbody
-                tr
-                  td 20130612A010201
-                  td 预定大众速腾2012款 1.6L 手动时尚型 黄色
-                  td 预约
-                  td 2013.06.12
-                  td 12.18万
-                  td 无
-                tr
-                  td 20130612A087652
-                  td 预定大众速腾2012款 1.6L 手动时尚型 黄色
-                  td 预约
-                  td 2013.06.12
-                  td 12.18万
-                  td 无
+                tr(style="height:60px;font-size:12px;color:#777777;background-color:#f8f8f8")
+                  td(style="padding:20px 8px") 20130612A010201
+                  td(style="padding:20px 8px") 预定大众速腾2012款 1.6L 手动时尚型 黄色
+                  td(style="padding:20px 8px") 预约
+                  td(style="padding:20px 8px") 2013.06.12
+                  td(style="padding:20px 8px") 12.18万
+                  td(style="padding:20px 8px") 无
+                tr(style="height:60px;font-size:12px;color:#777777;background-color:#f8f8f8")
+                  td(style="padding:20px 8px") 20130612A087652
+                  td(style="padding:20px 8px") 预定大众速腾2012款 1.6L 手动时尚型 黄色
+                  td(style="padding:20px 8px") 预约
+                  td(style="padding:20px 8px") 2013.06.12
+                  td(style="padding:20px 8px") 12.18万
+                  td(style="padding:20px 8px") 无
           #shop_info.tab-pane
             legend 信息维护
             form.form-horizontal#saveshopForm(method="post",action="/shop?type=saveshop",style="width:400px;")
@@ -95,7 +95,7 @@ block append content
                 .controls
                   input#shopName(name="shopName",type='text', value='#{shop.shopName}')
               .control-group
-                label.control-label(for="shopCity")城市
+                label.control-label(for="shopCity") 城市
                 .controls
                   select(id="shopCity",name="shopCity")
                     option(value="") 选择城市
