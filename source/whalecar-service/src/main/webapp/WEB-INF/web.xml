@@ -28,7 +28,7 @@
     <servlet-mapping>  
         <servlet-name>rest</servlet-name>  
         <url-pattern>/</url-pattern>  
-    </servlet-mapping> 
+    </servlet-mapping>
 
 	<!-- Reads request input using UTF-8 encoding -->
 	<filter>

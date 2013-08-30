@@ -10,6 +10,7 @@
     "jade": "*",
     "restify" : "*",
     "async" : "*",
-    "express-validator" : "*"
+    "express-validator" : "*",
+    "moment" : "*"
   }
 }

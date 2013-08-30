@@ -10,47 +10,6 @@
     border-top: 1px solid #E5E5E5;
     background-color: whiteSmoke;
 }
-.jumbotron:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: url(/img/bs-docs-masthead-pattern.png) repeat center center;
-    opacity: .4;
-}
-.jumbotron {
-    position: relative;
-    padding: 40px 0;
-    color: #fff;
-    text-align: center;
-    text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
-    background: #020031; /* Old browsers */
-    background: -moz-linear-gradient(45deg,  #020031 0%, #6d3353 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* IE10+ */
-    background: linear-gradient(45deg,  #020031 0%,#6d3353 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-    -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-    box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
-}
-.jumbotron h1 {
-    font-size: 80px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    line-height: 1;
-}
-.jumbotron p {
-    font-size: 24px;
-    font-weight: 300;
-    line-height: 1.25;
-    margin-bottom: 30px;
-}
 
 a {
     color: #999999;
@@ -155,8 +114,8 @@ a.thumbnail:hover, a.thumbnail:focus {
 #slider_div_1 .pagination_p{ background:url('../img/banner_down_bg.png') repeat-x; width:100%;  height:35px; position:absolute; bottom:0;z-index:99;}
 #slider_div_1 .pagination_p ul { width:961px; margin:auto;}
 #slider_div_1 .pagination_p ul li { float:left; width:190px; margin-right:1px; color:#fff; text-align:center; border-left:1px solid #fff; font-size:14px;}
-#slider_div_1 .pagination_p ul li a{ width:190px; height:25px; padding-top:10px; display:block; color:#fff;font-size:14px;text-decoration���none;}
-#slider_div_1 .pagination_p ul li a:hover{width:190px; height:25px; padding-top:10px; background-color:#111716; color:#fff; display:block;font-size:14px;text-decoration���none;}
+#slider_div_1 .pagination_p ul li a{ width:190px; height:25px; padding-top:10px; display:block; color:#fff;font-size:14px;text-decoration:none;}
+#slider_div_1 .pagination_p ul li a:hover{width:190px; height:25px; padding-top:10px; background-color:#111716; color:#fff; display:block;font-size:14px;text-decoration:none;}
 #slider_div_1 .pagination_p ul li.current{width:190px; height:35px; display:block;background-color:#111716; }
 #slider_div_1{
     padding: 1px 0px;
