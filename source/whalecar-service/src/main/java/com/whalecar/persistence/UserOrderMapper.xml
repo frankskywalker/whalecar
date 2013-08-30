@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whalecar.persistence.UserOrderMapper">
+
+  <cache />
+  <insert id="createOrder" parameterType="UserOrder">
+    INSERT
+    INTO User_Order (orderSn, orderTitle,    orderPrice, shopStock, shop,user)
+    Values (#{orderSn},#{orderTitle},#{orderPrice},#{shopStock},#{shop},#{user})
+  </insert>
+
+  <select id="queryUserOrderBySn" resultType="UserOrder">
+    SELECT *
+      FROM  User_Order
+      WHERE orderSn = #{orderSn}
+  </select>
+
+  <select id="queryUserOrderByUser" resultType="UserOrder">
+     SELECT *
+        FROM  User_Order
+        WHERE user = #{userId}
+  </select>
+ 
+
+</mapper>

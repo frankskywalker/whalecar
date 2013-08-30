@@ -83,6 +83,32 @@ app.configure('production', function(){
     app.use(express.errorHandler()); 
 });
 
+//权限控制
+function requireRole(role) {
+    //用户权限
+    if(role == "user"){
+        return function(req,res,next){
+            if(!req.session.currentUser){
+                res.locals.prePage = req.url;
+                user.loginpage(req,res,next);
+            }
+            else{
+                next();
+            }
+        }
+    }
+    else if(role == "shop"){
+        //shop权限
+        return function(req, res, next) {
+            if(!req.session.currentShop)
+                res.send("请使用4S店用户登陆后重新访问页面！");
+            else
+                next();
+        }
+
+    }
+}
+
 // ===============================
 // router~
 // ===============================
@@ -92,12 +118,13 @@ app.all('/dic', dic.query);
 app.all('/user', user.router);
 app.all('/car', car.page);
 app.all('/cardata',car.action);
-app.all('/shophome', shop.homepage);
+app.all('/shophome',requireRole("shop"), shop.homepage);
 app.all('/shop',shop.action);
-app.all('/stockeditor',shopstock.stockeditor);
+app.all('/stockeditor',requireRole("shop"),shopstock.stockeditor);
 app.all('/shoplist',shop.shoplist);
 app.all('/shopinfo',shop.shopinfo);
-app.all('/carorder',order.carorder);
+app.all('/carorder',requireRole("user"),order.carorder);
+app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
 
 http.createServer(app).listen(app.get('port'), function() {

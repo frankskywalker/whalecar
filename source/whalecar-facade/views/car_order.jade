@@ -6,7 +6,7 @@
 extends layout/mainFrame
 
 block append content
- .container(style='padding: 70px 0;')
+ .container(style='padding: 10px 0;')
     .row-Fluid
         .span8.offset2
             .text-center
@@ -47,10 +47,12 @@ block append content
                 label.radio
                     input(type='radio', name='optionsRadios', value='')
                     | 支付定金，进行留车预定（使用支付宝支付）
-            legend 备注
-            ul
-                li 订单有效期为3天
-                li 费用交付xxxx公司,网站未收取任何费用
-            input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')
-            input.btn.btn-primary.span2.pull-right(type='button', onclick='window.location.href="./order_car_finish.html"', value='确认')
-
+                legend 备注
+                ul
+                    li 订单有效期为3天
+                    li 费用交付xxxx公司,网站未收取任何费用
+            form(action="./carorder",method="GET")
+                input(name="id",type="hidden",value="#{shopStockView.id}")
+                input(name="type",type="hidden",value="create")
+                input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')
+                input.btn.btn-primary.span2.pull-right(type='submit', value='确认')
