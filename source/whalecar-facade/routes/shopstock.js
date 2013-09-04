@@ -3,6 +3,8 @@
  * Date: 13-8-22
  * Time: 上午2:13
  */
+var async = require("async");
+var service = require("./tools/service-header");
 
 exports.action = function(req,res,next){
     var type = req.query.type;

@@ -236,4 +236,14 @@ public class CarModelService {
 
 		return result;
 	}
+
+    /**
+     * 根据carModelLv1Id查询carModelImg
+     * @param carModelLv1
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "queryCarModelLv1ImgById")
+    public @ResponseBody List<CarModelLv1Image> queryCarModelLv1ImgById(Integer carModelLv1){
+        return carModelMapper.queryCarModelLv1ImgById(carModelLv1);
+    }
 }

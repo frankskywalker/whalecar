@@ -56,4 +56,10 @@ public interface CarModelMapper {
 	 */
 	public List<CarModelLv3> queryCarModelLv3ByLv2Id(Integer lv2Id);
 
+    /**
+     * 根据carModelLv1查询Image
+     * @param carModelLv1
+     * @return
+     */
+    public List<CarModelLv1Image> queryCarModelLv1ImgById(Integer carModelLv1);
 }

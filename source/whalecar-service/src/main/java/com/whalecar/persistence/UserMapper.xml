@@ -4,8 +4,6 @@
 
 <mapper namespace="com.whalecar.persistence.UserMapper">
 
-  <cache />
-  
   <select id="queryByNameAndPsw" resultType="User">
   	SELECT
   		* 
@@ -46,5 +44,22 @@
         </if>
     </where>
   </select>
+
+  <insert id="createUserCarFavorite">
+      INSERT INTO User_Favorite(user,carModelLv1)
+      VALUES (#{userId},#{carModelLv1})
+  </insert>
+
+  <select id="queryUserCarFavoriteCount" resultType="Integer">
+      SELECT count(id)
+      FROM User_Favorite
+      where user = #{userId} AND carModelLv1 = #{carModelLv1}
+  </select>
+
+  <delete id="deleteUserCarFavorite">
+      DELETE
+      FROM User_Favorite
+      WHERE user = #{userId} AND carModelLv1 = #{carModelLv1}
+  </delete>
   
 </mapper>

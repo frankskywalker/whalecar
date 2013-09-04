@@ -14,6 +14,8 @@ block append content
                     li.text-center.active
                         a(href='#orderlist', data-toggle='pill') 订单管理
                     li.text-center
+                        a(href='#myfavorite', data-toggle='pill') 我的收藏
+                    li.text-center
                         a(href='#myinfo', data-toggle='pill') 我的信息
                     li.text-center
                         a(href='#changepsw', data-toggle='pill') 修改密码
@@ -62,13 +64,13 @@ block append content
                                         th 是否已回复
                                         th 操作
                                 tbody
-                                    tr(style="height:60px")
-                                        td(style="padding:20px 8px") 2012.06.15
-                                        td(style="padding:20px 8px") 大众速腾2012款 1.6L 手动时尚型 黄色
-                                        td(style="padding:20px 8px") 10.16万
-                                        td(style="padding:20px 8px") 未回复
-                                        td(style="padding:20px 8px")
-                                            a(href='#') 留言/取消
+                                    each item in userSubmitPrice
+                                        tr(style="height:60px")
+                                            td(style="padding:20px 8px")= item.createDate
+                                            td(style="padding:20px 8px")
+                                            td(style="padding:20px 8px")= item.submitPrice
+                                            td(style="padding:20px 8px")= item.state
+                                            td(style="padding:20px 8px")
                         #off_price.tab-pane
                             table.table
                                 thead
@@ -78,11 +80,26 @@ block append content
                                         th 优惠券金额
                                         th 优惠卷号码
                                 tbody
-                                    tr(style="height:60px")
-                                        td(style="padding:20px 8px") 2012.06.15
-                                        td(style="padding:20px 8px") 大众速腾2012款 1.6L 手动时尚型 黄色
-                                        td(style="padding:20px 8px") 500元
-                                        td(style="padding:20px 8px") AS30850138759232357
+                                    each item in userOffTicket
+                                        tr(style="height:60px")
+                                            td(style="padding:20px 8px")= item.createDate
+                                            td(style="padding:20px 8px")
+                                            td(style="padding:20px 8px") 500元
+                                            td(style="padding:20px 8px")= item.ticketSn
+                #myfavorite.tab-pane
+                    legend 我的收藏
+                    table.table
+                        thead
+                            tr
+                                th 品牌
+                                th 车型
+                                th 收藏时间
+                        tbody
+                            tr(style="height:60px")
+                                td(style="padding:20px 8px") 大众
+                                td(style="padding:20px 8px")
+                                    a(href="./car?id=228") 捷达
+                                td(style="padding:20px 8px") 2012-02-12
                 #myinfo.tab-pane
                     legend &nbsp;&nbsp;我的信息
                     .span4

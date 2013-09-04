@@ -3,27 +3,74 @@
  */
 
 var service = require("./tools/service-header");
+var async = require("async");
 
 exports.router = function(req, res, next) {
     if (req.query.type == "login") {
         login(req, res, next);
-    } else if (req.query.type == "regist") {
+    }
+    else if (req.query.type == "regist") {
         regist(req, res, next);
-    } else if(req.query.type == "registerValidator"){
-        validator(req, res, next);
+    }
+    else if(req.query.type == "favorite"){
+        favorite(req, res, next);
     }
 };
 
 exports.homepage = function(req,res,next){
     var userId = req.session.currentUser.id;
-    service.client.get("/getUserOrderByUser?userId="+ userId, function(error,
-                                                                  request, response, data) {
-        res.render("user_home",{userOrder:data});
+    async.parallel({
+        userOrder:function(callback){
+            service.client.get("/getUserOrderByUser?userId="+ userId,
+                function(error,request, response, data) {
+                    callback(error,data);
+            });
+        },
+        userSubmitPrice:function(callback){
+            service.client.get("/getUserSubmitPriceByUser?userId="+ userId,
+                function(error,request, response, data) {
+                    callback(error,data);
+            });
+        },
+        userOffTicket:function(callback){
+            service.client.get("/getUserOffTicketByUser?userId="+ userId,
+                function(error,request, response, data) {
+                    callback(error,data);
+            });
+        }
+    },function(errors,results){
+        res.render("user_home",
+            {userOrder:results.userOrder,
+            userSubmitPrice:results.userSubmitPrice,
+            userOffTicket:results.userOffTicket}
+        );
     });
 };
 
 exports.loginpage = function(req,res,next){
     res.render("user_login");
+};
+
+function favorite(req,res,next){
+    if(!req.session.currentUser){
+        res.json({processResult:false,error:"needLogin"});
+        return;
+    }
+    var action =  req.body.action;
+    var condition = {userId : req.session.currentUser.id,carModelLv1:req.body.carModelLv1};
+    console.log(condition);
+    if(action == 'del'){
+        service.client.post("/removeUserFavorite", condition,
+            function(error,request, response, data) {
+            res.json(data);
+        });
+    }
+    else if (action == 'add'){
+        service.client.post("/saveUserFavorite", condition,
+            function(error,request, response, data) {
+            res.json(data);
+        });
+    }
 }
 
 // 用户登陆
@@ -34,7 +81,6 @@ function login(req, res, next) {
     };
     service.client.post("/queryByNameAndPsw", condition, function(error,
     request, response, data) {
-        console.log("queryByNameAndPsw ok");
         if (error) {
             next(error);
         } else {

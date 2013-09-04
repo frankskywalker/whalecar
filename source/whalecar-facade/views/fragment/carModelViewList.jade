@@ -136,8 +136,17 @@
         h5
           img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
           | #{carModelView.brandCname} #{carModelView.cname}
-          img.pull-right(src="../img/focusBand.png")
-          img.pull-right(src="../img/cheapBand.png")
+          if carModelView.favorite == 'yes'
+            a(href="#",onclick="favorite('#{carModelView.carModelLv1}','del');return false;")
+              img.pull-right(src="../img/loved.png")
+          else
+            a(href="#",onclick="favorite('#{carModelView.carModelLv1}','add');return false;")
+              img.pull-right(src="../img/love.png")
+          if carModelView.offprice == 'yes'
+            img.pull-right(src="../img/focusBand.png")
+          if carModelView.hotmodel == 'yes'
+            img.pull-right(src="../img/cheapBand.png")
+
       if i != 0 && (i+1) % 4 == 0
         </ul><ul class='thumbnails'>
     </ul>
@@ -152,7 +161,55 @@ form(action="/",method="get",id="conditionform")
     input(type="hidden",name="orderByName",id="form_orderByName",value="#{conditionParams.orderByName}")
     input(type="hidden",name="orderType",id="form_orderType",value="#{conditionParams.orderType}")
     input(type="hidden",name="shide",value="#{shide}")
+
+div.modal.hide.fade#favoriteAddSuc(style="tabindex='-1',role='dialog'")
+    div.modal-body
+        p 收藏成功
+    div.modal-footer
+        button.btn.btn-primary(onClick="$('#favoriteAddSuc').modal('hide');return false;") 确认
+div.modal.hide.fade#favoriteDelSuc(style="tabindex='-1',role='dialog'")
+    div.modal-body
+        p 删除收藏成功
+    div.modal-footer
+        button.btn.btn-primary(onClick="$('#favoriteDelSuc').modal('hide');return false;") 确认
+div.modal.hide.fade#favoriteLoginError(style="tabindex='-1',role='dialog'")
+    div.modal-body
+        p 请先登陆
+    div.modal-footer
+        button.btn.btn-primary(onClick="$('#favoriteLoginError').modal('hide');return false;") 确认
+
 script.
+    //收藏
+    function favorite(carModelLv1,action){
+        $.post("./user?type=favorite", {carModelLv1:carModelLv1,action:action}).done(
+            function(data) {
+                if(data.processResult == true){
+                    if(action == "add"){
+                        $('#favoriteAddSuc').modal('show');
+                    }
+                    else if(action == "del"){
+                        $('#favoriteDelSuc').modal('show');
+                    }
+                }
+                //如果没登陆
+                if(data.processResult == false && data.error == "needLogin"){
+                    $("#favoriteLoginError").modal("show");
+                }
+
+            }
+        );
+    }
+
+    $('#favoriteAddSuc').on('hidden', function() {
+        refreshPage();
+    });
+    $('#favoriteDelSuc').on('hidden', function() {
+        refreshPage();
+    });
+    $('#favoriteLoginError').on('hidden',function(){
+        $("#loginModal").modal("show");
+    });
+
     // 提交筛选事件
     function conditionSelect(type,value,needSubmit,needInitPage){
       $("#form_" + type).val(value);
@@ -162,13 +219,16 @@ script.
       }
       
       if(needSubmit == true){
-        //$("#conditionform").submit();
         //等待
         $("#carModelView").load('/spin.html');
         //刷新
-        $("#carModelView").load("./cardata?type=getCarModelPagination",$("#conditionform").serialize());
+        refreshPage();
       }
       return false;
+    }
+
+    function refreshPage(){
+        $("#carModelView").load("./cardata?type=getCarModelPagination",$("#conditionform").serialize());
     }
     
     //排序事件

@@ -49,6 +49,21 @@ public class CarModelView implements java.io.Serializable {
 	 */
 	private String shopPriceMax;
 
+    /**
+     * 是否被用户收藏
+     */
+    private String favorite;
+
+    /**
+     * 是否为特惠
+     */
+    private String offprice;
+
+    /**
+     * 是否为
+     */
+    private String hotmodel;
+
 	public CarModelView() {
 
 	}
@@ -117,4 +132,27 @@ public class CarModelView implements java.io.Serializable {
 		this.carModelLv1 = carModelLv1;
 	}
 
+    public String getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(String favorite) {
+        this.favorite = favorite;
+    }
+
+    public String getOffprice() {
+        return offprice;
+    }
+
+    public void setOffprice(String offprice) {
+        this.offprice = offprice;
+    }
+
+    public String getHotmodel() {
+        return hotmodel;
+    }
+
+    public void setHotmodel(String hotmodel) {
+        this.hotmodel = hotmodel;
+    }
 }

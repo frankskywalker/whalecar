@@ -34,4 +34,26 @@ public interface UserMapper {
      * @return 符合条间总数
      */
     public int queryCountByCondition(Map<String, Object> userMap);
+
+    /**
+     * 创建User favorite
+     * @param condition
+     * @return
+     */
+    public int createUserCarFavorite(Map<String, Object> condition);
+
+    /**
+     * 查询User Favorite总数
+     * 查询User Favorite
+     * @param condition
+     * @return
+     */
+    public int queryUserCarFavoriteCount(Map<String, Object> condition);
+
+    /**
+     * 删除User Favorite
+     * @param condition
+     * @return
+     */
+    public int deleteUserCarFavorite(Map<String, Object> condition);
 }

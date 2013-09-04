@@ -37,6 +37,13 @@ exports.page = function(req, res, next) {
             carModelLv2WithStockView) {
                 callback(err, carModelLv2WithStockView);
             });
+        },
+        carModelLv1Img:function(callback){
+            service.client.get("/queryCarModelLv1ImgById?carModelLv1=" + carModelLv1Id,
+            function(err, req, res,data){
+                console.log(data);
+                callback(err,data);
+            });
         }
     }, function(err, results) {
         console.timeEnd("CAR_PAGE_SERVICE_LOAD");
@@ -45,7 +52,8 @@ exports.page = function(req, res, next) {
         } else {
             res.render("car", {
                 carModelLv1: results.carModelLv1,
-                carModelLv2: results.carModelLv2
+                carModelLv2: results.carModelLv2,
+                carModelLv1Img:results.carModelLv1Img
             });
         }
     });
@@ -62,7 +70,7 @@ function getCarModelPagination(req, res, next) {
     var shop = req.query.shop;
     var orderByName = req.query.orderByName;
     var orderType = req.query.orderType;
-
+    var user = "";
 
     // set default Params
     if (!pageIndex) pageIndex = 1; // 默认为1
@@ -75,6 +83,11 @@ function getCarModelPagination(req, res, next) {
     if (!orderByName) orderByName = 'sellNum';
     if (!orderType) orderType = 'asc';
 
+    //set current user id
+    if(!!req.session.currentUser){
+        user = req.session.currentUser.id;
+    }
+
     var modelViewConditionParams = {
         pageIndex: pageIndex,
         carBrand: carBrand,
@@ -83,10 +96,13 @@ function getCarModelPagination(req, res, next) {
         priceMax: priceMax,
         city: city,
         shop:shop,
+        user:user,
         orderByName: orderByName,
         orderType: orderType,
         pageSize: 20
     };
+
+    console.log(modelViewConditionParams);
 
     async.parallel({
         allDicCitys: function(callback) {
@@ -112,7 +128,6 @@ function getCarModelPagination(req, res, next) {
         },
         carModelViews: function(callback) {
             service.client.post("/getModelView", modelViewConditionParams,
-
             function(err, req, res, data) {
                 callback(err, data);
             });
@@ -121,6 +136,7 @@ function getCarModelPagination(req, res, next) {
         if (err) {
             next(err);
         } else {
+            console.log(results.carModelViews);
             res.render("fragment/carModelViewList", {
                 carModelViews: results.carModelViews,
                 allDicCitys: results.allDicCitys,

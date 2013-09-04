@@ -7,6 +7,10 @@
   <select id="genUserOrderSN" resultType="string">
     SELECT gen_seralno('UO',now())
   </select>
+
+  <select id="genOffTicketByShop" parameterType="Integer" resultType="string">
+    SELECT gen_seralno(CONCAT('OT',#{shopId}),now())
+  </select>
  
 
 </mapper>

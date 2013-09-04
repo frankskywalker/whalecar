@@ -5,4 +5,6 @@ package com.whalecar.persistence;
  */
 public interface GenSeralnoMapper {
     public String genUserOrderSN();
+
+    public String genOffTicketByShop(Integer shopId);
 }

@@ -30,6 +30,12 @@ exports.homepage = function(req, res, next) {
             }, function(err, req, res, data) {
                 callback(err, data);
             });
+        },
+        userOrder: function(callback){
+            service.client.get("/getUserOrderByShop?shopId=" + req.session.currentShop.id,
+            function(err, req, res, data) {
+                callback(err, data);
+            });
         }
     }, function(err, results) {
         if (err) {
@@ -37,7 +43,8 @@ exports.homepage = function(req, res, next) {
         } else {
             res.render("shop_home", {
                 shopStockView: results.shopStockView,
-                shop: results.shop
+                shop: results.shop,
+                userOrder:results.userOrder
             });
         }
 

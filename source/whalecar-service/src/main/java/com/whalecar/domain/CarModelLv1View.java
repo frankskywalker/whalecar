@@ -1,6 +1,6 @@
 package com.whalecar.domain;
 
-public class CarModelLv1View extends CarBrand {
+public class CarModelLv1View extends CarModelLv1 {
 
 	/**
 	 * 

@@ -1,6 +1,8 @@
 package com.whalecar.persistence;
 
 import java.util.List;
+import java.util.Map;
+
 import com.whalecar.domain.UserOrder;
 
 /**
@@ -14,8 +16,18 @@ public interface UserOrderMapper {
      */
     public int createOrder(UserOrder userOrder);
 
+    /**
+     * 通过序号查询UserOrder
+     * @param sn
+     * @return
+     */
     public UserOrder queryUserOrderBySn(String sn);
 
-    public List<UserOrder> queryUserOrderByUser(Integer userId);
+    /**
+     * 通过condition查询UserOrder
+     * @param condition
+     * @return
+     */
+    public List<UserOrder> queryUserOrderByCondition(Map<String,Object> condition);
 
 }

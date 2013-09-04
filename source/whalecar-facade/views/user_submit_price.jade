@@ -1,0 +1,36 @@
+//
+    Created with JetBrains WebStorm.
+    User: ruihuang
+    Date: 13-8-18
+    Time: 下午1:56
+extends layout/mainFrame
+
+block append content
+    .container(style='padding: 10px 0;')
+        .row-Fluid
+            .span8.offset2
+                legend 商品信息
+                dl.dl-horizontal(style='font-size: 12pt;')
+                    dt 车型
+                    dd #{shopStockView.carBrandCname} #{shopStockView.carModelLv2FullName}
+                    dt 品种
+                    dd #{shopStockView.carModelLv3FullName}
+                    dt 配置描述
+                    dd &nbsp;
+                    dt 外观颜色
+                    dd #{shopStockView.carOutsideColorName}
+                    dt 内饰颜色
+                    dd #{shopStockView.carInsideColorName}
+                    dt 库存数量
+                    dd #{shopStockView.carOnOrderNum + shopStockView.carOnHandNum}
+                    dt 备注
+                    dd &nbsp;
+                form.form-horizontal(method="POST",action="./usersubmitprice?type=create")
+                    legend 提交我的价位
+                    .control-group
+                        label.control-label(for='price') 价格（万）
+                        .controls
+                            input(name="submitPrice",type='text', placeholder='价格')
+                    input(name="id",type="hidden",value="#{shopStockView.id}")
+                    input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')
+                    input.btn.btn-primary.span2.pull-right(type='submit',value='确认')

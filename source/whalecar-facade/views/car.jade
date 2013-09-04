@@ -3,9 +3,9 @@ extends layout/mainFrame
 block append css
   link(rel="stylesheet",href="css/jquery.simplyscroll.css",media="all",type="text/css")
   link(href='css/car.css', rel='stylesheet', media='screen')
+
 block append js
   script(type="text/javascript",src="js/jquery.simplyscroll.min.js")
-  
 
 block append content
   .container(style='padding: 10px 0px;')
@@ -21,22 +21,18 @@ block append content
             .span8(style='margin: 0px;padding:20px;width:440px;background-color:#ffffff;border-radius:3px')
               #myCarousel.carousel.slide(style="margin-bottom:0px")
                 //Carousel items
-                #single(style="height: 300px; width: 400px")
-                  .carousel-inner
-                    .active.item
-                      img(src='img/car1.jpg')
-                    .item
-                      img(src='img/car2.jpg')
-                    .item
-                      img(src='img/car3.jpg')
-                    .item
-                      img(src='img/car4.jpg')
+                #single(style="height: 270px; width: 400px")
+                  div.carousel-inner
+                     each item,index in carModelLv1Img
+                       div.item
+                          img(style="width: 400px; height: 270px;",src='img/carModelLv1Imgs/#{item.imgPath}')
+                          if !!item.description
+                            div.carousel-caption
+                                p  #{item.description}
+
                   //Carousel nav
                   a.carousel-control.left(href='#myCarousel', data-slide='prev') ‹
                   a.carousel-control.right(href='#myCarousel', data-slide='next') ›
-                 //汽车详情
-                #description(style="margin-top:20px;padding-left:18px;width:400;height:30px")
-                  h4 车型外观图片
 
             .span4
               ul.nav.nav-tabs.nav-stacked.padding12px
@@ -52,7 +48,7 @@ block append content
                     p(style="color:blue;display:inline")&nbsp;&nbsp;蓝
                     p(style="color:back;display:inline")&nbsp;&nbsp;黑
                 li
-                  h6(style="padding-left:10px;margin-top:10px;padding-right:10px")&nbsp;&nbsp;大众CC是一款标准的轿跑车，将轿车的稳定性与跑车的灵敏度完美结合。它采用4门设计，舒适动感；内饰具有明显运动风格，延续了大众汽车高档商务轿车系列车型的风格，色彩鲜明的高级真皮跑车座椅以及真皮智能运动型方向盘彰显了大众CC速度与动感的特征。此外，大众CC和 配备了许多高科技配置，为驾乘者提供尽可能方便舒适的驾乘体验。
+                  h6(style="padding-left:10px;margin-top:10px;padding-right:10px")&nbsp;&nbsp;#{carModelLv1.description}
 
         .span3
           //
@@ -132,7 +128,7 @@ block append content
                   td #{shopStockView.carInsideColorName}
                   td #{shopStockView.carOutsideColorName}
                   td 点击展开
-                  td #{shopStockView.carOnHandeNum + shopStockView.carOnOrderNum}
+                  td #{shopStockView.carOnHandNum + shopStockView.carOnOrderNum}
                   td
                 tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
                   td(colspan='4')
@@ -161,32 +157,41 @@ block append content
     #myModal.modal.hide.fade(style='left: 42%; width: 780px;')
       .modal-body(style='border-radius: 4px 4px 4px 4px;')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')
-          li.span3(onclick="$('#carOrderForm').submit();",style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
+          li.span3(onclick="$('#userOrderForm').submit();",style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               br
               h3(style='color: #ffffff;') 网站指导价购买
               br
               p(style='color: #ffffff;') 进行订金的支付，即可预定该车。。。。。。
-          li.span3(style='background-color: #888888; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
+          li.span3(onclick="$('#userSubmitPriceForm').submit();",style='background-color: #888888; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               br
               h3(style='color: #ffffff;') 提交我的价格
               br
               p(style='color: #ffffff;') 提交我理想的价格，如果有4s店有合适的活动会主动联系您。。。。。。
-          li.span3(style='background-color: #4083a9; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
+          li.span3(onclick="$('#userOffTicketForm').submit();",style='background-color: #4083a9; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               br
               h3(style='color: #ffffff;') 优惠500元购买
               br
               p(style='color: #ffffff;') 领取优惠券，在谈好价格的基础上出示可以直接抵用现金。
-    form(id="carOrderForm",method="GET",action="./carorder")
-      input(type="hidden",name="type",value="init")
-      input(type="hidden",id="currentOrderShopStockId",name="id",value="")
+    form(id="userOrderForm",method="GET",action="./userorder")
+        input(type="hidden",name="type",value="init")
+        input(type="hidden",name="id")
+    form(id="userSubmitPriceForm",method="GET",action="./usersubmitprice")
+        input(type="hidden",name="type",value="init")
+        input(type="hidden",name="id")
+    form(id="userOffTicketForm",method="POST",action="./useroffticket",target="_blank")
+        input(type="hidden",name="id")
+
     script.
       //预定按钮事件
       function orderClick(id){
-        $("#carOrderForm #currentOrderShopStockId").val(id);
+        $("#userOrderForm input[name='id']").val(id);
+        $("#userSubmitPriceForm input[name='id']").val(id);
+        $("#userOffTicketForm input[name='id']").val(id);
       }
+
       //tr下滑效果
       var currentFocusTr = "";
       function focusTr(elment,trId){

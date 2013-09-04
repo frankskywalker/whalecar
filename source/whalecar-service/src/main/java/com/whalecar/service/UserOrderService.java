@@ -1,6 +1,9 @@
 package com.whalecar.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.whalecar.persistence.GenSeralnoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,14 +45,28 @@ public class UserOrderService {
     }
 
     /**
-     * 根据用户订单
+     * 根据用户查询订单
      *
      * @param userId
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserOrderByUser")
     public @ResponseBody List<UserOrder> getUserOrderByUser(Integer userId){
-        return userOrderMapper.queryUserOrderByUser(userId);
+        Map<String,Object> condition = new HashMap<String,Object>();
+        condition.put("userId",userId);
+        return userOrderMapper.queryUserOrderByCondition(condition);
     }
 
+    /**
+     * 根据shop查询订单
+     *
+     * @param shopId
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/getUserOrderByShop")
+    public @ResponseBody List<UserOrder> getUserOrderByShop(Integer shopId){
+        Map<String,Object> condition = new HashMap<String,Object>();
+        condition.put("shopId",shopId);
+        return userOrderMapper.queryUserOrderByCondition(condition);
+    }
 }

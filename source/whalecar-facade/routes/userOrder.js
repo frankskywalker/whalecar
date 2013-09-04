@@ -7,18 +7,16 @@
 var service = require("./tools/service-header");
 var async = require("async");
 
-exports.carorder = function(req,res,next){
+exports.userorder = function(req,res,next){
     var type =  req.query.type;
     var stockId = req.query.id;
-    console.log(type);
-    console.log(stockId);
-    //订单初始确认页面
+    //type==init:订单初始确认页面
     if(type == "init"){
         service.client.post("/getShopStockViewById",{id:stockId},function(sError,sReq,sRes,sData){
-           res.render("car_order",{shopStockView:sData});
+           res.render("user_order",{shopStockView:sData});
         });
     }
-    //订单保存，并进入订单review页面
+    //type==create:订单保存，并进入订单review页面
     else if (type == "create"){
         async.waterfall([
             //1.先根据stockId查询shopStockView
@@ -45,15 +43,7 @@ exports.carorder = function(req,res,next){
             if(err){
                 next(err);
             }
-            res.render("car_order_finish",{orderSn:result.userOrder.orderSn});
+            res.render("user_order_finish",{orderSn:result.userOrder.orderSn});
         });
     }
-}
-
-exports.offprice = function(req,res,next){
-
-}
-
-exports.submitprice = function(req,res,next){
-
 }

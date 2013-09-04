@@ -5,7 +5,6 @@
 
 <mapper namespace="com.whalecar.persistence.CarModelMapper">
 
-	<cache />
 	
 	<select parameterType="map" id="queryCarModelLv1ByBrand" resultType="CarModelLv1">
 		SELECT 
@@ -51,26 +50,33 @@
 		    Car_Brand.cname as brandCname,
 		    Car_Model_Lv1.cname as cname,
 		    Car_Model_Lv1.imgPath as imgPath,
+            Car_Model_Lv1.offprice as offprice,
+            Car_Model_Lv1.hotmodel as hotmodel,
 		    min(Car_Model_Lv3.factoryPrice) as factoryPriceMin,
 		    max(Car_Model_Lv3.factoryPrice) as factoryPriceMax,
 		    min(Shop_Stock.carPrice) as shopPriceMin,
 		    max(Shop_Stock.carPrice) as shopPriceMax
+            <if test="user != null and user != ''">
+                ,CASE (SELECT count(User_Favorite.id)
+                    FROM User_Favorite
+                    WHERE User_Favorite.user = #{user}
+                    AND User_Favorite.carModelLv1 = Car_Model_Lv1.id
+                )
+                WHEN 0 THEN 'no'
+                ELSE 'yes' END as favorite
+            </if>
 		FROM
 		    (select * from Car_Model_Lv1 where flagUseable = 'yes') Car_Model_Lv1
-		        LEFT JOIN
-		    Car_Model_Lv2 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
-				AND Car_Model_Lv2.flagUseable = 'yes'
-		        LEFT JOIN
-		    Car_Model_Lv3 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
-				AND Car_Model_Lv3.flagUseable = 'yes'
-		        LEFT JOIN
-		    Car_Brand ON Car_Model_Lv1.carBrand = Car_Brand.id
-				AND Car_Brand.flagUseable = 'yes'
-		        LEFT JOIN
-		    Shop_Stock ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
-		    	LEFT JOIN
-		    Shop ON Shop_Stock.shop = Shop.id
-		    AND Shop.flagUseable = 'yes'
+		        LEFT JOIN Car_Model_Lv2
+                    ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1 AND Car_Model_Lv2.flagUseable = 'yes'
+		        LEFT JOIN Car_Model_Lv3
+                    ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2 AND Car_Model_Lv3.flagUseable = 'yes'
+		        LEFT JOIN Car_Brand
+                    ON Car_Model_Lv1.carBrand = Car_Brand.id AND Car_Brand.flagUseable = 'yes'
+                LEFT JOIN Shop_Stock
+                    ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+		    	LEFT JOIN Shop
+                    ON Shop_Stock.shop = Shop.id AND Shop.flagUseable = 'yes'
 		<where>
 			<if test="carBrand != null and carBrand != ''">
 				Car_Brand.id = #{carBrand}
@@ -99,7 +105,7 @@
                 AND Shop.id = #{shop}
             </if>
 		</where>
-		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Brand.cname
+		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Model_Lv1.offprice,Car_Model_Lv1.hotmodel,Car_Brand.cname
 	    <if test="orderByName == 'price' and orderType == 'asc'">
 	    ORDER BY shopPriceMin asc
 	    </if>
@@ -157,5 +163,10 @@
             </if>
         </where>
 	</select>
+
+    <select id="queryCarModelLv1ImgById" resultType="CarModelLv1Image">
+        SELECT * FROM Car_Model_Lv1_IMAGE
+        WHERE carModelLv1 = #{carModelLv1}
+    </select>
 
 </mapper>

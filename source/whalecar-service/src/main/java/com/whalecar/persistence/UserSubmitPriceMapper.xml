@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whalecar.persistence.UserSubmitPriceMapper">
+
+  <insert id="createUserSubmitPrice" >
+      INSERT INTO `User_Submit_Price`
+      (
+          `replyDate`,
+          `originalPrice`,
+          `submitPrice`,
+          `shopStock`,
+          `shop`,
+          `user`)
+      VALUES
+      (
+          #{replyDate},
+          #{originalPrice},
+          #{submitPrice},
+          #{shopStock},
+          #{shop},
+          #{user}
+      );
+  </insert>
+
+  <select id="queryUserSubmitPriceByCondition" resultType="UserSubmitPrice">
+    SELECT *
+    FROM  User_Submit_Price
+    <where>
+        <if test="userId != null and userId != ''">
+            user = #{userId}
+        </if>
+        <if test="shopId != null and shopId != ''">
+            and shop = #{shopId}
+        </if>
+    </where>
+    ORDER By createDate desc
+  </select>
+ 
+
+</mapper>

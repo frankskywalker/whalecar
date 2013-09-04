@@ -63,4 +63,24 @@ public class UserService {
              return new BooleanResult(true);
          }
     }
+
+    @RequestMapping(method = RequestMethod.POST,value="saveUserFavorite")
+    public @ResponseBody
+    BooleanResult saveUserFavorite(@RequestBody Map<String,Object> condition){
+        long count = userMapper.queryUserCarFavoriteCount(condition);
+        if(count == 0){
+            long updateCount = userMapper.createUserCarFavorite(condition);
+            if(updateCount != 1){
+                return new BooleanResult(false);
+            }
+        }
+        return new BooleanResult(true);
+    }
+
+    @RequestMapping(method = RequestMethod.POST,value="removeUserFavorite")
+    public @ResponseBody
+    BooleanResult removeUserFavorite(@RequestBody Map<String,Object> condition){
+        userMapper.deleteUserCarFavorite(condition);
+        return new BooleanResult(true);
+    }
 }

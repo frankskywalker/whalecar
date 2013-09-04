@@ -10,7 +10,9 @@ var index = require('./routes/index'),
     shop = require('./routes/shop'),
     shopstock = require('./routes/shopstock'),
     navbar = require('./routes/navbar'),
-    order = require('./routes/order'),
+    userOrder = require('./routes/userOrder'),
+    userOffTicket = require('./routes/userOffTicket');
+    userSubmitPrice = require('./routes/userSubmitPrice'),
     validator = require('./routes/validator');
     
 
@@ -123,7 +125,9 @@ app.all('/shop',shop.action);
 app.all('/stockeditor',requireRole("shop"),shopstock.stockeditor);
 app.all('/shoplist',shop.shoplist);
 app.all('/shopinfo',shop.shopinfo);
-app.all('/carorder',requireRole("user"),order.carorder);
+app.all('/userorder',requireRole("user"),userOrder.userorder);
+app.all('/usersubmitprice',requireRole("user"),userSubmitPrice.submitprice);
+app.all('/useroffticket',requireRole("user"),userOffTicket.offticket);
 app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
 

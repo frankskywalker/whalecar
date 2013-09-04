@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whalecar.persistence.UserOffTicketMapper">
+
+  <insert id="createUsertOffTicket">
+     INSERT INTO `User_Off_Ticket`
+      (
+          `ticketSn`,
+          `shopStock`,
+          `shop`,
+          `user`
+      )
+      VALUES
+      (
+          #{ticketSn},
+          #{shopStock},
+          #{shop},
+          #{user}
+      );
+
+  </insert>
+
+  <select id="queryUserOffTicketByCondition" resultType="UserOffTicket">
+      SELECT *
+      FROM  User_Off_Ticket
+      <where>
+          <if test="userId != null and userId != ''">
+              user = #{userId}
+          </if>
+          <if test="shopId != null and shopId != ''">
+              and shop = #{shopId}
+          </if>
+      </where>
+      ORDER By createDate desc
+  </select>
+</mapper>

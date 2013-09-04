@@ -4,7 +4,6 @@
 
 <mapper namespace="com.whalecar.persistence.UserOrderMapper">
 
-  <cache />
   <insert id="createOrder" parameterType="UserOrder">
     INSERT
     INTO User_Order (orderSn, orderTitle,    orderPrice, shopStock, shop,user)
@@ -17,10 +16,18 @@
       WHERE orderSn = #{orderSn}
   </select>
 
-  <select id="queryUserOrderByUser" resultType="UserOrder">
+  <select id="queryUserOrderByCondition" resultType="UserOrder">
      SELECT *
         FROM  User_Order
-        WHERE user = #{userId}
+        <where>
+            <if test="userId != null and userId != ''">
+                user = #{userId}
+            </if>
+            <if test="shopId != null and shopId != ''">
+                and shop = #{shopId}
+            </if>
+        </where>
+        ORDER By orderCreateDate desc
   </select>
  
 
