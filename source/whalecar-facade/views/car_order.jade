@@ -5,13 +5,16 @@
     Time: 下午3:12
 extends layout/mainFrame
 
+block append css
+  link(href='css/car_order.css', rel='stylesheet', media='screen')
+
 block append content
  .container(style='padding: 10px 0;')
     .row-Fluid
         .span8.offset2
             .text-center
             legend 商品信息
-            dl.dl-horizontal(style='font-size: 12pt;')
+            dl.dl-horizontal(style='font-size: 14px;')
                 dt 车型
                 dd #{shopStockView.carBrandCname} #{shopStockView.carModelLv2FullName}
                 dt 品种

@@ -5,11 +5,14 @@
     Time: 下午3:35
 extends layout/mainFrame
 
+block append css
+  link(href='css/car_order_finish.css', rel='stylesheet', media='screen')
+
 block append content
     .container(style='padding: 10px 0;')
         .row-Fluid
             .span8.offset2
-                .text-center
+                .text-center(style="margin-top:100px")
                     h2 订单号：#{orderSn}
                 .text-center(style='height: 200px; padding-top: 100px;')
                     h3 订单提交成功

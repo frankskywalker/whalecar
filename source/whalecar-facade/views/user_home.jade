@@ -3,21 +3,24 @@
 
 extends layout/mainFrame
 
+block append css
+  link(href='css/user_home.css', rel='stylesheet', media='screen')
+
 block append content
     .container(style='padding: 10px 0;')
         .row
-            .span3
-                ul.nav.nav-pills.nav-stacked(style='width: 210px;')
+            .span2
+                ul.nav.nav-pills.nav-stacked(style='width: 150px;')
                     li.text-center.active
                         a(href='#orderlist', data-toggle='pill') 订单管理
                     li.text-center
                         a(href='#myinfo', data-toggle='pill') 我的信息
                     li.text-center
                         a(href='#changepsw', data-toggle='pill') 修改密码
-            .span9.tab-content
+            .span10.tab-content
                 #orderlist.tab-pane.active
-                    legend 订单管理
-                    ul.nav.nav-tabs
+                    legend &nbsp;&nbsp;订单管理
+                    ul.nav.nav-pills
                         li.active
                             a(href='#order_car', data-toggle='tab') 预定购买订单
                         li
@@ -38,14 +41,14 @@ block append content
                                         th 操作
                                 tbody
                                     each item in userOrder
-                                        tr
-                                            td= item.orderSn
-                                            td= item.orderTitle
-                                            td
-                                            td= item.orderCreateDate
-                                            td #{item.orderPrice}万
-                                            td
-                                            td(width='65px')
+                                        tr(style="height:60px")
+                                            td(style="padding:20px 8px")= item.orderSn
+                                            td(style="padding:20px 8px")= item.orderTitle
+                                            td(style="padding:20px 8px")
+                                            td(style="padding:20px 8px")= item.orderCreateDate
+                                            td(style="color:#ec6197;padding:20px 8px") #{item.orderPrice}万
+                                            td(style="padding:20px 8px")
+                                            td(style="padding:20px 8px;width:65px")
                                                 a(href='#') 取消
                                                 | /
                                                 a(href='#') 付款
@@ -59,12 +62,12 @@ block append content
                                         th 是否已回复
                                         th 操作
                                 tbody
-                                    tr
-                                        td 2012.06.15
-                                        td 大众速腾2012款 1.6L 手动时尚型 黄色
-                                        td 10.16万
-                                        td 未回复
-                                        td
+                                    tr(style="height:60px")
+                                        td(style="padding:20px 8px") 2012.06.15
+                                        td(style="padding:20px 8px") 大众速腾2012款 1.6L 手动时尚型 黄色
+                                        td(style="padding:20px 8px") 10.16万
+                                        td(style="padding:20px 8px") 未回复
+                                        td(style="padding:20px 8px")
                                             a(href='#') 留言/取消
                         #off_price.tab-pane
                             table.table
@@ -75,24 +78,26 @@ block append content
                                         th 优惠券金额
                                         th 优惠卷号码
                                 tbody
-                                    tr
-                                        td 2012.06.15
-                                        td 大众速腾2012款 1.6L 手动时尚型 黄色
-                                        td 500元
-                                        td AS30850138759232357
+                                    tr(style="height:60px")
+                                        td(style="padding:20px 8px") 2012.06.15
+                                        td(style="padding:20px 8px") 大众速腾2012款 1.6L 手动时尚型 黄色
+                                        td(style="padding:20px 8px") 500元
+                                        td(style="padding:20px 8px") AS30850138759232357
                 #myinfo.tab-pane
-                    legend 我的信息
+                    legend &nbsp;&nbsp;我的信息
                     .span4
                         dl.dl-horizontal(style='font-size: 12pt;')
                             dt 姓名
                             dd= session.currentUser.userName
+                            br
                             dt 电话
                             dd= session.currentUser.userTel
+                            br
                             dt 邮箱地址
                             dd= session.currentUser.userEmail
-                        button.pull-right 修改
+                        button.btn.btn-primary.pull-right.span2 提交
                 #changepsw.tab-pane
-                    legend 修改密码
+                    legend &nbsp;&nbsp;修改密码
                     .span5
                         form.form-horizontal
                             .control-group

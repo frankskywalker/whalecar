@@ -1,0 +1,36 @@
+legend{
+    /*margin-bottom: 0;*/
+    border-bottom:0;
+}
+
+
+ul.nav.nav-pills{
+    margin-bottom: 0;
+}
+
+
+.row li a{
+    font-size: 12px;
+}
+
+th{
+    color: #666666;
+    font-size: 14px;
+    background-color: #e6e6e6;
+}
+
+td{
+    color: #777777;
+    font-size: 12px;
+    background-color: #f8f8f8;
+}
+
+dt{
+    color: #333333;
+    font-size: 14px;
+}
+
+dd{
+    color: #777777;
+    font-size: 14px;
+}

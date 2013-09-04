@@ -1,0 +1,35 @@
+legend{
+    font-size: 18px;
+    color: #4083A9;
+    border-bottom-color: #4083A9;
+}
+
+dl{
+    font-size: 14px;
+}
+
+dt{
+    color: #666666;
+}
+
+dd{
+    color: #777777;
+}
+
+.control-label{
+    color: #666666;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.controls{
+    color: #777777;
+}
+
+.radio{
+    color: #666666;
+}
+
+li{
+    color: #666666;
+}
