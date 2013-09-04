@@ -54,7 +54,7 @@ block append content
                 ul
                     li 订单有效期为3天
                     li 费用交付xxxx公司,网站未收取任何费用
-            form(action="./carorder",method="GET")
+            form(action="./userorder",method="GET")
                 input(name="id",type="hidden",value="#{shopStockView.id}")
                 input(name="type",type="hidden",value="create")
                 input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')
