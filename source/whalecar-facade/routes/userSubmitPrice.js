@@ -47,7 +47,7 @@ exports.submitprice = function(req,res,next){
             if(err){
                 next(err);
             }
-            res.render("user_order_finish");
+            res.render("user_submit_price_finish");
         });
     }
 }
