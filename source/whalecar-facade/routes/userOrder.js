@@ -22,7 +22,6 @@ exports.userorder = function(req,res,next){
             //1.先根据stockId查询shopStockView
             function(callback){
                 service.client.post("/getShopStockViewById",{id:stockId},function(sError,sReq,sRes,shopStockView){
-                    console.log(shopStockView);
                     callback(sError,shopStockView);
                 });
             },

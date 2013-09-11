@@ -65,12 +65,13 @@ block append content
                                         th 操作
                                 tbody
                                     each item in userSubmitPrice
-                                        tr(style="height:60px")
-                                            td(style="padding:20px 8px")= item.createDate
-                                            td(style="padding:20px 8px")
-                                            td(style="padding:20px 8px")= item.submitPrice
-                                            td(style="padding:20px 8px")= item.state
-                                            td(style="padding:20px 8px")
+                                        tr
+                                          td= item.createDate
+                                          td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
+                                          td #{item.submitPrice}万
+                                          td= item.stateText
+                                          td
+
                         #off_price.tab-pane
                             table.table
                                 thead
@@ -83,7 +84,7 @@ block append content
                                     each item in userOffTicket
                                         tr(style="height:60px")
                                             td(style="padding:20px 8px")= item.createDate
-                                            td(style="padding:20px 8px")
+                                            td(style="padding:20px 8px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                                             td(style="padding:20px 8px") 500元
                                             td(style="padding:20px 8px")= item.ticketSn
                 #myfavorite.tab-pane

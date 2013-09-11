@@ -11,7 +11,7 @@ var index = require('./routes/index'),
     shopstock = require('./routes/shopstock'),
     navbar = require('./routes/navbar'),
     userOrder = require('./routes/userOrder'),
-    userOffTicket = require('./routes/userOffTicket');
+    userOffTicket = require('./routes/userOffTicket'),
     userSubmitPrice = require('./routes/userSubmitPrice'),
     validator = require('./routes/validator');
     
@@ -110,6 +110,8 @@ function requireRole(role) {
 
     }
 }
+
+var hello = "helloworld";
 
 // ===============================
 // router~

@@ -19,12 +19,10 @@ exports.submitprice = function(req,res,next){
     //type==create:订单保存，并进入订单review页面
     else if (type == "create"){
         var stockId = req.body.id;
-        console.log(stockId);
         async.waterfall([
             //1.先根据stockId查询shopStockView
             function(callback){
                 service.client.post("/getShopStockViewById",{id:stockId},function(sError,sReq,sRes,shopStockView){
-                    console.log(shopStockView);
                     callback(sError,shopStockView);
                 });
             },
@@ -38,7 +36,6 @@ exports.submitprice = function(req,res,next){
                     shop : shopStockView.shop,
                     user : req.session.currentUser.id
                 };
-                console.log(userSubmitPrice);
                 service.client.post("/saveUserSubmitPrice",userSubmitPrice,function(sError,sReq,sRes,sData){
                     callback(sError,{});
                 });
