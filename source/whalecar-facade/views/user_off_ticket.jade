@@ -9,10 +9,12 @@ block append content
     .container(style='padding: 10px 0;')
         .row-Fluid
             .span8.offset2
-                .text-center(style='height: 200px; padding-top: 100px;')
-                    h3 500元优惠券领取成功
+              img(src='img/free500.png', alt='free500',style="margin-top:10px")
+              .text-center(style='height: 200px; padding-top: 50px;')
+                    h3(style="color:#4083a9") 500元优惠券领取成功
                     br
-                    h4 请记下框内显示的优惠码，并在4s店确认价格后出示进行优惠
-                    .well
-                        h3(style='color: blue;') #{offticket.ticketSn}
+                    h5 请记下框内显示的优惠码，您可在网站合作4s店自行商讨价格，在店家给出的最低优惠的基础上再优惠500元现金
+                    br
+                    .well(style="background-color:#e7e7e7;padding:7px")
+                        h4(style='color: #ec6197;') #{offticket.ticketSn}
                 input.btn.span2.pull-right(type='button', onclick='window.close();', value='关闭')
