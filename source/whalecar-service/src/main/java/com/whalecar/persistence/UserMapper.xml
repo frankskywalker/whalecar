@@ -62,10 +62,15 @@
       WHERE user = #{userId} AND carModelLv1 = #{carModelLv1}
   </delete>
 
-  <select id="queryUserCarFavorite">
-      SELECT
+  <select id="queryUserCarFavorite" resultType="UserCarFavorite">
+      SELECT User_Favorite.createDate as createDate
+            , User_Favorite.carModelLv1 as carModelLv1
+            , Car_Model_Lv1.cname as carModelLv1FullName
+            , Car_Brand.cname as brandCName
       FROM User_Favorite
-      WHERE user = #{userId}
+      LEFT JOIN Car_Model_Lv1 on User_Favorite.carModelLv1 = Car_Model_Lv1.id
+      LEFT JOIN Car_Brand on Car_Model_Lv1.carBrand = Car_Brand.id
+      WHERE User_Favorite.user = #{userId}
   </select>
   
 </mapper>

@@ -207,4 +207,19 @@
             Shop_Stock.id = #{id}
     </select>
 
+    <!-- 根据Id查询shop stock，并锁定 -->
+    <select id="queryShopStockByIdWithLock" resultType="ShopStock">
+        SELECT *
+        FROM Shop_Stock
+        WHERE id = #{id}
+        FOR UPDATE
+    </select>
+
+    <!-- 更新库存 -->
+    <update id="updateShopStockOnOrderNum" parameterType="map">
+        UPDATE Shop_Stock
+        SET carOnOrderNum = #{param2}
+        WHERE id = #{param1}
+    </update>
+
 </mapper>

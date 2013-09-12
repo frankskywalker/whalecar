@@ -101,7 +101,7 @@ footer.footer(style="background-color: #e0e0e0;")
           if(data.loginSuc){
             $("#shoplogin-succee").show();
             $("#shoplogin-error").hide();
-            window.location.href = "/shophome"
+            window.location.href = "/shophome";
           }
           else{
             $("#shoplogin-succee").slideUp();
@@ -109,3 +109,9 @@ footer.footer(style="background-color: #e0e0e0;")
           }
         });
       }
+        //回车进行提交的快捷键
+      $(document).keypress(function(e) {
+        if(e.which == 13) {
+            shopLogin();
+        }
+      });

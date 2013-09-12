@@ -1,7 +1,9 @@
 package com.whalecar.persistence;
 
 import com.whalecar.domain.User;
+import com.whalecar.domain.UserCarFavorite;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -56,4 +58,11 @@ public interface UserMapper {
      * @return
      */
     public int deleteUserCarFavorite(Map<String, Object> condition);
+
+    /**
+     * 根据用户id查询用户收藏列表
+     * @param userId
+     * @return
+     */
+    public List<UserCarFavorite> queryUserCarFavorite(int userId);
 }

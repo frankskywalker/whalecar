@@ -1,6 +1,7 @@
 package com.whalecar.service;
 
 import com.whalecar.domain.User;
+import com.whalecar.domain.UserCarFavorite;
 import com.whalecar.persistence.UserMapper;
 import com.whalecar.service.tools.BooleanResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -92,5 +95,16 @@ public class UserService {
     BooleanResult removeUserFavorite(@RequestBody Map<String,Object> condition){
         userMapper.deleteUserCarFavorite(condition);
         return new BooleanResult(true);
+    }
+
+    /**
+     * 查询
+     * @param userId
+     * @return
+     */
+    @RequestMapping(method =RequestMethod.GET,value="getUserCarFavorite")
+    public @ResponseBody
+    List<UserCarFavorite> getUserCarFavorite(Integer userId){
+        return userMapper.queryUserCarFavorite(userId);
     }
 }

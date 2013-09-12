@@ -19,14 +19,14 @@ block append content
               span(style="color:#666666") #{carModelLv1.brandCname}
               &nbsp;
               span #{carModelLv1.cname}
-            .span8(style='margin: 0px;padding:20px;width:440px;background-color:#ffffff;border-radius:3px')
+            .span8(style='margin: 0px;padding:0px;width:440px;background-color:#ffffff;border-radius:3px')
               #myCarousel.carousel.slide(style="margin-bottom:0px")
                 //Carousel items
-                #single(style="height: 270px; width: 400px")
+                #single(style="height: 270px; width: 440px")
                   div.carousel-inner
                      each item,index in carModelLv1Img
                        div.item
-                          img(style="width: 400px; height: 270px;",src='img/carModelLv1Imgs/#{item.imgPath}')
+                          img(style="width: 440px; height: 270px;",src='img/carModelLv1Imgs/#{item.imgPath}')
                           if !!item.description
                             div.carousel-caption
                                 p  #{item.description}
@@ -122,39 +122,40 @@ block append content
                   p
             tbody
               each shopStockView in item.shopStockList
-                tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
-                  td(style="background: url(../img/cornerBand.png) top left no-repeat;font-size:14px") #{shopStockView.shopName}
-                  td #{shopStockView.carModelLv3FullName}
-                  td #{shopStockView.gearType}
-                  td #{shopStockView.carInsideColorName}
-                  td #{shopStockView.carOutsideColorName}
-                  td 点击展开
-                  td #{shopStockView.carOnHandNum + shopStockView.carOnOrderNum}
-                  td
-                tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
-                  td(colspan='4')
-                    table
-                      tbody
-                        tr.detail
-                          td(style="color:#555555;font-weight: bold") 详细配置说明
-                          td 真皮座椅
-                          td 导航
-                          td 天窗
-                          td 定速巡航
-                          td 倒车雷达
-                          td 电动座椅
-                          td 座椅加热
-                          td 倒车影像
-                          td 多功能方向盘
-                    table
-                      tbody
-                        tr.detail
-                          td 鼎强汽车酷夏促销进行中，凡购车即送万元装潢大礼包，可办理贷款，0首付低利率！
-                  td(colspan='1',style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through")  150w
-                  td(colspan='1',style="vertical-align: middle;color:#ec6197;font-size:20px")  120w
-                  td(colspan='1',style="vertical-align: middle;padding-left: 0px;padding-right: 0px;")
-                    a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
-                  td(colspan='1',style="vertical-align: middle")
+                  if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > 0
+                    tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
+                      td(style="background: url(../img/cornerBand.png) top left no-repeat;font-size:14px") #{shopStockView.shopName}
+                      td #{shopStockView.carModelLv3FullName}
+                      td #{shopStockView.gearType}
+                      td #{shopStockView.carInsideColorName}
+                      td #{shopStockView.carOutsideColorName}
+                      td 点击展开
+                      td #{shopStockView.carOnHandNum + shopStockView.carOnOrderNum}
+                      td
+                    tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
+                      td(colspan='4')
+                        table
+                          tbody
+                            tr.detail
+                              td(style="color:#555555;font-weight: bold") 详细配置说明
+                              td 真皮座椅
+                              td 导航
+                              td 天窗
+                              td 定速巡航
+                              td 倒车雷达
+                              td 电动座椅
+                              td 座椅加热
+                              td 倒车影像
+                              td 多功能方向盘
+                        table
+                          tbody
+                            tr.detail
+                              td 鼎强汽车酷夏促销进行中，凡购车即送万元装潢大礼包，可办理贷款，0首付低利率！
+                      td(colspan='1',style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through")  150w
+                      td(colspan='1',style="vertical-align: middle;color:#ec6197;font-size:20px")  120w
+                      td(colspan='1',style="vertical-align: middle;padding-left: 0px;padding-right: 0px;")
+                        a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
+                      td(colspan='1',style="vertical-align: middle")
     #myModal.modal.hide.fade(style='left: 42%; width: 780px;')
       .modal-body(style='border-radius: 4px 4px 4px 4px;')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')

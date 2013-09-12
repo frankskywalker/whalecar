@@ -35,7 +35,7 @@ exports.userorder = function(req,res,next){
                     user : req.session.currentUser.id
                 };
                 service.client.post("/createUserOrder",userOrder,function(sError,sReq,sRes,sData){
-                    callback(sError,{shopStockView:shopStockView,userOrder:sData});
+                    callback(sError,{shopStockView:shopStockView,userOrder:sData.resultMap.userOrder});
                 });
             }
         ],function(err, result){

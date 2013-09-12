@@ -78,7 +78,7 @@ block append content
                     td= item.orderSn
                     td= item.orderTitle
                     td= item.orderState
-                    td= item.orderCreateDate
+                    td= moment(item.orderCreateDate).format("YYYY-MM-DD HH:mm:ss")
                     td #{item.orderPrice}万
                     td
           #shop_info.tab-pane

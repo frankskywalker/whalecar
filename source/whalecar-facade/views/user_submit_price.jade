@@ -29,7 +29,11 @@ block append content
                 form.form-horizontal(method="POST",action="./usersubmitprice?type=create")
                     legend 提交我的价位
                     .control-group
-                        label.control-label(for='price') 价格（万）
+                        label.control-label(for='price') 当前价格（万）
+                        .controls
+                            p #{shopStockView.carPrice}万
+                    .control-group
+                        label.control-label(for='price') 提交价格（万）
                         .controls
                             input(name="submitPrice",type='text', placeholder='价格')
                     input(name="id",type="hidden",value="#{shopStockView.id}")

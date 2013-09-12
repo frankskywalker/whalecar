@@ -47,7 +47,7 @@ block append content
                                             td(style="padding:20px 8px")= item.orderSn
                                             td(style="padding:20px 8px")= item.orderTitle
                                             td(style="padding:20px 8px")
-                                            td(style="padding:20px 8px")= item.orderCreateDate
+                                            td(style="padding:20px 8px")= moment(item.orderCreateDate).format("YYYY-MM-DD HH:mm:ss")
                                             td(style="color:#ec6197;padding:20px 8px") #{item.orderPrice}万
                                             td(style="padding:20px 8px")
                                             td(style="padding:20px 8px;width:65px")
@@ -62,15 +62,13 @@ block append content
                                         th 车型
                                         th 我提交的价格
                                         th 是否已回复
-                                        th 操作
                                 tbody
                                     each item in userSubmitPrice
                                         tr
-                                          td= item.createDate
+                                          td= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
                                           td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                                           td #{item.submitPrice}万
                                           td= item.stateText
-                                          td
 
                         #off_price.tab-pane
                             table.table
@@ -83,7 +81,7 @@ block append content
                                 tbody
                                     each item in userOffTicket
                                         tr(style="height:60px")
-                                            td(style="padding:20px 8px")= item.createDate
+                                            td(style="padding:20px 8px")= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
                                             td(style="padding:20px 8px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                                             td(style="padding:20px 8px") 500元
                                             td(style="padding:20px 8px")= item.ticketSn
@@ -95,12 +93,16 @@ block append content
                                 th 品牌
                                 th 车型
                                 th 收藏时间
+                                th 操作
                         tbody
-                            tr(style="height:60px")
-                                td(style="padding:20px 8px") 大众
-                                td(style="padding:20px 8px")
-                                    a(href="./car?id=228") 捷达
-                                td(style="padding:20px 8px") 2012-02-12
+                            each item in userCarFavorite
+                                tr(style="height:60px",id="favorite_tr#{item.carModelLv1}")
+                                    td(style="padding:20px 8px")= item.brandCName
+                                    td(style="padding:20px 8px")
+                                        a(href="./car?id=#{item.carModelLv1}")=item.carModelLv1FullName
+                                    td(style="padding:20px 8px")= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
+                                    td(style="padding:20px 8px")
+                                        a(href="#",onclick="delFavorite('#{item.carModelLv1}');return false;") 删除
                 #myinfo.tab-pane
                     legend &nbsp;&nbsp;我的信息
                     .span4
@@ -133,3 +135,19 @@ block append content
                             .control-group
                                 .controls
                                     button.btn.btn-primary.pull-right.span2 提交
+    div.modal.hide.fade#favoriteDelSuc(style="tabindex='-1',role='dialog'")
+        div.modal-body
+            p 删除收藏成功
+        div.modal-footer
+            button.btn.btn-primary(onClick="$('#favoriteDelSuc').modal('hide');return false;") 确认
+    script.
+        function delFavorite(carModelLv1){
+            $.post("./user?type=favorite", {carModelLv1:carModelLv1,action:'del'}).done(
+                function(data) {
+                    if(data.processResult == true){
+                        $("#favorite_tr" + carModelLv1).remove();
+                        $('#favoriteDelSuc').modal('show');
+                    }
+                }
+            );
+        }

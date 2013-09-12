@@ -4,6 +4,7 @@
 
 var service = require("./tools/service-header");
 var async = require("async");
+var moment = require('moment');
 
 exports.router = function(req, res, next) {
     if (req.query.type == "login") {
@@ -37,12 +38,18 @@ exports.homepage = function(req,res,next){
                 function(error,request, response, data) {
                     callback(error,data);
             });
+        },
+        userCarFavorite:function(callback){
+            service.client.get("/getUserCarFavorite?userId=" + userId,function(error,request, response, data){
+                callback(error,data);
+            });
         }
     },function(errors,results){
         if(errors){
             next(errors);
             return;
         }
+        results.moment = moment;
         res.render("user_home",results);
     });
 };

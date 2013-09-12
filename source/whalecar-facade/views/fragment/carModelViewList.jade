@@ -164,7 +164,10 @@ form(action="/",method="get",id="conditionform")
 
 div.modal.hide.fade#favoriteAddSuc(style="tabindex='-1',role='dialog'")
     div.modal-body
-        p 收藏成功
+        p 恭喜，收藏成功！
+        p 您可以进入
+            a(href="./userhome")我的收藏
+            |页面查看所有收藏
     div.modal-footer
         button.btn.btn-primary(onClick="$('#favoriteAddSuc').modal('hide');return false;") 确认
 div.modal.hide.fade#favoriteDelSuc(style="tabindex='-1',role='dialog'")

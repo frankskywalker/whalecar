@@ -4,6 +4,7 @@
 
 var service = require("./tools/service-header");
 var async = require("async");
+var moment = require('moment');
 
 exports.action = function(req, res, next) {
     var type = req.query.type;
@@ -44,7 +45,8 @@ exports.homepage = function(req, res, next) {
             res.render("shop_home", {
                 shopStockView: results.shopStockView,
                 shop: results.shop,
-                userOrder:results.userOrder
+                userOrder:results.userOrder,
+                moment:moment
             });
         }
 

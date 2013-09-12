@@ -1,6 +1,7 @@
 package com.whalecar.persistence;
 
 import com.whalecar.domain.Shop;
+import com.whalecar.domain.ShopStock;
 import com.whalecar.domain.ShopStockView;
 
 import java.util.List;
@@ -102,4 +103,20 @@ public interface ShopMapper {
      * @return shopStockView列表
      */
     public ShopStockView queryShopStockViewById(int id);
+
+    /**
+     * 根据Id查询shop stock，并锁定
+     *
+     * @param id
+     * @return
+     */
+    public ShopStock queryShopStockByIdWithLock(int id);
+
+    /**
+     * 更新库存
+     *
+     * @param id
+     * @return
+     */
+    public int updateShopStockOnOrderNum(int id,int onOrderNum);
 }
