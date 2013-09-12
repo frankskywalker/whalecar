@@ -64,6 +64,11 @@ public class UserService {
          }
     }
 
+    /**
+     * 存储用户收藏
+     * @param condition
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST,value="saveUserFavorite")
     public @ResponseBody
     BooleanResult saveUserFavorite(@RequestBody Map<String,Object> condition){
@@ -77,6 +82,11 @@ public class UserService {
         return new BooleanResult(true);
     }
 
+    /**
+     * 删除用户收藏
+     * @param condition
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST,value="removeUserFavorite")
     public @ResponseBody
     BooleanResult removeUserFavorite(@RequestBody Map<String,Object> condition){

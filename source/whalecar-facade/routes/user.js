@@ -39,11 +39,11 @@ exports.homepage = function(req,res,next){
             });
         }
     },function(errors,results){
-        res.render("user_home",
-            {userOrder:results.userOrder,
-            userSubmitPrice:results.userSubmitPrice,
-            userOffTicket:results.userOffTicket}
-        );
+        if(errors){
+            next(errors);
+            return;
+        }
+        res.render("user_home",results);
     });
 };
 
@@ -58,7 +58,6 @@ function favorite(req,res,next){
     }
     var action =  req.body.action;
     var condition = {userId : req.session.currentUser.id,carModelLv1:req.body.carModelLv1};
-    console.log(condition);
     if(action == 'del'){
         service.client.post("/removeUserFavorite", condition,
             function(error,request, response, data) {
@@ -115,7 +114,7 @@ function regist(req, res, next) {
             next(error);
         } else {
             res.send({
-                regitSuc: data
+                registSuc: data
             });
         }
     });

@@ -1,7 +1,11 @@
 package com.whalecar.service;
 
+import com.whalecar.domain.ShopStockView;
 import com.whalecar.domain.UserSubmitPrice;
+import com.whalecar.domain.UserSubmitPriceView;
+import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.UserSubmitPriceMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +26,8 @@ public class UserSubmitPriceService {
 
     @Autowired
     private UserSubmitPriceMapper userSubmitPriceMapper;
+    @Autowired
+    private ShopMapper shopMapper;
 
     /**
      * 创建UserSubmitPrice数据
@@ -44,10 +51,14 @@ public class UserSubmitPriceService {
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserSubmitPriceByUser")
     public @ResponseBody
-    List<UserSubmitPrice> getUserSubmitPriceByUser(Integer userId){
+    List<UserSubmitPriceView> getUserSubmitPriceByUser(Integer userId){
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("userId",userId);
-        return userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+
+        //查询User Submit Price 列表
+        List<UserSubmitPrice> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+
+        return buildUserSubmitPriceView(list);
     }
 
     /**
@@ -57,9 +68,35 @@ public class UserSubmitPriceService {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserSubmitPriceByShop")
-    public @ResponseBody List<UserSubmitPrice> getUserSubmitPriceByShop(Integer shopId){
+    public @ResponseBody List<UserSubmitPriceView> getUserSubmitPriceByShop(Integer shopId){
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("shopId",shopId);
-        return userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+        //查询User Submit Price 列表
+        List<UserSubmitPrice> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+
+        return buildUserSubmitPriceView(list);
+    }
+
+    /**
+     * 组装UserSubmitPriceView的list
+     * @param list
+     * @return
+     */
+    private List<UserSubmitPriceView> buildUserSubmitPriceView(List<UserSubmitPrice> list){
+        //查询对应的shopStockView组装UserSubmitPriceView
+        List<UserSubmitPriceView> resultList = new ArrayList<UserSubmitPriceView>();
+        for(UserSubmitPrice userSubmitPrice : list){
+            //查询shopStockView
+            int shopStockId = userSubmitPrice.getShopStock();
+            ShopStockView shopStockView = shopMapper.queryShopStockViewById(shopStockId);
+
+            //组装User Submit Price View
+            UserSubmitPriceView userSubmitPriceView = new UserSubmitPriceView();
+            BeanUtils.copyProperties(userSubmitPrice, userSubmitPriceView);
+            userSubmitPriceView.setShopStockView(shopStockView);
+
+            resultList.add(userSubmitPriceView);
+        }
+        return resultList;
     }
 }

@@ -61,5 +61,11 @@
       FROM User_Favorite
       WHERE user = #{userId} AND carModelLv1 = #{carModelLv1}
   </delete>
+
+  <select id="queryUserCarFavorite">
+      SELECT
+      FROM User_Favorite
+      WHERE user = #{userId}
+  </select>
   
 </mapper>
