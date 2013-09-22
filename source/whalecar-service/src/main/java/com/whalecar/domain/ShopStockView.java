@@ -10,7 +10,7 @@ public class ShopStockView extends ShopStock {
 	private static final long serialVersionUID = 5932867829507068205L;
 	private String carModelLv3ShortName;
 	private String carModelLv3FullName;
-	private BigDecimal FactoryPrice;
+	private BigDecimal factoryPrice;
 	private String shopName;
 
 	private String carOutsideColorName;
@@ -48,15 +48,15 @@ public class ShopStockView extends ShopStock {
 		this.carModelLv3FullName = carModelLv3FullName;
 	}
 
-	public BigDecimal getFactoryPrice() {
-		return FactoryPrice;
-	}
+    public BigDecimal getFactoryPrice() {
+        return factoryPrice;
+    }
 
-	public void setFactoryPrice(BigDecimal factoryPrice) {
-		FactoryPrice = factoryPrice;
-	}
+    public void setFactoryPrice(BigDecimal factoryPrice) {
+        this.factoryPrice = factoryPrice;
+    }
 
-	public String getCarOutsideColorName() {
+    public String getCarOutsideColorName() {
 		return carOutsideColorName;
 	}
 

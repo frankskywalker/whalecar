@@ -9,11 +9,12 @@ block append content
     .container(style='padding: 10px 0;')
         .row-Fluid
             .span8.offset2
-              img(src='img/free500.png', alt='free500',style="margin-top:10px")
-              .text-center(style='height: 200px; padding-top: 50px;')
-                    h3(style="color:#4083a9") 更称心的服务，更直接的体验，更优惠的价格
+                img(src='img/free500.png', alt='free500',style="margin-top:10px")
+                .text-center(style='height: 200px; padding-top: 50px;')
+                    h3(style="color:#4083a9") 500元优惠券领取成功
                     br
-                    .row-fluid
-                      .span6.offset3
-                        h5 tips：本种购买方式，可以让您在网站合作4s店自行议价，在店家给出的最低优惠的基础上再获得500元现金优惠
-                    .btn.btn-large.btn-primary(style="margin-top:120px") 点击确定即可获得500元购车优惠券
+                    h5 请记下框内显示的优惠码，您可在网站合作4s店自行商讨价格，在店家给出的最低优惠的基础上再优惠500元现金
+                    br
+                    .well(style="background-color:#e7e7e7;padding:7px")
+                        h4(style='color: #ec6197;') #{offticket.ticketSn}
+                    input.btn.span2.pull-right(type='button', onclick='window.close();', value='关闭')

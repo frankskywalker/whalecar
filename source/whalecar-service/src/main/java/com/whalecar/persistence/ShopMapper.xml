@@ -54,7 +54,7 @@
 		    Shop_Stock.*,
 		    Car_Model_Lv3.shortName as carModelLv3ShortName,
 		    Car_Model_Lv3.fullName as carModelLv3FullName,
-		    Car_Model_Lv3.FactoryPrice as FactoryPrice,
+		    Car_Model_Lv3.factoryPrice as factoryPrice,
 		    Car_Model_Lv3.driveType as driveType,
 		    Car_Model_Lv3.gearType as gearType,
 		    (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,

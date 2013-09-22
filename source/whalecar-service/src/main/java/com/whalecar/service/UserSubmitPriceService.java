@@ -5,6 +5,7 @@ import com.whalecar.domain.UserSubmitPrice;
 import com.whalecar.domain.UserSubmitPriceView;
 import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.UserSubmitPriceMapper;
+import com.whalecar.service.tools.BooleanResult;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,7 @@ public class UserSubmitPriceService {
 
     /**
      * 创建UserSubmitPrice数据
+     *
      * @return
      */
     @RequestMapping(method = RequestMethod.POST,value="/saveUserSubmitPrice")
@@ -77,8 +79,29 @@ public class UserSubmitPriceService {
         return buildUserSubmitPriceView(list);
     }
 
+
+    /**
+     * 更新处理状态
+     *
+     * @param params
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/changeUserSubmitPriceProcessState")
+    public @ResponseBody
+    BooleanResult changeUserSubmitPriceProcessState(@RequestBody Map<String,Object> params){
+        int updateCount = userSubmitPriceMapper.updateState(params);
+        if(updateCount == 1){
+            return new BooleanResult(true);
+        }
+        else{
+            return new BooleanResult(false);
+        }
+    }
+
+
     /**
      * 组装UserSubmitPriceView的list
+     *
      * @param list
      * @return
      */
@@ -99,4 +122,5 @@ public class UserSubmitPriceService {
         }
         return resultList;
     }
+
 }

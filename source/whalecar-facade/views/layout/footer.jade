@@ -81,7 +81,7 @@ footer.footer(style="background-color: #e0e0e0;")
       button(type="button",class="close",data-dismiss="modal",aria-hidden="true") X
       h3 4S店管理员登陆
     .modal-body
-      form.form-horizontal#userLoginForm(action="/shop?type=login",method="post",style="text-align:left")
+      form.form-horizontal#shopLoginForm(action="/shop?type=login",method="post",style="text-align:left")
         div.control-group
           label.control-label(for="shopLoginName")用户名
           div.controls
@@ -96,7 +96,7 @@ footer.footer(style="background-color: #e0e0e0;")
       a(href="#",class="btn btn-primary",onclick="shopLogin();") 登陆
     script.
       function shopLogin(){
-        $.post("/shop?type=login", $("#userLoginForm").serialize()).done(function(data) {
+        $.post("/shop?type=login", $("#shopLoginForm").serialize()).done(function(data) {
           $("#shoplogin-error").slideUp();
           if(data.loginSuc){
             $("#shoplogin-succee").show();
@@ -112,6 +112,8 @@ footer.footer(style="background-color: #e0e0e0;")
         //回车进行提交的快捷键
       $(document).keypress(function(e) {
         if(e.which == 13) {
-            shopLogin();
+            if($('#shopLogin').attr('aria-hidden') != "true"){
+                shopLogin();
+            }
         }
       });

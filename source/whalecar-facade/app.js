@@ -60,7 +60,7 @@ expressValidator.Validator.prototype.isValidPassword = function() {
 
 app.use(expressValidator());
 //validator middleware end
-app.use(navbar.initData);
+//app.use(navbar.initData);
 app.use(app.router);
 // process error
 app.use(function(err, req, res, next) {
@@ -128,8 +128,11 @@ app.all('/stockeditor',requireRole("shop"),shopstock.stockeditor);
 app.all('/shoplist',shop.shoplist);
 app.all('/shopinfo',shop.shopinfo);
 app.all('/userorder',requireRole("user"),userOrder.userorder);
+app.all('/changeUserOrderProcessState',requireRole("shop"),userOrder.changeProcessState);
 app.all('/usersubmitprice',requireRole("user"),userSubmitPrice.submitprice);
+app.all('/changeUserSubmitPriceProcessState',requireRole("shop"),userSubmitPrice.changeProcessState);
 app.all('/useroffticket',requireRole("user"),userOffTicket.offticket);
+app.all('/useroffticketConfirm',requireRole("user"),userOffTicket.offticketConfirm);
 app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
 

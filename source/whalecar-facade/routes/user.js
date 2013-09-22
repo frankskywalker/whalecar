@@ -10,6 +10,9 @@ exports.router = function(req, res, next) {
     if (req.query.type == "login") {
         login(req, res, next);
     }
+    else if (req.query.type == "logout") {
+        login(req, res, next);
+    }
     else if (req.query.type == "regist") {
         regist(req, res, next);
     }
@@ -102,6 +105,13 @@ function login(req, res, next) {
                 });
             }
         }
+    });
+}
+
+function logout(req, res, next) {
+    req.session.currentUser = null;
+    res.send({
+        logoutSuc: true
     });
 }
 

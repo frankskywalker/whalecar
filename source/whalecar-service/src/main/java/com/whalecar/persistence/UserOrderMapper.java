@@ -12,12 +12,14 @@ public interface UserOrderMapper {
 
     /**
      * 创建Order数据
+     *
      * @return
      */
     public int createOrder(UserOrder userOrder);
 
     /**
      * 通过序号查询UserOrder
+     *
      * @param sn
      * @return
      */
@@ -25,9 +27,18 @@ public interface UserOrderMapper {
 
     /**
      * 通过condition查询UserOrder
+     *
      * @param condition
      * @return
      */
     public List<UserOrder> queryUserOrderByCondition(Map<String,Object> condition);
+
+    /**
+     * 更新处理状态
+     *
+     * @param condition
+     * @return
+     */
+    public int updateState(Map<String,Object> condition);
 
 }

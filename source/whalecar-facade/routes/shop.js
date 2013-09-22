@@ -32,6 +32,18 @@ exports.homepage = function(req, res, next) {
                 callback(err, data);
             });
         },
+        userSubmitPrice:function(callback){
+            service.client.get("/getUserSubmitPriceByUser?shopId=" + req.session.currentShop.id,
+                function(error,request, response, data) {
+                    callback(error,data);
+                });
+        },
+        userOffTicket:function(callback){
+            service.client.get("/getUserOffTicketByUser?shopId=" + req.session.currentShop.id,
+                function(error,request, response, data) {
+                    callback(error,data);
+                });
+        },
         userOrder: function(callback){
             service.client.get("/getUserOrderByShop?shopId=" + req.session.currentShop.id,
             function(err, req, res, data) {
@@ -46,6 +58,8 @@ exports.homepage = function(req, res, next) {
                 shopStockView: results.shopStockView,
                 shop: results.shop,
                 userOrder:results.userOrder,
+                userSubmitPrice:results.userSubmitPrice,
+                userOffTicket:results.userOffTicket,
                 moment:moment
             });
         }

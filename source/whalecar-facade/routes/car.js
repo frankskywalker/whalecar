@@ -102,7 +102,6 @@ function getCarModelPagination(req, res, next) {
         pageSize: 20
     };
 
-    console.log(modelViewConditionParams);
 
     async.parallel({
         allDicCitys: function(callback) {
@@ -136,7 +135,11 @@ function getCarModelPagination(req, res, next) {
         if (err) {
             next(err);
         } else {
-            console.log(results.carModelViews);
+            //init conditionParams
+            if(!req.session.conditionParams){
+                req.session.conditionParams = {};
+            }
+
             res.render("fragment/carModelViewList", {
                 carModelViews: results.carModelViews,
                 allDicCitys: results.allDicCitys,

@@ -108,4 +108,22 @@ public class UserOrderService {
         condition.put("shopId",shopId);
         return userOrderMapper.queryUserOrderByCondition(condition);
     }
+
+    /**
+     * 更新处理状态
+     *
+     * @param params
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/changeUserOrderProcessState")
+    public @ResponseBody
+    BooleanResult changeUserOrderProcessState(@RequestBody Map<String,Object> params){
+        int updateCount = userOrderMapper.updateState(params);
+        if(updateCount == 1){
+            return new BooleanResult(true);
+        }
+        else{
+            return new BooleanResult(false);
+        }
+    }
 }

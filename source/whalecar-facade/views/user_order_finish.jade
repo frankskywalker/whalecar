@@ -6,18 +6,18 @@
 extends layout/mainFrame
 
 block append css
-  link(href='css/car_order_finish.css', rel='stylesheet', media='screen')
+    link(href='css/car_order_finish.css', rel='stylesheet', media='screen')
 
 block append content
     .container(style='padding: 10px 0;')
         .row-Fluid
             .span8.offset2
-              img(src='img/getOrderNumber.png', alt='getOrderNumber',style="margin-top:10px")
-              .text-center(style="margin-top:100px")
+                img(src='img/getOrderNumber.png', alt='getOrderNumber',style="margin-top:10px")
+                .text-center(style="margin-top:100px")
                     h2 订单号：#{orderSn}
-                .text-center(style='height: 200px; padding-top: 100px;')
-                    h3 订单提交成功
-                    br
-                    h4 凭此订单号及本人身份证，即可提货！
-                input.btn.span2.pull-right(type='button', onclick='window.location.href="./index.html"', value='返回主页')
-                input.btn.span2.pull-right(type='button', onclick='window.location.href="./userhome"', value='返回我的订单')
+                    .text-center(style='height: 200px; padding-top: 100px;')
+                        h3 订单提交成功
+                        br
+                        h4 凭此订单号及本人身份证，即可提货！
+                    input.btn.span2.pull-right(type='button', onclick='window.location.href="./"', value='返回主页')
+                    input.btn.span2.pull-right(type='button', onclick='window.location.href="./userhome"', value='返回我的订单')

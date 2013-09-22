@@ -37,6 +37,11 @@
     </where>
     ORDER By createDate desc
   </select>
- 
+
+  <update id="updateState">
+    UPDATE User_Submit_Price
+      SET processState = #{state}
+      WHERE ID = #{id}
+  </update>
 
 </mapper>

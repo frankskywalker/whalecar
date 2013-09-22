@@ -26,16 +26,48 @@ block append content
                     dd #{shopStockView.carOnOrderNum + shopStockView.carOnHandNum}
                     dt 备注
                     dd &nbsp;
-                form.form-horizontal(method="POST",action="./usersubmitprice?type=create")
+                form#submitPriceform.form-horizontal(method="POST",action="./usersubmitprice?type=create")
                     legend 提交我的价位
                     .control-group
-                        label.control-label(for='price') 当前价格（万）
+                        label.control-label(for='factoryPrice') 市场价（元）
                         .controls
-                            p #{shopStockView.carPrice}万
+                            h4#factoryPrice #{shopStockView.factoryPrice}万
                     .control-group
-                        label.control-label(for='price') 提交价格（万）
+                        label.control-label(for='carPrice') teecar价（元）
                         .controls
-                            input(name="submitPrice",type='text', placeholder='价格')
+                            h4#carPrice #{shopStockView.carPrice}万
+                    .control-group
+                        label.control-label(for='price') 我的价格（元）
+                        .controls
+                            .input-append
+                                input#price.span2(name="submitPrice",type='text', placeholder='价格(万)',value="#{shopStockView.carPrice}")
+                                span#offRate.add-on 100%
                     input(name="id",type="hidden",value="#{shopStockView.id}")
                     input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')
-                    input.btn.btn-primary.span2.pull-right(type='submit',value='确认')
+                    input.btn.btn-primary.span2.pull-right#submitBtn(value='确认')
+    script.
+        var carPrice = #{shopStockView.carPrice};
+        $("#price").keyup(function(){
+            var value = $("#price").val();
+            var re = /^\d{1,8}\.?\d{1,2}$/;
+            if(re.test(value)){
+                var rate = parseFloat(value) / carPrice * 100;
+                var rateString = rate + " ";
+                //取小数后2位
+                var dotIndex = rateString.indexOf(".");
+                if(dotIndex != -1){//-1 说明正好是倍数，直接补0
+                    rateString = rateString.substring(0,dotIndex + 3);
+                }
+                $("#offRate").html(rateString + "%");
+                $("#submitBtn").removeClass("disabled");
+            }
+            else{
+                $("#submitBtn").addClass("disabled");
+            }
+        });
+        $("#submitBtn").click(function(){
+            if(!$("#submitBtn").hasClass("disabled")){
+                $("#submitPriceform").submit();
+            }
+        });
+

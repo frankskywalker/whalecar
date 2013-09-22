@@ -22,14 +22,20 @@
         li(style="padding: 0px 5px;")
           a(href='/building') 关于我们
       ul.nav.pull-right(style="margin-top:15px")
-        li
           if !session.currentUser
             if !session.currentShop
-              a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆 <img src="img/rss.png" alt="登陆">
+              li
+                a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆 <img src="img/rss.png" alt="登陆">
             -else
-              a(href="/shophome",role="button",data-toggle="modal") 4s店管理页面
+              li
+                a(href="/shophome",role="button",data-toggle="modal") 4s店管理页面
           -else
-            a(href="/userhome",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
+            li
+              a(href="/#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
+            li
+              a(href="/userhome",role="button") 用户中心
+            li
+              a(onclick="logout();return false;",href="#",role="button") 注销
 include user
 
 script.

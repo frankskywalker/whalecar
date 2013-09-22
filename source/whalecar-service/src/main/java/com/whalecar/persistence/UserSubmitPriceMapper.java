@@ -22,4 +22,11 @@ public interface UserSubmitPriceMapper {
      * @return
      */
     public List<UserSubmitPrice> queryUserSubmitPriceByCondition(Map<String,Object> condition);
+
+    /**
+     * 更新处理状态
+     * @param condition
+     * @return
+     */
+    public int updateState(Map<String,Object> condition);
 }

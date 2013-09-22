@@ -46,3 +46,17 @@ exports.userorder = function(req,res,next){
         });
     }
 }
+
+exports.changeProcessState = function(req,res,next){
+    var id = req.body.id;
+    var state = req.body.state;
+    service.client.post("/changeUserOrderProcessState",{id:id,state:state},function(sError){
+        if(sError){
+            console.error(sError);
+            res.json({updateSucc:false});
+        }
+        else{
+            res.json({updateSucc:true});
+        }
+    });
+}

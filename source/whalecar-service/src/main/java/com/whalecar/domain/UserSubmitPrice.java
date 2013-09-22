@@ -1,5 +1,7 @@
 package com.whalecar.domain;
 
+import com.whalecar.persistence.enums.UserSubmitPriceProcessStateEnum;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -20,6 +22,8 @@ public class UserSubmitPrice implements Serializable {
     private int shopStock;
     private int shop;
     private int user;
+    private String processState;
+    private String processStateCName;
 
     public int getUser() {
         return user;
@@ -91,5 +95,17 @@ public class UserSubmitPrice implements Serializable {
 
     public void setShop(int shop) {
         this.shop = shop;
+    }
+
+    public String getProcessState() {
+        return processState;
+    }
+
+    public void setProcessState(String processState) {
+        this.processState = processState;
+    }
+
+    public String getProcessStateCName() {
+        return UserSubmitPriceProcessStateEnum.valueOf(processState).getStateCName();
     }
 }

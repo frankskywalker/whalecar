@@ -8,8 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 public class UserSubmitPriceView extends UserSubmitPrice {
     private ShopStockView shopStockView;
 
-    private String stateText;
-
     public ShopStockView getShopStockView() {
         return shopStockView;
     }
@@ -18,13 +16,4 @@ public class UserSubmitPriceView extends UserSubmitPrice {
         this.shopStockView = shopStockView;
     }
 
-    public String getStateText() {
-        if(StringUtils.equals("waiting_reply",this.getState())){
-            return "未回复";
-        }
-        else if(StringUtils.equals("finish_reply",this.getState())){
-            return "完成回复";
-        }
-        return "";
-    }
 }

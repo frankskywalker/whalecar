@@ -76,10 +76,10 @@ script.
   $(document).keypress(function(e) {
     if(e.which == 13) {
       if($('#loginModal').attr('aria-hidden') != "true"){
-        $('#loginSubmitBtn').click();
+        login();
       }
       else if($('#registModal').attr('aria-hidden') != "true"){
-        $('#registSubmitBtn').click();
+        regist();
       }
     }
   });
@@ -99,28 +99,27 @@ script.
     });
   }
 
+  function logout(){
+    $.post("/user?type=logout", {})
+        .done(function(data) {
+        window.location.reload();
+    });
+  }
+
   function regist(){
     formValidate("registForm","validateUserRegister",function(data){
      if(data){
         $.post("/user?type=regist", $("#registForm").serialize())
              .done(function(data) {
-             if(data.loginSuc){
-               $("#login-succee").show();
-               $("#login-error").hide();
+             if(data.registSuc){
+               $("#regist-succee").show();
+               $("#regist-error").hide();
              }
              else{
-               $("#login-succee").slideUp();
-               $("#login-error").slideDown();
+               $("#regist-succee").slideUp();
+               $("#regist-error").slideDown();
              }
            });
      }
     });
   }
-  
-  $(document).ready(function(){
-    $.getJSON("/dic?type=DicCity",function(data){
-      $.each(data,function(i,e){
-        $("#userCity").append("<option value=" + e.id + ">" + e.cityCname +  "</option>");
-      });
-    });
-  });

@@ -7,14 +7,17 @@
 var service = require("./tools/service-header");
 var async = require("async");
 
+exports.offticketConfirm = function(req,res,next){
+    res.render("user_off_ticket_confirm",{id:req.query.id});
+}
+
 exports.offticket = function(req,res,next){
-    var type =  req.query.type;
-    var stockId = req.body.id;
+    var id = req.body.id;
 
     async.waterfall([
         //1.先根据stockId查询shopStockView
         function(callback){
-            service.client.post("/getShopStockViewById",{id:stockId},function(sError,sReq,sRes,shopStockView){
+            service.client.post("/getShopStockViewById",{id:id},function(sError,sReq,sRes,shopStockView){
                 console.log(shopStockView);
                 callback(sError,shopStockView);
             });

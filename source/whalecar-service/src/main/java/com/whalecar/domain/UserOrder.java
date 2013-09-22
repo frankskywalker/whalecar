@@ -2,6 +2,9 @@ package com.whalecar.domain;
 
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
+import com.whalecar.persistence.enums.UserOrderProcessStateEnum;
+import com.whalecar.persistence.enums.UserOrderStateEnum;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -19,6 +22,7 @@ public class UserOrder implements Serializable {
 	private String orderSn;
 	private String orderTitle;
 	private String orderState;
+    private String orderStateCName;
 	private Date orderCreateDate;
 	private Date orderPayDate;
 	private Date orderConfirmDate;
@@ -28,6 +32,8 @@ public class UserOrder implements Serializable {
 	private int shopStock;
 	private int shop;
     private int user;
+    private String orderProcessState;
+    private String orderProcessStateCName;
 
 	public UserOrder() {
 	}
@@ -151,5 +157,21 @@ public class UserOrder implements Serializable {
 
     public void setUser(int user) {
         this.user = user;
+    }
+
+    public String getOrderProcessState() {
+        return orderProcessState;
+    }
+
+    public void setOrderProcessState(String orderProcessState) {
+        this.orderProcessState = orderProcessState;
+    }
+
+    public String getOrderProcessStateCName(){
+        return UserOrderProcessStateEnum.valueOf(this.orderProcessState).getStateCName();
+    }
+
+    public String getOrderStateCName() {
+        return UserOrderStateEnum.valueOf(this.orderState).getCName();
     }
 }

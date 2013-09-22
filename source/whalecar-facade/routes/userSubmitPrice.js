@@ -13,6 +13,7 @@ exports.submitprice = function(req,res,next){
     if(type == "init"){
         var stockId = req.query.id;
         service.client.post("/getShopStockViewById",{id:stockId},function(sError,sReq,sRes,sData){
+           console.log(sData);
            res.render("user_submit_price",{shopStockView:sData});
         });
     }
@@ -47,4 +48,18 @@ exports.submitprice = function(req,res,next){
             res.render("user_submit_price_finish");
         });
     }
+}
+
+exports.changeProcessState = function(req,res,next){
+    var id = req.body.id;
+    var state = req.body.state;
+    service.client.post("/changeUserSubmitPriceProcessState",{id:id,state:state},function(sError){
+        if(sError){
+            console.error(sError);
+            res.json({updateSucc:false});
+        }
+        else{
+            res.json({updateSucc:true});
+        }
+    });
 }
