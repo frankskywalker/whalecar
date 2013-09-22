@@ -45,7 +45,7 @@ public class UserOrderService {
     public @ResponseBody
     BooleanResult createUserOrder(@RequestBody UserOrder userOrder){
 
-        String logText ="{shopStockID = " + userOrder.getShopStock() + ",userId=" + userOrder.getId() + "}";
+        String logText ="{shopStockID = " + userOrder.getShopStock() + ",userId=" + userOrder.getUser() + "}";
         logger.info("[create order] start create order,{}", logText );
 
         //1.锁定库存
