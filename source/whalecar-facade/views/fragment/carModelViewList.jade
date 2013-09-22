@@ -1,5 +1,5 @@
-.span8
-  .nav.btngroupLite#carFilter(style="float:left;margin: 10px 10px 0 0px;padding-left:12px;")
+.span9
+  .nav.btngroupLite#carFilter(style="float:left;margin: 10px 20px 0 0px;padding-left:12px;")
     li
       a#orderSellNumBtn(style="background:#eeeeee")筛选
     if !shide || shide.indexOf("city") == -1
@@ -76,8 +76,7 @@
                   h4(style="color: rgb(170, 61, 70);") 50万以上
               else
                   | 50万以上
-  .pagination.pagination-small.pagination-left(style='float:left;margin: 10px 10px 0 0px;')
-       | &nbsp;&nbsp;&nbsp;
+  .pagination.pagination-small.pagination-left(style='float:left;margin: 10px 20px 0 0px;')
        ul
          li
            a#orderSellNumBtn(style="background:#eeeeee") 排序
@@ -96,7 +95,7 @@
                img(src="img/arrowup.png")
            else
              a#orderPriceBtn(href="#",onclick="return orderSelect('price')") 价格
-.span4
+.span3
   .pagination.pagination-small.pagination-right(style='float:right;width:180px;margin: 10px 10px 0 0;')
      span(style='float:left;height: 25px;padding-top:0px;') #{carModelViews.currentPage} / #{carModelViews.pageCount}
      ul
@@ -113,6 +112,8 @@
        -else
          li
            a(href='#',onclick="return conditionSelect('pageIndex','#{carModelViews.currentPage + 1}',true)") 后一页
+span(style='height: 25px;padding-top:0px;margin-left:20px') 点击爱心图标收藏车型，可在用户菜单中找到
+
 .span12(style="margin-left: 0px;")
     hr(style='margin: 0px 0px 17px;')
      // 列表
