@@ -125,6 +125,7 @@ app.all('/cardata',car.action);
 app.all('/shophome',requireRole("shop"), shop.homepage);
 app.all('/shop',shop.action);
 app.all('/stockeditor',requireRole("shop"),shopstock.stockeditor);
+app.all('/shopstock',requireRole("shop"),shopstock.action);
 app.all('/shoplist',shop.shoplist);
 app.all('/shopinfo',shop.shopinfo);
 app.all('/userorder',requireRole("user"),userOrder.userorder);
