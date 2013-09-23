@@ -109,7 +109,15 @@ footer.footer(style="background-color: #e0e0e0;")
           }
         });
       }
-        //回车进行提交的快捷键
+
+      function shopLogout(){
+        $.post("/shop?type=logout", {})
+        .done(function(data) {
+            window.location.href = '/';
+        });
+      }
+
+      //回车进行提交的快捷键
       $(document).keypress(function(e) {
         if(e.which == 13) {
             if($('#shopLogin').attr('aria-hidden') != "true"){

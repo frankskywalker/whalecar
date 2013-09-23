@@ -10,7 +10,11 @@ exports.action = function(req, res, next) {
     var type = req.query.type;
     if (type == "login") {
         login(req, res, next);
-    } else if (type == "saveshop") {
+    }
+    else if(type == "logout"){
+        logout(req, res, next);
+    }
+    else if (type == "saveshop") {
         saveShop(req, res, next);
     }
 };
@@ -140,6 +144,13 @@ function login(req, res, next) {
                 });
             }
         }
+    });
+}
+
+function logout(req,res,next){
+    req.session.currentShop = null;
+    res.send({
+        logoutSuc: true
     });
 }
 

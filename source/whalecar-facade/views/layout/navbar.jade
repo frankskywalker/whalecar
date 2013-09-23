@@ -29,6 +29,8 @@
             -else
               li
                 a(href="/shophome",role="button",data-toggle="modal") 4s店管理页面
+              li
+                a(onclick="shopLogout();return false;",href="#",role="button") 注销
           -else
             li
               a(href="/#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
