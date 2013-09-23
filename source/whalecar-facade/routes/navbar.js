@@ -25,10 +25,6 @@ exports.initData = function(req, res, next) {
         }
         res.locals.allDicCitys = results.allDicCitys;
         res.locals.allBrands = results.allBrands;
-        //init conditionParams,否则不是从首页进入会发现不了conditionParams
-        if(!req.session.conditionParams){
-            req.session.conditionParams = {};
-        }
         next();
     });
 };

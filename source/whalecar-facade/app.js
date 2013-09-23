@@ -60,7 +60,7 @@ expressValidator.Validator.prototype.isValidPassword = function() {
 
 app.use(expressValidator());
 //validator middleware end
-//app.use(navbar.initData);
+app.use(navbar.initData);
 app.use(app.router);
 // process error
 app.use(function(err, req, res, next) {
