@@ -86,12 +86,11 @@ block append content
                     td #{item.orderPrice}万
                     td
                     td("white-space: nowrap")
-                        select(onfocus="this.preValue = this.value",onchange="selectorOnChange(this,'orderState','#{item.id}');",style="width:70px;")
+                        select(onfocus="this.preValue = this.value",onchange="selectorOnChange(this,'orderState','#{item.id}');",style="width:75px;")
                             option(selected=item.orderProcessState=='wait_contact',value="wait_contact") 未跟进
                             option(selected=item.orderProcessState=='has_contact',value="has_contact") 已跟进
                             option(selected=item.orderProcessState=='order_submit',value="order_submit") 已订车
                             option(selected=item.orderProcessState=='picked',value="picked") 已取车
-                        span
           #submit_price.tab-pane
             legend 用户提交价格管理
             table.table.stockTable
@@ -108,10 +107,9 @@ block append content
                     td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                     td #{item.submitPrice}万
                     td("white-space: nowrap")
-                        select(onfocus="this.preValue = this.value",onchange="selectorOnChange(this,'priceState','#{item.id}');",style="width:80px;")
+                        select(onfocus="this.preValue = this.value",onchange="selectorOnChange(this,'priceState','#{item.id}');",style="width:85px;")
                             option(selected=item.processState=='wait_process',value="wait_process") 等待处理
                             option(selected=item.processState=='finish_process',value="finish_process") 完成处理
-                        span
           #off_ticket.tab-pane
               legend 用户领取优惠券管理
               table.table.stockTable
