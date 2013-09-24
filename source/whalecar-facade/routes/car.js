@@ -108,7 +108,7 @@ function calcCarStatistics(carModelLv2List){
 function getCarModelPagination(req, res, next) {
     // get request Params
     var pageIndex = req.query.pageIndex;
-    var carBrand = req.query.carBrand;
+    var carBrandStr = req.query.carBrand;
     var carModelLv1 = req.query.carModelLv1;
     var priceMin = req.query.priceMin;
     var priceMax = req.query.priceMax;
@@ -120,7 +120,7 @@ function getCarModelPagination(req, res, next) {
 
     // set default Params
     if (!pageIndex) pageIndex = 1; // 默认为1
-    if (!carBrand) carBrand = '';
+    if (!carBrandStr) carBrandStr = '';
     if (!carModelLv1) carModelLv1 = '';
     if (!priceMin) priceMin = '';
     if (!priceMax) priceMax = '';
@@ -134,9 +134,18 @@ function getCarModelPagination(req, res, next) {
         user = req.session.currentUser.id;
     }
 
+    var carBrand = "";
+    var carSubBrand = "";
+    if(carBrandStr != ''){
+        var carBrandArray = carBrandStr.split(",");
+        carBrand = carBrandArray[0];
+        carSubBrand = carBrandArray[1];
+    }
+
     var modelViewConditionParams = {
         pageIndex: pageIndex,
         carBrand: carBrand,
+        carSubBrand: carSubBrand,
         carModelLv1: carModelLv1,
         priceMin: priceMin,
         priceMax: priceMax,
@@ -156,7 +165,7 @@ function getCarModelPagination(req, res, next) {
             });
         },
         allBrands: function(callback) {
-            service.client.get("/getAllBrandView", function(err, req, res, data) {
+            service.client.get("/getAllBrandAndSubBrand", function(err, req, res, data) {
                 callback(err, data);
             });
         },

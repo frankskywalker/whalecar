@@ -1,9 +1,6 @@
 package com.whalecar.service;
 
-import com.whalecar.domain.CarBrand;
-import com.whalecar.domain.CarBrandView;
-import com.whalecar.domain.CarModelLv1;
-import com.whalecar.domain.CarSubBrand;
+import com.whalecar.domain.*;
 import com.whalecar.persistence.CarBrandMapper;
 import com.whalecar.persistence.CarModelMapper;
 import org.springframework.beans.BeanUtils;
@@ -78,4 +75,28 @@ public class CarBrandSerivce {
 		}
 		return carBrandViewList;
 	}
+
+    /**
+     * 查询carBrand和carSubBrand的混合列表
+     * @return
+     */
+    @RequestMapping("/getAllBrandAndSubBrand")
+    public @ResponseBody List<CarBrandWithSubBrandView> getAllBrandAndSubBrand(){
+        List<CarBrandWithSubBrandView>  carBrandWithSubBrandViewList = carBrandMapper.queryAllBrandAndSubBrand();
+        // 2.遍历所有CarBrand，根据id查询出所属的CarModelLv1,并组装carBrandViewList
+        for (CarBrandWithSubBrandView carBrandWithSubBrandView : carBrandWithSubBrandViewList) {
+            String brandIdStr = carBrandWithSubBrandView.getBrandId();
+            String[] brandIdArray = brandIdStr.split(",");
+
+            Map<String, Object> conditionMap = new HashMap<String, Object>();
+            conditionMap.put("carBrand", brandIdArray[0]);
+            conditionMap.put("carSubBrand", brandIdArray[1]);
+
+            List<CarModelLv1> carModelLv1List = carModelMapper
+                    .queryCarModelLv1ByBrand(conditionMap);
+            carBrandWithSubBrandView.setCarModelLv1List(carModelLv1List);
+        }
+        return carBrandWithSubBrandViewList;
+
+    }
 }

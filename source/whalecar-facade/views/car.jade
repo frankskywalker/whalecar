@@ -161,25 +161,25 @@ block append content
     #myModal.modal.hide.fade(style='left: 42%; width: 780px;')
       .modal-body(style='border-radius: 4px 4px 4px 4px;')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')
-          li.span3(onclick="$('#userOrderForm').submit();",style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
+          li.span3(onmouseover="switchOrderProcessEvent('userOrder')",onclick="$('#userOrderForm').submit();",style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               br
               h3(style='color: #ffffff;') 网站指导价购买
               br
               p(style='color: #ffffff;') 按网站以团购的角度和4s店协定的市面上最优惠的价格购车
-          li.span3(onclick="$('#userSubmitPriceForm').submit();",style='background-color: #888888; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
+          li.span3(onmouseover="switchOrderProcessEvent('submitPrice')",onclick="$('#userSubmitPriceForm').submit();",style='background-color: #888888; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               br
               h3(style='color: #ffffff;') 提交我的价格
               br
               p(style='color: #ffffff;') 合理范围之内提交您的价格，由我们全力促成该价格的成交
-          li.span3(onclick="$('#userOffTicketForm').submit();",style='background-color: #4083a9; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
+          li.span3(onmouseover="switchOrderProcessEvent('offTicket')",onclick="$('#userOffTicketForm').submit();",style='background-color: #4083a9; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               br
               h3(style='color: #ffffff;') 优惠500元购买
               br
               p(style='color: #ffffff;') 通过网站寻找合适车辆和价格达成交易由网站返现500元
-          img(src='img/slectWay.png', alt='slectWay',style="margin-top:10px")
+          img#orderProcessImg(src='img/slectWay.png', alt='slectWay',style="margin-top:10px")
     form(id="userOrderForm",method="GET",action="./userorder")
         input(type="hidden",name="type",value="init")
         input(type="hidden",name="id")
@@ -228,3 +228,16 @@ block append content
         $(this).tab('show');
       });
       $('#tab#{firstActivedTab}').tab('show');
+
+      //购买方式鼠标悬停切换流程图片
+      function switchOrderProcessEvent(type){
+        if(type == "userOrder"){
+            $("#orderProcessImg").attr("src","img/slectWay.png");
+        }
+        else if(type == "submitPrice"){
+            $("#orderProcessImg").attr("src","img/free500step2.png");
+        }
+        else if(type == "offTicket"){
+            $("#orderProcessImg").attr("src","img/submitMyPriceStep2.png");
+        }
+      }

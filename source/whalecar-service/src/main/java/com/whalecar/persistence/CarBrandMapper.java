@@ -1,6 +1,7 @@
 package com.whalecar.persistence;
 
 import com.whalecar.domain.CarBrand;
+import com.whalecar.domain.CarBrandWithSubBrandView;
 import com.whalecar.domain.CarSubBrand;
 
 import java.util.List;
@@ -16,5 +17,7 @@ public interface CarBrandMapper {
 	public List<CarBrand> queryAllBrand();
 
 	public List<CarSubBrand> querySubBrandByBrandId(int id);
+
+    public List<CarBrandWithSubBrandView> queryAllBrandAndSubBrand();
 
 }

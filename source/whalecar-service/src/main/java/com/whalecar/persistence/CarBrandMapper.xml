@@ -23,4 +23,22 @@
     Order by orderIndex
   </select>
 
+  <select id="queryAllBrandAndSubBrand" resultType="CarBrandWithSubBrandView">
+      SELECT
+        if(Car_Sub_Brand.cname is null,
+            Car_Brand.cname,
+            Car_Sub_Brand.cname)
+        as brandName,
+        concat(Car_Brand.id,
+            ',',
+            if(Car_Sub_Brand.id is null,
+                '',
+                 Car_Sub_Brand.id))
+        as brandId
+      FROM
+        Car_Brand
+            left join Car_Sub_Brand
+            ON Car_Brand.id = Car_Sub_Brand.carBrand
+  </select>
+
 </mapper>
