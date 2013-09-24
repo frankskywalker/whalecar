@@ -5,12 +5,16 @@
     Time: 下午1:56
 extends layout/mainFrame
 
+block append css
+  link(href='css/user_submit_price.css', rel='stylesheet', media='screen')
+
 block append content
     .container(style='padding: 10px 0;')
         .row-Fluid
             .span8.offset2
-                img(src='img/submitMyPrice.png', alt='submitMyPrice',style="margin-top:10px")
-                legend 商品信息
+                img(src='img/submitMyPrice.png', alt='submitMyPrice',style="margin:20px 0,;margin-bottom: 20px;")
+                legend
+                  h4 商品信息
                 dl.dl-horizontal(style='font-size: 12pt;')
                     dt 车型
                     dd #{shopStockView.carBrandCname} #{shopStockView.carModelLv2FullName}
@@ -27,7 +31,8 @@ block append content
                     dt 备注
                     dd &nbsp;
                 form#submitPriceform.form-horizontal(method="POST",action="./usersubmitprice?type=create")
-                    legend 提交我的价位
+                    legend
+                      h4 提交我的价位
                     .control-group
                         label.control-label(for='factoryPrice') 市场价（元）
                         .controls
