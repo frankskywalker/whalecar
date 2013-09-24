@@ -19,9 +19,9 @@ public class CarModelLv2WithStockView extends CarModelLv2 {
 
 	private BigDecimal carPriceMin;
 
-	private BigDecimal carPriceMax;
+    private BigDecimal carPriceMax;
 
-	private List<String> outsideColorList = new ArrayList<String>();
+	private List<DicColor> outsideColorList = new ArrayList<DicColor>();
 	private List<String> insideColorList = new ArrayList<String>();
 	private List<String> carModelLv3NameList = new ArrayList<String>();
 	/**
@@ -77,7 +77,7 @@ public class CarModelLv2WithStockView extends CarModelLv2 {
 		this.stockCount = stockCount;
 	}
 
-	public List<String> getOutsideColorList() {
+	public List<DicColor> getOutsideColorList() {
 		return outsideColorList;
 	}
 

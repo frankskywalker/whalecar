@@ -109,7 +109,7 @@ public class CarModelService {
 				BigDecimal factoryPriceMax = null;
 				BigDecimal carPriceMin = null;
 				BigDecimal carPriceMax = null;
-				Set<String> outsideColorSet = new HashSet<String>();
+				Map<String,DicColor> outsideColorMap = new HashMap<String,DicColor>();
 				Set<String> insideColorSet = new HashSet<String>();
 				Set<String> carModelLv3NameSet = new HashSet<String>();
 				// 遍历shopStockViewList,开始计算
@@ -148,8 +148,8 @@ public class CarModelService {
 						}
 					}
 					// 遍历过程汇集所有可能的颜色和lv3车型集合
-					outsideColorSet.add(shopStockViewList.get(i)
-							.getCarOutsideColorName());
+                    outsideColorMap.put(shopStockViewList.get(i).getCarOutsideColorRgb(),new DicColor(shopStockViewList.get(i)
+							.getCarOutsideColorName(),shopStockViewList.get(i).getCarOutsideColorRgb()));
 					insideColorSet.add(shopStockViewList.get(i)
 							.getCarInsideColorName());
 					carModelLv3NameSet.add(shopStockViewList.get(i)
@@ -165,7 +165,7 @@ public class CarModelService {
 				carModelLv2WithStockView.setShopStockList(shopStockViewList);
 				// 汇集所有可能的颜色和lv3车型集合
 				carModelLv2WithStockView.getOutsideColorList().addAll(
-						outsideColorSet);
+                        outsideColorMap.values());
 				carModelLv2WithStockView.getInsideColorList().addAll(
 						insideColorSet);
 				carModelLv2WithStockView.getCarModelLv3NameList().addAll(

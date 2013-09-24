@@ -58,6 +58,7 @@
 		    Car_Model_Lv3.driveType as driveType,
 		    Car_Model_Lv3.gearType as gearType,
 		    (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
+            (select colorRgb from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorRgb,
             (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
 		    Shop.shopName as shopName
 		FROM

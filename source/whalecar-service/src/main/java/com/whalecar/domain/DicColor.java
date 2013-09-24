@@ -24,6 +24,11 @@ public class DicColor implements Serializable {
 	public DicColor() {
 	}
 
+    public DicColor(String colorCname,String colorRgb){
+        this.colorCname = colorCname;
+        this.colorRgb = colorRgb;
+    }
+
 	public DicColor(String colorCname, String colorEname, String flagUseable) {
 		this.colorCname = colorCname;
 		this.colorEname = colorEname;

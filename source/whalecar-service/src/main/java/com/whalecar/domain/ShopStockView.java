@@ -14,6 +14,7 @@ public class ShopStockView extends ShopStock {
 	private String shopName;
 
 	private String carOutsideColorName;
+    private String carOutsideColorRgb;
 	private String carInsideColorName;
 
     private String carModelLv2ShortName;
@@ -126,5 +127,13 @@ public class ShopStockView extends ShopStock {
 
     public void setCarBrandCname(String carBrandCname) {
         this.carBrandCname = carBrandCname;
+    }
+
+    public String getCarOutsideColorRgb() {
+        return carOutsideColorRgb;
+    }
+
+    public void setCarOutsideColorRgb(String carOutsideColorRgb) {
+        this.carOutsideColorRgb = carOutsideColorRgb;
     }
 }

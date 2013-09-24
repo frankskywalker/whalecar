@@ -53,11 +53,57 @@ exports.page = function(req, res, next) {
             res.render("car", {
                 carModelLv1: results.carModelLv1,
                 carModelLv2: results.carModelLv2,
-                carModelLv1Img:results.carModelLv1Img
+                carModelLv1Img:results.carModelLv1Img,
+                carExtendInfo : calcCarStatistics(results.carModelLv2)
             });
         }
     });
 };
+
+//通过carModelLv2统计最大最小价格以及所有颜色和型号
+function calcCarStatistics(carModelLv2List){
+    var factoryMaxPrice = 0;
+    var factoryMinPrice = 0;
+    var carMaxPrice = 0;
+    var carMinPrice = 0;
+    var colorList = {};
+    var carModelLv2NameList = new Array();
+
+    for(var index in carModelLv2List){
+
+        var carModelLv2 = carModelLv2List[index];
+        carModelLv2NameList[index] = carModelLv2.fullName;
+        if(carModelLv2.shopStockList.length == 0){
+            continue;
+        }
+        if(factoryMaxPrice == 0 || carModelLv2.factoryPriceMax > factoryMaxPrice){
+            factoryMaxPrice = carModelLv2.factoryPriceMax
+        }
+
+        if(factoryMinPrice == 0 || carModelLv2.factoryPriceMin < factoryMinPrice){
+            factoryMinPrice = carModelLv2.factoryPriceMin;
+        }
+
+        if(carMaxPrice == 0 || carModelLv2.carPriceMax > carMaxPrice){
+            carMaxPrice = carModelLv2.carPriceMax;
+        }
+
+        if(carMinPrice == 0 || carModelLv2.carPriceMin < carMinPrice){
+            carMinPrice = carModelLv2.carPriceMin
+        }
+
+        for(var colorIndex in carModelLv2.outsideColorList){
+            var dicColor = carModelLv2.outsideColorList[colorIndex];
+            colorList[dicColor.colorRgb] = dicColor;
+        }
+    }
+    return {factoryMaxPrice : factoryMaxPrice,
+        factoryMinPrice : factoryMinPrice,
+        carMaxPrice : carMaxPrice,
+        carMinPrice : carMinPrice,
+        colorList : colorList,
+        carModelLv2NameList:carModelLv2NameList};
+}
 
 function getCarModelPagination(req, res, next) {
     // get request Params
