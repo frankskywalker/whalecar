@@ -28,9 +28,9 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 		<!-- 检查数据库连接池中空闲连接的间隔时间，单位是分，默认值：240，如果要取消则设置为0 -->
-		<property name="idleConnectionTestPeriodInMinutes" value="8" />
+		<property name="idleConnectionTestPeriodInMinutes" value="3" />
 		<!-- 连接池中未使用的链接最大存活时间，单位是分，默认值：60，如果要永远存活设置为0 -->
-		<property name="idleMaxAgeInMinutes" value="9" />
+		<property name="idleMaxAgeInMinutes" value="6" />
 		<!-- 每个分区最大的连接数 默认值:15-->  
 		<property name="maxConnectionsPerPartition" value="6" />
 		<!-- 每个分区最小的连接数 默认值:5-->  
