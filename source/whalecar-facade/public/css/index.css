@@ -209,20 +209,20 @@ a.thumbnail:hover, a.thumbnail:focus {
 }
 
 #cheap{
-    background-image:url("../img/cheapBackground.png");
+    /*background-image:url("../img/cheapBackground.png");*/
 }
 
 #focus{
     margin-top: 25px;
-    background-image:url("../img/cheapBackground.png");
+    /*background-image:url("../img/cheapBackground.png");*/
 }
 
 #cheap h5{
-    color:#ffffff;
+    color:#4083A9;
 }
 
 #focus h5{
-    color:#ffffff;
+    color:#4083A9;
 }
 
 h5{

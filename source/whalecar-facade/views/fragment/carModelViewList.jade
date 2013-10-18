@@ -112,9 +112,15 @@
        -else
          li
            a(href='#',onclick="return conditionSelect('pageIndex','#{carModelViews.currentPage + 1}',true)") 后一页
-span(style='height: 25px;padding-top:0px;margin-left:20px')
-    img(src="../img/loved.png")
-    |点击爱心图标收藏车型
+.span3(style='height: 25px;padding-top:0px;margin-left:20p;color:#888888')
+  img(style="padding-bottom:5px",src="../img/loved.png")
+  | &nbsp; 点击爱心图标收藏车型
+.span4(style='height: 25px;padding-top:0px;margin-left:20px;color:#888888')
+  img(style="padding-bottom:5px",src="../img/cheapBand.png")
+  | &nbsp; 此图标车型为4S店主推特惠车型
+.span4(style='height: 25px;padding-top:0px;margin-left:20px;color:#888888')
+  img(style="padding-bottom:5px",src="../img/focusBand.png")
+  | &nbsp; 此图标车辆为网友关注热点车型
 
 .span12(style="margin-left: 0px;")
     hr(style='margin: 0px 0px 17px;')
