@@ -133,11 +133,11 @@ function login(req, res, next) {
             next(error);
         } else {
             if (!data.loginName) {
-                req.session.currentShop = null;
                 res.send({
                     loginSuc: false
                 });
             } else {
+                req.session.currentUser = null;
                 req.session.currentShop = data;
                 res.send({
                     loginSuc: true

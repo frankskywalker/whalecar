@@ -11,7 +11,7 @@ exports.router = function(req, res, next) {
         login(req, res, next);
     }
     else if (req.query.type == "logout") {
-        login(req, res, next);
+        logout(req, res, next);
     }
     else if (req.query.type == "regist") {
         regist(req, res, next);
@@ -94,11 +94,11 @@ function login(req, res, next) {
             next(error);
         } else {
             if (!data.loginName) {
-                req.session.currentUser = null;
                 res.send({
                     loginSuc: false
                 });
             } else {
+                req.session.currentShop = null;
                 req.session.currentUser = data;
                 res.send({
                     loginSuc: true

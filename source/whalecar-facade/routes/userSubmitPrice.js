@@ -29,9 +29,9 @@ exports.submitprice = function(req,res,next){
             },
             //2.根据shopStockView来组装userSubmitPrice
             function(shopStockView,callback){
-                var submitPrice = req.body.submitPrice;
+                var userPrice = req.body.userPrice;
                 var userSubmitPrice = {
-                    submitPrice : submitPrice,
+                    userPrice : userPrice,
                     originalPrice:shopStockView.carPrice,
                     shopStock : shopStockView.id,
                     shop : shopStockView.shop,
@@ -50,16 +50,62 @@ exports.submitprice = function(req,res,next){
     }
 }
 
-exports.changeProcessState = function(req,res,next){
+exports.changeUserSubmitPriceState =  function(req,res,next){
     var id = req.body.id;
     var state = req.body.state;
-    service.client.post("/changeUserSubmitPriceProcessState",{id:id,state:state},function(sError){
+    var shopPrice = req.body.shopPrice;
+
+    //验证id和state参数合法
+    if(!id || !state){
+        res.json({changeResult:false});
+        return;
+    }
+
+    var params = {};
+
+    //多种情况判断:
+    //1. 4s电提出议价
+    if(state == "shop_commit"){
+        //1.验证当前用户是否为可操作的shopid
+        // TODO 验证代码
+        //2.验证价格是否存在
+        if(!shopPrice){
+            res.json({changeResult:false});
+            return;
+        }
+        params = {id : id,state:state,shopPrice:shopPrice };
+    }
+    //2. 4s店确认价格，生成订单
+    else if(state == "shop_agree"){
+        //1.验证当前用户是否为可操作的shopid
+        // TODO 验证代码
+        params = {id : id,state:state};
+    }
+    //3. 用户同意4s店议价，生成订单
+    else if(state == "price_success"){
+        //1.验证当前用户是否为可操作的userid
+        // TODO 验证代码
+        //2.保存价格，并跳转到价格页面
+        params = {id : id,state:state};
+    }
+    //4. 用户不同意4s店议价，结束订单
+    else if(state == "price_fail"){
+        //1.验证当前用户是否为可操作的shopid
+        // TODO 验证代码
+        params = {id : id,state:state};
+    }
+    else {
+        res.json({changeResult:false});
+        return ;
+    }
+
+    service.client.post("/changeUserSubmitPriceState",params,function(sError){
         if(sError){
             console.error(sError);
-            res.json({updateSucc:false});
+            res.json({changeResult:false});
         }
         else{
-            res.json({updateSucc:true});
+            res.json({changeResult:true});
         }
     });
 }

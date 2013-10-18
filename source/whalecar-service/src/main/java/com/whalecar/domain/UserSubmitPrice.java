@@ -1,6 +1,7 @@
 package com.whalecar.domain;
 
 import com.whalecar.persistence.enums.UserSubmitPriceProcessStateEnum;
+import com.whalecar.persistence.enums.UserSubmitPriceStateEnum;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -11,19 +12,18 @@ import java.util.Date;
  */
 public class UserSubmitPrice implements Serializable {
     private Integer id;
-    /**
-     *订单状态（未回复:waiting_reply、完成回复:finish_reply）
-     */
+
     private String state;
+    private String stateText;
+    private Date stateChangeDate;
     private Date createDate;
     private Date replyDate;
     private BigDecimal originalPrice;
-    private BigDecimal submitPrice;
     private int shopStock;
     private int shop;
     private int user;
-    private String processState;
-    private String processStateCName;
+    private BigDecimal userPrice;
+    private BigDecimal shopPrice;
 
     public int getUser() {
         return user;
@@ -73,14 +73,6 @@ public class UserSubmitPrice implements Serializable {
         this.originalPrice = originalPrice;
     }
 
-    public BigDecimal getSubmitPrice() {
-        return submitPrice;
-    }
-
-    public void setSubmitPrice(BigDecimal submitPrice) {
-        this.submitPrice = submitPrice;
-    }
-
     public int getShopStock() {
         return shopStock;
     }
@@ -97,15 +89,31 @@ public class UserSubmitPrice implements Serializable {
         this.shop = shop;
     }
 
-    public String getProcessState() {
-        return processState;
+    public Date getStateChangeDate() {
+        return stateChangeDate;
     }
 
-    public void setProcessState(String processState) {
-        this.processState = processState;
+    public void setStateChangeDate(Date stateChangeDate) {
+        this.stateChangeDate = stateChangeDate;
     }
 
-    public String getProcessStateCName() {
-        return UserSubmitPriceProcessStateEnum.valueOf(processState).getStateCName();
+    public String getStateText() {
+        return UserSubmitPriceStateEnum.valueOf(this.state).getStateCName();
+    }
+
+    public BigDecimal getUserPrice() {
+        return userPrice;
+    }
+
+    public void setUserPrice(BigDecimal userPrice) {
+        this.userPrice = userPrice;
+    }
+
+    public BigDecimal getShopPrice() {
+        return shopPrice;
+    }
+
+    public void setShopPrice(BigDecimal shopPrice) {
+        this.shopPrice = shopPrice;
     }
 }

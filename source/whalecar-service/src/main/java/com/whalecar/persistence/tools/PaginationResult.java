@@ -65,10 +65,10 @@ public class PaginationResult<E> {
 	
 	/**
 	 * init
-	 * @param items2
-	 * @param totalCount2
-	 * @param defaultPagesize
-	 * @param startIndex2
+	 * @param items
+	 * @param totalCount
+	 * @param pageSize
+	 * @param startIndex
 	 */
 	private void init(List<E> items, int totalCount,
 			int pageSize, int startIndex) {
