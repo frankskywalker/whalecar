@@ -83,3 +83,8 @@ block append content
             a(href='#') 进口大众尚酷23万元起 6月10日有活动
           li
             a(href='#') 进口大众尚酷23万元起 6月10日有活动
+  script.
+    $(function () {
+      var activeTab = $('[href=' + location.hash + ']');
+      activeTab && activeTab.tab('show');
+    });
