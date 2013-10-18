@@ -45,7 +45,7 @@ block append content
                         label.control-label(for='price') 我的价格（元）
                         .controls
                             .input-append
-                                input#price.span2(name="submitPrice",type='text', placeholder='价格(万)',value="#{shopStockView.carPrice}")
+                                input#price.span2(name="userPrice",type='text', placeholder='价格(万)',value="#{shopStockView.carPrice}")
                                 span#offRate.add-on 100%
                     input(name="id",type="hidden",value="#{shopStockView.id}")
                     input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')

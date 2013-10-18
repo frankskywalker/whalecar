@@ -5,7 +5,9 @@ import com.whalecar.domain.UserSubmitPrice;
 import com.whalecar.domain.UserSubmitPriceView;
 import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.UserSubmitPriceMapper;
+import com.whalecar.persistence.enums.UserSubmitPriceStateEnum;
 import com.whalecar.service.tools.BooleanResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,9 +88,13 @@ public class UserSubmitPriceService {
      * @param params
      * @return
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/changeUserSubmitPriceProcessState")
+    @RequestMapping(method = RequestMethod.POST, value = "/changeUserSubmitPriceState")
     public @ResponseBody
-    BooleanResult changeUserSubmitPriceProcessState(@RequestBody Map<String,Object> params){
+    BooleanResult changeUserSubmitPriceState(@RequestBody Map<String,Object> params){
+        String state = String.valueOf(params.get("state"));
+        if(UserSubmitPriceStateEnum.valueOf(state) == null){
+            return new BooleanResult(false);
+        }
         int updateCount = userSubmitPriceMapper.updateState(params);
         if(updateCount == 1){
             return new BooleanResult(true);
@@ -97,7 +103,6 @@ public class UserSubmitPriceService {
             return new BooleanResult(false);
         }
     }
-
 
     /**
      * 组装UserSubmitPriceView的list

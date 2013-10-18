@@ -131,7 +131,7 @@ app.all('/shopinfo',shop.shopinfo);
 app.all('/userorder',requireRole("user"),userOrder.userorder);
 app.all('/changeUserOrderProcessState',requireRole("shop"),userOrder.changeProcessState);
 app.all('/usersubmitprice',requireRole("user"),userSubmitPrice.submitprice);
-app.all('/changeUserSubmitPriceProcessState',requireRole("shop"),userSubmitPrice.changeProcessState);
+app.all('/changeUserSubmitPriceState',userSubmitPrice.changeUserSubmitPriceState);
 app.all('/useroffticket',requireRole("user"),userOffTicket.offticket);
 app.all('/useroffticketConfirm',requireRole("user"),userOffTicket.offticketConfirm);
 app.all('/userhome',requireRole("user"),user.homepage);

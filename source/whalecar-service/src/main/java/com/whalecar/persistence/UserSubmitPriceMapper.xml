@@ -9,18 +9,22 @@
       (
           `replyDate`,
           `originalPrice`,
-          `submitPrice`,
           `shopStock`,
           `shop`,
-          `user`)
+          `user`,
+          `state`,
+          `stateChangeDate`,
+          `userPrice`)
       VALUES
       (
           #{replyDate},
           #{originalPrice},
-          #{submitPrice},
           #{shopStock},
           #{shop},
-          #{user}
+          #{user},
+          'user_commit',
+          CURRENT_TIMESTAMP,
+          #{userPrice}
       );
   </insert>
 
@@ -40,7 +44,10 @@
 
   <update id="updateState">
     UPDATE User_Submit_Price
-      SET processState = #{state}
+      SET state = #{state}
+      <if test="shopPrice != null and shopPrice != ''">
+          ,shopPrice = #{shopPrice}
+      </if>
       WHERE ID = #{id}
   </update>
 

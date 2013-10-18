@@ -61,12 +61,18 @@ block append content
                                         th 提交日期
                                         th 车型
                                         th 我提交的价格
+                                        th 状态
+                                        th 操作
                                 tbody
                                     each item in userSubmitPrice
                                         tr
                                           td= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
                                           td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
-                                          td #{item.submitPrice}万
+                                          td(style="color: #ec6197;") #{item.userPrice}万
+                                          td #{item.stateText}
+                                          td
+                                            if(item.state == "shop_commit")
+                                                a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.userPrice}')") 处理
 
                         #off_price.tab-pane
                             table.table
