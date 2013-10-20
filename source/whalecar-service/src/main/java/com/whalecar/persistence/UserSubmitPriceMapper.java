@@ -29,4 +29,11 @@ public interface UserSubmitPriceMapper {
      * @return
      */
     public int updateState(Map<String,Object> condition);
+
+    /**
+     * 根据id查询UserSubmitPrice 对象
+     * @param id
+     * @return
+     */
+    public UserSubmitPrice queryUserSubmitPriceById(Integer id);
 }

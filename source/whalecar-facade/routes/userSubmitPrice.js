@@ -61,51 +61,106 @@ exports.changeUserSubmitPriceState =  function(req,res,next){
         return;
     }
 
-    var params = {};
+    var currentUserId = !req.session.currentUser? null : req.session.currentUser.id;
+    var currentShopId = !req.session.currentShop? null : req.session.currentShop.id;
 
-    //多种情况判断:
-    //1. 4s电提出议价
-    if(state == "shop_commit"){
-        //1.验证当前用户是否为可操作的shopid
-        // TODO 验证代码
-        //2.验证价格是否存在
-        if(!shopPrice){
+    //根据id查出UserSubmitPrice对象
+    service.client.get("/getUserSubmitPriceById?id=" + id ,function(err,request, response,userSubmitPrice){
+        if(!!err || !userSubmitPrice){
+            console.log(err);
             res.json({changeResult:false});
             return;
         }
-        params = {id : id,state:state,shopPrice:shopPrice };
-    }
-    //2. 4s店确认价格，生成订单
-    else if(state == "shop_agree"){
-        //1.验证当前用户是否为可操作的shopid
-        // TODO 验证代码
-        params = {id : id,state:state};
-    }
-    //3. 用户同意4s店议价，生成订单
-    else if(state == "price_success"){
-        //1.验证当前用户是否为可操作的userid
-        // TODO 验证代码
-        //2.保存价格，并跳转到价格页面
-        params = {id : id,state:state};
-    }
-    //4. 用户不同意4s店议价，结束订单
-    else if(state == "price_fail"){
-        //1.验证当前用户是否为可操作的shopid
-        // TODO 验证代码
-        params = {id : id,state:state};
-    }
-    else {
-        res.json({changeResult:false});
-        return ;
-    }
 
-    service.client.post("/changeUserSubmitPriceState",params,function(sError){
-        if(sError){
-            console.error(sError);
+        var params = {};
+
+
+        //多种情况判断:
+        //1. 4s店提出议价
+        if(state == "shop_commit"){
+            //0.验证前置状态
+            if(userSubmitPrice.state != "user_commit"){
+                console.warn("changeUserSubmitPriceState前置状态错误(id:%s,currentState:%s,newState:%s)",id,userSubmitPrice.state,"user_commit");
+                res.json({changeResult:false});
+                return;
+            }
+
+            //1.验证当前用户是否为可操作的shopid
+            if(currentShopId == null || userSubmitPrice.shop != currentShopId){
+                console.warn("changeUserSubmitPriceState权限异常(id:%s,newState:%s,shopId:%s)",id,"shop_commit",currentShopId);
+                res.json({changeResult:false});
+                return;
+            }
+            //2.验证价格是否存在
+            if(!shopPrice){
+                console.warn("changeUserSubmitPriceState参数异常:shopPrice缺失(id:%s)",id);
+                res.json({changeResult:false});
+                return;
+            }
+            params = {id : id,state:state,shopPrice:shopPrice };
+        }
+        //2. 4s店确认价格，生成订单
+        else if(state == "shop_agree"){
+            //0.验证前置状态
+            if(userSubmitPrice.state != "user_commit"){
+                console.warn("changeUserSubmitPriceState前置状态错误(id:%s,currentState:%s,newState:%s)",id,userSubmitPrice.state,"shop_agree");
+                res.json({changeResult:false});
+                return;
+            }
+            //1.验证当前用户是否为可操作的shopid
+            if(currentShopId == null || userSubmitPrice.shop != currentShopId){
+                console.warn("changeUserSubmitPriceState权限异常(id:%s,newState:%s,shopId:%s)",id,"shop_commit",currentShopId);
+                res.json({changeResult:false});
+                return;
+            }
+            params = {id : id,state:state};
+        }
+        //3. 用户同意4s店议价，生成订单
+        else if(state == "price_success"){
+            //0.验证前置状态
+            if(userSubmitPrice.state != "shop_commit"){
+                console.warn("changeUserSubmitPriceState前置状态错误(id:%s,currentState:%s,newState:%s)",id,userSubmitPrice.state,"price_success");
+                res.json({changeResult:false});
+                return;
+            }
+            //1.验证当前用户是否为可操作的userId
+            if(currentUserId == null || userSubmitPrice.user != currentUserId){
+                console.warn("changeUserSubmitPriceState权限异常(id:%s,newState:%s,userId:%s)",id,"shop_commit",currentUserId);
+                res.json({changeResult:false});
+                return;
+            }
+            //2.保存价格，并跳转到价格页面
+            params = {id : id,state:state};
+        }
+        //4. 用户不同意4s店议价，结束订单
+        else if(state == "price_fail"){
+            //0.验证前置状态
+            if(userSubmitPrice.state != "shop_commit"){
+                console.warn("changeUserSubmitPriceState前置状态错误(id:%s,currentState:%s,newState:%s)",id,userSubmitPrice.state,"price_fail");
+                res.json({changeResult:false});
+                return;
+            }
+            //1.验证当前用户是否为可操作的userId
+            if(currentUserId == null || userSubmitPrice.user != currentUserId){
+                console.warn("changeUserSubmitPriceState权限异常(id:%s,newState:%s,userId:%s)",id,"shop_commit",currentUserId);
+                res.json({changeResult:false});
+                return;
+            }
+            params = {id : id,state:state};
+        }
+        else {
             res.json({changeResult:false});
+            return ;
         }
-        else{
-            res.json({changeResult:true});
-        }
+
+        service.client.post("/changeUserSubmitPriceState",params,function(sError){
+            if(sError){
+                console.error(sError);
+                res.json({changeResult:false});
+            }
+            else{
+                res.json({changeResult:true});
+            }
+        });
     });
 }

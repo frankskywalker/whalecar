@@ -38,8 +38,17 @@
         <if test="shopId != null and shopId != ''">
             and shop = #{shopId}
         </if>
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
     </where>
     ORDER By createDate desc
+  </select>
+
+  <select id="queryUserSubmitPriceById" resultType="UserSubmitPrice">
+      SELECT *
+      FROM User_Submit_Price
+      WHERE id = #{param1}
   </select>
 
   <update id="updateState">

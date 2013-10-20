@@ -24,12 +24,12 @@ block append content
                 dd &nbsp;
                 dt 外观颜色
                 dd #{shopStockView.carOutsideColorName}
-                dt 内饰颜色
-                dd #{shopStockView.carInsideColorName}
                 dt 库存数量
                 dd #{shopStockView.carOnOrderNum + shopStockView.carOnHandNum}
                 dt 备注
                 dd &nbsp;
+                dt 价格
+                dd(style="color:#ec6197;font-size:20px;") #{shopStockView.carPrice}万
             form.form-horizontal
                 legend 订购人信息
                 .control-group
@@ -58,5 +58,7 @@ block append content
             form(action="./userorder",method="GET")
                 input(name="id",type="hidden",value="#{shopStockView.id}")
                 input(name="type",type="hidden",value="create")
+                input(name="userPrice",type="hidden",value="#{userPrice}")
+                input(name="userSubmitPriceId",type="hidden",value="#{userSubmitPriceId}")
                 input.btn.span2.pull-right(type='button', onclick='window.history.go(-1)', value='取消')
                 input.btn.btn-primary.span2.pull-right(type='submit', value='确认')

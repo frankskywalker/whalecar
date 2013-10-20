@@ -112,7 +112,7 @@ block append content
                     td #{item.stateText}
                     td
                         if(item.state == "user_commit")
-                            a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.userPrice}')") 处理
+                            a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.originalPrice}',#{item.userPrice}')") 处理
             div(id="stateChangeModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
                 .modal-header
                     button(type="button",class="close",data-dismiss="modal",aria-hidden="true") x
@@ -121,8 +121,10 @@ block append content
                     div.well.well-small
                         div(style="float:left;width:40%;text-align:center;")
                             p#stateChangeModal_carModel
+                        div(style="float:left;width:40%;text-align:center;")
+                            p#stateChangeModal_originalPrice
                         div(style="text-align:center;")
-                            p#stateChangeModal_price
+                            p#stateChangeModal_userPrice
                     div.well.well-small
                         table(style="width:100%;")
                             tr
@@ -130,13 +132,13 @@ block append content
                                     div(style="text-align:center;")
                                         p 同意客户的价格，
                                         | 直接进行确认将生成客户购车订单
-                                        form#processSubmitPriceStateForm(action="/login",method="post")
+                                        form#processSubmitPriceStateForm(method="post")
                                             a.btn.btn-small(href="#",onclick="changeStateToShopAgree()") 确认价格
                                 td(style="width:2%")
                                     img(src="img/servciesVerticalLine.png")
                                 td(style="width:43%;")
                                     div(style="text-align:center;")
-                                        form#processSubmitPriceStateForm(action="/login",method="post")
+                                        form#processSubmitPriceStateForm(method="post")
                                             p 不同意客户价格，
                                             | 再提交商议价格让客户确认
                                             input#shopPrice.input.input-small.span2(type="text",id="shopPrice",name="shopPrice",placeholder="商议价格")
@@ -305,9 +307,10 @@ block append content
 
     var currentUserSubmitPriceId = "";
 
-    function processUserSubmitPriceState(id,model,price){
+    function processUserSubmitPriceState(id,model,originalPrice,userPrice){
         $("#stateChangeModal #stateChangeModal_carModel").html("车型：" + model);
-        $("#stateChangeModal #stateChangeModal_price").html("价格：" + price + "万");
+        $("#stateChangeModal #stateChangeModal_originalPrice").html("原价：" + originalPrice + "万")
+        $("#stateChangeModal #stateChangeModal_price").html("用户价格：" + userPrice + "万");
         currentUserSubmitPriceId = id;
         $("#stateChangeModal").modal('show');
     }

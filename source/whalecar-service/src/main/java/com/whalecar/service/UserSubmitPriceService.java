@@ -81,6 +81,26 @@ public class UserSubmitPriceService {
         return buildUserSubmitPriceView(list);
     }
 
+    /**
+     * id和user查询订单
+     *
+     * @param userId
+     * @param id
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/getUserSubmitPriceByUserAndId")
+    public @ResponseBody UserSubmitPrice getUserSubmitPriceByShop(Integer userId,Integer id){
+        Map<String,Object> condition = new HashMap<String,Object>();
+        condition.put("userId",userId);
+        condition.put("id",id);
+        //查询User Submit Price 列表
+        List<UserSubmitPrice> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+        if(list != null && list.size() != 0){
+            return list.get(0);
+        }
+        return null;
+    }
+
 
     /**
      * 更新处理状态
@@ -102,6 +122,16 @@ public class UserSubmitPriceService {
         else{
             return new BooleanResult(false);
         }
+    }
+
+    /**
+     * get UserSubmitPrice by id
+     * @param id
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value = "/getUserSubmitPriceById")
+    public @ResponseBody UserSubmitPrice getUserSubmitPriceById(Integer id){
+        return userSubmitPriceMapper.queryUserSubmitPriceById(id);
     }
 
     /**
