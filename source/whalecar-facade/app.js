@@ -136,6 +136,12 @@ app.all('/useroffticket',requireRole("user"),userOffTicket.offticket);
 app.all('/useroffticketConfirm',requireRole("user"),userOffTicket.offticketConfirm);
 app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
+app.all('/adver',function(req,res){
+    res.render("adver");
+}) ;
+app.all('/way1',function(req,res){
+    res.render("way1");
+}) ;
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
