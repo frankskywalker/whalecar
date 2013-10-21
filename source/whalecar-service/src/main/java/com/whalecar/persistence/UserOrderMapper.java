@@ -41,4 +41,9 @@ public interface UserOrderMapper {
      */
     public int updateState(Map<String,Object> condition);
 
+    /**
+     * 处理已经过期的订单，将订单状态更新为out of date
+     */
+    public void processUserOrderOutOfDate();
+
 }

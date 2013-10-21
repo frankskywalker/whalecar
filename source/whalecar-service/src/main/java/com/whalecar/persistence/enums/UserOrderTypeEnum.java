@@ -3,21 +3,19 @@ package com.whalecar.persistence.enums;
 /**
  * Created by ruihuang on 13-9-19.
  */
-public enum UserOrderStateEnum {
-    waiting_pay("waiting_pay","等待付款"),
-    waiting_confirm("waiting_confirm","等待确认"),
-    order_succ("order_succ","预定成功"),
-    finish("finish","已完成"),
-    cancel("cancel","已取消"),
-    out_of_date("out_of_date","已过期");
+public enum UserOrderTypeEnum {
+    pay_order("pay_order","定金支付订单"),
+    not_pay_order("not_pay_order","非定金支付订单");
 
-    private UserOrderStateEnum(String code,String cName){
-        this.cName = cName;
+    private UserOrderTypeEnum(String code,String cName){
         this.code = code;
+        this.cName = cName;
+
     }
 
-    private String cName;
     private String code;
+    private String cName;
+
 
     public String getCName() {
         return cName;

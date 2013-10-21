@@ -10,6 +10,8 @@ import com.whalecar.domain.UserSubmitPrice;
 import com.whalecar.persistence.GenSeralnoMapper;
 import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.UserSubmitPriceMapper;
+import com.whalecar.persistence.enums.UserOrderStateEnum;
+import com.whalecar.persistence.enums.UserOrderTypeEnum;
 import com.whalecar.persistence.enums.UserSubmitPriceStateEnum;
 import com.whalecar.service.tools.BooleanResult;
 import org.apache.commons.lang3.StringUtils;
@@ -87,6 +89,17 @@ public class UserOrderService {
         String orderSn = genSeralnoMapper.genUserOrderSN();
         userOrder.setOrderSn(orderSn);
         logger.info("[create order] gen user order sn ok,sn = {},{}",orderSn, logText );
+
+        //4.5 根据订单类型确定订单的初始状态：
+        // 支付定金订单初始状态是等待付款。无支付定金订单初始状态是等待确认。
+        if(StringUtils.equals(UserOrderTypeEnum.pay_order.getCode(),userOrder.getOrderType()) ){
+            userOrder.setOrderState(UserOrderStateEnum.waiting_pay.getCode());
+        }
+        else if(StringUtils.equals(UserOrderTypeEnum.not_pay_order.getCode(),userOrder.getOrderType())){
+            userOrder.setOrderState(UserOrderStateEnum.order_succ.getCode());
+        }
+        logger.info("[create order] init order state finish.orderType= {},init state={}.{}"
+                   ,userOrder.getOrderType(),userOrder.getOrderState(), logText );
 
         //5.创建订单
         userOrderMapper.createOrder(userOrder);

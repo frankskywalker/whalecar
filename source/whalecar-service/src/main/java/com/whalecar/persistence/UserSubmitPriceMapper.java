@@ -36,4 +36,9 @@ public interface UserSubmitPriceMapper {
      * @return
      */
     public UserSubmitPrice queryUserSubmitPriceById(Integer id);
+
+    /**
+     * 处理UserSubmitPrice过期
+     */
+    public void processUserSubmitPriceOutOfDate();
 }

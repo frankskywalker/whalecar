@@ -6,8 +6,8 @@
 
   <insert id="createOrder" parameterType="UserOrder">
     INSERT
-    INTO User_Order (orderSn, orderTitle,    orderPrice, shopStock, shop,user)
-    Values (#{orderSn},#{orderTitle},#{orderPrice},#{shopStock},#{shop},#{user})
+    INTO User_Order (orderSn, orderTitle,    orderPrice, shopStock, shop,user,orderState,orderType)
+    Values (#{orderSn},#{orderTitle},#{orderPrice},#{shopStock},#{shop},#{user},#{orderState},#{orderType})
   </insert>
 
   <select id="queryUserOrderBySn" resultType="UserOrder">
@@ -34,6 +34,33 @@
     UPDATE User_Order
       SET orderProcessState = #{state}
       WHERE ID = #{id}
+  </update>
+
+  <update id="processUserOrderOutOfDate">
+      <![CDATA[
+
+          UPDATE User_Order
+          SET orderState = 'out_of_date'
+
+          where
+
+          (orderState = 'waiting_pay'
+          and date_add(orderCreateDate,
+          interval 24 hour) > current_timestamp)
+
+          or
+
+          ((orderState <> 'finish' and orderState <> 'cancel' and orderState <> 'out_of_date'  and orderType = 'not_pay_order')
+          and date_add(orderCreateDate,
+          interval 36 hour) > current_timestamp)
+
+          or
+
+          ((orderState <> 'finish' and orderState <> 'cancel' and orderState <> 'out_of_date'  and orderType = 'pay_order')
+          and date_add(orderCreateDate,
+          interval 84 hour) > current_timestamp)
+
+      ]]>
   </update>
 
 </mapper>

@@ -57,7 +57,21 @@
       <if test="shopPrice != null and shopPrice != ''">
           ,shopPrice = #{shopPrice}
       </if>
+      ,stateChangeDate = current_timestamp
       WHERE ID = #{id}
+  </update>
+
+  <update id="processUserSubmitPriceOutOfDate">
+      SELECT
+        *
+      FROM
+        User_Submit_Price
+      where
+        (state = 'shop_agree'
+          or 'shop_commit'
+          or 'price_success')
+          and
+        date_add(createDate, interval 24 hour) > current_timestamp
   </update>
 
 </mapper>

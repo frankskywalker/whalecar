@@ -48,7 +48,8 @@ exports.userorder = function(req,res,next){
                     orderPrice : shopStockView.carPrice,
                     shopStock : shopStockView.id,
                     shop : shopStockView.shop,
-                    user : req.session.currentUser.id
+                    user : req.session.currentUser.id,
+                    orderType : req.query.orderType
                 };
                 service.client.post("/createUserOrder?userPrice=" + req.query.userPrice + "&userSubmitPriceId=" + req.query.userSubmitPriceId,userOrder,function(sError,sReq,sRes,sData){
                     callback(sError,{shopStockView:shopStockView,userOrder:sData.resultMap.userOrder});

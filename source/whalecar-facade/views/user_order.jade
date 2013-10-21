@@ -30,7 +30,7 @@ block append content
                 dd &nbsp;
                 dt 价格
                 dd(style="color:#ec6197;font-size:20px;") #{shopStockView.carPrice}万
-            form.form-horizontal
+            form.form-horizontal(action="./userorder",method="GET")
                 legend 订购人信息
                 .control-group
                     label.control-label(for='name') 订购人姓名
@@ -46,16 +46,15 @@ block append content
                         input#mail(type='text', placeholder='电子邮件',value="#{session.currentUser.userEmail}")
                 legend 支付方式
                 label.radio
-                    input(type='radio', name='optionsRadios', value='option1', checked='checked')
+                    input(type='radio', name='orderType', value='not_pay_order', checked='checked')
                     | 不支付定金，仅预约
                 label.radio
-                    input(type='radio',disabled='disabled', name='optionsRadios', value='')
+                    input(type='radio',disabled='disabled', name='orderType', value='pay_order')
                     | 支付定金，进行留车预定（使用支付宝支付）(暂未开放)
                 legend 备注
                 ul
                     li 订单有效期为3天
                     li 费用交付xxxx公司,网站未收取任何费用
-            form(action="./userorder",method="GET")
                 input(name="id",type="hidden",value="#{shopStockView.id}")
                 input(name="type",type="hidden",value="create")
                 input(name="userPrice",type="hidden",value="#{userPrice}")

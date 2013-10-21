@@ -34,6 +34,7 @@ public class UserOrder implements Serializable {
     private int user;
     private String orderProcessState;
     private String orderProcessStateCName;
+    private String orderType;
 
 	public UserOrder() {
 	}
@@ -173,5 +174,13 @@ public class UserOrder implements Serializable {
 
     public String getOrderStateCName() {
         return UserOrderStateEnum.valueOf(this.orderState).getCName();
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
     }
 }
