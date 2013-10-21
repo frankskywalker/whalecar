@@ -47,10 +47,10 @@ block append content
                 legend 支付方式
                 label.radio
                     input(type='radio', name='optionsRadios', value='option1', checked='checked')
-                    | 不支付定金，仅预约
+                    | 不支付定金，仅预约(为确保我们库存的信息的准确无误，无定金订单目前实际库存会帮您保留一天，过期订单将会作废)
                 label.radio
                     input(type='radio',disabled='disabled', name='optionsRadios', value='')
-                    | 支付定金，进行留车预定（使用支付宝支付）(暂未开放)
+                    | 支付定金，进行留车预定（使用支付宝支付，有订单订单目前实际库存会帮您保留三天，过期订单将会作废)
                 legend 备注
                 ul
                     li 订单有效期为3天

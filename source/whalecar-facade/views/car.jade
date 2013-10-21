@@ -158,9 +158,9 @@ block append content
               else
                 tr
                   td(colspan='8') 暂无库存
-    #myModal.modal.hide.fade(style='left: 42%; width: 780px;')
-      .modal-body(style='border-radius: 4px 4px 4px 4px;')
-        ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;')
+    #myModal.modal.hide.fade(style='left: 42%; width: 780px')
+      .modal-body(style='border-radius: 4px 4px 4px 4px;max-height:500px')
+        ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;max-height:500px')
           li.span3(onmouseover="switchOrderProcessEvent('userOrder')",onclick="$('#userOrderForm').submit();",style='background-color: #ec6197; width: 250px; margin-left: 0px; margin-bottom: 0px;cursor:pointer;')
             div(style='height: 200px; margin: 20px;')
               br
@@ -180,6 +180,11 @@ block append content
               br
               p(style='color: #ffffff;') 通过网站寻找合适车辆和价格达成交易由网站返现500元
           img#orderProcessImg(src='img/slectWay.png', alt='slectWay',style="margin-top:10px")
+          div
+            p#orderProcessDoc1(style="color:#888888;margin:10px 30px 0px 30px") 此购买方式中的价格是由经销商给我们的协议价格，优惠幅度比市面上都要低很多，
+              | 省去顾客到店谈价的过程，直接让最优惠最让利的价格呈现在客户眼前。网站显示的车辆剩余数量即为4S店库存事实数据。用户在提交订单后,即可凭网站生成
+              | 的订单号前往所选经销商提车。所有货款在4S店结清。
+            p#orderProcessDoc2(style="color:#777777;margin:10px 30px 0px 30px;text-align:center") （温馨提示：三种购物方式只能选择一种哦）
     form(id="userOrderForm",method="GET",action="./userorder")
         input(type="hidden",name="type",value="init")
         input(type="hidden",name="id")
@@ -233,11 +238,17 @@ block append content
       function switchOrderProcessEvent(type){
         if(type == "userOrder"){
             $("#orderProcessImg").attr("src","img/slectWay.png");
-        }
+            $("#orderProcessDoc1").html("此购买方式中的价格是由经销商给我们的协议价格，优惠幅度比市面上都要低很多，省去亲到店谈价的过程，直接让最优惠最让利的价格呈现在亲眼前。网站显示的车辆剩余数量即为4S店库存事实数据。用户在提交订单后,即可凭网站生成的订单号前往所选经销商提车。所有货款在4S店结清。");
+            $("#orderProcessDoc2").html("（温馨提示：三种购物方式只能选择一种哦）");
+      }
         else if(type == "submitPrice"){
             $("#orderProcessImg").attr("src","img/free500step2.png");
+            $("#orderProcessDoc1").html("如果亲对网站指导价不满意，可以直接和经销商通过网站沟通价格（此处只有一个来回的询价过程），向经销商提交自己心里的意向报价，最后拿到订单号在4S店中完成交易");
+            $("#orderProcessDoc2").html("（温馨提示：三种购物方式只能选择一种哦）");
         }
         else if(type == "offTicket"){
             $("#orderProcessImg").attr("src","img/submitMyPriceStep2.png");
+            $("#orderProcessDoc1").html("如果亲对前两种方式都不满意，我们网站还有第三种方式方式提供给大家。亲们可自行去4S店商讨价格，网站承诺无论以多少价格成交，均可凭网站生成的优惠券代码直接返还500元现金");
+            $("#orderProcessDoc2").html("（温馨提示：三种购物方式只能选择一种哦）");
         }
       }
