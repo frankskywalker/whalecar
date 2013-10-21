@@ -73,6 +73,8 @@ block append content
                   th 订单名称
                   th 订单类型
                   th 订单日期
+                  th 订购人姓名
+                  th 订购人电话
                   th 汽车金额
                   th 备注
                   th 当前状态
@@ -83,13 +85,19 @@ block append content
                     td= item.orderTitle
                     td= item.orderStateCName
                     td= moment(item.orderCreateDate).format("YYYY-MM-DD HH:mm:ss")
-                    td #{item.orderPrice}万
+                    td= item.userName
+                    td= item.userTel
+                    td(style="text-align: center;") #{item.orderPrice}万
                     td
                     td("white-space: nowrap")
                         select(onfocus="this.preValue = this.value",onchange="selectorOnChange(this,'orderState','#{item.id}');",style="width:75px;")
-                            option(selected=item.orderProcessState=='wait_contact',value="wait_contact") 未跟进
-                            option(selected=item.orderProcessState=='has_contact',value="has_contact") 已跟进
-                            option(selected=item.orderProcessState=='order_submit',value="order_submit") 已订车
+                            if(item.orderProcessState == 'wait_contact')
+                                option(selected=item.orderProcessState=='wait_contact',value="wait_contact") 未跟进
+                            if(item.orderProcessState == 'wait_contact' || item.orderProcessState == 'has_contact')
+                                option(selected=item.orderProcessState=='has_contact',value="has_contact") 已跟进
+                            if(item.orderProcessState == 'wait_contact' || item.orderProcessState == 'has_contact' || item.orderProcessState == 'order_submit')
+                                option(selected=item.orderProcessState=='order_submit',value="order_submit") 已订车
+                            if(item.orderProcessState == 'wait_contact' || item.orderProcessState == 'has_contact' || item.orderProcessState == 'order_submit' || item.orderProcessState == 'picked')
                             option(selected=item.orderProcessState=='picked',value="picked") 已取车
           #submit_price.tab-pane
             legend 用户提交价格管理
@@ -100,6 +108,8 @@ block append content
                    th 车型
                    th 用户提交价格(万)
                    th 4s店提交价格(万)
+                   th 订购人姓名
+                   th 订购人电话
                    th 状态
                    th 操作
               tbody
@@ -107,8 +117,10 @@ block append content
                   tr
                     td= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
                     td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
-                    td #{item.userPrice}
-                    td #{item.shopPrice}
+                    td(style="text-align: center;") #{item.userPrice}
+                    td(style="text-align: center;") #{item.shopPrice}
+                    td= item.userName
+                    td= item.userTel
                     td #{item.stateText}
                     td
                         if(item.state == "user_commit")
@@ -152,14 +164,18 @@ block append content
                           th 领取日期
                           th 车型
                           th 优惠券金额
+                          th 订购人姓名
+                          th 订购人电话
                           th 优惠卷号码
                   tbody
                       each item in userOffTicket
                           tr(style="height:60px")
-                              td(style="padding:20px 8px")= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
-                              td(style="padding:20px 8px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
-                              td(style="padding:20px 8px") 500元
-                              td(style="padding:20px 8px")= item.ticketSn
+                              td(style="padding:20px 3px")= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
+                              td(style="padding:20px 3px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
+                              td(style="padding:20px 3px") 500元
+                              td= item.userName
+                              td= item.userTel
+                              td(style="padding:20px 3px")= item.ticketSn
           #shop_info.tab-pane
             legend 信息维护
             form.form-horizontal#saveshopForm(method="post",action="/shop?type=saveshop",style="width:400px;")
@@ -253,6 +269,7 @@ block append content
             $(e).removeAttr("disabled");
         }).fadeIn());
 
+        //绑定点确定啊按钮时的事件
         $(e).after($("<input/>").attr("type","button").attr("display","none").addClass("btn").addClass("btn-mini").val("确定").click(function(){
             if(type == "orderState"){
                 $.post("/changeUserOrderProcessState",{id:id,state:currentValue}).done(function(data){
@@ -264,6 +281,7 @@ block append content
                             $(e).next().next().remove();
                         });
                         $(e).removeAttr("disabled");
+                        $(e).find("option:selected").prevAll().remove();
                     }
                 });
             }
