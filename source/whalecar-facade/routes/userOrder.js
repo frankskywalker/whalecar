@@ -11,9 +11,25 @@ exports.userorder = function(req,res,next){
     var type =  req.query.type;
     var stockId = req.query.id;
     //type==init:订单初始确认页面
-    if(type == "init"){
+    if(type == "init" || type == "init-userprice"){
         service.client.post("/getShopStockViewById",{id:stockId},function(sError,sReq,sRes,sData){
-           res.render("user_order",{shopStockView:sData});
+           if(type == "init-userprice"){
+               var userSubmitPriceId = req.query.userSubmitPriceId;
+               var userId = req.session.currentUser.id;
+               //通过当前用户和之前的userpriceId，查询出议价的最终价格，如果结果为空，说明议价已经提价了订单或价格过期
+               service.client.get("/getUserSubmitPriceByUserAndId?id=" + userSubmitPriceId + "&userId=" + userId,function(sError2,sReq2,sRes2,sData2){
+                   if(!!sData2){
+                       //finalPrice为空说明状态不对
+                       if(!!sData2.finalPrice && sData2.finalPrice != ''){
+                           sData.carPrice = sData2.finalPrice;
+                       }
+                   }
+                   res.render("user_order",{shopStockView:sData,userPrice:true,userSubmitPriceId:userSubmitPriceId});
+               });
+           }
+           else{
+               res.render("user_order",{shopStockView:sData,userPrice:false,userSubmitPriceId:""});
+           }
         });
     }
     //type==create:订单保存，并进入订单review页面
@@ -34,7 +50,7 @@ exports.userorder = function(req,res,next){
                     shop : shopStockView.shop,
                     user : req.session.currentUser.id
                 };
-                service.client.post("/createUserOrder",userOrder,function(sError,sReq,sRes,sData){
+                service.client.post("/createUserOrder?userPrice=" + req.query.userPrice + "&userSubmitPriceId=" + req.query.userSubmitPriceId,userOrder,function(sError,sReq,sRes,sData){
                     callback(sError,{shopStockView:shopStockView,userOrder:sData.resultMap.userOrder});
                 });
             }

@@ -1,13 +1,18 @@
 package com.whalecar.service;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.whalecar.domain.ShopStock;
+import com.whalecar.domain.UserSubmitPrice;
 import com.whalecar.persistence.GenSeralnoMapper;
 import com.whalecar.persistence.ShopMapper;
+import com.whalecar.persistence.UserSubmitPriceMapper;
+import com.whalecar.persistence.enums.UserSubmitPriceStateEnum;
 import com.whalecar.service.tools.BooleanResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +37,8 @@ public class UserOrderService {
     private GenSeralnoMapper genSeralnoMapper;
     @Autowired
     private ShopMapper shopMapper;
+    @Autowired
+    private UserSubmitPriceMapper userSubmitPriceMapper;
 
     private Logger logger = LoggerFactory.getLogger(UserOrderService.class);
 
@@ -43,7 +50,7 @@ public class UserOrderService {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/createUserOrder")
     public @ResponseBody
-    BooleanResult createUserOrder(@RequestBody UserOrder userOrder){
+    BooleanResult createUserOrder(@RequestBody UserOrder userOrder,String userPrice,String userSubmitPriceId){
 
         String logText ="{shopStockID = " + userOrder.getShopStock() + ",userId=" + userOrder.getUser() + "}";
         logger.info("[create order] start create order,{}", logText );
@@ -59,6 +66,18 @@ public class UserOrderService {
             return new BooleanResult(false,"OnOrderNum is not enough");
         }
         logger.info("[create order] shop stock on order num check ok,carOnOrderNum = {},{}",carOnOrderNum, logText );
+
+        //2.5 如果是用户议价订单，先查询价格，然后修改议价状态
+        if(StringUtils.equals(userPrice,"true") && StringUtils.isNotBlank(userSubmitPriceId)){
+            UserSubmitPrice userSubmitPrice = userSubmitPriceMapper.queryUserSubmitPriceById(Integer.valueOf(userSubmitPriceId));
+            BigDecimal finalPrice = userSubmitPrice.getFinalPrice();
+            userOrder.setOrderPrice(finalPrice);
+            Map<String,Object> params = new HashMap<String,Object>();
+            params.put("id",userSubmitPriceId);
+            params.put("state", UserSubmitPriceStateEnum.create_car_order);
+            userSubmitPriceMapper.updateState(params);
+            logger.info("[create order] user price update ok,{}", logText );
+        }
 
         //3.修改库存(库存减1)
         shopMapper.updateShopStockOnOrderNum(userOrder.getShopStock(),carOnOrderNum - 1);

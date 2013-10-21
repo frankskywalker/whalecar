@@ -2,6 +2,7 @@ package com.whalecar.domain;
 
 import com.whalecar.persistence.enums.UserSubmitPriceProcessStateEnum;
 import com.whalecar.persistence.enums.UserSubmitPriceStateEnum;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -24,6 +25,7 @@ public class UserSubmitPrice implements Serializable {
     private int user;
     private BigDecimal userPrice;
     private BigDecimal shopPrice;
+    private BigDecimal finalPrice;
 
     public int getUser() {
         return user;
@@ -115,5 +117,15 @@ public class UserSubmitPrice implements Serializable {
 
     public void setShopPrice(BigDecimal shopPrice) {
         this.shopPrice = shopPrice;
+    }
+
+    public BigDecimal getFinalPrice(){
+        if(StringUtils.equals("shop_agree",this.state)){
+            return this.userPrice;
+        }
+        if(StringUtils.equals("price_success",this.state)){
+            return this.shopPrice;
+        }
+        return null;
     }
 }

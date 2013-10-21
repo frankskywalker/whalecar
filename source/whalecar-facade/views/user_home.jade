@@ -72,8 +72,38 @@ block append content
                                           td #{item.stateText}
                                           td
                                             if(item.state == "shop_commit")
-                                                a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.userPrice}')") 处理
-
+                                                a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.originalPrice}','#{item.userPrice}','#{item.userPrice}','#{item.shopStock}')") 处理
+                                            if(item.state == "shop_agree" || item.state == "price_success")
+                                                a(href="#",onclick="createCarOrder('#{item.shopStock}','#{item.id}')") 创建订单
+                            div(id="stateChangeModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
+                                .modal-header
+                                    button(type="button",class="close",data-dismiss="modal",aria-hidden="true") x
+                                    h3 处理用户提交价格
+                                .modal-body
+                                    div.well.well-small
+                                        div(style="float:left;width:33%;text-align:center;")
+                                            p#stateChangeModal_carModel
+                                        div(style="float:left;width:33%;text-align:center;")
+                                            p#stateChangeModal_originalPrice
+                                        div(style="text-align:center;")
+                                            p#stateChangeModal_shopPrice
+                                    div.well.well-small
+                                        table(style="width:100%;")
+                                            tr
+                                                td(style="width:49%;")
+                                                    div(style="text-align:center;")
+                                                        p 同意4s店提出的新价格，
+                                                        | 进行确认将生成购车订单
+                                                        br
+                                                        a.btn.btn-small(href="#",onclick="agreePrice()") 同意价格
+                                                td(style="width:2%")
+                                                    img(src="img/servciesVerticalLine.png")
+                                                td(style="width:49%;")
+                                                    div(style="text-align:center;")
+                                                        p 不同意4s店提出的新价格，
+                                                        | 放弃议价，此次议价将结束
+                                                        br
+                                                        a.btn.btn-small(href="#",onclick="cancelPrice()") 放弃议价
                         #off_price.tab-pane
                             table.table
                                 thead
@@ -154,4 +184,36 @@ block append content
                     }
                 }
             );
+        }
+
+        var currentUserSubmitPriceId;
+        var shopStockId;
+        function processUserSubmitPriceState(id,model,originalPrice,userPrice,shopPrice,shopStock){
+             $("#stateChangeModal #stateChangeModal_carModel").html("车型：" + model);
+             $("#stateChangeModal #stateChangeModal_originalPrice").html("原价：" + originalPrice + "万")
+             $("#stateChangeModal #stateChangeModal_userPrice").html("用户价格：" + userPrice + "万");
+             $("#stateChangeModal #stateChangeModal_shopPrice").html("4s店价格：" + shopPrice + "万");
+             currentUserSubmitPriceId = id;
+             shopStockId = shopStock;
+             $("#stateChangeModal").modal('show');
+         }
+
+        function agreePrice(){
+            $.post("/changeUserSubmitPriceState",{id:currentUserSubmitPriceId,state:"price_success"}).done(function(result){
+                if(result.changeResult == true){
+                    createCarOrder(shopStockId,currentUserSubmitPriceId);
+                }
+            });
+        }
+
+        function cancelPrice(){
+            $.post("/changeUserSubmitPriceState",{id:currentUserSubmitPriceId,state:"price_fail",shopPrice:shopPrice}).done(function(result){
+                if(result.changeResult == true){
+                    window.location.reload();
+                }
+            });
+        }
+
+        function createCarOrder(id,userSubmitPriceId){
+            window.location.href  = "./userorder?type=init-userprice&id=" + id + "&userSubmitPriceId=" + userSubmitPriceId;
         }
