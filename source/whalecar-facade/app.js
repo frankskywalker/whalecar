@@ -142,6 +142,9 @@ app.all('/adver',function(req,res){
 app.all('/way1',function(req,res){
     res.render("way1");
 }) ;
+app.all('/about_us',function(req,res){
+    res.render("about_us");
+}) ;
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
