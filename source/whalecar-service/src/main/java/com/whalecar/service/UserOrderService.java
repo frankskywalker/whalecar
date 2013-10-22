@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.whalecar.domain.ShopStock;
+import com.whalecar.domain.UserOrderView;
 import com.whalecar.domain.UserSubmitPrice;
 import com.whalecar.persistence.GenSeralnoMapper;
 import com.whalecar.persistence.ShopMapper;
@@ -61,29 +62,51 @@ public class UserOrderService {
         ShopStock shopStock = shopMapper.queryShopStockByIdWithLock(userOrder.getShopStock());
         logger.info("[create order] lock shop stock ok,{}", logText );
 
-        //2.判断库存是否满足
+        //2.判断库存是否满足(如果无库存，进入无库存订单流程)
         int carOnOrderNum = shopStock.getCarOnOrderNum();
-        if(carOnOrderNum < 1){
-            logger.info("[create order] OnOrderNum is no enough,{shopStockID = {},userId = {},carOnOrderNum = {}},{}", userOrder.getShopStock(), userOrder.getId(),carOnOrderNum,logText);
-            return new BooleanResult(false,"OnOrderNum is not enough");
+        int carOnHandNum = shopStock.getCarOnHandNum();
+        //无库存，设置orderType = stock_empty_order
+        if(carOnOrderNum + carOnHandNum == 0){
+            userOrder.setOrderType(UserOrderTypeEnum.stock_empty_order.getCode());
+            logger.info("[create order] OnOrderNum is no enough,go to waiting ,{shopStockID = {},userId = {}},{}", userOrder.getShopStock(), userOrder.getId(),logText);
         }
-        logger.info("[create order] shop stock on order num check ok,carOnOrderNum = {},{}",carOnOrderNum, logText );
+        //有库存，更新库存数量
+        else{
+            logger.info("[create order] shop stock on order num check ok,carOnOrderNum = {},{}",carOnOrderNum, logText );
+            //3.修改库存(库存减1)
+            if(carOnOrderNum > 0){
+                shopMapper.updateShopStockOnOrderNum(userOrder.getShopStock(),carOnOrderNum - 1);
+            }
+            else if (carOnHandNum > 0 ){
+                shopMapper.updateShopStockOnHandNum(userOrder.getShopStock(),carOnHandNum - 1);
+            }
+            else{
+                logger.error("[create order] update order num has something wrong,{}", logText );
+                return new BooleanResult(false,"update order num has something wrong.");
+            }
+
+            logger.info("[create order] shop stock on order num update ok,{}", logText );
+        }
+
+
 
         //2.5 如果是用户议价订单，先查询价格，然后修改议价状态
         if(StringUtils.equals(userPrice,"true") && StringUtils.isNotBlank(userSubmitPriceId)){
+
+            //设置价格
             UserSubmitPrice userSubmitPrice = userSubmitPriceMapper.queryUserSubmitPriceById(Integer.valueOf(userSubmitPriceId));
             BigDecimal finalPrice = userSubmitPrice.getFinalPrice();
             userOrder.setOrderPrice(finalPrice);
+
+            //组装参数
             Map<String,Object> params = new HashMap<String,Object>();
             params.put("id",userSubmitPriceId);
             params.put("state", UserSubmitPriceStateEnum.create_car_order);
+
+            //更新userSubmitPrice
             userSubmitPriceMapper.updateState(params);
             logger.info("[create order] user price update ok,{}", logText );
         }
-
-        //3.修改库存(库存减1)
-        shopMapper.updateShopStockOnOrderNum(userOrder.getShopStock(),carOnOrderNum - 1);
-        logger.info("[create order] shop stock on order num update ok,{}", logText );
 
         //4.申请新的order sn
         String orderSn = genSeralnoMapper.genUserOrderSN();
@@ -97,6 +120,9 @@ public class UserOrderService {
         }
         else if(StringUtils.equals(UserOrderTypeEnum.not_pay_order.getCode(),userOrder.getOrderType())){
             userOrder.setOrderState(UserOrderStateEnum.order_succ.getCode());
+        }
+        else if(StringUtils.equals(UserOrderTypeEnum.stock_empty_order.getCode(),userOrder.getOrderType())){
+            userOrder.setOrderState(UserOrderStateEnum.waiting_delivery.getCode());
         }
         logger.info("[create order] init order state finish.orderType= {},init state={}.{}"
                    ,userOrder.getOrderType(),userOrder.getOrderState(), logText );
@@ -122,7 +148,7 @@ public class UserOrderService {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserOrderByUser")
-    public @ResponseBody List<UserOrder> getUserOrderByUser(Integer userId){
+    public @ResponseBody List<UserOrderView> getUserOrderByUser(Integer userId){
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("userId",userId);
         return userOrderMapper.queryUserOrderByCondition(condition);
@@ -135,10 +161,36 @@ public class UserOrderService {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserOrderByShop")
-    public @ResponseBody List<UserOrder> getUserOrderByShop(Integer shopId){
+    public @ResponseBody List<UserOrderView> getUserOrderByShop(Integer shopId){
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("shopId",shopId);
         return userOrderMapper.queryUserOrderByCondition(condition);
+    }
+
+    /**
+     * 根据用户查询缺货订单
+     *
+     * @param userId
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/getStockEmptyUserOrderByUser")
+    public @ResponseBody List<UserOrderView> getStockEmptyUserOrderByUser(Integer userId){
+        Map<String,Object> condition = new HashMap<String,Object>();
+        condition.put("userId",userId);
+        return userOrderMapper.queryStockEmptyUserOrderByCondition(condition);
+    }
+
+    /**
+     * 根据shop查询缺货订单
+     *
+     * @param shopId
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/getStockEmptyUserOrderByShop")
+    public @ResponseBody List<UserOrderView> getStockEmptyUserOrderByShop(Integer shopId){
+        Map<String,Object> condition = new HashMap<String,Object>();
+        condition.put("shopId",shopId);
+        return userOrderMapper.queryStockEmptyUserOrderByCondition(condition);
     }
 
     /**

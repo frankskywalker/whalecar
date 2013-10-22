@@ -59,9 +59,11 @@ public class UserOffTicketService {
     List<UserOffTicketView> getUserOffTicketByUser(Integer userId){
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("userId",userId);
-        List<UserOffTicket> list =  userOffticketMapper.queryUserOffTicketByCondition(condition);
+        List<UserOffTicketView> list =  userOffticketMapper.queryUserOffTicketByCondition(condition);
 
-        return buildUserOffTicketView(list);
+        buildUserOffTicketView(list);
+
+        return list;
     }
 
     /**
@@ -74,9 +76,11 @@ public class UserOffTicketService {
     public @ResponseBody List<UserOffTicketView> getUserOffTicketByShop(Integer shopId){
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("shopId",shopId);
-        List<UserOffTicket> list =  userOffticketMapper.queryUserOffTicketByCondition(condition);
+        List<UserOffTicketView> list =  userOffticketMapper.queryUserOffTicketByCondition(condition);
 
-        return buildUserOffTicketView(list);
+        buildUserOffTicketView(list);
+
+        return list;
     }
 
     /**
@@ -84,21 +88,15 @@ public class UserOffTicketService {
      * @param list
      * @return
      */
-    private List<UserOffTicketView> buildUserOffTicketView(List<UserOffTicket> list){
+    private void buildUserOffTicketView(List<UserOffTicketView> list){
         //查询对应的shopStockView组装UserSubmitPriceView
-        List<UserOffTicketView> resultList = new ArrayList<UserOffTicketView>();
-        for(UserOffTicket userOffTicket : list){
+        for(UserOffTicketView userOffTicket : list){
             //查询shopStockView
             int shopStockId = userOffTicket.getShopStock();
             ShopStockView shopStockView = shopMapper.queryShopStockViewById(shopStockId);
 
             //组装User Off Ticket View
-            UserOffTicketView userOffTicketView = new UserOffTicketView();
-            BeanUtils.copyProperties(userOffTicket, userOffTicketView);
-            userOffTicketView.setShopStockView(shopStockView);
-
-            resultList.add(userOffTicketView);
+            userOffTicket.setShopStockView(shopStockView);
         }
-        return resultList;
     }
 }

@@ -1,6 +1,7 @@
 package com.whalecar.persistence;
 
 import com.whalecar.domain.UserOffTicket;
+import com.whalecar.domain.UserOffTicketView;
 import com.whalecar.domain.UserOrder;
 
 import java.util.List;
@@ -22,5 +23,5 @@ public interface UserOffTicketMapper {
      * @param condition
      * @return
      */
-    public List<UserOffTicket> queryUserOffTicketByCondition(Map<String,Object> condition);
+    public List<UserOffTicketView> queryUserOffTicketByCondition(Map<String,Object> condition);
 }

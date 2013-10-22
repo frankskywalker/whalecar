@@ -2,6 +2,7 @@ package com.whalecar.persistence;
 
 import com.whalecar.domain.UserOffTicket;
 import com.whalecar.domain.UserSubmitPrice;
+import com.whalecar.domain.UserSubmitPriceView;
 
 import java.util.List;
 import java.util.Map;
@@ -21,7 +22,7 @@ public interface UserSubmitPriceMapper {
      * @param condition
      * @return
      */
-    public List<UserSubmitPrice> queryUserSubmitPriceByCondition(Map<String,Object> condition);
+    public List<UserSubmitPriceView> queryUserSubmitPriceByCondition(Map<String,Object> condition);
 
     /**
      * 更新处理状态

@@ -16,17 +16,33 @@
       WHERE orderSn = #{orderSn}
   </select>
 
-  <select id="queryUserOrderByCondition" resultType="UserOrder">
-     SELECT *
+  <select id="queryUserOrderByCondition" resultType="UserOrderView">
+        SELECT User_Order.* , User.userName , User.userTel
         FROM  User_Order
-        <where>
+        LEFT JOIN User on User_Order.user = User.id
+        WHERE
+            orderType != 'stock_empty_order'
             <if test="userId != null and userId != ''">
-                user = #{userId}
+                and User_Order.user = #{userId}
             </if>
             <if test="shopId != null and shopId != ''">
-                and shop = #{shopId}
+                and User_Order.shop = #{shopId}
             </if>
-        </where>
+        ORDER By orderCreateDate desc
+  </select>
+
+  <select id="queryStockEmptyUserOrderByCondition" resultType="UserOrderView">
+        SELECT User_Order.* , User.userName , User.userTel
+        FROM  User_Order
+        LEFT JOIN User on User_Order.user = User.id
+        WHERE
+          orderType = 'stock_empty_order'
+        <if test="userId != null and userId != ''">
+            and User_Order.user = #{userId}
+        </if>
+        <if test="shopId != null and shopId != ''">
+            and User_Order.shop = #{shopId}
+        </if>
         ORDER By orderCreateDate desc
   </select>
 

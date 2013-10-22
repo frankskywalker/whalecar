@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.whalecar.domain.UserOrder;
+import com.whalecar.domain.UserOrderView;
 
 /**
  * Created by ruihuang on 13-8-23.
@@ -31,7 +32,15 @@ public interface UserOrderMapper {
      * @param condition
      * @return
      */
-    public List<UserOrder> queryUserOrderByCondition(Map<String,Object> condition);
+    public List<UserOrderView> queryUserOrderByCondition(Map<String,Object> condition);
+
+    /**
+     * 通过condition查询StockEmptyUserOrder
+     *
+     * @param condition
+     * @return
+     */
+    public List<UserOrderView> queryStockEmptyUserOrderByCondition(Map<String,Object> condition);
 
     /**
      * 更新处理状态

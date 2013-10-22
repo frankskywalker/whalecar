@@ -119,4 +119,12 @@ public interface ShopMapper {
      * @return
      */
     public int updateShopStockOnOrderNum(int id,int onOrderNum);
+
+    /**
+     * 更新在途库存
+     *
+     * @param id
+     * @return
+     */
+    public int updateShopStockOnHandNum(int id,int onOrderNum);
 }

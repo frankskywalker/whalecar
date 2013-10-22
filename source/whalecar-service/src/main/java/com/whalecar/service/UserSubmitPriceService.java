@@ -60,9 +60,10 @@ public class UserSubmitPriceService {
         condition.put("userId",userId);
 
         //查询User Submit Price 列表
-        List<UserSubmitPrice> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+        List<UserSubmitPriceView> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+        buildUserSubmitPriceView(list);
 
-        return buildUserSubmitPriceView(list);
+        return list;
     }
 
     /**
@@ -76,9 +77,9 @@ public class UserSubmitPriceService {
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("shopId",shopId);
         //查询User Submit Price 列表
-        List<UserSubmitPrice> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
-
-        return buildUserSubmitPriceView(list);
+        List<UserSubmitPriceView> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+        buildUserSubmitPriceView(list);
+        return list;
     }
 
     /**
@@ -89,12 +90,12 @@ public class UserSubmitPriceService {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserSubmitPriceByUserAndId")
-    public @ResponseBody UserSubmitPrice getUserSubmitPriceByShop(Integer userId,Integer id){
+    public @ResponseBody UserSubmitPriceView getUserSubmitPriceByShop(Integer userId,Integer id){
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("userId",userId);
         condition.put("id",id);
         //查询User Submit Price 列表
-        List<UserSubmitPrice> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
+        List<UserSubmitPriceView> list = userSubmitPriceMapper.queryUserSubmitPriceByCondition(condition);
         if(list != null && list.size() != 0){
             return list.get(0);
         }
@@ -140,22 +141,18 @@ public class UserSubmitPriceService {
      * @param list
      * @return
      */
-    private List<UserSubmitPriceView> buildUserSubmitPriceView(List<UserSubmitPrice> list){
+    private void buildUserSubmitPriceView(List<UserSubmitPriceView> list){
         //查询对应的shopStockView组装UserSubmitPriceView
         List<UserSubmitPriceView> resultList = new ArrayList<UserSubmitPriceView>();
-        for(UserSubmitPrice userSubmitPrice : list){
+        for(UserSubmitPriceView userSubmitPrice : list){
             //查询shopStockView
             int shopStockId = userSubmitPrice.getShopStock();
             ShopStockView shopStockView = shopMapper.queryShopStockViewById(shopStockId);
 
             //组装User Submit Price View
-            UserSubmitPriceView userSubmitPriceView = new UserSubmitPriceView();
-            BeanUtils.copyProperties(userSubmitPrice, userSubmitPriceView);
-            userSubmitPriceView.setShopStockView(shopStockView);
+            userSubmitPrice.setShopStockView(shopStockView);
 
-            resultList.add(userSubmitPriceView);
         }
-        return resultList;
     }
 
 }

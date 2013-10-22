@@ -28,21 +28,22 @@
       );
   </insert>
 
-  <select id="queryUserSubmitPriceByCondition" resultType="UserSubmitPrice">
-    SELECT *
+  <select id="queryUserSubmitPriceByCondition" resultType="UserSubmitPriceView">
+    SELECT User_Submit_Price.* , User.userName , User.userTel
     FROM  User_Submit_Price
+    LEFT JOIN User on User_Submit_Price.user = User.id
     <where>
         <if test="userId != null and userId != ''">
-            user = #{userId}
+            User_Submit_Price.user = #{userId}
         </if>
         <if test="shopId != null and shopId != ''">
-            and shop = #{shopId}
+            and User_Submit_Price.shop = #{shopId}
         </if>
         <if test="id != null and id != ''">
-            and id = #{id}
+            and User_Submit_Price.id = #{id}
         </if>
     </where>
-    ORDER By createDate desc
+    ORDER By User_Submit_Price.createDate desc
   </select>
 
   <select id="queryUserSubmitPriceById" resultType="UserSubmitPrice">
