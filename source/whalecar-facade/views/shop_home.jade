@@ -13,6 +13,8 @@ block append content
             li.text-center
               a.text-left(href='#car_order', data-toggle='pill') 预约订单管理
             li.text-center
+              a.text-left(href='#stock_empty_car_order', data-toggle='pill') 无库存预约管理
+            li.text-center
               a.text-left(href='#submit_price',data-toggle='pill') 用户提交价格管理
             li.text-center
               a.text-left(href='#off_ticket',data-toggle='pill') 用户领取优惠券管理
@@ -98,7 +100,29 @@ block append content
                             if(item.orderProcessState == 'wait_contact' || item.orderProcessState == 'has_contact' || item.orderProcessState == 'order_submit')
                                 option(selected=item.orderProcessState=='order_submit',value="order_submit") 已订车
                             if(item.orderProcessState == 'wait_contact' || item.orderProcessState == 'has_contact' || item.orderProcessState == 'order_submit' || item.orderProcessState == 'picked')
-                            option(selected=item.orderProcessState=='picked',value="picked") 已取车
+                                option(selected=item.orderProcessState=='picked',value="picked") 已取车
+          #stock_empty_car_order.tab-pane
+            legend 预约订单管理
+            table.table.stockTable
+                thead
+                    tr
+                        th 订单名称
+                        th 订单类型
+                        th 订单日期
+                        th 订购人姓名
+                        th 订购人电话
+                        th 汽车金额
+                        th 备注
+                tbody
+                    each item in stockEmptyUserOrder
+                        tr
+                            td= item.orderTitle
+                            td= item.orderStateCName
+                            td= moment(item.orderCreateDate).format("YYYY-MM-DD HH:mm:ss")
+                            td= item.userName
+                            td= item.userTel
+                            td(style="text-align: center;") #{item.orderPrice}万
+                            td
           #submit_price.tab-pane
             legend 用户提交价格管理
             table.table.stockTable
@@ -156,7 +180,7 @@ block append content
                                             input#shopPrice.input.input-small.span2(type="text",id="shopPrice",name="shopPrice",placeholder="商议价格")
                                             br
                                             a.btn.btn-small(href="#",onclick="changeStateToShopCommit()") 提价商议价格
-          #off_tiket.tab-pane
+          #off_ticket.tab-pane
               legend 用户领取优惠券管理
               table.table.stockTable
                   thead
@@ -166,7 +190,10 @@ block append content
                           th 优惠券金额
                           th 订购人姓名
                           th 订购人电话
-                          th 优惠卷号码
+                          th 优惠卷编码
+                          th 状态
+                          th 操作
+
                   tbody
                       each item in userOffTicket
                           tr(style="height:60px")
@@ -176,6 +203,31 @@ block append content
                               td= item.userName
                               td= item.userTel
                               td(style="padding:20px 3px")= item.ticketSn
+                              td(style="padding:20px 3px")= item.stateText
+                              td(style="padding:20px 3px")
+                                  if(item.state == "waiting_confirm")
+                                      a(href="#",onclick="openCheckBillSnModal('#{item.id}','#{item.userName}','#{item.userTel}','#{item.billSn}');return false;") 确认凭据
+              div(id="checkBillSnModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
+                  .modal-header
+                      button(type="button",class="close",data-dismiss="modal",aria-hidden="true") x
+                      h3 验证用户提交凭据信息
+                  .modal-body
+                      div.well.well-small
+                          div(style="float:left;width:50%;text-align:center;")
+                              p#checkBillSnModal_userName
+                          div(style="text-align:center;")
+                              p#checkBillSnModal_userTel
+
+                      div.well.well-small
+                          div(style="text-align:center;")
+                              p#checkBillSnModal_billSn(style="font-size:18px;color:red")
+                              br
+                              p 请根据以下几项仔细检查用户提交信息是否正确:
+                              p 1.请根用户信息检查凭据号是否存在并正确
+                              p 2.是否已经在此次购车中领取过优惠券
+                              br
+                              a.btn(href="#",onclick="confirmBillSn();") 确认
+
           #shop_info.tab-pane
             legend 信息维护
             form.form-horizontal#saveshopForm(method="post",action="/shop?type=saveshop",style="width:400px;")
@@ -352,3 +404,22 @@ block append content
         });
     }
 
+    var currentUserOffTicketId;
+    var billSn;
+    function openCheckBillSnModal(id,userName,userTel,billSn){
+        $("#checkBillSnModal #checkBillSnModal_userName").html("姓名：" + userName);
+        $("#checkBillSnModal #checkBillSnModal_userTel").html("电话：" + userTel)
+        $("#checkBillSnModal #checkBillSnModal_billSn").html("凭据号：" + billSn);
+        currentUserOffTicketId = id;
+        billSn = billSn;
+        $("#checkBillSnModal").modal('show');
+    }
+
+    function confirmBillSn(){
+        var id = currentUserOffTicketId;
+        $.post("./changeUserOffTicketState",{id:id,state:"finish"}).done(function(result){
+        if(result.changeResult == true){
+            window.location.reload();
+        }
+    });
+    }

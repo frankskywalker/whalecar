@@ -56,6 +56,9 @@ public class UserSubmitPriceService {
     @RequestMapping(method = RequestMethod.GET, value = "/getUserSubmitPriceByUser")
     public @ResponseBody
     List<UserSubmitPriceView> getUserSubmitPriceByUser(Integer userId){
+        if(userId == null){
+            return null;
+        }
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("userId",userId);
 
@@ -74,6 +77,9 @@ public class UserSubmitPriceService {
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserSubmitPriceByShop")
     public @ResponseBody List<UserSubmitPriceView> getUserSubmitPriceByShop(Integer shopId){
+        if(shopId == null){
+            return null;
+        }
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("shopId",shopId);
         //查询User Submit Price 列表

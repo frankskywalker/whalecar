@@ -10,16 +10,17 @@
           `ticketSn`,
           `shopStock`,
           `shop`,
-          `user`
+          `user`,
+          `state`
       )
       VALUES
       (
           #{ticketSn},
           #{shopStock},
           #{shop},
-          #{user}
+          #{user},
+          #{state}
       );
-
   </insert>
 
   <select id="queryUserOffTicketByCondition" resultType="UserOffTicketView">
@@ -36,4 +37,20 @@
       </where>
       ORDER By User_Off_Ticket.createDate desc
   </select>
+
+    <select id="queryUserOffTicketById" resultType="UserOffTicket">
+        SELECT *
+        FROM  User_Off_Ticket
+        where id = #{id}
+    </select>
+
+  <update id="updateUserOffTicketState">
+    UPDATE User_Off_Ticket
+      set state = #{state}
+      <if test="billSn != null and billSn != ''">
+        ,billSn = #{billSn}
+      </if>
+      where id = #{id}
+  </update>
+
 </mapper>

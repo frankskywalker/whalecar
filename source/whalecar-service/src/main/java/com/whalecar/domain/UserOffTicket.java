@@ -1,5 +1,8 @@
 package com.whalecar.domain;
 
+import com.whalecar.persistence.enums.UserOffTicketStateEnum;
+import com.whalecar.persistence.enums.UserOrderStateEnum;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -15,6 +18,9 @@ public class UserOffTicket implements Serializable {
     private int shopStock;
     private int shop;
     private int user;
+    private String state;
+    private String stateText;
+    private String billSn;
 
     public Integer getId() {
         return id;
@@ -62,5 +68,25 @@ public class UserOffTicket implements Serializable {
 
     public void setUser(int user) {
         this.user = user;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getStateText() {
+        return UserOffTicketStateEnum.valueOf(this.state).getStateCName();
+    }
+
+    public String getBillSn() {
+        return billSn;
+    }
+
+    public void setBillSn(String billSn) {
+        this.billSn = billSn;
     }
 }

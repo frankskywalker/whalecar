@@ -4,7 +4,8 @@ import com.whalecar.domain.*;
 import com.whalecar.persistence.GenSeralnoMapper;
 import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.UserOffTicketMapper;
-import org.springframework.beans.BeanUtils;
+import com.whalecar.persistence.enums.UserOffTicketStateEnum;
+import com.whalecar.service.tools.BooleanResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +42,7 @@ public class UserOffTicketService {
         //1.申请新的Off Ticket
         String ticketSn = genSeralnoMapper.genOffTicketByShop(userOffTicket.getShop());
         userOffTicket.setTicketSn(ticketSn);
+        userOffTicket.setState(UserOffTicketStateEnum.has_send.getCode());
         //2.保存
         userOffticketMapper.createUsertOffTicket(userOffTicket);
         //3.返回
@@ -57,6 +58,9 @@ public class UserOffTicketService {
     @RequestMapping(method = RequestMethod.GET, value = "/getUserOffTicketByUser")
     public @ResponseBody
     List<UserOffTicketView> getUserOffTicketByUser(Integer userId){
+        if(userId == null){
+            return null;
+        }
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("userId",userId);
         List<UserOffTicketView> list =  userOffticketMapper.queryUserOffTicketByCondition(condition);
@@ -74,6 +78,9 @@ public class UserOffTicketService {
      */
     @RequestMapping(method = RequestMethod.GET, value = "/getUserOffTicketByShop")
     public @ResponseBody List<UserOffTicketView> getUserOffTicketByShop(Integer shopId){
+        if(shopId == null){
+            return null;
+        }
         Map<String,Object> condition = new HashMap<String,Object>();
         condition.put("shopId",shopId);
         List<UserOffTicketView> list =  userOffticketMapper.queryUserOffTicketByCondition(condition);
@@ -82,6 +89,34 @@ public class UserOffTicketService {
 
         return list;
     }
+
+    /**
+     * 根据条件更新UserOffTicket state
+     * @param condition {id:,state,billSn}
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/changeUserOffTicketState")
+    public @ResponseBody BooleanResult changeUserOffTicketState(@RequestBody Map<String,Object> condition){
+        int sum = userOffticketMapper.updateUserOffTicketState(condition);
+        if(sum == 1){
+            return new BooleanResult(true);
+        }
+        else{
+            return new BooleanResult(false);
+        }
+    }
+
+    /**
+     * query by id
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value="/getUserOffTicketById")
+    public @ResponseBody UserOffTicket getUserOffTicketById(String id){
+        return userOffticketMapper.queryUserOffTicketById(id);
+    }
+
 
     /**
      * 组装UserSubmitPriceView的list

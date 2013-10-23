@@ -24,4 +24,19 @@ public interface UserOffTicketMapper {
      * @return
      */
     public List<UserOffTicketView> queryUserOffTicketByCondition(Map<String,Object> condition);
+
+
+    /**
+     * 更新UserOffTicketState
+     * @param condition
+     */
+    public int updateUserOffTicketState(Map<String,Object> condition);
+
+    /**
+     * query by id
+     *
+     * @param id
+     * @return
+     */
+    public UserOffTicket queryUserOffTicketById(String id);
 }

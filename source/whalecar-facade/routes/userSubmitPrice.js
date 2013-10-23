@@ -67,7 +67,9 @@ exports.changeUserSubmitPriceState =  function(req,res,next){
     //根据id查出UserSubmitPrice对象
     service.client.get("/getUserSubmitPriceById?id=" + id ,function(err,request, response,userSubmitPrice){
         if(!!err || !userSubmitPrice){
-            console.log(err);
+            if(!!err){
+                console.log(err);
+            }
             res.json({changeResult:false});
             return;
         }
@@ -92,7 +94,7 @@ exports.changeUserSubmitPriceState =  function(req,res,next){
                 return;
             }
             //2.验证价格是否存在
-            if(!shopPrice){
+            if(!shopPrice || shopPrice == ""){
                 console.warn("changeUserSubmitPriceState参数异常:shopPrice缺失(id:%s)",id);
                 res.json({changeResult:false});
                 return;
@@ -149,6 +151,7 @@ exports.changeUserSubmitPriceState =  function(req,res,next){
             params = {id : id,state:state};
         }
         else {
+            console.error("changeUserSubmitPriceState入参异常(id:%s,state:%s,userId:%s,shopId:%s)",id,state,currentUserId,currentShopId);
             res.json({changeResult:false});
             return ;
         }

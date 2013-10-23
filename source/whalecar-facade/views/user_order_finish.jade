@@ -14,10 +14,17 @@ block append content
             .span8.offset2
                 img(src='img/getOrderNumber.png', alt='getOrderNumber',style="margin-top:10px")
                 .text-center(style="margin-top:100px")
-                    h2 订单号：#{orderSn}
-                    .text-center(style='height: 200px; padding-top: 100px;')
-                        h3 订单提交成功
-                        br
-                        h4 凭此订单号及本人身份证，即可提货！
+                    if(orderType != "stock_empty_order")
+                        h2 订单号：#{orderSn}
+                        .text-center(style='height: 200px; padding-top: 100px;')
+                            h3 订单提交成功
+                            br
+                            h4 凭此订单号及本人身份证，即可提货！
+                    else
+                        .text-center(style='height: 200px; padding-top: 0px;')
+                            h3 订单提交成功
+                            br
+                            h4 请等待车辆到货，到货后我们的工作人员会尽快和您联系
                     input.btn.span2.pull-right(type='button', onclick='window.location.href="./"', value='返回主页')
                     input.btn.span2.pull-right(type='button', onclick='window.location.href="./userhome"', value='返回我的订单')
+

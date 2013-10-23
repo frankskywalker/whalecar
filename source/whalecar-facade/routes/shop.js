@@ -37,13 +37,13 @@ exports.homepage = function(req, res, next) {
             });
         },
         userSubmitPrice:function(callback){
-            service.client.get("/getUserSubmitPriceByUser?shopId=" + req.session.currentShop.id,
+            service.client.get("/getUserSubmitPriceByShop?shopId=" + req.session.currentShop.id,
                 function(error,request, response, data) {
                     callback(error,data);
                 });
         },
         userOffTicket:function(callback){
-            service.client.get("/getUserOffTicketByUser?shopId=" + req.session.currentShop.id,
+            service.client.get("/getUserOffTicketByShop?shopId=" + req.session.currentShop.id,
                 function(error,request, response, data) {
                     callback(error,data);
                 });
@@ -53,6 +53,12 @@ exports.homepage = function(req, res, next) {
             function(err, req, res, data) {
                 callback(err, data);
             });
+        },
+        stockEmptyUserOrder: function(callback){
+            service.client.get("/getStockEmptyUserOrderByShop?shopId=" + req.session.currentShop.id,
+                function(err, req, res, data) {
+                    callback(err, data);
+                });
         }
     }, function(err, results) {
         if (err) {
@@ -62,6 +68,7 @@ exports.homepage = function(req, res, next) {
                 shopStockView: results.shopStockView,
                 shop: results.shop,
                 userOrder:results.userOrder,
+                stockEmptyUserOrder: results.stockEmptyUserOrder,
                 userSubmitPrice:results.userSubmitPrice,
                 userOffTicket:results.userOffTicket,
                 moment:moment

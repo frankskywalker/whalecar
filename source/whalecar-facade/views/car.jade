@@ -119,7 +119,7 @@ block append content
                   p
             tbody
               each shopStockView in item.shopStockList
-                  if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > 0
+                  if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > -1
                     if(firstActivedTab == "")
                        - firstActivedTab = item.id
                     tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")

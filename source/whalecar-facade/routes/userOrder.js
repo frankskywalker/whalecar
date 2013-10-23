@@ -59,7 +59,7 @@ exports.userorder = function(req,res,next){
             if(err){
                 next(err);
             }
-            res.render("user_order_finish",{orderSn:result.userOrder.orderSn});
+            res.render("user_order_finish",{orderSn:result.userOrder.orderSn,orderType:result.userOrder.orderType});
         });
     }
 }

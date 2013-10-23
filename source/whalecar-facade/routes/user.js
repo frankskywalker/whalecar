@@ -30,6 +30,12 @@ exports.homepage = function(req,res,next){
                     callback(error,data);
             });
         },
+        stockEmptyUserOrder:function(callback){
+            service.client.get("/getStockEmptyUserOrderByUser?userId="+ userId,
+                function(error,request, response, data) {
+                    callback(error,data);
+                });
+        },
         userSubmitPrice:function(callback){
             service.client.get("/getUserSubmitPriceByUser?userId="+ userId,
                 function(error,request, response, data) {

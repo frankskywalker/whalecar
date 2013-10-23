@@ -55,8 +55,11 @@
   <update id="processUserOrderOutOfDate">
       <![CDATA[
 
-          UPDATE User_Order
-          SET orderState = 'out_of_date'
+          UPDATE
+            User_Order
+
+          SET
+            orderState = 'out_of_date'
 
           where
 
