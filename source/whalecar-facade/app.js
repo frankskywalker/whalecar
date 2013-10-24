@@ -134,6 +134,7 @@ app.all('/usersubmitprice',requireRole("user"),userSubmitPrice.submitprice);
 app.all('/changeUserSubmitPriceState',userSubmitPrice.changeUserSubmitPriceState);
 app.all('/useroffticket',requireRole("user"),userOffTicket.offticket);
 app.all('/useroffticketConfirm',requireRole("user"),userOffTicket.offticketConfirm);
+app.all('/changeUserOffTicketState',userOffTicket.changeUserOffTicketState);
 app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
 app.all('/adver',function(req,res){

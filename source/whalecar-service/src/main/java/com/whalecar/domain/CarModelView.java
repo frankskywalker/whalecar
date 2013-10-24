@@ -64,6 +64,8 @@ public class CarModelView implements java.io.Serializable {
      */
     private String hotmodel;
 
+    private String carModelLv2ShortNames;
+
 	public CarModelView() {
 
 	}
@@ -154,5 +156,13 @@ public class CarModelView implements java.io.Serializable {
 
     public void setHotmodel(String hotmodel) {
         this.hotmodel = hotmodel;
+    }
+
+    public String getCarModelLv2ShortNames() {
+        return carModelLv2ShortNames;
+    }
+
+    public void setCarModelLv2ShortNames(String carModelLv2ShortNames) {
+        this.carModelLv2ShortNames = carModelLv2ShortNames;
     }
 }

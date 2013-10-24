@@ -58,7 +58,8 @@
 		    min(Car_Model_Lv3.factoryPrice) as factoryPriceMin,
 		    max(Car_Model_Lv3.factoryPrice) as factoryPriceMax,
 		    min(Shop_Stock.carPrice) as shopPriceMin,
-		    max(Shop_Stock.carPrice) as shopPriceMax
+		    max(Shop_Stock.carPrice) as shopPriceMax,
+            group_concat(distinct Car_Model_Lv2.shortName order by Car_Model_Lv2.shortName separator ' ') as carModelLv2ShortNames
             <if test="user != null and user != ''">
                 ,CASE (SELECT count(User_Favorite.id)
                     FROM User_Favorite
