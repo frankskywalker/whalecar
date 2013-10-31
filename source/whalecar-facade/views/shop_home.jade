@@ -148,7 +148,7 @@ block append content
                     td #{item.stateText}
                     td
                         if(item.state == "user_commit")
-                            a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.originalPrice}',#{item.userPrice}')") 处理
+                            a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.originalPrice}','#{item.userPrice}')") 处理
             div(id="stateChangeModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
                 .modal-header
                     button(type="button",class="close",data-dismiss="modal",aria-hidden="true") x
@@ -227,7 +227,6 @@ block append content
                               p 2.是否已经在此次购车中领取过优惠券
                               br
                               a.btn(href="#",onclick="confirmBillSn();") 确认
-
           #shop_info.tab-pane
             legend 信息维护
             form.form-horizontal#saveshopForm(method="post",action="/shop?type=saveshop",style="width:400px;")
