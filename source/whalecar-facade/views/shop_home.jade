@@ -46,7 +46,7 @@ block append content
                     td  #{item.carOnOrderNum} / #{item.carOnHandNum}
                     td  #{item.carAddition}
                     td
-                      a(href="#") 修改
+                      a(href="./stockeditor?id=#{item.id}") 修改
                   tr.shopStockTr(id="tr#{item.id}",style='display: none')
                     td(colspan='7')
                       table

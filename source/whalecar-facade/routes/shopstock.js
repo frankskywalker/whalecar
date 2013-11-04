@@ -14,6 +14,7 @@ exports.action = function(req,res,next){
 };
 
 exports.stockeditor = function(req, res, next) {
+    var id = req.query.id;
     async.parallel({
             carModelLv1: function(callback) {
                 service.client.post("/getCarModelLv1ByBrand", {
@@ -22,6 +23,19 @@ exports.stockeditor = function(req, res, next) {
                 }, function(err, req, res, data) {
                     callback(err, data);
                 });
+            },
+            shopStockView: function(callback){
+                if(!id){
+                    callback(null, {});
+                }
+                else{
+                    service.client.post("/getShopStockViewById", {
+                        id: id
+                    }, function(err, req, res, data) {
+                        callback(err, data);
+                    });
+
+                }
             }
         },
         function(err, results) {
@@ -30,9 +44,11 @@ exports.stockeditor = function(req, res, next) {
             } else {
                 res.render("shop_stock_editor", {
                     carModelLv1: results.carModelLv1
+                    ,shopStockView : results.shopStockView
                 });
             }
-        });
+        }
+    );
 };
 
 function saveShopStock(req, res, next) {
