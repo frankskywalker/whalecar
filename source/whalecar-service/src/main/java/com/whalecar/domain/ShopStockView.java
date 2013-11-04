@@ -15,12 +15,15 @@ public class ShopStockView extends ShopStock {
 
 	private String carOutsideColorName;
     private String carOutsideColorRgb;
+
 	private String carInsideColorName;
 
     private String carModelLv2ShortName;
     private String carModelLv2FullName;
+    private Integer carModelLv2Id;
 
     private String carModelLv1Cname;
+    private Integer carModelLv1Id;
     private String carBrandCname;
 
 
@@ -135,5 +138,21 @@ public class ShopStockView extends ShopStock {
 
     public void setCarOutsideColorRgb(String carOutsideColorRgb) {
         this.carOutsideColorRgb = carOutsideColorRgb;
+    }
+
+    public Integer getCarModelLv2Id() {
+        return carModelLv2Id;
+    }
+
+    public void setCarModelLv2Id(Integer carModelLv2Id) {
+        this.carModelLv2Id = carModelLv2Id;
+    }
+
+    public Integer getCarModelLv1Id() {
+        return carModelLv1Id;
+    }
+
+    public void setCarModelLv1Id(Integer carModelLv1Id) {
+        this.carModelLv1Id = carModelLv1Id;
     }
 }

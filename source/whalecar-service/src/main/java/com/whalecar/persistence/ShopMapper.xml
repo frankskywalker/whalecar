@@ -60,11 +60,23 @@
 		    (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
             (select colorRgb from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorRgb,
             (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
-		    Shop.shopName as shopName
+		    Shop.shopName as shopName,
+            Car_Model_Lv2.shortName as carModelLv2ShortName,
+            Car_Model_Lv2.fullName as carModelLv2FullName,
+            Car_Model_Lv2.id as carModelLv2Id,
+            Car_Model_Lv1.cname as carModelLv1Cname,
+            Car_Model_Lv1.id as carModelLv1Id,
+            Car_Brand.cname as carBrandCname
 		FROM
 		    Shop_Stock
 		LEFT JOIN
 		    Car_Model_Lv3 ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+        LEFT JOIN
+            Car_Model_Lv2 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+        LEFT JOIN
+            Car_Model_Lv1 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+        LEFT JOIN
+            Car_Brand ON Car_Brand.id = Car_Model_Lv1.carBrand
 		LEFT JOIN
 		    Shop ON Shop.id = Shop_Stock.shop
 		WHERE
@@ -82,11 +94,23 @@
             Car_Model_Lv3.gearType as gearType,
             (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
             (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
-            Shop.shopName as shopName
+            Shop.shopName as shopName,
+            Car_Model_Lv2.shortName as carModelLv2ShortName,
+            Car_Model_Lv2.fullName as carModelLv2FullName,
+            Car_Model_Lv2.id as carModelLv2Id,
+            Car_Model_Lv1.cname as carModelLv1Cname,
+            Car_Model_Lv1.id as carModelLv1Id,
+            Car_Brand.cname as carBrandCname
         FROM
             Shop_Stock
         LEFT JOIN
             Car_Model_Lv3 ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+        LEFT JOIN
+            Car_Model_Lv2 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+        LEFT JOIN
+            Car_Model_Lv1 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+        LEFT JOIN
+            Car_Brand ON Car_Brand.id = Car_Model_Lv1.carBrand
         LEFT JOIN
             Shop ON Shop.id = Shop_Stock.shop
         WHERE
@@ -190,7 +214,9 @@
             Shop.shopName as shopName,
             Car_Model_Lv2.shortName as carModelLv2ShortName,
             Car_Model_Lv2.fullName as carModelLv2FullName,
+            Car_Model_Lv2.id as carModelLv2Id,
             Car_Model_Lv1.cname as carModelLv1Cname,
+            Car_Model_Lv1.id as carModelLv1Id,
             Car_Brand.cname as carBrandCname
         FROM
             Shop_Stock
