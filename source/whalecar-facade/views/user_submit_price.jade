@@ -54,7 +54,7 @@ block append content
         var carPrice = #{shopStockView.carPrice};
         $("#price").keyup(function(){
             var value = $("#price").val();
-            var re = /^\d{1,8}\.?\d{1,2}$/;
+            var re = /^\d{1,8}(\.\d{1,2})?$/;
             if(re.test(value)){
                 var rate = parseFloat(value) / carPrice * 100;
                 var rateString = rate + " ";
