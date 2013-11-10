@@ -1,22 +1,22 @@
 var service = require("./tools/service-header");
 
-exports.query = function(req, res) {
+exports.query = function(req, res,next) {
     var type = req.query.type;
 
     if (type == 'getCarModelLv1ByBrand') {
         //根据BrandId获取carModel
-        getCarModelLv1ByBrand(req, res);
+        getCarModelLv1ByBrand(req, res,next);
     } else if (type == 'getCarModelLv2ByLv1Id') {
         //根据Lv2Id获取所有的Lv3
-        getCarModelLv2ByLv1Id(req, res);
+        getCarModelLv2ByLv1Id(req, res,next);
     } else if (type == 'getCarModelLv3ByLv2Id') {
         //根据Lv2Id获取所有的Lv3
-        getCarModelLv3ByLv2Id(req, res);
+        getCarModelLv3ByLv2Id(req, res,next);
     } else if (type == 'getDicColorByCarModelLv3') {
-	getDicColorByCarModelLv3(req,res);
+	getDicColorByCarModelLv3(req,res,next);
     } else if (type == 'DicCity') {
         //获取所有的dicCity
-        getDicCity(req, res);
+        getDicCity(req, res,next);
     } else {
 	console.log("dic request type is null");
         res.send("{error:'type is not funod!!'}");
