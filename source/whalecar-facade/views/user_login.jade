@@ -24,7 +24,6 @@ block append content
                         div.controls
                             input.btn.btn-primary.span2(type="button",onclick="userlogin();",value="登陆")
                     input(type="hidden",name="prePage",id="prePage",value="#{prePage}")
-
     script.
         function userlogin(){
             $.post("/user?type=login", $("#userloginForm").serialize())
