@@ -32,9 +32,9 @@ block append content
           .controls
             select#carInsideColor(name="carInsideColor")
         .control-group
-          label.control-label(for='carAddition : String') 附加信息
+          label.control-label(for='carAddition') 附加信息
           .controls
-            // TODO 附加信息
+            textarea(id="carAddition",name="carAddition")= shopStockView.carAddition
         .control-group
           label.control-label(for='carPrice') 价格
           .controls
@@ -76,8 +76,8 @@ block append content
             });
         }
     }
-    $("#carModelLv1").change(carModelLv1Change);
 
+    $("#carModelLv1").change(carModelLv1Change);
 
     function carModelLv2Change(callback){
         var carModelLv2Id = $("#carModelLv2 option:selected").val();

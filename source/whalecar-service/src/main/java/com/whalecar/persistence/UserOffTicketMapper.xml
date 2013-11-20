@@ -11,7 +11,8 @@
           `shopStock`,
           `shop`,
           `user`,
-          `state`
+          `state`,
+          `phoneNum`
       )
       VALUES
       (
@@ -19,7 +20,8 @@
           #{shopStock},
           #{shop},
           #{user},
-          #{state}
+          #{state},
+          #{phoneNum}
       );
   </insert>
 

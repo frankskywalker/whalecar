@@ -10,9 +10,6 @@ import java.math.BigDecimal;
  */
 public class ShopStock implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5492528263101538200L;
 	private Integer id;
 	private int shop;

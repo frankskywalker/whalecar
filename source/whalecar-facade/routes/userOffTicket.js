@@ -14,6 +14,7 @@ exports.offticketConfirm = function(req,res,next){
 exports.offticket = function(req,res,next){
 
     var id = req.body.id;
+    var phoneNum = req.body.phoneNum;
 
     async.waterfall([
         //1.先根据stockId查询shopStockView
@@ -28,7 +29,8 @@ exports.offticket = function(req,res,next){
             var offticket = {
                 shopStock : shopStockView.id,
                 shop : shopStockView.shop,
-                user : req.session.currentUser.id
+                user : req.session.currentUser.id,
+                phoneNum : phoneNum
             };
             service.client.post("/createUserOffTicket",offticket,function(sError,sReq,sRes,sData){
                 callback(sError,{shopStockView:shopStockView,offticket:sData});

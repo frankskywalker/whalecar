@@ -39,12 +39,12 @@ block append content
               tbody
                 each item in shopStockView
                   tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{item.id}')")
-                    td  #{item.carModelLv3FullName}
+                    td  #{item.carBrandCname} #{item.carModelLv1Cname} #{item.carModelLv3FullName}
                     td  #{item.carOutsideColorName}
                     td  #{item.carInsideColorName}
                     td  #{item.carPrice}万
                     td  #{item.carOnOrderNum} / #{item.carOnHandNum}
-                    td  #{item.carAddition}
+                    td  点击展开
                     td
                       a(href="./stockeditor?id=#{item.id}") 修改
                   tr.shopStockTr(id="tr#{item.id}",style='display: none')
@@ -53,19 +53,7 @@ block append content
                         tbody
                           tr.detail
                             td(style="color:#555555;font-weight: bold") 详细配置说明
-                            td 真皮座椅
-                            td 导航
-                            td 天窗
-                            td 定速巡航
-                            td 倒车雷达
-                            td 电动座椅
-                            td 座椅加热
-                            td 倒车影像
-                            td 多功能方向盘
-                      table
-                        tbody
-                          tr.detail
-                            td 鼎强汽车酷夏促销进行中，凡购车即送万元装潢大礼包，可办理贷款，0首付低利率！
+                            td #{item.carAddition}
           #car_order.tab-pane
             legend 预约订单管理
             table.table.stockTable
@@ -78,7 +66,6 @@ block append content
                   th 订购人姓名
                   th 订购人电话
                   th 汽车金额
-                  th 备注
                   th 当前状态
               tbody
                 each item in userOrder
@@ -90,7 +77,6 @@ block append content
                     td= item.userName
                     td= item.userTel
                     td(style="text-align: center;") #{item.orderPrice}万
-                    td
                     td("white-space: nowrap")
                         select(onfocus="this.preValue = this.value",onchange="selectorOnChange(this,'orderState','#{item.id}');",style="width:75px;")
                             if(item.orderProcessState == 'wait_contact')
@@ -112,7 +98,6 @@ block append content
                         th 订购人姓名
                         th 订购人电话
                         th 汽车金额
-                        th 备注
                 tbody
                     each item in stockEmptyUserOrder
                         tr
@@ -122,7 +107,6 @@ block append content
                             td= item.userName
                             td= item.userTel
                             td(style="text-align: center;") #{item.orderPrice}万
-                            td
           #submit_price.tab-pane
             legend 用户提交价格管理
             table.table.stockTable
