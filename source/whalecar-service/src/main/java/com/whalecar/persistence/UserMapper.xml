@@ -4,12 +4,12 @@
 
 <mapper namespace="com.whalecar.persistence.UserMapper">
 
-  <select id="queryByNameAndPsw" resultType="User">
+  <select id="queryByEmailAndPsw" resultType="User">
   	SELECT
   		* 
   	FROM User
   	Where flagUseable = 'yes'
-  	and (loginName = #{loginName} and loginPassword = PASSWORD(#{password}))
+  	and (userEmail = #{userEmail} and loginPassword = PASSWORD(#{password}))
   	LIMIT 1
   </select>
 

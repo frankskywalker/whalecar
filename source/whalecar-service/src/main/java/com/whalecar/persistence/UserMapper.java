@@ -15,12 +15,12 @@ import java.util.Map;
 public interface UserMapper {
 
     /**
-     * 根据用户名密码查询用户信息 如果没有查询到，说明用户名或密码错误
+     * 根据邮箱密码查询用户信息 如果没有查询到，说明邮箱或密码错误
      *
      * @param conditionMap
      * @return
      */
-	public User queryByNameAndPsw(Map<String, Object> conditionMap);
+	public User queryByEmailAndPsw(Map<String, Object> conditionMap);
 
 	/**
 	 * 创建新用户

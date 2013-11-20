@@ -25,13 +25,13 @@ exports.validate = function(req,res,next){
 }
 
 function validateLoginName(req,res,next,callback){
-    service.client.post("/userIsExist", {loginName:req.body.loginName},
+    service.client.post("/userIsExist", {userEmail:req.body.userEmail},
         function(error, request, response,data) {
             if (error) {
                 next(error);
             } else {
                 if(data.processResult == true){
-                    req.assert('loginName', '用户名已经存在').fail();
+                    req.assert('userEmail', '邮箱已经存在').fail();
                 }
             }
             callback();

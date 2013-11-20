@@ -91,15 +91,15 @@ function favorite(req,res,next){
 // 用户登陆
 function login(req, res, next) {
     var condition = {
-        loginName: req.body.loginName,
+        userEmail: req.body.userEmail,
         password: req.body.password
     };
-    service.client.post("/queryByNameAndPsw", condition, function(error,
+    service.client.post("/queryByEmailAndPsw", condition, function(error,
     request, response, data) {
         if (error) {
             next(error);
         } else {
-            if (!data.loginName) {
+            if (!data.userEmail) {
                 res.send({
                     loginSuc: false
                 });
@@ -124,10 +124,10 @@ function logout(req, res, next) {
 // 注册新用户
 function regist(req, res, next) {
     var user = {
-        loginName: req.body.loginName,
+        //loginName: req.body.loginName,
+        userEmail: req.body.userEmail,
         loginPassword: req.body.loginPassword,
         userCity: req.body.userCity,
-        userEmail: req.body.userEmail,
         userName: req.body.userName,
         userTel: req.body.userTel
     };
