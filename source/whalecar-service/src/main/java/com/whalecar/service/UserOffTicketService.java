@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,8 @@ public class UserOffTicketService {
     private UserOffTicketMapper userOffticketMapper;
     @Autowired
     private ShopMapper shopMapper;
+    @Autowired
+    private SmsService smsService;
 
     /**
      * 创建Off Ticket
@@ -43,9 +46,16 @@ public class UserOffTicketService {
         String ticketSn = genSeralnoMapper.genOffTicketByShop(userOffTicket.getShop());
         userOffTicket.setTicketSn(ticketSn);
         userOffTicket.setState(UserOffTicketStateEnum.has_send.getCode());
-        //2.保存
+        //2.发送短信
+        Calendar cal = Calendar.getInstance();
+        //延时4小时发送
+        cal.add(Calendar.HOUR,4);
+        smsService.sendScheduledSMS(new String[]{userOffTicket.getPhoneNum()}
+                ,"优惠码：" + ticketSn + ",请在店内议价后出示优惠码进行优惠。退订回复TD【梯卡网】"
+                ,cal.getTime());
+        //3.保存
         userOffticketMapper.createUsertOffTicket(userOffTicket);
-        //3.返回
+        //4.返回
         return userOffTicket;
     }
 

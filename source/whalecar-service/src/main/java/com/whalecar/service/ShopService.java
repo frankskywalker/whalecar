@@ -6,6 +6,7 @@ import com.whalecar.domain.ShopView;
 import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.tools.PaginationResult;
 import com.whalecar.persistence.tools.PaginationUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,7 +69,7 @@ public class ShopService {
 	public @ResponseBody
 	boolean saveOrUpdateShopStock(@RequestBody Map<String, Object> shopStock) {
 		int result;
-		if (shopStock.get("id") == null) {
+		if(shopStock.get("id") == null || StringUtils.isBlank(String.valueOf(shopStock.get("id")))) {
 			result = shopMapper.saveShopStock(shopStock);
 		} else {
 			result = shopMapper.updateShopStock(shopStock);
