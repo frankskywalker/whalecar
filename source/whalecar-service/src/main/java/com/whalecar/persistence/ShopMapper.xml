@@ -156,9 +156,7 @@
 				`carModelLv3` = #{carModelLv3},
 				`carOutsideColor` = #{carOutsideColor},
 				`carInsideColor` = #{carInsideColor},
-				<if test="carAddition != null and carAddition != ''">
-				   `carAddition` = #{carAddition},
-				</if>
+				`carAddition` = #{carAddition},
 				`carPrice` = #{carPrice},
 				`carOnOrderNum` = #{carOnOrderNum},
 				`carOnHandNum` = #{carOnHandNum}

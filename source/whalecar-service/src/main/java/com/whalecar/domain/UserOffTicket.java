@@ -21,6 +21,7 @@ public class UserOffTicket implements Serializable {
     private String state;
     private String stateText;
     private String billSn;
+    private String phoneNum;
 
     public Integer getId() {
         return id;
@@ -88,5 +89,13 @@ public class UserOffTicket implements Serializable {
 
     public void setBillSn(String billSn) {
         this.billSn = billSn;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 }

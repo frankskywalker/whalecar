@@ -111,7 +111,6 @@ function requireRole(role) {
     }
 }
 
-var hello = "helloworld";
 
 // ===============================
 // router~

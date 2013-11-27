@@ -9,7 +9,7 @@ block append js
   script(type="text/javascript",src="js/slides.min.jquery.js")
 
 block append content
-  #slider_div_1(style="padding:0")
+  #slider_div_1(style="width:940px;height:363px;margin:0 auto")
      .slides_container(style="list-style:none;")
         li.bitter0.glume
           span.Limg.slide_pic
@@ -58,7 +58,7 @@ block append content
             a.page_a_1(link='#',style="text-decoration: none;") 全新捷达 舒适激情
           li(style='border-right: 1px solid #FFFFFF;')
             a.page_a_1(link='#',style="text-decoration: none;") 新款速腾
-  .container(style="padding: 0px 0;")
+  .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;background-color:#fbfbfb")
     div(style='background-color: #eaeaea;')
     .row-fluid(style='padding: 20px 0px 20px 0px;')
         .span4(style="padding:0px 12px;")
@@ -328,17 +328,17 @@ block append content
     
     //首页幻灯片
     $(function(){
-        var original_w=1453;
-        var original_h=528;
+        var original_w=940;
+        var original_h=363;
         var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
         //var w=window.screen.width;
         if(original_w>w){//如果实际图片宽度大于分辨率
              //$(".img_c_1").css({"width":w});
         }
         else{
-            $(".img_c_1").css({"width":w});
-            var h=w*original_h/original_w+78;
-            $(".img_c_1").css({"height":h});	
+            //$(".img_c_1").css({"width":w});
+            //var h=w*original_h/original_w+78;
+            //$(".img_c_1").css({"height":h});
         }
         $('#slider_div_1').slides({
            //autoHeight:true,
@@ -350,17 +350,17 @@ block append content
            pause: 250,
            //generateNextPrev: true,
            animationStart: function() {
-               var original_w=1453;
-               var original_h=528;
+               var original_w=940;
+               var original_h=363;
                var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
                //var w=window.screen.width;
                if(original_w>w){//如果实际图片宽度大于分辨率
                   //$(".img_c_1").css({"width":w});
                }
                else{
-                   $(".img_c_1").css({"width":w});
-                   var h=w*original_h/original_w+78;
-                   $(".img_c_1").css({"height":h});
+                   //$(".img_c_1").css({"width":w});
+                   //var h=w*original_h/original_w+78;
+                   //$(".img_c_1").css({"height":h});
                }
             },
             generatePagination: false
@@ -374,16 +374,16 @@ block append content
          });
          
          $(window).resize(function(e){
-            var original_w=1453;
-            var original_h=528;
+            var original_w=940;
+            var original_h=363;
             var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
             //var w=window.screen.width;
             if(original_w>w){//如果实际图片宽度大于分辨率
             }
             else{
-               $(".img_c_1").css({"width":w});
-               var h=w*original_h/original_w+78;
-               $(".img_c_1").css({"height":h});	
+              // $(".img_c_1").css({"width":w});
+               //var h=w*original_h/original_w+78;
+               //$(".img_c_1").css({"height":h});
             }
          });
     });

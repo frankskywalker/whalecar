@@ -43,8 +43,8 @@ block append content
                 li
                   h5 排量：
                      each item in carExtendInfo.carModelLv2NameList
-                       span #{item}&nbsp;
-                li(style="margin-top: 10px;padding-left: 10px;")
+                       | #{item}&nbsp;
+                li(style="margin-top: 20px;padding-left: 10px;")
                   h5(style="display:inline;padding-left: 0px;") 颜色:
                     each item in carExtendInfo.colorList
                       span(style="color:#{item.colorRgb};display:inline")&nbsp;&nbsp;#{item.colorCname}
@@ -137,19 +137,7 @@ block append content
                           tbody
                             tr.detail
                               td(style="color:#555555;font-weight: bold") 详细配置说明
-                              td 真皮座椅
-                              td 导航
-                              td 天窗
-                              td 定速巡航
-                              td 倒车雷达
-                              td 电动座椅
-                              td 座椅加热
-                              td 倒车影像
-                              td 多功能方向盘
-                        table
-                          tbody
-                            tr.detail
-                              td 鼎强汽车酷夏促销进行中，凡购车即送万元装潢大礼包，可办理贷款，0首付低利率！
+                              td #{shopStockView.carAddition}
                       td(colspan='1',style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through")  #{shopStockView.factoryPrice}万
                       td(colspan='1',style="vertical-align: middle;color:#ec6197;font-size:20px")  #{shopStockView.carPrice}万
                       td(colspan='1',style="vertical-align: middle;padding-left: 0px;padding-right: 0px;")
