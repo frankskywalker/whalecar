@@ -36,6 +36,12 @@ exports.stockeditor = function(req, res, next) {
                     });
 
                 }
+            },
+            carAdditions:function(callback){
+                service.client.get("/getAllCarAddition",
+                  function(err, req, res, data) {
+                    callback(err, data);
+                });
             }
         },
         function(err, results) {
@@ -45,6 +51,7 @@ exports.stockeditor = function(req, res, next) {
                 res.render("shop_stock_editor", {
                     carModelLv1: results.carModelLv1
                     ,shopStockView : results.shopStockView
+                    ,carAdditions : results.carAdditions
                 });
             }
         }

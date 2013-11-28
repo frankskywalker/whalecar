@@ -32,7 +32,13 @@ block append content
           .controls
             select#carInsideColor(name="carInsideColor")
         .control-group
-          label.control-label(for='carAddition') 附加信息
+            label.control-label(for='carAdditions') 附加配置
+            .controls
+               each carAddition in carAdditions
+                  input(name="carAdditions",type="checkbox",value=carAddition.id)
+                  | #{carAddition.content} &nbsp;
+        .control-group
+          label.control-label(for='carAddition') 备注
           .controls
             textarea(id="carAddition",name="carAddition")= shopStockView.carAddition
         .control-group
