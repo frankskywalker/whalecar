@@ -129,6 +129,9 @@
             <if test="carAddition != null and carAddition != ''">
                 carAddition, 
             </if>
+            <if test="carAdditions != null and carAdditions != ''">
+                carAdditions,
+            </if>
             carPrice, 
             carOnOrderNum, 
             carOnHandNum
@@ -141,6 +144,9 @@
             #{carInsideColor}, 
             <if test="carAddition != null and carAddition != ''">
                 #{carAddition}, 
+            </if>
+            <if test="carAdditions != null and carAdditions != ''">
+                #{carAdditions},
             </if>
             #{carPrice}, 
             #{carOnOrderNum}, 
@@ -157,6 +163,7 @@
 				`carOutsideColor` = #{carOutsideColor},
 				`carInsideColor` = #{carInsideColor},
 				`carAddition` = #{carAddition},
+                `carAdditions` = #{carAdditions},
 				`carPrice` = #{carPrice},
 				`carOnOrderNum` = #{carOnOrderNum},
 				`carOnHandNum` = #{carOnHandNum}

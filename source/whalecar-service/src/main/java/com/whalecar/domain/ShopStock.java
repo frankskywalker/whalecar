@@ -17,6 +17,7 @@ public class ShopStock implements Serializable {
 	private int carOutsideColor;
 	private int carInsideColor;
 	private String carAddition;
+    private String carAdditions;
 	private BigDecimal carPrice;
 	private int carOnOrderNum;
 	private int carOnHandNum;
@@ -121,4 +122,11 @@ public class ShopStock implements Serializable {
 		this.carOnHandNum = carOnHandNum;
 	}
 
+    public String getCarAdditions() {
+        return carAdditions;
+    }
+
+    public void setCarAdditions(String carAdditions) {
+        this.carAdditions = carAdditions;
+    }
 }

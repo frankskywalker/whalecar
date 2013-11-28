@@ -124,7 +124,7 @@ block append content
                 each item in userSubmitPrice
                   tr
                     td= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
-                    td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
+                    td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv1Cname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                     td(style="text-align: center;") #{item.userPrice}
                     td(style="text-align: center;") #{item.shopPrice}
                     td= item.userName
@@ -141,9 +141,9 @@ block append content
                     div.well.well-small
                         div(style="float:left;width:40%;text-align:center;")
                             p#stateChangeModal_carModel
-                        div(style="float:left;width:40%;text-align:center;")
+                        div(style="float:left;width:30%;text-align:center;")
                             p#stateChangeModal_originalPrice
-                        div(style="text-align:center;")
+                        div(style="float:left;width:30%;text-align:center;")
                             p#stateChangeModal_userPrice
                     div.well.well-small
                         table(style="width:100%;")
@@ -182,7 +182,7 @@ block append content
                       each item in userOffTicket
                           tr(style="height:60px")
                               td(style="padding:20px 3px")= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
-                              td(style="padding:20px 3px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
+                              td(style="padding:20px 3px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv1Cname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                               td(style="padding:20px 3px") 500元
                               td= item.userName
                               td= item.userTel
@@ -334,7 +334,6 @@ block append content
                 });
             }
         }));
-
     }
 
 
@@ -363,7 +362,7 @@ block append content
     function processUserSubmitPriceState(id,model,originalPrice,userPrice){
         $("#stateChangeModal #stateChangeModal_carModel").html("车型：" + model);
         $("#stateChangeModal #stateChangeModal_originalPrice").html("原价：" + originalPrice + "万")
-        $("#stateChangeModal #stateChangeModal_price").html("用户价格：" + userPrice + "万");
+        $("#stateChangeModal #stateChangeModal_userPrice").html("用户价格：" + userPrice + "万");
         currentUserSubmitPriceId = id;
         $("#stateChangeModal").modal('show');
     }

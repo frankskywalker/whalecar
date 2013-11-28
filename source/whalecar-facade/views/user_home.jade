@@ -40,7 +40,6 @@ block append content
                                         th 订单名称
                                         th 订单日期
                                         th 汽车金额
-                                        th 备注
                                         th 订单状态
                                         th 操作
                                 tbody
@@ -50,7 +49,6 @@ block append content
                                             td(style="padding:20px 8px")= item.orderTitle
                                             td(style="padding:20px 8px")= moment(item.orderCreateDate).format("YYYY-MM-DD HH:mm:ss")
                                             td(style="color:#ec6197;padding:20px 8px") #{item.orderPrice}万
-                                            td(style="padding:20px 8px")
                                             td(style="padding:20px 8px")= item.orderStateCName
                                             td(style="padding:20px 8px;width:65px")
                                                 a(href='#') 取消
@@ -63,14 +61,12 @@ block append content
                                         th 订单名称
                                         th 订单日期
                                         th 汽车金额
-                                        th 备注
                                 tbody
                                     each item in stockEmptyUserOrder
                                         tr(style="height:60px")
                                             td(style="padding:20px 8px")= item.orderTitle
                                             td(style="padding:20px 8px")= moment(item.orderCreateDate).format("YYYY-MM-DD HH:mm:ss")
                                             td(style="color:#ec6197;padding:20px 8px") #{item.orderPrice}万
-                                            td(style="padding:20px 8px")
                         #my_price.tab-pane
                             table.table
                                 thead
@@ -84,7 +80,7 @@ block append content
                                     each item in userSubmitPrice
                                         tr
                                           td= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
-                                          td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
+                                          td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv1Cname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                                           td(style="color: #ec6197;") #{item.userPrice}万
                                           td #{item.stateText}
                                           td
@@ -135,7 +131,7 @@ block append content
                                     each item in userOffTicket
                                         tr(style="height:60px")
                                             td(style="padding:20px 8px")= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
-                                            td(style="padding:20px 8px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}
+                                            td(style="padding:20px 8px") #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv1Cname}&nbsp;#{item.shopStockView.carModelLv3FullName}
                                             td(style="padding:20px 8px") 500元
                                             td(style="padding:20px 8px")= item.ticketSn
                                             td(style="padding:20px 8px")= item.stateText
