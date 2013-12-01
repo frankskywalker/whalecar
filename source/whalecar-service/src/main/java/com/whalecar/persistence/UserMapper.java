@@ -64,5 +64,12 @@ public interface UserMapper {
      * @param userId
      * @return
      */
-    public List<UserCarFavorite> queryUserCarFavorite(int userId);
+    public List<UserCarFavorite> queryUserCarFavorite(Integer userId);
+
+    /**
+     * 根据用户id查询用户
+     * @param userId
+     * @return
+     */
+    public User queryUserById(Integer userId);
 }

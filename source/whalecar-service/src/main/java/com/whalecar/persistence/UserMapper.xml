@@ -72,5 +72,9 @@
       LEFT JOIN Car_Brand on Car_Model_Lv1.carBrand = Car_Brand.id
       WHERE User_Favorite.user = #{userId}
   </select>
-  
+
+    <select id="queryUserById" resultType="User">
+      SELECT * FROM User
+        WHERE id = #{param1}
+    </select>
 </mapper>
