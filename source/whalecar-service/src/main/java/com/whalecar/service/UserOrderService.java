@@ -5,12 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.whalecar.domain.ShopStock;
-import com.whalecar.domain.UserOrderView;
-import com.whalecar.domain.UserSubmitPrice;
-import com.whalecar.persistence.GenSeralnoMapper;
-import com.whalecar.persistence.ShopMapper;
-import com.whalecar.persistence.UserSubmitPriceMapper;
+import com.whalecar.domain.*;
+import com.whalecar.persistence.*;
 import com.whalecar.persistence.enums.UserOrderStateEnum;
 import com.whalecar.persistence.enums.UserOrderTypeEnum;
 import com.whalecar.persistence.enums.UserSubmitPriceStateEnum;
@@ -21,8 +17,6 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.whalecar.domain.UserOrder;
-import com.whalecar.persistence.UserOrderMapper;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,6 +36,11 @@ public class UserOrderService {
     private ShopMapper shopMapper;
     @Autowired
     private UserSubmitPriceMapper userSubmitPriceMapper;
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private SmsService smsService;
 
     private Logger logger = LoggerFactory.getLogger(UserOrderService.class);
 
@@ -113,7 +112,7 @@ public class UserOrderService {
         userOrder.setOrderSn(orderSn);
         logger.info("[create order] gen user order sn ok,sn = {},{}",orderSn, logText );
 
-        //4.5 根据订单类型确定订单的初始状态：
+        //5 根据订单类型确定订单的初始状态：
         // 支付定金订单初始状态是等待付款。无支付定金订单初始状态是等待确认。
         if(StringUtils.equals(UserOrderTypeEnum.pay_order.getCode(),userOrder.getOrderType()) ){
             userOrder.setOrderState(UserOrderStateEnum.waiting_pay.getCode());
@@ -127,15 +126,23 @@ public class UserOrderService {
         logger.info("[create order] init order state finish.orderType= {},init state={}.{}"
                    ,userOrder.getOrderType(),userOrder.getOrderState(), logText );
 
-        //5.创建订单
+        //6 发送创建订单短信
+        User user = userMapper.queryUserById(userOrder.getUser());
+        StringBuilder smsContent = new StringBuilder();
+        smsContent.append("客户您好，您已成功预定了");
+        smsContent.append(userOrder.getOrderTitle());
+        smsContent.append("请在3天内到店内办理提车。退订回复TD【梯卡汽车】");
+        smsService.sendSMS(new String[]{user.getUserTel()},smsContent.toString());
+
+        //7.创建订单
         userOrderMapper.createOrder(userOrder);
         logger.info("[create order] save order ok,{}", logText );
 
-        //6.通过sn查出
+        //8.通过sn查出
         UserOrder userOrderResult =  userOrderMapper.queryUserOrderBySn(orderSn);
         logger.info("[create order] query by sn ok,{}", logText );
 
-        //7.组装并返回
+        //9.组装并返回
         BooleanResult result = new BooleanResult(true,null);
         result.getResultMap().put("userOrder",userOrderResult);
         return result;

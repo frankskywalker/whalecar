@@ -1,9 +1,11 @@
 package com.whalecar.service;
 
 import com.whalecar.domain.ShopStockView;
+import com.whalecar.domain.User;
 import com.whalecar.domain.UserSubmitPrice;
 import com.whalecar.domain.UserSubmitPriceView;
 import com.whalecar.persistence.ShopMapper;
+import com.whalecar.persistence.UserMapper;
 import com.whalecar.persistence.UserSubmitPriceMapper;
 import com.whalecar.persistence.enums.UserSubmitPriceStateEnum;
 import com.whalecar.service.tools.BooleanResult;
@@ -31,6 +33,10 @@ public class UserSubmitPriceService {
     private UserSubmitPriceMapper userSubmitPriceMapper;
     @Autowired
     private ShopMapper shopMapper;
+    @Autowired
+    private SmsService smsService;
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 创建UserSubmitPrice数据
@@ -118,10 +124,48 @@ public class UserSubmitPriceService {
     @RequestMapping(method = RequestMethod.POST, value = "/changeUserSubmitPriceState")
     public @ResponseBody
     BooleanResult changeUserSubmitPriceState(@RequestBody Map<String,Object> params){
+        //1.确认状态合法性
         String state = String.valueOf(params.get("state"));
+        String id = String.valueOf(params.get("id"));
+        String shopPrice = String.valueOf(params.get("shopPrice"));
         if(UserSubmitPriceStateEnum.valueOf(state) == null){
             return new BooleanResult(false);
         }
+        if(StringUtils.isBlank(id)){
+            return new BooleanResult(false);
+        }
+        //2.根据状态确认是否要发送短信
+        //a.shop所给的确认反馈需要发短信
+        UserSubmitPrice userSubmitPrice = userSubmitPriceMapper.queryUserSubmitPriceById(Integer.valueOf(id));
+        User user = userMapper.queryUserById(userSubmitPrice.getUser());
+        ShopStockView shopStockView = shopMapper.queryShopStockViewById(userSubmitPrice.getShopStock());
+        if(UserSubmitPriceStateEnum.shop_agree.valueOf(state) == UserSubmitPriceStateEnum.shop_agree){
+            StringBuilder smsContent = new StringBuilder();
+            smsContent.append("您好，您提交的");
+            smsContent.append(shopStockView.getCarBrandCname());
+            smsContent.append(shopStockView.getCarModelLv1Cname());
+            smsContent.append(shopStockView.getCarModelLv3FullName());
+            smsContent.append("车型的意向价格为");
+            smsContent.append(userSubmitPrice.getUserPrice());
+            smsContent.append("万元，4s店已回复同意了您提交的价格。请轻快登录网站生成订单。退订回复TD【梯卡汽车】");
+            smsService.sendSMS(new String[]{user.getUserTel()},smsContent.toString());
+        }
+        //b.shop所回复的价格需要发送短信
+        if(UserSubmitPriceStateEnum.shop_commit.valueOf(state) == UserSubmitPriceStateEnum.shop_commit){
+            StringBuilder smsContent = new StringBuilder();
+            smsContent.append("您好，您提交的");
+            smsContent.append(shopStockView.getCarBrandCname());
+            smsContent.append(shopStockView.getCarModelLv1Cname());
+            smsContent.append(shopStockView.getCarModelLv3FullName());
+            smsContent.append("车型的意向价格为");
+            smsContent.append(userSubmitPrice.getUserPrice());
+            smsContent.append("万元，4s店已经回复，价格为");
+            smsContent.append(shopPrice);
+            smsContent.append("万元，如您同意此价格，请尽快登录网站生成订单。退订回复TD【梯卡汽车】");
+            smsService.sendSMS(new String[]{user.getUserTel()},smsContent.toString());
+        }
+
+        //3.更新数据
         int updateCount = userSubmitPriceMapper.updateState(params);
         if(updateCount == 1){
             return new BooleanResult(true);
