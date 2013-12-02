@@ -115,7 +115,7 @@ block append content
                    th 提交日期
                    th 车型
                    th 用户提交价格(万)
-                   th 4s店提交价格(万)
+                   th 4S店提交价格(万)
                    th 订购人姓名
                    th 订购人电话
                    th 状态
@@ -215,7 +215,7 @@ block append content
             legend 信息维护
             form.form-horizontal#saveshopForm(method="post",action="/shop?type=saveshop",style="width:400px;")
               .control-group
-                label.control-label(for='shopName') 4s店名
+                label.control-label(for='shopName') 4S店名
                 .controls
                   input#shopName(name="shopName",type='text', value='#{shop.shopName}')
               .control-group
