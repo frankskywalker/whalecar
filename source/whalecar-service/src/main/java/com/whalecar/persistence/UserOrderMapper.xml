@@ -65,19 +65,19 @@
 
           (orderState = 'waiting_pay'
           and date_add(orderCreateDate,
-          interval 24 hour) > current_timestamp)
+          interval -24 hour) > current_timestamp)
 
           or
 
           ((orderState <> 'finish' and orderState <> 'cancel' and orderState <> 'out_of_date'  and orderType = 'not_pay_order')
           and date_add(orderCreateDate,
-          interval 36 hour) > current_timestamp)
+          interval -36 hour) > current_timestamp)
 
           or
 
           ((orderState <> 'finish' and orderState <> 'cancel' and orderState <> 'out_of_date'  and orderType = 'pay_order')
           and date_add(orderCreateDate,
-          interval 84 hour) > current_timestamp)
+          interval -84 hour) > current_timestamp)
 
       ]]>
   </update>

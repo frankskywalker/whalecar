@@ -72,7 +72,7 @@
           or 'shop_commit'
           or 'price_success')
           and
-        date_add(createDate, interval 24 hour) > current_timestamp
+        date_add(createDate, interval -24 hour) > current_timestamp
   </update>
 
 </mapper>
