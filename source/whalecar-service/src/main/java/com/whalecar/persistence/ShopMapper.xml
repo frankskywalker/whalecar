@@ -66,7 +66,8 @@
             Car_Model_Lv2.id as carModelLv2Id,
             Car_Model_Lv1.cname as carModelLv1Cname,
             Car_Model_Lv1.id as carModelLv1Id,
-            if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname
+            if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname,
+            (SELECT group_concat(content separator ' ') FROM whalecar_server.Car_Addition where FIND_IN_SET(id,Shop_Stock.carAdditions)) as carAdditionsText
 		FROM
 		    Shop_Stock
 		LEFT JOIN
@@ -103,7 +104,8 @@
             Car_Model_Lv2.id as carModelLv2Id,
             Car_Model_Lv1.cname as carModelLv1Cname,
             Car_Model_Lv1.id as carModelLv1Id,
-            if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname
+            if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname,
+            (SELECT group_concat(content separator ' ') FROM whalecar_server.Car_Addition where FIND_IN_SET(id,Shop_Stock.carAdditions)) as carAdditionsText
         FROM
             Shop_Stock
         LEFT JOIN
@@ -216,7 +218,7 @@
             Shop_Stock.*,
             Car_Model_Lv3.shortName as carModelLv3ShortName,
             Car_Model_Lv3.fullName as carModelLv3FullName,
-            Car_Model_Lv3.FactoryPrice as FactoryPrice,
+            Car_Model_Lv3.FactoryPrice as factoryPrice,
             Car_Model_Lv3.driveType as driveType,
             Car_Model_Lv3.gearType as gearType,
             (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
@@ -227,7 +229,8 @@
             Car_Model_Lv2.id as carModelLv2Id,
             Car_Model_Lv1.cname as carModelLv1Cname,
             Car_Model_Lv1.id as carModelLv1Id,
-            if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname
+            if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname,
+            (SELECT group_concat(content separator ' ') FROM whalecar_server.Car_Addition where FIND_IN_SET(id,Shop_Stock.carAdditions)) as carAdditionsText
         FROM
             Shop_Stock
         LEFT JOIN

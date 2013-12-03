@@ -115,6 +115,12 @@ function requireRole(role) {
 // ===============================
 // router~
 // ===============================
+app.all('/ros*',function(req,res,next){
+    var path = req.originalUrl;
+    path = path.substr(4);
+    console.log(path);
+    res.redirect(path);
+});
 app.all('/', index.page);
 app.all("/index",index.page);
 app.all('/dic', dic.query);

@@ -61,6 +61,18 @@ exports.stockeditor = function(req, res, next) {
 function saveShopStock(req, res, next) {
     var shopStock = req.body;
     shopStock.shop = req.session.currentShop.id;
+    //将carAdditions的list转成逗号分割的字符
+    var carAdditions = "";
+    if(shopStock.carAdditions && shopStock.carAdditions.length != 0){
+        for(i in shopStock.carAdditions){
+            carAdditions = carAdditions + shopStock.carAdditions[i] + ",";
+        }
+    }
+    if(carAdditions != ""){
+        //去掉最后的逗号
+        carAdditions = carAdditions.substr(0,carAdditions.length-1);
+    }
+    shopStock.carAdditions = carAdditions;
     service.client.post("/saveOrUpdateShopStock", shopStock,
         function(error,request, response, data) {
             if (error) {

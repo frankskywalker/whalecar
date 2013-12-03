@@ -6,7 +6,7 @@ block append js
 block append content
   .container(style='padding: 10px 0;')
     legend 库存编辑
-    form.form-horizontal.span6#saveShopStockForm
+    form.form-horizontal.span6#saveShopStockForm(style="width: 90%;")
         .control-group
           label.control-label(for='carModelLv1') 车型
           .controls
@@ -42,16 +42,22 @@ block append content
           .controls
             textarea(id="carAddition",name="carAddition")= shopStockView.carAddition
         .control-group
+            label.control-label(for='carPrice') 官方指导价
+            .controls
+                input.span1#factoryPrice(type='text', placeholder='价格',disabled='disabled',value=shopStockView.factoryPrice)
+                | 万元
+        .control-group
           label.control-label(for='carPrice') 价格
           .controls
-            input#carPrice(name="carPrice",type='text', placeholder='价格',value=shopStockView.carPrice)
+            input.span1#carPrice(name="carPrice",type='text', placeholder='价格',value=shopStockView.carPrice)
+            | 万元
         .control-group
           label.control-label(for='carOnHandNum') 库存(现货/在途)
           .controls
             input#carOnHandNum.span1(name="carOnOrderNum",type='text', placeholder='现货',value=shopStockView.carOnOrderNum)
             | /
             input#carOnOrderNum.span1(name="carOnHandNum",type='text', placeholder='在途',value=shopStockView.carOnHandNum)
-        .control-group
+        .control-group=
           .controls
             input(name="id",value=shopStockView.id,type="hidden")
             a.btn.pull-right(href='./shophome') 返回
@@ -62,6 +68,20 @@ block append content
         .modal-footer
           a.btn(href='#', onclick='window.location.href="./shophome"', data-dismiss='modal', aria-hidden='true') 确定
   script.
+    //还原之前保存的附加配置信息
+    var carAdditions = "#{shopStockView.carAdditions}";
+    if(carAdditions != ""){
+        var carAdditionIds = carAdditions.split(",");
+        $("input[name='carAdditions']").each(function(index,element){
+            for(i in carAdditionIds){
+                if($(element).val() == carAdditionIds[i]){
+                    $(element).prop("checked",true);
+                }
+            }
+        });
+    }
+
+
     function carModelLv1Change(callback){
         var carModelLv1Id = $("#carModelLv1 option:selected").val();
         if(carModelLv1Id != ""){
@@ -82,7 +102,6 @@ block append content
             });
         }
     }
-
     $("#carModelLv1").change(carModelLv1Change);
 
     function carModelLv2Change(callback){
@@ -141,13 +160,24 @@ block append content
     );
 
     function saveStock(){
-         $.post("/shopstock?type=saveShopStock", $("#saveShopStockForm").serialize())
+        var carPrice = parseFloat($('#carPrice').val());
+        var factoryPrice = parseFloat($('#factoryPrice').val());
+        if(carPrice > factoryPrice * 1.3){
+            alert("请重新填写价格信息，不要高于官方指导价30%。")
+            return;
+        }
+        if(carPrice < factoryPrice * 0.7){
+            alert("请重新填写价格信息，不要低于官方指导价30%。")
+            return;
+        }
+        var condition = $("#saveShopStockForm").serialize();
+        $.post("/shopstock?type=saveShopStock", $("#saveShopStockForm").serialize())
         .done(function(data) {
-             if(data.saveSuc == true){
-                 $("#saveSucModal").modal("show");
-             }
-             else{
-                alert("保存错误，请检查输入是否正确！");
-             }
-         });
+           if(data.saveSuc == true){
+              $("#saveSucModal").modal("show");
+           }
+           else{
+              alert("保存错误，请检查输入是否正确！");
+           }
+        });
     }

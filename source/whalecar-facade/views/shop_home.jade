@@ -53,7 +53,11 @@ block append content
                         tbody
                           tr.detail
                             td(style="color:#555555;font-weight: bold") 详细配置说明
-                            td #{item.carAddition}
+                            td
+                              | #{item.carAdditionsText}
+                              br
+                              | #{item.carAddition}
+
           #car_order.tab-pane
             legend 预约订单管理
             table.table.stockTable
