@@ -10,4 +10,11 @@
       from Car_Addition
   </select>
 
+  <select id="selectById" resultType="CarAddition">
+      select *
+       from Car_Addition
+       where id = #{param1}
+
+  </select>
+
 </mapper>

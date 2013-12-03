@@ -26,6 +26,8 @@ public class ShopStockView extends ShopStock {
     private Integer carModelLv1Id;
     private String carBrandCname;
 
+    private String carAdditionsText;
+
 
 	/**
 	 * 驱动类型
@@ -154,5 +156,13 @@ public class ShopStockView extends ShopStock {
 
     public void setCarModelLv1Id(Integer carModelLv1Id) {
         this.carModelLv1Id = carModelLv1Id;
+    }
+
+    public String getCarAdditionsText() {
+        return carAdditionsText;
+    }
+
+    public void setCarAdditionsText(String carAdditionsText) {
+        this.carAdditionsText = carAdditionsText;
     }
 }

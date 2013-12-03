@@ -120,6 +120,7 @@
 	    </if>
 	    <if test="orderByName == 'price' and orderType == 'desc'">
         ORDER BY shopPriceMax desc
+
         </if>
         LIMIT #{startIndex},#{pageSize}
 	</select>
