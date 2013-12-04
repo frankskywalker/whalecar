@@ -15,7 +15,7 @@ public class ShopStock implements Serializable {
 	private int shop;
 	private int carModelLv3;
 	private int carOutsideColor;
-	private int carInsideColor;
+	private String carInsideColor;
 	private String carAddition;
     private String carAdditions;
 	private BigDecimal carPrice;
@@ -25,30 +25,6 @@ public class ShopStock implements Serializable {
 	public ShopStock() {
 	}
 
-	public ShopStock(int shop, int carModelLv3, int carOutsideColor,
-			int carInsideColor, BigDecimal carPrice, int carOnOrderNum,
-			int carOnHandNum) {
-		this.shop = shop;
-		this.carModelLv3 = carModelLv3;
-		this.carOutsideColor = carOutsideColor;
-		this.carInsideColor = carInsideColor;
-		this.carPrice = carPrice;
-		this.carOnOrderNum = carOnOrderNum;
-		this.carOnHandNum = carOnHandNum;
-	}
-
-	public ShopStock(int shop, int carModelLv3, int carOutsideColor,
-			int carInsideColor, String carAddition, BigDecimal carPrice,
-			int carOnOrderNum, int carOnHandNum) {
-		this.shop = shop;
-		this.carModelLv3 = carModelLv3;
-		this.carOutsideColor = carOutsideColor;
-		this.carInsideColor = carInsideColor;
-		this.carAddition = carAddition;
-		this.carPrice = carPrice;
-		this.carOnOrderNum = carOnOrderNum;
-		this.carOnHandNum = carOnHandNum;
-	}
 
 	public Integer getId() {
 		return this.id;
@@ -82,15 +58,15 @@ public class ShopStock implements Serializable {
 		this.carOutsideColor = carOutsideColor;
 	}
 
-	public int getCarInsideColor() {
-		return this.carInsideColor;
-	}
+    public String getCarInsideColor() {
+        return carInsideColor;
+    }
 
-	public void setCarInsideColor(int carInsideColor) {
-		this.carInsideColor = carInsideColor;
-	}
+    public void setCarInsideColor(String carInsideColor) {
+        this.carInsideColor = carInsideColor;
+    }
 
-	public String getCarAddition() {
+    public String getCarAddition() {
 		return this.carAddition;
 	}
 

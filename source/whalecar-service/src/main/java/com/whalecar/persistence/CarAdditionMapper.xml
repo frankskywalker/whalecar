@@ -14,7 +14,7 @@
       select *
        from Car_Addition
        where id = #{param1}
-
+       order by id
   </select>
 
 </mapper>

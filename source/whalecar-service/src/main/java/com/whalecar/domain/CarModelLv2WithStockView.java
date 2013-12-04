@@ -22,7 +22,6 @@ public class CarModelLv2WithStockView extends CarModelLv2 {
     private BigDecimal carPriceMax;
 
 	private List<DicColor> outsideColorList = new ArrayList<DicColor>();
-	private List<String> insideColorList = new ArrayList<String>();
 	private List<String> carModelLv3NameList = new ArrayList<String>();
 	/**
 	 * 库存总数
@@ -79,10 +78,6 @@ public class CarModelLv2WithStockView extends CarModelLv2 {
 
 	public List<DicColor> getOutsideColorList() {
 		return outsideColorList;
-	}
-
-	public List<String> getInsideColorList() {
-		return insideColorList;
 	}
 
 	public List<String> getCarModelLv3NameList() {

@@ -150,8 +150,6 @@ public class CarModelService {
 					// 遍历过程汇集所有可能的颜色和lv3车型集合
                     outsideColorMap.put(shopStockViewList.get(i).getCarOutsideColorRgb(),new DicColor(shopStockViewList.get(i)
 							.getCarOutsideColorName(),shopStockViewList.get(i).getCarOutsideColorRgb()));
-					insideColorSet.add(shopStockViewList.get(i)
-							.getCarInsideColorName());
 					carModelLv3NameSet.add(shopStockViewList.get(i)
 							.getCarModelLv3ShortName());
 				}
@@ -166,8 +164,6 @@ public class CarModelService {
 				// 汇集所有可能的颜色和lv3车型集合
 				carModelLv2WithStockView.getOutsideColorList().addAll(
                         outsideColorMap.values());
-				carModelLv2WithStockView.getInsideColorList().addAll(
-						insideColorSet);
 				carModelLv2WithStockView.getCarModelLv3NameList().addAll(
 						carModelLv3NameSet);
 				// 将包装好的对象放入新List，做为返回List
