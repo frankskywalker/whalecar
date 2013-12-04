@@ -13,35 +13,35 @@ block append content
      .slides_container(style="list-style:none;")
         li.bitter0.glume
           span.Limg.slide_pic
-            a(href='#')
+            a(href='#carModelViewAnchor')
               img.img_c_1(src='img/banner/scrollimg1.png')
           //span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
           //  a(href='#')
           //    img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
         li.bitter1.glume
           span.Limg.slide_pic
-            a(href='#')
+            a(href='#carModelViewAnchor')
               img.img_c_1(src='img/banner/scrollimg2.png')
           //span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
           //  a(href='#')
           //    img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
         li.bitter2.glume
           span.Limg.slide_pic
-            a(href='#')
+            a(href='#carModelViewAnchor')
               img.img_c_1(src='img/banner/scrollimg5.png')
           //span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
           //  a(href='#')
           //    img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
         li.bitter3.glume
           span.Limg.slide_pic
-            a(href='#')
+            a(href='./car?id=225')
               img.img_c_1(src='img/banner/scrollimg4.jpg')
           span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
             a(href='#')
               //img#bitter_txt_1.bitter_txt(altt='115', altl='0', src='img/banner/adver.png', style='top: 193px; left: 0px;')
         li.bitter4.glume
           span.Limg.slide_pic
-            a(href='#')
+            a(href='./car?id=228')
               img.img_c_1(src='img/banner/scrollimg3.jpg')
           //span.Limg2(style='position: absolute; left: 124px; top: 0px; display: block;')
           //  a(href='#')
@@ -57,7 +57,7 @@ block append content
           li(style="display: list-item;")
             a.page_a_1(link='#',style="text-decoration: none;") 全新捷达 舒适激情
           li(style='border-right: 1px solid #FFFFFF;')
-            a.page_a_1(link='#',style="text-decoration: none;") 新cc 孑然登场
+            a.page_a_1(link='./car?id=228',style="text-decoration: none;") 新cc 孑然登场
   .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;background-color:#fbfbfb")
     div(style='background-color: #eaeaea;')
     .row-fluid(style='padding: 20px 0px 20px 0px;')
@@ -238,7 +238,7 @@ block append content
                     img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
                     | 一汽-大众 高尔夫
                     img.pull-right(src="../img/focusBand.png")
-      div(style="width:918px;margin:0 auto;padding-top:20px;padding-bottom:20px")
+      div#carModelViewAnchor(style="width:918px;margin:0 auto;padding-top:20px;padding-bottom:20px")
         img(src="../img/banner/allBand.png",style="padding-bottom:5px;padding-right:5px")
     //
       div(align='center')
@@ -366,7 +366,7 @@ block append content
          
          $('.page_a_1').click(function(event){
             event.preventDefault();
-            window.open($(this).attr('link'),'name_1');
+            //window.open($(this).attr('link'),'name_1');
          });
          
          $(window).resize(function(e){

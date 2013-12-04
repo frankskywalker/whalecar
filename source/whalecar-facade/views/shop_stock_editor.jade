@@ -28,9 +28,10 @@ block append content
           .controls
             select#carOutsideColor(name="carOutsideColor")
         .control-group
-          label.control-label(for='carInsideColor') 内饰颜色
+          label.control-label(for='carInsideColor') 内饰颜色材料
           .controls
-            select#carInsideColor(name="carInsideColor")
+            input#carInsideColor(type="text",name="carInsideColor",value="#{shopStockView.carInsideColor}")
+            | （如：黑色真皮vienna，米色真皮vienna）
         .control-group
             label.control-label(for='carAdditions') 附加配置
             .controls
@@ -129,21 +130,13 @@ block append content
         var carModelLv3Id = $("#carModelLv3 option:selected").val();
         $.getJSON("/dic?type=getDicColorByCarModelLv3&carModelLv3Id=" + carModelLv3Id,function(data){
             $("#carOutsideColor").empty();
-            $("#carInsideColor").empty();
             $("#carOutsideColor").append("<option value=''>请选择...</option>");
-            $("#carInsideColor").append("<option value=''>请选择...</option>");
             $.each(data,function(index,dicColor){
                 if(dicColor.id == '#{shopStockView.carOutsideColor}'){
                     $("#carOutsideColor").append("<option selected=selected value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
                 }
                 else{
                     $("#carOutsideColor").append("<option value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
-                }
-                if(dicColor.id == '#{shopStockView.carInsideColor}'){
-                    $("#carInsideColor").append("<option selected=selected value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
-                }
-                else{
-                    $("#carInsideColor").append("<option value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
                 }
             });
         });
