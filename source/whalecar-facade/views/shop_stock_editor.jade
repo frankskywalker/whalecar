@@ -28,10 +28,9 @@ block append content
           .controls
             select#carOutsideColor(name="carOutsideColor")
         .control-group
-          label.control-label(for='carInsideColor') 内饰颜色材料
-          .controls
-            input#carInsideColor(type="text",name="carInsideColor",value="#{shopStockView.carInsideColor}")
-            | （如：黑色真皮vienna，米色真皮vienna）
+            label.control-label(for='carInsideColor') 内饰颜色
+            .controls
+                select#carInsideColor(name="carInsideColor")
         .control-group
             label.control-label(for='carAdditions') 附加配置
             .controls
@@ -82,24 +81,23 @@ block append content
         });
     }
 
-
     function carModelLv1Change(callback){
         var carModelLv1Id = $("#carModelLv1 option:selected").val();
         if(carModelLv1Id != ""){
             $.getJSON("/dic?type=getCarModelLv2ByLv1Id&carModelLv1Id=" + carModelLv1Id,function(data){
-                $("#carModelLv2").empty();
-                $("#carModelLv2").append("<option value=''>请选择...</option>");
-                $.each(data,function(index,carModelLv2){
-                    if(carModelLv2.id == '#{shopStockView.carModelLv2Id}'){
-                        $("#carModelLv2").append("<option selected=selected value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");
-                    }
-                    else{
-                        $("#carModelLv2").append("<option value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");
-                    }
-                });
-                if(typeof(callback) == "function"){
-                    callback();
-                }
+               $("#carModelLv2").empty();
+               $("#carModelLv2").append("<option value=''>请选择...</option>");
+               $.each(data,function(index,carModelLv2){
+                  if(carModelLv2.id == '#{shopStockView.carModelLv2Id}'){
+                     $("#carModelLv2").append("<option selected=selected value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");
+                  }
+                  else{
+                     $("#carModelLv2").append("<option value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");
+                  }
+               });
+               if(typeof(callback) == "function"){
+                  callback();
+               }
             });
         }
     }
@@ -128,7 +126,7 @@ block append content
 
     function carModelLv3Change(){
         var carModelLv3Id = $("#carModelLv3 option:selected").val();
-        $.getJSON("/dic?type=getDicColorByCarModelLv3&carModelLv3Id=" + carModelLv3Id,function(data){
+        $.getJSON("/dic?type=getOutsideDicColorByCarModelLv3&carModelLv3Id=" + carModelLv3Id,function(data){
             $("#carOutsideColor").empty();
             $("#carOutsideColor").append("<option value=''>请选择...</option>");
             $.each(data,function(index,dicColor){
@@ -137,6 +135,18 @@ block append content
                 }
                 else{
                     $("#carOutsideColor").append("<option value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
+                }
+            });
+        });
+        $.getJSON("/dic?type=getInsideDicColorByCarModelLv3&carModelLv3Id=" + carModelLv3Id,function(data){
+            $("#carInsideColor").empty();
+            $("#carInsideColor").append("<option value=''>请选择...</option>");
+            $.each(data,function(index,dicColor){
+                if(dicColor.id == '#{shopStockView.carInsideColor}'){
+                    $("#carInsideColor").append("<option selected=selected value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
+                }
+                else{
+                    $("#carInsideColor").append("<option value='" + dicColor.id + "'>" + dicColor.colorCname+ "</option>");
                 }
             });
         });

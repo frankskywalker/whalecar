@@ -12,9 +12,11 @@ exports.query = function(req, res,next) {
     } else if (type == 'getCarModelLv3ByLv2Id') {
         //根据Lv2Id获取所有的Lv3
         getCarModelLv3ByLv2Id(req, res,next);
-    } else if (type == 'getDicColorByCarModelLv3') {
-	getDicColorByCarModelLv3(req,res,next);
-    } else if (type == 'DicCity') {
+    } else if (type == 'getOutsideDicColorByCarModelLv3') {
+        getOutsideDicColorByCarModelLv3(req,res,next);
+    } else if (type == 'getInsideDicColorByCarModelLv3') {
+        getInsideDicColorByCarModelLv3(req,res,next);
+    }else if (type == 'DicCity') {
         //获取所有的dicCity
         getDicCity(req, res,next);
     } else {
@@ -74,9 +76,21 @@ function getDicCity(request, response, next) {
 }
 
 //根据carModelLv3获取dicColor
-function getDicColorByCarModelLv3(request, response, next) {
+
+function getOutsideDicColorByCarModelLv3(request, response, next) {
     var carModelLv3Id = request.query.carModelLv3Id;
     service.client.get("/getDicColorByCarModelLv3?outOrInColor=out&carModelLv3Id=" + carModelLv3Id, function(err, req, res, data) {
+        if (err) {
+            next(err);
+        } else {
+            response.send(data);
+        }
+    });
+}
+
+function getInsideDicColorByCarModelLv3(request, response, next) {
+    var carModelLv3Id = request.query.carModelLv3Id;
+    service.client.get("/getDicColorByCarModelLv3?outOrInColor=in&carModelLv3Id=" + carModelLv3Id, function(err, req, res, data) {
         if (err) {
             next(err);
         } else {
