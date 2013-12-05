@@ -15,7 +15,7 @@ public class ShopStock implements Serializable {
 	private int shop;
 	private int carModelLv3;
 	private int carOutsideColor;
-	private String carInsideColor;
+	private int carInsideColor;
 	private String carAddition;
     private String carAdditions;
 	private BigDecimal carPrice;
@@ -58,11 +58,11 @@ public class ShopStock implements Serializable {
 		this.carOutsideColor = carOutsideColor;
 	}
 
-    public String getCarInsideColor() {
+    public int getCarInsideColor() {
         return carInsideColor;
     }
 
-    public void setCarInsideColor(String carInsideColor) {
+    public void setCarInsideColor(int carInsideColor) {
         this.carInsideColor = carInsideColor;
     }
 

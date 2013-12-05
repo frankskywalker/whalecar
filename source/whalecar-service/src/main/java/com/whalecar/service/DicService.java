@@ -57,10 +57,9 @@ public class DicService {
 	List<DicColor> getDicColorByCarModelLv3(Integer carModelLv3Id,
 			String outOrInColor) {
 		if (StringUtils.equals(outOrInColor, "out")) {
-			return dicMapper.queryDicColorBycarModelLv3(carModelLv3Id);
+			return dicMapper.queryOutsideDicColorBycarModelLv3(carModelLv3Id);
 		} else if (StringUtils.equals(outOrInColor, "in")) {
-			// TODO 补充内饰颜色查询
-			return null;
+            return dicMapper.queryInsideDicColorBycarModelLv3(carModelLv3Id);
 		} else {
 			return null;
 		}

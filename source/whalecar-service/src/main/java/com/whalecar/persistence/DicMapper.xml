@@ -21,7 +21,7 @@
   	Order by orderIndex
   </select>
   
-  <select id="queryDicColorBycarModelLv3" parameterType="int" resultType="DicColor">
+  <select id="queryOutsideDicColorBycarModelLv3" parameterType="int" resultType="DicColor">
     SELECT 
       *
     FROM
@@ -37,5 +37,22 @@
          Car_Model_Lv3.id = #{carModelLv3Id})
       )
   </select>
+
+    <select id="queryInsideDicColorBycarModelLv3" parameterType="int" resultType="DicColor">
+        SELECT
+            *
+        FROM
+            Dic_Color
+        WHERE
+            FIND_IN_SET(
+                Dic_Color.id,
+                (SELECT
+                    colorInsideCollection
+                FROM
+                    Car_Model_Lv3
+                WHERE
+                    Car_Model_Lv3.id = #{carModelLv3Id})
+        )
+    </select>
 
 </mapper>
