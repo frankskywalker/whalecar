@@ -32,11 +32,52 @@ block append content
             .controls
                 select#carInsideColor(name="carInsideColor")
         .control-group
-            label.control-label(for='carAdditions') 附加配置
+            label.control-label(for='carAdditions',style="margin-top: 5px;") 附加配置
             .controls
-               each carAddition in carAdditions
-                  input(name="carAdditions",type="checkbox",value=carAddition.id)
-                  | #{carAddition.content} &nbsp;
+               table
+                  tr(style="height: 40px;")
+                    td(style="width:70px;") 主流配置
+                    td
+                      each carAddition in carAdditions
+                        if(carAddition.type == '主流配置')
+                            input(name="carAdditions",type="checkbox",value=carAddition.id,style="margin-top: 0px;margin-bottom: 2px;")
+                            | #{carAddition.content} &nbsp;
+                  tr(style="height: 40px;")
+                    td(style="vertical-align:top") 舒适配置
+                    td
+                      each carAddition in carAdditions
+                        if(carAddition.type == '舒适配置')
+                            input(name="carAdditions",type="checkbox",value=carAddition.id,style="margin-top: 0px;margin-bottom: 2px;")
+                            | #{carAddition.content} &nbsp;
+                  tr(style="height: 40px;")
+                    td() 行驶配置
+                    td
+                      each carAddition in carAdditions
+                        if(carAddition.type == '行驶配置')
+                          input(name="carAdditions",type="checkbox",value=carAddition.id,style="margin-top: 0px;margin-bottom: 2px;")
+                          | #{carAddition.content} &nbsp;
+                  tr(style="height: 40px;")
+                    td() 娱乐配置
+                    td
+                      each carAddition in carAdditions
+                        if(carAddition.type == '娱乐配置')
+                          input(name="carAdditions",type="checkbox",value=carAddition.id,style="margin-top: 0px;margin-bottom: 2px;")
+                          | #{carAddition.content} &nbsp;
+                  tr(style="height: 40px;")
+                    td(style="vertical-align:top") 安全配置
+                    td
+                      each carAddition in carAdditions
+                        if(carAddition.type == '安全配置')
+                          input(name="carAdditions",type="checkbox",value=carAddition.id,style="margin-top: 0px;margin-bottom: 2px;")
+                          | #{carAddition.content} &nbsp;
+                  tr(style="height: 40px;")
+                    td() 照明配置
+                    td
+                      each carAddition in carAdditions
+                        if(carAddition.type == '照明配置')
+                          input(name="carAdditions",type="checkbox",value=carAddition.id,style="margin-top: 0px;margin-bottom: 2px;")
+                          | #{carAddition.content} &nbsp;
+
         .control-group
           label.control-label(for='carAddition') 备注
           .controls
