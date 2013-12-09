@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class CarAddition implements Serializable {
     private Integer id;
     private String content;
+    private String type;
 
     public String getContent() {
         return content;
@@ -23,5 +24,13 @@ public class CarAddition implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
