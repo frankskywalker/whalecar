@@ -8,11 +8,11 @@
             span.caret
           ul.dropdown-menu
             li
-               a(href="#",onClick="return conditionSelect('city','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+               a(href="#",onClick="return conditionSelect('city','',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
             each dicCity in allDicCitys
                li
                  a(href="#",onClick="return conditionSelect('city','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                     if !!session.conditionParams  && dicCity.id == session.conditionParams.city
+                     if !!conditionParams  && dicCity.id == conditionParams.city
                          span(style="color: rgb(170, 61, 70);")= dicCity.cityCname
                      else
                          | #{dicCity.cityCname}
@@ -26,17 +26,17 @@
               each brand in allBrands
                 li.dropdown-submenu
                   a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.brandId}',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
-                    if !!session.conditionParams  &&  brand.brandId == session.conditionParams.carBrand
+                    if !!conditionParams  &&  brand.brandId == conditionParams.carBrand
                       span(style="color: rgb(170, 61, 70);")= brand.brandName
                     else
                       | #{brand.brandName}
                   ul.dropdown-menu
                     li
-                      a(href="#",onClick="return conditionSelect('carModel','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
+                      a(href="#",onClick="return conditionSelect('carModel','',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
                     each carModelLv1 in brand.carModelLv1List
                       li
                         a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                           if carModelLv1.id == session.conditionParams.carModelLv1
+                           if carModelLv1.id == conditionParams.carModelLv1
                                span(style="color: rgb(170, 61, 70);")= carModelLv1.cname
                            else
                                | #{carModelLv1.cname}
@@ -48,31 +48,31 @@
           a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
         li
           a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
-              if session.conditionParams.priceMax == 5
+              if conditionParams.priceMax == 5
                  h4(style="color: rgb(170, 61, 70);") 1万 ~ 5万
               else
                  | 1万 ~ 5万
         li
           a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
-              if session.conditionParams.priceMax == 10
+              if conditionParams.priceMax == 10
                   h4(style="color: rgb(170, 61, 70);") 5万 ~ 10万
               else
                   | 5万 ~ 10万
         li
           a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
-              if session.conditionParams.priceMax == 20
+              if conditionParams.priceMax == 20
                   h4(style="color: rgb(170, 61, 70);") 10万 ~ 20万
               else
                   | 10万 ~ 20万
         li
           a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
-              if session.conditionParams.priceMax == 50
+              if conditionParams.priceMax == 50
                   h4(style="color: rgb(170, 61, 70);") 20万 ~ 50万
               else
                   | 20万 ~ 50万
         li
           a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
-              if session.conditionParams.priceMin == 50
+              if conditionParams.priceMin == 50
                   h4(style="color: rgb(170, 61, 70);") 50万以上
               else
                   | 50万以上
@@ -128,7 +128,7 @@
     <ul class='thumbnails'>
     each carModelView, i in carModelViews.items
       li.span3(style="width:210px;margin-right: 13px;margin-left: 12px;")
-        a.thumbnail(href='./car?id=#{carModelView.carModelLv1}', style='padding: 0px;')
+        a.thumbnail(href='./car?id=#{carModelView.carModelLv1}&city=#{conditionParams.city}', style='padding: 0px;')
           div(name='hoverdiv', style='height: 170px; width: 200px;')
             div(name='imgdiv', style='width: 190px; position: absolute;padding: 10px;')
               img(data-src='holder.js/210x140', alt='210x140', style='width: 190px; height: 140px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')

@@ -56,7 +56,9 @@ public class ShopService {
 			@RequestBody Map<String, Object> conditionMap) {
 		Integer carModelLv2Id = Integer.valueOf(String.valueOf(conditionMap
 				.get("carModelLv2Id")));
-		return shopMapper.queryShopStockViewByCarModelLv2(carModelLv2Id);
+        Integer city = StringUtils.isBlank((String)conditionMap.get("city"))? 0 :Integer.valueOf(String.valueOf(conditionMap
+                .get("city")));
+		return shopMapper.queryShopStockViewByCarModelLv2(carModelLv2Id,city);
 	}
 
 	/**

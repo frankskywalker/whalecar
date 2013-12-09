@@ -85,7 +85,10 @@
 		    Shop ON Shop.id = Shop_Stock.shop
 
 		WHERE
-		    Car_Model_Lv3.carModelLv2 = #{carModelLv2Id}
+		    Car_Model_Lv3.carModelLv2 = #{param1}
+            <if test="param2 != null and param2 != ''">
+                and Shop.shopCity = #{param2}
+            </if>
     </select>
     
     <!-- 根据ShopId查询ShopStockView -->
