@@ -128,7 +128,7 @@
     <ul class='thumbnails'>
     each carModelView, i in carModelViews.items
       li.span3(style="width:210px;margin-right: 13px;margin-left: 12px;")
-        a.thumbnail(href='./car?id=#{carModelView.carModelLv1}&city=#{conditionParams.city}', style='padding: 0px;')
+        a.thumbnail(href='./car?id=#{carModelView.carModelLv1}&city=#{conditionParams.city}&shop=#{conditionParams.shop}', style='padding: 0px;')
           div(name='hoverdiv', style='height: 170px; width: 200px;')
             div(name='imgdiv', style='width: 190px; position: absolute;padding: 10px;')
               img(data-src='holder.js/210x140', alt='210x140', style='width: 190px; height: 140px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
