@@ -58,7 +58,9 @@ public class ShopService {
 				.get("carModelLv2Id")));
         Integer city = StringUtils.isBlank((String)conditionMap.get("city"))? 0 :Integer.valueOf(String.valueOf(conditionMap
                 .get("city")));
-		return shopMapper.queryShopStockViewByCarModelLv2(carModelLv2Id,city);
+        Integer shop = StringUtils.isBlank((String)conditionMap.get("shop"))? 0 :Integer.valueOf(String.valueOf(conditionMap
+                .get("shop")));
+		return shopMapper.queryShopStockViewByCarModelLv2(carModelLv2Id,city,shop);
 	}
 
 	/**

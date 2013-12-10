@@ -94,6 +94,8 @@ public class CarModelService {
 				.get("carModelLv1Id"));
         Integer city = StringUtils.isBlank((String) conditionMap.get("city"))? 0 :Integer.valueOf(String.valueOf(conditionMap
                 .get("city")));
+        Integer shop = StringUtils.isBlank((String) conditionMap.get("shop"))? 0 :Integer.valueOf(String.valueOf(conditionMap
+                .get("shop")));
 		List<CarModelLv2> carModelLv2List = carModelMapper
 				.queryCarModelLv2ByLv1Id(carModelLv1Id);
 
@@ -106,7 +108,7 @@ public class CarModelService {
 				BeanUtils.copyProperties(carModelLv2, carModelLv2WithStockView);
 				// 根据lv2Id查询下面的ShopStock
 				List<ShopStockView> shopStockViewList = shopMapper
-						.queryShopStockViewByCarModelLv2(carModelLv2.getId(),city);
+						.queryShopStockViewByCarModelLv2(carModelLv2.getId(),city,shop);
 				// 计算金额最大最小值和库存总数
 				BigDecimal factoryPriceMin = null;
 				BigDecimal factoryPriceMax = null;

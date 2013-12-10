@@ -89,6 +89,9 @@
             <if test="param2 != null and param2 != ''">
                 and Shop.shopCity = #{param2}
             </if>
+            <if test="param3 != null and param3 != ''">
+                and Shop.id = #{param3}
+            </if>
     </select>
     
     <!-- 根据ShopId查询ShopStockView -->

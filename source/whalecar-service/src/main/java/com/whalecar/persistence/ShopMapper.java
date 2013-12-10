@@ -22,7 +22,7 @@ public interface ShopMapper {
 	 * @return
 	 */
 	public List<ShopStockView> queryShopStockViewByCarModelLv2(
-			Integer carModelLv2Id,Integer city);
+			Integer carModelLv2Id,Integer city,Integer shop);
 
 	/**
 	 * 根据ShopId查询ShopStock
