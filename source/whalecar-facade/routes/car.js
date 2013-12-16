@@ -15,6 +15,8 @@ exports.action = function(req, res, next) {
 
 exports.page = function(req, res, next) {
     var carModelLv1Id = req.query.id;
+    var city = req.query.city;
+    var shop = req.query.shop;
     if (!carModelLv1Id) {
         console.warn("car page error:param id is null!");
         next();
@@ -32,7 +34,9 @@ exports.page = function(req, res, next) {
         carModelLv2: function(callback) {
             service.client.post(
                 "/getCarModelLv2WithStockViewByLv1Id", {
-                carModelLv1Id: carModelLv1Id
+                carModelLv1Id: carModelLv1Id,
+                city:city,
+                shop:shop
             }, function(err, req, res,
             carModelLv2WithStockView) {
                 callback(err, carModelLv2WithStockView);
