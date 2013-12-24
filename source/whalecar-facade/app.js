@@ -142,9 +142,50 @@ app.all('/useroffticketConfirm',requireRole("user"),userOffTicket.offticketConfi
 app.all('/changeUserOffTicketState',userOffTicket.changeUserOffTicketState);
 app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
-app.all('/adver',function(req,res){
-    res.render("adver");
+
+
+app.all('/advertisement0',function(req,res){
+    res.render("./advertisement/adver");
 }) ;
+
+app.all('/advertisement1',function(req,res){
+    res.render("./advertisement/adver1");
+}) ;
+
+app.all('/advertisement2',function(req,res){
+    res.render("./advertisement/adver2");
+}) ;
+
+app.all('/advertisement3',function(req,res){
+    res.render("./advertisement/adver3");
+}) ;
+
+app.all('/advertisement4',function(req,res){
+    res.render("./advertisement/adver4");
+}) ;
+
+app.all('/advertisement5',function(req,res){
+    res.render("./advertisement/adver5");
+}) ;
+
+app.all('/advertisement6',function(req,res){
+    res.render("./advertisement/adver6");
+}) ;
+
+app.all('/advertisement7',function(req,res){
+    res.render("./advertisement/adver7");
+}) ;
+
+app.all('/advertisement8',function(req,res){
+    res.render("./advertisement/adver8");
+}) ;
+
+app.all('/advertisement9',function(req,res){
+    res.render("./advertisement/adver9");
+}) ;
+
+
+
 app.all('/way1',function(req,res){
     res.render("way1");
 }) ;
