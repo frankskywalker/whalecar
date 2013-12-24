@@ -47,7 +47,8 @@ block append content
                 li(style="margin-top: 20px;padding-left: 10px;")
                   h5(style="display:inline;padding-left: 0px;") 颜色:
                     each item in carExtendInfo.colorList
-                      span(style="color:#{item.colorRgb};display:inline")&nbsp;&nbsp;#{item.colorCname}
+                      if item.colorCname
+                        span(style="color:#{item.colorRgb};display:inline-block;border:1px solid black;padding:1px;margin-right:2px;") #{item.colorCname}
                 li
                   h6(style="padding-left:10px;margin-top:10px;padding-right:10px")&nbsp;&nbsp;#{carModelLv1.description}
         .span3

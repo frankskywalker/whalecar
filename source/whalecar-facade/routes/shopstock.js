@@ -34,7 +34,6 @@ exports.stockeditor = function(req, res, next) {
                     }, function(err, req, res, data) {
                         callback(err, data);
                     });
-
                 }
             },
             carAdditions:function(callback){

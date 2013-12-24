@@ -98,7 +98,7 @@ block append content
             input#carOnHandNum.span1(name="carOnOrderNum",type='text', placeholder='现货',value=shopStockView.carOnOrderNum)
             | /
             input#carOnOrderNum.span1(name="carOnHandNum",type='text', placeholder='在途',value=shopStockView.carOnHandNum)
-        .control-group=
+        .control-group
           .controls
             input(name="id",value=shopStockView.id,type="hidden")
             a.btn.pull-right(href='./shophome') 返回
@@ -144,6 +144,8 @@ block append content
     }
     $("#carModelLv1").change(carModelLv1Change);
 
+    var factoryPriceMap = {};
+
     function carModelLv2Change(callback){
         var carModelLv2Id = $("#carModelLv2 option:selected").val();
         $.getJSON("/dic?type=getCarModelLv3ByLv2Id&carModelLv2Id=" + carModelLv2Id,function(data){
@@ -156,6 +158,7 @@ block append content
                 else{
                     $("#carModelLv3").append("<option value='" + carModelLv3.id + "'>" + carModelLv3.fullName+ "</option>");
                 }
+                factoryPriceMap[carModelLv3.id] = carModelLv3.factoryPrice;
             });
             if(typeof(callback) == "function"){
                 callback();
@@ -167,6 +170,11 @@ block append content
 
     function carModelLv3Change(){
         var carModelLv3Id = $("#carModelLv3 option:selected").val();
+
+        //更新出厂价格
+        $("#factoryPrice").val(factoryPriceMap[carModelLv3Id]);
+
+        //更新颜色
         $.getJSON("/dic?type=getOutsideDicColorByCarModelLv3&carModelLv3Id=" + carModelLv3Id,function(data){
             $("#carOutsideColor").empty();
             $("#carOutsideColor").append("<option value=''>请选择...</option>");
