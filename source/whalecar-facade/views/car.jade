@@ -48,7 +48,7 @@ block append content
                   h5(style="display:inline;padding-left: 0px;") 颜色:
                     each item in carExtendInfo.colorList
                       if item.colorCname
-                        span(style="color:#{item.colorRgb};display:inline-block;border:1px solid black;padding:1px;margin-right:2px;") #{item.colorCname}
+                        div(name="colorDiv",data-toggle="tooltip",data-placement="top",data-original-title="#{item.colorCname}",style="width:23px;height:17px;background-color:#{item.colorRgb};display:inline-block;box-shadow: 2px 2px 2px #888888;margin-right:4px;")
                 li
                   h6(style="padding-left:10px;margin-top:10px;padding-right:10px")&nbsp;&nbsp;#{carModelLv1.description}
         .span3
@@ -186,6 +186,7 @@ block append content
     form(id="userOffTicketForm",method="GET",action="./useroffticketConfirm",target="_blank")
         input(type="hidden",name="id")
     script.
+      $('div[name="colorDiv"]').tooltip();
       //预定按钮事件
       function orderClick(id){
         $("#userOrderForm input[name='id']").val(id);
