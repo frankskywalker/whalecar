@@ -50,39 +50,39 @@
     
     <!-- 根据CarModelLv2 查询ShopStockView -->
     <select id="queryShopStockViewByCarModelLv2" parameterType="Integer" resultType="ShopStockView">
-        SELECT 
-		    Shop_Stock.*,
-		    Car_Model_Lv3.shortName as carModelLv3ShortName,
-		    Car_Model_Lv3.fullName as carModelLv3FullName,
-		    Car_Model_Lv3.factoryPrice as factoryPrice,
-		    Car_Model_Lv3.driveType as driveType,
-		    Car_Model_Lv3.gearType as gearType,
-		    (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
-            (select colorRgb from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorRgb,
-            (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
-            (select colorRgb from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorRgb,
-		    Shop.shopName as shopName,
-            Car_Model_Lv2.shortName as carModelLv2ShortName,
-            Car_Model_Lv2.fullName as carModelLv2FullName,
-            Car_Model_Lv2.id as carModelLv2Id,
-            Car_Model_Lv1.cname as carModelLv1Cname,
-            Car_Model_Lv1.id as carModelLv1Id,
-            if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname,
-            (SELECT group_concat(content separator ' ') FROM whalecar_server.Car_Addition where FIND_IN_SET(id,Shop_Stock.carAdditions)) as carAdditionsText
-		FROM
-		    Shop_Stock
-		LEFT JOIN
-		    Car_Model_Lv3 ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
+                SELECT
+        Shop_Stock.*,
+        Car_Model_Lv3.shortName as carModelLv3ShortName,
+        Car_Model_Lv3.fullName as carModelLv3FullName,
+        Car_Model_Lv3.factoryPrice as factoryPrice,
+        Car_Model_Lv3.driveType as driveType,
+        Car_Model_Lv3.gearType as gearType,
+        (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorName,
+        (select colorRgb from Dic_Color where Dic_Color.id = Shop_Stock.carOutsideColor) as carOutsideColorRgb,
+        (select colorCname from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorName,
+        (select colorRgb from Dic_Color where Dic_Color.id = Shop_Stock.carInsideColor) as carInsideColorRgb,
+        Shop.shopName as shopName,
+        Car_Model_Lv2.shortName as carModelLv2ShortName,
+        Car_Model_Lv2.fullName as carModelLv2FullName,
+        Car_Model_Lv2.id as carModelLv2Id,
+        Car_Model_Lv1.cname as carModelLv1Cname,
+        Car_Model_Lv1.id as carModelLv1Id,
+        if(Car_Sub_Brand.cname is null,Car_Brand.cname,Car_Sub_Brand.cname) as carBrandCname,
+        (SELECT group_concat(content separator ' ') FROM whalecar_server.Car_Addition where FIND_IN_SET(id,Shop_Stock.carAdditions)) as carAdditionsText
+        FROM
+        Shop_Stock
         LEFT JOIN
-            Car_Model_Lv2 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+        Car_Model_Lv3 ON Car_Model_Lv3.id = Shop_Stock.carModelLv3
         LEFT JOIN
-            Car_Model_Lv1 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+        Car_Model_Lv2 ON Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
         LEFT JOIN
-            Car_Brand ON Car_Brand.id = Car_Model_Lv1.carBrand
+        Car_Model_Lv1 ON Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
         LEFT JOIN
-            Car_Sub_Brand ON Car_Model_Lv1.carSubBrand = Car_Sub_Brand.id
-		LEFT JOIN
-		    Shop ON Shop.id = Shop_Stock.shop
+        Car_Brand ON Car_Brand.id = Car_Model_Lv1.carBrand
+        LEFT JOIN
+        Car_Sub_Brand ON Car_Model_Lv1.carSubBrand = Car_Sub_Brand.id
+        LEFT JOIN
+        Shop ON Shop.id = Shop_Stock.shop
 
 		WHERE
 		    Car_Model_Lv3.carModelLv2 = #{param1}
