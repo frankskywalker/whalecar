@@ -13,16 +13,17 @@ block append content
                     div.control-group
                         label.control-label(for="userEmail")邮箱
                         div.controls
-                            input(type="text",id="userEmail",name="userEmail",placeholder="邮箱")
+                            input(type="text",id="userEmail",name="userEmail",placeholder="邮箱",style="width: 237px;")
                     div.control-group
                         label.control-label(for="password")密码
                         div.controls
-                            input(type="password",id="loginName",name="password",placeholder="密码")
+                            input(type="password",id="loginName",name="password",placeholder="密码",style="width: 237px;")
                     div.alert.alert-error.hide#login-error 邮箱密码错误，请重新输入!
                     div.alert.alert-success.hide#login-succee 登陆成功
                     div.control-group
                         div.controls
                             input.btn.btn-primary.span2(type="button",onclick="userlogin();",value="登陆")
+                            input.btn.span2(type="button",onclick="switchLoginAndRegist('regist');",value="注册")
                     input(type="hidden",name="prePage",id="prePage",value="#{prePage}")
     script.
         function userlogin(){

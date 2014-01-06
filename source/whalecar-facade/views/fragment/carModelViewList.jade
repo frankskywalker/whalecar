@@ -22,7 +22,7 @@
             span.caret
           ul.dropdown-menu
               li
-                a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
+                a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color:#FFFFFF;padding-left: 7px;") 不限
               each brand in allBrands
                 li.dropdown-submenu
                   a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.brandId}',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;")
@@ -32,7 +32,7 @@
                       | #{brand.brandName}
                   ul.dropdown-menu
                     li
-                      a(href="#",onClick="return conditionSelect('carModel','',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
+                      a(href="#",onClick="conditionSelect('carModel','',true,true);return false;",style="color: #FFFFFF;padding-left: 7px;") 不限
                     each carModelLv1 in brand.carModelLv1List
                       li
                         a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
