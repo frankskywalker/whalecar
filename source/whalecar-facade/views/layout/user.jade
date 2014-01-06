@@ -11,7 +11,7 @@ div(id="loginModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hid
       div.control-group
         label.control-label(for="password")密码
         div.controls
-          input(type="password",id="loginName",name="password",placeholder="密码")
+          input(type="password",id="loginPassword",name="password",placeholder="密码")
       div.alert.alert-error.hide#login-error 邮箱密码错误，请重新输入!
       div.alert.alert-success.hide#login-succee 登陆成功
   .modal-footer
@@ -53,7 +53,7 @@ div(id="registModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hi
         div.controls
           input(type="text",id="userTel",name="userTel",placeholder="手机号码")
       div.alert.alert-error.hide#regist-error 注册失败
-      div.alert.alert-success.hide#regist-succee 注册成功
+      div.alert.alert-success.hide#regist-succee 注册成功,3秒后页面将跳转...
   .modal-footer
     a(href="#",class="btn",onClick="switchLoginAndRegist('login');") 登陆
     a#registSubmitBtn(href="#",class="btn btn-primary",onClick="regist();return false;") 提交注册
@@ -111,9 +111,11 @@ script.
         $.post("/user?type=regist", $("#registForm").serialize())
              .done(function(data) {
              if(data.registSuc){
-               $("#regist-succee").show();
-               $("#regist-error").hide();
-               switchLoginAndRegist('login');
+                $("#loginForm #userEmail").val($("#registForm #userEmail").val());
+                $("#loginForm #loginPassword").val($("#registForm #loginPassword").val());
+                $("#regist-succee").show();
+                $("#regist-error").hide();
+                setTimeout("login()",3000);
              }
              else{
                $("#regist-succee").slideUp();
