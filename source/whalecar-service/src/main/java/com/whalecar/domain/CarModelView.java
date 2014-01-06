@@ -19,6 +19,11 @@ public class CarModelView implements java.io.Serializable {
 	 */
 	private String brandCname;
 
+    /**
+     * 汽车品牌图片地址
+     */
+    private String brandImgPath;
+
 	/**
 	 * 型号名称
 	 */
@@ -164,5 +169,13 @@ public class CarModelView implements java.io.Serializable {
 
     public void setCarModelLv2ShortNames(String carModelLv2ShortNames) {
         this.carModelLv2ShortNames = carModelLv2ShortNames;
+    }
+
+    public String getBrandImgPath() {
+        return brandImgPath;
+    }
+
+    public void setBrandImgPath(String brandImgPath) {
+        this.brandImgPath = brandImgPath;
     }
 }

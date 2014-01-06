@@ -51,6 +51,7 @@
 		SELECT 
 		    Car_Model_Lv1.id as carModelLv1,
 		    if(Car_Model_Lv1.carSubBrand IS NULL,Car_Brand.cname,Car_Sub_Brand.cname) as brandCname,
+            Car_Brand.logoPath as brandImgPath,
 		    Car_Model_Lv1.cname as cname,
 		    Car_Model_Lv1.imgPath as imgPath,
             Car_Model_Lv1.offprice as offprice,
@@ -114,7 +115,7 @@
                 AND Shop.id = #{shop}
             </if>
 		</where>
-		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Model_Lv1.offprice,Car_Model_Lv1.hotmodel,if(Car_Model_Lv1.carSubBrand IS NULL,Car_Brand.cname,Car_Sub_Brand.cname)
+		GROUP BY Car_Model_Lv1.cname , Car_Model_Lv1.imgPath , Car_Model_Lv1.offprice,Car_Model_Lv1.hotmodel,if(Car_Model_Lv1.carSubBrand IS NULL,Car_Brand.cname,Car_Sub_Brand.cname),Car_Brand.logoPath
 	    <if test="orderByName == 'price' and orderType == 'asc'">
 	    ORDER BY shopPriceMin asc
 	    </if>

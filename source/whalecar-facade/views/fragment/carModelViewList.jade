@@ -141,7 +141,10 @@
               .caption(style='background-image: url(img/hover-price.png);padding:0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
                 h4.text-center(style='color: #ffffff;font-size:13px;') 网站价:#{carModelView.shopPriceMin}万 ～ #{carModelView.shopPriceMax}万
         h5
-          img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
+          if(carModelView.brandCname == '一汽-大众')
+              img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
+          img(src="../img/#{carModelView.brandImgPath}",style="margin:0px 3px 3px 0px")
+
           | #{carModelView.brandCname} #{carModelView.cname}
           if carModelView.favorite == 'yes'
             a(href="#",onclick="favorite('#{carModelView.carModelLv1}','del');return false;")

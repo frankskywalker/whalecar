@@ -67,7 +67,14 @@ block append content
             li.media
               .pull-left
                 //img.media-object(src='img/shops/#{shopView.id}.jpg')
-                img.media-object(src='img/shops/1.jpg')
+                if shopView.id == 4
+                    img.media-object(src='img/shops/nb_lhIcon.png')
+                else if shopView.id == 3
+                    img.media-object(src='img/shops/nb_mzIcon.png')
+                else if shopView.id == 1
+                    img.media-object(src='img/shops/nbz-zjyyIcon.png')
+                else
+                    img.media-object(src='img/shops/1.jpg')
               .pull-right
                 div(name='hoverdiv',style="width:125px")
                   div(name='imgdiv')
