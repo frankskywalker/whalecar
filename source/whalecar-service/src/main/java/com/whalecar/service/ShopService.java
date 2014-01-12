@@ -1,8 +1,7 @@
 package com.whalecar.service;
 
-import com.whalecar.domain.Shop;
-import com.whalecar.domain.ShopStockView;
-import com.whalecar.domain.ShopView;
+import com.whalecar.domain.*;
+import com.whalecar.persistence.CarModelMapper;
 import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.tools.PaginationResult;
 import com.whalecar.persistence.tools.PaginationUtils;
@@ -30,6 +29,8 @@ public class ShopService {
 
 	@Autowired
 	private ShopMapper shopMapper;
+    @Autowired
+    private CarModelMapper carModelMapper;
 
     /**
      * 根据用户名密码查询Shop信息 如果没有查询到，说明用户名或密码错误
@@ -205,6 +206,12 @@ public class ShopService {
 					.queryShopStockViewByShop(shop.getId()));
 			shopViewList.add(shopView);
 		}
+
+        //查询carModelLv1列表
+        for (ShopView shopView : shopViewList) {
+            List<CarModelLv1View> carModelLv1Views = carModelMapper.queryIncludeCarModelLv1ByShop(shopView.getId());
+            shopView.setCarModelLv1(carModelLv1Views);
+        }
 
 		// fill PaginationResult
 		PaginationResult<ShopView> result = new PaginationResult<ShopView>(
