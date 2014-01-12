@@ -251,4 +251,27 @@ public class CarModelService {
     public @ResponseBody List<CarModelLv1Image> queryCarModelLv1ImgById(Integer carModelLv1){
         return carModelMapper.queryCarModelLv1ImgById(carModelLv1);
     }
+
+
+    /**
+     * 根据价格查询相关车型
+     * @param price
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value ="/getSimilarCarModelLv1ByPrice")
+    public @ResponseBody List<CarModelLv1> getSimilarCarModelLv1ByPrice(BigDecimal price){
+        return carModelMapper.querySimilarCarModelLv1ByPrice(price);
+    }
+
+
+    /**
+     * 根据shop id查询shop 下的车型以及库存
+     * @param shopId
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value="/getIncludeCarModelLv1ByShop")
+    public @ResponseBody List<CarModelLv1View> getIncludeCarModelLv1ByShop(Integer shopId){
+        return carModelMapper.queryIncludeCarModelLv1ByShop(shopId);
+    }
+
 }

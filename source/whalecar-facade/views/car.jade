@@ -58,38 +58,15 @@ block append content
             h5
               p(style="color:#444444;display:inline")更多&nbsp;&nbsp;
               相关车型
-          ul.thumbnails
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-          ul.thumbnails
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-          legend(style="margin-top:0px")
-            h5
-              p(style="color:#444444;display:inline")更多&nbsp;&nbsp;
-              该4S店其他车型
-          ul.thumbnails
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-          ul.thumbnails
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
-            li.span6(style='')
-              a.thumbnail
-                img#img1(data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car.jpg')
+          <ul class='thumbnails'>
+          each item,i in similarCarModelLv1
+            if i < 8
+                li.span6
+                  a.thumbnail(href="./car?id=#{item.id}")
+                    img#img1(title="#{item.cname}",data-src='holder.js/210x140', alt='210x140', style='width: auto; height: auto;', src='img/car/#{item.id}.png')
+                if i != 0 && (i+1) % 2 == 0
+                  </ul><ul class='thumbnails'>
+          </ul>
     //库存列表
     legend 库存列表
     ul.nav.nav-pills#list

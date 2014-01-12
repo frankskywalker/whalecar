@@ -45,7 +45,6 @@ exports.page = function(req, res, next) {
         carModelLv1Img:function(callback){
             service.client.get("/queryCarModelLv1ImgById?carModelLv1=" + carModelLv1Id,
             function(err, req, res,data){
-                console.log(data);
                 callback(err,data);
             });
         }
@@ -54,12 +53,23 @@ exports.page = function(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.render("car", {
-                carModelLv1: results.carModelLv1,
-                carModelLv2: results.carModelLv2,
-                carModelLv1Img:results.carModelLv1Img,
-                carExtendInfo : calcCarStatistics(results.carModelLv2)
-            });
+            var carExtendInfo = calcCarStatistics(results.carModelLv2);
+            service.client.get("/getSimilarCarModelLv1ByPrice?price=" + carExtendInfo.factoryAvgPrice,
+                function(serr, sreq, sres,similarCarModelLv1){
+                    if (serr) {
+                        next(serr);
+                        return;
+                    }
+                    res.render("car", {
+                        carModelLv1: results.carModelLv1,
+                        carModelLv2: results.carModelLv2,
+                        carModelLv1Img:results.carModelLv1Img,
+                        carExtendInfo : carExtendInfo,
+                        similarCarModelLv1 : similarCarModelLv1
+                    });
+                }
+            );
+
         }
     });
 };
@@ -103,6 +113,7 @@ function calcCarStatistics(carModelLv2List){
     }
     return {factoryMaxPrice : factoryMaxPrice,
         factoryMinPrice : factoryMinPrice,
+        factoryAvgPrice : (factoryMaxPrice + factoryMinPrice) / 2,
         carMaxPrice : carMaxPrice,
         carMinPrice : carMinPrice,
         colorList : colorList,

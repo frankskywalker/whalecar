@@ -77,27 +77,16 @@ block append content
                     img.media-object(src='img/shops/zs_qrIcon.png')
                 else
                     img.media-object(src='img/shops/1.jpg')
-              .pull-right
-                div(name='hoverdiv',style="width:125px")
-                  div(name='imgdiv')
-                    img(src='img/car9.jpg')
-                  div(name='coverdiv')
-                    div#detailNum
-                      h5 库存10台
-              .pull-right
-                div(name='hoverdiv',style="width:250px")
-                  div(name='imgdiv')
-                    img(src='img/car10.jpg')
-                  div(name='coverdiv')
-                    div#detailNum
-                      h5 库存9台
-              .pull-right
-                div(name='hoverdiv',style="width:375px")
-                  div(name='imgdiv')
-                    img(src='img/car11.jpg')
-                  div(name='coverdiv')
-                    div#detailNum
-                      h5 库存154台
+              each carModelLv1,i in shopView.carModelLv1
+                if i < 3
+                    .pull-right
+                        a(href="/car?id=#{carModelLv1.id}&shop=#{shopView.id}")
+                            div(name='hoverdiv',style="width:" + (125 * i + 125) +"px")
+                                div(name='imgdiv')
+                                    img(src='img/car/#{carModelLv1.id}.png',title="#{carModelLv1.cname}")
+                                div(name='coverdiv')
+                                    div#detailNum
+                                        h5 库存#{carModelLv1.carNum}台
               .media-body
                 a(href='./shopinfo?id=#{shopView.id}')
                   h5.media-heading #{shopView.shopName}

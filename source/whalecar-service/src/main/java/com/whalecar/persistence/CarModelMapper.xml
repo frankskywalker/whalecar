@@ -17,6 +17,7 @@
 		</if>
 		ORDER BY orderIndex
 	</select>
+
 	<select parameterType="Integer" id="queryCarModelLv1ViewById" resultType="CarModelLv1View">
 	   SELECT
 	       Car_Model_Lv1.* ,
@@ -179,5 +180,38 @@
         SELECT * FROM Car_Model_Lv1_IMAGE
         WHERE carModelLv1 = #{carModelLv1}
     </select>
+
+    <select id="querySimilarCarModelLv1ByPrice" resultType="CarModelLv1">
+        select t.id,t.cname,t.description from (
+            select  abs(Car_Model_Lv3.factoryPrice - #{param1}) priceDiff,Car_Model_Lv1.* from
+            Car_Model_Lv1,Car_Model_Lv2,Car_Model_Lv3
+            where
+            Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+            and
+            Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2) t
+        group by t.id,t.cname,t.description
+        order by avg(t.priceDiff)
+    </select>
+    
+    <select id="queryIncludeCarModelLv1ByShop" resultType="CarModelLv1View">
+        select
+        distinct Car_Model_Lv1.*,sum(Shop_Stock.carOnHandNum) + sum(Shop_Stock.carOnOrderNum) carNum
+        from
+        Car_Model_Lv1,
+        Car_Model_Lv2,
+        Car_Model_Lv3,
+        Shop_Stock,
+        Shop
+        where
+        Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+        and Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+        and Car_Model_Lv3.id = Shop_Stock.carModelLv3
+        and Shop_Stock.shop = Shop.id
+        and shop  = #{param1}
+        group by Car_Model_Lv1.id,Car_Model_Lv1.cname,Car_Model_Lv1.description
+        order by carNum desc
+
+    </select>
+
 
 </mapper>

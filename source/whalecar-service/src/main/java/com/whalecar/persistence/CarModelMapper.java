@@ -2,6 +2,7 @@ package com.whalecar.persistence;
 
 import com.whalecar.domain.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -62,4 +63,18 @@ public interface CarModelMapper {
      * @return
      */
     public List<CarModelLv1Image> queryCarModelLv1ImgById(Integer carModelLv1);
+
+    /**
+     * 根据价格差价查询相关车型
+     * @param price
+     * @return
+     */
+    public List<CarModelLv1> querySimilarCarModelLv1ByPrice(BigDecimal price);
+
+    /**
+     *
+     * @param shopId
+     * @return
+     */
+    public List<CarModelLv1View> queryIncludeCarModelLv1ByShop(Integer shopId);
 }
