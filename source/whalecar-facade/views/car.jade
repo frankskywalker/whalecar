@@ -79,22 +79,22 @@ block append content
           table.table
             thead
               tr
-                th(style="width:300px")
+                th(style="width:280px")
                   p 经销商
                 th(style="width:180px")
                   p 车型
                 th(style="width:100px")
                   p 变速箱
-                th(style="width:65px")
+                th(style="width:55px")
                   p 内饰
-                th(style="width:65px")
+                th(style="width:55px")
                   p 外饰
                 th(style="width:90px")
                   p 配置说明
-                th(style="width:50px")
-                  p 库存
-                th(style="width:10px")
-                  p
+                th(style="width:90px")
+                  p 价格
+                th(style="width:120px")
+                  p 库存(现货/在途)
             tbody
               each shopStockView in item.shopStockList
                   if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > -1
@@ -107,10 +107,13 @@ block append content
                       td #{shopStockView.carInsideColorName}
                       td #{shopStockView.carOutsideColorName}
                       td 点击展开
-                      td #{shopStockView.carOnHandNum + shopStockView.carOnOrderNum}
                       td
+                        span(style="vertical-align: middle;color:#ec6197;font-size:20px") #{shopStockView.carPrice}万
+                        span(style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through") #{shopStockView.factoryPrice}万
+
+                      td #{shopStockView.carOnHandNum}/#{shopStockView.carOnOrderNum}
                     tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
-                      td(colspan='4')
+                      td(colspan='7')
                         table
                           tbody
                             tr.detail
@@ -119,11 +122,8 @@ block append content
                                 | #{shopStockView.carAdditionsText}
                                 br
                                 | #{shopStockView.carAddition}
-                      td(colspan='1',style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through")  #{shopStockView.factoryPrice}万
-                      td(colspan='1',style="vertical-align: middle;color:#ec6197;font-size:20px")  #{shopStockView.carPrice}万
-                      td(colspan='1',style="vertical-align: middle;padding-left: 0px;padding-right: 0px;")
+                      td(colspan='1',style="")
                         a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
-                      td(colspan='1',style="vertical-align: middle")
               else
                 tr
                   td(colspan='8') 暂无库存

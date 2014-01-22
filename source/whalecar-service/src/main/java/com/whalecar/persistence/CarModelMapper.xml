@@ -212,6 +212,22 @@
         order by carNum desc
 
     </select>
+    
+    <select id="queryPriceOffCarModelLv1" resultType="CarModelLv1View">
+        select
+        Car_Model_Lv1.* ,Shop_Stock.carPrice as shopPrice,Car_Model_Lv3.factoryPrice as factoryPrice
+        from
+        Car_Model_Lv1,
+        Car_Model_Lv2,
+        Car_Model_Lv3,
+        Shop_Stock
+        where
+        Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
+        and Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
+        and Car_Model_Lv3.id = Shop_Stock.carModelLv3
+        and Shop_Stock.priceOff = 'yes'
+        order by Shop_Stock.priceOffIndex
 
+    </select>
 
 </mapper>

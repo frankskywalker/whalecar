@@ -1,12 +1,16 @@
 package com.whalecar.service;
 
-import cn.emay.sdk.client.api.Client;
+import com.shcm.bean.ReplyBean;
+import com.shcm.bean.SendStateBean;
+import com.shcm.send.DataApi;
+import com.shcm.send.OpenApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
@@ -18,7 +22,20 @@ public class SmsService {
 
     Logger logger = LoggerFactory.getLogger(SmsService.class);
 
-    private static Client client=null;
+    private static String sOpenUrl = "http://smsapi.c123.cn/OpenPlatform/OpenApi";
+    private static String sDataUrl = "http://smsapi.c123.cn/DataPlatform/DataApi";
+
+    // 接口帐号
+    private static final String account = "1001@500715620001";
+
+    // 接口密钥
+    private static final String authkey = "0E82875A26A0CAF78713A94A004E6421";
+
+    // 通道组编号
+    private static final int cgid = 785;
+
+    // 默认使用的签名编号(未指定签名编号时传此值到服务器)
+    private static final int csid = 0;
 
     /**
      * 即时发送短信
@@ -28,23 +45,7 @@ public class SmsService {
      * @return
      */
     public boolean sendSMS(String[] mobiles,String smsContent){
-        //default priority is 3
-        int smsPriority = 3;
-        int result = getClient().sendSMS(mobiles,smsContent,smsPriority);
-        //如果错误代码为-1107或17，说明未激活，进行激活并重发
-        if(result == -1107 || result == 17){
-            ResourceBundle bundle= PropertyResourceBundle.getBundle("sms-config");
-            getClient().registEx(bundle.getString("key"));
-            result = getClient().sendSMS(mobiles,smsContent,smsPriority);
-        }
-        if(result == 0){
-            logger.info("短信发送成功，电话号码:{},短信内容:{}",mobiles,smsContent);
-            return true;
-        }
-        else{
-            logger.warn("短信发送失败，错误代码:{},电话号码:{},短信内容:{}",result,mobiles,smsContent);
-            return false;
-        }
+        return sendScheduledSMS(mobiles,smsContent,null);
     }
 
     /**
@@ -56,35 +57,42 @@ public class SmsService {
      * @return
      */
     public boolean sendScheduledSMS(String[] mobiles, String smsContent, Date sendTime){
-        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddhhmmss");
-        int result = getClient().sendScheduledSMS(mobiles,smsContent,sf.format(sendTime));
-        if(result == 0){
-            logger.info("短信发送成功，电话号码:{},短信内容:{}",mobiles,smsContent);
+        // 发送参数
+        OpenApi.initialzeAccount(sOpenUrl, account, authkey, cgid, csid);
+
+        // 状态及回复参数
+        DataApi.initialzeAccount(sDataUrl, account, authkey);
+
+        // 取帐户余额
+        double dReamin = OpenApi.getBalance();
+        logger.info("短信可用余额: " + dReamin);
+
+        // 发送短信
+        try{
+            String sSend = new String(smsContent.getBytes(), "UTF-8");
+        }
+        catch (Exception e){
+            logger.warn(e.getMessage());
+        }
+        //如果发送时间为空，则表示即时发送
+        String time = null;
+        if(sendTime != null){
+            SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+            time = format.format(sendTime);
+        }
+
+        int nRet = OpenApi.sendOnce(mobiles, smsContent, cgid, csid, time);
+
+        if(nRet > 0)
+        {
+            logger.info("发送成功! => nRet:{},mobiles:{},smsContent:{},sendTime:",nRet,mobiles,smsContent,sendTime);
             return true;
         }
-        else{
-            logger.warn("短信发送失败，错误代码:{},电话号码:{},短信内容:{}",result,mobiles,smsContent);
+        else
+        {
+            logger.warn("发送失败! => nRet:{},mobiles:{},smsContent:{},sendTime:",nRet,mobiles,smsContent,sendTime);
             return false;
         }
-    }
 
-    /**
-     * 生成100000 ~ 999999之间的随机数
-     * @return
-     */
-    public String genAuthCode(){
-        return String.valueOf((int)(Math.random()*899999) + 100000);
-    }
-
-    private synchronized  Client getClient(){
-        ResourceBundle bundle= PropertyResourceBundle.getBundle("sms-config");
-        if(client==null){
-            try {
-                client=new Client(bundle.getString("softwareSerialNo"),bundle.getString("key"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return client;
     }
 }

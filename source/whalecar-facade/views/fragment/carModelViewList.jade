@@ -152,9 +152,9 @@
           else
             a(href="#",onclick="favorite('#{carModelView.carModelLv1}','add');return false;")
               img.pull-right(src="../img/love.png")
-          if carModelView.offprice == 'yes'
-            img.pull-right(src="../img/focusBand.png")
           if carModelView.hotmodel == 'yes'
+            img.pull-right(src="../img/focusBand.png")
+          if carModelView.offprice == 'yes'
             img.pull-right(src="../img/cheapBand.png")
 
       if i != 0 && (i+1) % 4 == 0

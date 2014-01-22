@@ -72,9 +72,15 @@ public interface CarModelMapper {
     public List<CarModelLv1> querySimilarCarModelLv1ByPrice(BigDecimal price);
 
     /**
-     *
+     * 根据shop查询包含的车型
      * @param shopId
      * @return
      */
     public List<CarModelLv1View> queryIncludeCarModelLv1ByShop(Integer shopId);
+
+    /**
+     * 查询特惠车型
+     * @return
+     */
+    public List<CarModelLv1View> queryPriceOffCarModelLv1();
 }

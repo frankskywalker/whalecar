@@ -107,6 +107,7 @@ exports.shoplist = function(req, res, next) {
         function(error, request, response, data) {
            if (error) {
                next(error);
+               return;
            }
            res.render("shop_list",{ shopViewList: data,
                conditionParams: modelViewConditionParams});

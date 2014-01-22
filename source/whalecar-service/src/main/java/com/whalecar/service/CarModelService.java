@@ -274,4 +274,13 @@ public class CarModelService {
         return carModelMapper.queryIncludeCarModelLv1ByShop(shopId);
     }
 
+    /**
+     * 查询优惠车型信息
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value="/getPriceOffCarModelLv1")
+    public @ResponseBody List<CarModelLv1View> getPriceOffCarModelLv1(){
+        return carModelMapper.queryPriceOffCarModelLv1();
+    }
+
 }
