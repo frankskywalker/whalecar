@@ -64,7 +64,7 @@ public class CarModelLv1View extends CarModelLv1 {
 
     public BigDecimal getDiffPrice(){
         if(factoryPrice != null && shopPrice != null){
-            return this.factoryPrice.subtract(this.shopPrice).multiply(new BigDecimal(1000));
+            return this.factoryPrice.subtract(this.shopPrice).multiply(new BigDecimal(10000));
         }
         else{
             return null;
