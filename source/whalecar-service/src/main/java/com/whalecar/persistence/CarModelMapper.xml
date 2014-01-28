@@ -174,7 +174,7 @@
                 AND Shop.id = #{shop}
             </if>
         </where>
-	</select>
+    </select>
 
     <select id="queryCarModelLv1ImgById" resultType="CarModelLv1Image">
         SELECT * FROM Car_Model_Lv1_IMAGE

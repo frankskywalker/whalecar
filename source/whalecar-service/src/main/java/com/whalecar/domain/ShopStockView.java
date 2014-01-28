@@ -29,9 +29,9 @@ public class ShopStockView extends ShopStock {
     private String carBrandCname;
 
     private String carAdditionsText;
+    private String priceOff;
 
-
-	/**
+    /**
 	 * 驱动类型
 	 */
 	private String driveType;
@@ -40,7 +40,15 @@ public class ShopStockView extends ShopStock {
 	 */
 	private String gearType;
 
-	public String getCarModelLv3ShortName() {
+    public String getPriceOff() {
+        return priceOff;
+    }
+
+    public void setPriceOff(String priceOff) {
+        this.priceOff = priceOff;
+    }
+
+    public String getCarModelLv3ShortName() {
 		return carModelLv3ShortName;
 	}
 

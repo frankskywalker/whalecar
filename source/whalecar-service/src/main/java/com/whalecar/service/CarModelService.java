@@ -119,6 +119,7 @@ public class CarModelService {
 				Set<String> carModelLv3NameSet = new HashSet<String>();
 				// 遍历shopStockViewList,开始计算
 				for (int i = 0; i < shopStockViewList.size(); i++) {
+                    carModelLv2WithStockView.setPriceOff(shopStockViewList.get(i).getPriceOff());
 					if (i == 0) {
 						factoryPriceMin = shopStockViewList.get(i)
 								.getFactoryPrice();

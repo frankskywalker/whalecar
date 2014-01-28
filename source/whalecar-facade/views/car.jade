@@ -101,7 +101,10 @@ block append content
                     if(firstActivedTab == "")
                        - firstActivedTab = item.id
                     tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
-                      td #{shopStockView.shopName}
+                      td
+                        | #{shopStockView.shopName}
+                        if shopStockView.priceOff == "yes"
+                          img(width="54px",height="18px",src="img/sale.png")
                       td #{shopStockView.carModelLv3FullName}
                       td #{shopStockView.gearType}
                       td #{shopStockView.carInsideColorName}

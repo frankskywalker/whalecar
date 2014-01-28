@@ -92,6 +92,7 @@
             <if test="param3 != null and param3 != ''">
                 and Shop.id = #{param3}
             </if>
+        order by priceOff desc
     </select>
     
     <!-- 根据ShopId查询ShopStockView -->
