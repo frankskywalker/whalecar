@@ -130,7 +130,7 @@ li h5 {
 }
 
 a.thumbnail:hover,a.thumbnail:focus {
-    box-shadow: 0 1px 4px rgba(64, 131, 169, 0.5);
+    box-shadow: 0 1px 4px rgba(230, 230, 230, 0.5);
 }
 
 footer h5 {
@@ -175,9 +175,10 @@ body {
 }
 .navbar-inverse .navbar-inner {
     /*background-color: #333333;*/
-    background-image: linear-gradient(to bottom, #333333, #222222);
+    background-image: linear-gradient(to bottom, #2f2f2f, #2f2f2f);
     background-repeat: repeat-x;
     border-color: #252525;
+    border:0px;
 }
 
 .nav .dropdown-toggle .caret {
@@ -185,7 +186,7 @@ body {
 }
 
 .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
-    background-color: #222222;
+    background-color: #999999;
     color: #FFFFFF;
     border-radius: 10px 10px 10px 10px;
     font-weight: bold;
