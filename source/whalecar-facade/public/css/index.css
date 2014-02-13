@@ -39,6 +39,10 @@ h1, h2, h3, h4, h5, h6 {
     text-rendering: optimizelegibility;
 }
 
+h4{
+    color:#f40000;
+}
+
 .thumbnail{
     background-color: #FFFFFF;
     border-color: #ffffff;
@@ -86,7 +90,7 @@ strong {
 
 li h5{
     font-weight: bold;
-    color: #4083A9;
+    color: #333333;
     margin: 10px 0 0;
     max-height: 16px;
     /*padding: 0 0 0 10px;*/
@@ -103,7 +107,7 @@ li h5{
 }
 
 a.thumbnail:hover, a.thumbnail:focus {
-    box-shadow: 0 1px 4px rgba(64, 131, 169, 0.5);
+    box-shadow: 0 1px 4px rgba(180, 180, 180, 0.5);
 }
 
 #footer h5{
