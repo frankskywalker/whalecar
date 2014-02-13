@@ -215,18 +215,32 @@
     
     <select id="queryPriceOffCarModelLv1" resultType="CarModelLv1View">
         select
-        Car_Model_Lv1.* ,Shop_Stock.carPrice as shopPrice,Car_Model_Lv3.factoryPrice as factoryPrice
+        distinct Car_Model_Lv1_out . *,
+        Shop_Stock.carPrice as shopPrice,
+        Car_Model_Lv3_out.factoryPrice as factoryPrice
         from
-        Car_Model_Lv1,
+        Car_Model_Lv1 as Car_Model_Lv1_out,
         Car_Model_Lv2,
-        Car_Model_Lv3,
+        Car_Model_Lv3 as Car_Model_Lv3_out,
         Shop_Stock
         where
-        Car_Model_Lv1.id = Car_Model_Lv2.carModelLv1
-        and Car_Model_Lv2.id = Car_Model_Lv3.carModelLv2
-        and Car_Model_Lv3.id = Shop_Stock.carModelLv3
-        and Shop_Stock.priceOff = 'yes'
-        order by Shop_Stock.priceOffIndex
+        Car_Model_Lv1_out.id = Car_Model_Lv2.carModelLv1
+        and Car_Model_Lv2.id = Car_Model_Lv3_out.carModelLv2
+        and Car_Model_Lv3_out.id = Shop_Stock.carModelLv3
+        and Car_Model_Lv1_out.offprice = 'yes'
+        and Shop_Stock.carPrice - Car_Model_Lv3_out.factoryPrice = (
+        select
+        min(Shop_Stock.carPrice - Car_Model_Lv3_in.factoryPrice) as diffPrice
+        from
+        Car_Model_Lv1 as Car_Model_Lv1_in, Car_Model_Lv2, Car_Model_Lv3 as Car_Model_Lv3_in, Shop_Stock
+        where
+        Car_Model_Lv1_in.id = Car_Model_Lv2.carModelLv1
+        and Car_Model_Lv2.id = Car_Model_Lv3_in.carModelLv2
+        and Car_Model_Lv3_in.id = Shop_Stock.carModelLv3
+        and Car_Model_Lv1_in.offprice = 'yes'
+        and Car_Model_Lv1_out.id = Car_Model_Lv1_in.id
+        group by Car_Model_Lv1_in.id)
+        order by Car_Model_Lv1_out.offPriceIndex
 
     </select>
 
