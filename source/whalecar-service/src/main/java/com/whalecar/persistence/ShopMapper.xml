@@ -92,7 +92,7 @@
             <if test="param3 != null and param3 != ''">
                 and Shop.id = #{param3}
             </if>
-        order by priceOff desc
+        order by Shop_Stock.carPrice - Car_Model_Lv3.factoryPrice
     </select>
     
     <!-- 根据ShopId查询ShopStockView -->
