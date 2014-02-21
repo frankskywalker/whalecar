@@ -10,7 +10,7 @@ exports.initData = function(req, res, next) {
     // call service
     async.parallel({
         allDicCitys: function(callback) {
-            service.client.get("/getAllDicCity", function(err, req, res, data) {
+            service.client.get("/queryDicCityAndArea", function(err, req, res, data) {
                 callback(err, data);
             });
         },
