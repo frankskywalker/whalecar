@@ -96,14 +96,14 @@ block append content
                 th(style="width:120px")
                   p 库存(现货/在途)
             tbody
-              each shopStockView in item.shopStockList
+              each shopStockView,shopStockViewIndex in item.shopStockList
                   if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > -1
                     if(firstActivedTab == "")
                        - firstActivedTab = item.id
                     tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
                       td
                         | #{shopStockView.shopName}
-                        if shopStockView.priceOff == "yes"
+                        if shopStockViewIndex < 3
                           img(width="54px",height="18px",src="img/sale.png")
                       td #{shopStockView.carModelLv3FullName}
                       td #{shopStockView.gearType}
