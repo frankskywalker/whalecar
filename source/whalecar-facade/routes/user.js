@@ -128,6 +128,7 @@ function regist(req, res, next) {
         userEmail: req.body.userEmail,
         loginPassword: req.body.loginPassword,
         userCity: req.body.userCity,
+        userArea: req.body.userArea,    //用户地区
         userName: req.body.userName,
         userTel: req.body.userTel
     };

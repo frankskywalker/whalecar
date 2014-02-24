@@ -5,11 +5,11 @@ div(id="loginModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hid
   .modal-body
     form.form-horizontal#loginForm(action="/login",method="post")
       div.control-group
-        label.control-label(for="userEmail")邮箱
+        label.control-label(for="userEmail") 邮箱
         div.controls
           input(type="text",id="userEmail",name="userEmail",placeholder="邮箱")
       div.control-group
-        label.control-label(for="password")密码
+        label.control-label(for="password") 密码
         div.controls
           input(type="password",id="loginPassword",name="password",placeholder="密码")
       div.alert.alert-error.hide#login-error 邮箱密码错误，请重新输入!
@@ -26,30 +26,36 @@ div(id="registModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hi
   .modal-body
     form.form-horizontal#registForm(action="/regist",method="post")
       div.control-group
-        label.control-label(for="userEmail")邮箱地址
+        label.control-label(for="userEmail") 邮箱地址
         div.controls
           input(type="text",id="userEmail",name="userEmail",placeholder="邮箱地址")
       div.control-group
-        label.control-label(for="loginPassword")密码
+        label.control-label(for="loginPassword") 密码
         div.controls
           input(type="password",id="loginPassword",name="loginPassword",placeholder="密码")
       div.control-group
-        label.control-label(for="loginPasswordConfirm")密码确认
+        label.control-label(for="loginPasswordConfirm") 密码确认
         div.controls
           input(type="password",id="loginPasswordConfirm",name="loginPasswordConfirm",placeholder="再输入一遍密码")
       div.control-group
-        label.control-label(for="userName")姓名
+        label.control-label(for="userName") 姓名
         div.controls
           input(type="text",id="userName",name="userName",placeholder="姓名")
       div.control-group
-        label.control-label(for="userCity")城市
+        label.control-label(for="userCity") 城市
         div.controls
-          select(id="userCity",name="userCity")
+          select(id="userCity",name="userCity",onchange="getCityID();")
             option(value="") 选择城市
             each city in allDicCitys
                 option(value="#{city.id}") #{city.cityCname}
       div.control-group
-        label.control-label(for="userTel")手机号码
+        label.control-label(for="userArea") 县市区
+        div.controls
+          select(id="userArea",name="userArea")
+            option(value="") 选择县市区
+      input#citysData(type="hidden",value=JSON.stringify(allDicCitys))
+      div.control-group
+        label.control-label(for="userTel") 手机号码
         div.controls
           input(type="text",id="userTel",name="userTel",placeholder="手机号码")
       div.alert.alert-error.hide#regist-error 注册失败
@@ -124,4 +130,20 @@ script.
            });
      }
     });
+  }
+
+  function getCityID(){
+    var citys =  eval($("#citysData").val());
+    var cityId = $("#userCity").val();
+    for(var i=0;i<citys.length;i++){
+        if(cityId == citys[i].id){
+            $("#userArea").empty();
+            $("#userArea").append('<option value="">选择县市区</option>');
+            var areaList = citys[i].areaList;
+            for(var j=0;j<areaList.length;j++){
+              $("#userArea").append("<option value=" + areaList[j].id + ">" + areaList[j].areaCname + "</option>");
+            }
+          break;
+        }
+    }
   }

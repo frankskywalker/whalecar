@@ -1,5 +1,6 @@
 package com.whalecar.persistence;
 
+import com.whalecar.domain.DicArea;
 import com.whalecar.domain.DicCity;
 import com.whalecar.domain.DicColor;
 
@@ -20,4 +21,6 @@ public interface DicMapper {
 	public List<DicColor> queryOutsideDicColorBycarModelLv3(Integer carModelLv3Id);
 
     public List<DicColor> queryInsideDicColorBycarModelLv3(Integer carModelLv3Id);
+
+    public List<DicArea> queryAllDicArea(Integer city_id);//查询所有地区
 }

@@ -1,6 +1,7 @@
 package com.whalecar.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
@@ -20,29 +21,8 @@ public class DicCity implements Serializable {
 	private String cityEname;
 	private Integer orderIndex;
 	private String flagUseable;
+    private List<DicArea> AreaList;
 
-	public DicCity() {
-	}
-
-	public DicCity(String provinceCname, String provinceEname,
-			String cityCname, String cityEname, String flagUseable) {
-		this.provinceCname = provinceCname;
-		this.provinceEname = provinceEname;
-		this.cityCname = cityCname;
-		this.cityEname = cityEname;
-		this.flagUseable = flagUseable;
-	}
-
-	public DicCity(String provinceCname, String provinceEname,
-			String cityCname, String cityEname, Integer orderIndex,
-			String flagUseable) {
-		this.provinceCname = provinceCname;
-		this.provinceEname = provinceEname;
-		this.cityCname = cityCname;
-		this.cityEname = cityEname;
-		this.orderIndex = orderIndex;
-		this.flagUseable = flagUseable;
-	}
 
 	public Integer getId() {
 		return this.id;
@@ -99,5 +79,9 @@ public class DicCity implements Serializable {
 	public void setFlagUseable(String flagUseable) {
 		this.flagUseable = flagUseable;
 	}
+
+    public List<DicArea> getAreaList() { return AreaList;}
+
+    public void setAreaList(List<DicArea> areaList) { AreaList = areaList; }
 
 }

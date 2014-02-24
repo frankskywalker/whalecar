@@ -13,10 +13,11 @@
   	LIMIT 1
   </select>
 
+    <!--添加了userArea-->
   <insert id="createUser" parameterType="map">
     insert into 
-    User (loginName,loginPassword,userCity,userEmail,userName,userTel)
-    values (#{loginName},PASSWORD(#{loginPassword}),#{userCity},#{userEmail},#{userName},#{userTel})
+    User (loginName,loginPassword,userCity,userArea,userEmail,userName,userTel)
+    values (#{loginName},PASSWORD(#{loginPassword}),#{userCity},#{userArea},#{userEmail},#{userName},#{userTel})
   </insert>
 
   <select id="queryCountByCondition" resultType="int">

@@ -13,6 +13,13 @@
   	Order by orderIndex
   </select>
 
+    <!-- 查询宁波所有市区，县市-->
+    <select id="queryAllDicArea" resultType="DicArea">
+        SELECT
+        *
+        FROM Dic_Area where city_id = #{city_id}
+    </select>
+
   <select id="queryAllDicColor" resultType="DicColor">
   	SELECT
   		* 

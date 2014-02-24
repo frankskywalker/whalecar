@@ -18,6 +18,7 @@ public class User implements Serializable {
 	private String userTel;
 	private String userEmail;
 	private int userCity;
+    private int userArea;
 	private String loginName;
 	private String loginPassword;
 	private String flagUseable;
@@ -101,4 +102,7 @@ public class User implements Serializable {
 		this.flagUseable = flagUseable;
 	}
 
+    public int getUserArea() { return userArea; }
+
+    public void setUserArea(int userArea) { this.userArea = userArea; }
 }

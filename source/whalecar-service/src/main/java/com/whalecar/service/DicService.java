@@ -1,5 +1,6 @@
 package com.whalecar.service;
 
+import com.whalecar.domain.DicArea;
 import com.whalecar.domain.DicCity;
 import com.whalecar.domain.DicColor;
 import com.whalecar.persistence.DicMapper;
@@ -7,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -33,6 +35,22 @@ public class DicService {
 	List<DicCity> getAllDicCity() {
 		return dicMapper.queryAllDicCity();
 	}
+
+
+    /**
+     * 返回所有宁波市区，县市
+     *
+     * @return
+     */
+    @RequestMapping("/queryDicCityAndArea")
+    public @ResponseBody
+    List<DicCity> queryDicCityAndArea() {
+        List<DicCity> cityList=dicMapper.queryAllDicCity();
+        for(DicCity c:cityList){
+            c.setAreaList(dicMapper.queryAllDicArea(c.getId()));
+        }
+        return cityList;
+    }
 
 	/**
 	 * 返回所有颜色

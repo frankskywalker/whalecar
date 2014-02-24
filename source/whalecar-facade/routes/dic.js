@@ -19,7 +19,7 @@ exports.query = function(req, res,next) {
     }else if (type == 'DicCity') {
         //获取所有的dicCity
         getDicCity(req, res,next);
-    } else {
+    }else {
 	console.log("dic request type is null");
         res.send("{error:'type is not funod!!'}");
     }
@@ -64,9 +64,9 @@ function getCarModelLv3ByLv2Id(request, response, next) {
     });
 }
 
-//Get Dic City
+//Get Dic City and area
 function getDicCity(request, response, next) {
-    service.client.get("/getAllDicCity", function(err, req, res, data) {
+    service.client.get("/queryDicCityAndArea", function(err, req, res, data) {
         if (err) {
             next(err);
         } else {
@@ -74,6 +74,7 @@ function getDicCity(request, response, next) {
         }
     });
 }
+
 
 //根据carModelLv3获取dicColor
 
