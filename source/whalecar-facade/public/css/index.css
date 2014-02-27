@@ -217,7 +217,7 @@ a.thumbnail:hover, a.thumbnail:focus {
 }
 
 #focus{
-    margin-top: 25px;
+    /*margin-top: 25px;*/
     /*background-image:url("../img/cheapBackground.png");*/
 }
 
