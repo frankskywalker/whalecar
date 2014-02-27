@@ -13,8 +13,9 @@ var index = require('./routes/index'),
     userOrder = require('./routes/userOrder'),
     userOffTicket = require('./routes/userOffTicket'),
     userSubmitPrice = require('./routes/userSubmitPrice'),
-    validator = require('./routes/validator');
-    
+    validator = require('./routes/validator'),
+    manager = require('./routes/manager');
+
 
 var app = express();
 
@@ -142,6 +143,9 @@ app.all('/useroffticketConfirm',requireRole("user"),userOffTicket.offticketConfi
 app.all('/changeUserOffTicketState',userOffTicket.changeUserOffTicketState);
 app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
+app.all('/managerUserOffTicket',manager.userOffTicket);
+app.all('/managerUserOrder',manager.userOrder);
+app.all('/managerUserSubmitPrice',manager.userSubmitPrice);
 
 
 app.all('/advertisement0',function(req,res){
