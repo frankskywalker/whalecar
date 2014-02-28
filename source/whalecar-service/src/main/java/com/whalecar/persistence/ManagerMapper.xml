@@ -6,30 +6,30 @@
     <select id="queryUserOffTicket" resultType="UserOffTicketManager">
         select uot.createDate,uot.ticketSn,uot.phoneNum,uot.state,s.shopName,s.shopTel,cml3.fullName,cml3.factoryPrice,
         cml1.cname cnameLv1,cb.cname cnameCb,u.userName,u.userEmail
-        from user_off_ticket uot inner join shop_stock ss on uot.shopStock = ss.id inner join shop s on ss.shop = s.id
-        inner join car_model_lv3 cml3 on ss.carModelLv3 = cml3.id inner join car_model_lv2 cml2 on cml3.carModelLv2 = cml2.id
-        inner join car_model_lv1 cml1 on cml2.carModelLv1 = cml1.id inner join car_brand cb on cml1.carBrand = cb.id inner join
-        user u on uot.user = u.id
+        from User_Off_Ticket uot inner join Shop_Stock ss on uot.shopStock = ss.id inner join Shop s on ss.shop = s.id
+        inner join Car_Model_Lv3 cml3 on ss.carModelLv3 = cml3.id inner join Car_Model_Lv2 cml2 on cml3.carModelLv2 = cml2.id
+        inner join Car_Model_Lv1 cml1 on cml2.carModelLv1 = cml1.id inner join Car_Brand cb on cml1.carBrand = cb.id inner join
+        User u on uot.user = u.id
     </select>
 
 
     <select id="queryUserOrder" resultType="UserOrderManager">
         select uo.orderSn,uo.orderCreateDate,uo.orderPrice,uo.orderProcessState,uo.orderState,uo.orderTitle,uo.orderType,
-        s.shopName,s.shopTel,u.userName,u.userEmail,u.userTel from user_order uo inner join shop s on uo.shop = s.id
-        inner join user u on uo.user = u.id
+        s.shopName,s.shopTel,u.userName,u.userEmail,u.userTel from User_Order uo inner join Shop s on uo.shop = s.id
+        inner join User u on uo.user = u.id
     </select>
 
     <select id="queryUserSubmitPrice" resultType="UserSubmitPriceManager">
         select usp.createDate,usp.state,usp.originalPrice,usp.stateChangeDate,usp.userPrice,usp.shopPrice,s.shopName,
         s.shopTel,cml3.fullName, cml1.cname cnameLv1,cb.cname cnameCb,u.userName,u.userEmail,u.userTel
-        from user_submit_price usp inner join shop_stock ss on usp.shopStock = ss.id inner join shop s on ss.shop = s.id
-        inner join car_model_lv3 cml3 on ss.carModelLv3 = cml3.id inner join car_model_lv2 cml2 on cml3.carModelLv2 = cml2.id
-        inner join car_model_lv1 cml1 on cml2.carModelLv1 = cml1.id inner join car_brand cb on cml1.carBrand = cb.id inner join
-        user u on usp.user = u.id
+        from User_Submit_Price usp inner join Shop_Stock ss on usp.shopStock = ss.id inner join Shop s on ss.shop = s.id
+        inner join Car_Model_Lv3 cml3 on ss.carModelLv3 = cml3.id inner join Car_Model_Lv2 cml2 on cml3.carModelLv2 = cml2.id
+        inner join Car_Model_Lv1 cml1 on cml2.carModelLv1 = cml1.id inner join Car_Brand cb on cml1.carBrand = cb.id inner join
+        User u on usp.user = u.id
     </select>
 
     <select id="queryUser" resultType="User">
         select *
-        from user
+        from User
     </select>
 </mapper>
