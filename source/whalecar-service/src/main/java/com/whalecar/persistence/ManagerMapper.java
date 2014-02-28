@@ -1,5 +1,6 @@
 package com.whalecar.persistence;
 
+import com.whalecar.domain.User;
 import com.whalecar.domain.UserOffTicketManager;
 import com.whalecar.domain.UserOrderManager;
 import com.whalecar.domain.UserSubmitPriceManager;
@@ -30,4 +31,11 @@ public interface ManagerMapper {
      * @return
      */
     public List<UserSubmitPriceManager> queryUserSubmitPrice();
+
+
+    /**
+     * 查找所有用户
+     * @return
+     */
+    public List<User> queryUser();
 }

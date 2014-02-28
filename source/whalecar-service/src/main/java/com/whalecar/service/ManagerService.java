@@ -1,5 +1,6 @@
 package com.whalecar.service;
 
+import com.whalecar.domain.User;
 import com.whalecar.domain.UserOffTicketManager;
 import com.whalecar.domain.UserOrderManager;
 import com.whalecar.domain.UserSubmitPriceManager;
@@ -52,5 +53,16 @@ public class ManagerService {
     public @ResponseBody
     List<UserSubmitPriceManager> queryUserSubmitPrice(){
       return managerMapper.queryUserSubmitPrice();
+    }
+
+
+    /**
+     * 查找所有用户
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/managerUser")
+    public @ResponseBody
+    List<User> queryUser(){
+        return managerMapper.queryUser();
     }
 }

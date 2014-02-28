@@ -1,6 +1,7 @@
 package com.whalecar.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
@@ -22,6 +23,16 @@ public class User implements Serializable {
 	private String loginName;
 	private String loginPassword;
 	private String flagUseable;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    private Date createDate;
 
 	public User() {
 	}

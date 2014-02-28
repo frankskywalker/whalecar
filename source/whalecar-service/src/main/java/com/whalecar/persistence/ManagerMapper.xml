@@ -27,4 +27,9 @@
         inner join car_model_lv1 cml1 on cml2.carModelLv1 = cml1.id inner join car_brand cb on cml1.carBrand = cb.id inner join
         user u on usp.user = u.id
     </select>
+
+    <select id="queryUser" resultType="User">
+        select *
+        from user
+    </select>
 </mapper>

@@ -14,7 +14,8 @@ var index = require('./routes/index'),
     userOffTicket = require('./routes/userOffTicket'),
     userSubmitPrice = require('./routes/userSubmitPrice'),
     validator = require('./routes/validator'),
-    manager = require('./routes/manager');
+    manager = require('./routes/manager'),
+    admin = require('./routes/admin');
 
 
 var app = express();
@@ -33,6 +34,10 @@ app.use(express.session());
 // add session to jade template
 app.use(function(req, res, next) {
     res.locals.session = req.session;
+    //初始化管理员权限
+    if(!req.session.isAdmin){
+        req.session.isAdmin = false;
+    }
     next();
 });
 
@@ -108,7 +113,17 @@ function requireRole(role) {
             else
                 next();
         }
-
+    }
+    else if(role == "admin"){
+        //admin权限
+        return function(req, res, next) {
+            if(!req.session.isAdmin){
+                res.locals.prePage = req.url;
+                admin.loginPage(req,res,next);
+            }
+            else
+                next();
+        }
     }
 }
 
@@ -143,9 +158,11 @@ app.all('/useroffticketConfirm',requireRole("user"),userOffTicket.offticketConfi
 app.all('/changeUserOffTicketState',userOffTicket.changeUserOffTicketState);
 app.all('/userhome',requireRole("user"),user.homepage);
 app.all('/validator',validator.validate);
-app.all('/managerUserOffTicket',manager.userOffTicket);
-app.all('/managerUserOrder',manager.userOrder);
-app.all('/managerUserSubmitPrice',manager.userSubmitPrice);
+app.all('/managerUserOffTicket',requireRole("admin"),manager.userOffTicket);
+app.all('/managerUserOrder',requireRole("admin"),manager.userOrder);
+app.all('/managerUserSubmitPrice',requireRole("admin"),manager.userSubmitPrice);
+app.all('/managerUser',requireRole("admin"),manager.managerUser);
+app.all("/admin_login",admin.login);
 
 
 app.all('/advertisement0',function(req,res){

@@ -19,3 +19,9 @@ exports.userSubmitPrice = function(req,res){
         res.render("managerUserSubmitPrice",{data:sData,moment:moment});
     });
 }
+
+exports.managerUser = function(req,res){
+    service.client.get("/manager/managerUser",function(sErr,sReq,sRes,sData){
+        res.render("managerUser",{data:sData,moment:moment});
+    });
+}
