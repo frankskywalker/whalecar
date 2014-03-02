@@ -2,9 +2,11 @@ package com.whalecar.service;
 
 import com.whalecar.domain.*;
 import com.whalecar.persistence.CarModelMapper;
+import com.whalecar.persistence.Golf7AdvMapper;
 import com.whalecar.persistence.ShopMapper;
 import com.whalecar.persistence.tools.PaginationResult;
 import com.whalecar.persistence.tools.PaginationUtils;
+import com.whalecar.service.tools.BooleanResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,8 @@ public class ShopService {
 	private ShopMapper shopMapper;
     @Autowired
     private CarModelMapper carModelMapper;
+    @Autowired
+    private Golf7AdvMapper golf7AdvMapper;
 
     /**
      * 根据用户名密码查询Shop信息 如果没有查询到，说明用户名或密码错误
@@ -220,4 +224,21 @@ public class ShopService {
 
 		return result;
 	}
+
+    /**
+     * 插入golf7活动数据
+     *
+     * @param golf7Adv
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/saveGolf7Adv")
+    public @ResponseBody
+    BooleanResult saveGolf7Adv(@RequestBody Map<String, String> golf7Adv){
+        if(golf7AdvMapper.insert(golf7Adv) == 1){
+            return new BooleanResult(true);
+        }
+        else{
+            return new BooleanResult(false);
+        }
+    }
 }

@@ -15,7 +15,8 @@ var index = require('./routes/index'),
     userSubmitPrice = require('./routes/userSubmitPrice'),
     validator = require('./routes/validator'),
     manager = require('./routes/manager'),
-    admin = require('./routes/admin');
+    admin = require('./routes/admin'),
+    golf7Adv = require('./routes/golf7Adv');
 
 
 var app = express();
@@ -206,9 +207,8 @@ app.all('/advertisement9',function(req,res){
 }) ;
 
 
-app.all('/golf7adver',function(req,res){
-    res.render("golf7_adver");
-}) ;
+app.all('/golf7adver',golf7Adv.page);
+app.all('/golf7adverSave',golf7Adv.save);
 
 
 app.all('/way1',function(req,res){
