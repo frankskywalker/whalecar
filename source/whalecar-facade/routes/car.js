@@ -60,7 +60,6 @@ exports.page = function(req, res, next) {
                         next(serr);
                         return;
                     }
-                    console.log(results.carModelLv2);
                     res.render("car", {
                         carModelLv1: results.carModelLv1,
                         carModelLv2: results.carModelLv2,

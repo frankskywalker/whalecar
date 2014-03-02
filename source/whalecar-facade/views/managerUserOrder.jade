@@ -1,0 +1,56 @@
+extends layout/managerFrame
+
+block append body
+  div(style="margin:auto;width:1000px;margin-top:20px;")
+    table(style="width:1000px;",border="1")
+      tr
+        td 订单编号
+        td 车型
+        td 订单状态
+        td 订单价格
+        td 经销商
+        td 经销商电话
+        td 用户名
+        td 用户邮箱
+        td 用户电话
+        td 订单处理状态
+        td 订单预定类型
+        td 订单时间
+      each item in data
+        tr
+          td #{item.orderSn}
+          td #{item.orderTitle}
+          td
+            if item.orderState == "waiting_pay"
+              span 等待付款
+            else if item.orderState == "waition_confirm"
+              span 等待确认
+            else if item.orderState == "order_succ"
+              span 预定成功
+            else if item.orderState == "finish"
+              span 已完成
+            else
+              span 已取消
+          td #{item.orderPrice}
+          td #{item.shopName}
+          td #{item.shopTel}
+          td #{item.userName}
+          td #{item.userEmail}
+          td #{item.userTel}
+          td
+            if item.orderProcessState == "wait_contact"
+              span 未跟进
+            else if item.orderProcessState == "has_contact"
+              span 已跟进
+            else if item.orderProcessState == "order_submit"
+              span 已订车
+            else
+              span 已取车
+          td
+            if item.orderType == "pay_order"
+              span 定金支付订单
+            else if item.orderType == "not_pay_order"
+              span 非定金支付订单
+            else
+              span 无库存预定
+          td= moment(item.orderCreateDate).format("YYYY-MM-DD HH:mm:ss")
