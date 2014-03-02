@@ -206,6 +206,10 @@ app.all('/advertisement9',function(req,res){
 }) ;
 
 
+app.all('/golf7adver',function(req,res){
+    res.render("golf7_adver");
+}) ;
+
 
 app.all('/way1',function(req,res){
     res.render("way1");
