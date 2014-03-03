@@ -14,7 +14,7 @@ block append content
             input(type="text",name="name",style="width:120px;margin-left:35px;font-size:11px;line-height:10px;padding:0px 5px;")
           div
             span(style="font-size:11px;padding-bottom:2px;") 手机号码
-            input(type="text",name="tel",style="width:120px;margin-left:10px;font-size:11px;line-height:10px;padding:0px 5px;")
+            input#tel(type="text",name="tel",style="width:120px;margin-left:10px;font-size:11px;line-height:10px;padding:0px 5px;")
           div
             span(style="font-size:11px;padding-bottom:2px;") 意向车型配置
             table
@@ -49,10 +49,20 @@ block append content
               select(style="font-size:11px;height:25px;width:195px;",name="purposeShop")
                 option(value="客户没有选择经销商") 请选择...
                 option(value="宁波中基甬耀汽车销售服务有限公司") 宁波中基甬耀汽车销售服务有限公司
-                option(value="宁波明众汽车销售服务有限公司") 宁波明众汽车销售服务有限公司
+                option(value="宁波明众汽车销售服务有限公司") 宁波桥辰康嘉汽车销售服务有限公司
                 option(value="宁波联合汽车销售服务有限公司") 宁波联合汽车销售服务有限公司
                 option(value="宁波宝通汽车有限公司") 宁波宝通汽车有限公司
                 option(value="宁波市康发汽车销售服务有限公司") 宁波市康发汽车销售服务有限公司
             div
-              input.btn.btn-mini(type="submit",value="提交",style="margin-left:155px;",onclick="alert('提交成功！')")
+              input.btn.btn-mini(type="submit",value="提交",style="margin-left:155px;",onclick="return submitCheck();")
+  script.
+      function submitCheck(){
+         if(!$('#tel').val().match(/^1\d{10}$/)){
+            alert("您输入的手机号码格式有误，请重新输入！");
+            return false;
+         }
+         alert("提交成功!")
+         return true;
+      }
+
 
