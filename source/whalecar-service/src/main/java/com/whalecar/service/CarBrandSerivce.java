@@ -90,8 +90,9 @@ public class CarBrandSerivce {
 
             Map<String, Object> conditionMap = new HashMap<String, Object>();
             conditionMap.put("carBrand", brandIdArray[0]);
-            conditionMap.put("carSubBrand", brandIdArray[1]);
-
+            if(brandIdArray.length == 2){
+                conditionMap.put("carSubBrand", brandIdArray[1]);
+            }
             List<CarModelLv1> carModelLv1List = carModelMapper
                     .queryCarModelLv1ByBrand(conditionMap);
             carBrandWithSubBrandView.setCarModelLv1List(carModelLv1List);

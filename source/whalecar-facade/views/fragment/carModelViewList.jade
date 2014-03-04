@@ -1,7 +1,7 @@
 .span9
   .nav.btngroupLite#carFilter(style="float:left;margin: 10px 20px 0 0px;padding-left:12px;")
     li
-      a#orderSellNumBtn(style="background:#eeeeee")筛选
+      a#orderSellNumBtn(style="background:#eeeeee") 筛选
     if !shide || shide.indexOf("city") == -1
         li.dropdown
           a.dropdown-toggle(data-toggle="dropdown",href="#") 城市
@@ -124,7 +124,6 @@
 
 .span12(style="margin-left: 0px;")
     hr(style='margin: 0px 0px 17px;')
-     // 列表
     <ul class='thumbnails'>
     each carModelView, i in carModelViews.items
       li.span3(style="width:210px;margin-right: 13px;margin-left: 12px;")
@@ -176,7 +175,7 @@ div.modal.hide.fade#favoriteAddSuc(style="tabindex='-1',role='dialog'")
     div.modal-body
         p 恭喜，收藏成功！
         p 您可以进入
-            a(href="./userhome")我的收藏
+            a(href="./userhome") 我的收藏
             |页面查看所有收藏
     div.modal-footer
         button.btn.btn-primary(onClick="$('#favoriteAddSuc').modal('hide');return false;") 确认
