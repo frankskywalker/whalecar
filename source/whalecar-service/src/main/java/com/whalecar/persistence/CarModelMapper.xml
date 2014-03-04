@@ -26,7 +26,7 @@
 	   FROM Car_Model_Lv1 LEFT
          JOIN  Car_Brand
 	     ON Car_Model_Lv1.id = #{id} and Car_Model_Lv1.carBrand = Car_Brand.id
-         JOIN  Car_Sub_Brand
+         LEFT JOIN  Car_Sub_Brand
          ON Car_Model_Lv1.id = #{id} and Car_Model_Lv1.carSubBrand = Car_Sub_Brand.id
 	   WHERE Car_Model_Lv1.flagUseable = 'yes' and Car_Model_Lv1.id = #{id}
        ORDER BY orderIndex
