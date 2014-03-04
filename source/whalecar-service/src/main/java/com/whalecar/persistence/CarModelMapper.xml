@@ -230,4 +230,15 @@
 
     </select>
 
+    <select id="queryCarModelLv1ById" parameterType="Integer" resultType="CarModelLv1">
+        select carBrand
+        from Car_Model_Lv1
+        where id = #{id}
+    </select>
+
+    <select id="queryCarBrandById" parameterType="Integer" resultType="CarBrand">
+        select *
+        from Car_Brand
+        where id = #{carBrandId}
+    </select>
 </mapper>

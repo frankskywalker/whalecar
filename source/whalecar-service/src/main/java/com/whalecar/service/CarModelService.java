@@ -284,4 +284,15 @@ public class CarModelService {
         return carModelMapper.queryPriceOffCarModelLv1();
     }
 
+
+    /**
+     * 根据Car_Model_Lv1的id查找Car_Brand
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value = "/getCarBrand")
+    public @ResponseBody
+    CarBrand getCarBrand(Integer id){
+        CarModelLv1 cml1 = carModelMapper.queryCarModelLv1ById(id);
+        return carModelMapper.queryCarBrandById(cml1.getCarBrand());
+    }
 }

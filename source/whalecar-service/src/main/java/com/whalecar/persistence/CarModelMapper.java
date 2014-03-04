@@ -83,4 +83,20 @@ public interface CarModelMapper {
      * @return
      */
     public List<CarModelLv1View> queryPriceOffCarModelLv1();
+
+
+    /**
+     * 根据Car_Model_Lv1的id查找Car_Brand的id
+     * @param id
+     * @return
+     */
+    public CarModelLv1 queryCarModelLv1ById(Integer id);
+
+
+    /**
+     * 根据id查找logo图片的文件名
+     * @param id
+     * @return
+     */
+    public CarBrand queryCarBrandById(Integer id);
 }
