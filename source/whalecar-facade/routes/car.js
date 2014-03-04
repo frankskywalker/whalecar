@@ -47,6 +47,12 @@ exports.page = function(req, res, next) {
             function(err, req, res,data){
                 callback(err,data);
             });
+        },
+        carBrand:function(callback){
+            service.client.get("/getCarBrand?id=" + carModelLv1Id,
+            function(err,req,res,data){
+                callback(err,data);
+            });
         }
     }, function(err, results) {
         console.timeEnd("CAR_PAGE_SERVICE_LOAD");
@@ -65,7 +71,8 @@ exports.page = function(req, res, next) {
                         carModelLv2: results.carModelLv2,
                         carModelLv1Img:results.carModelLv1Img,
                         carExtendInfo : carExtendInfo,
-                        similarCarModelLv1 : similarCarModelLv1
+                        similarCarModelLv1 : similarCarModelLv1,
+                        carBrand:results.carBrand
                     });
                 }
             );

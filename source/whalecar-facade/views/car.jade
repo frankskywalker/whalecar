@@ -16,9 +16,9 @@ block append content
             img(src='img/slectcar.png', alt='slectcar',style="margin-bottom:10px")
             //汽车图片 
             h4(style='color: #4083A9;margin-bottom:10px')
-              img(src='img/dasAuto.png', alt='dasAuto',style="padding:0 5px 3px 0")
+              img(src="img/#{carBrand.logoPath}", alt='dasAuto',style="padding:0 5px 3px 0")
               span(style="color:#666666") #{carModelLv1.brandCname}
-              &nbsp;
+              | &nbsp;
               span #{carModelLv1.cname}
             .span8(style='margin: 0px;padding:0px;width:440px;background-color:#ffffff;border-radius:3px')
               #myCarousel.carousel.slide(style="margin-bottom:0px")
