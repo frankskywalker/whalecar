@@ -12,8 +12,11 @@ html
       script(src='js/bootstrap.min.js')
       script(src='js/spin.min.js')
       script(src='js/tools.js')
+      script(src='js/jquery.unveil.min.js')
   body(style="background:url('img/subtle_dots.png');")
     div(style="min-height:550px;　height:100%")
       block content
         include navbar
     include footer
+    script.
+        $("img").unveil(200);
