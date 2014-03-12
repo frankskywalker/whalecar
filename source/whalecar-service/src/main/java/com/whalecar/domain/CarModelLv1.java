@@ -15,7 +15,9 @@ public class CarModelLv1 implements Serializable {
 	private static final long serialVersionUID = 7803186654696850258L;
 	private Integer id;
 	private int carBrand;
+    private String carBrandName;
 	private Integer carSubBrand;
+	private String carSubBrandName;
 	private String cname;
 	private String ename;
 	private String imgPath;
@@ -27,6 +29,23 @@ public class CarModelLv1 implements Serializable {
 
 	public CarModelLv1() {
 	}
+
+
+    public String getCarBrandName() {
+        return carBrandName;
+    }
+
+    public void setCarBrandName(String carBrandName) {
+        this.carBrandName = carBrandName;
+    }
+
+    public String getCarSubBrandName() {
+        return carSubBrandName;
+    }
+
+    public void setCarSubBrandName(String carSubBrandName) {
+        this.carSubBrandName = carSubBrandName;
+    }
 
 	public CarModelLv1(int carBrand, String cname, String ename,
 			String imgPath, String flagUseable) {

@@ -16,6 +16,8 @@ public class CarModelLv3 implements Serializable {
 	private static final long serialVersionUID = 2716119698662324229L;
 	private Integer id;
 	private int carModelLv2;
+	private String carModelLv2Name;
+	private String carModelLv1Name;
 	private String shortName;
 	private String fullName;
 	private String colorOutsideCollection;
@@ -23,6 +25,8 @@ public class CarModelLv3 implements Serializable {
 	private BigDecimal factoryPrice;
 	private Integer orderIndex;
 	private String flagUseable;
+	private String colorOutsideCollectionName;
+	private String colorInsideCollectionName;
 	/**
 	 * 驱动类型
 	 */
@@ -60,7 +64,39 @@ public class CarModelLv3 implements Serializable {
 		this.flagUseable = flagUseable;
 	}
 
-	public Integer getId() {
+    public String getColorInsideCollectionName() {
+        return colorInsideCollectionName;
+    }
+
+    public void setColorInsideCollectionName(String colorInsideCollectionName) {
+        this.colorInsideCollectionName = colorInsideCollectionName;
+    }
+
+    public String getColorOutsideCollectionName() {
+        return colorOutsideCollectionName;
+    }
+
+    public void setColorOutsideCollectionName(String colorOutsideCollectionName) {
+        this.colorOutsideCollectionName = colorOutsideCollectionName;
+    }
+
+    public String getCarModelLv2Name() {
+        return carModelLv2Name;
+    }
+
+    public void setCarModelLv2Name(String carModelLv2Name) {
+        this.carModelLv2Name = carModelLv2Name;
+    }
+
+    public String getCarModelLv1Name() {
+        return carModelLv1Name;
+    }
+
+    public void setCarModelLv1Name(String carModelLv1Name) {
+        this.carModelLv1Name = carModelLv1Name;
+    }
+
+    public Integer getId() {
 		return this.id;
 	}
 

@@ -15,6 +15,7 @@ public class CarModelLv2 implements Serializable {
 	private static final long serialVersionUID = 212554565260987336L;
 	private Integer id;
 	private int carModelLv1;
+	private String carModelLv1Name;
 	private String shortName;
 	private String fullName;
 	private Integer orderIndex;
@@ -40,7 +41,15 @@ public class CarModelLv2 implements Serializable {
 		this.flagUseable = flagUseable;
 	}
 
-	public Integer getId() {
+    public String getCarModelLv1Name() {
+        return carModelLv1Name;
+    }
+
+    public void setCarModelLv1Name(String carModelLv1Name) {
+        this.carModelLv1Name = carModelLv1Name;
+    }
+
+    public Integer getId() {
 		return this.id;
 	}
 
