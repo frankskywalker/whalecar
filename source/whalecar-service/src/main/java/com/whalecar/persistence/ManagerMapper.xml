@@ -32,4 +32,137 @@
         select *
         from User
     </select>
+
+
+    <select id="queryManagerGetCarBrand" resultType="CarBrand">
+        select *
+        from Car_Brand
+    </select>
+
+
+    <update id="updateManagerGetCarBrand" parameterType="Map">
+        update Car_Brand
+        set cname = #{cname},
+        ename = #{ename},
+        logoPath = #{logoPath},
+        flagUseable = #{flagUseable}
+        where id = #{id}
+    </update>
+
+
+    <select id="queryManagerGetCarModelLv1" resultType="CarModelLv1">
+        select *
+        from Car_Model_Lv1
+    </select>
+
+    <select id="queryCarBrandById" parameterType="Integer" resultType="CarBrand">
+        select *
+        from Car_Brand
+        where id = #{id}
+    </select>
+
+    <select id="queryCarSubBrandById" parameterType="Integer" resultType="CarSubBrand">
+        select *
+        from Car_Sub_Brand
+        where id = #{id}
+    </select>
+
+    <select id="queryCarSubBrand" resultType="CarSubBrand">
+        select *
+        from Car_Sub_Brand
+    </select>
+
+    <update id="updateManagerGetCarModelLv1" parameterType="Map">
+        update Car_Model_Lv1
+        set carBrand = #{carBrand},
+         carSubBrand = #{carSubBrand},
+         cname = #{cname},
+         ename = #{ename},
+         orderIndex = #{orderIndex},
+         flagUseable = #{flagUseable},
+         offprice = #{offprice},
+         hotmodel = #{hotmodel},
+         description = #{description}
+         where id = #{id}
+    </update>
+    
+    <select id="queryManagerGetCarModelLv1Image" resultType="CarModelLv1Image">
+        select *
+        from Car_Model_Lv1_IMAGE
+    </select>
+
+    <select id="queryCarModelLv1ById" parameterType="Integer" resultType="CarModelLv1">
+        select *
+        from Car_Model_Lv1
+        where id = #{id}
+    </select>
+
+
+    <update id="updateManagerGetCarModelLv1Image" parameterType="Map">
+        update Car_Model_Lv1_IMAGE
+        set carModelLv1 = #{carModelLv1},
+        imgPath = #{imgPath},
+        description = #{description}
+        where id = #{id}
+    </update>
+
+
+    <select id="queryManagerGetCarModelLv2" resultType="CarModelLv2">
+        select *
+        from Car_Model_Lv2
+    </select>
+
+    <update id="updateManagerGetCarModelLv2" parameterType="Map">
+        update Car_Model_Lv2
+        set carModelLv1 = #{carModelLv1},
+        shortName = #{shortName},
+        fullName = #{fullName},
+        orderIndex = #{orderIndex},
+        flagUseable = #{flagUseable}
+        where id = #{id}
+    </update>
+
+    <select id="queryManagerGetCarModelLv3" resultType="CarModelLv3">
+        select *
+        from Car_Model_Lv3
+    </select>
+
+    <select id="queryCarModelLv2ById" parameterType="Integer" resultType="CarModelLv2">
+        select *
+        from Car_Model_Lv2
+        where id = #{id}
+    </select>
+
+    <select id="queryManagerGetDicColor" resultType="DicColor">
+        select *
+        from Dic_Color
+    </select>
+
+    <select id="queryDicColorById" parameterType="Integer" resultType="DicColor">
+        select *
+        from Dic_Color
+        where id = #{id}
+    </select>
+
+    <update id="updateManagerGetCarModelLv3" parameterType="Map">
+        update Car_Model_Lv3
+        set carModelLv2 = #{carModelLv2},
+        shortName = #{shortName},
+        fullName = #{fullName},
+        colorOutsideCollection = #{colorOutsideCollection},
+        colorInsideCollection = #{colorInsideCollection},
+        factoryPrice = #{factoryPrice},
+        orderIndex = #{orderIndex},
+        flagUseable = #{flagUseable},
+        driveType = #{driveType},
+        gearType = #{gearType}
+        where id = #{id}
+    </update>
+
+    <update id="updateCarModelLv2ShortName" parameterType="Map">
+        update Car_Model_Lv2
+        set shortName = #{shortName},
+        fullName = #{shortName}
+        where id = #{id}
+    </update>
 </mapper>

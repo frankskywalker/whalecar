@@ -163,7 +163,25 @@ app.all('/managerUserOffTicket',requireRole("admin"),manager.userOffTicket);
 app.all('/managerUserOrder',requireRole("admin"),manager.userOrder);
 app.all('/managerUserSubmitPrice',requireRole("admin"),manager.userSubmitPrice);
 app.all('/managerUser',requireRole("admin"),manager.managerUser);
+app.all('/getCarData',requireRole("admin"),manager.getCarData);
 app.all("/admin_login",admin.login);
+app.all("/managerGetCarBrand",manager.managerGetCarBrand);
+app.all("/managerGetCarSubBrand",manager.managerGetCarSubBrand);
+app.all("/updateManagerGetCarBrand",manager.updateManagerGetCarBrand);
+app.all("/managerGetCarModelLv1",manager.managerGetCarModelLv1);
+app.all("/updateManagerGetCarModelLv1",manager.updateManagerGetCarModelLv1);
+app.all("/managerGetCarModelLv1Image",manager.managerGetCarModelLv1Image);
+app.all("/updateManagerGetCarModelLv1Image",manager.updateManagerGetCarModelLv1Image);
+app.all("/managerGetCarModelLv2",manager.managerGetCarModelLv2);
+app.all("/updateManagerGetCarModelLv2",manager.updateManagerGetCarModelLv2);
+app.all("/managerGetCarModelLv3",manager.managerGetCarModelLv3);
+app.all("/managerGetDicColor",manager.managerGetDicColor);
+app.all("/addManagerCarBrand",manager.addManagerCarBrand);
+app.all("/updateManagerGetCarModelLv3",manager.updateManagerGetCarModelLv3);
+
+app.all("/cartest",function(req,res){
+    res.render("cartest")
+});
 
 
 app.all('/advertisement0',function(req,res){

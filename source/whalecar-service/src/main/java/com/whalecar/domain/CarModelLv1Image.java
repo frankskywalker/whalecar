@@ -9,8 +9,17 @@ public class CarModelLv1Image implements Serializable {
 
     private Integer id;
     private Integer carModelLv1;
+    private String carModelLv1Name;
     private String imgPath;
     private String description;
+
+    public String getCarModelLv1Name() {
+        return carModelLv1Name;
+    }
+
+    public void setCarModelLv1Name(String carModelLv1Name) {
+        this.carModelLv1Name = carModelLv1Name;
+    }
 
     public Integer getId() {
         return id;
