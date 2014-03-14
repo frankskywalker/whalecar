@@ -46,14 +46,19 @@ exports.managerGetCarSubBrand = function(req,res){
 }
 
 exports.updateManagerGetCarBrand = function(req,res){
-    var id = req.body.id;
     var cname = req.body.cname;
     var ename = req.body.ename;
     var logoPath = req.body.logoPath;
     var flagUseable = req.body.flagUseable;
-    service.client.post("/manager/updateManagerGetCarBrand",{id:id,cname:cname,ename:ename,logoPath:logoPath,flagUseable:flagUseable},function(sErr,sReq,sRes,sData){
-        res.json(sData);
-    });
+    if(req.body.oper == "edit"){
+        var id = req.body.id;
+        service.client.post("/manager/updateManagerGetCarBrand",{id:id,cname:cname,ename:ename,logoPath:logoPath,flagUseable:flagUseable},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }else if(req.body.oper == "add"){
+
+    }
+
 }
 
 
