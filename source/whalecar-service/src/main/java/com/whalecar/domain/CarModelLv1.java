@@ -24,7 +24,7 @@ public class CarModelLv1 implements Serializable {
 	private Integer orderIndex;
 	private String flagUseable;
     private String offprice;
-    private String hotcar;
+    private String hotmodel;
     private String description;
 
 	public CarModelLv1() {
@@ -139,12 +139,12 @@ public class CarModelLv1 implements Serializable {
         this.offprice = offprice;
     }
 
-    public String getHotcar() {
-        return hotcar;
+    public String getHotmodel() {
+        return hotmodel;
     }
 
-    public void setHotcar(String hotcar) {
-        this.hotcar = hotcar;
+    public void setHotmodel(String hotmodel) {
+        this.hotmodel = hotmodel;
     }
 
     public String getDescription() {
