@@ -173,4 +173,44 @@ public interface ManagerMapper {
      * @return
      */
     public int updateCarModelLv2ShortName(Map<String,Object> map);
+
+
+    /**
+     * 添加Car_Brand数据
+     * @param map
+     * @return
+     */
+    public int addManagerGetCarBrand(Map<String,Object> map);
+
+
+    /**
+     * 添加Car_Model_Lv1数据
+     * @param map
+     * @return
+     */
+    public int addManagerGetCarModelLv1(Map<String,Object> map);
+
+
+    /**
+     * 添加Car_Model_Lv1_IMAGE数据
+     * @param map
+     * @return
+     */
+    public int addManagerGetCarModelLv1Image(Map<String,Object> map);
+
+
+    /**
+     * 添加Car_Model_Lv2数据
+     * @param map
+     * @return
+     */
+    public int addManagerGetCarModelLv2(Map<String,Object> map);
+
+
+    /**
+     * 添加Car_Model_Lv3数据
+     * @param map
+     * @return
+     */
+    public int addManagerGetCarModelLv3(Map<String,Object> map);
 }

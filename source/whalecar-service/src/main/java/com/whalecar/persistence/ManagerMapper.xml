@@ -165,4 +165,106 @@
         fullName = #{shortName}
         where id = #{id}
     </update>
+
+    <insert id="addManagerGetCarBrand" parameterType="Map">
+        insert into
+        Car_Brand(
+          cname,
+          ename,
+          logoPath,
+          orderIndex,
+          flagUseable
+        )values(
+          #{cname},
+          #{ename},
+          #{logoPath},
+          #{orderIndex},
+          #{flagUseable}
+        )
+    </insert>
+
+    <insert id="addManagerGetCarModelLv1" parameterType="Map">
+        insert into
+        Car_Model_Lv1(
+          carBrand,
+          carSubBrand,
+          cname,
+          ename,
+          imgPath,
+          orderIndex,
+          flagUseable,
+          offprice,
+          hotmodel,
+          description
+        )values(
+          #{carBrand},
+          #{carSubBrand},
+          #{cname},
+          #{ename},
+          #{imgPath},
+          #{orderIndex},
+          #{flagUseable},
+          #{offprice},
+          #{hotmodel},
+          #{description}
+        )
+    </insert>
+
+
+    <insert id="addManagerGetCarModelLv1Image" parameterType="Map">
+        insert into
+        Car_Model_Lv1_IMAGE(
+          carModelLv1,
+          imgPath,
+          description
+        )values(
+          #{carModelLv1},
+          #{imgPath},
+          #{description}
+        )
+    </insert>
+
+    <insert id="addManagerGetCarModelLv2" parameterType="Map">
+        insert into
+        Car_Model_Lv2(
+          carModelLv1,
+          shortName,
+          fullName,
+          orderIndex,
+          flagUseable
+        )values(
+          #{carModelLv1},
+          #{shortName},
+          #{fullName},
+          #{orderIndex},
+          #{flagUseable}
+        )
+    </insert>
+
+    <insert id="addManagerGetCarModelLv3" parameterType="Map">
+        insert into
+        Car_Model_Lv3(
+          carModelLv2,
+          shortName,
+          fullName,
+          colorOutsideCollection,
+          colorInsideCollection,
+          factoryPrice,
+          orderIndex,
+          flagUseable,
+          driveType,
+          gearType
+        )values(
+          #{carModelLv2},
+          #{shortName},
+          #{fullName},
+          '0,0',
+          '0,0',
+          #{factoryPrice},
+          #{orderIndex},
+          #{flagUseable},
+          #{driveType},
+          #{gearType}
+        )
+    </insert>
 </mapper>

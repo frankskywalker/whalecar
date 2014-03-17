@@ -52,6 +52,8 @@
         autowidth: true
     });
 
+    var editOptions={closeOnEscape: true,closeAfterAdd:true};
+
     //navButtons
     jQuery("#table").jqGrid('navGrid', "#pager",
             { 	//navbar options
@@ -68,13 +70,12 @@
                 view: true,
                 viewicon: 'icon-zoom-in grey'
             },
+            editOptions,
             {
                 //new record form
                 closeAfterAdd: true,
                 recreateForm: true,
                 viewPagerButtons: false,
-                mtype:"post",
-                closeOnEscape:true,
                 beforeShowForm: function (e) {
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
@@ -107,6 +108,7 @@
                 }
             }
     )
+
 
     //switch element when editing inline
     function aceSwitch( cellvalue, options, cell ) {

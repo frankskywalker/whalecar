@@ -56,7 +56,9 @@ exports.updateManagerGetCarBrand = function(req,res){
             res.json(sData);
         });
     }else if(req.body.oper == "add"){
-
+        service.client.post("/manager/addManagerGetCarBrand",{cname:cname,ename:ename,logoPath:logoPath,flagUseable:flagUseable},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
     }
 
 }
@@ -82,10 +84,17 @@ exports.updateManagerGetCarModelLv1 = function(req,res){
     var offprice = req.body.offprice;
     var hotmodel = req.body.hotmodel;
     var description = req.body.description;
-    service.client.post("/manager/updateManagerGetCarModelLv1",{id:id,carBrand:carBrandName,carSubBrand:carSubBrandName,cname:cname,
-    ename:ename,orderIndex:orderIndex,flagUseable:flagUseable,offprice:offprice,hotmodel:hotmodel,description:description},function(sErr,sReq,sRes,sData){
-        res.json(sData);
-    });
+    if(req.body.oper == "edit"){
+        service.client.post("/manager/updateManagerGetCarModelLv1",{id:id,carBrand:carBrandName,carSubBrand:carSubBrandName,cname:cname,
+        ename:ename,orderIndex:orderIndex,flagUseable:flagUseable,offprice:offprice,hotmodel:hotmodel,description:description},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }else if(req.body.oper == "add"){
+        service.client.post("/manager/addManagerGetCarModelLv1",{carBrand:carBrandName,carSubBrand:carSubBrandName,cname:cname,
+            ename:ename,orderIndex:orderIndex,flagUseable:flagUseable,offprice:offprice,hotmodel:hotmodel,description:description},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }
 }
 
 
@@ -101,9 +110,15 @@ exports.updateManagerGetCarModelLv1Image = function(req,res){
     var carModelLv1Name = req.body.carModelLv1Name;
     var imgPath = req.body.imgPath;
     var description = req.body.description;
-    service.client.post("/manager/updateManagerGetCarModelLv1Image",{id:id,carModelLv1:carModelLv1Name,imgPath:imgPath,description:description},function(sErr,sReq,sRes,sData){
-        res.json(sData);
-    });
+    if(req.body.oper == "edit"){
+        service.client.post("/manager/updateManagerGetCarModelLv1Image",{id:id,carModelLv1:carModelLv1Name,imgPath:imgPath,description:description},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }else if(req.body.oper == "add"){
+        service.client.post("/manager/addManagerGetCarModelLv1Image",{carModelLv1:carModelLv1Name,imgPath:imgPath,description:description},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }
 }
 
 
@@ -121,9 +136,15 @@ exports.updateManagerGetCarModelLv2 = function(req,res){
     var fullName = req.body.fullName;
     var orderIndex = req.body.orderIndex;
     var flagUseable = req.body.flagUseable;
-    service.client.post("/manager/updateManagerGetCarModelLv2",{id:id,carModelLv1:carModelLv1Name,shortName:shortName,fullName:fullName,orderIndex:orderIndex,flagUseable:flagUseable},function(sErr,sReq,sRes,sData){
-        res.json(sData);
-    });
+    if(req.body.oper == "edit"){
+        service.client.post("/manager/updateManagerGetCarModelLv2",{id:id,carModelLv1:carModelLv1Name,shortName:shortName,fullName:fullName,orderIndex:orderIndex,flagUseable:flagUseable},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }else if(req.body.oper == "add"){
+        service.client.post("/manager/addManagerGetCarModelLv2",{carModelLv1:carModelLv1Name,shortName:shortName,fullName:fullName,orderIndex:orderIndex,flagUseable:flagUseable},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }
 }
 
 
@@ -150,6 +171,7 @@ exports.updateManagerGetCarModelLv3 = function(req,res){
 //    console.log(req.body);
     var id = req.body.id;
     var carModelLv2Name = req.body.carModelLv2Name;
+    var carModelLv1Name = req.body.carModelLv1Name;
     var carModelLv2 = req.body.carModelLv2;
     var shortName = req.body.shortName;
     var fullName = req.body.fullName;
@@ -160,9 +182,15 @@ exports.updateManagerGetCarModelLv3 = function(req,res){
     var flagUseable = req.body.flagUseable;
     var driveType = req.body.driveType;
     var gearType = req.body.gearType;
-
-    service.client.post("/manager/updateManagerGetCarModelLv3",{id:id,carModelLv2Name:carModelLv2Name,carModelLv2:carModelLv2,shortName:shortName,fullName:fullName,colorOutsideCollection:colorOutsideCollectionName,
-    colorInsideCollection:colorInsideCollectionName,factoryPrice:factoryPrice,orderIndex:orderIndex,flagUseable:flagUseable,driveType:driveType,gearType:gearType},function(sErr,sReq,sRes,sData){
-        res.json(sData);
-    });
+    if(req.body.oper == "edit"){
+        service.client.post("/manager/updateManagerGetCarModelLv3",{id:id,carModelLv2Name:carModelLv2Name,carModelLv2:carModelLv2,shortName:shortName,fullName:fullName,colorOutsideCollection:colorOutsideCollectionName,
+        colorInsideCollection:colorInsideCollectionName,factoryPrice:factoryPrice,orderIndex:orderIndex,flagUseable:flagUseable,driveType:driveType,gearType:gearType},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }else if(req.body.oper == "add"){
+        service.client.post("/manager/addManagerGetCarModelLv3",{carModelLv2Name:carModelLv2Name,carModelLv2:carModelLv2,shortName:shortName,fullName:fullName,colorOutsideCollection:colorOutsideCollectionName,
+            colorInsideCollection:colorInsideCollectionName,factoryPrice:factoryPrice,orderIndex:orderIndex,flagUseable:flagUseable,driveType:driveType,gearType:gearType},function(sErr,sReq,sRes,sData){
+            res.json(sData);
+        });
+    }
 }

@@ -282,10 +282,97 @@ public class ManagerService {
         map.put("colorOutsideCollection",tmpOutsideCollection.substring(0,tmpOutsideCollection.lastIndexOf(",")));
         map.put("colorInsideCollection",tmpInsideCollection.substring(0,tmpInsideCollection.lastIndexOf(",")));
         Map<String,Object> tmpMap = new HashMap<String,Object>();
-        tmpMap.put("id",map.get("carModelLv2"));
-        tmpMap.put("shortName",map.get("carModelLv2Name"));
-        managerMapper.updateCarModelLv2ShortName(tmpMap);
+//        tmpMap.put("id",map.get("carModelLv2"));
+//        tmpMap.put("shortName",map.get("carModelLv2Name"));
+ //        managerMapper.updateCarModelLv2ShortName(tmpMap);
         int i = managerMapper.updateManagerGetCarModelLv3(map);
+        if(i != 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    /**
+     * 添加Car_Brand数据
+     * @param map
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST,value = "/manager/addManagerGetCarBrand")
+    public @ResponseBody
+    Boolean addManagerGetCarBrand(@RequestBody Map<String,Object> map) {
+        int i = managerMapper.addManagerGetCarBrand(map);
+        if(i != 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    /**
+     * 添加Car_Model_Lv1数据
+     * @param map
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST,value = "/manager/addManagerGetCarModelLv1")
+    public @ResponseBody
+    Boolean addManagerGetCarModelLv1(@RequestBody Map<String,Object> map) {
+        map.put("imgPath","noData");
+        int i = managerMapper.addManagerGetCarModelLv1(map);
+        if(i != 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    /**
+     * 添加Car_Model_Lv1_IMAGE数据
+     * @param map
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST,value = "/manager/addManagerGetCarModelLv1Image")
+    public @ResponseBody
+    Boolean addManagerGetCarModelLv1Image(@RequestBody Map<String,Object> map) {
+        int i = managerMapper.addManagerGetCarModelLv1Image(map);
+        if(i != 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    /**
+     * 添加Car_Model_Lv2数据
+     * @param map
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST,value = "/manager/addManagerGetCarModelLv2")
+    public @ResponseBody
+    Boolean addManagerGetCarModelLv2(@RequestBody Map<String,Object> map) {
+        int i = managerMapper.addManagerGetCarModelLv2(map);
+        if(i != 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+
+    /**
+     * 添加Car_Model_Lv3数据
+     * @param map
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST,value = "/manager/addManagerGetCarModelLv3")
+    public @ResponseBody
+    Boolean addManagerGetCarModelLv3(@RequestBody Map<String,Object> map) {
+        int i = managerMapper.addManagerGetCarModelLv3(map);
         if(i != 0){
             return true;
         }else {
