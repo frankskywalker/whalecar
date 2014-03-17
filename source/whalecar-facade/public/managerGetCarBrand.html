@@ -52,8 +52,6 @@
         autowidth: true
     });
 
-    var editOptions={closeOnEscape: true,closeAfterAdd:true};
-
     //navButtons
     jQuery("#table").jqGrid('navGrid', "#pager",
             { 	//navbar options
@@ -70,9 +68,10 @@
                 view: true,
                 viewicon: 'icon-zoom-in grey'
             },
-            editOptions,
+            {},
             {
                 //new record form
+                closeOnEscape: true,
                 closeAfterAdd: true,
                 recreateForm: true,
                 viewPagerButtons: false,
@@ -80,6 +79,9 @@
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
                     style_edit_form(form);
+                },
+                afterComplete :function(){
+                    $(this).jqGrid('setGridParam', { datatype: 'json' }).trigger('reloadGrid');
                 }
             },
             {
