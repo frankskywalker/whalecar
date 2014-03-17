@@ -1,7 +1,8 @@
 var express = require('express'),
     http = require('http'),
-    path = require('path'),
-    expressValidator = require('express-validator');
+    path = require('path');
+var util = require('util');
+var expressValidator = require('express-validator');
 
 var index = require('./routes/index'),
     dic = require('./routes/dic'),

@@ -1,0 +1,11 @@
+a {
+    color: #00B7FF;
+}
+
+.chosen-container {
+    width: 200px;
+    z-index: 255;
+    position: absolute;
+    top: 3px;
+    height: 30px;
+}

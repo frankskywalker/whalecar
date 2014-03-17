@@ -52,34 +52,6 @@
         autowidth: true
     });
 
-
-    function ajaxFileUpload(data, postdata) {
-        $.ajaxFileUpload
-        (
-                {
-                    url: '/addManagerCarBrand',
-                    secureuri: false,
-                    dataType: 'json',
-                    data: { oper: 'add', id: data.insertId},
-                    success: function (data, status) {
-                        if (typeof (data.success) != 'undefined') {
-                            if (data.success == true) {
-                                return;
-                            } else {
-                                alert(data.message);
-                            }
-                        }
-                        else {
-                            return alert('Failed to upload logo!');
-                        }
-                    },
-                    error: function (data, status, e) {
-                        return alert('Failed to upload logo!');
-                    }
-                }
-        )
-    }
-
     //navButtons
     jQuery("#table").jqGrid('navGrid', "#pager",
             { 	//navbar options
@@ -107,8 +79,7 @@
                     var form = $(e[0]);
                     form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
                     style_edit_form(form);
-                },
-                url:"/addManagerCarBrand"
+                }
             },
             {
                 //search form
@@ -136,7 +107,6 @@
                 }
             }
     )
-
 
     //switch element when editing inline
     function aceSwitch( cellvalue, options, cell ) {
