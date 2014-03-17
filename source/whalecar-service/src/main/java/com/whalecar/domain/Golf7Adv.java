@@ -9,6 +9,7 @@ public class Golf7Adv {
     private String tel;
     private String attentionModel;
     private String purposeShop;
+    private String type;
 
     public Integer getId() {
         return id;
@@ -48,5 +49,13 @@ public class Golf7Adv {
 
     public void setPurposeShop(String purposeShop) {
         this.purposeShop = purposeShop;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
