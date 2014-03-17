@@ -226,7 +226,9 @@ app.all('/advertisement9',function(req,res){
 
 
 app.all('/golf7adver',golf7Adv.page);
+app.all('/vw_adver',golf7Adv.page2);
 app.all('/golf7adverSave',golf7Adv.save);
+app.all('/vwAdverSave',golf7Adv.save2);
 
 
 app.all('/way1',function(req,res){
