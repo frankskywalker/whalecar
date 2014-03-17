@@ -11,6 +11,10 @@
       `tel`,
       `attentionModel`,
       `purposeShop`
+      <if test="type != null and type != ''">
+      ,type
+      </if>
+
       )
       VALUES
       (
@@ -18,6 +22,9 @@
       #{tel},
       #{attentionModel},
       #{purposeShop}
+      <if test="type != null and type != ''">
+      ,#{type}
+      </if>
       );
 
   </insert>
