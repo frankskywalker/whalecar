@@ -231,6 +231,9 @@ app.all('/vw_adver',golf7Adv.page2);
 app.all('/golf7adverSave',golf7Adv.save);
 app.all('/vwAdverSave',golf7Adv.save2);
 
+app.all('/vw2_adver',golf7Adv.page3);
+app.all('/vw2AdverSave',golf7Adv.save3);
+
 
 app.all('/way1',function(req,res){
     res.render("way1");

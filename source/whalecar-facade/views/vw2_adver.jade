@@ -1,0 +1,40 @@
+extends layout/mainFrame
+block append css
+  link(href='css/index.css', rel='stylesheet', media='screen')
+  link(rel="stylesheet",href="css/carousel.css",media="all",type="text/css")
+block append js
+  script(type="text/javascript",src="js/jquery.carouFredSel-6.2.1-packed.js")
+  script(type="text/javascript",src="js/slides.min.jquery.js")
+block append content
+  div(style="width:940px;margin:0 auto;")
+    div(style="width:940px;height:700px;background-image:url('img/vw2.png')")
+        form#form_vw(method="POST",action="./vw2AdverSave",style="padding-left:160px;padding-top:665px;")
+          div
+            span(style="color:white;margin-left:5px;") 姓名
+            input(type="text",name="name",style="width:120px;margin-left:5px;font-size:11px;line-height:10px;padding:0px 5px;")
+            span(style="color:white;margin-left:10px;") 手机号码
+            input#tel(type="text",name="tel",style="width:120px;margin-left:5px;font-size:11px;line-height:10px;padding:0px 5px;")
+            span(style="color:white;color:white;margin-left:10px;") 意向车型配置
+            select#attentionModel(name="attentionModel",style="width:120px;margin-left:5px;font-size:11px;line-height:10px;padding:0px 5px;")
+                option(value="速腾") 速腾
+                option(value="高尔夫6") 高尔夫6
+                option(value="高尔夫7") 高尔夫7
+                option(value="捷达") 捷达
+                option(value="大众CC") 大众CC
+                option(value="迈腾") 迈腾
+                option(value="宝来") 宝来
+            div.pull-right(style="margin-right:10px;")
+                a(href="#",onclick="submitCheck();",style="margin-left:10px;")
+                    img(src="img/vw2btn.png")
+
+  script.
+      function submitCheck(){
+         if(!$('#tel').val().match(/^1\d{10}$/)){
+            alert("您输入的手机号码格式有误，请重新输入！");
+            return false;
+         }
+         alert("提交成功!")
+         $('#form_vw').submit();
+      }
+
+

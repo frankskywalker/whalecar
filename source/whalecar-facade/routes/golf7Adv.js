@@ -11,6 +11,10 @@ exports.page2 = function(req,res){
     res.render("vw_adver");
 }
 
+exports.page3 = function(req,res){
+    res.render("vw2_adver");
+}
+
 exports.save = function(req,res,next){
     var golf7Adv = req.body;
     var attentionModelStr = "";
@@ -52,5 +56,17 @@ exports.save2 = function(req,res,next){
             return;
         }
         res.render("vw_adver");
+    });
+}
+
+exports.save3 = function(req,res,next){
+    var golf7Adv = req.body;
+    golf7Adv.type = 3;
+    service.client.post("/saveGolf7Adv",golf7Adv,function(error){
+        if(error){
+            next(error);
+            return;
+        }
+        res.render("vw2_adver");
     });
 }
