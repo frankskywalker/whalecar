@@ -1,6 +1,7 @@
 package com.whalecar.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
@@ -19,6 +20,7 @@ public class CarBrand implements Serializable {
 	private String logoPath;
 	private Integer orderIndex;
 	private String flagUseable;
+    private List<CarModelLv1> CarModelLv1List;
 
 	public CarBrand() {
 	}
@@ -88,4 +90,11 @@ public class CarBrand implements Serializable {
 		this.flagUseable = flagUseable;
 	}
 
+    public List<CarModelLv1> getCarModelLv1List() {
+        return CarModelLv1List;
+    }
+
+    public void setCarModelLv1List(List<CarModelLv1> carModelLv1List) {
+        CarModelLv1List = carModelLv1List;
+    }
 }

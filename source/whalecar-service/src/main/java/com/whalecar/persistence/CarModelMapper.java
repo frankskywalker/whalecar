@@ -99,4 +99,13 @@ public interface CarModelMapper {
      * @return
      */
     public CarBrand queryCarBrandById(Integer id);
+
+    /**
+     * 查找Car_Model_Lv1中的id和cname
+     * @return
+     */
+    public List<CarModelLv1> queryIdAndCname(Integer carBrand);
+
+    //返回所有汽车品牌
+    public List<CarBrand> queryAllCarBrand();
 }

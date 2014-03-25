@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface DicMapper {
 
-	public List<DicCity> queryAllDicCity();
+	public List<DicCity> queryAllDicCity();//查询所有城市
 
 	public List<DicColor> queryAllDicColor();
 
@@ -22,5 +22,5 @@ public interface DicMapper {
 
     public List<DicColor> queryInsideDicColorBycarModelLv3(Integer carModelLv3Id);
 
-    public List<DicArea> queryAllDicArea(Integer city_id);//查询所有地区
+    public List<DicArea> queryAllDicArea(Integer city_id);//查询所有城市下辖县市区
 }
