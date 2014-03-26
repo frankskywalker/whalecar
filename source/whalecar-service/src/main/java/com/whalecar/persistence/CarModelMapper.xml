@@ -10,10 +10,12 @@
 		SELECT 
 			*
 		FROM Car_Model_Lv1
-		WHERE flagUseable = 'yes' 
-		and CarBrand = #{carBrand}
+		WHERE flagUseable = 'yes'
+        <if test="CarBrand != null and CarBrand != ''">
+            and CarBrand = #{carBrand}
+        </if>
 		<if test="carSubBrand != null and carSubBrand != ''">
-		  and carSubBrand = #{carSubBrand}
+		    and carSubBrand = #{carSubBrand}
 		</if>
 		ORDER BY orderIndex
 	</select>
