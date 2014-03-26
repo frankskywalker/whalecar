@@ -68,8 +68,8 @@ block append content
               li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
               li(style="list-style-type:none;") 郑**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
           div(style="margin-top:-93px;padding-left:762px; width: 100px;height:90px;")
-            form(id="addUserCar", action="./addUserCar", method="post")
-              input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;" ,id="userName",name="userName")
+            form(id="addUserCar", action="./addUserCar", method="post", onsubmit="return success();")
+              input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
               input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;",id="phoneNum",name="phoneNum")
               div
                 select(type="text",style="height:19.5px;width:97px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
@@ -400,4 +400,17 @@ block append content
       }
     }
 
+    function success(){
+      var username = $("#username").val();
+      var phoneNum = $("#phoneNum").val();
+      var idAndCname = $("#idAndCname").val().split(",");
+      var BrandId = idAndCname[0];
+      var Cname =  idAndCname[1];
+      if(userName=="" || phoneNum==""|| BrandId=="" || Cname==""){
+          alert("提交失败！");
+          return false;
+      }
+          alert("提交成功！");
+          return true;
 
+    }
