@@ -3,6 +3,7 @@ var async = require("async");
 var moment = require('moment');
 
 exports.addUserCar = function(req, res, next){
+    //  req.body.username,username取的是页面input里的name属性
     var userName = req.body.username;
     var phoneNum = req.body.phoneNum;
     var createDate =moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
