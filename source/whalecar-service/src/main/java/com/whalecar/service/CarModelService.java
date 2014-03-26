@@ -295,4 +295,26 @@ public class CarModelService {
         CarModelLv1 cml1 = carModelMapper.queryCarModelLv1ById(id);
         return carModelMapper.queryCarBrandById(cml1.getCarBrand());
     }
+
+    /**
+     * 查询CarModelLv1中的id和cname
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value="/queryCarBrandAndIdAndCname")
+    public @ResponseBody List<CarBrand> queryCarBrandAndIdAndCname(){
+        List<CarBrand> carBrandList = carModelMapper.queryAllCarBrand();
+        for(CarBrand c:carBrandList){
+            c.setCarModelLv1List(carModelMapper.queryIdAndCname(c.getId()));
+        }
+        return carBrandList;
+    }
+
+    /**
+     * 查询所有carBrand
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value="/queryAllCarBrand")
+    public @ResponseBody List<CarBrand> queryAllCarBrand(){
+        return carModelMapper.queryAllCarBrand();
+    }
 }

@@ -243,4 +243,15 @@
         from Car_Brand
         where id = #{carBrandId}
     </select>
+
+    <select id="queryIdAndCname" resultType="CarModelLv1">
+        select *
+        from Car_Model_Lv1 where carBrand = #{carBrand}
+    </select>
+
+    <select id="queryAllCarBrand" resultType="CarBrand">
+        select *
+        from Car_Brand
+        Order by orderIndex
+    </select>
 </mapper>

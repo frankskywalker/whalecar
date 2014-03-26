@@ -18,7 +18,7 @@ var index = require('./routes/index'),
     manager = require('./routes/manager'),
     admin = require('./routes/admin'),
     golf7Adv = require('./routes/golf7Adv');
-
+    addUserCar = require('./routes/addUserCar');
 
 var app = express();
 
@@ -179,7 +179,7 @@ app.all("/managerGetCarModelLv3",manager.managerGetCarModelLv3);
 app.all("/managerGetDicColor",manager.managerGetDicColor);
 app.all("/addManagerCarBrand",manager.addManagerCarBrand);
 app.all("/updateManagerGetCarModelLv3",manager.updateManagerGetCarModelLv3);
-
+app.all("/addUserCar",addUserCar.addUserCar);
 app.all("/cartest",function(req,res){
     res.render("cartest")
 });

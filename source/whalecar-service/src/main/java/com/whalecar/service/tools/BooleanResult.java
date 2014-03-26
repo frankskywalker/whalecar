@@ -44,15 +44,15 @@ public class BooleanResult {
          this.processResult = processResult;
      }
 
-    public String getErrorMsg() {
+     public String getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(String errorMsg) {
+     public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
     }
 
-    public Map<String, Object> getResultMap() {
+     public Map<String, Object> getResultMap() {
         return resultMap;
     }
 }
