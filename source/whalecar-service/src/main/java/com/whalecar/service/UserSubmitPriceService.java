@@ -147,7 +147,7 @@ public class UserSubmitPriceService {
             smsContent.append(shopStockView.getCarModelLv3FullName());
             smsContent.append("车型的意向价格为");
             smsContent.append(userSubmitPrice.getUserPrice());
-            smsContent.append("万元，4S店已回复同意了您提交的价格。请尽快登录网站生成订单。退订回复TD【梯卡汽车】");
+            smsContent.append("万元，4S店已回复同意了您提交的价格。请尽快登录网站生成订单。退订回复TD");
             smsService.sendSMS(new String[]{user.getUserTel()},smsContent.toString());
         }
         //b.shop所回复的价格需要发送短信
@@ -161,7 +161,7 @@ public class UserSubmitPriceService {
             smsContent.append(userSubmitPrice.getUserPrice());
             smsContent.append("万元，4S店已经回复，价格为");
             smsContent.append(shopPrice);
-            smsContent.append("万元，如您同意此价格，请尽快登录网站生成订单。退订回复TD【梯卡汽车】");
+            smsContent.append("万元，如您同意此价格，请尽快登录网站生成订单。退订回复TD");
             smsService.sendSMS(new String[]{user.getUserTel()},smsContent.toString());
         }
 
