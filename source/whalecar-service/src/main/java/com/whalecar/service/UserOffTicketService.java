@@ -51,7 +51,7 @@ public class UserOffTicketService {
         //延时4小时发送
         cal.add(Calendar.HOUR,4);
         smsService.sendScheduledSMS(new String[]{userOffTicket.getPhoneNum()}
-                ,"优惠码：" + ticketSn + ",请在店内议价后出示优惠码进行优惠。退订回复TD【梯卡网】"
+                ,"优惠码：" + ticketSn + ",请在店内议价后出示优惠码进行优惠。退订回复TD"
                 ,cal.getTime());
         //3.保存
         userOffticketMapper.createUsertOffTicket(userOffTicket);
