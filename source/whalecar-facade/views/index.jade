@@ -81,13 +81,16 @@ block append content
                   option(value="") 选择车型
                 input#allCars(type="hidden",value=JSON.stringify(idAndCname))
               input(type="button" value="提交" style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-left:56px;margin-top:-10px;", onclick="success();")
+  .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;")
+    div(style='background-color: #ffffff;')
+      img(src="img/buystyle.png",alt="buystyle")
       div(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
         img(src="../img/banner/cheapBand.png",style="padding-bottom:5px;padding-right:5px")
       #cheap
         .row-fluid
-            ul.thumbnails(style='margin-top: 0px;margin-bottom:0px')
+            ul.thumbnails(style='margin-top: 0px;margin-bottom:0px;')
                 li(style="width:590px;height:443px;margin-right: 7px; margin-left: 14px;")
-                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[0].id}",style="padding:8px;")
+                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[0].id}",style="padding:8px;background-color:#f8f8f8;border:solid 1px #aaaaaa;")
                         img(style='width: 582px; height: 384px;', src='img/price001.jpg')
                         .caption(style='height:40px; padding:5px;')
                             div.pull-left(style="padding:5px;")
@@ -103,7 +106,7 @@ block append content
                                     i #{priceOffCarModelLv1[0].diffPrice.toFixed(2)}
 
                 li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-bottom:7px;")
-                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[1].id}",style="padding:8px;")
+                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[1].id}",style="padding:8px;background-color:#f8f8f8;border:solid 1px #aaaaaa;")
                         img(style='width: 290px; height: 180px;', src='img/price002.jpg')
                         .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
                             div.pull-left(style="padding:0px 2px;")
@@ -116,7 +119,7 @@ block append content
                                     | 立减
                                     i #{priceOffCarModelLv1[1].diffPrice.toFixed(2)}
                 li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-top:7px;")
-                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;")
+                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#f8f8f8;border:solid 1px #aaaaaa;")
                         img(style='width: 290px; height: 180px;', src='img/price003.jpg')
                         .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
                             div.pull-left(style="padding:0px 2px;")
@@ -133,14 +136,12 @@ block append content
         img(src="../img/banner/focusBand.png",style="padding-bottom:5px;padding-right:5px")
       #focus
         .row-fluid
-            //
-                style="background-color: #227bd8;"
               ul#section1.thumbnails(style='margin-top: 10px;margin-bottom:0px')
                 li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
-                  a.thumbnail(href='./car?id=232', style='padding: 0px;')
+                  a.thumbnail(href='./car?id=232', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
                     div(name='hoverdiv', style='height: 170px; width: 200px;')
-                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 10px;')
-                        img(style='width: 190px; height: 140px; padding: 0px 0px 0px;', src='img/car/232.png')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/232.png')
                         .caption(style='height: 20px; padding: 0px;')
                           h4.text-center(style='font-size: 13px;') 市场价:12.19万 - 19.99万
                       div(name='coverdiv', style='position: absolute; display: none;')
@@ -149,7 +150,7 @@ block append content
                           h6 1.4T 1.6
                           h6 横置前驱
                           h6 7档双离合
-                        .caption(style='background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
                           h4.text-center(style='color: #ffffff; font-size: 13px;') 网站价:万 - 万
                   h5
                     img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
@@ -157,10 +158,10 @@ block append content
                     | 一汽-大众 高尔夫7
                     img.pull-right(src="../img/focusBand.png")
                 li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
-                  a.thumbnail(href='./car?id=229', style='padding: 0px;')
+                  a.thumbnail(href='./car?id=229', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
                     div(name='hoverdiv', style='height: 170px; width: 200px;')
-                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 10px;')
-                        img(style='border-radius: 0px 0px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;', src='img/car/235.png')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='border-radius: 0px 0px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/235.png')
                         .caption(style='height: 20px; padding: 0px;')
                           h4.text-center(style='font-size: 13px;') 市场价:19.98万 - 34.38万
                       div(name='coverdiv', style='position: absolute; display: none;')
@@ -169,7 +170,7 @@ block append content
                           h6 1.4T 1.8T 2.0T 3.0
                           h6 横置前驱
                           h6 7档双离合
-                        .caption(style='background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
                           h4.text-center(style='color: #ffffff; font-size: 13px;') 网站价:19.98万 - 34.38万
                   h5
                     img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
@@ -177,10 +178,10 @@ block append content
                     | 一汽-大众 迈腾
                     img.pull-right(src="../img/focusBand.png")
                 li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
-                  a.thumbnail(href='./car?id=228', style='padding: 0px;')
+                  a.thumbnail(href='./car?id=228', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
                     div(name='hoverdiv', style='height: 170px; width: 200px;')
-                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 10px;')
-                        img(style='width: 190px; height: 140px; padding: 0px 0px 0px;', src='img/car/233.png')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/233.png')
                         .caption(style='height: 20px; padding: 0px;')
                           h4.text-center(style='font-size: 13px;') 市场价:8.28万 - 11.93万
                       div(name='coverdiv', style='position: absolute; display: none;')
@@ -189,7 +190,7 @@ block append content
                           h6 1.4 1.8
                           h6 横置前驱
                           h6 7档双离合
-                        .caption(style='background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
                           h4.text-center(style='color: #ffffff; font-size: 13px;') 网站价:8.28万 - 11.93万
                   h5
                     img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
@@ -197,10 +198,10 @@ block append content
                     | 一汽-大众 捷达
                     img.pull-right(src="../img/focusBand.png")
                 li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
-                  a.thumbnail(href='./car?id=231', style='padding: 0px;')
+                  a.thumbnail(href='./car?id=231', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
                     div(name='hoverdiv', style='height: 170px; width: 200px;')
-                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 10px;')
-                        img(style='border-radius: 0px 0px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;', src='img/car/234.png')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='border-radius: 0px 0px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/234.png')
                         .caption(style='height: 20px; padding: 0px;')
                           h4.text-center(style='font-size: 13px;') 市场价:11.89万 - 25.38万
                       div(name='coverdiv', style='position: absolute; display: none;')
@@ -209,7 +210,7 @@ block append content
                           h6 1.4T 1.6 2.0T
                           h6 横置前驱
                           h6 7档双离合
-                        .caption(style='background-image: url(img/hover-price.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
                           h4.text-center(style='color: #ffffff; font-size: 13px;') 11.89万 - 25.38万
                   h5
                     img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
@@ -218,12 +219,9 @@ block append content
                     img.pull-right(src="../img/focusBand.png")
       div#carModelViewAnchor(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
         img(src="../img/banner/allBand.png",style="padding-bottom:5px;padding-right:5px")
-    //
-      div(align='center')
-        img(src='img/progress.png')
-    .row-fluid#carModelView(style="background-color:#eaeaea")
+    .row-fluid#carModelView(style="background-color:#ffffff")
       //内容ajax读取
-    div(style='padding:20px;background-color:#eaeaea')
+    div(style='padding:20px;background-color:#ffffff')
           div(style='border-top: 2px solid #ddd;')
             .row-fluid
               .span4
@@ -295,9 +293,9 @@ block append content
   script.
     $(document).ready(function(){
         //初始化汽车数据
-        $("#carModelView").load("./cardata?type=getCarModelPagination");
+        //$("#carModelView").load("./cardata?type=getCarModelPagination");
     });
-    
+
     //首页幻灯片
     $(function(){
         var original_w=940;
@@ -337,14 +335,14 @@ block append content
             },
             generatePagination: false
          });
-        
+
          $(".Limg2").css({'display':'block'});
-         
+
          $('.page_a_1').click(function(event){
             event.preventDefault();
             //window.open($(this).attr('link'),'name_1');
          });
-         
+
          $(window).resize(function(e){
             var original_w=940;
             var original_h=363;
@@ -359,9 +357,7 @@ block append content
             }
          });
     });
-
-
-      //滚动字幕
+    //滚动字幕
     var $this=$("#news");
     var scrollTimer;
     $this.hover(function(){
@@ -383,7 +379,6 @@ block append content
       }).find("li:first").appendTo($self);
       })
     }
-
     function getCarBrand(){
       var idname =  eval($("#allCars").val());
       var carBrandID = $("#carBrand").val();
@@ -399,7 +394,6 @@ block append content
           }
       }
     }
-
     function success(){
       var username = $("#username").val();
       var phoneNum = $("#phoneNum").val();
@@ -413,5 +407,4 @@ block append content
           alert("提交成功！");
           document.addUserCar.submit();
           return;
-
     }
