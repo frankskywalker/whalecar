@@ -83,7 +83,6 @@ block append content
               input(type="button" value="提交" style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-left:56px;margin-top:-10px;", onclick="success();")
   .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;")
     div(style='background-color: #ffffff;')
-      img(src="img/buystyle.png",alt="buystyle")
       div(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
         img(src="../img/banner/cheapBand.png",style="padding-bottom:5px;padding-right:5px")
       #cheap
@@ -293,7 +292,7 @@ block append content
   script.
     $(document).ready(function(){
         //初始化汽车数据
-        //$("#carModelView").load("./cardata?type=getCarModelPagination");
+        $("#carModelView").load("./cardata?type=getCarModelPagination");
     });
 
     //首页幻灯片
