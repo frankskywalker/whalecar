@@ -4,21 +4,33 @@
 
 <mapper namespace="com.whalecar.persistence.UserCarMapper">
     
-    <!-- 根据id查询shop -->
-    <insert id="addUserCar" parameterType="Map" >
+    <!-- 快速订单，用户添加 -->
+    <insert id="addUserCar" >
         insert into
         User_Car(
             userName,
             phoneNum,
             carID,
             carName,
-            createDate
+            createDate,
+            promoCode
         )values(
             #{userName},
             #{phoneNum},
             #{carID},
             #{carName},
-            #{createDate}
+            #{createDate},
+            #{promoCode}
+        )
+    </insert>
+
+    <!-- 添加优惠码 -->
+    <insert id="promoCode">
+        insert into
+        User_Car(
+            promoCode
+        )values(
+            #{promoCode}
         )
     </insert>
 

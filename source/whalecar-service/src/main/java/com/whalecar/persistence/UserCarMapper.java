@@ -16,5 +16,7 @@ import java.util.Map;
 public interface UserCarMapper {
 
     //记录有购车意向的用户信息
-    public int addUserCar(Map<String,Object> map);
+    public int addUserCar(UserCar userCar);
+
+
 }
