@@ -12,6 +12,7 @@ public class UserCar {
     private Integer carID;
     private String carName;
     private Date createDate;
+    private String promoCode;
 
     public Integer getId() {
         return id;
@@ -59,5 +60,13 @@ public class UserCar {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getPromoCode() {
+        return promoCode;
+    }
+
+    public void setPromoCode(String promoCode) {
+        this.promoCode = promoCode;
     }
 }

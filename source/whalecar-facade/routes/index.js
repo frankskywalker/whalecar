@@ -18,7 +18,7 @@ exports.page = function(req, res, next) {
                 return;
             }
     res.render("index",{priceOffCarModelLv1:data1,idAndCname:data2});
-
+               console.log(data1);
             });
         });
 
