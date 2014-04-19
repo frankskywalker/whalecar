@@ -50,14 +50,14 @@ block append content
                       if item.colorCname
                         div(name="colorDiv",data-toggle="tooltip",data-placement="top",data-original-title="#{item.colorCname}",style="width:23px;height:17px;background-color:#{item.colorRgb};display:inline-block;box-shadow: 2px 2px 2px #888888;margin-right:4px;")
                 li
-                  h6(style="padding-left:10px;margin-top:10px;padding-right:10px")&nbsp;&nbsp;#{carModelLv1.description}
+                  h6(style="padding-left:10px;margin-top:10px;padding-right:10px") &nbsp;&nbsp;#{carModelLv1.description}
         .span3
           //
              相关其他车辆 
           legend
             h5
-              p(style="color:#444444;display:inline")更多&nbsp;&nbsp;
-              相关车型
+              p(style="color:#444444;display:inline") 更多&nbsp;&nbsp;
+              | 相关车型
           <ul class='thumbnails'>
           each item,i in similarCarModelLv1
             if i < 8
