@@ -116,7 +116,7 @@ block append content
                         span(style="vertical-align: middle;color:#ec6197;font-size:20px") #{shopStockView.carPrice}万
                         span(style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through") #{shopStockView.factoryPrice}万
 
-                      td #{shopStockView.carOnHandNum}/#{shopStockView.carOnOrderNum}
+                      td(style="text-align:center") #{shopStockView.carOnHandNum}/#{shopStockView.carOnOrderNum}
                       td
                          a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
                     tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
