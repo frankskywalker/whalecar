@@ -95,6 +95,8 @@ block append content
                   p 价格
                 th(style="width:120px")
                   p 库存(现货/在途)
+                th(style="width:60px")
+                  p 预定
             tbody
               each shopStockView,shopStockViewIndex in item.shopStockList
                   if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > -1
@@ -115,8 +117,10 @@ block append content
                         span(style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through") #{shopStockView.factoryPrice}万
 
                       td #{shopStockView.carOnHandNum}/#{shopStockView.carOnOrderNum}
+                      td
+                         a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
                     tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
-                      td(colspan='7')
+                      td(colspan='9')
                         table
                           tbody
                             tr.detail
@@ -125,8 +129,6 @@ block append content
                                 | #{shopStockView.carAdditionsText}
                                 br
                                 | #{shopStockView.carAddition}
-                      td(colspan='1',style="")
-                        a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
               else
                 tr
                   td(colspan='8') 暂无库存
