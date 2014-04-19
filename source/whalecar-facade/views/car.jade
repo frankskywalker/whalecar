@@ -97,6 +97,7 @@ block append content
                   p 库存(现货/在途)
                 th(style="width:60px")
                   p 预定
+
             tbody
               each shopStockView,shopStockViewIndex in item.shopStockList
                   if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > -1
