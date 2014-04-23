@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    block css
+      link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+      link(href='css/style.css', rel='stylesheet', media='screen')
+      link(rel="icon",type="image/png",href="img/favicon.png")
+    block js
+        script(src='js/jquery-1.10.2.min.js')
+        script(src='js/bootstrap.min.js')
+        script(src='js/spin.min.js')
+        script(src='js/tools.js')
+        script(src='js/jquery.unveil.min.js')
+  body(style="background:url('img/subtle_dots.png');")
+    div(style="width:1400px;margin:0 auto;")
+      div(style="width:1400px;height:1550px;background-image:url('img/vw3.png');")
+        form(method="POST",action="./vw3AdverSave",style="padding-left:1000px;padding-top:880px;")
+          div
+            span(style="font-size:20px;padding-bottom:2px;") 姓名
+            input(type="text",name="name",style="width:120px;margin-left:50px;font-size:20px;line-height:10px;padding:0px 5px;")
+          div
+            span(style="font-size:20px;padding-bottom:2px;") 手机号码
+            input#tel(type="text",name="tel",style="width:120px;margin-left:10px;font-size:20px;line-height:10px;padding:0px 5px;")
+          div
+            span(style="font-size:20px;padding-bottom:2px;") 性别
+            select(name="sex",style="width:135px;margin-left:50px;font-size:20px;line-height:10px;padding:0px 5px;")
+              option(value=" ") 请选择
+              option(value="男") 男
+              option(value="女") 女
+            div
+              input.btn.btn-mini(type="submit",value="提交",style="margin-left:190px;margin-top:15px;font-size:15px;",onclick="return submitCheck();")
+     script.
+      function submitCheck(){
+        if(!$('#tel').val().match(/^1\d{10}$/)){
+          alert("您输入的手机号码格式有误，请重新输入！");
+          return false;
+        }
+        alert("提交成功!")
+        return true;
+      }

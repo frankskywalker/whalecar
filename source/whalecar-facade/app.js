@@ -21,7 +21,6 @@ var index = require('./routes/index'),
     addUserCar = require('./routes/addUserCar');
 
 var app = express();
-
 // all environments
 app.set('port', process.env.PORT || 8001);
 app.set('views', __dirname + '/views');
@@ -227,13 +226,16 @@ app.all('/advertisement9',function(req,res){
 
 
 app.all('/golf7adver',golf7Adv.page);
-app.all('/vw_adver',golf7Adv.page2);
 app.all('/golf7adverSave',golf7Adv.save);
+
+app.all('/vw_adver',golf7Adv.page2);
 app.all('/vwAdverSave',golf7Adv.save2);
 
 app.all('/vw2_adver',golf7Adv.page3);
 app.all('/vw2AdverSave',golf7Adv.save3);
 
+app.all('/vw3_adver',golf7Adv.page4);
+app.all('/vw3AdverSave',golf7Adv.save4);
 
 app.all('/way1',function(req,res){
     res.render("way1");
