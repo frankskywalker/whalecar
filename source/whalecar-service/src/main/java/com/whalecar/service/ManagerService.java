@@ -24,7 +24,6 @@ public class ManagerService {
     @Autowired
     private ManagerMapper managerMapper;
 
-
     /**
      * 查询优惠价格购买表格
      * @return
@@ -32,7 +31,11 @@ public class ManagerService {
     @RequestMapping(method = RequestMethod.GET,value = "/manager/queryUserOffTicket")
     public @ResponseBody
     List<UserOffTicketManager> queryUserOffTicket(){
-        return managerMapper.queryUserOffTicket();
+        List<UserOffTicketManager> uotmList = managerMapper.queryUserOffTicket();
+        for(UserOffTicketManager uotm:uotmList){
+            uotm.setFullName(uotm.getCnameCb()+"-"+uotm.getCnameLv1()+"  "+uotm.getFullName());
+        }
+        return uotmList;
     }
 
 
@@ -54,7 +57,11 @@ public class ManagerService {
     @RequestMapping(method = RequestMethod.GET,value = "/manager/queryUserSubmitPrice")
     public @ResponseBody
     List<UserSubmitPriceManager> queryUserSubmitPrice(){
-      return managerMapper.queryUserSubmitPrice();
+        List<UserSubmitPriceManager> uspmList = managerMapper.queryUserSubmitPrice();
+        for(UserSubmitPriceManager uspm:uspmList){
+            uspm.setFullName(uspm.getCnameCb()+"-"+uspm.getCnameLv1()+"  "+uspm.getFullName());
+        }
+        return uspmList;
     }
 
 
