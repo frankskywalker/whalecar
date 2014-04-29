@@ -24,15 +24,7 @@
         )
     </insert>
 
-    <!-- 添加优惠码 -->
-    <insert id="promoCode">
-        insert into
-        User_Car(
-            promoCode
-        )values(
-            #{promoCode}
-        )
-    </insert>
+
 
 
 </mapper>
