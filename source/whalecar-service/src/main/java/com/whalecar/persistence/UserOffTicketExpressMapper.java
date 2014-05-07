@@ -22,5 +22,5 @@ public interface UserOffTicketExpressMapper {
     /**
      * 根据carModelLv3查询factoryPrice
      */
-    public BigDecimal findFactoryPrice(int carModelLv3);
+    public BigDecimal findFactoryPrice(int id);
 }

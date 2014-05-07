@@ -21,4 +21,15 @@
             #{title}
           );
     </insert>
+    <select id="findCarPrice" resultType="BigDecimal">
+      SELECT min carPrice
+      FROM shop_stock
+      GROUP BY carPrice
+      WHERE carModelLv3=#{carModelLv3}
+    </select>
+    <select id="findFactoryPrice" resultType="BigDecimal">
+        SELECT factoryPrice
+        FROM car_model_lv3
+        WHERE id=#{id}
+    </select>
 </mapper>
