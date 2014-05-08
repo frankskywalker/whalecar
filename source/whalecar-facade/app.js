@@ -17,7 +17,7 @@ var index = require('./routes/index'),
     validator = require('./routes/validator'),
     manager = require('./routes/manager'),
     admin = require('./routes/admin'),
-    golf7Adv = require('./routes/golf7Adv');
+    golf7Adv = require('./routes/golf7Adv'),
     addUserCar = require('./routes/addUserCar');
 
 var app = express();
