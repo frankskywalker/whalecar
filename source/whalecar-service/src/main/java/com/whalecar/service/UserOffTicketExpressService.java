@@ -46,4 +46,22 @@ public class UserOffTicketExpressService {
     BigDecimal findFactoryPrice(@RequestBody int id){
         return userOffTicketExpressMapper.findFactoryPrice(id);
     }
+
+    /**
+     * 根据carBrand查询carModelLv1Cname
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/findCarModelLv1Cname")
+    public @ResponseBody
+    String findCarModelLv1Cname(@RequestBody int carBrand){
+        return userOffTicketExpressMapper.findCarModelLv1Cname(carBrand);
+    }
+
+    /**
+     * 根据carModelLv2查询carModelLv3的fullName
+     */
+    @RequestMapping(method =  RequestMethod.POST, value = "/findCarModelLv3FullName")
+    public @ResponseBody
+    String findCarModelLv3FullName(@RequestBody int carModelLv2){
+        return userOffTicketExpressMapper.findCarModelLv3FullName(carModelLv2);
+    }
 }
