@@ -1,6 +1,6 @@
 package com.whalecar.persistence;
 
-import com.whalecar.domain.UserOffTicketExpress;
+import com.whalecar.domain.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,15 +24,20 @@ public interface UserOffTicketExpressMapper {
     /**
      * 根据carModelLv3查询factoryPrice
      */
-    public BigDecimal findFactoryPrice(int id);
+    public BigDecimal findFactoryPrice(int carModelLv3);
 
     /**
-     * 根据carBrand的id获得carModelLv1的cname
+     * 根据id查询carBrand
      */
-    public String findCarModelLv1Cname(int carBrand);
+    public List<CarBrand> findCarBrand();
 
     /**
-     * 根据carModelLv2的id获得carModelLv3的fullName
+     * 根据carBrand获得carModelLv1
      */
-    public String findCarModelLv3FullName(int carModelLv2);
+    public List<CarModelLv1> findCarModelLv1(int carBrand);
+
+    /**
+     * 根据carModelLv1的id获得carModelLv3
+     */
+    public List<CarModelLv3> findCarModelLv3(int id);
 }

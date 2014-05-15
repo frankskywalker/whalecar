@@ -224,7 +224,6 @@ app.all('/advertisement9',function(req,res){
     res.render("./advertisement/adver9");
 }) ;
 
-
 app.all('/golf7adver',golf7Adv.page);
 app.all('/golf7adverSave',golf7Adv.save);
 
@@ -243,6 +242,10 @@ app.all('/way1',function(req,res){
 app.all('/about_us',function(req,res){
     res.render("about_us");
 }) ;
+
+app.all('/love_page',function(req,res){
+    res.render("love_page");
+});
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));

@@ -130,7 +130,7 @@ block append content
                $("#carModelLv2").append("<option value=''>请选择...</option>");
                $.each(data,function(index,carModelLv2){
                   if(carModelLv2.id == '#{shopStockView.carModelLv2Id}'){
-                     $("#carModelLv2").applend("<option selected=selected value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");
+                     $("#carModelLv2").append("<option selected=selected value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");
                   }
                   else{
                      $("#carModelLv2").append("<option value='" + carModelLv2.id + "'>" + carModelLv2.fullName+ "</option>");

@@ -23,27 +23,39 @@
     </insert>
 
     <select id="findCarPrice" resultType="BigDecimal">
-      SELECT min carPrice
+      SELECT min(carPrice)
       FROM shop_stock
-      GROUP BY carPrice
       WHERE carModelLv3=#{carModelLv3}
     </select>
 
     <select id="findFactoryPrice" resultType="BigDecimal">
-        SELECT factoryPrice
-        FROM car_model_lv3
-        WHERE id=#{id}
+        SELECT lv3.factoryPrice
+        FROM car_model_lv3 lv3
+        JOIN shop_stock ss ON(lv3.id=ss.carModelLv3)
+        WHERE carModelLv3=#{carModelLv3}
     </select>
 
-    <select id="findCarModelLv1Cname" resultType="String">
-      SELECT cname
+    <select id="findCarBrand" resultType="CarBrand">
+        SELECT *
+        FROM car_brand
+    </select>
+
+    <select id="findCarModelLv1" resultType="CarModelLv1">
+      SELECT *
       FROM car_model_lv1
-      WHERE carBrand=#{carBrand}
+      WHERE carBrand IN
+      (
+        SELECT carBrand
+        FROM car_brand
+        WHERE carBrand=#{carBrand}
+      )
     </select>
 
-    <select id="findCarModelLv3FullName" resultType="String">
-      SELECT fullName
-      FROM car_model_lv3
-      WHERE carModelLv2=#{carModelLv2}
+    <select id="findCarModelLv3" resultType="CarModelLv3">
+      SELECT *
+      FROM car_model_lv3 lv3
+      JOIN car_model_lv2 lv2 ON(lv3.carModelLv2=lv2.id)
+      JOIN car_model_lv1 lv1 ON(lv2.carModelLv1=lv1.id)
+      WHERE lv1.id=#{id}
     </select>
 </mapper>
