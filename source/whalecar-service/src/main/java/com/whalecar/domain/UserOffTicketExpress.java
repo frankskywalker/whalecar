@@ -12,16 +12,16 @@ public class UserOffTicketExpress implements Serializable {
     private Date createDate;
     private String ticketSn;
     private String phoneNum;
-    private Integer car_ModelLv3;
+    private Integer carModelLv3;
     private String username;
     private String title;
 
-    public Integer getCar_ModelLv3() {
-        return car_ModelLv3;
+    public Integer getCarModelLv3() {
+        return carModelLv3;
     }
 
-    public void setCar_ModelLv3(Integer car_ModelLv3) {
-        this.car_ModelLv3 = car_ModelLv3;
+    public void setCarModelLv3(Integer carModelLv3) {
+        this.carModelLv3 = carModelLv3;
     }
 
     public String getUsername() {

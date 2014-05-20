@@ -4,6 +4,7 @@ import com.whalecar.domain.CarBrand;
 import com.whalecar.domain.CarModelLv1;
 import com.whalecar.domain.CarModelLv3;
 import com.whalecar.domain.UserOffTicketExpress;
+import com.whalecar.service.tools.BooleanResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.whalecar.persistence.UserOffTicketExpressMapper;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -29,9 +30,12 @@ public class UserOffTicketExpressService {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/createUserOffTicketExpress")
     public @ResponseBody
-    UserOffTicketExpress createUserOffTicketExpress(@RequestBody UserOffTicketExpress userOffTicketExpress){
+    int createUserOffTicketExpress(@RequestBody UserOffTicketExpress userOffTicketExpress){
+        String ticketSn = "0";
+        userOffTicketExpress.setTicketSn(ticketSn);
+        userOffTicketExpress.setCreateDate(new Date());
         userOffTicketExpressMapper.createUserOffTicketExpress(userOffTicketExpress);
-        return userOffTicketExpress;
+        return 1;
     }
 
     /**
@@ -39,19 +43,23 @@ public class UserOffTicketExpressService {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/findCarPrice")
     public @ResponseBody
-    BigDecimal findCarPrice(@RequestBody Map<String,String> map){
+    BooleanResult findCarPrice(@RequestBody Map<String,String> map){
         String carModelLv3 = map.get("carModelLv3");
-        return userOffTicketExpressMapper.findCarPrice(Integer.valueOf(carModelLv3));
+        BooleanResult result1 = new BooleanResult(true);
+        result1.getResultMap().put("carprice",userOffTicketExpressMapper.findCarPrice(Integer.valueOf(carModelLv3)));
+        return result1;
     }
 
     /**
-     * 根据carModelLv3查询factoryPrice
+     * 根据id查询factoryPrice
      */
     @RequestMapping(method = RequestMethod.POST, value = "/findFactoryPrice")
     public @ResponseBody
-    String findFactoryPrice(@RequestBody Map<String,String> map){
-        String carModelLv3 = map.get("carModelLv3");
-        return String.valueOf(userOffTicketExpressMapper.findFactoryPrice(Integer.valueOf(carModelLv3)));
+    BooleanResult findFactoryPrice(@RequestBody Map<String,String> map){
+        String id = map.get("id");
+        BooleanResult result2 = new BooleanResult(true);
+        result2.getResultMap().put("factoryprice",userOffTicketExpressMapper.findFactoryPrice(Integer.valueOf(id)));
+        return result2;
     }
 
     /**

@@ -31,8 +31,7 @@
     <select id="findFactoryPrice" resultType="BigDecimal">
         SELECT lv3.factoryPrice
         FROM car_model_lv3 lv3
-        JOIN shop_stock ss ON(lv3.id=ss.carModelLv3)
-        WHERE carModelLv3=#{carModelLv3}
+        WHERE id=#{id}
     </select>
 
     <select id="findCarBrand" resultType="CarBrand">
@@ -52,7 +51,7 @@
     </select>
 
     <select id="findCarModelLv3" resultType="CarModelLv3">
-      SELECT *
+      SELECT lv3.*
       FROM car_model_lv3 lv3
       JOIN car_model_lv2 lv2 ON(lv3.carModelLv2=lv2.id)
       JOIN car_model_lv1 lv1 ON(lv2.carModelLv1=lv1.id)
