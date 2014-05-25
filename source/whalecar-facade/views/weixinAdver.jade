@@ -16,20 +16,20 @@ html
     div
       p(style="font-size:26px;color:#666666")
         | 您的朋友
-        stong(style="font-size:30px;color:#ff0101") 张宁
+        stong(style="font-size:30px;color:#ff0101")= weixinInfo.userName
         | 邀请您帮他转发
     div(style="border:1px solid #cccccc;border-radius:10px;background-color:#ffffff;padding:30px")
       p(style="font-size:52px;color:#666666") 转发赢Ipad mini
       img(src="img/phone1.png")
       div(style="background-color:#f1f1f1;padding:20px;")
         p(style="font-size:26px;color:#eb6100;line-height:50px;")
-          | 张宁：已被转发：
-          stong(style="font-size:34px") 1270
+          | #{weixinInfo.userName}：已被转发：
+          stong(style="font-size:34px")= weixinInfo.forwardCount
           | 次，目前排在
-          stong(style="font-size:34px") 1
+          stong(style="font-size:34px")= weixinInfo.rank
           | 名
-        p(style="font-size:26px;color:#eb6100;line-height:100px;") 离结束还有：
-        p(style="font-size:32px;color:#ff0000;line-height:100px;text-align:center;") 13天1小时14分43秒
+        //p(style="font-size:26px;color:#eb6100;line-height:100px;") 离结束还有：
+        //p(style="font-size:32px;color:#ff0000;line-height:100px;text-align:center;") 13天1小时14分43秒
       div(style="margin-top:50px;")
         p(style="font-size:34px;color:#666666") 活动描述
         div(style="margin-top:30px;margin-bottom:30px;")
@@ -78,7 +78,69 @@ html
           | 三、本活动为后台系统自动统计生成，公平公正，真实有效。
           br
           | 四、详情请致电：400-007-9902.
-
+    script.
+        // 分享
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage',{
+                //"appid":window.shareData.appid,
+                "img_url":"http://www.teecar.com.cn:8001/img/phone1.png",
+                "img_width":"640",
+                "img_height":"640",
+                "link":window.location.href,
+                "desc":'描述',
+                "title":'标题',
+                }, function(res) {
+                    $.get("./weixinAdver/updateForwardCont?openId=#{weixinInfo.openId}",function(){
+                        _report('send_msg', res.err_msg);
+                    }
+                );
+            })
+        }
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url":"http://www.teecar.com.cn:8001/img/phone1.png",
+                "img_width":"640",
+                "img_height":"640",
+                "link":window.location.href,
+                "desc": '描述',
+                "title": '标题',
+                }, function(res) {
+                    $.get("./weixinAdver/updateForwardCont?openId=#{weixinInfo.openId}",function(){
+                        _report('timeline', res.err_msg);
+                    }
+                );
+            });
+        }
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content":window.shareData.wContent,
+                "url":window.shareData.wLink,
+                }, function(res) {
+                    $.get("./weixinAdver/updateForwardCont?openId=#{weixinInfo.openId}",function(){
+                        _report('weibo', res.err_msg);
+                    });
+                }
+            );
+        }
+        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+        document.addEventListener(
+            'WeixinJSBridgeReady',
+            function onBridgeReady() {
+                // 发送给好友
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                    shareFriend();
+                });
+                // 分享到朋友圈
+                WeixinJSBridge.on('menu:share:timeline', function(argv){
+                    shareTimeline();
+                });
+                // 分享到微博
+                WeixinJSBridge.on('menu:share:weibo', function(argv){
+                    shareWeibo();
+                });
+            },
+            false
+        );
 
 
 

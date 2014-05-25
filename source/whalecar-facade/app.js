@@ -17,8 +17,9 @@ var index = require('./routes/index'),
     validator = require('./routes/validator'),
     manager = require('./routes/manager'),
     admin = require('./routes/admin'),
-    golf7Adv = require('./routes/golf7Adv');
-    addUserCar = require('./routes/addUserCar');
+    golf7Adv = require('./routes/golf7Adv'),
+    addUserCar = require('./routes/addUserCar'),
+    weixinAdver = require('./routes/weixinAdver');
 
 var app = express();
 // all environments
@@ -224,9 +225,10 @@ app.all('/advertisement9',function(req,res){
     res.render("./advertisement/adver9");
 }) ;
 
-app.all('/forwards',function(req,res){
-    res.render("weixinAdver");
-})
+app.all('/weixinAdver',weixinAdver.page);
+app.all('/weixinAdver/save',weixinAdver.save);
+app.all('/weixinAdver/updateForwardCont',weixinAdver.updateForwardCount);
+
 
 
 app.all('/golf7adver',golf7Adv.page);
