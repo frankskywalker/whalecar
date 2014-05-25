@@ -19,7 +19,7 @@ html
         stong(style="font-size:30px;color:#ff0101")= weixinInfo.userName
         | 邀请您帮他转发
     div(style="border:1px solid #cccccc;border-radius:10px;background-color:#ffffff;padding:30px")
-      p(style="font-size:52px;color:#666666") 转发赢三星平板
+      p(style="font-size:52px;color:#666666") 三星平板电脑
       img(src="img/phone1.png")
       div(style="background-color:#f1f1f1;padding:20px;")
         p(style="font-size:26px;color:#eb6100;line-height:50px;")
@@ -87,8 +87,8 @@ html
                 "img_width":"640",
                 "img_height":"640",
                 "link":window.location.href,
-                "desc":'描述',
-                "title":'标题',
+                "desc":'转发前10名赢取大奖',
+                "title":'转发赢三星平板电脑',
                 }, function(res) {
                     $.get("./weixinAdver/updateForwardCont?openId=#{weixinInfo.openId}",function(){
                         _report('send_msg', res.err_msg);
@@ -102,8 +102,8 @@ html
                 "img_width":"640",
                 "img_height":"640",
                 "link":window.location.href,
-                "desc": '描述',
-                "title": '标题',
+                "desc": '转发前10名赢取大奖',
+                "title": '转发赢三星平板电脑',
                 }, function(res) {
                     $.get("./weixinAdver/updateForwardCont?openId=#{weixinInfo.openId}",function(){
                         _report('timeline', res.err_msg);
