@@ -224,6 +224,10 @@ app.all('/advertisement9',function(req,res){
     res.render("./advertisement/adver9");
 }) ;
 
+app.all('/forwards',function(req,res){
+    res.render("weixinAdver");
+})
+
 
 app.all('/golf7adver',golf7Adv.page);
 app.all('/golf7adverSave',golf7Adv.save);
