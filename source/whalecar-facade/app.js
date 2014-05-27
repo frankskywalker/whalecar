@@ -228,6 +228,7 @@ app.all('/advertisement9',function(req,res){
 app.all('/weixinAdver',weixinAdver.page);
 app.all('/weixinAdver/save',weixinAdver.save);
 app.all('/weixinAdver/updateForwardCont',weixinAdver.updateForwardCount);
+app.all('/weixinRank',weixinAdver.rankList);
 
 
 

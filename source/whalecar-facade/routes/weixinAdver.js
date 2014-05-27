@@ -39,3 +39,17 @@ exports.updateForwardCount = function(req,res,next){
     });
 }
 
+exports.rankList = function(req,res,next){
+    service.client.get("/weixininfo/queryWithRank",function(serviceError,serviceRequest,seviceResponse,data){
+        if(serviceError){
+            next(serviceError);
+            return;
+        }
+        var total = 0;
+        for(var i in data){
+            total += data[i].forwardCount;
+        }
+        res.render("weixinRank",{weixinList:data,total:total});
+    });
+}
+

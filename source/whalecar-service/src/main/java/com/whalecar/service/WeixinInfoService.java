@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created by ruihuang on 14-5-26.
  */
@@ -51,6 +53,12 @@ public class WeixinInfoService {
     @RequestMapping(value="/wiexininfo/queryByOpenId",method = RequestMethod.GET)
     public @ResponseBody WeixinInfo queryByOpenId(String openId){
         return weixinInfoMapper.queryByOpenId(openId);
+    }
+
+    @RequestMapping(value="/weixininfo/queryWithRank",method = RequestMethod.GET)
+    public @ResponseBody
+    List<WeixinInfo> queryAllWithRank(){
+        return weixinInfoMapper.queryAllWithRank();
     }
 
 }

@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        title 转发排行榜
+        meta(charset='utf-8')
+        link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='css/style.css', rel='stylesheet', media='screen')
+        link(rel="icon",type="image/png",href="img/favicon.png")
+        script(src='js/jquery-1.10.2.min.js')
+        script(src='js/bootstrap.min.js')
+    body
+        div.container(style="margin-top:20px;")
+            table.table.table-striped
+                thead
+                    tr
+                        th 用户名
+                        th 排名
+                        th 转发次数
+                tbody
+                    each item,index in weixinList
+                        tr
+                            td= item.userName
+                            td(style=(index < 3 ? 'color:red' : ''))= item.rank
+                            td= item.forwardCount
+                    tr
+                        td
+                        td 合计转发:
+                        td(style="color:'green'")= total
+

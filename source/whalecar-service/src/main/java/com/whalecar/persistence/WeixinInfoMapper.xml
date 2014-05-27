@@ -8,9 +8,17 @@
         select * from(
             select weixin_info.*, @curRank := @curRank + 1 AS rank
             from weixin_info,(SELECT @curRank := 0) r
-            order by forwardCount
+            order by forwardCount desc
         ) tab
         where openId = #{0}
+    </select>
+
+    <select id="queryAllWithRank" resultType="WeixinInfo">
+        select * from(
+            select weixin_info.*, @curRank := @curRank + 1 AS rank
+            from weixin_info,(SELECT @curRank := 0) r
+            order by forwardCount desc
+        ) tab
     </select>
     
     <insert id="save">
