@@ -21,12 +21,19 @@ public class WeixinInfoService {
 
     @RequestMapping(value="/wiexininfo/save",method = RequestMethod.POST)
     public @ResponseBody BooleanResult save(@RequestBody WeixinInfo weixinInfo){
-        int updateCount = weixinInfoMapper.save(weixinInfo);
-        if(updateCount == 1){
-            return new BooleanResult(true);
+        WeixinInfo weixinInfoCheckObj = this.queryByOpenId(weixinInfo.getOpenId());
+        if(weixinInfoCheckObj == null){
+            int updateCount = weixinInfoMapper.save(weixinInfo);
+            if(updateCount == 1){
+                return new BooleanResult(true);
+            }
+            else{
+                return new BooleanResult(false);
+            }
         }
-        else{
-            return new BooleanResult(false);
+        else
+        {
+            return new BooleanResult(true);
         }
     }
 

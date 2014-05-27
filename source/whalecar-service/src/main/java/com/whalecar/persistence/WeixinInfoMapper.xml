@@ -23,7 +23,8 @@
             province,
             country,
             subscribeTime,
-            createDate
+            createDate,
+            tel
         )
         VALUES
         (
@@ -34,7 +35,8 @@
             #{province},
             #{country},
             #{subscribeTime},
-            #{createDate}
+            #{createDate},
+            #{tel}
         );
 
     </insert>

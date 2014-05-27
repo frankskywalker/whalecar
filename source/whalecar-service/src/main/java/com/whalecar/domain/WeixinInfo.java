@@ -17,6 +17,7 @@ public class WeixinInfo {
     private Date subscribeTime;
     private Date createDate;
     private Integer forwardCount;
+    private String tel;
     private Integer rank;
 
     public Integer getId() {
@@ -105,5 +106,13 @@ public class WeixinInfo {
 
     public void setRank(Integer rank) {
         this.rank = rank;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 }
