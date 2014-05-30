@@ -130,7 +130,8 @@ function regist(req, res, next) {
         userCity: req.body.userCity,
         userArea: req.body.userArea,    //用户地区
         userName: req.body.userName,
-        userTel: req.body.userTel
+        userTel: req.body.userTel,
+        wxOpenId: req.body.wxOpenId
     };
     service.client.post("/createUser", user, function(error, request, response,
     data) {

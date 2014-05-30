@@ -72,4 +72,19 @@ public interface UserMapper {
      * @return
      */
     public User queryUserById(Integer userId);
+
+    /**
+     * 根据用户id更新用户wxOpenId
+     * @param userId
+     * @param wxOpenId
+     * @return
+     */
+    public int updateUserWxOpenId(Integer userId,String wxOpenId);
+
+    /**
+     * 根据wxOpenId查询用户
+     * @param wxOpenId
+     * @return
+     */
+    public User queryUserByWxOpenId(String wxOpenId);
 }

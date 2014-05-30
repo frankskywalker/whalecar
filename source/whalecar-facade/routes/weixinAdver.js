@@ -17,9 +17,45 @@ exports.page = function(req,res,next){
 
 }
 
+exports.loginPage = function(req,res){
+    service.client.get("/queryDicCityAndArea", function(err, sreq, sres, data) {
+        if(err){
+            next(err);
+            return;
+        }
+        res.render("weixinLogin",{allDicCitys:data,wxOpenId:req.query.wxOpenId});
+    });
+}
+
+// 用户登陆
+exports.wxLogin = function(req, res, next) {
+    var condition = {
+        userEmail: req.body.userEmail,
+        password: req.body.password,
+        wxOpenId: req.body.wxOpenId
+    };
+    service.client.post("/isExistUserForWeixin", condition, function(error,
+                                                                   request, response, data) {
+        if (error) {
+            next(error);
+            return;
+        } else {
+            if (!data.processResult) {
+                res.send({
+                    loginSuc: false
+                });
+            } else {
+                res.send({
+                    loginSuc: true
+                });
+            }
+        }
+    });
+}
+
 exports.save = function(req,res,next){
-    var weixinInfo = req.body;
-    service.client.post("/wiexininfo/save",weixinInfo,function(serviceError,serviceRequest,seviceResponse,data){
+    var wxOpenId = req.body.wxOpenId;
+    service.client.get("/wiexininfo/save?wxOpenId=" + wxOpenId,function(serviceError,serviceRequest,seviceResponse,data){
         if(serviceError){
             next(serviceError);
             return;

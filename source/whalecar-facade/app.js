@@ -229,7 +229,8 @@ app.all('/weixinAdver',weixinAdver.page);
 app.all('/weixinAdver/save',weixinAdver.save);
 app.all('/weixinAdver/updateForwardCont',weixinAdver.updateForwardCount);
 app.all('/weixinRank',weixinAdver.rankList);
-
+app.all('/weixinLogin',weixinAdver.loginPage);
+app.all('/weixinLogin/login',weixinAdver.wxLogin);
 
 
 app.all('/golf7adver',golf7Adv.page);

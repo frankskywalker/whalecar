@@ -4,6 +4,7 @@ import com.whalecar.domain.User;
 import com.whalecar.domain.UserCarFavorite;
 import com.whalecar.persistence.UserMapper;
 import com.whalecar.service.tools.BooleanResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,25 @@ public class UserService {
 		return userMapper.queryByEmailAndPsw(conditionMap);
 	}
 
+    /**
+     *  根据邮箱密码查询用户信息 如果没有查询到，说明邮箱或密码错误
+     *
+     * @param conditionMap
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "isExistUserForWeixin")
+    public @ResponseBody
+    BooleanResult isExistUserForWeixin(@RequestBody Map<String, Object> conditionMap) {
+        User user = userMapper.queryByEmailAndPsw(conditionMap);
+        if(user == null){
+            return new BooleanResult(false);
+        }
+        else{
+            userMapper.updateUserWxOpenId(user.getId(),String.valueOf(conditionMap.get("wxOpenId")));
+            return new BooleanResult(true);
+        }
+    }
+
 	/**
 	 * 创建新用户
 	 * 
@@ -42,6 +62,7 @@ public class UserService {
 	@RequestMapping(method = RequestMethod.POST, value = "createUser")
 	public @ResponseBody
 	Boolean createUser(@RequestBody Map<String, Object> userMap) {
+
 		int i = userMapper.createUser(userMap);
 		if (i == 1) {
 			return true;
@@ -107,4 +128,24 @@ public class UserService {
     List<UserCarFavorite> getUserCarFavorite(Integer userId){
         return userMapper.queryUserCarFavorite(userId);
     }
+
+    /**
+     * 查询
+     * @param wxOpenId
+     * @return
+     */
+    @RequestMapping(method =RequestMethod.GET,value="/user/isExistByWxOpenId")
+    public @ResponseBody
+    BooleanResult isExistByWxOpenId(String wxOpenId){
+        Map<String,Object> condition = new HashMap<String,Object>();
+        condition.put("wxOpenId",wxOpenId);
+        int count = userMapper.queryCountByCondition(condition);
+        if(count == 0){
+            return new BooleanResult(false);
+        }
+        else{
+            return new BooleanResult(true);
+        }
+    }
+
 }

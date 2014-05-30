@@ -22,6 +22,7 @@ public class User implements Serializable {
     private int userArea;
 	private String loginName;
 	private String loginPassword;
+    private String wxOpenId;
 	private String flagUseable;
 
     public Date getCreateDate() {
@@ -116,4 +117,13 @@ public class User implements Serializable {
     public int getUserArea() { return userArea; }
 
     public void setUserArea(int userArea) { this.userArea = userArea; }
+
+
+    public String getWxOpenId() {
+        return wxOpenId;
+    }
+
+    public void setWxOpenId(String wxOpenId) {
+        this.wxOpenId = wxOpenId;
+    }
 }
