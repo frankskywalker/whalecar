@@ -1,6 +1,8 @@
 package com.whalecar.service;
 
+import com.whalecar.domain.User;
 import com.whalecar.domain.WeixinInfo;
+import com.whalecar.persistence.UserMapper;
 import com.whalecar.persistence.WeixinInfoMapper;
 import com.whalecar.service.tools.BooleanResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,10 +24,19 @@ public class WeixinInfoService {
     @Autowired
     private WeixinInfoMapper weixinInfoMapper;
 
-    @RequestMapping(value="/wiexininfo/save",method = RequestMethod.POST)
-    public @ResponseBody BooleanResult save(@RequestBody WeixinInfo weixinInfo){
-        WeixinInfo weixinInfoCheckObj = this.queryByOpenId(weixinInfo.getOpenId());
+    @Autowired
+    private UserMapper userMapper;
+
+    @RequestMapping(value="/wiexininfo/save",method = RequestMethod.GET)
+    public @ResponseBody BooleanResult save(String wxOpenId){
+        WeixinInfo weixinInfoCheckObj = this.queryByOpenId(wxOpenId);
+        User user = userMapper.queryUserByWxOpenId(wxOpenId);
         if(weixinInfoCheckObj == null){
+            WeixinInfo weixinInfo = new WeixinInfo();
+            weixinInfo.setCreateDate(new Date());
+            weixinInfo.setUserName(user.getUserName());
+            weixinInfo.setTel(user.getUserTel());
+            weixinInfo.setOpenId(wxOpenId);
             int updateCount = weixinInfoMapper.save(weixinInfo);
             if(updateCount == 1){
                 return new BooleanResult(true);
