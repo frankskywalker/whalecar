@@ -16,20 +16,20 @@ html
         a:active:{color: black; } //激活：红色
         a:visited {color:purple;text-decoration:none;} //已访问：purple、无下划线
         a:hover {color: black; text-decoration:underline;} //鼠标移近：红色、下划线
-  body(style="background-color:#f1f1f1;padding:20px")
+  body(style="background-color:#f1f1f1;padding:20px;")
     div
       p(style="font-size:26px;color:#666666")
         | 您的朋友
         stong(style="font-size:30px;color:#ff0101")= weixinInfo.userName
         | 邀请您帮他转发
     div(style="border:1px solid #cccccc;border-radius:10px;background-color:#ffffff;padding:30px")
-      p(style="font-size:52px;color:#666666") 三星平板电脑
+      p(style="font-size:40px;color:#ff0000;line-height:60px;") 梯卡汽车网邀您参加转发赢三星平板电脑
       div(style="height:30px;") &nbsp;
       img(src="img/phone1.png")
       div(style="height:10px;") &nbsp;
       img(src="img/oilcard.jpg")
-      div(style="background-color:#f1f1f1;padding:20px;margin-top:30px;")
-        p(style="font-size:26px;color:#eb6100;line-height:50px;")
+      div(style="background-color:#f1f1f1;padding:20px;margin-top:30px;border:2px solid #ff0000;")
+        p(style="font-size:26px;color:#ff0000;line-height:50px;")
           | #{weixinInfo.userName}：已被转发：
           stong(style="font-size:34px")= weixinInfo.forwardCount
           | 次，目前排在
@@ -40,10 +40,9 @@ html
       div(style="margin-top:50px;")
         p(style="font-size:34px;color:#666666") 活动描述
         div(style="margin-top:30px;margin-bottom:30px;")
-          img(src="img/phone1.png")
-          div(style="height:10px;") &nbsp;
-          img(src="img/oilcard.jpg")
-
+          img(src="img/haibao1.png")
+          p(style="font-size:26px;color:#eb6100;line-height:50px;") 梯卡汽车网30秒搞定爱车，省去你砍价的环节
+          div(style="height:30px;") &nbsp;
 
         p(style="font-size:34px;color:#333333;line-height:50px;") 奖品设置：
         p(style="font-size:34px;color:#666666;line-height:50px;")
@@ -51,29 +50,27 @@ html
           stong(style="color:#ff0000;font-size:26px;") 一等奖一名---三星平板电脑
         p(style="font-size:34px;color:#666666;line-height:50px;")
           | 第二名
-          stong(style="color:#d35400;font-size:26px;") 二等奖一名---大众jetta免费租赁一个月（包含500元油卡）
+          stong(style="color:#d35400;font-size:26px;") 二等奖一名---大众jetta免费租赁一周（包含500元油卡）
         p(style="font-size:34px;color:#666666;line-height:50px;")
           | 第二名
           stong(style="color:#d35400;font-size:26px;") 三等奖一名---大众原装脚垫一副
         p(style="font-size:34px;color:#333333;line-height:50px;")
           | 开奖时间:
-          stong(style="color:#f39c12;font-size:26px;") 2014年7月1日20：00开奖
+          stong(style="color:#f39c12;font-size:26px;") 2014年7月10日20：00开奖
         p(style="font-size:34px;color:#333333;line-height:50px;")
           | 开奖地点:
           stong(style="color:#f1c40f;font-size:26px;") 宁波
         p(style="font-size:34px;color:#333333;line-height:50px;")
           | 开奖方式:
-          stong(style="color:#f1c40f;font-size:26px;") 截止7月1日20：00公布获奖名单,随后一星期内完成奖品的分发，到时欢迎大家前来参观监督。
+          stong(style="color:#f1c40f;font-size:26px;") 截止7月10日20：00公布获奖名单,随后一星期内完成奖品的分发，到时欢迎大家前来参观监督。
 
 
         p(style="font-size:34px;color:#333333;line-height:50px;") 活动说明：
         p(style="font-size:26px;line-height:40px;") 一、如何参与本活动
           br
-          | 1.在朋友圈分享公众号
+          | 1.已关注“梯卡汽车网”公众号的用户直接点击“TEECAR"中的“转发赢pad活动“，转发赢取大奖。
           br
-          | 已关注“梯卡汽车网”公众号的直接进入“梯卡汽车网”微网，点击“最新活动”模块，填写真实姓名和手机号码开始转发抢大奖。
-          br
-          | 2.未关注的，请先关注“梯卡汽车网”公众号，再参见第一条。
+          | 2.若您在转发的时候没有登录，系统则会自动提示您进行登录或者注册，登录成功后，再按照第一步流程操作即可参与活动。
           br
           | 3.在朋友圈转发本条消息，邀请更多的朋友帮您转发。
           br
@@ -88,13 +85,14 @@ html
           br
           | 四、详情请致电：400-007-9902.
     a(href="/weixinRank")
-      div(style="border:1px solid #cccccc;border-radius:10px;background-color:#ffffff;padding:10px;margin-top:5px;color:black;font-size:20px;height:20px;")
-        div.pull-left
-            | 转发排行榜
-        div.pull-right
-              span.icon-chevron-right
-        div.pull-right(style="margin-top: -3px;")
-          span(style="margin-right:15px;").badge.badge-success top10
+      div(style="border:1px solid #cccccc;border-radius:10px;background-color:#ffffff;padding:10px;margin-top:5px;color:black;font-size:40px;height:60px;")
+        div(style="margin-top:20px;")
+          div.pull-left
+              | 转发排行榜
+          div.pull-right
+                span.icon-chevron-right
+          div.pull-right(style="margin-top: -10px;")
+            span(style="margin-right:15px;").badge.badge-success top10
 
 
     script.
