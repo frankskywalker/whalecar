@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title 梯卡汽车网 转发赢三星平板电脑
+    title 转发赢三星平板电脑
     meta(charset='utf-8')
     meta(name="viewport" content="width=640")
     link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
@@ -46,14 +46,17 @@ html
 
         p(style="font-size:34px;color:#333333;line-height:50px;") 奖品设置：
         p(style="font-size:34px;color:#666666;line-height:50px;")
-          | 第一名
+          | 第1名
           stong(style="color:#ff0000;font-size:26px;") 一等奖一名---三星平板电脑
         p(style="font-size:34px;color:#666666;line-height:50px;")
-          | 第二名
+          | 第2名
           stong(style="color:#d35400;font-size:26px;") 二等奖一名---大众jetta免费租赁一周（包含500元油卡）
         p(style="font-size:34px;color:#666666;line-height:50px;")
-          | 第二名
-          stong(style="color:#d35400;font-size:26px;") 三等奖一名---大众原装脚垫一副
+          | 第3-4名
+          stong(style="color:#d35400;font-size:26px;") 三等奖两名---大众原装脚垫一副
+        p(style="font-size:34px;color:#666666;line-height:50px;")
+          | 第5-10名
+          stong(style="color:#d35400;font-size:26px;") 四等奖六名---小黄人公仔一个
         p(style="font-size:34px;color:#333333;line-height:50px;")
           | 开奖时间:
           stong(style="color:#f39c12;font-size:26px;") 2014年7月10日20：00开奖
@@ -105,7 +108,7 @@ html
                 "img_height":"640",
                 "link":window.location.href,
                 "desc":'转发前10名赢取大奖',
-                "title":'梯卡汽车网 转发赢三星平板电脑',
+                "title":'转发赢三星平板电脑',
                 }, function(res) {
                     $.get("./weixinAdver/updateForwardCont?openId=#{weixinInfo.openId}",function(){
                         _report('send_msg', res.err_msg);
@@ -120,7 +123,7 @@ html
                 "img_height":"640",
                 "link":window.location.href,
                 "desc": '转发前10名赢取大奖',
-                "title": '梯卡汽车网 转发赢三星平板电脑',
+                "title": '转发赢三星平板电脑',
                 }, function(res) {
                     $.get("./weixinAdver/updateForwardCont?openId=#{weixinInfo.openId}",function(){
                         _report('timeline', res.err_msg);
