@@ -140,6 +140,7 @@ app.all('/ros*',function(req,res,next){
 });
 app.all('/', index.page);
 app.all("/index",index.page);
+app.all("/index2",index.page2);
 app.all('/dic', dic.query);
 app.all('/user', user.router);
 app.all('/car', car.page);

@@ -1,47 +1,35 @@
 .navbar.navbar-inverse
-  #toptab.navbar-inner(style='height: 30px;border-bottom-width: 0px;')
-    .container(style='margin-bottom: 0px; margin-top: 4px;')
-        a(href='http://weibo.com/u/3860454014')
-          img(src='img/weibo_out.gif', alt='weibo_out')
-        h6(style='margin: auto; display: inline;', calss='nav') 关注梯卡网官方微博
-        .pull-right(style="width:385px;")
-          h6(style='display: inline;', calss='nav') 服务时间：周一至周日 9:00 - 21:00
-          img(src='img/phone.png', alt='phone', style='height: 18px;')
-          h5(style='display: inline;width:150px;', calss='nav')
-            | 400-007-9902 &nbsp;
-            a(target="_blank",href="http://wpa.qq.com/msgrd?v=3&uin=2990321970&site=qq&menu=yes")
-              img(border="0",src="img/qq-img.png",alt="在线沟通",title="在线沟通")
-  .navbar-inner(style="background:rgba(0, 0, 0, 0.06);width:960px;margin:0 auto;border-radius: 6px;border-top-left-radius: 0;border-top-right-radius: 0;height: 58px;border-bottom-width: 0px;")
-    .container(style="margin-bottom: 0px;margin-top: 0px;")
-      a.brand(href="/")
-        div(style="width:120px;")
-            img(src="img/logo2.png",alt="logo",style="padding-top:5px;width: 120px; height: 30px;")
-      ul.nav(style="margin-bottom: 5px;margin-top: 18px")
-        li(style="padding: 0px 5px;")
-          a(href='/') 汽车频道
-        li(style="padding: 0px 5px;")
-          a(href='/shoplist') 4S店频道
-        li(style="padding: 0px 5px;")
-          a(href='/buildingl') 移动应用
-        li(style="padding: 0px 5px;")
-          a(href='/about_us') 关于我们
-      ul.nav.pull-right(style="margin-top:15px;font-size:12px;")
-          if !session.currentUser
-            if !session.currentShop
-              li
-                a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆 <img src="img/rss.png">
-            -else
-              li
-                a(href="/shophome",role="button",data-toggle="modal") 4S店管理页面
-              li
-                a(onclick="shopLogout();return false;",href="#",role="button") 注销
-          -else
-            li
-              a(href="/#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
-            li
-              a(href="/userhome",role="button") 用户中心
-            li
-              a(onclick="logout();return false;",href="#",role="button") 注销
+    div(style="width:1410px;height:36px;margin:0 auto;background-color:#112742")
+      div(style="padding-top:10px")
+      h4 <font color=white>TEEcar 梯卡汽车网</font> <font color="#729acl" size="1px">倡导透明购车理念</font>
+        .pull-right
+          h6(style="display: inline;", calss='nav')
+            a(href='/') <font color="#729acl" size="1px">首页</font>
+            h6(style="display: inline;padding-left:40px", calss='nav')
+              a(href='/shoplist') <font color="#729acl" size="1px">4S店频道</font>
+              h6(style="display: inline;padding-left:40px", calss='nav')
+                a(href='/buildingl') <font color="#729acl" size="1px">移动应用</font>
+                h6(style="display: inline;padding-left:40px", calss='nav')
+                  a(href='/about_us') <font color="#729acl" size="1px">关于我们 |</font>
+                  img(src='img/phone.png', alt='phone', style='height: 18px;padding-left:40px')
+                  h5(style='display: inline;width:150px;', calss='nav') <font color="#729acl" size="1px">400-007-9902</font>
+                    ul.pull-right(style="margin-top:0px;font-size:12px;")
+                        if !session.currentUser
+                          if !session.currentShop
+                            li
+                              a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆 <img src="img/rss.png">
+                          -else
+                            li
+                              a(href="/shophome",role="button",data-toggle="modal") 4S店管理页面
+                            li
+                              a(onclick="shopLogout();return false;",href="#",role="button") 注销
+                        -else
+                          li
+                            a(href="/#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
+                          li
+                            a(href="/userhome",role="button") 用户中心
+                          li
+                            a(onclick="logout();return false;",href="#",role="button") 注销
 include user
 
 script.
