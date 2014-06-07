@@ -167,6 +167,7 @@ app.all('/managerUser',requireRole("admin"),manager.managerUser);
 app.all('/getCarData',requireRole("admin"),manager.getCarData);
 app.all("/admin_login",admin.login);
 app.all("/managerGetCarBrand",manager.managerGetCarBrand);
+app.all("/managerGetCarBrand",manager.managerGetCarBrand);
 app.all("/managerGetCarSubBrand",manager.managerGetCarSubBrand);
 app.all("/updateManagerGetCarBrand",manager.updateManagerGetCarBrand);
 app.all("/managerGetCarModelLv1",manager.managerGetCarModelLv1);

@@ -62,7 +62,6 @@ public class UserService {
 	@RequestMapping(method = RequestMethod.POST, value = "createUser")
 	public @ResponseBody
 	Boolean createUser(@RequestBody Map<String, Object> userMap) {
-
 		int i = userMapper.createUser(userMap);
 		if (i == 1) {
 			return true;
@@ -71,6 +70,41 @@ public class UserService {
 		}
 	}
 
+    /**
+     * 根据ID修改用户信息
+     *
+     * @param userMap
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "ChangeUserInf")
+    public
+    @ResponseBody
+    Boolean ChangeUserInf(@RequestBody Map<String, Object> userMap) {
+        int i = userMapper.ChangeUserInf(userMap);
+        if (i == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 根据ID修改用户密码
+     *
+     * @param userMap
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "ChangeUserPsw")
+    public
+    @ResponseBody
+    Boolean ChangeUserPsw(@RequestBody Map<String, Object> userMap) {
+        int i = userMapper.ChangeUserPsw(userMap);
+        if (i == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**
      * 根据条件查询用户数量，可用于验证
      * @param userMap

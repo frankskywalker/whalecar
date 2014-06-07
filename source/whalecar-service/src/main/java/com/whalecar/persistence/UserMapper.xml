@@ -19,7 +19,17 @@
     User (loginName,loginPassword,userCity,userArea,userEmail,userName,userTel,wxOpenId)
     values (#{loginName},PASSWORD(#{loginPassword}),#{userCity},#{userArea},#{userEmail},#{userName},#{userTel},#{wxOpenId})
   </insert>
-    
+
+  <update id="ChangeUserInf" parameterType="map">
+        update User set userName=#{userName},userTel=#{userTel},userEmail=#{userEmail}
+        where id =#{userId}
+  </update>
+
+  <update id="ChangeUserPsw" parameterType="map">
+        update User set loginPassword=PASSWORD(#{loginPassword})
+        where id=#{userId}
+  </update>
+
   <update id="updateUserWxOpenId">
     update User set wxOpenId = #{1} where id = #{0}
   </update>
