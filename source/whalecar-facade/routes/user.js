@@ -19,9 +19,16 @@ exports.router = function(req, res, next) {
     else if(req.query.type == "favorite"){
         favorite(req, res, next);
     }
+    else if(req.query.type == "ChangeInf"){
+        ChangeInf(req,res,next);
+    }
+    else if(req.query.type == "ChangeUserPsw"){
+        ChangeUserPsw(req,res,next);
+    }
 };
 
 exports.homepage = function(req,res,next){
+    var userId = req.session.currentUser.id;
     var userId = req.session.currentUser.id;
     async.parallel({
         userOrder:function(callback){
@@ -130,7 +137,8 @@ function regist(req, res, next) {
         userCity: req.body.userCity,
         userArea: req.body.userArea,    //用户地区
         userName: req.body.userName,
-        userTel: req.body.userTel
+        userTel: req.body.userTel,
+        wxOpenId:req.body.wxOpenId
     };
     service.client.post("/createUser", user, function(error, request, response,
     data) {
@@ -139,6 +147,43 @@ function regist(req, res, next) {
         } else {
             res.send({
                 registSuc: data
+            });
+        }
+    });
+}
+
+function ChangeInf(req,res,next){
+    var info={
+        userId:req.body.userId,
+        userName:req.body.userName,
+        userTel:req.body.userTel,
+        userEmail:req.body.userEmail
+    };
+    service.client.post("/ChangeUserInf",info,function(error,request,response,data){
+        if(error){
+            next(error);
+        }else{
+            req.session.currentUser.userName=req.body.userName;
+            req.session.currentUser.userTel=req.body.userTel;
+            req.session.currentUser.userEmail=req.body.userEmail;
+            res.send({
+                ChangeInfSuc:data
+            });
+        }
+    });
+}
+
+function ChangeUserPsw(req,res,next){
+    var psw={
+        userId:req.body.userId,
+        loginPassword:req.body.loginPassword
+    }
+    service.client.post("/ChangeUserPsw",psw,function(error,request,response,data){
+        if(error){
+            next(error);
+        }else{
+            res.send({
+                ChangeUserPswSuc:data
             });
         }
     });

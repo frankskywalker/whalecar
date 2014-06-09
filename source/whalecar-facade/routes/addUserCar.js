@@ -10,7 +10,6 @@ exports.addUserCar = function(req, res, next){
     var carID = idAndCname.split(",")[0];
     var carName =idAndCname.split(",")[1];
     <!--userName:userName 前一个是数据库字段，后者是var的对象，/addUserCar后台对应方法名-->
-    console.log("begin request");
     service.client.post("/addUserCar",{userName:userName,phoneNum:phoneNum,carID:carID,carName:carName},function(error, request, response, data){
         <!--跳转页面-->
         if(error){

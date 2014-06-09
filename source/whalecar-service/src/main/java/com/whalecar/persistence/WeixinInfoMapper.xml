@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whalecar.persistence.WeixinInfoMapper">
+    
+    <select id="queryByOpenId" resultType="WeixinInfo">
+        select * from(
+            select weixin_info.*, @curRank := @curRank + 1 AS rank
+            from weixin_info,(SELECT @curRank := 0) r
+            order by forwardCount desc
+        ) tab
+        where openId = #{0}
+    </select>
+
+    <select id="queryAllWithRank" resultType="WeixinInfo">
+        select * from(
+            select weixin_info.*, @curRank := @curRank + 1 AS rank
+            from weixin_info,(SELECT @curRank := 0) r
+            order by forwardCount desc
+        ) tab
+    </select>
+    
+    <insert id="save">
+        INSERT INTO weixin_info
+        (
+            openId,
+            userName,
+            sex,
+            city,
+            province,
+            country,
+            subscribeTime,
+            createDate,
+            tel
+        )
+        VALUES
+        (
+            #{openId},
+            #{userName},
+            #{sex},
+            #{city},
+            #{province},
+            #{country},
+            #{subscribeTime},
+            #{createDate},
+            #{tel}
+        );
+
+    </insert>
+    
+    <update id="updateForwardCount">
+        UPDATE weixin_info
+        SET
+            forwardCount = forwardCount  + 1
+        WHERE openId = #{0};
+    </update>
+
+
+</mapper>

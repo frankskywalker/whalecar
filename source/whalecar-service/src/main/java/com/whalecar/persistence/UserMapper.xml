@@ -16,9 +16,23 @@
     <!--添加了userArea-->
   <insert id="createUser" parameterType="map">
     insert into 
-    User (loginName,loginPassword,userCity,userArea,userEmail,userName,userTel)
-    values (#{loginName},PASSWORD(#{loginPassword}),#{userCity},#{userArea},#{userEmail},#{userName},#{userTel})
+    User (loginName,loginPassword,userCity,userArea,userEmail,userName,userTel,wxOpenId)
+    values (#{loginName},PASSWORD(#{loginPassword}),#{userCity},#{userArea},#{userEmail},#{userName},#{userTel},#{wxOpenId})
   </insert>
+
+  <update id="ChangeUserInf" parameterType="map">
+        update User set userName=#{userName},userTel=#{userTel},userEmail=#{userEmail}
+        where id =#{userId}
+  </update>
+
+  <update id="ChangeUserPsw" parameterType="map">
+        update User set loginPassword=PASSWORD(#{loginPassword})
+        where id=#{userId}
+  </update>
+
+  <update id="updateUserWxOpenId">
+    update User set wxOpenId = #{1} where id = #{0}
+  </update>
 
   <select id="queryCountByCondition" resultType="int">
     SELECT
@@ -42,6 +56,9 @@
         </if>
         <if test="userTel != null and userTel != ''">
             userTel =  #{userTel}
+        </if>
+        <if test="wxOpenId != null and wxOpenId != ''">
+            wxOpenId =  #{wxOpenId}
         </if>
     </where>
   </select>
@@ -77,5 +94,10 @@
     <select id="queryUserById" resultType="User">
       SELECT * FROM User
         WHERE id = #{param1}
+    </select>
+
+    <select id="queryUserByWxOpenId" resultType="User">
+        SELECT * FROM User
+        WHERE wxOpenId = #{param1}
     </select>
 </mapper>

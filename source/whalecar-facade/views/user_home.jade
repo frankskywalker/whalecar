@@ -4,7 +4,7 @@
 extends layout/mainFrame
 
 block append css
-  link(href='css/user_home.css', rel='stylesheet', media='screen')
+    link(href='css/user_home.css', rel='stylesheet', media='screen')
 
 block append content
     .container(style='padding: 10px 0;')
@@ -79,15 +79,15 @@ block append content
                                 tbody
                                     each item in userSubmitPrice
                                         tr
-                                          td= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
-                                          td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv1Cname}&nbsp;#{item.shopStockView.carModelLv3FullName}
-                                          td(style="color: #ec6197;") #{item.userPrice}万
-                                          td #{item.stateText}
-                                          td
-                                            if(item.state == "shop_commit")
-                                                a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.originalPrice}','#{item.userPrice}','#{item.userPrice}','#{item.shopStock}')") 处理
-                                            if(item.state == "shop_agree" || item.state == "price_success")
-                                                a(href="#",onclick="createCarOrder('#{item.shopStock}','#{item.id}')") 创建订单
+                                            td= moment(item.createDate).format("YYYY-MM-DD HH:mm:ss")
+                                            td #{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv1Cname}&nbsp;#{item.shopStockView.carModelLv3FullName}
+                                            td(style="color: #ec6197;") #{item.userPrice}万
+                                            td #{item.stateText}
+                                            td
+                                                if(item.state == "shop_commit")
+                                                    a(href="#",onclick="processUserSubmitPriceState('#{item.id}','#{item.shopStockView.carBrandCname}&nbsp;#{item.shopStockView.carModelLv3FullName}','#{item.originalPrice}','#{item.userPrice}','#{item.userPrice}','#{item.shopStock}')") 处理
+                                                if(item.state == "shop_agree" || item.state == "price_success")
+                                                    a(href="#",onclick="createCarOrder('#{item.shopStock}','#{item.id}')") 创建订单
                             div(id="stateChangeModal",class="modal hide fade",tabindex="-1",role="dialog",aria-hidden="true")
                                 .modal-header
                                     button(type="button",class="close",data-dismiss="modal",aria-hidden="true") x
@@ -170,40 +170,66 @@ block append content
                 #myinfo.tab-pane
                     legend &nbsp;&nbsp;我的信息
                     .span4
-                        dl.dl-horizontal(style='font-size: 12pt;')
-                            dt 姓名
-                            dd= session.currentUser.userName
-                            br
-                            dt 电话
-                            dd= session.currentUser.userTel
-                            br
-                            dt 邮箱地址
-                            dd= session.currentUser.userEmail
-                        button.btn.btn-primary.pull-right.span2 提交
+                        form.form-horizontal#ChangeinfoForm(method="post")
+                            .control-group
+                                label.control-label(for='CuserId',style="display:none") id
+                                .controls
+                                    input(type='text',id="userId",name="userId", value=session.currentUser.id,style="display:none")
+                            .control-group
+                                label.control-label(for='CuserName') 姓名
+                                .controls
+                                    input(type='text',id="userName",name="userName", placeholder=session.currentUser.userName)
+                            .control-group
+                                label.control-label(for='CuserTel') 电话
+                                .controls
+                                    input(type='text',id="userTel",name="userTel", placeholder=session.currentUser.userTel)
+                            .control-group
+                                label.control-label(for='CuserEmail') 邮箱地址
+                                .controls
+                                    input(type='text',id="userEmail",name="userEmail" ,placeholder=session.currentUser.userEmail)
+                            .control-group
+                                .controls
+                                    a#ChangeInfBtn(href="#",class="btn btn-primary",onClick="return ChangeInf();") 提交
+
                 #changepsw.tab-pane
                     legend &nbsp;&nbsp;修改密码
                     .span5
-                        form.form-horizontal
+                        form.form-horizontal#ChangePswForm(method="post")
+                            .control-group
+                                label.control-label(for='CuserId',style="display:none") id
+                                .controls
+                                    input(type='text',id="userId",name="userId", value=session.currentUser.id,style="display:none")
                             .control-group
                                 label.control-label(for='oldpsw') 原密码
                                 .controls
-                                    input#oldpsw(type='text', placeholder='原密码')
+                                    input(type='password',id="oldpsw",name="oldpsw", placeholder='原密码')
                             .control-group
-                                label.control-label(for='newpsw') 新密码
+                                label.control-label(for='loginPassword') 新密码
                                 .controls
-                                    input#newpsw(type='text', placeholder='新密码')
+                                    input(type='password',id="loginPassword",name="loginPassword", placeholder='新密码')
                             .control-group
-                                label.control-label(for='confnewpsw') 确认新密码
+                                label.control-label(for='loginPasswordConfirm') 确认新密码
                                 .controls
-                                    input#confnewpsw(type='text', placeholder='确认新密码')
+                                    input(type='password',id="loginPasswordConfirm",name="loginPasswordConfirm", placeholder='确认新密码')
                             .control-group
                                 .controls
-                                    button.btn.btn-primary.pull-right.span2 提交
+                                    a#ChangePswBtn(href="#",class="btn btn-primary",onClick="return ChangePsw();") 提交
     div.modal.hide.fade#favoriteDelSuc(style="tabindex='-1',role='dialog'")
         div.modal-body
             p 删除收藏成功
         div.modal-footer
             button.btn.btn-primary(onClick="$('#favoriteDelSuc').modal('hide');return false;") 确认
+
+    //登录
+    form.form-horizontal#loginForm(method="post",style="display:none")
+        .control-group
+            label.control-label(for='CuserId',style="display:none") id
+            .controls
+                input(type='text',id="userId",name="userId", value=session.currentUser.userEmail)
+            .control-group
+                label.control-label(for='loginPassword') 原密码
+                .controls
+                    input(type='password',id="loginPassword",name="loginPassword")
     script.
         function delFavorite(carModelLv1){
             $.post("./user?type=favorite", {carModelLv1:carModelLv1,action:'del'}).done(
@@ -259,8 +285,65 @@ block append content
             var billSn = $("#submitBillSnModal #billSn").val();
             $.post("./changeUserOffTicketState",{id:id,state:"waiting_confirm",billSn:billSn}).done(function(result){
                 if(result.changeResult == true){
-                    window.location.reload();
+                   location.reload();
                 }
             });
 
         }
+        function ChangeInf(){
+            formValidate("ChangeinfoForm","validateChangeUserInf",function(data){
+            if(data){
+               $.post("/user?type=ChangeInf", $("#ChangeinfoForm").serialize())
+                    .done(function(data) {
+                    if(data.ChangeInfSuc){
+                    alert("更改成功");
+                     location.reload();
+                    }
+                    else{
+                       alert("更改失败");
+                    }
+                  });
+            }
+            });
+        }
+        function ChangePsw(){
+
+            $("#loginForm #loginPassword").val($("#ChangePswForm #oldpsw").val());
+            $.post("/user?type=login", $("#loginForm").serialize())
+              .done(function(data) {
+                  if(data.loginSuc){
+                    formValidate("ChangePswForm","validateChangeUserPsw",function(data){
+                       if(data){
+                        $.post("/user?type=ChangeUserPsw",$("#ChangePswForm").serialize())
+                             .done(function(data){
+                                if(data.ChangeUserPswSuc){
+                                 alert("更改成功");
+                                 }
+                             });
+                       }
+                      });
+              }
+                  else{
+                     alert("密码错误");
+              }
+            });
+
+        }
+//        function ChangePsw(){
+//
+//            formValidate("ChangePswForm","validateChangeUserPsw",function(data){
+//            if(data){
+//               $.post("/user?type=ChangeUserPsw",$("#ChangePswForm").serialize())
+//                   .done(function(data){
+//                      if(data.ChangeUserPswSuc){
+//                        alert("更改成功");
+//                      }else{
+//                        alert("更改失败");
+//                      }
+//                   });
+//            }
+//            });
+//
+//        }
+
+

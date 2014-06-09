@@ -22,6 +22,18 @@ exports.validate = function(req,res,next){
             res.json(req.validationErrors());
         });
     }
+    else if(type=="validateChangeUserInf" && formId=="ChangeinfoForm"){
+        validateChangeUserInf(req,res,next,function(){
+            res.json(req.validationErrors());
+        })
+    }
+
+    else if(type=="validateChangeUserPsw" && formId=="ChangePswForm")
+    {
+        validateChangeUserPsw(req,res,next,function(){
+            res.json(req.validationErrors());
+        })
+    }
 }
 
 function validateLoginName(req,res,next,callback){
@@ -50,3 +62,17 @@ function validateUserRegister(req,res,next,callback){
         callback();
     });
 }
+function validateChangeUserInf(req,res,next,callback){
+    validateLoginName(req,res,next,function(){
+        req.assert("userName","请输入姓名").notEmpty();
+        req.assert("userTel","格式不正确").isTel();
+        callback();
+    })
+}
+function validateChangeUserPsw(req,res,next,callback){
+//    req.assert("oldpsw","请输入正确密码").equals(req.session.currentUser.loginPassword);
+    req.assert("loginPassword","请输入6位以上密码").notEmpty().isValidPassword();
+    req.assert("loginPasswordConfirm","确认密码不一致").equals(req.body.loginPassword);
+    callback();
+}
+

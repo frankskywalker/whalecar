@@ -18,7 +18,8 @@ var index = require('./routes/index'),
     manager = require('./routes/manager'),
     admin = require('./routes/admin'),
     golf7Adv = require('./routes/golf7Adv'),
-    addUserCar = require('./routes/addUserCar');
+    addUserCar = require('./routes/addUserCar'),
+    weixinAdver = require('./routes/weixinAdver');
 
 var app = express();
 // all environments
@@ -140,7 +141,6 @@ app.all('/ros*',function(req,res,next){
 });
 app.all('/', index.page);
 app.all("/index",index.page);
-app.all("/index2",index.page2);
 app.all('/dic', dic.query);
 app.all('/user', user.router);
 app.all('/car', car.page);
@@ -225,6 +225,14 @@ app.all('/advertisement9',function(req,res){
     res.render("./advertisement/adver9");
 }) ;
 
+app.all('/weixinAdver',weixinAdver.page);
+app.all('/weixinAdver/save',weixinAdver.save);
+app.all('/weixinAdver/updateForwardCont',weixinAdver.updateForwardCount);
+app.all('/weixinRank',weixinAdver.rankList);
+app.all('/weixinLogin',weixinAdver.loginPage);
+app.all('/weixinLogin/login',weixinAdver.wxLogin);
+
+
 app.all('/golf7adver',golf7Adv.page);
 app.all('/golf7adverSave',golf7Adv.save);
 
@@ -236,6 +244,9 @@ app.all('/vw2AdverSave',golf7Adv.save3);
 
 app.all('/vw3_adver',golf7Adv.page4);
 app.all('/vw3AdverSave',golf7Adv.save4);
+
+app.all('/vw4_adver',golf7Adv.page5);
+app.all('/vw4AdverSave',golf7Adv.save5);
 
 app.all('/way1',function(req,res){
     res.render("way1");

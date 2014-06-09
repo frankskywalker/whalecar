@@ -29,6 +29,19 @@ public interface UserMapper {
 	 */
 	public int createUser(Map<String, Object> userMap);
 
+    /**
+     * 更改用户信息
+     *
+     * @param userMap
+     */
+    public int ChangeUserInf(Map<String, Object> userMap);
+
+    /**
+     * 更改用户密码
+     *
+     * @param userMap
+     */
+    public int ChangeUserPsw(Map<String, Object> userMap);
 
     /**
      * 根据条件查询用户数量，可用于验证
@@ -72,4 +85,19 @@ public interface UserMapper {
      * @return
      */
     public User queryUserById(Integer userId);
+
+    /**
+     * 根据用户id更新用户wxOpenId
+     * @param userId
+     * @param wxOpenId
+     * @return
+     */
+    public int updateUserWxOpenId(Integer userId,String wxOpenId);
+
+    /**
+     * 根据wxOpenId查询用户
+     * @param wxOpenId
+     * @return
+     */
+    public User queryUserByWxOpenId(String wxOpenId);
 }

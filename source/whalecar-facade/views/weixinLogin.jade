@@ -1,0 +1,151 @@
+doctype html
+html
+    head
+        title 梯卡汽车网
+        meta(charset='utf-8')
+        meta(name="viewport" content="width=310")
+        block css
+            link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+            link(href='css/style.css', rel='stylesheet', media='screen')
+            link(rel="icon",type="image/png",href="img/favicon.png")
+        block js
+            script(src='js/jquery-1.10.2.min.js')
+            script(src='js/bootstrap.min.js')
+            script(src='js/tools.js')
+        style.
+            .form-horizontal .control-label {
+                float: left;
+                width: 40px;
+                padding-top: 5px;
+                text-align: right;
+            }
+            .form-horizontal .controls {
+                margin-left: 50px;
+            }
+    body
+        div(style='width:310px;')
+            .row-Fluid#loginDiv
+                .text-center
+                legend 登陆
+                div.alert.alert-success.hide#login-succee 登陆成功,请关闭窗口,再次进行转发
+                form.form-horizontal#userloginForm(action="/weixinLogin/login",method="post")
+                    input(type="hidden",name="wxOpenId",id="wxOpenId",value="#{wxOpenId}")
+                    div.control-group
+                        label.control-label(for="userEmail") 邮箱
+                        div.controls
+                            input(type="text",id="userEmail",name="userEmail",placeholder="邮箱",style="width: 237px;")
+                    div.control-group
+                        label.control-label(for="password") 密码
+                        div.controls
+                            input(type="password",id="loginName",name="password",placeholder="密码",style="width: 237px;")
+                    div.alert.alert-error.hide#login-error 邮箱密码错误，请重新输入!
+                    div.control-group
+                        div.controls
+                            input.btn.btn-primary.span2(type="button",onclick="userlogin();",value="登陆")
+                            input.btn.span2(type="button",onclick="switchLoginAndRegist('regist');",value="注册")
+
+            .row-Fluid.hide#registerDiv
+                .text-center
+                legend 注册
+                div.alert.alert-success.hide#regist-succee 注册成功,请关闭窗口,再次进行转发
+                form.form-horizontal#registForm(action="/regist",method="post")
+                    input(type="hidden",name="wxOpenId",id="wxOpenId",value="#{wxOpenId}")
+                    div.control-group
+                        label.control-label(for="userEmail") 邮箱地址
+                        div.controls
+                            input(type="text",id="userEmail",name="userEmail",placeholder="邮箱地址",style="width: 237px;")
+                    div.control-group
+                        label.control-label(for="loginPassword") 密码
+                        div.controls
+                            input(type="password",id="loginPassword",name="loginPassword",placeholder="密码",style="width: 237px;")
+                    div.control-group
+                        label.control-label(for="loginPasswordConfirm") 密码确认
+                        div.controls
+                            input(type="password",id="loginPasswordConfirm",name="loginPasswordConfirm",placeholder="再输入一遍密码",style="width: 237px;")
+                    div.control-group
+                        label.control-label(for="userName") 姓名
+                        div.controls
+                            input(type="text",id="userName",name="userName",placeholder="姓名",style="width: 237px;")
+                    div.control-group
+                        label.control-label(for="userCity") 城市
+                        div.controls
+                            select(id="userCity",name="userCity",onchange="getCityID();",style="width: 250px;")
+                                option(value="") 选择城市
+                                each city in allDicCitys
+                                    option(value="#{city.id}") #{city.cityCname}
+                    div.control-group
+                        label.control-label(for="userArea") 县市区
+                        div.controls
+                            select(id="userArea",name="userArea",style="width: 250px;")
+                                option(value="") 选择县市区
+                    input#citysData(type="hidden",value=JSON.stringify(allDicCitys))
+                    div.control-group
+                        label.control-label(for="userTel") 手机号码
+                        div.controls
+                            input(type="text",id="userTel",name="userTel",placeholder="手机号码",style="width: 237px;")
+                    div.alert.alert-error.hide#regist-error 注册失败
+                    div.control-group
+                        div.controls
+                            input.btn.btn-primary.span2(type="button",onclick="regist();",value="提交")
+                            input.btn.span2(type="button",onclick="switchLoginAndRegist('login');",value="返回登录")
+
+        script.
+            function userlogin(){
+                $.post("/weixinLogin/login", $("#userloginForm").serialize())
+                    .done(function(data) {
+                        if(data.loginSuc){
+                            $("#login-succee").show();
+                            $("#userloginForm").hide();
+                        }
+                        else{
+                            $("#login-succee").slideUp();
+                            $("#userloginForm #login-error").slideDown();
+                        }
+                });
+            }
+
+            //切换登陆和注册的窗口
+            function switchLoginAndRegist(selected){
+                if(selected == "regist"){
+                    $('#loginDiv').addClass('hide');
+                    $("#registerDiv").removeClass('hide');
+                }
+                else if(selected == "login"){
+                    $('#loginDiv').removeClass('hide');
+                    $("#registerDiv").addClass('hide');
+                }
+            }
+
+            function getCityID(){
+                var citys =  eval($("#citysData").val());
+                var cityId = $("#userCity").val();
+                for(var i=0;i<citys.length;i++){
+                    if(cityId == citys[i].id){
+                        $("#userArea").empty();
+                        $("#userArea").append('<option value="">选择县市区</option>');
+                        var areaList = citys[i].areaList;
+                        for(var j=0;j<areaList.length;j++){
+                            $("#userArea").append("<option value=" + areaList[j].id + ">" + areaList[j].areaCname + "</option>");
+                        }
+                        break;
+                    }
+                }
+            }
+
+            function regist(){
+              formValidate("registForm","validateUserRegister",function(data){
+               if(data){
+                  $.post("/user?type=regist", $("#registForm").serialize())
+                       .done(function(data) {
+                       if(data.registSuc){
+                          $("#regist-succee").show();
+                          $("#registForm").hide();
+                       }
+                       else{
+                         $("#regist-succee").slideUp();
+                         $("#regist-error").slideDown();
+                       }
+                     });
+               }
+              });
+            }
