@@ -2,7 +2,6 @@ var service = require("./tools/service-header");
 
 exports.query = function(req, res,next) {
     var type = req.query.type;
-
     if (type == 'getCarModelLv1ByBrand') {
         //根据BrandId获取carModel
         getCarModelLv1ByBrand(req, res,next);
@@ -99,3 +98,4 @@ function getInsideDicColorByCarModelLv3(request, response, next) {
         }
     });
 }
+

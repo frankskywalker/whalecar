@@ -11,8 +11,8 @@
 			*
 		FROM Car_Model_Lv1
 		WHERE flagUseable = 'yes'
-        <if test="CarBrand != null and CarBrand != ''">
-            and CarBrand = #{carBrand}
+        <if test="carBrand != null and carBrand != ''">
+            and carBrand = #{carBrand}
         </if>
 		<if test="carSubBrand != null and carSubBrand != ''">
 		    and carSubBrand = #{carSubBrand}
@@ -254,4 +254,5 @@
         from Car_Brand
         Order by orderIndex
     </select>
+
 </mapper>

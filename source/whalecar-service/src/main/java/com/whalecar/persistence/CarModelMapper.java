@@ -108,4 +108,6 @@ public interface CarModelMapper {
 
     //返回所有汽车品牌
     public List<CarBrand> queryAllCarBrand();
+
+
 }

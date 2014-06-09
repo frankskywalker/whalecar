@@ -1,7 +1,7 @@
 /* Custom container */
 .container {
     margin: 0 auto;
-    max-width: 960px;
+    max-width: 1410px;
 }
 .footer {
     text-align: center;
@@ -116,11 +116,11 @@ a.thumbnail:hover, a.thumbnail:focus {
 
 #slider_div_1{ position:relative; width:100%;}
 #slider_div_1 .pagination_p{ background:url('../img/banner_down_bg.png') repeat-x; width:100%;  height:35px; position:absolute; bottom:0;z-index:99;}
-#slider_div_1 .pagination_p ul { width:961px; margin:auto;}
-#slider_div_1 .pagination_p ul li { float:left; width:19.25%; margin-right:1px; color:#fff; text-align:center; border-left:1px solid #fff; font-size:14px;}
-#slider_div_1 .pagination_p ul li a{ width:190px; height:25px; padding-top:10px; display:block; color:#fff;font-size:14px;text-decoration:none;}
-#slider_div_1 .pagination_p ul li a:hover{width:190px; height:25px; padding-top:10px; background-color:#111716; color:#fff; display:block;font-size:14px;text-decoration:none;}
-#slider_div_1 .pagination_p ul li.current{width:190px; height:35px; display:block;background-color:#111716; }
+#slider_div_1 .pagination_p ul { width:1410px; margin:auto;}
+#slider_div_1 .pagination_p ul li { float:left; width:19.795%; margin-right:1px; color:#fff; text-align:center; border-left:1px solid #fff; font-size:14px;}
+#slider_div_1 .pagination_p ul li a{ width:282px; height:25px; padding-top:10px; display:block; color:#fff;font-size:14px;text-decoration:none;}
+#slider_div_1 .pagination_p ul li a:hover{width:282px; height:25px; padding-top:10px; background-color:#111716; color:#fff; display:block;font-size:14px;text-decoration:none;}
+#slider_div_1 .pagination_p ul li.current{width:282px; height:35px; display:block;background-color:#111716; }
 #slider_div_1{
     padding: 1px 0px;
     margin-top:0px;

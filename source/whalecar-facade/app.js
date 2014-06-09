@@ -140,7 +140,7 @@ app.all('/ros*',function(req,res,next){
     res.redirect(path);
 });
 app.all('/', index.page);
-app.all("/index",index.page);
+app.all("/index",index.page2);
 app.all('/dic', dic.query);
 app.all('/user', user.router);
 app.all('/car', car.page);
@@ -166,7 +166,6 @@ app.all('/managerUserSubmitPrice',requireRole("admin"),manager.userSubmitPrice);
 app.all('/managerUser',requireRole("admin"),manager.managerUser);
 app.all('/getCarData',requireRole("admin"),manager.getCarData);
 app.all("/admin_login",admin.login);
-app.all("/managerGetCarBrand",manager.managerGetCarBrand);
 app.all("/managerGetCarBrand",manager.managerGetCarBrand);
 app.all("/managerGetCarSubBrand",manager.managerGetCarSubBrand);
 app.all("/updateManagerGetCarBrand",manager.updateManagerGetCarBrand);
@@ -255,6 +254,10 @@ app.all('/way1',function(req,res){
 app.all('/about_us',function(req,res){
     res.render("about_us");
 }) ;
+
+app.all('/love_page',function(req,res){
+    res.render("love_page");
+});
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
