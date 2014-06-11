@@ -6,7 +6,7 @@
         url: "/managerGetCarBrand",
         loadonce: true,
         datatype: "json",
-        height: 300,
+        height: "100%",
         colNames: [' ',  'ID','中文名字','英文名字', '图片','是否可用'],
         colModel: [
             {name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
@@ -17,7 +17,7 @@
                     //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                 }
             },
-            {name: 'id', index: 'id', width: 20, editable: false, hidden: true, key: true},
+            {name: 'id', index: 'id', width: 20, editable: false, key: true},
             {name: 'cname', index: 'cname', width: 60, editable: true},
             {name: 'ename', index: 'ename', width: 40, editable: true},
             {name: 'logoPath', index: 'logoPath', width: 30, editable: true},
@@ -25,8 +25,8 @@
         ],
 
         viewrecords: true,
-        rowNum: 10,
-        rowList: [10, 20, 30],
+        rowNum: 20,
+        rowList: [20, 40, 80],
         pager: "#pager",
         altRows: true,
         //toppager: true,

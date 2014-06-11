@@ -73,7 +73,7 @@
         url: "/managerGetCarModelLv3",
         loadonce: true,
         datatype: "json",
-        height: 300,
+        height: "100%",
         colNames: [' ', 'ID','品牌','子品牌','名称简写','名称全写','外室颜色','内室颜色', 'lv2ID ','出厂价格','排序值','是否可用','驱动类型','变速箱类型'],
         colModel: [
             {name: 'myac', index: '', width: 70, fixed: true, sortable: false, resize: false,
@@ -85,7 +85,7 @@
                 }
             },
 
-            {name: 'id', index: 'id', width: 20, editable: false, hidden: true, key: true},
+            {name: 'id', index: 'id', width: 20, editable: false, key: true},
             {name: 'carModelLv1Name', index: 'carModelLv1Name', width: 20, editable: false,edittype: 'select',
                 editoptions: {
                     value:carModelLv1Options
@@ -140,8 +140,8 @@
         ],
 
         viewrecords: true,
-        rowNum: 10,
-        rowList: [10, 20, 30],
+        rowNum: 20,
+        rowList: [20, 40, 80],
         pager: "#pager",
         altRows: true,
         //toppager: true,
