@@ -2,6 +2,7 @@ package com.whalecar.service;
 
 import com.whalecar.domain.*;
 import com.whalecar.persistence.ManagerMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -237,15 +238,21 @@ public class ManagerService {
             String[] tmpOutsideArray = new String[colorOutsideCollection.length];
             String[] tmpInsideArray = new String[colorInsideCollection.length];
             for(int i = 0;i<colorOutsideCollection.length;i++){
-                DicColor dc = managerMapper.queryDicColorById(Integer.valueOf(colorOutsideCollection[i].trim()));
-                if(dc != null){
-                    tmpOutsideArray[i] = dc.getColorCname();
+                String c = colorOutsideCollection[i].trim();
+                if(!StringUtils.isEmpty(c)){
+                    DicColor dc = managerMapper.queryDicColorById(Integer.valueOf(c));
+                    if(dc != null){
+                        tmpOutsideArray[i] = dc.getColorCname();
+                    }
                 }
             }
             for(int i = 0;i<colorInsideCollection.length;i++){
-                DicColor dc = managerMapper.queryDicColorById(Integer.valueOf(colorInsideCollection[i].trim()));
-                if(dc != null){
-                    tmpInsideArray[i] = dc.getColorCname();
+                String c = colorInsideCollection[i].trim();
+                if(!StringUtils.isEmpty(c)){
+                    DicColor dc = managerMapper.queryDicColorById(Integer.valueOf(c));
+                    if(dc != null){
+                        tmpInsideArray[i] = dc.getColorCname();
+                    }
                 }
             }
             cml3.setColorOutsideCollectionName(Arrays.toString(tmpOutsideArray).trim().substring(1,Arrays.toString(tmpOutsideArray).lastIndexOf("]")));
