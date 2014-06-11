@@ -232,14 +232,11 @@ public class ManagerService {
         List<CarModelLv3> cml3List = managerMapper.queryManagerGetCarModelLv3();
         for(CarModelLv3 cml3:cml3List){
             CarModelLv2 cml2 = managerMapper.queryCarModelLv2ById(cml3.getCarModelLv2());
-            System.out.println(cml3.getColorOutsideCollection());
             String[] colorOutsideCollection = cml3.getColorOutsideCollection().split(",");
             String[] colorInsideCollection = cml3.getColorInsideCollection().split(",");
             String[] tmpOutsideArray = new String[colorOutsideCollection.length];
             String[] tmpInsideArray = new String[colorInsideCollection.length];
             for(int i = 0;i<colorOutsideCollection.length;i++){
-                System.out.println(colorOutsideCollection[i]);
-                System.out.println(cml3.getId());
                 DicColor dc = managerMapper.queryDicColorById(Integer.valueOf(colorOutsideCollection[i].trim()));
                 if(dc != null){
                     tmpOutsideArray[i] = dc.getColorCname();
