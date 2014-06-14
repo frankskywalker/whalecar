@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    block css
+      link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+      link(href='css/style.css', rel='stylesheet', media='screen')
+      link(rel="icon",type="image/png",href="img/favicon.png")
+    block js
+      script(src='js/jquery-1.10.2.min.js')
+      script(src='js/bootstrap.min.js')
+      script(src='js/spin.min.js')
+      script(src='js/tools.js')
+      script(src='js/jquery.unveil.min.js')
+  body(style="background:url('img/subtle_dots.png');")
+    div(style="width:1000px;margin:0 auto;")
+      div(style="width:1000px;height:533px;background-image:url('img/vw5_adver_1.jpg');")
+      div(style="width:1000px;height:460px;background-image:url('img/vw5_adver_2.jpg');")
+        form(method="POST",action="./vw5AdverSave",style="padding-left:150px;padding-top:20px;")
+          div
+            span(style="font-size:14px;padding-bottom:2px;margin-left:15px;color:#ffffff;") 姓名:
+            input#name(type="text",name="name",style="height:16px; width:100px;margin-left:5px;font-size:14px;padding:0px 5px;margin-bottom: 0px;")
+            span(style="font-size:14px;padding-bottom:2px;color:#ffffff;margin-left:10px;") 手机号码:
+            input#tel(type="text",name="tel",style="height:18px; width:100px;margin-left:5px;font-size:14px;padding:0px 5px;margin-bottom: 0px;")
+            span(style="font-size:14px;padding-bottom:2px;color:#ffffff;margin-left:10px;") 性别:
+            select#sex(name="sex",style="height:18px; width:100px;margin-left:5px;font-size:14px;padding:0px 5px;margin-bottom: 0px;")
+              option(value="") 请选择
+              option(value="男") 男
+              option(value="女") 女
+            span(style="font-size:14px;padding-bottom:2px;color:#ffffff;margin-left:10px;") 意向车型:
+            select#model(name="attentionModel",style="height:18px; width:100px;margin-left:5px;font-size:14px;padding:0px 5px;margin-bottom: 0px;")
+              option(value="") 请选择
+              option(value="速腾") 速腾
+              option(value="宝来") 宝来
+              option(value="高尔夫") 高尔夫
+              option(value="迈腾") 迈腾
+              option(value="捷达") 捷达
+              option(value="cc") cc
+            input.btn.btn-mini(type="submit",value="提交",style="margin-left:50px;background:#cf000a; border:#5b0207 solid 1px;; height:24px; width:68px; font-size:14px; color:#FFF; line-height:24px;",onclick="return submitCheck();")
+      script.
+       function submitCheck(){
+         if($("#name").val() == ""){
+            alert("请输入姓名！");
+            return false;
+         }
+
+         if($("#sex").val() == ""){
+            alert("请选择性别！");
+            return false;
+         }
+
+         if($("#model").val() == ""){
+            alert("请选择意向车型！");
+            return false;
+            }
+
+         if(!$('#tel').val().match(/^1\d{10}$/)){
+           alert("您输入的手机号码格式有误，请重新输入！");
+           return false;
+         }
+         alert("提交成功!")
+         return true;
+       }

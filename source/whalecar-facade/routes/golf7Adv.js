@@ -23,6 +23,10 @@ exports.page5 = function(req,res){
     res.render("vw4_adver");
 }
 
+exports.page6 = function(req,res){
+    res.render("vw5_adver");
+}
+
 exports.save = function(req,res,next){
     var golf7Adv = req.body;
     var attentionModelStr = "";
@@ -100,5 +104,17 @@ exports.save5 = function(req,res,next){
             return;
         }
         res.render("vw4_adver");
+    });
+}
+
+exports.save6 = function(req,res,next){
+    var golf7Adv = req.body;
+    golf7Adv.type = 6;
+    service.client.post("/saveGolf7Adv",golf7Adv,function(error){
+        if(error){
+            next(error);
+            return;
+        }
+        res.render("vw5_adver");
     });
 }
