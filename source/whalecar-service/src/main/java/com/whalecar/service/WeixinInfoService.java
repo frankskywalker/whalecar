@@ -27,6 +27,30 @@ public class WeixinInfoService {
     @Autowired
     private UserMapper userMapper;
 
+
+    @RequestMapping(value="/wiexininfo/forward",method = RequestMethod.GET)
+    public @ResponseBody BooleanResult forward(String wxOpenId,String userName,String sex){
+        WeixinInfo weixinInfoCheckObj = this.queryByOpenId(wxOpenId);
+        if(weixinInfoCheckObj == null){
+            WeixinInfo weixinInfo = new WeixinInfo();
+            weixinInfo.setCreateDate(new Date());
+            weixinInfo.setUserName(userName);
+            weixinInfo.setSex(sex);
+            weixinInfo.setOpenId(wxOpenId);
+            int updateCount = weixinInfoMapper.save(weixinInfo);
+            if(updateCount == 1){
+                return new BooleanResult(true);
+            }
+            else{
+                return new BooleanResult(false);
+            }
+        }
+        else
+        {
+            return new BooleanResult(true);
+        }
+    }
+
     @RequestMapping(value="/wiexininfo/save",method = RequestMethod.GET)
     public @ResponseBody BooleanResult save(String wxOpenId){
         WeixinInfo weixinInfoCheckObj = this.queryByOpenId(wxOpenId);
