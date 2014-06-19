@@ -178,15 +178,18 @@ block append content
                             .control-group
                                 label.control-label(for='CuserName') 姓名
                                 .controls
-                                    input(type='text',id="userName",name="userName", placeholder=session.currentUser.userName)
+                                    input(type='text',id="userName",name="userName", value=session.currentUser.userName,onFocus="if(value==defaultValue){value='';}"
+                                    onBlur="if(!value){value=defaultValue;}")
                             .control-group
-                                label.control-label(for='CuserTel') 电话
+                                label.control-label(for='CuserTel') 手机
                                 .controls
-                                    input(type='text',id="userTel",name="userTel", placeholder=session.currentUser.userTel)
+                                    input(type='text',id="userTel",name="userTel", value=session.currentUser.userTel,onFocus="if(value==defaultValue){value='';}"
+                                    onBlur="if(!value){value=defaultValue;}")
                             .control-group
                                 label.control-label(for='CuserEmail') 邮箱地址
                                 .controls
-                                    input(type='text',id="userEmail",name="userEmail" ,placeholder=session.currentUser.userEmail)
+                                    input(type='text',id="userEmail",name="userEmail" ,value=session.currentUser.userEmail,onFocus="if(value==defaultValue){value='';}"
+                                    onBlur="if(!value){value=defaultValue;}")
                             .control-group
                                 .controls
                                     a#ChangeInfBtn(href="#",class="btn btn-primary",onClick="return ChangeInf();") 提交
@@ -230,6 +233,7 @@ block append content
                 label.control-label(for='loginPassword') 原密码
                 .controls
                     input(type='password',id="loginPassword",name="loginPassword")
+            div.alert.alert-error.hide#login-error 密码错误，请重新输入!
     script.
         function delFavorite(carModelLv1){
             $.post("./user?type=favorite", {carModelLv1:carModelLv1,action:'del'}).done(
@@ -329,21 +333,5 @@ block append content
             });
 
         }
-//        function ChangePsw(){
-//
-//            formValidate("ChangePswForm","validateChangeUserPsw",function(data){
-//            if(data){
-//               $.post("/user?type=ChangeUserPsw",$("#ChangePswForm").serialize())
-//                   .done(function(data){
-//                      if(data.ChangeUserPswSuc){
-//                        alert("更改成功");
-//                      }else{
-//                        alert("更改失败");
-//                      }
-//                   });
-//            }
-//            });
-//
-//        }
 
 
