@@ -188,8 +188,7 @@ block append content
                             .control-group
                                 label.control-label(for='CuserEmail') 邮箱地址
                                 .controls
-                                    input(type='text',id="userEmail",name="userEmail" ,value=session.currentUser.userEmail,onFocus="if(value==defaultValue){value='';}"
-                                    onBlur="if(!value){value=defaultValue;}")
+                                    input(type='text',id="userEmail",name="userEmail" ,value=session.currentUser.userEmail,readonly)
                             .control-group
                                 .controls
                                     a#ChangeInfBtn(href="#",class="btn btn-primary",onClick="return ChangeInf();") 提交
