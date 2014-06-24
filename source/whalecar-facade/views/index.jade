@@ -1,297 +1,408 @@
 extends layout/mainFrame
 
 block append css
-    link(href='css/index.css', rel='stylesheet', media='screen')
-    link(rel="stylesheet",href="css/carousel.css",media="all",type="text/css")
+  link(href='css/index.css', rel='stylesheet', media='screen')
+  link(rel="stylesheet",href="css/carousel.css",media="all",type="text/css")
 
 block append js
-    script(type="text/javascript",src="js/jquery.carouFredSel-6.2.1-packed.js")
-    script(type="text/javascript",src="js/slides.min.jquery.js")
+  script(type="text/javascript",src="js/jquery.carouFredSel-6.2.1-packed.js")
+  script(type="text/javascript",src="js/slides.min.jquery.js")
 
 block append content
-    #slider_div_1(style="width:1410px;height:363px;margin:0 auto;padding:0px;")
-        .slides_container(style="list-style:none;z-index:-1;width:1410px;margin-left:255px;height:363px")
-            li.bitter2.glume
-                span.Limg.slide_pic
-                    a(href='/golf7Adver')
-                        img.img_c_1(src='img/banner/scrollimg6.png',width="1410", height="363")
-            li.bitter0.glume
-                span.Limg.slide_pic
-                    a(href='./car?id=232')
-                        img.img_c_1(src='img/banner/audihui.png',width="1410", height="363")
-            li.bitter1.glume
-                span.Limg.slide_pic
-                    a(href='#carModelViewAnchor')
-                        img.img_c_1(src='img/banner/logo4.jpg',width="1410", height="363")
-            li.bitter3.glume
-                span.Limg.slide_pic
-                    a(href='./car?id=228')
-                        img.img_c_1(src='img/banner/logo5.jpg',width="1410", height="363")
-            li.bitter4.glume
-                span.Limg.slide_pic
-                    a(href='./car?id=225')
-                        img.img_c_1(src='img/banner/scrollimg3.jpg',width="1410", height="363")
-        //.pagination_p
-        //   ul.pagination(style="list-style:none;")
-        //     li(style="display: list-item; ")
-        //       a.page_a_1(link='#',style="text-decoration: none;") 发现7的世界
-        //     li(style="display: list-item;")
-        //       a.page_a_1(link='#',style="text-decoration: none;") 奥迪全系登录梯卡
-        //     li(style="display: list-item;")
-        //       a.page_a_1(link='#',style="text-decoration: none;") 直降一千
-        //     li(style="display: list-item;")
-        //       a.page_a_1(link='#',style="text-decoration: none;") 底价购买
-        //     li(style='border-right: 1px solid #FFFFFF;')
-        //       a.page_a_1(link='./car?id=228',style="text-decoration: none;") 新cc 孑然登场
-    div(style="background-color:#ffffff;height:222px;width:1960px")
-        .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;background-color:#fbfbfb;")
-            div(style='background-color: #eaeaea;margin-left:-252px')
-                div(style="background-image: url(img/gundong.png);width: 1410px;height: 215px;")
-                    div(id="news" style="padding-top:50px;padding-left:85px;font-size:12px;")
-                        div(style="margin-left:80px;height:80px;overflow:hidden;width:300px;marign-top:20px;")
-                            ul
-                                li(style="list-style-type:none;") 王**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 黄**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
-                                li(style="list-style-type:none;") 周**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
-                                li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                                li(style="list-style-type:none;") 童**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 王**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;捷达
-                                li(style="list-style-type:none;") 徐**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
-                                li(style="list-style-type:none;") 赵**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
-                                li(style="list-style-type:none;") 李**女士&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 胡**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 何**女士&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
-                                li(style="list-style-type:none;") 俞**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                                li(style="list-style-type:none;") 傅**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
-                                li(style="list-style-type:none;") 许**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
-                                li(style="list-style-type:none;") 江**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                                li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
-                                li(style="list-style-type:none;") 郑**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                        div(style="margin-top:-73px;padding-left:1102px;width: 100px;height:90px;")
-                            form(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post")
-                                input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
-                                input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;",id="phoneNum",name="phoneNum")
-                                div(style="margin-top:15px")
-                                    select(type="text",style="height:19.5px;width:97px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
-                                        option(select="select") 选择品牌
-                                        each carBrand in idAndCname
-                                            option(value="#{carBrand.id}") #{carBrand.cname}
-                                div
-                                    select(id="idAndCname",style="height:19.5px;width:97px;padding:0px;margin-top:-7px;" ,name="idAndCname")
-                                        option(value="") 选择车型
-                                    input#allCars(type="hidden",value=JSON.stringify(idAndCname))
-                                input(type="button" value="提交" style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-top:-150px;margin-left:130px;", onclick="success();")
-    div(style="background-color: #f6f6f6;height:496px")
-        .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:transparent;margin-left:255px")
-            div(style='')
-                div(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
-                    h6(style="font-size:24px;margin-left:-11px;font-weight:lighter;") 梯卡推荐
-                    // img(src="../img/banner/cheapBand.png",style="padding-bottom:5px;padding-right:5px")
-                #cheap
-                    .row-fluid
-                        ul.thumbnails(style='margin-top: 0px;margin-bottom:0px;margin-left:-13px')
-                            li(style="width:591px;height:442px;margin-right: 7px; margin-left: 14px;")
-                                a.thumbnail(href="./car?id=#{priceOffCarModelLv1[0].id}",style="padding:8px;background-color:white;border:;transparent")
-                                    img(style='width: 575px; height: 383px;', src='img/price001.jpg')
-                                    .caption(style='height:51px; padding:5px;')
-                                        div.pull-left(style="padding:5px;")
-                                            img(src="img/icon001.png")
-                                        div.pull-left
-                                            div(style='font-size: 12px;color:#666666;') 市场价:#{priceOffCarModelLv1[0].factoryPrice}万
-                                            div(style='font-size: 16px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[0].shopPrice}万
-                                        div.pull-right(style="padding:8px 0px;")
-                                            img(src="img/icon004.png")
-                                        div.pull-right(style='padding:10px;color:#f40000;')
-                                            span(style="font-size: 23px;") 立减&nbsp;
-                                            span(style="font-size: 35px;")
-                                                i #{priceOffCarModelLv1[0].diffPrice.toFixed(2)}
+  #slider_div_1(style="width:1410px;height:363px;margin:0 auto;padding:0px;")
+     .slides_container(style="list-style:none;z-index:-1;")
+        li.bitter2.glume
+          span.Limg.slide_pic
+            a(href='/golf7Adver')
+              img.img_c_1(src='img/banner/scrollimg6.png')
+        li.bitter0.glume
+          span.Limg.slide_pic
+            a(href='./car?id=232')
+              img.img_c_1(src='img/banner/audihui.png')
+        li.bitter1.glume
+          span.Limg.slide_pic
+            a(href='#carModelViewAnchor')
+              img.img_c_1(src='img/banner/logo4.jpg')
+        li.bitter3.glume
+          span.Limg.slide_pic
+            a(href='./car?id=228')
+              img.img_c_1(src='img/banner/logo5.jpg')
+        li.bitter4.glume
+          span.Limg.slide_pic
+            a(href='./car?id=225')
+              img.img_c_1(src='img/banner/scrollimg3.jpg')
+     .pagination_p
+        ul.pagination(style="list-style:none;")
+          li(style="display: list-item; ")
+            a.page_a_1(link='#',style="text-decoration: none;") 发现7的世界
+          li(style="display: list-item;")
+            a.page_a_1(link='#',style="text-decoration: none;") 奥迪全系登录梯卡
+          li(style="display: list-item;")
+            a.page_a_1(link='#',style="text-decoration: none;") 直降一千
+          li(style="display: list-item;")
+            a.page_a_1(link='#',style="text-decoration: none;") 底价购买
+          li(style='border-right: 1px solid #FFFFFF;')
+            a.page_a_1(link='./car?id=228',style="text-decoration: none;") 新cc 孑然登场
+  .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;background-color:#fbfbfb;")
+    div(style='background-color: #eaeaea;')
+      div(style="background-image: url(img/gundong.png);width: 940px;height: 215px;")
+        div(id="news" style="padding-top:113px;padding-left:85px;font-size:12px;")
+          div(style="height:80px;overflow:hidden;width:300px;marign-top:20px;")
+            ul
+              li(style="list-style-type:none;") 王**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+              li(style="list-style-type:none;") 黄**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
+              li(style="list-style-type:none;") 周**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
+              li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
+              li(style="list-style-type:none;") 童**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+              li(style="list-style-type:none;") 王**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;捷达
+              li(style="list-style-type:none;") 徐**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
+              li(style="list-style-type:none;") 赵**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
+              li(style="list-style-type:none;") 李**女士&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+              li(style="list-style-type:none;") 胡**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+              li(style="list-style-type:none;") 何**女士&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
+              li(style="list-style-type:none;") 俞**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
+              li(style="list-style-type:none;") 傅**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
+              li(style="list-style-type:none;") 许**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
+              li(style="list-style-type:none;") 江**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
+              li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
+              li(style="list-style-type:none;") 郑**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
+          div(style="margin-top:-93px;padding-left:740px; width: 100px;height:90px;")
+            form(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post")
+              input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
+              input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;",id="phoneNum",name="phoneNum")
+              div
+                select(type="text",style="height:19.5px;width:97px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
+                  option(select="select") 选择品牌
+                  each carBrand in idAndCname
+                    option(value="#{carBrand.id}") #{carBrand.cname}
+              div
+                select(id="idAndCname",style="height:19.5px;width:97px;padding:0px;margin-top:-7px;" ,name="idAndCname")
+                  option(value="") 选择车型
+                input#allCars(type="hidden",value=JSON.stringify(idAndCname))
+              input(type="button" value="提交" style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-left:56px;margin-top:-10px;", onclick="success();")
+  .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;")
+    div(style='background-color: #ffffff;')
+      div(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
+        img(src="../img/banner/cheapBand.png",style="padding-bottom:5px;padding-right:5px")
+      #cheap
+        .row-fluid
+            ul.thumbnails(style='margin-top: 0px;margin-bottom:0px;')
+                li(style="width:590px;height:443px;margin-right: 7px; margin-left: 14px;")
+                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[0].id}",style="padding:8px;background-color:#f8f8f8;border:solid 1px #aaaaaa;")
+                        img(style='width: 582px; height: 384px;', src='img/price001.jpg')
+                        .caption(style='height:40px; padding:5px;')
+                            div.pull-left(style="padding:5px;")
+                                img(src="img/icon001.png")
+                            div.pull-left
+                                div(style='font-size: 14px;color:#666666;') 市场价:#{priceOffCarModelLv1[0].factoryPrice}万
+                                div(style='font-size: 16px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[0].shopPrice}万
+                            div.pull-right(style="padding:8px 0px;")
+                                img(src="img/icon004.png")
+                            div.pull-right(style='padding:10px;color:#f40000;')
+                                span(style="font-size: 23px;") 立减&nbsp;
+                                span(style="font-size: 35px;")
+                                    i #{priceOffCarModelLv1[0].diffPrice.toFixed(2)}
 
-                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-bottom:7px;")
-                                a.thumbnail(href="./car?id=#{priceOffCarModelLv1[1].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;")
-                                    img(style='width: 290px; height: 180px;', src='img/ix35.jpg')
-                                    .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
-                                        div.pull-left(style="padding:0px 2px;")
-                                            img(src="img/icon002.png")
-                                        div.pull-left(style='font-size: 14px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[1].shopPrice}万
-                                        div.pull-right(style="padding:0px 0px;width:13px;")
-                                            img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
-                                        div.pull-right(style='color:#f40000;')
-                                            span(style="font-size: 14px;")
-                                                | 立减
-                                                i #{priceOffCarModelLv1[1].diffPrice.toFixed(2)}
-                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-top:7px;")
-                                a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;")
-                                    img(style='width: 290px; height: 180px;', src='img/a4l.jpg')
-                                    .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
-                                        div.pull-left(style="padding:0px 2px;")
-                                            img(src="img/icon003.png")
-                                        div.pull-left(style='font-size: 14px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[2].shopPrice}万
-                                        div.pull-right(style="padding:0px 0px;width:13px;")
-                                            img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
-                                        div.pull-right(style='color:#f40000;')
-                                            span(style="font-size: 14px;")
-                                                | 立减
-                                                i #{priceOffCarModelLv1[2].diffPrice.toFixed(2)}
-                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: 940px;margin-top:-463px;")
-                                a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;")
-                                    img(style='width: 290px; height: 180px;', src='img/a4l.jpg')
-                                    .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
-                                        div.pull-left(style="padding:0px 2px;")
-                                            img(src="img/icon003.png")
-                                        div.pull-left(style='font-size: 14px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[2].shopPrice}万
-                                        div.pull-right(style="padding:0px 0px;width:13px;")
-                                            img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
-                                        div.pull-right(style='color:#f40000;')
-                                            span(style="font-size: 14px;")
-                                                | 立减
-                                                i #{priceOffCarModelLv1[2].diffPrice.toFixed(2)}
-                            li(style="width:306px;height:214px;margin-right: 14px;margin-left: 940px;margin-top:-234px")
-                                a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;")
-                                    img(style='width: 290px; height: 180px;', src='img/a4l.jpg')
-                                    .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
-                                        div.pull-left(style="padding:0px 2px;")
-                                            img(src="img/icon003.png")
-                                        div.pull-left(style='font-size: 14px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[2].shopPrice}万
-                                        div.pull-right(style="padding:0px 0px;width:13px;")
-                                            img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
-                                        div.pull-right(style='color:#f40000;')
-                                            span(style="font-size: 14px;")
-                                                | 立减
-                                                i #{priceOffCarModelLv1[2].diffPrice.toFixed(2)}
-                            li(style="width:170px;height:442px;margin-right: 14px;margin-left: 1255px;margin-top:-463px")
-                                a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;")
-                                    img(style='width: 160px; height: 408px;', src='img/a4l.jpg')
-                                    .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
-                                        div.pull-right(style="padding:0px 0px;width:13px;")
-                                            img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
-                                        div.pull-right(style='color:#f40000;')
-                                            span(style="font-size: 14px;")
-                                                | 立减
-                                                i #{priceOffCarModelLv1[2].diffPrice.toFixed(2)}
+                li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-bottom:7px;")
+                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[1].id}",style="padding:8px;background-color:#f8f8f8;border:solid 1px #aaaaaa;")
+                        img(style='width: 290px; height: 180px;', src='img/ix35.jpg')
+                        .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
+                            div.pull-left(style="padding:0px 2px;")
+                                img(src="img/icon002.png")
+                            div.pull-left(style='font-size: 14px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[1].shopPrice}万
+                            div.pull-right(style="padding:0px 0px;width:13px;")
+                                img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
+                            div.pull-right(style='color:#f40000;')
+                                span(style="font-size: 14px;")
+                                    | 立减
+                                    i #{priceOffCarModelLv1[1].diffPrice.toFixed(2)}
+                li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-top:7px;")
+                    a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#f8f8f8;border:solid 1px #aaaaaa;")
+                        img(style='width: 290px; height: 180px;', src='img/a4l.jpg')
+                        .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
+                            div.pull-left(style="padding:0px 2px;")
+                                img(src="img/icon003.png")
+                            div.pull-left(style='font-size: 14px;color:#333333;') <strong>TEE</strong>Car:#{priceOffCarModelLv1[2].shopPrice}万
+                            div.pull-right(style="padding:0px 0px;width:13px;")
+                                img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
+                            div.pull-right(style='color:#f40000;')
+                                span(style="font-size: 14px;")
+                                    | 立减
+                                    i #{priceOffCarModelLv1[2].diffPrice.toFixed(2)}
 
-                #focus
-                    // div#carModelViewAnchor(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
-    div(style="background-color:#ffffff;width:1960px;margin-top:5px")
-        div(style='margin-left:270px')
-            h6(style="font-size:24px;margin-left:-11px;font-weight:lighter;") <br> 梯卡优惠
-            .row-fluid#carModelView(style="background-color:#ffffff;margin-left:-15px;margin-top:10px")
-                //内容ajax读取
+      //div(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
+        img(src="../img/banner/focusBand.png",style="padding-bottom:5px;padding-right:5px")
+      //#focus
+        .row-fluid
+              ul#section1.thumbnails(style='margin-top: 10px;margin-bottom:0px')
+                li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
+                  a.thumbnail(href='./car?id=232', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
+                    div(name='hoverdiv', style='height: 170px; width: 200px;')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/232.png')
+                        .caption(style='height: 20px; padding: 0px;')
+                          h4.text-center(style='font-size: 13px;') 市场价:12.19万 - 19.99万
+                      div(name='coverdiv', style='position: absolute; display: none;')
+                        div(style='height: 110px; padding: 20px;')
+                          strong 一汽-大众 高尔夫7
+                          h6 1.4T 1.6
+                          h6 横置前驱
+                          h6 7档双离合
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                          h4.text-center(style='color: #ffffff; font-size: 13px;') 网站价:万 - 万
+                  h5
+                    img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
+                    img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
+                    | 一汽-大众 高尔夫7
+                    img.pull-right(src="../img/focusBand.png")
+                li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
+                  a.thumbnail(href='./car?id=229', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
+                    div(name='hoverdiv', style='height: 170px; width: 200px;')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='border-radius: 0px 0px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/235.png')
+                        .caption(style='height: 20px; padding: 0px;')
+                          h4.text-center(style='font-size: 13px;') 市场价:19.98万 - 34.38万
+                      div(name='coverdiv', style='position: absolute; display: none;')
+                        div(style='height: 110px; padding: 20px;')
+                          strong 一汽-大众 迈腾
+                          h6 1.4T 1.8T 2.0T 3.0
+                          h6 横置前驱
+                          h6 7档双离合
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                          h4.text-center(style='color: #ffffff; font-size: 13px;') 网站价:19.98万 - 34.38万
+                  h5
+                    img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
+                    img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
+                    | 一汽-大众 迈腾
+                    img.pull-right(src="../img/focusBand.png")
+                li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
+                  a.thumbnail(href='./car?id=228', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
+                    div(name='hoverdiv', style='height: 170px; width: 200px;')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/233.png')
+                        .caption(style='height: 20px; padding: 0px;')
+                          h4.text-center(style='font-size: 13px;') 市场价:8.28万 - 11.93万
+                      div(name='coverdiv', style='position: absolute; display: none;')
+                        div(style='height: 110px; padding: 20px;')
+                          strong 一汽-大众 捷达
+                          h6 1.4 1.8
+                          h6 横置前驱
+                          h6 7档双离合
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                          h4.text-center(style='color: #ffffff; font-size: 13px;') 网站价:8.28万 - 11.93万
+                  h5
+                    img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
+                    img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
+                    | 一汽-大众 捷达
+                    img.pull-right(src="../img/focusBand.png")
+                li.span3(style='width: 210px; margin-right: 13px; margin-left: 12px;')
+                  a.thumbnail(href='./car?id=231', style='padding: 0px;background-color:#f8f8f8;border:solid 1px #aaaaaa;')
+                    div(name='hoverdiv', style='height: 170px; width: 200px;')
+                      div(name='imgdiv', style='width: 190px; position: absolute; padding: 8px;')
+                        img(style='border-radius: 0px 0px 0px 0px; width: 190px; height: 140px; padding: 0px 0px 0px;border:solid 1px #aaaaaa;', src='img/car/234.png')
+                        .caption(style='height: 20px; padding: 0px;')
+                          h4.text-center(style='font-size: 13px;') 市场价:11.89万 - 25.38万
+                      div(name='coverdiv', style='position: absolute; display: none;')
+                        div(style='height: 110px; padding: 20px;')
+                          strong 一汽-大众 高尔夫
+                          h6 1.4T 1.6 2.0T
+                          h6 横置前驱
+                          h6 7档双离合
+                        .caption(style='background-image: url(img/hover-price1.png); padding: 0px 0px 0px 0px; width: 210px; border-radius: 0px 0px 4px 4px;')
+                          h4.text-center(style='color: #ffffff; font-size: 13px;') 11.89万 - 25.38万
+                  h5
+                    img(src="../img/yiqi.png",style="margin:0px 3px 3px 0px")
+                    img(src="../img/dasAuto.png",style="margin:0px 3px 3px 0px")
+                    | 一汽-大众 高尔夫
+                    img.pull-right(src="../img/focusBand.png")
+      div#carModelViewAnchor(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
+        img(src="../img/banner/allBand.png",style="padding-bottom:5px;padding-right:5px")
+    .row-fluid#carModelView(style="background-color:#ffffff")
+      //内容ajax读取
+    div(style='padding:20px;background-color:#ffffff')
+          div(style='border-top: 2px solid #ddd;')
+            .row-fluid
+              .span4
+                ul.unstyled.text-left(style='margin: auto;')
+                  li
+                    h4#bottomh4
+                      | 网站新闻
+                  .row-fluid
+                    .span4
+                      img(src='img/haibao.jpg', alt='haibao')
+                    .span8
+                      ul.unstyled.text-left(style='margin-left: 10px;')
+                        li
+                          a(href="advertisement0")
+                            h6 累计销量突破17万 迈腾成为B级车领导者
+                        li
+                          a(href="advertisement1")
+                            h6 安全至上 属于速腾GLI的“速度与激情
+                        li
+                          a(href="advertisement2")
+                            h6 全新捷达携手《天天向上》 浪漫故事即将上演
+                        li
+                          a(href="advertisement3")
+                            h6 配置豪华升级 速腾2014款成都车展亮相
+              .span4
+                ul.unstyled.text-left(style='width: 60%; margin: auto;')
+                  li
+                    h4#bottomh4 行业新闻
+                  li
+                    a(href="advertisement7")
+                      h6
+                        img(src='img/paper_plane.png', alt='paper_plane', style='padding-bottom: 4px; margin-right: 10px;')
+                        | 上海通用召回部分凯越及新赛欧 总计146万余辆
+                  li
+                    a(href="advertisement8")
+                      h6
+                        img(src='img/paper_plane.png', alt='paper_plane', style='padding-bottom: 4px; margin-right: 10px;')
+                        | 限购 新政或推高2014年汽车销量
+                  li
+                    a(href="advertisement9")
+                      h6
+                        img(src='img/paper_plane.png', alt='paper_plane', style='padding-bottom: 4px; margin-right: 10px;')
+                        | 限牌并非“狼来了”
+              .span4
+                ul.unstyled.text-left(style='margin: auto;')
+                  li
+                    h4#bottomh4 车辆资讯
+                  .row-fluid
+                    .span4
+                      img(src='img/TEECARlogo.png', alt='TEECARlogo')
+                    .span8
+                      ul.unstyled.text-left(style='margin-left: 10px;')
+                        li
+                          a(href="advertisement4")
+                            h6
+                              img(src='img/location.png', alt='location', style='padding-bottom: 4px; margin-right: 10px;')
+                              | 一汽-大众9月销售139,677台，大众品牌再度突破10万辆大关
+                        li
+                          a(href="advertisement5")
+                            h6
+                              img(src='img/location.png', alt='location', style='padding-bottom: 4px; margin-right: 10px;')
+                              | 一汽-大众全新高尔夫佛山投产 MQB平台续写“神车”传奇
+                        li
+                          a(href="advertisement6")
+                            h6
+                              img(src='img/location.png', alt='location', style='padding-bottom: 4px; margin-right: 10px;')
+                              | 优雅如影随形 新CC从容展现完美舒适
 
-    script.
-        $(document).ready(function(){
-            //初始化汽车数据
-            $("#carModelView").load("./cardata?type=getCarModelPagination");
-        });
+  script.
+    $(document).ready(function(){
+        //初始化汽车数据
+        $("#carModelView").load("./cardata?type=getCarModelPagination");
+    });
 
-        //首页幻灯片
-        $(function(){
+    //首页幻灯片
+    $(function(){
+        var original_w=940;
+        var original_h=363;
+        var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
+        //var w=window.screen.width;
+        if(original_w>w){//如果实际图片宽度大于分辨率
+             //$(".img_c_1").css({"width":w});
+        }
+        else{
+            //$(".img_c_1").css({"width":w});
+            //var h=w*original_h/original_w+78;
+            //$(".img_c_1").css({"height":h});
+        }
+        $('#slider_div_1').slides({
+           //autoHeight:true,
+           play: 2000,//5秒钟自动切换一次
+           effect: 'fade',
+           crossfade: true,
+           fadeSpeed: 500,
+           hoverPause: true,
+           pause: 250,
+           //generateNextPrev: true,
+           animationStart: function() {
+               var original_w=940;
+               var original_h=363;
+               var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
+               //var w=window.screen.width;
+               if(original_w>w){//如果实际图片宽度大于分辨率
+                  //$(".img_c_1").css({"width":w});
+               }
+               else{
+                   //$(".img_c_1").css({"width":w});
+                   //var h=w*original_h/original_w+78;
+                   //$(".img_c_1").css({"height":h});
+               }
+            },
+            generatePagination: false
+         });
+
+         $(".Limg2").css({'display':'block'});
+
+         $('.page_a_1').click(function(event){
+            event.preventDefault();
+            //window.open($(this).attr('link'),'name_1');
+         });
+
+         $(window).resize(function(e){
             var original_w=940;
             var original_h=363;
             var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
             //var w=window.screen.width;
             if(original_w>w){//如果实际图片宽度大于分辨率
-                 //$(".img_c_1").css({"width":w});
             }
             else{
-                //$(".img_c_1").css({"width":w});
-                //var h=w*original_h/original_w+78;
-                //$(".img_c_1").css({"height":h});
+              // $(".img_c_1").css({"width":w});
+               //var h=w*original_h/original_w+78;
+               //$(".img_c_1").css({"height":h});
             }
-            $('#slider_div_1').slides({
-               //autoHeight:true,
-               play: 2000,//5秒钟自动切换一次
-               effect: 'fade',
-               crossfade: true,
-               fadeSpeed: 500,
-               hoverPause: true,
-               pause: 250,
-               //generateNextPrev: true,
-               animationStart: function() {
-                   var original_w=940;
-                   var original_h=363;
-                   var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
-                   //var w=window.screen.width;
-                   if(original_w>w){//如果实际图片宽度大于分辨率
-                      //$(".img_c_1").css({"width":w});
-                   }
-                   else{
-                       //$(".img_c_1").css({"width":w});
-                       //var h=w*original_h/original_w+78;
-                       //$(".img_c_1").css({"height":h});
-                   }
-                },
-                generatePagination: false
-             });
-
-             $(".Limg2").css({'display':'block'});
-
-             $('.page_a_1').click(function(event){
-                event.preventDefault();
-                //window.open($(this).attr('link'),'name_1');
-             });
-
-             $(window).resize(function(e){
-                var original_w=940;
-                var original_h=363;
-                var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
-                //var w=window.screen.width;
-                if(original_w>w){//如果实际图片宽度大于分辨率
-                }
-                else{
-                  // $(".img_c_1").css({"width":w});
-                   //var h=w*original_h/original_w+78;
-                   //$(".img_c_1").css({"height":h});
-                }
-             });
-        });
-        //滚动字幕
-        var $this=$("#news");
-        var scrollTimer;
-        $this.hover(function(){
-          clearInterval(scrollTimer);
-        },function(){
-          scrollTimer = setInterval(function() {
-        scrollNews($this);
-        }, 1500);
-        }).trigger("mouseleave");
-        function scrollNews(obj)
-        {
-          var $self=obj.find("ul");
-          var lineHeight=$self.find("li:first").height();
-          $self.animate({
-          "marginTop":-lineHeight+ "px"
-          }, 600, function(){
-          $self.css({
-          marginTop:0
-          }).find("li:first").appendTo($self);
-          })
-        }
-        function getCarBrand(){
-          var idname =  eval($("#allCars").val());
-          var carBrandID = $("#carBrand").val();
-          for(var i=0;i<idname.length;i++){
-              if(carBrandID == idname[i].id){
-                  $("#idAndCname").empty();
-                  $("#idAndCname").append('<option value="">选择车型</option>');
-                  var carModelLv1List = idname[i].carModelLv1List;
-                  for(var j=0;j<carModelLv1List.length;j++){
-                    $("#idAndCname").append("<option value=" + carModelLv1List[j].id + ","+carModelLv1List[j].cname + ">" + carModelLv1List[j].cname + "</option>");
-                  }
-                break;
+         });
+    });
+    //滚动字幕
+    var $this=$("#news");
+    var scrollTimer;
+    $this.hover(function(){
+      clearInterval(scrollTimer);
+    },function(){
+      scrollTimer = setInterval(function() {
+    scrollNews($this);
+    }, 1500);
+    }).trigger("mouseleave");
+    function scrollNews(obj)
+    {
+      var $self=obj.find("ul");
+      var lineHeight=$self.find("li:first").height();
+      $self.animate({
+      "marginTop":-lineHeight+ "px"
+      }, 600, function(){
+      $self.css({
+      marginTop:0
+      }).find("li:first").appendTo($self);
+      })
+    }
+    function getCarBrand(){
+      var idname =  eval($("#allCars").val());
+      var carBrandID = $("#carBrand").val();
+      for(var i=0;i<idname.length;i++){
+          if(carBrandID == idname[i].id){
+              $("#idAndCname").empty();
+              $("#idAndCname").append('<option value="">选择车型</option>');
+              var carModelLv1List = idname[i].carModelLv1List;
+              for(var j=0;j<carModelLv1List.length;j++){
+                $("#idAndCname").append("<option value=" + carModelLv1List[j].id + ","+carModelLv1List[j].cname + ">" + carModelLv1List[j].cname + "</option>");
               }
+            break;
           }
-        }
-        function success(){
-          var username = $("#username").val();
-          var phoneNum = $("#phoneNum").val();
-          var idAndCname = $("#idAndCname").val().split(",");
-          var BrandId = idAndCname[0];
-          var Cname =  idAndCname[1];
-          if(username=="" || phoneNum==""|| BrandId=="" || Cname==""){
-              alert("提交失败！");
-              return;
-          }
-              alert("提交成功！");
-              document.addUserCar.submit();
-              return;
-        }
+      }
+    }
+    function success(){
+      var username = $("#username").val();
+      var phoneNum = $("#phoneNum").val();
+      var idAndCname = $("#idAndCname").val().split(",");
+      var BrandId = idAndCname[0];
+      var Cname =  idAndCname[1];
+      if(username=="" || phoneNum==""|| BrandId=="" || Cname==""){
+          alert("提交失败！");
+          return;
+      }
+          alert("提交成功！");
+          document.addUserCar.submit();
+          return;
+    }

@@ -1,24 +1,52 @@
 .navbar.navbar-inverse
-    #toptab.navbar-inner(style='height: 36px;width:1920px;border-bottom-width: 0px;background-image:linear-gradient(to bottom, #112742, #112742)')
-        .container(style='margin-bottom: 0px; margin-top: 8px;')
-            //去掉导航微博链接
-            //a(href='http://weibo.com/u/3860454014')
-             // img(src='img/weibo_out.gif', alt='weibo_out')
-            h6(style='margin: auto; display: inline;color:#ffffff;font-size:22px;margin-left:-250px', calss='nav') <strong style="color:#ffffff">TEE</strong>Car梯卡汽车网
-            h6(style='margin: auto; display: inline;color:#729ac1;font-size:16px', calss='nav') 倡导透明购车理念
-            .pull-right()
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;",class='nav',href='/') 首页
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:40px",class='nav',href='/shoplist') 4S店频道
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:40px",class='nav',href='/buildingl') 移动应用
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:40px",class='nav',href='/about_us') 关于我们
-                img(src='img/phone.png', alt='phone', style='height: 18px;margin-left:40px',calss='nav')
-                h5(style='display: inline;width:150px;', calss='nav')
-                    | 400-007-9902 &nbsp;
-                a(href="#loginModal",role="button",data-toggle="modal",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:40px",calss='nav') <img src="img/login.png" alt="logo"> 登陆
+  #toptab.navbar-inner(style='height: 30px;border-bottom-width: 0px;')
+    .container(style='margin-bottom: 0px; margin-top: 4px;')
+        a(href='http://weibo.com/u/3860454014')
+          img(src='img/weibo_out.gif', alt='weibo_out')
+        h6(style='margin: auto; display: inline;', calss='nav') 关注梯卡网官方微博
+        .pull-right(style="width:385px;")
+          h6(style='display: inline;', calss='nav') 服务时间：周一至周日 9:00 - 21:00
+          img(src='img/phone.png', alt='phone', style='height: 18px;')
+          h5(style='display: inline;width:150px;', calss='nav')
+            | 400-007-9902 &nbsp;
+            a(target="_blank",href="http://wpa.qq.com/msgrd?v=3&uin=2990321970&site=qq&menu=yes")
+              img(border="0",src="img/qq-img.png",alt="在线沟通",title="在线沟通")
+  .navbar-inner(style="background:rgba(0, 0, 0, 0.06);width:960px;margin:0 auto;border-radius: 6px;border-top-left-radius: 0;border-top-right-radius: 0;height: 58px;border-bottom-width: 0px;")
+    .container(style="margin-bottom: 0px;margin-top: 0px;")
+      a.brand(href="/")
+        div(style="width:120px;")
+            img(src="img/logo2.png",alt="logo",style="padding-top:0px;width: 100px; height: 25px;")
+            div(style="color:#f40000;font-size:11px;text-shadow:0 0 0;") 倡导透明购车理念
+      ul.nav(style="margin-bottom: 5px;margin-top: 18px")
+        li(style="padding: 0px 5px;")
+          a(href='/') 汽车频道
+        li(style="padding: 0px 5px;")
+          a(href='/shoplist') 4S店频道
+        li(style="padding: 0px 5px;")
+          a(href='/buildingl') 移动应用
+        li(style="padding: 0px 5px;")
+          a(href='/about_us') 关于我们
+      ul.nav.pull-right(style="margin-top:15px;font-size:12px;")
+          if !session.currentUser
+            if !session.currentShop
+              li
+                a(href="#loginModal",role="button",data-toggle="modal") <img src="img/login.png" alt="logo"> 登陆 <img src="img/rss.png">
+            -else
+              li
+                a(href="/shophome",role="button",data-toggle="modal") 4S店管理页面
+              li
+                a(onclick="shopLogout();return false;",href="#",role="button") 注销
+          -else
+            li
+              a(href="/#",role="button",data-toggle="modal") 您好，#{session.currentUser.userName}!
+            li
+              a(href="/userhome",role="button") 用户中心
+            li
+              a(onclick="logout();return false;",href="#",role="button") 注销
 include user
 
 script.
-    $(function(){
-      var path = window.location.pathname;
-      $("ul.nav li a[href='" + path + "']").parent('li').addClass('active')
-    });
+  $(function(){
+    var path = window.location.pathname;
+    $("ul.nav li a[href='" + path + "']").parent('li').addClass('active')
+  });
