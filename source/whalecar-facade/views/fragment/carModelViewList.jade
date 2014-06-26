@@ -64,16 +64,18 @@
                                 span(style="color: orange;")= dicCity.cityCname
                             else
                                 | #{dicCity.cityCname}
-        div(style="height:36px;background:#f6f6f6;color:#666666;")
-            div(style="padding-top:10px;padding-left:20px") 品牌
-                if !shide || shide.indexOf("brand") == -1
-                    a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color:#666666;padding-left: 60px;") 不限
-                    each brand in allBrands
-                        a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.brandId}',true,true);return false;",style="color: #666666;padding-left: 60px;")
-                            if !!conditionParams  &&  brand.brandId == conditionParams.carBrand
-                                span(style="color: orange;")= brand.brandName
-                            else
-                                | #{brand.brandName}
+        div(style="background:#f6f6f6;color:#666666;")
+            div
+                div(style="padding-top:10px;padding-left:20px") 品牌
+                div(style="margin-left:108px;margin-top:-30px;height:36px")
+                    if !shide || shide.indexOf("brand") == -1
+                        a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color:#666666;") 不限
+                        each brand in allBrands
+                            a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.brandId}',true,true);return false;",style="color: #666666;padding-left: 60px;")
+                                if !!conditionParams  &&  brand.brandId == conditionParams.carBrand
+                                    span(style="color: orange;")= brand.brandName
+                                else
+                                    | #{brand.brandName}
         div(style="height:36px;color:#666666;")
             div(style="padding-top:10px;padding-left:20px") 车系
                 each carModelLv1 in carModels
@@ -133,18 +135,18 @@
         li.span3(style="width:260px;height:212px;margin-right: 13px;margin-left: 12px;margin-top:15px")
             a.thumbnail(href='./car?id=#{carModelView.carModelLv1}&city=#{conditionParams.city}&shop=#{conditionParams.shop}', style='padding: 0px;text-decoration:none;')
                 div(name='hoverdiv', style='height: 212px; width: 260px;')
-                    div(name='imgdiv', style="width: 260px;height:212px")
+                    div(name='imgdiv', style="width: 260px;height:205px")
                         div(style="font-size:10px;color:#ffffff") <div style="position:absolute;margin-top:-3px;margin-left:20px;width:51px;height:46px;background-image:url('img/jiangjia.png')">&nbsp;&nbsp;&nbsp;&nbsp;直降<br>&nbsp;&nbsp;#{(carModelView.factoryPriceMax-carModelView.shopPriceMin).toFixed(2)}万</div>
                             img(style='width: 190px; height: 140px;padding: 0px 0px 0px;margin-top:5px;margin-left:10px', src='img/car/#{carModelView.carModelLv1}.png')
                             .caption(name="imgdiv_h4",style="height: 30px; padding: 0px;background-color:#112742;margin-top:35px")
                                 h4.pull-left(style="font-size:26px;color:white;margin-left:5px;margin-top:5px") ￥#{carModelView.shopPriceMin}<font size="4px">万</font>
                                 h4.pull-right(style="font-size:18px;color:#3b7db8;font-weight:lighter;margin-top:5px;margin-left:-5px")  <s>市场价:#{carModelView.factoryPriceMax}万</s>
                     div(name='coverdiv', style='position: absolute; display: none;margin-top:-60px;')
-                        .caption(style='padding:0px 0px 0px 0px;border-radius: 0px 0px 4px 4px;margin-top:-50px;margin-left:140px;font-weight:lighter')
+                        .caption(style='padding:0px 0px 0px 0px;border-radius: 0px 0px 4px 4px;margin-top:-30px;margin-left:140px;font-weight:lighter')
                             h4(style='color: black;font-size:26px;') ￥#{carModelView.shopPriceMin} <font size="3px">万</font>
                         div
-                            strong(style='color: black;font-size:18px;margin-left:130px') #{carModelView.brandCname} #{carModelView.cname}
-                            h6 #{carModelView.carModelLv2ShortNames}
+                            strong(style='color: black;font-size:18px;margin-left:10px') #{carModelView.brandCname} #{carModelView.cname}
+                            h6(style='color: black;font-size:10px;margin-left:10px') #{carModelView.carModelLv2ShortNames}
 
 form(action="/",method="get",id="conditionform")
     input(type="hidden",name="pageIndex",id="form_pageIndex",value="#{conditionParams.pageIndex}")
