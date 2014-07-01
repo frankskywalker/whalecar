@@ -76,6 +76,13 @@ public class ManagerService {
         return managerMapper.queryUser();
     }
 
+    /**
+     * 查找快速通道购车表
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/UserCar")
+    public  @ResponseBody
+    List<UserCarManager> queryUserCar(){return  managerMapper.queryUserCar();}
 
     /**
      * 查找carBrand表详细信息

@@ -28,6 +28,11 @@
         User u on usp.user = u.id
     </select>
 
+    <select id="queryUserCar" resultType="UserCar">
+        select *
+        from User_car
+    </select>
+
     <select id="queryUser" resultType="User">
         select *
         from User

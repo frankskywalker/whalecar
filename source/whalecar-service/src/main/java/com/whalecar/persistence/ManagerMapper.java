@@ -44,6 +44,11 @@ public interface ManagerMapper {
      */
     public List<CarBrand> queryManagerGetCarBrand();
 
+    /**
+     * 查找userCar表
+     * @return
+     */
+    public List< UserCarManager> queryUserCar();
 
     /**
      * 更新CarBrand表的数据
