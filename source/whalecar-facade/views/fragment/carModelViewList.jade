@@ -1,7 +1,7 @@
 .span9
     div(style="height:190px;width:1410px")
         div(style="height:44px;background:#f6f6f6;color:#666666;font-size:20px;")
-            div(style="padding-top:13px;padding-left:20px") <font size="5px" color="#666666">您已选择</font>
+            div(style="padding-top:13px;padding-left:20px") <font size="4px" color="#666666">您已选择</font>
                 span
                     each dicCity in allDicCitys
                         a(href="/car?id=#{dicCity.id}&city=#{conditionParams.city}",onClick="return conditionSelect('city','#{dicCity.id}',false,true);",style="color: black;")
@@ -76,8 +76,9 @@
                                     span(style="color: orange;")= brand.brandName
                                 else
                                     | #{brand.brandName}
-        div(style="height:36px;color:#666666;")
-            div(style="padding-top:10px;padding-left:20px") 车系
+        div(style="color:#666666;vertical-align:middle;")
+            div(style="padding-top:10px;padding-left:20px;") 车系
+            div(style="margin-left:40px;height:auto !important;height:0px;min-height:36px;margin-top:-20px;line-height:35px;")
                 each carModelLv1 in carModels
                     a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,false);",style="color: #666666;padding-left: 60px;")
                         if carModelLv1.id == conditionParams.carModelLv1
