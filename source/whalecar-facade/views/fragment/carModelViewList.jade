@@ -4,10 +4,10 @@
             div(style="padding-top:13px;padding-left:20px") <font size="4px" color="#666666">您已选择</font>
                 span()
                     each dicCity in allDicCitys
-                        a(href="/car?id=#{dicCity.id}&city=#{conditionParams.city}",onClick="return conditionSelect('city','#{dicCity.id}',false,true);",style="color: black;")
-                            if dicCity.id == conditionParams.city
-                                span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 城市: #{dicCity.cityCname}
-                                    img(src="img/cha.png",onclick="deleteCity()")
+                        //a(href="/car?id=#{dicCity.id}&city=#{conditionParams.city}",onClick="return conditionSelect('city','#{dicCity.id}',false,true);",style="color: black;")
+                        if dicCity.id == conditionParams.city
+                            span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 城市: #{dicCity.cityCname}
+                                img(src="img/cha.png",onclick="deleteCity()")
                 span
                     if conditionParams.carBrand == 26
                         span#brandOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌:  大众
@@ -129,12 +129,12 @@
     ul(class='thumbnails')
     each carModelView, i in carModelViews.items
         li.span3(style="width:260px;height:212px;margin-right: 13px;margin-left: 12px;margin-top:30px")
-            a.thumbnail(href='./car?id=#{carModelView.carModelLv1}&city=#{conditionParams.city}&shop=#{conditionParams.shop}', style='padding: 0px;text-decoration:none;')
+            a(href='./car?id=#{carModelView.carModelLv1}&city=#{conditionParams.city}&shop=#{conditionParams.shop}', style='padding: 0px;text-decoration:none;')
                 div(name='hoverdiv', style='height: 212px; width: 260px;')
                     div(name='imgdiv', style="width: 260px;height:212px ;margin:4px 0 0 4px; ")
                         div(style="font-size:10px;color:#ffffff") <div style="position:absolute;margin-top:0px;margin-left:20px;width:50px;height:46px;background-image:url('img/jiangjia.png')">&nbsp;&nbsp;&nbsp;&nbsp;直降<br>&nbsp;&nbsp;#{(carModelView.factoryPriceMax-carModelView.shopPriceMin).toFixed(2)}万</div>
                             img(style='width: 260px; height: 170px;padding: 0px 0px 0px;', src='img/car/#{carModelView.carModelLv1}.png')
-                            .caption(name="imgdiv_h4",style="height: 40px; padding: 0px;background-color:#112742;")
+                            .caption(name="imgdiv_h4",style="height: 40px; padding-top: 2px;background-color:#112742;")
                                 h6.pull-left(style="font-size:26px;color:white;margin-left:5px;margin-top:10px;font-weight:lighter") ￥#{carModelView.shopPriceMin}<font size="4px">万</font>
                                 h4.pull-right(style="font-size:18px;color:#3b7db8;font-weight:lighter;margin-top:10px;margin-left:-5px")  <s>市场价:#{carModelView.factoryPriceMax}万</s>
                     div(name='coverdiv', style='position: absolute; display: none;margin-top:-50px;')
