@@ -6,67 +6,69 @@ block append css
 block append js
 
 block append content
-  .container(style='padding: 10px 0;')
+  .container(style='padding: 10px 0;width:1410px;')
     .row-fluid
-        .span8
-          ul.nav.nav-pills
-            //
-               城市 
-            li.dropdown
-              a#cityButton.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
-                span#cityName 城市
-                b.caret
-              ul.dropdown-menu
-                li
-                   a(href="#",onClick="conditionSelect('shopCity','',true,true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-                each dicCity in allDicCitys
-                   li
-                      a(href="#",onClick="conditionSelect('shopCity','#{dicCity.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                         if !!conditionParams  && dicCity.id == conditionParams.shopCity
-                             span(style="color: rgb(170, 61, 70);")= dicCity.cityCname
-                         else
-                             | #{dicCity.cityCname}
-            //
-               品牌 
-            li.dropdown
-              a.dropdown-toggle(data-hover='dropdown', data-delay='300', data-toggle='dropdown', href='#')
-                span#brandValue 品牌
-                b.caret
-              ul.dropdown-menu
-                 li
-                    a(href="#",,onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);",style="color: #FFFFFF;padding-left: 7px;") 不限
-                 each brand in allBrands
-                    li
-                      a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);",style="color: #FFFFFF;padding-left: 7px;")
-                        if !!session.conditionParams  &&  brand.id == session.conditionParams.carBrand
-                          span(style="color: rgb(170, 61, 70);")= brand.cname 
-                        else
-                          | #{brand.cname}
-        .span4
+        .span9
+            div(style='height:132px;width:1410px;')
+                div(style="height:44px;background:#f6f6f6;font-size:16px;border: solid 1px #ececec;background:#fafafa;")
+                    div(style="padding-top:13px;padding-left:20px") <font size="4px" color="#666666">您已选择</font>
+                        span
+                            each dicCity in allDicCitys
+                                if dicCity.id == conditionParams.shopCity
+                                    span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;") 城市: #{dicCity.cityCname}
+                                        img(src="img/cha.png",onclick="deleteCity()")
+                        span
+                            each brand in allBrands
+                                if brand.id == conditionParams.carBrand
+                                    span#brand(style="margin-left:30px;background:url('img/choice.png');color:#ffffff;") 品牌: #{brand.cname}
+                                        img(src="img/cha.png",onclick="deleteBrand()")
+
+                div(style="height:44px;background:#FFFFFF;border-right: solid 1px #ececec;border-left: solid 1px #ececec;")
+                    div(style="padding-top:10px;padding-left:20px") 城市
+                        if !shide || shide.indexOf("city") == -1
+                            a(href="#",onClick="return conditionSelect('shopCity','',true,true);return false;",style="color: #666666;padding-left: 60px;") 不限
+                                each dicCity in allDicCitys
+                                    a(href="#",onClick="return conditionSelect('shopCity','#{dicCity.id}',true,true);",style="color: #666666;padding-left: 60px;")
+                                        if !!conditionParams  && dicCity.id == conditionParams.shopCity
+                                            span(style="color: orange;")= dicCity.cityCname
+                                        else
+                                            | #{dicCity.cityCname}
+                div(style="height:44px;background:#fafafa;border: solid 1px #ececec;")
+                    div(style="padding-top:10px;padding-left:20px") 品牌
+                        if !shide || shide.indexof("brand") == -1
+                            a(href="#",onclick="return conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color: #666666;padding-left: 60px;") 不限
+                                each brand in allBrands
+                                    a(href="#",onclick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);",style="color:#666666;padding-left:60px;")
+                                        if !!session.conditionParams && brand.id == session.conditionParams.carBrand
+                                            sspan(style="color: orange;")= brand.cname
+                                        else
+                                            | #{brand.cname}
+
+    .span12
           .pagination.pagination-small.pagination-right(style='float:right;width:180px;margin: 10px 10px 0 0;')
-           span(style='float:left;height: 25px;padding-top:0px;') #{shopViewList.currentPage} / #{shopViewList.pageCount}
-           ul
-             if shopViewList.firstPage
-               li.disabled
-                 a(href='#') 前一页
-             -else
-               li
-                 a(href='#',onclick="conditionSelect('pageIndex','#{shopViewList.currentPage - 1}',true)") 前一页
-                 
-             if shopViewList.lastPage
-               li.disabled
-                 a(href='#') 后一页
-             -else
-               li
-                 a(href='#',onclick="conditionSelect('pageIndex','#{shopViewList.currentPage + 1}',true)") 后一页
-    hr(style='margin: 0px 0px 17px;')
+              span(style='float:left;height: 25px;padding-top:0px;') #{shopViewList.currentPage} / #{shopViewList.pageCount}
+              ul
+                  if shopViewList.firstPage
+                      li.disabled
+                          a(href='#') 前一页
+                  -else
+                      li
+                          a(href='#',onclick="conditionSelect('pageIndex','#{shopViewList.currentPage - 1}',true)") 前一页
+
+                  if shopViewList.lastPage
+                      li.disabled
+                          a(href='#') 后一页
+                  -else
+                      li
+                          a(href='#',onclick="conditionSelect('pageIndex','#{shopViewList.currentPage + 1}',true)") 后一页
+    br
+      hr(style='margin: 0px 0px 17px;')
     .row-fluid
       .span10
         ul.media-list
           each shopView in shopViewList.items
             li.media
               .pull-left
-                //img.media-object(src='img/shops/#{shopView.id}.jpg')
                 if shopView.id == 4
                     img.media-object(src='img/shops/nb_lhIcon.png')
                 else if shopView.id == 3
@@ -83,14 +85,15 @@ block append content
                     img.media-object(src='img/shops/1.jpg')
               each carModelLv1,i in shopView.carModelLv1
                 if i < 3
-                    .pull-right
+                    .pull-right.media-object
                         a(href="/car?id=#{carModelLv1.id}&shop=#{shopView.id}")
-                            div(name='hoverdiv',style="width:" + (125 * i + 125) +"px")
-                                div(name='imgdiv')
-                                    img(src='img/car/#{carModelLv1.id}.png',title="#{carModelLv1.cname}")
-                                div(name='coverdiv')
-                                    div#detailNum
-                                        h5 库存#{carModelLv1.carNum}台
+                            div(name='hoverdiv',style="width: 210px;height:172px ;")
+                                div(name='imgdiv' style="width: 210px;height:172px ;margin:4px 0 0 4px; border:solid 1px #ececec")
+                                    img(src='img/car/#{carModelLv1.id}.png',title="#{carModelLv1.cname}" style="height:139px;")
+                                    .caption(name="imgdiv_h4",style="height: 33px; background-color:#112742;padding-bottom:2px;")
+                                        .pull-left(style="font-size:18px;color:white;margin-left:10px;margin-top:10px;") #{carModelLv1.cname}
+                                        .pull-right(style="font-size:16px;color:#3b7db8;margin-top:10px;margin-right: 10px;")  库存#{carModelLv1.carNum}台
+
               .media-body
                 a(href='./shopinfo?id=#{shopView.id}')
                   h5.media-heading #{shopView.shopName}
@@ -104,8 +107,9 @@ block append content
             input(type="hidden",name="shopCity",id="form_shopCity",value="#{conditionParams.shopCity}")
             input(type="hidden",name="orderByName",id="form_orderByName",value="#{conditionParams.orderByName}")
             input(type="hidden",name="orderType",id="form_orderType",value="#{conditionParams.orderType}")
-          
-      .span2
+      .imgbg(style='float:left;margin-left: 5px;margin-right: 20px;height: 1960px;background-color: #d6d6d6;')
+        img(src="img/imgbg.png")
+      .span2(style='float:left;margin-left:0px;')
         legend
           img(src="img/icon_rocket.png")
           | 促销信息
@@ -136,22 +140,23 @@ block append content
     // 提交筛选事件
     function conditionSelect(type,value,needSubmit,needInitPage){
       $("#form_" + type).val(value);
-      
+
       if(needInitPage){
         $("#form_pageIndex").val('');
       }
-      
+
       if(needSubmit == true){
         $("#conditionform").submit();
       }
     }
 
-    $("div[name='hoverdiv']").each(function(index,value){
-      $(value).hover(function(){
-        $(this).find("div[name='imgdiv']").fadeTo(100,0.1);
-        $(this).find("div[name='coverdiv']").fadeToggle(100);
-      },function(){
-        $(this).find("div[name='imgdiv']").fadeTo(100,1);
-        $(this).find("div[name='coverdiv']").fadeToggle(100);
-      });
-    });
+    function deleteCity(){
+      $("#city").empty();
+      return conditionSelect('shopCity','',true,true);return false;
+    }
+
+    function deleteBrand(){
+      $("#brand").empty();
+      conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    }
+
