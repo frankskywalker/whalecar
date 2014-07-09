@@ -39,8 +39,8 @@ block append content
                             a(href="#",onclick="return conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color: #666666;padding-left: 60px;") 不限
                                 each brand in allBrands
                                     a(href="#",onclick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.id}',true,true);",style="color:#666666;padding-left:60px;")
-                                        if !!session.conditionParams && brand.id == session.conditionParams.carBrand
-                                            sspan(style="color: orange;")= brand.cname
+                                        if !!conditionParams && brand.id == conditionParams.carBrand
+                                            span(style="color: orange;")= brand.cname
                                         else
                                             | #{brand.cname}
 
