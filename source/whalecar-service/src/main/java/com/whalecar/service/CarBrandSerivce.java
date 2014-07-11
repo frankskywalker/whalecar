@@ -100,4 +100,9 @@ public class CarBrandSerivce {
         return carBrandWithSubBrandViewList;
 
     }
+
+    /**
+     * 查询carBrand表
+     * return
+     */
 }

@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title 梯卡汽车网
+        meta(charset='utf-8')
+        block css
+            link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+            link(href='css/style.css', rel='stylesheet', media='screen')
+            link(rel="icon",type="image/png",href="img/favicon.png")
+        block js
+            script(src='js/jquery-1.10.2.min.js')
+            script(src='js/bootstrap.min.js')
+            script(src='js/spin.min.js')
+            script(src='js/tools.js')
+            script(src='js/jquery.unveil.min.js')
+    body(style="background-color:#ffffff;height:800px")
+        block content
+            include navbar
+        include footer2
+        script.
+            $("img").unveil(200);//
+   //Created by wufei on 14-7-10.
+-console

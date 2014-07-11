@@ -30,7 +30,7 @@
 
     <select id="queryUserCar" resultType="UserCar">
         select *
-        from User_car
+        from User_Car
     </select>
 
     <select id="queryUser" resultType="User">

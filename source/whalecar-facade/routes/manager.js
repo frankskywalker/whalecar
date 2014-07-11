@@ -26,11 +26,11 @@ exports.managerUser = function(req,res){
     });
 }
 
-exports.managerUserCar = function(req,res){
-    service.client.get("/manager/managerUserCar",function(sErr,sReq,sRes,sData){
-        res.json(sData);
-    });
-}
+//exports.managerUserCar = function(req,res){
+//    service.client.get("/manager/managerUserCar",function(sErr,sReq,sRes,sData){
+//        res.json(sData);
+//    });
+//}
 
 exports.getCarData = function(req,res){
     res.render("layout/managerFrame");
