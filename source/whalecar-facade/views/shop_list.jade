@@ -11,17 +11,19 @@ block append content
         .span9
             div(style='height:132px;width:1410px;')
                 div(style="height:44px;background:#f6f6f6;font-size:16px;border: solid 1px #ececec;background:#fafafa;")
-                    div(style="padding-top:13px;padding-left:20px") <font size="4px" color="#666666">您已选择</font>
+                    div(style="padding-top:8px;padding-bottom:8px;padding-left:20px") <font size="4px" color="#666666">您已选择</font>
                         span
                             each dicCity in allDicCitys
                                 if dicCity.id == conditionParams.shopCity
-                                    span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;") 城市: #{dicCity.cityCname}
-                                        img(src="img/cha.png",onclick="deleteCity()")
+                                    span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                                        div#showlistC(style="text-align:center;padding-top:7px;") 城市: #{dicCity.cityCname} &nbsp;&nbsp;
+                                            img(src="img/cha.png",onclick="deleteCity()")
                         span
                             each brand in allBrands
                                 if brand.id == conditionParams.carBrand
-                                    span#brand(style="margin-left:30px;background:url('img/choice.png');color:#ffffff;") 品牌: #{brand.cname}
-                                        img(src="img/cha.png",onclick="deleteBrand()")
+                                    span#brand(style="margin-left:30px;background:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                                        div#showlistC(style="text-align:center;padding-top:7px;") 品牌: #{brand.cname} &nbsp;&nbsp;
+                                            img(src="img/cha.png",onclick="deleteBrand()")
 
                 div(style="height:44px;background:#FFFFFF;border-right: solid 1px #ececec;border-left: solid 1px #ececec;")
                     div(style="padding-top:10px;padding-left:20px") 城市
