@@ -197,7 +197,7 @@
     
     <select id="queryIncludeCarModelLv1ByShop" resultType="CarModelLv1View">
         select
-        distinct Car_Model_Lv1.*,sum(Shop_Stock.carOnHandNum) + sum(Shop_Stock.carOnOrderNum) carNum
+        distinct Car_Model_Lv1.*,sum(Shop_Stock.carOnHandNum) + sum(Shop_Stock.carOnOrderNum) as carNum
         from
         Car_Model_Lv1,
         Car_Model_Lv2,

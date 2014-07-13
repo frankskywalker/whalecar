@@ -82,7 +82,9 @@ public class ManagerService {
      */
     @RequestMapping(method = RequestMethod.GET,value = "/manager/UserCar")
     public  @ResponseBody
-    List<UserCarManager> queryUserCar(){return  managerMapper.queryUserCar();}
+    List<UserCarManager> queryUserCar(){
+        return  managerMapper.queryUserCar();
+    }
 
     /**
      * 查找carBrand表详细信息
