@@ -168,6 +168,7 @@ function getCarModelPagination(req, res, next) {
         pageIndex: pageIndex,
         carBrand: carBrand,
         carSubBrand: carSubBrand,
+        carMyCarBrand : carBrandStr,
         carModelLv1: carModelLv1,
         priceMin: priceMin,
         priceMax: priceMax,
@@ -188,6 +189,13 @@ function getCarModelPagination(req, res, next) {
         },
         allBrands: function(callback) {
             service.client.get("/getAllBrandAndSubBrand", function(err, req, res, data) {
+              for(i=0;i<data.length;i++)
+                {
+                    var myBrandId =data[i].brandId.split(",")[0];
+                    var mySubBrandId = data[i].brandId.split(",")[1];
+                    data[i].mySubBrandId = mySubBrandId;
+                    data[i].myBrandId = myBrandId;
+                }
                 callback(err, data);
             });
         },

@@ -1,67 +1,61 @@
 .span9
     div(style="height:190px;width:1410px")
-        div(style="height:44px;background:#f6f6f6;color:#666666;font-size:16px;")
-            div(style="padding-top:8px;padding-left:20px;padding-bottom:8px;") <font size="4px" color="#666666">您已选择</font>
+        div(style="height:44px;background:#f6f6f6;color:#666666;font-size:20px;")
+            div(style="padding-top:13px;padding-left:20px") <font size="4px" color="#666666">您已选择</font>
                 span()
                     each dicCity in allDicCitys
                         //a(href="/car?id=#{dicCity.id}&city=#{conditionParams.city}",onClick="return conditionSelect('city','#{dicCity.id}',false,true);",style="color: black;")
                         if dicCity.id == conditionParams.city
-                            span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                                div#showlistC(style="text-align:center;padding-top:7px;") 城市: &nbsp;&nbsp;&nbsp; #{dicCity.cityCname} &nbsp;&nbsp;
-                                    img(src="img/cha.png",onclick="deleteCity()")
+                            span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 城市: #{dicCity.cityCname}
+                                img(src="img/cha.png",onclick="deleteCity()")
+                //span
+                //    if conditionParams.carBrand == 26
+                //        span#brandOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌:  大众
+                //            img(src="img/cha.png",onclick="deleteDaZong()")
+                //    if conditionParams.carBrand == 39
+                //        span#brandTwo(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌:  长安福特
+                //            img(src="img/cha.png",onclick="deleteChangAn()")
+                //    if conditionParams.carBrand == 42
+                //        span#brandThree(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌:  奥迪
+                //            img(src="img/cha.png",onclick="deleteAoDi()")
+                //    if conditionParams.carBrand == 43
+                //        span#brandFour(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌:  北京现代
+                //            img(src="img/cha.png",onclick="deleteBeiJing()")
+                //    if conditionParams.carBrand == 44
+                //        span#brandFive(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌;  东风本田
+                //            img(src="img/cha.png",onclick="deleteDongFeng()")
+                //    if conditionParams.carBrand == 70
+                //        span#brandSix(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌:  现代
+                //            img(src="img/cha.png",onclick="deleteXianDai()")
+
                 span
-                    if conditionParams.carBrand == 26
-                        span#brandOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 品牌:  &nbsp;&nbsp;&nbsp; 大众&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deleteDaZong()")
-                    if conditionParams.carBrand == 39
-                        span#brandTwo(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 品牌:  &nbsp;&nbsp;&nbsp;长安福特&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deleteChangAn()")(style="width: 14px;padding-bottom: 3px;")
-                    if conditionParams.carBrand == 42
-                        span#brandThree(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 品牌:  &nbsp;&nbsp;&nbsp;奥迪&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deleteAoDi()")(style="width: 14px;padding-bottom: 3px;")
-                    if conditionParams.carBrand == 43
-                        span#brandFour(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 品牌:  &nbsp;&nbsp;&nbsp;北京现代&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deleteBeiJing()")(style="width: 14px;padding-bottom: 3px;")
-                    if conditionParams.carBrand == 44
-                        span#brandFive(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 品牌;  &nbsp;&nbsp;&nbsp;东风本田&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deleteDongFeng()")(style="width: 14px;padding-bottom: 3px;")
-                    if conditionParams.carBrand == 70
-                        span#brandSix(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 品牌:  &nbsp;&nbsp;&nbsp;现代&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deleteXianDai()")(style="width: 14px;padding-bottom: 3px;")
+                    each brand in allBrands
+                        if brand.brandId == conditionParams.carMyCarBrand
+                            span#brand(style="margin-left:30px;background:url('img/choice.png');color:#ffffff;") 品牌: #{brand.brandName}
+                                img(src="img/cha.png",onclick="deleteBrand()")
+
                 span
                     each carModelLv1 in carModels
                         a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',false,false);",style="color: #666666;")
                             if carModelLv1.id == conditionParams.carModelLv1
-                                span#cheXi(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                                    div#showlistC(style="text-align:center;padding-top:7px;")  #{carModelLv1.cname}&nbsp;&nbsp;
-                                        img(src="img/cha.png",onclick="deleteCheXi()")(style="width: 14px;padding-bottom: 3px;")
+                                span#cheXi(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff")= carModelLv1.cname
+                                    img(src="img/cha.png",onclick="deleteCheXi()")
                 span
                     if conditionParams.priceMin == 1
-                        span#priceOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  1万~5万&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deletePriceOne()")
+                        span#priceOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  1万~5万
+                            img(src="img/cha.png",onclick="deletePriceOne()")
                     if conditionParams.priceMin == 5
-                        span#priceTwo(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  5万~10万&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deletePriceTwo()")
+                        span#priceTwo(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  5万~10万
+                            img(src="img/cha.png",onclick="deletePriceTwo()")
                     if conditionParams.priceMin == 10
-                        span#priceThree(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  10万~20万&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deletePriceThree()")
+                        span#priceThree(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  10万~20万
+                            img(src="img/cha.png",onclick="deletePriceThree()")
                     if conditionParams.priceMin == 20
-                        span#priceFour(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  20万~50万&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deletePriceFour()")
+                        span#priceFour(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  20万~50万
+                            img(src="img/cha.png",onclick="deletePriceFour()")
                     if conditionParams.priceMin == 50
-                        span#priceFive(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff")
-                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  50万以上&nbsp;&nbsp;
-                                img(src="img/cha.png",onclick="deletePriceFive()")
+                        span#priceFive(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  50万以上
+                            img(src="img/cha.png",onclick="deletePriceFive()")
         div(style="height:36px;color:#666666;")
             div(style="padding-top:10px;padding-left:20px") 城市
                 if !shide || shide.indexOf("city") == -1
@@ -80,15 +74,15 @@
                         a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color:#666666;") 不限
                         each brand in allBrands
                             a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.brandId}',true,true);return false;",style="color: #666666;padding-left: 60px;")
-                                if !!conditionParams  &&  brand.brandId == conditionParams.carBrand
+                                if !!conditionParams  &&  brand.brandId == conditionParams.carMyCarBrand
                                     span(style="color: orange;")= brand.brandName
                                 else
                                     | #{brand.brandName}
-        div(style="color:#666666;vertical-align:middle;")
-            div(style="padding-top:10px;padding-left:20px;") 车系
-            div(style="margin-left:40px;height:auto !important;height:0px;min-height:36px;margin-top:-20px;line-height:35px;")
+        table(style="color:#666666;vertical-align:middle;")
+            td(style="padding-top:10px;padding-left:20px;vertical-align : middle;width:36px") 车系
+            td(style="margin-left:40px;height:auto !important;height:0px;min-height:36px;margin-top:-20px;line-height:35px;padding-left:60px")
                 each carModelLv1 in carModels
-                    a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,false);",style="color: #666666;padding-left: 60px;")
+                    a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,false);",style="color: #666666;") <span style="padding-left:60px">     </span>
                         if carModelLv1.id == conditionParams.carModelLv1
                             span(style="color: orange;")= carModelLv1.cname
                         else
@@ -159,7 +153,7 @@
 
 form(action="/",method="get",id="conditionform")
     input(type="hidden",name="pageIndex",id="form_pageIndex",value="#{conditionParams.pageIndex}")
-    input(type="hidden",name="carBrand",id="form_carBrand",value="#{conditionParams.carBrand}")
+    input(type="hidden",name="carBrand",id="form_carBrand",value="#{conditionParams.carMyCarBrand}")
     input(type="hidden",name="carModelLv1",id="form_carModel",value="#{conditionParams.carModelLv1}")
     input(type="hidden",name="priceMin",id="form_priceMin",value="#{conditionParams.priceMin}")
     input(type="hidden",name="priceMax",id="form_priceMax",value="#{conditionParams.priceMax}")
@@ -293,30 +287,34 @@ script.
       $("#city").empty();
       return conditionSelect('city','',true,true);return false;
     }
-    function deleteDaZong(){
-      $("#brandOne").empty();
-      conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    function deleteBrand(){
+         $("#brand").empty();
+         conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
     }
-    function deleteChangAn(){
-      $("#brandTwo").empty();
-      conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
-    }
-    function deleteAoDi(){
-      $("#brandThree").empty();
-      conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
-    }
-    function deleteBeiJing(){
-      $("#brandFour").empty();
-      conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
-    }
-    function deleteDongFeng(){
-      $("#brandFive").empty();
-      conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
-    }
-    function deleteXianDai(){
-      $("#brandSix").empty();
-      conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
-    }
+    //        function deleteDaZong(){
+    //          $("#brandOne").empty();
+    //          conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    //        }
+    //        function deleteChangAn(){
+    //          $("#brandTwo").empty();
+    //          conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    //        }
+    //        function deleteAoDi(){
+    //          $("#brandThree").empty();
+    //          conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    //        }
+    //        function deleteBeiJing(){
+    //          $("#brandFour").empty();
+    //          conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    //        }
+    //        function deleteDongFeng(){
+    //          $("#brandFive").empty();
+    //          conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    //        }
+    //        function deleteXianDai(){
+    //          $("#brandSix").empty();
+    //          conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;
+    //        }
     function deleteCheXi(){
       $("#cheXi").empty();
       return conditionSelect('carModel','',true,true);return false;

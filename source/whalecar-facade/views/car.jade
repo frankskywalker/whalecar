@@ -1,4 +1,4 @@
-extends layout/mainFrame
+extends layout/mainFrame2
 
 block append css
   link(rel="stylesheet",href="css/jquery.simplyscroll.css",media="all",type="text/css")
@@ -9,130 +9,128 @@ block append js
 
 block append content
   -var firstActivedTab = "";
-  .container(style='padding: 10px 0px;')
+  .container(style='padding: 8px 0px;margin-left:260px;width:1416px')
     .row-fluid
         .span9
           .row-fluid
-            img(src='img/slectcar.png', alt='slectcar',style="margin-bottom:10px")
-            //汽车图片 
-            h4(style='color: #4083A9;margin-bottom:10px')
+            div(style="width:1960px;margin-left:-260px;padding-top:10px;margin-top:-10px;background:#f6f5f5") <img src='img/selectar.png' style="margin-bottom:10px;height:84px;margin-left:260px;">
+            //汽车图片
+            h4(style='color: #4083A9;margin-bottom:10px;margin-top:20px;margin-bottom:12px')
               img(src="img/#{carBrand.logoPath}", alt='dasAuto',style="padding:0 5px 3px 0")
-              span(style="color:#666666") #{carModelLv1.brandCname}
+              span(style="color:#666666;font-size:20px") #{carModelLv1.brandCname}
               | &nbsp;
               span #{carModelLv1.cname}
-            .span8(style='margin: 0px;padding:0px;width:440px;background-color:#ffffff;border-radius:3px')
+            .span8(style='margin: 0px;padding:0px;width:660px;background-color:#ffffff;border-radius:3px')
               #myCarousel.carousel.slide(style="margin-bottom:0px")
                 //Carousel items
-                #single(style="height: 270px; width: 440px")
+                #single(style="height: 406px; width: 660px")
                   div.carousel-inner
                      each item,index in carModelLv1Img
                        div.item
-                          img(style="width: 440px; height: 270px;",src='img/carModelLv1Imgs/#{item.imgPath}')
+                          img(style="width: 660px; height: 406px;",src='img/carModelLv1Imgs/#{item.imgPath}')
                           if !!item.description
                             div.carousel-caption
                                 p  #{item.description}
                   //Carousel nav
                   a.carousel-control.left(href='#myCarousel', data-slide='prev') ‹
                   a.carousel-control.right(href='#myCarousel', data-slide='next') ›
-            .span4
+            .span4(style="margin-left:38px;margin-top:22px")
               ul.nav.nav-tabs.nav-stacked.padding12px
                 li
-                  h5 市场价：#{carExtendInfo.factoryMinPrice}万 - #{carExtendInfo.factoryMaxPrice}万
-                li
-                  h5 网站价：#{carExtendInfo.carMinPrice}万 - #{carExtendInfo.carMaxPrice}万
-                li
-                  h5 排量：
+                  h5(style="font-size:18px;font-weight:normal") <img src="img/Sc_price.png" style="padding-right:10px">市场价：#{carExtendInfo.factoryMinPrice}万 - #{carExtendInfo.factoryMaxPrice}万
+                li(style="padding-top:20px")
+                  h5(style="font-size:18px;font-weight:normal;color:orange") <img src="img/Web_price.png" style="padding-right:10px"><font style="color:#848585">网站价：</font> #{carExtendInfo.carMinPrice}<font style="color:#848585">万</font> - #{carExtendInfo.carMaxPrice}<font style="color:#848585">万</font>
+                li(style="padding-top:20px")
+                  h5(style="font-size:18px;font-weight:normal") <img src="img/Discharge.png" style="padding-right:10px">排 &nbsp;&nbsp 量：
                      each item in carExtendInfo.carModelLv2NameList
                        | #{item}&nbsp;
                 li(style="margin-top: 20px;padding-left: 10px;")
-                  h5(style="display:inline;padding-left: 0px;") 颜色:
+                  h5(style="display:inline;padding-left: 0px;font-size:18px;font-weight:normal") <img src="img/choic_color.png" style="padding-right:10px">颜 &nbsp;&nbsp 色:
                     each item in carExtendInfo.colorList
                       if item.colorCname
                         div(name="colorDiv",data-toggle="tooltip",data-placement="top",data-original-title="#{item.colorCname}",style="width:23px;height:17px;background-color:#{item.colorRgb};display:inline-block;box-shadow: 2px 2px 2px #888888;margin-right:4px;")
                 li
-                  h6(style="padding-left:10px;margin-top:10px;padding-right:10px") &nbsp;&nbsp;#{carModelLv1.description}
-        .span3
+                  h6(style="padding-left:10px;margin-top:10px;padding-right:10px;font-size:16px;font-weight:normal") <img src="img/Introduction.png">&nbsp;&nbsp;#{carModelLv1.description}
+        .span3(style="margin-top:114px")
           //
-             相关其他车辆 
-          legend
-            h5
-              p(style="color:#444444;display:inline") 更多&nbsp;&nbsp;
-              | 相关车型
-          <ul class='thumbnails'>
+             相关其他车辆
+          h5(style="font-size:18px;color:#848585") 更多&nbsp;&nbsp;
+            p(style="color:#4083a9;display:inline;font-size:16px") 相关车型
+          <ul class='thumbnails' style="width:350px;margin-top:16px">
           each item,i in similarCarModelLv1
-            if i < 8
+            if i < 6
                 li.span6
-                  a.thumbnail(href="./car?id=#{item.id}")
+                  a.thumbnail(href="./car?id=#{item.id}",style="width:148px;height:108px;border:1px solid #eaebea;border-radius:0px")
                     img#img1(title="#{item.cname}", alt='210x140', style='width: auto; height: auto;', src='img/car/#{item.id}.png')
                 if i != 0 && (i+1) % 2 == 0
-                  </ul><ul class='thumbnails'>
+                  </ul><ul class='thumbnails' style="width:350px">
           </ul>
     //库存列表
-    legend 库存列表
-    ul.nav.nav-pills#list
-      each item,index in carModelLv2
-        li
-          a(id="tab#{item.id}",href="##{item.id}") #{item.fullName}
-    div.tab-content
-      each item,index in carModelLv2
-        div.tab-pane(id=item.id)
-          table.table
-            thead
-              tr
-                th(style="width:260px")
-                  p 经销商
-                th(style="width:160px")
-                  p 车型
-                th(style="width:100px")
-                  p 变速箱
-                th(style="width:55px")
-                  p 内饰
-                th(style="width:55px")
-                  p 外饰
-                th(style="width:90px")
-                  p 配置说明
-                th(style="width:90px")
-                  p 价格
-                th(style="width:120px")
-                  p 库存(现货/在途)
-                th(style="width:60px")
-                  p 预定
+    div(style="width:1960px;background:#f6f5f5;margin-left:-258px;height:auto")
+        legend(style="font-size:20px;font-weight:normal;width:1416px;margin-left:258px;padding-top:10px") 库存列表
+            each item,index in carModelLv2
+                a(id="tab#{item.id}",href="##{item.id}",style="margin-left:24px;font-size:18px") #{item.fullName}
+        div.tab-content(style="width:1416px;margin-left:258px")
+            each item,index in carModelLv2
+                div.tab-pane(id=item.id)
+                    table.table
+                        thead
+                            tr
+                                th(style="width:364px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 经销商
+                                th(style="width:138px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 车型
+                                th(style="width:126px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 变速箱
+                                th(style="width:114px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 内饰
+                                th(style="width:120px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 外饰
+                                th(style="width:154px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 配置说明
+                                th(style="width:130px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 价格
+                                th(style="width:160px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 库存(现货/在途)
+                                th(style="width:114px;background:#d6d7d6")
+                                    p(style="font-size:18px;font-weight:normal") 预定
 
-            tbody
-              each shopStockView,shopStockViewIndex in item.shopStockList
-                  if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > -1
-                    if(firstActivedTab == "")
-                       - firstActivedTab = item.id
-                    tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
-                      td
-                        | #{shopStockView.shopName}
-                        if shopStockViewIndex < 3
-                          img(width="54px",height="18px",src="img/sale.png")
-                      td #{shopStockView.carModelLv3FullName}
-                      td #{shopStockView.gearType}
-                      td #{shopStockView.carInsideColorName}
-                      td #{shopStockView.carOutsideColorName}
-                      td 点击展开
-                      td
-                        span(style="vertical-align: middle;color:#ec6197;font-size:20px") #{shopStockView.carPrice}万
-                        span(style="vertical-align: middle;color:#666666;font-size:15px;text-decoration: line-through") #{shopStockView.factoryPrice}万
+                        tbody
+                            each shopStockView,shopStockViewIndex in item.shopStockList
+                                if (shopStockView.carOnHandNum + shopStockView.carOnOrderNum) > -1
+                                    if(firstActivedTab == "")
+                                        - firstActivedTab = item.id
+                                    tr#shopStockTr(style='cursor: pointer;', onclick="focusTr(this,'tr#{shopStockView.id}')")
+                                        td(style="font-size:16px")
+                                            | #{shopStockView.shopName}
+                                            if shopStockViewIndex < 3
+                                                img(width="16px",height="16px",src="img/sale.png",style="height:16px")
+                                            |SALE
+                                        td(style="font-size:16px") #{shopStockView.carModelLv3FullName}
+                                        td(style="font-size:16px") #{shopStockView.gearType}
+                                        td(style="font-size:16px") #{shopStockView.carInsideColorName}
+                                        td(style="font-size:16px") #{shopStockView.carOutsideColorName}
+                                        td(style="font-size:16px") 点击展开
+                                        td
+                                            span(style="vertical-align: middle;color:orange;font-size:20px") #{shopStockView.carPrice}万
+                                            span(style="vertical-align: text-top;color:#666666;font-size:12px;text-decoration: line-through") #{shopStockView.factoryPrice}万
 
-                      td(style="text-align:center") #{shopStockView.carOnHandNum}/#{shopStockView.carOnOrderNum}
-                      td
-                         a.btn.btn-small.btn-primary(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="padding-left: 8px;padding-right: 8px;") 预定
-                    tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
-                      td(colspan='9')
-                        table
-                          tbody
-                            tr.detail
-                              td(style="color:#555555;font-weight: bold") 详细配置说明
-                              td
-                                | #{shopStockView.carAdditionsText}
-                                br
-                                | #{shopStockView.carAddition}
-              else
-                tr
-                  td(colspan='8') 暂无库存
+                                        td(style="text-align:center;font-size:16px") #{shopStockView.carOnHandNum}/#{shopStockView.carOnOrderNum}
+                                        td
+                                            a.btn.btn-warning(onclick="orderClick('#{shopStockView.id}')",href="#myModal",role="button",data-toggle="modal",style="height:18px;padding-left: 8px;padding-right: 8px;") 预定
+                                    tr.shopStockTr(id="tr#{shopStockView.id}",style='display: none; background-color: #f8f8f8;')
+                                        td(colspan='9',style="background:#d6d7d6")
+                                            table
+                                                tbody
+                                                    tr.detail
+                                                        td(style="color:#555555;font-weight: bold;font-size:18px;background:#d6d7d6;font-weight:normal") 详细配置说明
+                                                        td(style="background:#d6d7d6")
+                                                            | #{shopStockView.carAdditionsText}
+                                                            br
+                                                            | #{shopStockView.carAddition}
+                            else
+                                tr
+                                    td(colspan='8') 暂无库存
     #myModal.modal.hide.fade(style='left: 42%; width: 780px')
       .modal-body(style='border-radius: 4px 4px 4px 4px;max-height:500px')
         ul.thumbnails(style='margin-left: 0px; margin-bottom: 0px;max-height:500px')
