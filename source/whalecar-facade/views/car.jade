@@ -13,7 +13,7 @@ block append content
     .row-fluid
         .span9
           .row-fluid
-            div(style="width:1905px;margin-left:-260px;padding-top:10px;margin-top:-10px;background:#f6f5f5") <img src='img/selectar.png' style="margin-bottom:10px;height:84px;margin-left:260px;">
+            div(style="width:1960px;margin-left:-260px;padding-top:10px;margin-top:-10px;background:#f6f5f5") <img src='img/selectar.png' style="margin-bottom:10px;height:84px;margin-left:260px;">
             //汽车图片
             h4(style='color: #4083A9;margin-bottom:10px;margin-top:20px;margin-bottom:12px')
               img(src="img/#{carBrand.logoPath}", alt='dasAuto',style="padding:0 5px 3px 0")
@@ -66,7 +66,7 @@ block append content
                   </ul><ul class='thumbnails' style="width:350px">
           </ul>
     //库存列表
-    div(style="width:1900px;background:#f6f5f5;margin-left:-258px;height:400px")
+    div(style="width:1960px;background:#f6f5f5;margin-left:-258px;height:auto")
         legend(style="font-size:20px;font-weight:normal;width:1416px;margin-left:258px;padding-top:10px") 库存列表
             each item,index in carModelLv2
                 a(id="tab#{item.id}",href="##{item.id}",style="margin-left:24px;font-size:18px") #{item.fullName}
@@ -104,7 +104,8 @@ block append content
                                         td(style="font-size:16px")
                                             | #{shopStockView.shopName}
                                             if shopStockViewIndex < 3
-                                                img(width="34px",height="16px",src="img/sale.png",style="height:16px")
+                                                img(width="16px",height="16px",src="img/sale.png",style="height:16px")
+                                            |SALE
                                         td(style="font-size:16px") #{shopStockView.carModelLv3FullName}
                                         td(style="font-size:16px") #{shopStockView.gearType}
                                         td(style="font-size:16px") #{shopStockView.carInsideColorName}

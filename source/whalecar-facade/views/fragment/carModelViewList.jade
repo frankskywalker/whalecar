@@ -78,11 +78,11 @@
                                     span(style="color: orange;")= brand.brandName
                                 else
                                     | #{brand.brandName}
-        div(style="color:#666666;vertical-align:middle;")
-            div(style="padding-top:10px;padding-left:20px;") 车系
-            div(style="margin-left:40px;height:auto !important;height:0px;min-height:36px;margin-top:-20px;line-height:35px;")
+        table(style="color:#666666;vertical-align:middle;")
+            td(style="padding-top:10px;padding-left:20px;vertical-align : middle;width:36px") 车系
+            td(style="margin-left:40px;height:auto !important;height:0px;min-height:36px;margin-top:-20px;line-height:35px;padding-left:60px")
                 each carModelLv1 in carModels
-                    a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,false);",style="color: #666666;padding-left: 60px;")
+                    a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,false);",style="color: #666666;") <span style="padding-left:60px">     </span>
                         if carModelLv1.id == conditionParams.carModelLv1
                             span(style="color: orange;")= carModelLv1.cname
                         else
