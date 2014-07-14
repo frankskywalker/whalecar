@@ -43,44 +43,43 @@ block append content
         //       a.page_a_1(link='#',style="text-decoration: none;") 底价购买
         //     li(style='border-right: 1px solid #FFFFFF;')
         //       a.page_a_1(link='./car?id=228',style="text-decoration: none;") 新cc 孑然登场
-    div(style="background-color:#ffffff;height:200px;")
+    div(style="background-color:#eaeaea;height:200px;")
         .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:#fafafa;background-color:#fbfbfb;")
-            div(style='background-color: #eaeaea;margin-left:-136px;width:1960px')
-                div(style="background-image: url(img/banner3.png);width: 1410px;height: 215px;margin-left:250px")
-                    div(id="news" style="padding-top:50px;padding-left:85px;font-size:12px;")
-                        div(style="margin-left:80px;height:80px;overflow:hidden;width:300px;marign-top:20px;")
-                            ul
-                                li(style="list-style-type:none;") 王**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 黄**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
-                                li(style="list-style-type:none;") 周**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
-                                li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                                li(style="list-style-type:none;") 童**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 王**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;捷达
-                                li(style="list-style-type:none;") 徐**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
-                                li(style="list-style-type:none;") 赵**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
-                                li(style="list-style-type:none;") 李**女士&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 胡**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
-                                li(style="list-style-type:none;") 何**女士&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
-                                li(style="list-style-type:none;") 俞**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                                li(style="list-style-type:none;") 傅**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
-                                li(style="list-style-type:none;") 许**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
-                                li(style="list-style-type:none;") 江**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                                li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
-                                li(style="list-style-type:none;") 郑**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                        div(style="margin-top:-73px;padding-left:1102px;width: 100px;height:90px;")
-                            form(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post")
-                                input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
-                                input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;",id="phoneNum",name="phoneNum")
-                                div(style="margin-top:15px")
-                                    select(type="text",style="height:19.5px;width:97px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
-                                        option(select="select") 选择品牌
-                                        each carBrand in idAndCname
-                                            option(value="#{carBrand.id}") #{carBrand.cname}
-                                div
-                                    select(id="idAndCname",style="height:19.5px;width:97px;padding:0px;margin-top:-7px;" ,name="idAndCname")
-                                        option(value="") 选择车型
-                                    input#allCars(type="hidden",value=JSON.stringify(idAndCname))
-                                input(type="button"  style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-top:-150px;margin-left:130px;background-image:url(img/anniu.png);width:54px;height:28px", onclick="success();")
+            div(style="background-image: url(img/banner3.png);width: 1410px;height: 215px;margin-left:-232px")
+                div(id="news" style="padding-top:50px;padding-left:85px;font-size:12px;")
+                    div(style="margin-left:80px;height:80px;overflow:hidden;width:300px;marign-top:20px;")
+                        ul
+                            li(style="list-style-type:none;") 王**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+                            li(style="list-style-type:none;") 黄**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
+                            li(style="list-style-type:none;") 周**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
+                            li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
+                            li(style="list-style-type:none;") 童**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+                            li(style="list-style-type:none;") 王**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;捷达
+                            li(style="list-style-type:none;") 徐**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
+                            li(style="list-style-type:none;") 赵**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
+                            li(style="list-style-type:none;") 李**女士&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+                            li(style="list-style-type:none;") 胡**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
+                            li(style="list-style-type:none;") 何**女士&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;捷达
+                            li(style="list-style-type:none;") 俞**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
+                            li(style="list-style-type:none;") 傅**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
+                            li(style="list-style-type:none;") 许**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
+                            li(style="list-style-type:none;") 江**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
+                            li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
+                            li(style="list-style-type:none;") 郑**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
+                    div(style="margin-top:-73px;padding-left:1102px;width: 100px;height:90px;")
+                        form(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post")
+                            input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
+                            input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;",id="phoneNum",name="phoneNum")
+                            div(style="margin-top:15px")
+                                select(type="text",style="height:19.5px;width:97px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
+                                    option(select="select") 选择品牌
+                                    each carBrand in idAndCname
+                                        option(value="#{carBrand.id}") #{carBrand.cname}
+                            div
+                                select(id="idAndCname",style="height:19.5px;width:97px;padding:0px;margin-top:-7px;" ,name="idAndCname")
+                                    option(value="") 选择车型
+                                input#allCars(type="hidden",value=JSON.stringify(idAndCname))
+                            input(type="button"  style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-top:-150px;margin-left:130px;background-image:url(img/anniu.png);width:54px;height:28px", onclick="success();")
     div(style="background-color: #f6f6f6;height:496px")
         .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:transparent;margin-left:250px")
             div(style='')
@@ -171,7 +170,7 @@ block append content
 
                 #focus
                     // div#carModelViewAnchor(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
-    div(style="background-color:#ffffff;margin-top:35px;padding-bottom: 30px;width:1960px")
+    div(style="background-color:#ffffff;margin-top:35px;padding-bottom: 30px;width:1900px")
         div(style='margin-left:260px')
             h6(style="font-size:24px;margin-left:-11px;font-weight:lighter;color:#666666") <br> 梯卡优惠
             .row-fluid#carModelView(style="background-color:#ffffff;margin-left:-15px;margin-top:20px")
