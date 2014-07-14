@@ -1,13 +1,14 @@
 .span9
     div(style="height:190px;width:1410px")
-        div(style="height:44px;background:#f6f6f6;color:#666666;font-size:20px;")
-            div(style="padding-top:13px;padding-left:20px") <font size="4px" color="#666666">您已选择</font>
+        div(style="height:44px;background:#f6f6f6;color:#666666;font-size:16px;")
+            div(style="padding-top:8px;padding-bottom:8px;padding-left:20px") <font size="4px" color="#666666" style="display:inline-block;padding-top:8px;">您已选择</font>
                 span()
                     each dicCity in allDicCitys
                         //a(href="/car?id=#{dicCity.id}&city=#{conditionParams.city}",onClick="return conditionSelect('city','#{dicCity.id}',false,true);",style="color: black;")
                         if dicCity.id == conditionParams.city
-                            span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 城市: #{dicCity.cityCname}
-                                img(src="img/cha.png",onclick="deleteCity()")
+                            span#city(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                                div#showlistC(style="text-align:center;padding-top:7px;") 城市: #{dicCity.cityCname} &nbsp;&nbsp;
+                                    img(src="img/cha.png",onclick="deleteCity()")
                 //span
                 //    if conditionParams.carBrand == 26
                 //        span#brandOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 品牌:  大众
@@ -31,31 +32,39 @@
                 span
                     each brand in allBrands
                         if brand.brandId == conditionParams.carMyCarBrand
-                            span#brand(style="margin-left:30px;background:url('img/choice.png');color:#ffffff;") 品牌: #{brand.brandName}
-                                img(src="img/cha.png",onclick="deleteBrand()")
+                            span#brand(style="margin-left:30px;background:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                                div#showlistC(style="text-align:center;padding-top:7px;") 品牌: #{brand.brandName} &nbsp;&nbsp;
+                                    img(src="img/cha.png",onclick="deleteBrand()")
 
                 span
                     each carModelLv1 in carModels
                         a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',false,false);",style="color: #666666;")
                             if carModelLv1.id == conditionParams.carModelLv1
-                                span#cheXi(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff")= carModelLv1.cname
-                                    img(src="img/cha.png",onclick="deleteCheXi()")
+                                span#cheXi(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                                    div#showlistC(style="text-align:center;padding-top:7px;")= carModelLv1.cname
+                                        &nbsp;&nbsp;
+                                        img(src="img/cha.png",onclick="deleteCheXi()")
                 span
                     if conditionParams.priceMin == 1
-                        span#priceOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  1万~5万
+                        span#priceOne(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  1万~5万 &nbsp;&nbsp;
                             img(src="img/cha.png",onclick="deletePriceOne()")
                     if conditionParams.priceMin == 5
-                        span#priceTwo(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  5万~10万
-                            img(src="img/cha.png",onclick="deletePriceTwo()")
+                        span#priceTwo(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  5万~10万 &nbsp;&nbsp;
+                                img(src="img/cha.png",onclick="deletePriceTwo()")
                     if conditionParams.priceMin == 10
-                        span#priceThree(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  10万~20万
-                            img(src="img/cha.png",onclick="deletePriceThree()")
+                        span#priceThree(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  10万~20万 &nbsp;&nbsp;
+                                img(src="img/cha.png",onclick="deletePriceThree()")
                     if conditionParams.priceMin == 20
-                        span#priceFour(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  20万~50万
-                            img(src="img/cha.png",onclick="deletePriceFour()")
+                        span#priceFour(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  20万~50万 &nbsp;&nbsp;
+                                img(src="img/cha.png",onclick="deletePriceFour()")
                     if conditionParams.priceMin == 50
-                        span#priceFive(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff") 价格:  50万以上
-                            img(src="img/cha.png",onclick="deletePriceFive()")
+                        span#priceFive(style="margin-left:30px;background-image:url('img/choice.png');color:#ffffff;display: inline-block;width:160px;height:30px;")
+                            div#showlistC(style="text-align:center;padding-top:7px;") 价格:  50万以上 &nbsp;&nbsp;
+                                img(src="img/cha.png",onclick="deletePriceFive()")
         div(style="height:36px;color:#666666;")
             div(style="padding-top:10px;padding-left:20px") 城市
                 if !shide || shide.indexOf("city") == -1
