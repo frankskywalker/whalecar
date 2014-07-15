@@ -9,7 +9,7 @@ block append js
     script(type="text/javascript",src="js/slides.min.jquery.js")
 
 block append content
-    #slider_div_1(style="width:1410px;*width:1410px;height:540px;margin:0 auto;padding:0px;margin-left:13.2%px")
+    #slider_div_1(style="width:1410px;height:540px;margin:0 auto;padding:0px;margin-left:13.2%px")
         .slides_container(style="list-style:none;z-index:-1;width:1410px;height:540px")
             li.bitter2.glume
                 span.Limg.slide_pic
@@ -43,8 +43,8 @@ block append content
         //       a.page_a_1(link='#',style="text-decoration: none;") 底价购买
         //     li(style='border-right: 1px solid #FFFFFF;')
         //       a.page_a_1(link='./car?id=228',style="text-decoration: none;") 新cc 孑然登场
-    div(style="background-color:#eaeaea;height:200px;width:1905px")
-        div(style="background-image: url(img/banner3.png);width:1410px;height:215px;margin-left:252px")
+    div(style="height:200px;width:100%")
+        div(style="background-image: url(img/banner3.png);width:1410px;height:215px;margin:0 auto;")
             div(id="news" style="padding-top:50px;padding-left:85px;font-size:12px;")
                 div(style="margin-left:80px;height:80px;overflow:hidden;width:300px;marign-top:20px;")
                     ul
@@ -81,10 +81,10 @@ block append content
                         input(type="button"  style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-top:-150px;margin-left:130px;background-image:url(img/anniu.png);width:54px;height:28px", onclick="success();")
 
     div(style="background-color: #f6f6f6;height:496px")
-        .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:transparent;margin-left:250px")
+        .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:transparent;max-width: 1410px;width:1410px;")
             div(style='')
-                div(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
-                    h6(style="font-size:24px;margin-left:-11px;font-weight:lighter;color:#666666;margin-top:10px") 梯卡推荐
+                div(style="width:1410px;margin:0 auto;padding-top:5px;padding-bottom:5px")
+                    h6(style="font-size:24px;font-weight:lighter;color:#666666;margin-top:10px") 梯卡推荐
                     // img(src="../img/banner/cheapBand.png",style="padding-bottom:5px;padding-right:5px")
                 #cheap(style="margin-top:10px")
                     .row-fluid
@@ -118,7 +118,7 @@ block append content
                                             span(style="font-size: 14px; color:#ff9a00")
                                                 | 立减
                                                 i(style="color:#ff9a00") #{priceOffCarModelLv1[1].diffPrice.toFixed(2)}
-                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-top:17px;")
+                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: -320px;margin-top:239px;")
                                 a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;border-radius:0px")
                                     img(style='width: 290px; height: 180px;', src='img/a4l.jpg')
                                     .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
@@ -170,10 +170,10 @@ block append content
 
                 #focus
                     // div#carModelViewAnchor(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
-    div(style="background-color:#ffffff;margin-top:35px;padding-bottom: 30px;width:1900px")
-        div(style='margin-left:260px')
-            h6(style="font-size:24px;margin-left:-11px;font-weight:lighter;color:#666666") <br> 梯卡优惠
-            .row-fluid#carModelView(style="background-color:#ffffff;margin-left:-15px;margin-top:20px")
+    div(style="margin-top:35px;padding-bottom: 30px;width:100%")
+        div(style='margin:0 auto;width:1410px;')
+            h6(style="font-size:24px;font-weight:lighter;color:#666666") <br> 梯卡优惠
+            .row-fluid#carModelView(style="background-color:#ffffff;margin-top:20px")
                 //内容ajax读取
 
     script.
