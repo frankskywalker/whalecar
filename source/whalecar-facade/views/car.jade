@@ -9,11 +9,14 @@ block append js
 
 block append content
   -var firstActivedTab = "";
-  .container(style='padding: 8px 0px;width:1416px;')
+  div(style="background:#f6f5f5")
+      div(style="background:#f6f5f5;height:104px;min-width:1410px",class="container")
+          img(src="img/selectar.png",style="width:1060px;height:89px")
+  .container(style='padding: 8px 0px;min-width:1410px;max-width:auto;')
     .row-fluid
         .span9
           .row-fluid
-            div(style="width:1905px;margin-left:-260px;padding-top:10px;margin-top:-10px;background:#f6f5f5") <img src='img/selectar.png' style="margin-bottom:10px;height:84px;margin-left:260px;">
+            //div(style="width:1905px;margin-left:-260px;padding-top:10px;margin-top:-10px;background:#f6f5f5") <img src='img/selectar.png' style="margin-bottom:10px;height:84px;margin-left:260px;">
             //汽车图片
             h4(style='color: #4083A9;margin-bottom:10px;margin-top:20px;margin-bottom:12px')
               img(src="img/#{carBrand.logoPath}", alt='dasAuto',style="padding:0 5px 3px 0")
@@ -51,7 +54,7 @@ block append content
                         div(name="colorDiv",data-toggle="tooltip",data-placement="top",data-original-title="#{item.colorCname}",style="width:23px;height:17px;background-color:#{item.colorRgb};display:inline-block;box-shadow: 2px 2px 2px #888888;margin-right:4px;")
                 li
                   h6(style="padding-left:10px;margin-top:10px;padding-right:10px;font-size:16px;font-weight:normal") <img src="img/Introduction.png">&nbsp;&nbsp;#{carModelLv1.description}
-        .span3(style="margin-top:114px")
+        .span3(style="margin-top:20px;margin-left:-10px")
           //
              相关其他车辆
           h5(style="font-size:18px;color:#848585") 更多&nbsp;&nbsp;
@@ -66,11 +69,12 @@ block append content
                   </ul><ul class='thumbnails' style="width:350px">
           </ul>
     //库存列表
-    div(style="width:1900px;background:#f6f5f5;margin-left:-258px;height:auto")
-        legend(style="font-size:20px;font-weight:normal;width:1416px;margin-left:258px;padding-top:10px") 库存列表
-            each item,index in carModelLv2
-                a(id="tab#{item.id}",href="##{item.id}",style="margin-left:24px;font-size:18px") #{item.fullName}
-        div.tab-content(style="width:1416px;margin-left:258px")
+  div(style="min-width:1410px;background:#f6f5f5;height:auto")
+        legend(style="font-size:20px;font-weight:normal;width:1410px;margin:0 auto;padding-top:10px") 库存列表
+            ul.nav.nav-pills#list(style="margin-top:-40px;margin-left:80px")
+                each item,index in carModelLv2
+                    a(id="tab#{item.id}",href="##{item.id}",style="margin-left:24px;font-size:18px") #{item.fullName}
+        div.tab-content(style="width:1410px;margin:0 auto")
             each item,index in carModelLv2
                 div.tab-pane(id=item.id)
                     table.table
