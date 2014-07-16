@@ -73,7 +73,7 @@ block append content
         legend(style="font-size:20px;font-weight:normal;width:1410px;margin:0 auto;padding-top:10px") 库存列表
             ul.nav.nav-pills#list(style="margin-top:-40px;margin-left:80px")
                 each item,index in carModelLv2
-                    a(id="tab#{item.id}",href="##{item.id}",style="margin-left:24px;font-size:18px") #{item.fullName}
+                    a(id="tab#{item.id}",href="##{item.id}",style="margin-left:24px;font-size:18px;text-decoration:none;") #{item.fullName}
         div.tab-content(style="width:1410px;margin:0 auto")
             each item,index in carModelLv2
                 div.tab-pane(id=item.id)
