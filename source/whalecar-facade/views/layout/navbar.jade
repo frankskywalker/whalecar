@@ -1,4 +1,4 @@
-.navbar.navbar-inverse(style="min-width:1410px;")
+.navbar.navbar-inverse(style="width:1410px;margin:0 auto;")
     #toptab.navbar-inner(style='height: 36px;border-bottom-width: 0px;background-image:linear-gradient(to bottom, #112742, #112742)')
         div(style='margin-bottom: 0px; margin-top: 8px;width:auto;')
             //去掉导航微博链接
@@ -6,15 +6,23 @@
              // img(src='img/weibo_out.gif', alt='weibo_out')
             h6(style='margin: auto; display: inline;color:#ffffff;font-size:22px;margin-left:11.5%', calss='nav') <strong style="color:#ffffff">TEE</strong>Car梯卡汽车网
             h6(style='margin: auto; display: inline;color:#729ac1;font-size:16px', calss='nav')        倡导透明购车理念
-            .pull-right(style="width:50%")
+            .pull-right
                 a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;",class='nav',href='/') 首页
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:5%",class='nav',href='/shoplist') 4S店频道
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:5%",class='nav',href='/buildingl') 移动应用
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:5%",class='nav',href='/about_us') 关于我们
-                img(src='img/phone.png', alt='phone', style='height: 18px;margin-left:5%',calss='nav')
+                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",class='nav',href='/shoplist') 4S店频道
+                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",class='nav',href='/buildingl') 移动应用
+                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",class='nav',href='/about_us') 关于我们
+                img(src='img/phone.png', alt='phone', style='height: 18px;margin-left:10px;',calss='nav')
                 h5(style='display: inline;width:auto;', calss='nav')
                     | 400-007-9902 &nbsp;
-                a(href="#loginModal",role="button",data-toggle="modal",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:5%",calss='nav') <img src="img/login.png" alt="logo"> 登陆
+                if !session.currentUser
+                    if !session.currentShop
+                        a(href="#loginModal",role="button",data-toggle="modal",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') <img src="img/login.png" alt="logo"> 登陆
+                    -else
+                        a(href="/shophome",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 4S店管理页面
+                        a(onclick="shopLogout();return false;",href="#",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 注销
+                -else
+                    a(href="/userhome",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 用户中心
+                    a(onclick="logout();return false;",href="#",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 注销
 include user
 
 script.
