@@ -6,17 +6,24 @@
              // img(src='img/weibo_out.gif', alt='weibo_out')
             h6(style='margin: auto; display: inline;color:#ffffff;font-size:22px;margin-left:11.5%', calss='nav') <img src="img/teecarlogo_1.png" style="width:auto;height:36px;margin-top:-8px">
             h6(style='margin: auto; display: inline;color:#729ac1;font-size:16px', calss='nav')        倡导透明购车理念
-            .pull-right
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;",class='nav',href='/') 首页
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",class='nav',href='/shoplist') 4S店频道
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",class='nav',href='/buildingl') 移动应用
-                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",class='nav',href='/about_us') 关于我们
-                img(src='img/phone.png', alt='phone', style='height: 18px;margin-left:10px;',calss='nav')
-                h5(style='display: inline;width:auto;', calss='nav')
-                    | 400-007-9902 &nbsp;
+            if !!session.currentShop || !!session.currentUser
+                -var width = 550
+            -else
+                -var width = 450
+            .pull-right(style="width:#{width}px")
+                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;",href='/') 首页
+                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",href='/shoplist') 4S店频道
+                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",href='/buildingl') 移动应用
+                a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",href='/about_us') 关于我们
+                a(style="width:120px;margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",href='#')
+                    img(width="18px",src='img/phone.png', alt='phone', style='height: 18px;width:18px;margin-left:10px;')
+                    h5(style='display: inline;width:auto;width:20px;')
+                        | 400-007-9902 &nbsp;
                 if !session.currentUser
                     if !session.currentShop
-                        a(href="#loginModal",role="button",data-toggle="modal",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') <img src="img/login.png" alt="logo"> 登陆
+                        a(href="#loginModal",role="button",data-toggle="modal",style="width:300px;margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav')
+                            img(width="20px",src="img/login.png",style="height:20px;width:20px;")
+                            span(style="width:100px;") 登陆
                     -else
                         a(href="/shophome",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 4S店管理页面
                         a(onclick="shopLogout();return false;",href="#",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 注销
