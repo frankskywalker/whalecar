@@ -6,11 +6,11 @@ block append css
 
 block append js
     script(type="text/javascript",src="js/jquery.carouFredSel-6.2.1-packed.js")
-    script(type="text/javascript",src="js/slides.min.jquery.js")
+    script(type="text/javascript",src="js/jquery.slides.min.js")
 
 block append content
     #slider_div_1(style="width:1410px;height:540px;margin:0 auto;padding:0px;")
-        .slides_container(style="list-style:none;z-index:-1;width:1410px;height:540px")
+        .slides_container#slider_div_2(style="list-style:none;z-index:-1;width:1410px;height:540px")
             li.bitter2.glume
                 span.Limg.slide_pic
                     a(href='/golf7Adver')
@@ -34,15 +34,15 @@ block append content
         .pagination_p
            ul.pagination(style="list-style:none;")
              li(style="display: list-item; ")
-               a.page_a_1(link='#',style="text-decoration: none;") 发现7的世界
+               a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(0)") 发现7的世界
              li(style="display: list-item;")
-               a.page_a_1(link='#',style="text-decoration: none;") 奥迪全系登录梯卡
+               a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(1)") 奥迪全系登录梯卡
              li(style="display: list-item;")
-               a.page_a_1(link='#',style="text-decoration: none;") 直降一千
+               a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(2)") 直降一千
              li(style="display: list-item;")
-               a.page_a_1(link='#',style="text-decoration: none;") 底价购买
+               a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(3)") 底价购买
              li(style='border-right: 1px solid #FFFFFF;')
-               a.page_a_1(link='./car?id=228',style="text-decoration: none;") 新cc 孑然登场
+               a.page_a_1(link='./car?id=228',style="text-decoration: none;",onmouseover="scrollTo(4)") 新cc 孑然登场
     div(style="height:200px;width:100%;background-color:#ffffff")
         div(style="background-image: url(img/banner3.png);width:1410px;height:215px;margin:0 auto;")
             div(id="news" style="padding-top:50px;padding-left:85px;font-size:12px;")
@@ -196,30 +196,14 @@ block append content
                 //var h=w*original_h/original_w+78;
                 //$(".img_c_1").css({"height":h});
             }
-            $('#slider_div_1').slides({
-               //autoHeight:true,
-               play: 2000,//5秒钟自动切换一次
-               effect: 'fade',
-               crossfade: true,
-               fadeSpeed: 500,
-               hoverPause: true,
-               pause: 250,
-               //generateNextPrev: true,
-               animationStart: function() {
-                   var original_w=940;
-                   var original_h=363;
-                   var w=Math.max(document.documentElement.clientWidth,document.body.clientWidth);
-                   //var w=window.screen.width;
-                   if(original_w>w){//如果实际图片宽度大于分辨率
-                      //$(".img_c_1").css({"width":w});
-                   }
-                   else{
-                       //$(".img_c_1").css({"width":w});
-                       //var h=w*original_h/original_w+78;
-                       //$(".img_c_1").css({"height":h});
-                   }
-                },
-                generatePagination: false
+            var slider2 = $('#slider_div_2').slidesjs({width: 940,
+                height: 528,
+                play: {
+                  active: true,
+                  auto: true,
+                  interval: 4000,
+                  swap: true
+                }
              });
 
              $(".Limg2").css({'display':'block'});
@@ -264,6 +248,12 @@ block append content
           marginTop:0
           }).find("li:first").appendTo($self);
           })
+        }
+
+        function scrollTo(number){
+            $('a[data-slidesjs-item="' + number + '"]').trigger('click');
+            $('a.slidesjs-play').trigger('click');
+
         }
         function getCarBrand(){
           var idname =  eval($("#allCars").val());

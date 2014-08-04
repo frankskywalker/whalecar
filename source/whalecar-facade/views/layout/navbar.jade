@@ -7,9 +7,9 @@
             h6(style='margin: auto; display: inline;color:#ffffff;font-size:22px;margin-left:11.5%', calss='nav') <img src="img/teecarlogo_1.png" style="width:auto;height:36px;margin-top:-8px">
             h6(style='margin: auto; display: inline;color:#729ac1;font-size:16px', calss='nav')        倡导透明购车理念
             if !!session.currentShop || !!session.currentUser
-                -var width = 550
+                -var width = 600
             -else
-                -var width = 450
+                -var width = 500
             .pull-right(style="width:#{width}px")
                 a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;",href='/') 首页
                 a(style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",href='/shoplist') 4S店频道
