@@ -70,7 +70,7 @@
                 if !shide || shide.indexOf("city") == -1
                     a(href="#",onClick="return conditionSelect('city','',true,true);return false;",style="color: #666666;padding-left: 60px;") 不限
                     each dicCity in allDicCitys
-                        a(href="#",onClick="return conditionSelect('city','#{dicCity.id}',true,true);",style="color: #666666;padding-left: 60px;")
+                        a(href="#",onClick="return conditionSelect('city','#{dicCity.id}',true,true);",style="color: #666666;margin-left: 60px;")
                             if !!conditionParams  && dicCity.id == conditionParams.city
                                 span(style="color: orange;")= dicCity.cityCname
                             else
@@ -82,44 +82,44 @@
                     if !shide || shide.indexOf("brand") == -1
                         a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','',true);return false;",style="color:#666666;") 不限
                         each brand in allBrands
-                            a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.brandId}',true,true);return false;",style="color: #666666;padding-left: 60px;")
+                            a(href="#",onClick="conditionSelect('carModel','',false);conditionSelect('carBrand','#{brand.brandId}',true,true);return false;",style="color: #666666;margin-left: 60px;")
                                 if !!conditionParams  &&  brand.brandId == conditionParams.carMyCarBrand
                                     span(style="color: orange;")= brand.brandName
                                 else
                                     | #{brand.brandName}
         table(style="color:#666666;vertical-align:middle;")
             td(style="padding-top:10px;padding-left:20px;vertical-align : middle;width:36px") 车系
-            td(style="margin-left:40px;height:auto !important;height:0px;min-height:36px;margin-top:-20px;line-height:35px;padding-left:60px")
+            td(style="height:auto;min-height:36px;margin-top:-20px;line-height:35px;")
                 each carModelLv1 in carModels
-                    a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,false);",style="color: #666666;") <span style="padding-left:60px">     </span>
+                    a(href="#",onClick="return conditionSelect('carModel','#{carModelLv1.id}',true,false);",style="color: #666666;margin-left:60px")
                         if carModelLv1.id == conditionParams.carModelLv1
                             span(style="color: orange;")= carModelLv1.cname
                         else
                             | #{carModelLv1.cname}
         div(style="height:36px;background:#f6f6f6;color:#666666;")
             div(style="padding-top:10px;padding-left:20px") 价格
-                a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);return false;",style="color: #666666;padding-left: 60px;") 不限
-                a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);return false;",style="color: #666666;padding-left: 60px;")
+                a(href="#",onClick="conditionSelect('priceMin','',false);conditionSelect('priceMax','',true,true);return false;",style="color: #666666;margin-left: 60px;") 不限
+                a(href="#",onClick="conditionSelect('priceMin','1',false);conditionSelect('priceMax','5',true,true);return false;",style="color: #666666;margin-left: 60px;")
                     if conditionParams.priceMax == 5
                         span(style="color: orange;") 1万 ~ 5万
                     else
                         | 1万 ~ 5万
-                a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);return false;",style="color: #666666;padding-left: 60px;")
+                a(href="#",onClick="conditionSelect('priceMin','5',false);conditionSelect('priceMax','10',true,true);return false;",style="color: #666666;margin-left: 60px;")
                     if conditionParams.priceMax == 10
                         span(style="color: orange;") 5万 ~ 10万
                     else
                         | 5万 ~ 10万
-                a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);return false;",style="color: #666666;padding-left: 60px;")
+                a(href="#",onClick="conditionSelect('priceMin','10',false);conditionSelect('priceMax','20',true,true);return false;",style="color: #666666;margin-left: 60px;")
                     if conditionParams.priceMax == 20
                         span(style="color: orange;") 10万 ~ 20万
                     else
                         | 10万 ~ 20万
-                a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);return false;",style="color: #666666;padding-left: 60px;")
+                a(href="#",onClick="conditionSelect('priceMin','20',false);conditionSelect('priceMax','50',true,true);return false;",style="color: #666666;margin-left: 60px;")
                     if conditionParams.priceMax == 50
                         span(style="color: orange;") 20万 ~ 50万
                     else
                         | 20万 ~ 50万
-                a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);return false;",style="color: #666666;padding-left: 60px;")
+                a(href="#",onClick="conditionSelect('priceMin','50',false);conditionSelect('priceMax','',true,true);return false;",style="color: #666666;margin-left: 60px;")
                     if conditionParams.priceMin == 50
                         span(style="color: orange;") 50万以上
                     else
