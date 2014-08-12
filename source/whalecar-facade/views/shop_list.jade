@@ -70,21 +70,21 @@ block append content
         ul.media-list
           each shopView in shopViewList.items
             li.media
-              .pull-left
+              .pull-left(style = "width:170px")
                 if shopView.id == 4
-                    img.media-object(src='img/shops/nb_lhIcon.png')
+                    img.media-object(src='img/shops/nb_lhIcon.png',style="width:170px")
                 else if shopView.id == 3
-                    img.media-object(src='img/shops/nb_mzIcon.png')
+                    img.media-object(src='img/shops/nb_mzIcon.png',style="width:170px")
                 else if shopView.id == 1
-                    img.media-object(src='img/shops/nbz-zjyyIcon.png')
+                    img.media-object(src='img/shops/nbz-zjyyIcon.png',style="width:170px")
                 else if shopView.id == 10
-                    img.media-object(src='img/shops/zs_qrIcon.png')
+                    img.media-object(src='img/shops/zs_qrIcon.png',style="width:170px")
                 else if shopView.id == 17
-                    img.media-object(src='img/shops/nb_ht.jpg')
+                    img.media-object(src='img/shops/nb_ht.jpg',style="width:170px")
                 else if shopView.id == 18
-                    img.media-object(src='img/shops/nb_ty.png')
+                    img.media-object(src='img/shops/nb_ty.png',style="width:170px")
                 else
-                    img.media-object(src='img/shops/1.jpg')
+                    img.media-object(src='img/shops/1.jpg',style="width:170px")
               each carModelLv1,i in shopView.carModelLv1
                 if i < 3
                     .pull-right.media-object
