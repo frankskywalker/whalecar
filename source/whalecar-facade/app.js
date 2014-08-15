@@ -242,7 +242,8 @@ app.all('/vw_adver',golf7Adv.page2);
 app.all('/vwAdverSave',golf7Adv.save2);
 
 app.all('/baoming',golf7Adv.baoming);
-app.all('/baomingSave',golf7Adv.baomingSave);
+app.all('/baomingSaveAuto',golf7Adv.baomingSaveAuto);
+app.all('/baomingSaveAudi',golf7Adv.baomingSaveAudi);
 
 app.all('/vw2_adver',golf7Adv.page3);
 app.all('/vw2AdverSave',golf7Adv.save3);
