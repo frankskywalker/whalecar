@@ -19,7 +19,8 @@ var index = require('./routes/index'),
     admin = require('./routes/admin'),
     golf7Adv = require('./routes/golf7Adv'),
     addUserCar = require('./routes/addUserCar'),
-    weixinAdver = require('./routes/weixinAdver');
+    weixinAdver = require('./routes/weixinAdver'),
+    wxcoupan = require('./routes/wxcoupan');
 
 var app = express();
 // all environments
@@ -259,6 +260,8 @@ app.all('/way1',function(req,res){
 app.all('/about_us',function(req,res){
     res.render("about_us");
 }) ;
+
+app.all('/wxcoupan',wxcoupan.page_wx);
 
 app.all('/love_page',function(req,res){
     res.render("love_page");

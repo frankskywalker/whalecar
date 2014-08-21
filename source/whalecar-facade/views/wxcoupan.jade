@@ -1,0 +1,76 @@
+//
+   Created by wufei on 14-8-21.
+doctype html
+html
+    head
+        title 梯卡汽车网
+        meta(charset='utf-8')
+        link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+        link(href='css/style.css', rel='stylesheet', media='screen')
+        link(rel="icon",type="image/png",href="img/favicon.png")
+        script(src='js/jquery-1.10.2.min.js')
+        script(src='js/bootstrap.min.js')
+        meta(name="viewport" content="width=640")
+    body(style="width:320px")
+        .container(style="width:320px;height:800px;")
+            .page-content(style="background:#1E1B29;width:320px;height:65px;text-align:center")
+                 label.position-relative(style="color:white;padding-top:30px;font-size:20px",readonly="true") 梯卡汽车网
+            table
+                tr(style="width:320px;height:90px;background:white")
+                    td.center(style="width:98px")
+                        img(src="img/coupan.png",style="width:70px;height:70px;margin-left:15px")
+                        label(style="color:#565656;padding-left:8px;margin-top:5px") 千元现金优惠
+                    td.center
+                        label(style="color:#9a9a9a") 我们网站还有第三种方式提供给大家，亲们可自行去4s店商讨价格，网站承诺无论以多少价格成交，均可凭网站生成的优惠券代码直接返还1000元现金
+            div.container(style="width:320px")
+                div(style="background-image: url(img/coupan_1.png);width:320px;height:30px;margin:0 auto;")
+                    label(style="color:white;padding-top:5px") 选择车型
+                form(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post")
+                    table(style="width:320px")
+                        tr(style="height:40px;background:white;width:320px")
+                            td(style="margin-top:15px")
+                                select(type="text",style="width:100px;margin-left:40px",id="carBrand",onchange="getCarBrand();")
+                                    option(select="select") 选择品牌
+                                    each carBrand in idAndCname
+                                        option(value="#{carBrand.id}") #{carBrand.cname}
+                            td(style="margin-top:18px")
+                                select(id="idAndCname",style="width:100px;" ,name="idAndCname")
+                                    option(value="") 选择车型
+                                input#allCars(type="hidden",value=JSON.stringify(idAndCname))
+                    div(style="width:320px;height:40px;background:white")
+                        span(style="text-align:center;color:#9a9a9a;padding-bottom:2px;margin-left:20px") 姓名 <input type="text" id="username" name="username" style="margin-left:20;border:0;background:transparent;") />
+                    div(style="width:320px;height:40px;background:white")
+                        span(style="text-align:center;color:#9a9a9a;padding-bottom:2px;margin-left:20px") 手机 <input type="text" id="phoneNum" name="phoneNum" style="margin-left:20;border:0;background:transparent;") />
+            div.container(style="width:320px;margin-top:-20px")
+                div(style="background-image: url(img/coupan_3.png);width:320px;height:172px;margin:0 auto;")
+                    <button type="button" class="btn btn-lg btn-warning" style="width:250px;height:40px;margin-left:35px;margin-top:120px" onclick="success();"><span style="color:white;font-size:15px">提交获得优惠券代码</span></button>
+    script.
+        function getCarBrand(){
+          var idname =  eval($("#allCars").val());
+          var carBrandID = $("#carBrand").val();
+          for(var i=0;i<idname.length;i++){
+              if(carBrandID == idname[i].id){
+                  $("#idAndCname").empty();
+                  $("#idAndCname").append('<option value="">选择车型</option>');
+                  var carModelLv1List = idname[i].carModelLv1List;
+                  for(var j=0;j<carModelLv1List.length;j++){
+                    $("#idAndCname").append("<option value=" + carModelLv1List[j].id + ","+carModelLv1List[j].cname + ">" + carModelLv1List[j].cname + "</option>");
+                  }
+                break;
+              }
+          }
+        }
+        function success(){
+          var username = $("#username").val();
+          var phoneNum = $("#phoneNum").val();
+          var idAndCname = $("#idAndCname").val().split(",");
+          var BrandId = idAndCname[0];
+          var Cname =  idAndCname[1];
+          if(username=="" || phoneNum==""|| BrandId=="" || Cname==""){
+              alert("提交失败！");
+              return;
+          }
+              alert("提交成功！");
+              document.addUserCar.submit();
+              return;
+        }
