@@ -1,0 +1,99 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        block css
+            link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+            link(href='css/style.css', rel='stylesheet', media='screen')
+            link(rel="icon",type="image/png",href="img/favicon.png")
+        block js
+            script(src='js/jquery-1.10.2.min.js')
+            script(src='js/bootstrap.min.js')
+            script(src='js/spin.min.js')
+            script(src='js/tools.js')
+            script(src='js/jquery.unveil.min.js')
+
+    body
+        div(style="margin:0 auto;width:1100px;")
+          img(src="img/0815.png",style="top:0;left:5%;right:5%;bottom:0;z-index:-1;width:1100px;")
+          form#form1(method="POST",action="./baomingSaveAudi",style="pading-top:50px;margin-left:273px;margin-top:-609px;background-color:white;height:170px;width:188px;")
+              div(style="margin-left:30px;padding-top: 25px;")
+                  span(style="font-size:8px;") 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+                  input(type="text",name="name",style="width:90px;height:14px;margin-left:5px;margin-top:3px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+              div(style="margin-left:30px;margin-top;0px;")
+                  span(style="font-size:8px;") 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+                  input(type="radio",name="sex",value="先生",checked="checked",style="margin-left:5px;margin-right:5px;margin-top:0px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+                  span(style="font-size:11px;") 先生
+                  input(type="radio",name="sex",value="女士",style="margin-left:5px;margin-right:5px;margin-top:0px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+                  span(style="font-size:11px;") 女士
+              div(style="margin-left:30px;margin-top;0px;")
+                  span(style="font-size:8px;") 手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机
+                  input#tel1(type="text",name="tel",style="width:90px;height:14px;margin-left:5px;margin-top:0px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+              div(style="margin-left:30px;margin-top;0px;")
+                  span(style="font-size:8px;") 意向车型
+                  select(name="attentionModel",style="width:102px;height:14px;margin-left:5px;font-size:11px;line-height:11px;margin-top:0px;margin-bottom:4px;")
+                      option A1
+                      option A2
+                      option A3
+                      option A4L
+                      option A5
+                      option A6L
+                      option A7
+                      option A8L
+                      option Q3
+                      option Q5
+                      option Q7
+                      option TT
+
+              div(style="margin-left:30px;margin-top;0px;")
+                  a(href="#",onclick="saveAudi();return false;",style="margin-left:40px;font-size:11px;") 确认提交
+
+          form#form2(method="POST",action="./baomingSaveAuto",style="pading-top:50px;margin-left:640px;margin-top:-190px;background-color:white;height:170px;width:188px;")
+            div(style="margin-left:30px;padding-top: 25px;")
+                span(style="font-size:8px;") 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+                input(type="text",name="name",style="width:90px;height:14px;margin-left:5px;margin-top:3px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+            div(style="margin-left:30px;margin-top;0px;")
+                span(style="font-size:8px;") 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+                input(type="radio",name="sex",value="先生",checked="checked",style="margin-left:5px;margin-right:5px;margin-top:0px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+                span(style="font-size:11px;") 先生
+                input(type="radio",name="sex",value="女士",style="margin-left:5px;margin-right:5px;margin-top:0px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+                span(style="font-size:11px;") 女士
+            div(style="margin-left:30px;margin-top;0px;")
+                span(style="font-size:8px;") 手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机
+                input#tel2(type="text",name="tel",style="width:90px;height:14px;margin-left:5px;margin-top:0px;margin-bottom:4px;font-size:11px;line-height:11px;padding:0px 5px;")
+            div(style="margin-left:30px;margin-top;0px;")
+                span(style="font-size:8px;") 意向车型
+                select(name="attentionModel",style="width:102px;height:14px;margin-left:5px;font-size:11px;line-height:11px;margin-top:0px;margin-bottom:4px;")
+                    option 速腾
+                    option 全新高尔夫
+                    option 全新捷达
+                    option 新CC
+                    option 迈腾
+                    option GTI
+                    option 宝来
+
+            div(style="margin-left:30px;margin-top;0px;")
+                a(href="#",onclick="saveAuto();return false;",style="margin-left:40px;font-size:11px;") 确认提交
+
+      script.
+          function saveAudi(){
+            if(submitCheck("#tel1")){
+                $("#form1").submit();
+            }
+          }
+
+          function saveAuto(){
+            if(submitCheck("#tel2")){
+                $("#form2").submit();
+            }
+          }
+          function submitCheck(inputId){
+             if(!$(inputId).val().match(/^1\d{10}$/)){
+                alert("您输入的手机号码格式有误，请重新输入！");
+                return false;
+             }
+             alert("提交成功!")
+             return true;
+          }
+
+
