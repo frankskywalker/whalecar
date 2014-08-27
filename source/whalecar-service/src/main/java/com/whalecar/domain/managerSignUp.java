@@ -3,7 +3,7 @@ package com.whalecar.domain;
 /**
  * Created by wufei on 14-8-27.
  */
-public class managerSignUp {
+public class ManagerSignUp {
     private Integer id;
     private String name;
 
