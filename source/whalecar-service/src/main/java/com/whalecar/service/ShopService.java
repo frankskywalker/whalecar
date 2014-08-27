@@ -241,4 +241,10 @@ public class ShopService {
             return new BooleanResult(false);
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/getSignUp")
+    public @ResponseBody
+    List<ManagerSignUp> getSignUp() {
+        return golf7AdvMapper.queryGolf7();
+    }
 }
