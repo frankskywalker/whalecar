@@ -182,6 +182,7 @@ app.all("/managerGetCarModelLv3",manager.managerGetCarModelLv3);
 app.all("/managerGetDicColor",manager.managerGetDicColor);
 app.all("/addManagerCarBrand",manager.addManagerCarBrand);
 app.all("/updateManagerGetCarModelLv3",manager.updateManagerGetCarModelLv3);
+app.all("/managerSignUp",manager.managerSignUp);
 app.all("/addUserCar",addUserCar.addUserCar);
 app.all("/cartest",function(req,res){
     res.render("cartest")

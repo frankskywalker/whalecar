@@ -170,6 +170,11 @@ exports.managerUserCar = function(req,res){
     });
 }
 
+exports.managerSignUp = function(req,res){
+    service.client.get("/manager/getSignUp",function(sErr,sReq,sRes,sData){
+        res.json(sData);});
+}
+
 exports.addManagerCarBrand = function(req,res){
     console.log(req.body);
 }
