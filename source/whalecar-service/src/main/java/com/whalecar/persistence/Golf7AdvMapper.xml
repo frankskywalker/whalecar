@@ -30,4 +30,9 @@
 
   </insert>
 
+    <select id="queryGolf7" resultType="managerSignUp">
+        SELECT * FROM whalecar_server.Golf7_Adv where type= 7 or type = 8
+        order by id desc
+    </select>
+
 </mapper>
