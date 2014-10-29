@@ -1,0 +1,651 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/Apple/Java_project/whalecar/source/whalecar-facade',
+5 verbose install   [ 'express',
+5 verbose install     'jade',
+5 verbose install     'restify',
+5 verbose install     'async',
+5 verbose install     'express-validator',
+5 verbose install     'moment' ] ]
+6 info preinstall whalecar-facade@1.0.1
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'express@3.4.0', null ]
+9 verbose cache add name=undefined spec="express@3.4.0" args=["express@3.4.0",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'express@3.4.0',
+10 verbose parsed url   path: 'express@3.4.0',
+10 verbose parsed url   href: 'express@3.4.0' }
+11 verbose cache add [ 'jade@0.35.0', null ]
+12 verbose cache add name=undefined spec="jade@0.35.0" args=["jade@0.35.0",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'jade@0.35.0',
+13 verbose parsed url   path: 'jade@0.35.0',
+13 verbose parsed url   href: 'jade@0.35.0' }
+14 verbose cache add [ 'restify@*', null ]
+15 verbose cache add name=undefined spec="restify@*" args=["restify@*",null]
+16 verbose parsed url { protocol: null,
+16 verbose parsed url   slashes: null,
+16 verbose parsed url   auth: null,
+16 verbose parsed url   host: null,
+16 verbose parsed url   port: null,
+16 verbose parsed url   hostname: null,
+16 verbose parsed url   hash: null,
+16 verbose parsed url   search: null,
+16 verbose parsed url   query: null,
+16 verbose parsed url   pathname: 'restify@*',
+16 verbose parsed url   path: 'restify@*',
+16 verbose parsed url   href: 'restify@*' }
+17 verbose cache add [ 'async@*', null ]
+18 verbose cache add name=undefined spec="async@*" args=["async@*",null]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: 'async@*',
+19 verbose parsed url   path: 'async@*',
+19 verbose parsed url   href: 'async@*' }
+20 verbose cache add name="express" spec="3.4.0" args=["express","3.4.0"]
+21 verbose parsed url { protocol: null,
+21 verbose parsed url   slashes: null,
+21 verbose parsed url   auth: null,
+21 verbose parsed url   host: null,
+21 verbose parsed url   port: null,
+21 verbose parsed url   hostname: null,
+21 verbose parsed url   hash: null,
+21 verbose parsed url   search: null,
+21 verbose parsed url   query: null,
+21 verbose parsed url   pathname: '3.4.0',
+21 verbose parsed url   path: '3.4.0',
+21 verbose parsed url   href: '3.4.0' }
+22 verbose addNamed [ 'express', '3.4.0' ]
+23 verbose addNamed [ '3.4.0', '3.4.0' ]
+24 verbose cache add name="jade" spec="0.35.0" args=["jade","0.35.0"]
+25 verbose parsed url { protocol: null,
+25 verbose parsed url   slashes: null,
+25 verbose parsed url   auth: null,
+25 verbose parsed url   host: null,
+25 verbose parsed url   port: null,
+25 verbose parsed url   hostname: null,
+25 verbose parsed url   hash: null,
+25 verbose parsed url   search: null,
+25 verbose parsed url   query: null,
+25 verbose parsed url   pathname: '0.35.0',
+25 verbose parsed url   path: '0.35.0',
+25 verbose parsed url   href: '0.35.0' }
+26 verbose addNamed [ 'jade', '0.35.0' ]
+27 verbose addNamed [ '0.35.0', '0.35.0' ]
+28 verbose cache add name="restify" spec="*" args=["restify","*"]
+29 verbose parsed url { protocol: null,
+29 verbose parsed url   slashes: null,
+29 verbose parsed url   auth: null,
+29 verbose parsed url   host: null,
+29 verbose parsed url   port: null,
+29 verbose parsed url   hostname: null,
+29 verbose parsed url   hash: null,
+29 verbose parsed url   search: null,
+29 verbose parsed url   query: null,
+29 verbose parsed url   pathname: '*',
+29 verbose parsed url   path: '*',
+29 verbose parsed url   href: '*' }
+30 verbose addNamed [ 'restify', '*' ]
+31 verbose addNamed [ null, '*' ]
+32 verbose cache add [ 'express-validator@0.8.0', null ]
+33 verbose cache add name=undefined spec="express-validator@0.8.0" args=["express-validator@0.8.0",null]
+34 verbose parsed url { protocol: null,
+34 verbose parsed url   slashes: null,
+34 verbose parsed url   auth: null,
+34 verbose parsed url   host: null,
+34 verbose parsed url   port: null,
+34 verbose parsed url   hostname: null,
+34 verbose parsed url   hash: null,
+34 verbose parsed url   search: null,
+34 verbose parsed url   query: null,
+34 verbose parsed url   pathname: 'express-validator@0.8.0',
+34 verbose parsed url   path: 'express-validator@0.8.0',
+34 verbose parsed url   href: 'express-validator@0.8.0' }
+35 verbose cache add name="async" spec="*" args=["async","*"]
+36 verbose parsed url { protocol: null,
+36 verbose parsed url   slashes: null,
+36 verbose parsed url   auth: null,
+36 verbose parsed url   host: null,
+36 verbose parsed url   port: null,
+36 verbose parsed url   hostname: null,
+36 verbose parsed url   hash: null,
+36 verbose parsed url   search: null,
+36 verbose parsed url   query: null,
+36 verbose parsed url   pathname: '*',
+36 verbose parsed url   path: '*',
+36 verbose parsed url   href: '*' }
+37 verbose addNamed [ 'async', '*' ]
+38 verbose addNamed [ null, '*' ]
+39 verbose cache add [ 'moment@*', null ]
+40 verbose cache add name=undefined spec="moment@*" args=["moment@*",null]
+41 verbose parsed url { protocol: null,
+41 verbose parsed url   slashes: null,
+41 verbose parsed url   auth: null,
+41 verbose parsed url   host: null,
+41 verbose parsed url   port: null,
+41 verbose parsed url   hostname: null,
+41 verbose parsed url   hash: null,
+41 verbose parsed url   search: null,
+41 verbose parsed url   query: null,
+41 verbose parsed url   pathname: 'moment@*',
+41 verbose parsed url   path: 'moment@*',
+41 verbose parsed url   href: 'moment@*' }
+42 verbose cache add name="express-validator" spec="0.8.0" args=["express-validator","0.8.0"]
+43 verbose parsed url { protocol: null,
+43 verbose parsed url   slashes: null,
+43 verbose parsed url   auth: null,
+43 verbose parsed url   host: null,
+43 verbose parsed url   port: null,
+43 verbose parsed url   hostname: null,
+43 verbose parsed url   hash: null,
+43 verbose parsed url   search: null,
+43 verbose parsed url   query: null,
+43 verbose parsed url   pathname: '0.8.0',
+43 verbose parsed url   path: '0.8.0',
+43 verbose parsed url   href: '0.8.0' }
+44 verbose addNamed [ 'express-validator', '0.8.0' ]
+45 verbose addNamed [ '0.8.0', '0.8.0' ]
+46 silly lockFile c946bd73-express-validator-0-8-0 express-validator@0.8.0
+47 verbose lock express-validator@0.8.0 /Users/Apple/.npm/c946bd73-express-validator-0-8-0.lock
+48 verbose cache add name="moment" spec="*" args=["moment","*"]
+49 verbose parsed url { protocol: null,
+49 verbose parsed url   slashes: null,
+49 verbose parsed url   auth: null,
+49 verbose parsed url   host: null,
+49 verbose parsed url   port: null,
+49 verbose parsed url   hostname: null,
+49 verbose parsed url   hash: null,
+49 verbose parsed url   search: null,
+49 verbose parsed url   query: null,
+49 verbose parsed url   pathname: '*',
+49 verbose parsed url   path: '*',
+49 verbose parsed url   href: '*' }
+50 verbose addNamed [ 'moment', '*' ]
+51 verbose addNamed [ null, '*' ]
+52 silly lockFile 7a3a09df-moment moment@*
+53 verbose lock moment@* /Users/Apple/.npm/7a3a09df-moment.lock
+54 silly addNameRange { name: 'moment', range: '*', hasData: false }
+55 verbose request where is /express-validator
+56 verbose request registry https://registry.npmjs.org/
+57 verbose request id 9a5aba769fe698fe
+58 verbose url raw /express-validator
+59 verbose url resolving [ 'https://registry.npmjs.org/', './express-validator' ]
+60 verbose url resolved https://registry.npmjs.org/express-validator
+61 verbose request where is https://registry.npmjs.org/express-validator
+62 info trying registry request attempt 1 at 14:04:02
+63 http GET https://registry.npmjs.org/express-validator
+64 verbose request where is /moment
+65 verbose request registry https://registry.npmjs.org/
+66 verbose url raw /moment
+67 verbose url resolving [ 'https://registry.npmjs.org/', './moment' ]
+68 verbose url resolved https://registry.npmjs.org/moment
+69 verbose request where is https://registry.npmjs.org/moment
+70 info trying registry request attempt 1 at 14:04:03
+71 http GET https://registry.npmjs.org/moment
+72 silly lockFile 86194427-express-3-4-0 express@3.4.0
+73 verbose lock express@3.4.0 /Users/Apple/.npm/86194427-express-3-4-0.lock
+74 silly lockFile 606948c4-jade-0-35-0 jade@0.35.0
+75 verbose lock jade@0.35.0 /Users/Apple/.npm/606948c4-jade-0-35-0.lock
+76 silly lockFile 6936f8cb-restify restify@*
+77 verbose lock restify@* /Users/Apple/.npm/6936f8cb-restify.lock
+78 silly lockFile 827e99f9-async async@*
+79 verbose lock async@* /Users/Apple/.npm/827e99f9-async.lock
+80 silly addNameRange { name: 'restify', range: '*', hasData: false }
+81 verbose request where is /express
+82 verbose request registry https://registry.npmjs.org/
+83 verbose url raw /express
+84 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+85 verbose url resolved https://registry.npmjs.org/express
+86 verbose request where is https://registry.npmjs.org/express
+87 info trying registry request attempt 1 at 14:04:03
+88 http GET https://registry.npmjs.org/express
+89 verbose request where is /jade
+90 verbose request registry https://registry.npmjs.org/
+91 verbose url raw /jade
+92 verbose url resolving [ 'https://registry.npmjs.org/', './jade' ]
+93 verbose url resolved https://registry.npmjs.org/jade
+94 verbose request where is https://registry.npmjs.org/jade
+95 info trying registry request attempt 1 at 14:04:03
+96 http GET https://registry.npmjs.org/jade
+97 silly addNameRange { name: 'async', range: '*', hasData: false }
+98 verbose request where is /restify
+99 verbose request registry https://registry.npmjs.org/
+100 verbose url raw /restify
+101 verbose url resolving [ 'https://registry.npmjs.org/', './restify' ]
+102 verbose url resolved https://registry.npmjs.org/restify
+103 verbose request where is https://registry.npmjs.org/restify
+104 info trying registry request attempt 1 at 14:04:03
+105 http GET https://registry.npmjs.org/restify
+106 verbose request where is /async
+107 verbose request registry https://registry.npmjs.org/
+108 verbose url raw /async
+109 verbose url resolving [ 'https://registry.npmjs.org/', './async' ]
+110 verbose url resolved https://registry.npmjs.org/async
+111 verbose request where is https://registry.npmjs.org/async
+112 info trying registry request attempt 1 at 14:04:03
+113 http GET https://registry.npmjs.org/async
+114 http 200 https://registry.npmjs.org/express-validator
+115 silly registry.get cb [ 200,
+115 silly registry.get   { date: 'Fri, 19 Sep 2014 06:04:03 GMT',
+115 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+115 silly registry.get     etag: '"3DB7APP1RFN57SE0RCXBUIN76"',
+115 silly registry.get     'content-type': 'application/json',
+115 silly registry.get     'cache-control': 'max-age=60',
+115 silly registry.get     'content-length': '41095',
+115 silly registry.get     'accept-ranges': 'bytes',
+115 silly registry.get     via: '1.1 varnish',
+115 silly registry.get     age: '962',
+115 silly registry.get     'x-served-by': 'cache-ty67-TYO',
+115 silly registry.get     'x-cache': 'HIT',
+115 silly registry.get     'x-cache-hits': '1',
+115 silly registry.get     'x-timer': 'S1411106643.846604,VS0,VE115',
+115 silly registry.get     vary: 'Accept',
+115 silly registry.get     'keep-alive': 'timeout=10, max=50',
+115 silly registry.get     connection: 'Keep-Alive' } ]
+116 silly lockFile 5cdf66c7-ator-express-validator-0-8-0-tgz https://registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz
+117 verbose lock https://registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz /Users/Apple/.npm/5cdf66c7-ator-express-validator-0-8-0-tgz.lock
+118 verbose addRemoteTarball [ 'https://registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz',
+118 verbose addRemoteTarball   'e64e6f9a7b2eb75d0c454e943d5f9534161d4d51' ]
+119 info retry fetch attempt 1 at 14:04:04
+120 verbose fetch to= /var/folders/sp/szqjdzgs0yd3fxp8n72ml1d00000gn/T/npm-2885-R7Cw3Fq3/registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz
+121 http GET https://registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz
+122 http 200 https://registry.npmjs.org/jade
+123 silly registry.get cb [ 200,
+123 silly registry.get   { date: 'Fri, 19 Sep 2014 06:04:03 GMT',
+123 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+123 silly registry.get     etag: '"CKXYBKYZOQ0NC5DCO8GPQVMXD"',
+123 silly registry.get     'content-type': 'application/json',
+123 silly registry.get     'cache-control': 'max-age=60',
+123 silly registry.get     'content-length': '127354',
+123 silly registry.get     'accept-ranges': 'bytes',
+123 silly registry.get     via: '1.1 varnish',
+123 silly registry.get     age: '257',
+123 silly registry.get     'x-served-by': 'cache-ty68-TYO',
+123 silly registry.get     'x-cache': 'HIT',
+123 silly registry.get     'x-cache-hits': '2',
+123 silly registry.get     'x-timer': 'S1411106643.849345,VS0,VE0',
+123 silly registry.get     vary: 'Accept',
+123 silly registry.get     'keep-alive': 'timeout=10, max=50',
+123 silly registry.get     connection: 'Keep-Alive' } ]
+124 silly lockFile e3a04c21-y-npmjs-org-jade-jade-0-35-0-tgz https://registry.npmjs.org/jade/-/jade-0.35.0.tgz
+125 verbose lock https://registry.npmjs.org/jade/-/jade-0.35.0.tgz /Users/Apple/.npm/e3a04c21-y-npmjs-org-jade-jade-0-35-0-tgz.lock
+126 verbose addRemoteTarball [ 'https://registry.npmjs.org/jade/-/jade-0.35.0.tgz',
+126 verbose addRemoteTarball   '75ec1d966a1203733613e8c180e2aa8685c16da9' ]
+127 info retry fetch attempt 1 at 14:04:04
+128 verbose fetch to= /var/folders/sp/szqjdzgs0yd3fxp8n72ml1d00000gn/T/npm-2885-R7Cw3Fq3/registry.npmjs.org/jade/-/jade-0.35.0.tgz
+129 http GET https://registry.npmjs.org/jade/-/jade-0.35.0.tgz
+130 http 200 https://registry.npmjs.org/express
+131 silly registry.get cb [ 200,
+131 silly registry.get   { date: 'Fri, 19 Sep 2014 06:04:03 GMT',
+131 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+131 silly registry.get     etag: '"6WX5QPFZMGX100DN3E9594WH2"',
+131 silly registry.get     'content-type': 'application/json',
+131 silly registry.get     'cache-control': 'max-age=60',
+131 silly registry.get     'content-length': '366883',
+131 silly registry.get     'accept-ranges': 'bytes',
+131 silly registry.get     via: '1.1 varnish',
+131 silly registry.get     age: '352',
+131 silly registry.get     'x-served-by': 'cache-ty66-TYO',
+131 silly registry.get     'x-cache': 'HIT',
+131 silly registry.get     'x-cache-hits': '16',
+131 silly registry.get     'x-timer': 'S1411106643.847979,VS0,VE0',
+131 silly registry.get     vary: 'Accept',
+131 silly registry.get     'keep-alive': 'timeout=10, max=50',
+131 silly registry.get     connection: 'Keep-Alive' } ]
+132 silly lockFile c97509f2-js-org-express-express-3-4-0-tgz https://registry.npmjs.org/express/-/express-3.4.0.tgz
+133 verbose lock https://registry.npmjs.org/express/-/express-3.4.0.tgz /Users/Apple/.npm/c97509f2-js-org-express-express-3-4-0-tgz.lock
+134 verbose addRemoteTarball [ 'https://registry.npmjs.org/express/-/express-3.4.0.tgz',
+134 verbose addRemoteTarball   '6ed289da0d5f55ac30997cf832e5fc36f784071e' ]
+135 info retry fetch attempt 1 at 14:04:04
+136 verbose fetch to= /var/folders/sp/szqjdzgs0yd3fxp8n72ml1d00000gn/T/npm-2885-R7Cw3Fq3/registry.npmjs.org/express/-/express-3.4.0.tgz
+137 http GET https://registry.npmjs.org/express/-/express-3.4.0.tgz
+138 http 200 https://registry.npmjs.org/express/-/express-3.4.0.tgz
+139 silly lockFile c97509f2-js-org-express-express-3-4-0-tgz https://registry.npmjs.org/express/-/express-3.4.0.tgz
+140 silly lockFile c97509f2-js-org-express-express-3-4-0-tgz https://registry.npmjs.org/express/-/express-3.4.0.tgz
+141 silly lockFile 86194427-express-3-4-0 express@3.4.0
+142 silly lockFile 86194427-express-3-4-0 express@3.4.0
+143 http 200 https://registry.npmjs.org/async
+144 silly registry.get cb [ 200,
+144 silly registry.get   { date: 'Fri, 19 Sep 2014 06:04:04 GMT',
+144 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+144 silly registry.get     etag: '"C480JEUI9I9S6W5RVP3TC1NJU"',
+144 silly registry.get     'content-type': 'application/json',
+144 silly registry.get     'cache-control': 'max-age=60',
+144 silly registry.get     'content-length': '104985',
+144 silly registry.get     'accept-ranges': 'bytes',
+144 silly registry.get     via: '1.1 varnish',
+144 silly registry.get     age: '93',
+144 silly registry.get     'x-served-by': 'cache-ty67-TYO',
+144 silly registry.get     'x-cache': 'HIT',
+144 silly registry.get     'x-cache-hits': '10',
+144 silly registry.get     'x-timer': 'S1411106644.306633,VS0,VE0',
+144 silly registry.get     vary: 'Accept',
+144 silly registry.get     'keep-alive': 'timeout=10, max=49',
+144 silly registry.get     connection: 'Keep-Alive' } ]
+145 silly addNameRange number 2 { name: 'async', range: '*', hasData: true }
+146 silly addNameRange versions [ 'async',
+146 silly addNameRange   [ '0.1.0',
+146 silly addNameRange     '0.1.1',
+146 silly addNameRange     '0.1.2',
+146 silly addNameRange     '0.1.3',
+146 silly addNameRange     '0.1.4',
+146 silly addNameRange     '0.1.5',
+146 silly addNameRange     '0.1.6',
+146 silly addNameRange     '0.1.7',
+146 silly addNameRange     '0.1.8',
+146 silly addNameRange     '0.1.9',
+146 silly addNameRange     '0.1.10',
+146 silly addNameRange     '0.1.11',
+146 silly addNameRange     '0.1.12',
+146 silly addNameRange     '0.1.13',
+146 silly addNameRange     '0.1.14',
+146 silly addNameRange     '0.1.15',
+146 silly addNameRange     '0.1.16',
+146 silly addNameRange     '0.1.17',
+146 silly addNameRange     '0.1.18',
+146 silly addNameRange     '0.1.19',
+146 silly addNameRange     '0.1.20',
+146 silly addNameRange     '0.1.21',
+146 silly addNameRange     '0.1.22',
+146 silly addNameRange     '0.2.0',
+146 silly addNameRange     '0.2.1',
+146 silly addNameRange     '0.2.2',
+146 silly addNameRange     '0.2.3',
+146 silly addNameRange     '0.2.4',
+146 silly addNameRange     '0.2.5',
+146 silly addNameRange     '0.2.6',
+146 silly addNameRange     '0.2.7',
+146 silly addNameRange     '0.2.8',
+146 silly addNameRange     '0.2.9',
+146 silly addNameRange     '0.2.10',
+146 silly addNameRange     '0.3.0',
+146 silly addNameRange     '0.4.0',
+146 silly addNameRange     '0.4.1',
+146 silly addNameRange     '0.5.0',
+146 silly addNameRange     '0.6.0',
+146 silly addNameRange     '0.6.1',
+146 silly addNameRange     '0.6.2',
+146 silly addNameRange     '0.7.0',
+146 silly addNameRange     '0.8.0',
+146 silly addNameRange     '0.9.0' ] ]
+147 verbose addNamed [ 'async', '0.9.0' ]
+148 verbose addNamed [ '0.9.0', '0.9.0' ]
+149 silly lockFile 9a58a886-async-0-9-0 async@0.9.0
+150 verbose lock async@0.9.0 /Users/Apple/.npm/9a58a886-async-0-9-0.lock
+151 silly lockFile 282f4be9--npmjs-org-async-async-0-9-0-tgz https://registry.npmjs.org/async/-/async-0.9.0.tgz
+152 verbose lock https://registry.npmjs.org/async/-/async-0.9.0.tgz /Users/Apple/.npm/282f4be9--npmjs-org-async-async-0-9-0-tgz.lock
+153 verbose addRemoteTarball [ 'https://registry.npmjs.org/async/-/async-0.9.0.tgz',
+153 verbose addRemoteTarball   'ac3613b1da9bed1b47510bb4651b8931e47146c7' ]
+154 info retry fetch attempt 1 at 14:04:05
+155 verbose fetch to= /var/folders/sp/szqjdzgs0yd3fxp8n72ml1d00000gn/T/npm-2885-R7Cw3Fq3/registry.npmjs.org/async/-/async-0.9.0.tgz
+156 http GET https://registry.npmjs.org/async/-/async-0.9.0.tgz
+157 http 200 https://registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz
+158 http 200 https://registry.npmjs.org/async/-/async-0.9.0.tgz
+159 silly lockFile 282f4be9--npmjs-org-async-async-0-9-0-tgz https://registry.npmjs.org/async/-/async-0.9.0.tgz
+160 silly lockFile 282f4be9--npmjs-org-async-async-0-9-0-tgz https://registry.npmjs.org/async/-/async-0.9.0.tgz
+161 silly lockFile 9a58a886-async-0-9-0 async@0.9.0
+162 silly lockFile 9a58a886-async-0-9-0 async@0.9.0
+163 silly lockFile 827e99f9-async async@*
+164 silly lockFile 827e99f9-async async@*
+165 silly lockFile 5cdf66c7-ator-express-validator-0-8-0-tgz https://registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz
+166 silly lockFile 5cdf66c7-ator-express-validator-0-8-0-tgz https://registry.npmjs.org/express-validator/-/express-validator-0.8.0.tgz
+167 silly lockFile c946bd73-express-validator-0-8-0 express-validator@0.8.0
+168 silly lockFile c946bd73-express-validator-0-8-0 express-validator@0.8.0
+169 http 200 https://registry.npmjs.org/jade/-/jade-0.35.0.tgz
+170 http 200 https://registry.npmjs.org/moment
+171 silly registry.get cb [ 200,
+171 silly registry.get   { date: 'Fri, 19 Sep 2014 06:04:03 GMT',
+171 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+171 silly registry.get     etag: '"1HEXDOP5EQDJWHB3AFPL6BCRG"',
+171 silly registry.get     'content-type': 'application/json',
+171 silly registry.get     'cache-control': 'max-age=60',
+171 silly registry.get     'content-length': '47407',
+171 silly registry.get     'accept-ranges': 'bytes',
+171 silly registry.get     via: '1.1 varnish',
+171 silly registry.get     age: '258',
+171 silly registry.get     'x-served-by': 'cache-ty67-TYO',
+171 silly registry.get     'x-cache': 'HIT',
+171 silly registry.get     'x-cache-hits': '2',
+171 silly registry.get     'x-timer': 'S1411106643.858406,VS0,VE0',
+171 silly registry.get     vary: 'Accept',
+171 silly registry.get     'keep-alive': 'timeout=10, max=50',
+171 silly registry.get     connection: 'Keep-Alive' } ]
+172 silly addNameRange number 2 { name: 'moment', range: '*', hasData: true }
+173 silly addNameRange versions [ 'moment',
+173 silly addNameRange   [ '1.0.0',
+173 silly addNameRange     '1.0.1',
+173 silly addNameRange     '1.1.0',
+173 silly addNameRange     '1.1.1',
+173 silly addNameRange     '1.2.0',
+173 silly addNameRange     '1.3.0',
+173 silly addNameRange     '1.4.0',
+173 silly addNameRange     '1.5.0',
+173 silly addNameRange     '1.5.1',
+173 silly addNameRange     '1.6.0',
+173 silly addNameRange     '1.6.1',
+173 silly addNameRange     '1.6.2',
+173 silly addNameRange     '1.7.0',
+173 silly addNameRange     '1.7.1',
+173 silly addNameRange     '1.7.2',
+173 silly addNameRange     '2.0.0',
+173 silly addNameRange     '2.1.0',
+173 silly addNameRange     '2.2.1',
+173 silly addNameRange     '2.3.0',
+173 silly addNameRange     '2.3.1',
+173 silly addNameRange     '2.4.0',
+173 silly addNameRange     '2.5.0',
+173 silly addNameRange     '2.5.1',
+173 silly addNameRange     '2.6.0',
+173 silly addNameRange     '2.7.0',
+173 silly addNameRange     '2.8.1',
+173 silly addNameRange     '2.8.2',
+173 silly addNameRange     '2.8.3' ] ]
+174 verbose addNamed [ 'moment', '2.8.3' ]
+175 verbose addNamed [ '2.8.3', '2.8.3' ]
+176 silly lockFile 707ecd2d-moment-2-8-3 moment@2.8.3
+177 verbose lock moment@2.8.3 /Users/Apple/.npm/707ecd2d-moment-2-8-3.lock
+178 silly lockFile d4397d1b-pmjs-org-moment-moment-2-8-3-tgz https://registry.npmjs.org/moment/-/moment-2.8.3.tgz
+179 verbose lock https://registry.npmjs.org/moment/-/moment-2.8.3.tgz /Users/Apple/.npm/d4397d1b-pmjs-org-moment-moment-2-8-3-tgz.lock
+180 verbose addRemoteTarball [ 'https://registry.npmjs.org/moment/-/moment-2.8.3.tgz',
+180 verbose addRemoteTarball   'a01427bf8910f014fc4baa1b8d96f17f7e3f29a2' ]
+181 info retry fetch attempt 1 at 14:04:52
+182 verbose fetch to= /var/folders/sp/szqjdzgs0yd3fxp8n72ml1d00000gn/T/npm-2885-R7Cw3Fq3/registry.npmjs.org/moment/-/moment-2.8.3.tgz
+183 http GET https://registry.npmjs.org/moment/-/moment-2.8.3.tgz
+184 http 200 https://registry.npmjs.org/moment/-/moment-2.8.3.tgz
+185 silly lockFile d4397d1b-pmjs-org-moment-moment-2-8-3-tgz https://registry.npmjs.org/moment/-/moment-2.8.3.tgz
+186 silly lockFile d4397d1b-pmjs-org-moment-moment-2-8-3-tgz https://registry.npmjs.org/moment/-/moment-2.8.3.tgz
+187 silly lockFile 707ecd2d-moment-2-8-3 moment@2.8.3
+188 silly lockFile 707ecd2d-moment-2-8-3 moment@2.8.3
+189 silly lockFile 7a3a09df-moment moment@*
+190 silly lockFile 7a3a09df-moment moment@*
+191 silly lockFile e3a04c21-y-npmjs-org-jade-jade-0-35-0-tgz https://registry.npmjs.org/jade/-/jade-0.35.0.tgz
+192 silly lockFile e3a04c21-y-npmjs-org-jade-jade-0-35-0-tgz https://registry.npmjs.org/jade/-/jade-0.35.0.tgz
+193 silly lockFile 606948c4-jade-0-35-0 jade@0.35.0
+194 silly lockFile 606948c4-jade-0-35-0 jade@0.35.0
+195 http 200 https://registry.npmjs.org/restify
+196 silly registry.get cb [ 200,
+196 silly registry.get   { date: 'Fri, 19 Sep 2014 06:04:05 GMT',
+196 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+196 silly registry.get     etag: '"1FE8J270HJAWSQCVVA735BKKK"',
+196 silly registry.get     'content-type': 'application/json',
+196 silly registry.get     'cache-control': 'max-age=60',
+196 silly registry.get     'content-length': '148222',
+196 silly registry.get     'accept-ranges': 'bytes',
+196 silly registry.get     via: '1.1 varnish',
+196 silly registry.get     age: '2507',
+196 silly registry.get     'x-served-by': 'cache-ty68-TYO',
+196 silly registry.get     'x-cache': 'HIT',
+196 silly registry.get     'x-cache-hits': '1',
+196 silly registry.get     'x-timer': 'S1411106645.632341,VS0,VE189',
+196 silly registry.get     vary: 'Accept',
+196 silly registry.get     'keep-alive': 'timeout=10, max=50',
+196 silly registry.get     connection: 'Keep-Alive' } ]
+197 silly addNameRange number 2 { name: 'restify', range: '*', hasData: true }
+198 silly addNameRange versions [ 'restify',
+198 silly addNameRange   [ '0.1.0',
+198 silly addNameRange     '0.1.1',
+198 silly addNameRange     '0.1.2',
+198 silly addNameRange     '0.1.4',
+198 silly addNameRange     '0.1.5',
+198 silly addNameRange     '0.1.6',
+198 silly addNameRange     '0.1.7',
+198 silly addNameRange     '0.1.8',
+198 silly addNameRange     '0.1.9',
+198 silly addNameRange     '0.1.10',
+198 silly addNameRange     '0.1.11',
+198 silly addNameRange     '0.1.12',
+198 silly addNameRange     '0.1.13',
+198 silly addNameRange     '0.1.14',
+198 silly addNameRange     '0.1.15',
+198 silly addNameRange     '0.1.16',
+198 silly addNameRange     '0.1.17',
+198 silly addNameRange     '0.1.18',
+198 silly addNameRange     '0.1.19',
+198 silly addNameRange     '0.1.20',
+198 silly addNameRange     '0.1.21',
+198 silly addNameRange     '0.1.22',
+198 silly addNameRange     '0.1.23',
+198 silly addNameRange     '0.2.0',
+198 silly addNameRange     '0.2.1',
+198 silly addNameRange     '0.2.2',
+198 silly addNameRange     '0.2.3',
+198 silly addNameRange     '0.2.4',
+198 silly addNameRange     '0.2.5',
+198 silly addNameRange     '0.2.6',
+198 silly addNameRange     '0.2.7',
+198 silly addNameRange     '0.2.8',
+198 silly addNameRange     '0.2.9',
+198 silly addNameRange     '0.2.10',
+198 silly addNameRange     '0.2.11',
+198 silly addNameRange     '0.2.12',
+198 silly addNameRange     '0.2.13',
+198 silly addNameRange     '0.3.0',
+198 silly addNameRange     '0.3.1',
+198 silly addNameRange     '0.3.2-pre1',
+198 silly addNameRange     '0.3.2',
+198 silly addNameRange     '0.3.3',
+198 silly addNameRange     '0.3.4',
+198 silly addNameRange     '0.3.5',
+198 silly addNameRange     '0.3.6',
+198 silly addNameRange     '0.3.7',
+198 silly addNameRange     '0.3.8',
+198 silly addNameRange     '0.3.9',
+198 silly addNameRange     '0.3.10',
+198 silly addNameRange     '0.3.11',
+198 silly addNameRange     '0.3.12',
+198 silly addNameRange     '0.3.14',
+198 silly addNameRange     '0.3.15',
+198 silly addNameRange     '0.4.0',
+198 silly addNameRange     '0.4.1',
+198 silly addNameRange     '0.4.2',
+198 silly addNameRange     '0.4.3',
+198 silly addNameRange     '0.4.4',
+198 silly addNameRange     '0.5.0',
+198 silly addNameRange     '0.5.1',
+198 silly addNameRange     '0.5.3',
+198 silly addNameRange     '0.5.4',
+198 silly addNameRange     '0.5.5',
+198 silly addNameRange     '0.5.6',
+198 silly addNameRange     '1.0.0-1-rc',
+198 silly addNameRange     '1.0.0-1-rc2',
+198 silly addNameRange     '0.5.7',
+198 silly addNameRange     '1.0.0',
+198 silly addNameRange     '1.0.1',
+198 silly addNameRange     '1.1.0',
+198 silly addNameRange     '1.1.1',
+198 silly addNameRange     '1.2.0',
+198 silly addNameRange     '1.3.0',
+198 silly addNameRange     '1.4.0',
+198 silly addNameRange     '1.4.1',
+198 silly addNameRange     '1.4.2',
+198 silly addNameRange     '1.4.3',
+198 silly addNameRange     '1.4.4',
+198 silly addNameRange     '2.0.0',
+198 silly addNameRange     '2.0.1',
+198 silly addNameRange     '2.0.2',
+198 silly addNameRange     '2.0.3',
+198 silly addNameRange     '2.0.4',
+198 silly addNameRange     '2.1.0',
+198 silly addNameRange     '2.1.1',
+198 silly addNameRange     '2.2.0',
+198 silly addNameRange     '2.2.1',
+198 silly addNameRange     '2.3.0',
+198 silly addNameRange     '2.3.1',
+198 silly addNameRange     '2.3.2',
+198 silly addNameRange     '2.3.3',
+198 silly addNameRange     '2.3.4',
+198 silly addNameRange     '2.3.5',
+198 silly addNameRange     '2.4.0',
+198 silly addNameRange     '2.4.1',
+198 silly addNameRange     '2.5.0',
+198 silly addNameRange     '2.5.1',
+198 silly addNameRange     '2.6.0',
+198 silly addNameRange     '2.6.1',
+198 silly addNameRange     '2.6.2',
+198 silly addNameRange     '2.6.3',
+198 silly addNameRange     '2.7.0',
+198 silly addNameRange     '2.8.0',
+198 silly addNameRange     '2.8.1',
+198 silly addNameRange     '2.8.2' ] ]
+199 verbose addNamed [ 'restify', '2.8.2' ]
+200 verbose addNamed [ '2.8.2', '2.8.2' ]
+201 silly lockFile 190c378a-restify-2-8-2 restify@2.8.2
+202 verbose lock restify@2.8.2 /Users/Apple/.npm/190c378a-restify-2-8-2.lock
+203 silly lockFile 539c46f2-js-org-restify-restify-2-8-2-tgz https://registry.npmjs.org/restify/-/restify-2.8.2.tgz
+204 verbose lock https://registry.npmjs.org/restify/-/restify-2.8.2.tgz /Users/Apple/.npm/539c46f2-js-org-restify-restify-2-8-2-tgz.lock
+205 verbose addRemoteTarball [ 'https://registry.npmjs.org/restify/-/restify-2.8.2.tgz',
+205 verbose addRemoteTarball   '610188fa561ec33644022022c01b8784086a704b' ]
+206 info retry fetch attempt 1 at 14:08:25
+207 verbose fetch to= /var/folders/sp/szqjdzgs0yd3fxp8n72ml1d00000gn/T/npm-2885-R7Cw3Fq3/registry.npmjs.org/restify/-/restify-2.8.2.tgz
+208 http GET https://registry.npmjs.org/restify/-/restify-2.8.2.tgz
+209 http 200 https://registry.npmjs.org/restify/-/restify-2.8.2.tgz
+210 silly lockFile 539c46f2-js-org-restify-restify-2-8-2-tgz https://registry.npmjs.org/restify/-/restify-2.8.2.tgz
+211 silly lockFile 539c46f2-js-org-restify-restify-2-8-2-tgz https://registry.npmjs.org/restify/-/restify-2.8.2.tgz
+212 silly lockFile 190c378a-restify-2-8-2 restify@2.8.2
+213 silly lockFile 190c378a-restify-2-8-2 restify@2.8.2
+214 silly lockFile 6936f8cb-restify restify@*
+215 silly lockFile 6936f8cb-restify restify@*
+216 error Error: shasum check failed for /var/folders/sp/szqjdzgs0yd3fxp8n72ml1d00000gn/T/npm-2885-R7Cw3Fq3/registry.npmjs.org/jade/-/jade-0.35.0.tgz
+216 error Expected: 75ec1d966a1203733613e8c180e2aa8685c16da9
+216 error Actual:   de5dcb40e85006dda74d7e974fafbe1bce49bbf8
+216 error From:     https://registry.npmjs.org/jade/-/jade-0.35.0.tgz
+216 error     at /usr/local/lib/node_modules/npm/node_modules/sha/index.js:38:8
+216 error     at ReadStream.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/sha/index.js:85:7)
+216 error     at ReadStream.emit (events.js:117:20)
+216 error     at _stream_readable.js:943:16
+216 error     at process._tickCallback (node.js:419:13)
+217 error If you need help, you may report this *entire* log,
+217 error including the npm and node versions, at:
+217 error     <http://github.com/npm/npm/issues>
+218 error System Darwin 13.3.0
+219 error command "node" "/usr/local/bin/npm" "install"
+220 error cwd /Users/Apple/Java_project/whalecar/source/whalecar-facade
+221 error node -v v0.10.32
+222 error npm -v 1.4.28
+223 verbose exit [ 1, true ]

@@ -1,4 +1,4 @@
-.navbar.navbar-inverse(style="width:1410px;margin:0 auto;")
+.navbar.navbar-inverse(style="width:1200px;margin:0 auto;")
     #toptab.navbar-inner(style='height: 36px;border-bottom-width: 0px;background-image:linear-gradient(to bottom, #112742, #112742)')
         div(style='margin-bottom: 0px; margin-top: 8px;width:auto;')
             //去掉导航微博链接
@@ -28,7 +28,8 @@
                         a(href="/shophome",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 4S店管理页面
                         a(onclick="shopLogout();return false;",href="#",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 注销
                 -else
-                    a(href="/userhome",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 用户中心
+                    a(href="/userhome",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav')|#{session.currentUser.userName}
+                    //input(type='text',id="userName",name="userName", value=session.currentUser.userName,onFocus="if(value==defaultValue){value='';}")
                     a(onclick="logout();return false;",href="#",role="button",style="margin: auto; display: inline;color:#729ac1;font-size:16px;margin-left:10px;",calss='nav') 注销
 include user
 

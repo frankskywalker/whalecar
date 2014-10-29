@@ -9,32 +9,32 @@ block append js
     script(type="text/javascript",src="js/jquery.slides.min.js")
 
 block append content
-    #slider_div_1(style="width:1410px;height:540px;margin:0 auto;padding:0px;")
-        .slides_container#slider_div_2(style="list-style:none;z-index:-1;width:1410px;height:540px")
+    #slider_div_1(style="width:1200px;height:463px;margin:0 auto;padding:0px;")
+        .slides_container#slider_div_2(style="list-style:none;z-index:-1;width:1200px;height:463px;margin:0 auto")
             li.bitter2.glume
                 span.Limg.slide_pic
                     a(href='/golf7Adver')
-                        img.img_c_1(src='img/banner/scrollimg6.png',style="width:1410px;height:540px")
+                        img.img_c_1(src='img/1.png',style="width:1200px;height:463px;margin:0 auto")
             li.bitter0.glume
                 span.Limg.slide_pic
-                    a(href='./car?id=232')
-                        img.img_c_1(src='img/banner/audihui.png',style="width:1410px;height:540px")
+                    a(href='/vw6_adver')
+                        img.img_c_1(src='img/banner/dongman.jpg',style="width:1200px;height:463px;margin:0 auto")
             li.bitter1.glume
                 span.Limg.slide_pic
                     a(href='#carModelViewAnchor')
-                        img.img_c_1(src='img/banner/logo4.jpg',style="width:1410px;height:540px")
+                        img.img_c_1(src='img/banner/logo4.jpg',style="width:1200px;height:463px;margin:0 auto")
             li.bitter3.glume
                 span.Limg.slide_pic
                     a(href='./car?id=228')
-                        img.img_c_1(src='img/banner/logo5.jpg',style="width:1410px;height:540px")
+                        img.img_c_1(src='img/banner/logo5.jpg',style="width:1200px;height:463px;margin:0 auto")
             li.bitter4.glume
                 span.Limg.slide_pic
                     a(href='./car?id=225')
-                        img.img_c_1(src='img/banner/scrollimg3.jpg',style="width:1410px;height:540px")
+                        img.img_c_1(src='img/banner/scrollimg3.jpg',style="width:1200px;height:463px;margin:0 auto")
         .pagination_p
            ul.pagination(style="list-style:none;")
              li(style="display: list-item; ")
-               a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(0)") 发现7的世界
+               a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(0)") 30S搞定优惠
              li(style="display: list-item;")
                a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(1)") 奥迪全系登录梯卡
              li(style="display: list-item;")
@@ -43,8 +43,8 @@ block append content
                a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(3)") 底价购买
              li(style='border-right: 1px solid #FFFFFF;')
                a.page_a_1(link='./car?id=228',style="text-decoration: none;",onmouseover="scrollTo(4)") 新cc 孑然登场
-    div(style="height:200px;width:100%;background-color:#ffffff")
-        div(style="background-image: url(img/banner3.png);width:1410px;height:215px;margin:0 auto;")
+    div(style="height:170px;width:100%;background-color:#ffffff")
+        div(style="background-image: url(img/banner3.png);width:1200px;height:170px;margin:0 auto;")
             div(id="news" style="padding-top:50px;padding-left:85px;font-size:12px;")
                 div(style="margin-left:80px;height:80px;overflow:hidden;width:300px;marign-top:20px;")
                     ul
@@ -65,33 +65,33 @@ block append content
                         li(style="list-style-type:none;") 江**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
                         li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
                         li(style="list-style-type:none;") 郑**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                div(style="margin-top:-73px;padding-left:1102px;width: 100px;height:90px;")
+                div(style="margin-top:-88px;padding-left:918px;width: 100px;height:90px;")
                     form(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post")
-                        input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
-                        input(type="text" ,style="height:16.5px;width:95px;padding:0px;margin-bottom:3px;",id="phoneNum",name="phoneNum")
-                        div(style="margin-top:15px")
-                            select(type="text",style="height:19.5px;width:97px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
+                        input(type="text" ,style="height:16.5px;width:90px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
+                        input(type="text" ,style="height:16.5px;width:90px;padding:0px;margin-bottom:3px;margin-top:6px;",id="phoneNum",name="phoneNum")
+                        div(style="margin-top:6px")
+                            select(type="text",style="height:19.5px;width:92px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
                                 option(select="select") 选择品牌
                                 each carBrand in idAndCname
                                     option(value="#{carBrand.id}") #{carBrand.cname}
                         div
-                            select(id="idAndCname",style="height:19.5px;width:97px;padding:0px;margin-top:-7px;" ,name="idAndCname")
+                            select(id="idAndCname",style="height:19.5px;width:92px;padding:0px;margin-top:-7px;" ,name="idAndCname")
                                 option(value="") 选择车型
                             input#allCars(type="hidden",value=JSON.stringify(idAndCname))
-                        input(type="button"  style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-top:-150px;margin-left:130px;background-image:url(img/anniu.png);width:54px;height:28px", onclick="success();")
+                        input(type="button"  style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-top:-100px;margin-left:130px;background-image:url(img/anniu.png);width:54px;height:28px", onclick="success();")
 
     div(style="background-color: #f6f6f6;height:496px")
-        .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:transparent;max-width: 1410px;width:1410px;")
+        .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:transparent;max-width: 1200px;width:1200px;")
             div(style='')
-                div(style="width:1410px;margin:0 auto;padding-top:5px;padding-bottom:5px")
-                    h6(style="font-size:24px;font-weight:lighter;color:#666666;margin-top:10px") 梯卡推荐
+                div(style="width:1200px;margin:0 auto;padding-top:5px;padding-bottom:5px")
+                    h6(style="font-size:24px;font-weight:lighter;color:#666666;margin-top:10px;margin-left:0px;") 梯卡推荐
                     // img(src="../img/banner/cheapBand.png",style="padding-bottom:5px;padding-right:5px")
                 #cheap(style="margin-top:10px")
                     .row-fluid
                         ul.thumbnails(style='margin-top: 0px;margin-bottom:0px;margin-left:-13px')
-                            li(style="width:591px;height:442px;margin-right: 7px; margin-left: 14px;")
+                            li(style="width:505px;height:383px;margin-right: 7px; margin-left: 24px;")
                                 a.thumbnail(href="./car?id=#{priceOffCarModelLv1[0].id}",style="padding:8px;background-color:white;border:;transparent;border-radius:0px")
-                                    img(style='width: 575px; height: 383px;', src='img/price001.jpg')
+                                    img(style='width: 505px; height: 383px;', src='img/price0001.jpg')
                                     .caption(style='height:51px; padding:5px;')
                                         div.pull-left(style="padding:5px;")
                                             img(src="img/icon001.png")
@@ -105,9 +105,9 @@ block append content
                                             span(style="font-size: 35px; color:#ff9a00")
                                                 i #{priceOffCarModelLv1[0].diffPrice.toFixed(2)}
 
-                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: 7px;margin-bottom:7px;")
+                            li(style="width:240px;height:180px;margin-right: 14px; margin-left: 15px;margin-bottom:7px;")
                                 a.thumbnail(href="./car?id=#{priceOffCarModelLv1[1].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;border-radius:0px")
-                                    img(style='width: 290px; height: 180px;', src='img/ix35.jpg')
+                                    img(style='width: 240px; height: 180px;', src='img/price0002.jpg')
                                     .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
                                         div.pull-left(style="padding:0px 2px;")
                                             img(src="img/icon002.png")
@@ -118,9 +118,9 @@ block append content
                                             span(style="font-size: 14px; color:#ff9a00")
                                                 | 立减
                                                 i(style="color:#ff9a00") #{priceOffCarModelLv1[1].diffPrice.toFixed(2)}
-                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: -320px;margin-top:239px;")
+                            li(style="width:240px;height:180px;margin-right: 14px; margin-left: -254px;margin-top:238px;")
                                 a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;border-radius:0px")
-                                    img(style='width: 290px; height: 180px;', src='img/a4l.jpg')
+                                    img(style='width: 240px; height: 180px;', src='img/price0003.jpg')
                                     .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
                                         div.pull-left(style="padding:0px 2px;")
                                             img(src="img/icon003.png")
@@ -131,9 +131,9 @@ block append content
                                             span(style="font-size: 14px; color:#ff9a00")
                                                 | 立减
                                                 i(style="color:#ff9a00") #{priceOffCarModelLv1[2].diffPrice.toFixed(2)}
-                            li(style="width:306px;height:214px;margin-right: 14px; margin-left: 940px;margin-top:-473px;")
+                            li(style="width:240px;height:180px;margin-right: 14px; margin-left: 810px;margin-top:-438px;")
                                 a.thumbnail(href="./car?id=#{priceOffCarModelLv1[3].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;border-radius:0px")
-                                    img(style='width: 290px; height: 180px;', src='img/price4.png')
+                                    img(style='width: 240px; height: 180px;', src='img/price0004.jpg')
                                     .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
                                         div.pull-left(style="padding:0px 2px;")
                                             img(src="img/icon003.png")
@@ -144,9 +144,9 @@ block append content
                                             span(style="font-size: 14px; color:#ff9a00")
                                                 | 立减
                                                 i(style="#ff9a00") #{priceOffCarModelLv1[3].diffPrice.toFixed(2)}
-                            li(style="width:306px;height:214px;margin-right: 14px;margin-left: 940px;margin-top:-234px")
+                            li(style="width:240px;height:180px;margin-right: 14px;margin-left: 810px;margin-top:-200px")
                                 a.thumbnail(href="./car?id=#{priceOffCarModelLv1[4].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;border-radius:0px")
-                                    img(style='width: 290px; height: 180px;', src='img/price5.png')
+                                    img(style='width: 240px; height: 180px;', src='img/price0005.jpg')
                                     .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
                                         div.pull-left(style="padding:0px 2px;")
                                             img(src="img/icon003.png")
@@ -157,9 +157,9 @@ block append content
                                             span(style="font-size: 14px; color:#ff9a00")
                                                 | 立减
                                                 i(style="#ff9a00") #{priceOffCarModelLv1[4].diffPrice.toFixed(2)}
-                            li(style="width:170px;height:442px;margin-right: 14px;margin-left: 1255px;margin-top:-473px")
+                            li(style="width:124px;height:416px;margin-right: 14px;margin-left: 1074px;margin-top:-438px")
                                 a.thumbnail(href="./car?id=#{priceOffCarModelLv1[2].id}",style="padding:8px;background-color:#ffffff;border:solid 0px #aaaaaa;border-radius:0px")
-                                    img(style='width: 160px; height: 418px;', src='img/price6.png')
+                                    img(style='width: 124px; height: 416px;', src='img/sai.png')
                                     .caption(style='height: 18px; padding: 5px 0px 2px 2px;')
                                         div.pull-right(style="padding:0px 0px;width:13px;")
                                             img(src="img/icon004.png",style="width:13px;height:13px;margin-bottom: 5px;margin-left: 2px;")
@@ -170,8 +170,8 @@ block append content
 
                 #focus
                     // div#carModelViewAnchor(style="width:918px;margin:0 auto;padding-top:5px;padding-bottom:5px")
-    div(style="margin-top:35px;padding-bottom: 30px;min-width:1410px;background:#ffffff")
-        div(style='margin:0 auto;width:1410px;')
+    div(style="margin-top:35px;padding-bottom: 30px;min-width:1200px;background:#ffffff")
+        div(style='margin:0 auto;width:1200px;')
             h6(style="font-size:24px;font-weight:lighter;color:#666666") <br> 梯卡优惠
             .row-fluid#carModelView(style="background-color:#ffffff;margin-top:20px")
                 //内容ajax读取
