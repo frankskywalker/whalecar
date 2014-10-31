@@ -254,5 +254,12 @@ public class ShopService {
         return golf7AdvMapper.queryGolf7Type9();
     }
 
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/getSignUpType10")
+    public @ResponseBody
+    List<ManagerSignUp> getSignUpType10() {
+        return golf7AdvMapper.queryGolf7Type10();
+    }
+
+
 
 }
