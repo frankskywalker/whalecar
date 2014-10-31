@@ -14,4 +14,6 @@ public interface Golf7AdvMapper {
     public List<ManagerSignUp> queryGolf7();
 
     public List<ManagerSignUp> queryGolf7Type9();
+
+    public List<ManagerSignUp> queryGolf7Type10();
 }
