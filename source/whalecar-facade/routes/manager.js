@@ -75,6 +75,19 @@ exports.managerGetCarModelLv1 = function(req,res){
     });
 }
 
+exports.managerSignUp = function(req,res){
+    service.client.get("/manager/getSignUp",function(sErr,sReq,sRes,sData){
+        res.json(sData);
+    });
+}
+
+exports.managerSignUpType9 = function(req,res){
+    service.client.get("/manager/getSignUpType9",function(sErr,sReq,sRes,sData){
+        res.json(sData);
+    });
+}
+
+
 
 exports.updateManagerGetCarModelLv1 = function(req,res){
     var id = req.body.id;

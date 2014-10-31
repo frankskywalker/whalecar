@@ -174,6 +174,8 @@ app.all("/managerGetCarBrand",manager.managerGetCarBrand);
 app.all("/managerGetCarSubBrand",manager.managerGetCarSubBrand);
 app.all("/updateManagerGetCarBrand",manager.updateManagerGetCarBrand);
 app.all("/managerGetCarModelLv1",manager.managerGetCarModelLv1);
+app.all("/managerSignUp",manager.managerSignUp);
+app.all("/managerSignUpType9",manager.managerSignUpType9);
 app.all("/updateManagerGetCarModelLv1",manager.updateManagerGetCarModelLv1);
 app.all("/managerGetCarModelLv1Image",manager.managerGetCarModelLv1Image);
 app.all("/updateManagerGetCarModelLv1Image",manager.updateManagerGetCarModelLv1Image);
