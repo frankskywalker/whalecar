@@ -21,7 +21,8 @@ var index = require('./routes/index'),
     addUserCar = require('./routes/addUserCar'),
     weixinAdver = require('./routes/weixinAdver'),
     wxcoupan = require('./routes/wxcoupan'),
-    vw6_adver = require('./routes/golf7Adv');
+    vw6_adver = require('./routes/golf7Adv'),
+    vw7_adver = require('./routes/golf7Adv');
 
 var app = express();
 // all environments
@@ -176,6 +177,7 @@ app.all("/updateManagerGetCarBrand",manager.updateManagerGetCarBrand);
 app.all("/managerGetCarModelLv1",manager.managerGetCarModelLv1);
 app.all("/managerSignUp",manager.managerSignUp);
 app.all("/managerSignUpType9",manager.managerSignUpType9);
+app.all("/managerSignUpType10",manager.managerSignUpType10);
 app.all("/updateManagerGetCarModelLv1",manager.updateManagerGetCarModelLv1);
 app.all("/managerGetCarModelLv1Image",manager.managerGetCarModelLv1Image);
 app.all("/updateManagerGetCarModelLv1Image",manager.updateManagerGetCarModelLv1Image);
@@ -188,6 +190,7 @@ app.all("/updateManagerGetCarModelLv3",manager.updateManagerGetCarModelLv3);
 app.all("/managerSignUp",manager.managerSignUp);
 app.all("/addUserCar",addUserCar.addUserCar);
 app.all("/vw6_adver",golf7Adv.page7);
+app.all("/vw7_adver",golf7Adv.page8);
 app.all("/cartest",function(req,res){
     res.render("cartest")
 });
@@ -246,6 +249,9 @@ app.all('/golf7adverSave',golf7Adv.save);
 
 app.all('/vw6_adver',golf7Adv.page7);
 app.all('/vw6AdverSave',golf7Adv.save7);
+
+app.all('/vw7_adver',golf7Adv.page8);
+app.all('/vw7AdverSave',golf7Adv.save8);
 
 app.all('/vw_adver',golf7Adv.page2);
 app.all('/vwAdverSave',golf7Adv.save2);

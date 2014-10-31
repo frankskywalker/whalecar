@@ -87,6 +87,12 @@ exports.managerSignUpType9 = function(req,res){
     });
 }
 
+exports.managerSignUpType10 = function(req,res){
+    service.client.get("/manager/getSignUpType10",function(sErr,sReq,sRes,sData){
+        res.json(sData);
+    });
+}
+
 
 
 exports.updateManagerGetCarModelLv1 = function(req,res){
