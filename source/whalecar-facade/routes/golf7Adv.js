@@ -15,6 +15,10 @@ exports.baoming = function(req,res){
     res.render("baoming");
 }
 
+exports.adver11 = function(req,res){
+    res.render("adver11");
+}
+
 exports.page3 = function(req,res){
     res.render("vw2_adver");
 }
@@ -198,5 +202,17 @@ exports.save8 = function(req,res,next){
             return;
         }
         res.render("vw7_adver");
+    });
+}
+
+exports.adver11Save = function(req,res,next){
+    var adver11 = req.body;
+    adver11.type = 11;
+    service.client.post("/saveGolf7Adv",adver11,function(error){
+        if(error){
+            next(error);
+            return;
+        }
+        res.render("adver11");
     });
 }

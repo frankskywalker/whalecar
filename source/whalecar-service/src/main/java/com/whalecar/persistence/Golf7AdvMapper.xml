@@ -46,5 +46,10 @@
         order by id desc
     </select>
 
+    <select id="queryGolf7Type11" resultType="managerSignUp">
+        SELECT * FROM whalecar_server.Golf7_Adv where type= 11
+        order by id desc
+    </select>
+
 
 </mapper>

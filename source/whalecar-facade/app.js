@@ -178,6 +178,7 @@ app.all("/managerGetCarModelLv1",manager.managerGetCarModelLv1);
 app.all("/managerSignUp",manager.managerSignUp);
 app.all("/managerSignUpType9",manager.managerSignUpType9);
 app.all("/managerSignUpType10",manager.managerSignUpType10);
+app.all("/managerSignUpType11",manager.managerSignUpType11);
 app.all("/updateManagerGetCarModelLv1",manager.updateManagerGetCarModelLv1);
 app.all("/managerGetCarModelLv1Image",manager.managerGetCarModelLv1Image);
 app.all("/updateManagerGetCarModelLv1Image",manager.updateManagerGetCarModelLv1Image);
@@ -259,6 +260,9 @@ app.all('/vwAdverSave',golf7Adv.save2);
 app.all('/baoming',golf7Adv.baoming);
 app.all('/baomingSaveAuto',golf7Adv.baomingSaveAuto);
 app.all('/baomingSaveAudi',golf7Adv.baomingSaveAudi);
+
+app.all('/adver11',golf7Adv.adver11);
+app.all('/adver11Save',golf7Adv.adver11Save);
 
 app.all('/vw2_adver',golf7Adv.page3);
 app.all('/vw2AdverSave',golf7Adv.save3);

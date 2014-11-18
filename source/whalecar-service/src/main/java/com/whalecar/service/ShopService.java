@@ -223,6 +223,7 @@ public class ShopService {
 				PaginationUtils.getStartIndex(pageIndex, pageSize));
 
 		return result;
+
 	}
 
     /**
@@ -258,6 +259,12 @@ public class ShopService {
     public @ResponseBody
     List<ManagerSignUp> getSignUpType10() {
         return golf7AdvMapper.queryGolf7Type10();
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/getSignUpType11")
+    public @ResponseBody
+    List<ManagerSignUp> getSignUpType11() {
+        return golf7AdvMapper.queryGolf7Type11();
     }
 
 
