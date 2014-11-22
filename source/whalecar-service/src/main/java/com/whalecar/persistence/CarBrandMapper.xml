@@ -13,15 +13,7 @@
     Where flagUseable  = 'yes'
     Order by orderIndex
   </select>
-  
-  <select id="querySubBrandByBrandId" parameterType="integer"  resultType="CarSubBrand">   
-    SELECT
-        *
-    FROM
-        Car_Sub_Brand
-    Where CarBrand = #{parameter} and flagUseable  = 'yes'
-    Order by orderIndex
-  </select>
+
 
   <select id="queryAllBrandAndSubBrand" resultType="CarBrandWithSubBrandView">
       SELECT

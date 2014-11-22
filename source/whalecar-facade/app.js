@@ -273,6 +273,14 @@ app.all('/about_us',function(req,res){
 
 app.all('/wxcoupan',wxcoupan.page_wx);
 
+app.all("/wxcarshow",car.page_car_show);
+
+app.all("/wxcarselect",car.page_car_select);
+
+app.all("/wxsell",car.page_car_sell);
+
+app.all("/wxcardetail",car.page_car_detail);
+
 app.all('/love_page',function(req,res){
     res.render("love_page");
 });

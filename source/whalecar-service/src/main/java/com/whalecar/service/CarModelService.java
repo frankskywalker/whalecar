@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +50,15 @@ public class CarModelService {
 		return carModelMapper.queryCarModelLv1ByBrand(conditionMap);
 	}
 
-	/**
+    @RequestMapping(method = RequestMethod.GET, value = "getCarModelLv1ByBrand_2")
+    public @ResponseBody
+    List<CarModelLv1> getCarModelLv1ByBrand_2(Integer carBrand,Integer carSubBrand) {
+        return carModelMapper.queryCarModelLv1ByBrandId(carBrand,carSubBrand);
+    }
+
+
+
+    /**
 	 * 根据id查询 CarModelLv1
 	 * 
 	 * @param conditionMap

@@ -1,6 +1,7 @@
 package com.whalecar.persistence;
 
 import com.whalecar.domain.*;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +17,8 @@ public interface CarModelMapper {
 
 	public List<CarModelLv1> queryCarModelLv1ByBrand(
 			Map<String, Object> conditionMap);
+
+    public List<CarModelLv1> queryCarModelLv1ByBrandId(Integer carBrand,Integer carSubBrand);
 
 	/**
 	 * 分页查询ModelView

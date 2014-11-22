@@ -20,6 +20,15 @@
 		ORDER BY orderIndex
 	</select>
 
+    <select parameterType="map" id="queryCarModelLv1ByBrandId" resultType="CarModelLv1">
+        SELECT
+        *
+        FROM Car_Model_Lv1
+        WHERE flagUseable = 'yes' and carBrand = #{0} and carSubBrand = #{1}
+        ORDER BY orderIndex
+    </select>
+
+
 	<select parameterType="Integer" id="queryCarModelLv1ViewById" resultType="CarModelLv1View">
 	   SELECT
 	       Car_Model_Lv1.* ,
