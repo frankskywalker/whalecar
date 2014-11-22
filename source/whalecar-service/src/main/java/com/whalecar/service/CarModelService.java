@@ -319,4 +319,34 @@ public class CarModelService {
     }
 
 
+    /**
+     * 根据carModelLv1Id查询carModellv2
+     * @param carModelLv1
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/queryCarModel")
+    public @ResponseBody List queryCarModel(Integer carModelLv1){
+        List<CarModelLv2> returnList = new ArrayList();
+        List<CarModelLv2> lv2List =  new ArrayList();
+        List<CarModelLv3> lv3List =  new ArrayList();
+        lv2List = carModelMapper.queryLv2BycarModelLv1(carModelLv1);
+        for (int i = 0; i < lv2List.size() ;i++){
+            CarModelLv2 modelLv2 = lv2List.get(i);
+            int lv2Id = modelLv2.getId();
+            List<CarModelLv3> newList = carModelMapper.queryLv3BycarModelLv2(lv2Id);
+            CarModelLv2 newLv2 = new CarModelLv2();
+
+            newLv2.setId(modelLv2.getId());
+            newLv2.setCarModelLv1(modelLv2.getCarModelLv1());
+            newLv2.setCarModelLv1Name(modelLv2.getCarModelLv1Name());
+            newLv2.setShortName(modelLv2.getShortName());
+            newLv2.setFullName(modelLv2.getFullName());
+            newLv2.setOrderIndex(modelLv2.getOrderIndex());
+            newLv2.setFlagUseable(modelLv2.getFlagUseable());
+            newLv2.setCarModelLv3List(newList);
+            returnList.add(newLv2);
+        }
+        return returnList;
+    }
+
 }
