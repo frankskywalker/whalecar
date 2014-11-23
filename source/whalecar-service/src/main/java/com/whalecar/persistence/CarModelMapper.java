@@ -109,5 +109,9 @@ public interface CarModelMapper {
     //返回所有汽车品牌
     public List<CarBrand> queryAllCarBrand();
 
+    public List<CarModelLv2> queryLv2BycarModelLv1(Integer carModelLv1);
+
+    public List<CarModelLv3> queryLv3BycarModelLv2(Integer carModelLv2);
+
 
 }
