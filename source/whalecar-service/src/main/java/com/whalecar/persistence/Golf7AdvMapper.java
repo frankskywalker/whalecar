@@ -1,6 +1,5 @@
 package com.whalecar.persistence;
 
-import com.whalecar.domain.Golf7Adv;
 import com.whalecar.domain.ManagerSignUp;
 
 import java.util.List;
@@ -13,4 +12,10 @@ public interface Golf7AdvMapper {
     public int insert(Map<String,String> golf7Adv);
 
     public List<ManagerSignUp> queryGolf7();
+
+    public List<ManagerSignUp> queryGolf7Type9();
+
+    public List<ManagerSignUp> queryGolf7Type10();
+
+    public List<ManagerSignUp> queryGolf7Type11();
 }

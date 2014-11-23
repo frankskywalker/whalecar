@@ -35,4 +35,21 @@
         order by id desc
     </select>
 
+    <select id="queryGolf7Type9" resultType="managerSignUp">
+        SELECT * FROM whalecar_server.Golf7_Adv where type= 9
+        order by id desc
+    </select>
+
+
+    <select id="queryGolf7Type10" resultType="managerSignUp">
+        SELECT * FROM whalecar_server.Golf7_Adv where type= 10
+        order by id desc
+    </select>
+
+    <select id="queryGolf7Type11" resultType="managerSignUp">
+        SELECT * FROM whalecar_server.Golf7_Adv where type= 11
+        order by id desc
+    </select>
+
+
 </mapper>

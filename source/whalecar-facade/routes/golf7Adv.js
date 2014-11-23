@@ -15,6 +15,10 @@ exports.baoming = function(req,res){
     res.render("baoming");
 }
 
+exports.adver11 = function(req,res){
+    res.render("adver11");
+}
+
 exports.page3 = function(req,res){
     res.render("vw2_adver");
 }
@@ -33,6 +37,10 @@ exports.page6 = function(req,res){
 
 exports.page7 = function(req,res){
     res.render("vw6_adver");
+}
+
+exports.page8 = function(req,res){
+    res.render("vw7_adver");
 }
 
 exports.save = function(req,res,next){
@@ -172,5 +180,39 @@ exports.save7 = function(req,res,next){
             return;
         }
         res.render("vw6_adver");
+    });
+}
+
+exports.save8 = function(req,res,next){
+    var golf7Adv = req.body;
+    var attentionModelStr = "";
+    if(golf7Adv.attentionModel){
+        for(var i = 0;i < golf7Adv.attentionModel.length;i++){
+            attentionModelStr += golf7Adv.attentionModel[i];
+            if(i != golf7Adv.attentionModel.length - 1){
+                attentionModelStr += ",";
+            }
+        }
+        golf7Adv.attentionModel = attentionModelStr;
+    }
+    golf7Adv.type = 10;
+    service.client.post("/saveGolf7Adv",golf7Adv,function(error){
+        if(error){
+            next(error);
+            return;
+        }
+        res.render("vw7_adver");
+    });
+}
+
+exports.adver11Save = function(req,res,next){
+    var adver11 = req.body;
+    adver11.type = 11;
+    service.client.post("/saveGolf7Adv",adver11,function(error){
+        if(error){
+            next(error);
+            return;
+        }
+        res.render("adver11");
     });
 }

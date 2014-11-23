@@ -1,0 +1,68 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        block css
+            link(href='css/bootstrap.min.css', rel='stylesheet', media='screen')
+            link(href='css/style.css', rel='stylesheet', media='screen')
+            link(rel="icon",type="image/png",href="img/favicon.png")
+        block js
+            script(src='js/jquery-1.10.2.min.js')
+            script(src='js/bootstrap.min.js')
+            script(src='js/spin.min.js')
+            script(src='js/tools.js')
+            script(src='js/jquery.unveil.min.js')
+
+    body
+        div(style="margin:0 auto;width:1100px;")
+          img(src="img/adver10.jpg",style="top:0;left:5%;right:5%;bottom:0;z-index:-1;width:1100px;")
+
+          form#form2(method="POST",action="./adver11Save",style="pading-top:50px;margin-left:440px;margin-top:-770px;background-color:white;height:170px;width:288px;")
+            div(style="margin-left:30px;padding-top: 25px;")
+                span(style="font-size:16px;") 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+                input(type="text",name="name",style="width:90px;height:20px;margin-left:5px;margin-top:3px;margin-bottom:4px;font-size:13px;line-height:20px;padding:0px 5px;")
+            div(style="margin-left:30px;margin-top;0px;padding-top: 8px;")
+                span(style="font-size:16px;") 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+                input(type="radio",name="sex",value="先生",checked="checked",style="margin-left:5px;margin-right:5px;margin-top:0px;margin-bottom:4px;font-size:13px;line-height:20px;padding:0px 5px;")
+                span(style="font-size:11px;") 先生
+                input(type="radio",name="sex",value="女士",style="margin-left:5px;margin-right:5px;margin-top:0px;margin-bottom:4px;font-size:13px;line-height:20px;padding:0px 5px;")
+                span(style="font-size:11px;") 女士
+            div(style="margin-left:30px;margin-top;0px;padding-top: 8px;")
+                span(style="font-size:16px;") 手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机
+                input#tel2(type="text",name="tel",style="width:90px;height:20px;margin-left:5px;margin-top:0px;margin-bottom:4px;font-size:13px;line-height:20px;padding:0px 5px;")
+            div(style="margin-left:30px;margin-top;0px;padding-top: 8px;")
+                span(style="font-size:16px;") 意向车型&nbsp;
+                select(name="attentionModel",style="width:102px;height:25px;margin-left:5px;font-size:13px;line-height:25px;margin-top:0px;margin-bottom:4px;")
+                    option 速腾
+                    option 全新高尔夫
+                    option 全新捷达
+                    option 新CC
+                    option 迈腾
+                    option GTI
+                    option 宝来
+
+            div(style="margin-left:65px;margin-top;0px;")
+                a(href="#",onclick="saveAuto();return false;",style="margin-left:80px;font-size:15px;") 确认提交
+
+      script.
+          function saveAudi(){
+            if(submitCheck("#tel1")){
+                $("#form1").submit();
+            }
+          }
+
+          function saveAuto(){
+            if(submitCheck("#tel2")){
+                $("#form2").submit();
+            }
+          }
+          function submitCheck(inputId){
+             if(!$(inputId).val().match(/^1\d{10}$/)){
+                alert("您输入的手机号码格式有误，请重新输入！");
+                return false;
+             }
+             alert("提交成功!")
+             return true;
+          }
+
+

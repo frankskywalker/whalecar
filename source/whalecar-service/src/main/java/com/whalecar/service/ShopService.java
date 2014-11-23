@@ -223,6 +223,7 @@ public class ShopService {
 				PaginationUtils.getStartIndex(pageIndex, pageSize));
 
 		return result;
+
 	}
 
     /**
@@ -243,8 +244,29 @@ public class ShopService {
     }
 
     @RequestMapping(method = RequestMethod.GET,value = "/manager/getSignUp")
-    public @ResponseBody
-    List<ManagerSignUp> getSignUp() {
+         public @ResponseBody
+         List<ManagerSignUp> getSignUp() {
         return golf7AdvMapper.queryGolf7();
     }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/getSignUpType9")
+    public @ResponseBody
+    List<ManagerSignUp> getSignUpType9() {
+        return golf7AdvMapper.queryGolf7Type9();
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/getSignUpType10")
+    public @ResponseBody
+    List<ManagerSignUp> getSignUpType10() {
+        return golf7AdvMapper.queryGolf7Type10();
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/manager/getSignUpType11")
+    public @ResponseBody
+    List<ManagerSignUp> getSignUpType11() {
+        return golf7AdvMapper.queryGolf7Type11();
+    }
+
+
+
 }

@@ -264,4 +264,17 @@
         Order by orderIndex
     </select>
 
+    <select id="queryLv2BycarModelLv1" resultType="CarModelLv2">
+        select *
+        from Car_Model_Lv2
+        where carModelLv1 = #{0}
+    </select>
+
+
+    <select id="queryLv3BycarModelLv2" resultType="CarModelLv3">
+        select *
+        from Car_Model_Lv3
+        where carModelLv2 = #{0}
+    </select>
+
 </mapper>
