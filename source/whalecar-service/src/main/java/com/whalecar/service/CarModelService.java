@@ -537,16 +537,10 @@ public class CarModelService {
 							List<WxWebCarPrice> wxWebCarPriceList = wxCarFPrice.getWxWebCarPriceList();
 							if(wxWebCarPriceList.size() > 0){
 								for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
-									if(price > wxWebCarPrice.getWebPrice() && wxWebCarPrice.getWebPrice() != 0 && wxWebCarPrice.getWebPrice() != null){
+									if(price > wxWebCarPrice.getWebPrice()){
 										price = wxWebCarPrice.getWebPrice();
-									}else {
-										price = 0;
-										wxCarDetailPrice.setWebPriceMin(price);
 									}
 								}
-							}else {
-								price = 0;
-								wxCarDetailPrice.setWebPriceMin(price);
 							}
 						}
 					}else {
@@ -575,11 +569,8 @@ public class CarModelService {
 					List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
 					if(wxCarFPriceList !=null){
 						for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
-							if(price > wxCarFPrice.getFactoryPrice() && wxCarFPrice.getFactoryPrice() != 0 && wxCarFPrice.getFactoryPrice() != null){
+							if(price > wxCarFPrice.getFactoryPrice()){
 								price = wxCarFPrice.getFactoryPrice();
-							}else {
-								price = 0;
-								wxCarDetailPrice.setFactoryPriceMin(price);
 							}
 						}
 					}else {
