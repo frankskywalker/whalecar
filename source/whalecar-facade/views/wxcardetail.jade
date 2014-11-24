@@ -4,50 +4,49 @@ html
         title 梯卡汽车网
         meta(charset='utf-8')
         meta(id="viewport",name="viewport",content="100%")
-        block css
+        link(href='css/try', rel='stylesheet', media='screen')
         block js
     body
         div(style="background-color:#102742;width:100%;height:76px;margin-left:0px;text-align:center;padding-top:38px")
             label(style="color:white;width:100%;height:116px;margin-top:38px;font-size:36px;") 详情
         div(style="background-color:#fcfcfb;margin-top:54px;width:100%;")
             span(style="width:100%;")
-                img(src="img/dasAuto.png", alt='dasAuto',style="margin-left:38px;margin-top:35px;width:45px;height:45px;")
-                span(style="color:#364a62;font-size:36px;margin-top:32px;margin-left:10px;") #{carBrandName.brandName}
+                span(style="color:#364a62;font-size:36px;margin-top:32px;margin-left:35%;") #{carBrandName.brandName}
                 | &nbsp;
                 span(style="color:#364a62;font-size:36px") &nbsp #{carSubBrandName.brandName}
                 div(style="margin-top:36px;")
-                    div(style="color:#747678;margin-left:50px;font-size:24px;")
+                    div(style="color:#747678;margin-left:4%;font-size:24px;")
                         div(style="")
                             img(src="img/wechat_img/redCricle.png",style="margin-left:0px;")
                             each items in CarPrice
-                                label(style="margin-left:40px;font-size:24px") 市场价：#{items.factoryPriceMin} - #{items.factoryPriceMax}
+                                label(style="margin-left:4%;font-size:24px") 市场价：#{items.factoryPriceMin} - #{items.factoryPriceMax}
                         div(style="margin-top:18px;")
                             img(src="img/wechat_img/redCricle.png")
                             each items in CarPrice
-                                label(style="margin-left:40px;;font-size:24px") 网站价：#{items.webPriceMin}<font style="color:#848585">万</font> - #{items.webPriceMax}<font style="color:#848585">万</font>
+                                label(style="margin-left:4%;;font-size:24px") 网站价：#{items.webPriceMin}<font style="color:#747678">万</font> - #{items.webPriceMax}<font style="color:#747678">万</font>
                         div(style="margin-top:18px;")
                             img(src="img/wechat_img/redCricle.png")
                             each carType in CarTypeAndColor.wxLV2List
-                                td(style="margin-left:40px;;font-size:24px") &nbsp&nbsp&nbsp&nbsp&nbsp #{carType.carType}&nbsp
+                                td(style="margin-left:4%;;font-size:24px") &nbsp&nbsp&nbsp&nbsp&nbsp #{carType.carType}&nbsp
                         div(style="margin-top:18px;")
                             img(src="img/wechat_img/redCricle.png")
-                            label(style="margin-left:40px;;font-size:24px") 颜&nbsp &nbsp 色：
+                            label(style="margin-left:4%;;font-size:24px") 颜&nbsp &nbsp 色：
                                 each carColor in CarTypeAndColor.colorList
                                      div(name="colorDiv",data-toggle="tooltip",data-placement="top",data-original-title="黑色",style="width:23px;height:17px;display:inline-block;box-shadow: 2px 2px 2px ;background-color:#{carColor};margin-right:4px;")
-            div(style="width:98%;margin-left:20px")
-                div(style="width:98%;margin-top:40px;border-top:1px solid #8b8b8d;float:left;height:54px;")
-                    label(style="color:#747678;font-size:24px;padding-left:50px;padding-top:10px") 姓名:
-                    input(type="text",style="height:54px;border:none;margin-left:20px;width:70%;font-size:24px;")
-                div(style="width:98%;border-top:1px solid #8b8b8d;margin-top:0px;float:left;")
-                    label(style="color:#747678;font-size:24px;padding-left:50px;padding-top:10px;height:54px;") 手机:
-                    input(type="text",style="height:54px;border:none;margin-left:20px;font-size:24px;width:70%;")
-                div(style="width:98%;border-top:1px solid #8b8b8d;margin-top:0px;float:left;")
-                    label(style="color:#747678;font-size:24px;padding-left:50px;padding-top:10px")
+            div(style="width:94%;margin-left:3%")
+                div(style="width:96%;margin-top:40px;border-top:1px solid #8b8b8d;float:left;height:54px;margin-left:2%")
+                    label(style="color:#747678;font-size:24px;padding-left:5%;padding-top:10px") 姓名:
+                    input(type="text",style="height:54px;border:none;margin-left:20px;width:70%;font-size:24px;margin-left:2%")
+                div(style="width:96%;border-top:1px solid #8b8b8d;margin-top:0px;float:left;margin-left:2%")
+                    label(style="color:#747678;font-size:24px;padding-left:5%;padding-top:10px;height:54px;") 手机:
+                    input(type="text",style="height:54px;border:none;margin-left:2%;font-size:24px;width:70%;")
+                div(style="width:96%;border-top:1px solid #8b8b8d;margin-top:0px;float:left;margin-left:2%")
+                    label(style="color:#747678;font-size:24px;padding-left:5%;padding-top:10px")
                 div(style="margin-top:43px;width:100%;margin-left:0px;")
-                    input(type="button",style="background-color:#fc8000;border-radius:10px;border:none;margin-top:30px;margin-left:15%;height:54px;width:65%;font-size:30px;color:white",value=" ")
-                div(style="width:98%;margin-top:44px;position:relative;")
+                    input(type="button",style="background-color:#fc8000;border-radius:10px;border:none;margin-top:30px;margin-left:20%;height:54px;width:60%;font-size:30px;color:white",value="报名")
+                div(style="width:100%;margin-top:44px;position:relative;")
                     div(style="border-bottom:1px solid #8b8b8d;margin-top:12px;width:30%;float:left;margin-left:5%;")
-                    div(style="margin-top:0px;color:#c5c5c5;font-size:24px;margin-left:20px;float:left;") 点击报名获取优惠券
-                    div(style="border-bottom:1px solid #8b8b8d;margin-top:12px;width:30%;float:left;margin-left:20px;")
+                    div(style="margin-top:0px;color:#c5c5c5;font-size:24px;margin-left:2%;float:left;") 点击报名获取优惠券
+                    div(style="border-bottom:1px solid #8b8b8d;margin-top:12px;width:30%;float:left;margin-left:2%;")
 
 
