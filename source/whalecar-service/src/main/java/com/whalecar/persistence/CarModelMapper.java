@@ -116,5 +116,31 @@ public interface CarModelMapper {
 
     public List<CarModelLv3> queryLv3BycarModelLv2(Integer carModelLv2);
 
+    public List<CarModelLv2> queryLv2BycarModelLv1ID(Integer carModelLv1);
 
+    public  List<CarModelLv3> queryLv3BycarModelLv2ID(Integer carModelLv2);
+
+    public List<WxCarModel> queryWxCarmodel(Integer carBrand, Integer carSubBrand);
+
+    public List<WxLV2> queryCarLV2Wx(Integer id);
+
+    public List<WxLv3> queryCarLv3Wx(Integer id);
+
+    public List<WxCarPrice> queryCarPriceWx(Integer id);
+
+    public WxCarBrandName queryCarBrandName(Integer id, Integer carBrand);
+
+    public WxCarBrandName queryDetailCarBrandName(Integer id);
+
+    public WxCarBrandName queryDetailCarSubBrandName(Integer id);
+
+    public List<WxCarModelLv2ID> queryWxLV2Id(Integer id);
+
+    public List<WxCarFPrice> queryWxFactoryPrice(Integer id);
+
+    public List<WxWebCarPrice> queryWxCarPrice(Integer id);
+
+    public WxLV2 queryWxColorNum(Integer id);
+
+    public WxLV2 queryWxColorRgb(Integer id);
 }

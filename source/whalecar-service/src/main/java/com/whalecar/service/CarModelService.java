@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.awt.*;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.List;
 
 /**
  * CarModel Service
@@ -53,8 +55,147 @@ public class CarModelService {
     @RequestMapping(method = RequestMethod.GET, value = "getCarModelLv1ByBrand_2")
     public @ResponseBody
     List<CarModelLv1> getCarModelLv1ByBrand_2(Integer carBrand,Integer carSubBrand) {
-        return carModelMapper.queryCarModelLv1ByBrandId(carBrand,carSubBrand);
+        List<CarModelLv1> carModelLv1List  =  carModelMapper.queryCarModelLv1ByBrandId(carBrand, carSubBrand);
+		for(CarModelLv1 carModelLv1:carModelLv1List){
+			Integer id = carModelLv1.getId();
+			List<CarModelLv2> carModelLv2List = carModelMapper.queryCarModelLv2ByLv1Id(id);
+			carModelLv1.setCarModelLv2List(carModelLv2List);
+//			for( CarModelLv2 carModelLv2:carModelLv2List){
+//				Integer LV2Id = carModelLv2.getId();
+//			}
+		}
+		return carModelLv1List;
     }
+
+	@RequestMapping(method = RequestMethod.GET, value = "getCarModelLv1ByBrand_4")
+	public @ResponseBody
+	List<WxCarModel> getCarModelLv1ByBrand_4(Integer carBrand,Integer carSubBrand) {
+		List<WxCarModel> wxCarModelList =  carModelMapper.queryWxCarmodel(carBrand,carSubBrand);
+		for(WxCarModel wxCarModel:wxCarModelList){
+			List<WxLV2> Lv2List = carModelMapper.queryCarLV2Wx(wxCarModel.getLV1Id());
+			wxCarModel.setWxLV2List(Lv2List);
+			for(WxLV2 wxLv2: Lv2List){
+				List<WxLv3> LV3List = carModelMapper.queryCarLv3Wx(wxLv2.getCarLv2Id());
+				wxLv2.setWxLv3List(LV3List);
+			}
+		}
+		wxCarModelList = processList(wxCarModelList);
+		wxCarModelList = processRemoveList(wxCarModelList);
+		return wxCarModelList;
+	}
+
+
+	private List<WxCarModel> processRemoveList(List<WxCarModel> wxCarModelList) {
+		for(Iterator<WxCarModel> iterator = wxCarModelList.iterator();iterator.hasNext();){
+			WxCarModel wxCarModel = iterator.next();
+			if(wxCarModel.getWxLV2List().size() > 0){
+
+			}else {
+				iterator.remove();
+			}
+		}
+		return wxCarModelList;
+	}
+
+
+
+	@RequestMapping(method = RequestMethod.GET, value = "getCarBrandName")
+	public @ResponseBody
+	WxCarBrandName getCarBrandName(Integer carBrand,Integer carSubBrand) {
+		return carModelMapper.queryCarBrandName(carSubBrand,carBrand);
+	}
+
+
+	@RequestMapping(method = RequestMethod.GET, value = "getDetailCarBrandName")
+	public @ResponseBody
+	WxCarBrandName getDetailCarBrandName(Integer carModelLv1) {
+		return carModelMapper.queryDetailCarBrandName(carModelLv1);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "getDetailCarSubBrandName")
+	public @ResponseBody
+	WxCarBrandName getDetailCarSubBrandName(Integer carModelLv1) {
+		return carModelMapper.queryDetailCarSubBrandName(carModelLv1);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "getDetailCarType")
+	public @ResponseBody
+	WxCarTypeAndColor getDetailCar(Integer carModelLv1) {
+		WxCarTypeAndColor wxCarTypeAndColor = new WxCarTypeAndColor();
+		List<WxLV2> wxLV2List =  carModelMapper.queryCarLV2Wx(carModelLv1);
+		String colorRgb = null;
+		for (WxLV2 wxLV2 : wxLV2List) {
+				int Lv2Id = wxLV2.getCarLv2Id();
+				WxLV2 wxLV21 = carModelMapper.queryWxColorNum(Lv2Id);
+				wxLV2.setColorNum(wxLV21.getColorNum());
+		}
+		if(wxLV2List.size() > 0){
+			WxLV2 wxLV22 = wxLV2List.get(0);
+			if(wxLV22 != null){
+				String[] colorNum = wxLV22.getColorNum().split(",");
+				for(int i = 0; i < colorNum.length; i++){
+					int colorId = Integer.valueOf(colorNum[i]).intValue();
+					WxLV2 wxLV3 =carModelMapper.queryWxColorRgb(colorId);
+					colorRgb = wxLV3.getColorNum()+ "," +colorRgb ;
+				}
+				List<String> colorList = new ArrayList<String>();
+				String[] colorRGB = colorRgb.split(",");
+				for(int j = 0; j< colorRGB.length; j ++){
+					colorList.add(colorRGB[j]);
+				}
+				wxCarTypeAndColor.setWxLV2List(wxLV2List);
+				if(colorList.size() > 1){
+					wxCarTypeAndColor.setColorList(colorList);
+				}
+			}
+		}
+
+		return wxCarTypeAndColor;
+	}
+
+
+	@RequestMapping(method = RequestMethod.GET, value = "getDetailCarPrice")
+	public @ResponseBody
+	List<WxCarDetailPrice> getDetailCarPrice(Integer carModelLv1) {
+		WxCarDetailPrice wxDetailPrice = new WxCarDetailPrice();
+		List<WxCarModelLv2ID> wxCarModelLv2IDList = carModelMapper.queryWxLV2Id(carModelLv1);
+		wxDetailPrice.setWxCarModelLv2IDList(wxCarModelLv2IDList);
+		for(WxCarModelLv2ID wxCarModelLv2ID: wxCarModelLv2IDList){
+			List<WxCarFPrice> wxCarFPriceList = carModelMapper.queryWxFactoryPrice(wxCarModelLv2ID.getLV2Id());
+			wxCarModelLv2ID.setWxCarFPriceList(wxCarFPriceList);
+			for(WxCarFPrice wxCarFPrice:wxCarFPriceList){
+				Integer Lv3Id = wxCarFPrice.getLv3Id();
+				List<WxWebCarPrice> wxWebCarPriceList = carModelMapper.queryWxCarPrice(Lv3Id);
+				wxCarFPrice.setWxWebCarPriceList(wxWebCarPriceList);
+			}
+		}
+		List<WxCarDetailPrice> wxCarDetailPriceList = new ArrayList<>();
+		wxCarDetailPriceList.add(wxDetailPrice);
+
+		//获取市场最高最低价格
+		wxCarDetailPriceList = processFPriceMax(wxCarDetailPriceList);
+		wxCarDetailPriceList = processFPriceMin(wxCarDetailPriceList);
+		wxCarDetailPriceList = processWebPriceMin(wxCarDetailPriceList);
+		wxCarDetailPriceList = processWebPriceMax(wxCarDetailPriceList);
+		return  wxCarDetailPriceList;
+	}
+
+
+
+
+	@RequestMapping(method = RequestMethod.GET, value = "getCarModelLv3ByBrand_2")
+	public @ResponseBody
+	List<CarModelLv3> returnMap(Integer carModelLv1) {
+		Map result = new HashMap<String, Objects>();
+		List<CarModelLv2> carModelLv2List = carModelMapper.queryCarModelLv2ByLv1Id(carModelLv1);
+		List<CarModelLv3> carModelLv3List = new ArrayList<CarModelLv3>();
+
+		for(CarModelLv2 carLv2:carModelLv2List){
+			int id = carLv2.getId();
+			carModelLv3List = carModelMapper.queryLv3BycarModelLv2ID(id);
+		}
+		return carModelLv3List;
+	}
 
 
 
@@ -333,7 +474,7 @@ public class CarModelService {
      * @param carModelLv1
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/queryCarModel")
+	@RequestMapping(method = RequestMethod.GET, value = "/queryCarModel")
     public @ResponseBody List queryCarModel(Integer carModelLv1){
         List<CarModelLv2> returnList = new ArrayList();
         List<CarModelLv2> lv2List =  new ArrayList();
@@ -357,5 +498,146 @@ public class CarModelService {
         }
         return returnList;
     }
+
+
+	private List<WxCarDetailPrice> processWebPriceMax(List<WxCarDetailPrice> wxCarDetailPriceList) {
+		Integer price = 0;
+		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
+		{
+			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
+			for(WxCarModelLv2ID wxCarModelLv2ID: wxCarModelLv2IDList){
+				List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
+				for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
+					List<WxWebCarPrice> wxWebCarPriceList = wxCarFPrice.getWxWebCarPriceList();
+					for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
+						if(price < wxWebCarPrice.getWebPrice() && wxWebCarPrice.getWebPrice() != 0 && wxWebCarPrice.getWebPrice() != null){
+							price = wxWebCarPrice.getWebPrice();
+						}else {
+							price = 0;
+						}
+					}
+				}
+			}
+			wxCarDetailPrice.setWebPriceMax(price);
+		}
+		return wxCarDetailPriceList;
+	}
+
+
+	private List<WxCarDetailPrice> processWebPriceMin(List<WxCarDetailPrice> wxCarDetailPriceList) {
+		Integer price = 100000;
+		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
+		{
+			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
+			if(wxCarModelLv2IDList != null){
+				for(WxCarModelLv2ID wxCarModelLv2ID: wxCarModelLv2IDList){
+					List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
+					if(wxCarFPriceList != null){
+						for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
+							List<WxWebCarPrice> wxWebCarPriceList = wxCarFPrice.getWxWebCarPriceList();
+							if(wxWebCarPriceList.size() > 0){
+								for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
+									if(price > wxWebCarPrice.getWebPrice() && wxWebCarPrice.getWebPrice() != 0 && wxWebCarPrice.getWebPrice() != null){
+										price = wxWebCarPrice.getWebPrice();
+									}else {
+										price = 0;
+										wxCarDetailPrice.setWebPriceMin(price);
+									}
+								}
+							}else {
+								price = 0;
+								wxCarDetailPrice.setWebPriceMin(price);
+							}
+						}
+					}else {
+						price = 0;
+						wxCarDetailPrice.setWebPriceMin(price);
+					}
+				}
+				wxCarDetailPrice.setWebPriceMin(price);
+			}else {
+				price = 0;
+				wxCarDetailPrice.setWebPriceMin(price);
+			}
+
+		}
+		return wxCarDetailPriceList;
+	}
+
+
+	private List<WxCarDetailPrice> processFPriceMin(List<WxCarDetailPrice> wxCarDetailPriceList) {
+		Integer price = 100000;
+		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
+		{
+			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
+			if(wxCarModelLv2IDList !=null){
+				for(WxCarModelLv2ID wxCarModelLv2ID: wxCarModelLv2IDList){
+					List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
+					if(wxCarFPriceList !=null){
+						for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
+							if(price > wxCarFPrice.getFactoryPrice() && wxCarFPrice.getFactoryPrice() != 0 && wxCarFPrice.getFactoryPrice() != null){
+								price = wxCarFPrice.getFactoryPrice();
+							}else {
+								price = 0;
+								wxCarDetailPrice.setFactoryPriceMin(price);
+							}
+						}
+					}else {
+						price	= 0 ;
+						wxCarDetailPrice.setFactoryPriceMin(price);
+					}
+
+				}
+				wxCarDetailPrice.setFactoryPriceMin(price);
+			}else {
+				price = 0 ;
+				wxCarDetailPrice.setFactoryPriceMin(price);
+			}
+
+		}
+		return wxCarDetailPriceList;
+	}
+
+	private List<WxCarDetailPrice> processFPriceMax(List<WxCarDetailPrice> wxCarDetailPriceList) {
+		Integer price = 0;
+		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
+		{
+			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
+			for(WxCarModelLv2ID wxCarModelLv2ID: wxCarModelLv2IDList){
+				List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
+				for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
+					if(price < wxCarFPrice.getFactoryPrice() && wxCarFPrice.getFactoryPrice() != 0 && wxCarFPrice.getFactoryPrice() != null){
+						price = wxCarFPrice.getFactoryPrice();
+					}else {
+						price = 0;
+					}
+				}
+			}
+			wxCarDetailPrice.setFactoryPriceMax(price);
+		}
+		return wxCarDetailPriceList;
+	}
+
+
+
+	private List<WxCarModel> processList(List<WxCarModel> wxCarModelList) {
+		Integer price = 100000;
+		for(WxCarModel wxCarModel:wxCarModelList)
+		{
+			List<WxLV2> wxLv2List = wxCarModel.getWxLV2List();
+			for(WxLV2 wxLV2:wxLv2List){
+				List<WxLv3> wxLv3List = wxLV2.getWxLv3List();
+				for(WxLv3 wxLv3:wxLv3List){
+					if(price > wxLv3.getPrice()){
+						price = wxLv3.getPrice();
+					}
+				}
+			}
+			wxCarModel.setWxCarPrice(price);
+		}
+		return wxCarModelList;
+	}
+
+
 
 }
