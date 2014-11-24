@@ -7,6 +7,7 @@ html
         block css
         block js
     body
+
         div(style="background-color:#102742;width:100%;height:76px;margin-left:0px;text-align:center;padding-top:38px")
             label(style="color:white;width:100%;height:116px;margin-top:38px;font-size:36px;") 车型预览
         div(style="width:100%;background-color:#fcfcfb")
@@ -15,36 +16,14 @@ html
                 label(style="font-size:36px;color:#102742;float:left;")
         </br>
         div
-            h1(style="margin-left:30px;color:#8b8b8d;font-size:24px;") 请选择生产厂商:
+            h1(style="margin-left:45%;color:#8b8b8d;font-size:24px;") #{carBrandName.brandName}
             h2(style="border-bottom:1px solid #8b8b8d;margin-left:20px;margin-right:20px;margin-top:12px;height:1px;width:96%;margin-bottom:0px;")
             span(style="margin-top:0px;")
                 each item in carModels
-                    a(href="")
+                    a(href="/wxcardetail?carModelLv1=#{item.lv1Id}")
                         table(style="border-bottom:1px solid #8b8b8d;width:96%;height:98px;margin-left:20px;")
                             tr(style="margin-left:0px;")
                                 th(style="color:#646566;font-size:30px;margin-top:18px;margin-left:14px;float:left;") #{item.cname}
-                                td(style="color:#545557;margin-top:37px;margin-right:16px;font-size:28px;float:right;",rowspan="2") #{item.cname}
-                            tr(style="margin-left:0px;")
-                                td(style="color:#acacad;margin-bottom:16px;font-size:24px;margin-left:14px;float:left;") #{item.cname}
-
-
-
-            //
-            //    img(src="#{allBrands.logoPath}",style="")
-            //    input(type="text",value="#{allBrands.cname}",style="font-size:36px;color:#102742;float:left;")
-            //div(style="width:100%;")
-            //    label(style="color:#8b8b8d;padding-left:34px;font-size:24px;margin-buttom:10px;") 请选择车型
-            //    label(style="border-buttom:1px solid #8b8b8d;margin-left:20px;margin-right:20px;height:2px;width:96%;")
-            //    a(href="")
-            //        div(style="height:98px;")
-            //            div(style="margin-left:34px;")
-            //                div#carModelLv1
-            //                    span(style="color:#646566;margin-top:18px;font-size:30px") #{carModelLv1.brandCname}
-            //                    | &nbsp;
-            //                    span #{carModelLv1.cname}
-            //                div#carExtendInfo
-            //                    each item in carExtendInfo.carModelLv2NameList
-            //                    input(type="text" style="color:#acacad;margin-top:16px;font-size:24px" value="#{item}")
-            //            div(style="float:left;")
-            //                input#carExtendInfo(type="text" style="color:#545557;margin-top:32px;font-size:28px;" value="#{carExtendInfo.factoryPrice}万")
-            //            label(style="border-buttom:1px solid #8b8b8d;margin-left:20px;margin-right:20px;height:2px;width:96%")
+                                td(style="color:#545557;margin-top:37px;margin-right:16px;font-size:28px;float:right;",rowspan="2") #{item.wxCarPrice} <font style="color:#848585">万</font>
+                            each carModelLv2 in item.wxLV2List
+                                      td(style="color:#acacad;margin-bottom:16px;font-size:24px;margin-left:14px;float:left;") #{carModelLv2.carType}

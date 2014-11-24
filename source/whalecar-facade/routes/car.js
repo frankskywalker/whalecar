@@ -263,19 +263,28 @@ exports.page_car_select = function (req, res) {
     async.parallel({
         carModels: function (callback) {
             if (carBrand !== "") {
-                service.client.get("/getCarModelLv1ByBrand_2?carBrand=" + carBrand + "&"+ "carSubBrand=" + carSubBrand,  function (err, req, res, data) {
+                service.client.get("/getCarModelLv1ByBrand_4?carBrand=" + carBrand + "&"+ "carSubBrand=" + carSubBrand,  function (err, req, res, data) {
+                    callback(err, data);
+                });
+            } else {
+                callback(null, []);
+            }
+        },
+        carBrandName: function (callback) {
+            if (carBrand !== "") {
+                service.client.get("/getCarBrandName?carBrand=" + carBrand + "&"+ "carSubBrand=" + carSubBrand,  function (err, req, res, data) {
                     callback(err, data);
                 });
             } else {
                 callback(null, []);
             }
         }
-    }, function (err, results) {
+    },
+        function (err, results) {
         res.render("wxcarselect", {
             carModels: results.carModels,
-            carBrand:results.carBrand
+            carBrandName:results.carBrandName
         });
-
     });
 }
 
@@ -284,5 +293,52 @@ exports.page_car_sell = function(req,res){
 }
 
 exports.page_car_detail = function(req,res){
-    res.render("wxcardetail");
+    var carModelLv1 = req.query.carModelLv1;
+    async.parallel({
+        carBrandName: function (callback) {
+            if (carModelLv1 !== "") {
+                service.client.get("/getDetailCarBrandName?carModelLv1=" + carModelLv1,  function (err, req, res, data) {
+                    callback(err, data);
+                });
+            } else {
+                callback(null, []);
+            }
+        },
+        carSubBrandName: function (callback) {
+            if (carModelLv1 !== "") {
+                service.client.get("/getDetailCarSubBrandName?carModelLv1=" + carModelLv1,  function (err, req, res, data) {
+                    callback(err, data);
+                });
+            } else {
+                callback(null, []);
+            }
+        },
+        CarTypeAndColor: function (callback) {
+            if (carModelLv1 !== "") {
+                service.client.get("/getDetailCarType?carModelLv1=" + carModelLv1,  function (err, req, res, data) {
+                    callback(err, data);
+                });
+            } else {
+                callback(null, []);
+            }
+        },
+        CarPrice: function (callback) {
+            if (carModelLv1 !== "") {
+                service.client.get("/getDetailCarPrice?carModelLv1=" + carModelLv1,  function (err, req, res, data) {
+                    callback(err, data);
+                });
+            } else {
+                callback(null, []);
+            }
+        }
+    },
+    function (err, results) {
+        res.render("wxcardetail", {
+            carBrandName: results.carBrandName,
+            carSubBrandName: results.carSubBrandName,
+            CarTypeAndColor: results.CarTypeAndColor,
+            CarPrice:results.CarPrice
+        });
+    });
 }
+
