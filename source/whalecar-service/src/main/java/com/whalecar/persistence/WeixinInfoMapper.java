@@ -16,4 +16,6 @@ public interface WeixinInfoMapper {
     public WeixinInfo queryByOpenId(String openId);
 
     public List<WeixinInfo> queryAllWithRank();
+
+    public int insertWxDetail(String name, String tel, String car);
 }

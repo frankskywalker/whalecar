@@ -1,6 +1,6 @@
 var express = require('express'),
     http = require('http'),
-    path = require('path');
+    path = require('path')
 var util = require('util');
 var expressValidator = require('express-validator');
 
@@ -148,6 +148,7 @@ app.all('/dic', dic.query);
 app.all('/user', user.router);
 app.all('/car', car.page);
 app.all('/cardata',car.action);
+app.all("/save_wxDetail",car.wxDetailSave);
 app.all('/shophome',requireRole("shop"), shop.homepage);
 app.all('/shop',shop.action);
 app.all('/stockeditor',requireRole("shop"),shopstock.stockeditor);
@@ -296,6 +297,11 @@ app.all("/wxcardetail",car.page_car_detail);
 app.all('/love_page',function(req,res){
     res.render("love_page");
 });
+
+var callback = function(err,result){
+    if(err)console.log(err);
+    console.log(result);
+}
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
