@@ -545,15 +545,13 @@ public class CarModelService {
 						}
 					}else {
 						price = 0;
-						wxCarDetailPrice.setWebPriceMin(price);
 					}
 				}
-				wxCarDetailPrice.setWebPriceMin(price);
 			}else {
 				price = 0;
-				wxCarDetailPrice.setWebPriceMin(price);
-			}
 
+			}
+			wxCarDetailPrice.setWebPriceMin(price);
 		}
 		return wxCarDetailPriceList;
 	}
@@ -575,16 +573,12 @@ public class CarModelService {
 						}
 					}else {
 						price	= 0 ;
-						wxCarDetailPrice.setFactoryPriceMin(price);
 					}
-
 				}
-				wxCarDetailPrice.setFactoryPriceMin(price);
 			}else {
 				price = 0 ;
-				wxCarDetailPrice.setFactoryPriceMin(price);
 			}
-
+			wxCarDetailPrice.setFactoryPriceMin(price);
 		}
 		return wxCarDetailPriceList;
 	}
