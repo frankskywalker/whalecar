@@ -20,6 +20,15 @@
 		ORDER BY orderIndex
 	</select>
 
+    <select parameterType="map" id="queryCarModelLv1ByBrandId" resultType="CarModelLv1">
+        SELECT
+        *
+        FROM Car_Model_Lv1
+        WHERE flagUseable = 'yes' and carBrand = #{0} and carSubBrand = #{1}
+        ORDER BY orderIndex
+    </select>
+
+
 	<select parameterType="Integer" id="queryCarModelLv1ViewById" resultType="CarModelLv1View">
 	   SELECT
 	       Car_Model_Lv1.* ,
@@ -255,4 +264,87 @@
         Order by orderIndex
     </select>
 
+    <select id="queryLv2BycarModelLv1" resultType="CarModelLv2">
+        select *
+        from Car_Model_Lv2
+        where carModelLv1 = #{0}
+    </select>
+
+
+    <select id="queryLv3BycarModelLv2" resultType="CarModelLv3">
+        select *
+        from Car_Model_Lv3
+        where carModelLv2 = #{0}
+    </select>
+
+
+    <select id="queryLv2BycarModelLv1ID" resultType="CarModelLv2">
+        select *
+        from Car_Model_Lv2
+        where carModelLv1 = #{0} and flagUseable = 'yes'
+    </select>
+
+    <select id="queryLv3BycarModelLv2ID" resultType="CarModelLv3">
+        select *
+        from Car_Model_Lv3
+        where carModelLv2= #{0} and flagUseable = 'yes'
+    </select>
+
+
+    <select id="queryWxCarmodel" resultType="WxCarModel">
+        SELECT Car_Model_Lv1.cname as cname, Car_Model_Lv1.id as LV1Id
+        FROM  Car_Model_Lv1
+        where Car_Model_Lv1.carBrand = #{0} and Car_Model_Lv1.carSubBrand = #{1}
+    </select>
+
+    <select id="queryCarLV2Wx" resultType="WxLV2">
+        SELECT Car_Model_Lv2.id as carLv2Id, Car_Model_Lv2.shortName as carType FROM  Car_Model_Lv2
+        where carModelLv1 = #{0}
+    </select>
+
+    <select id="queryCarLv3Wx" resultType="WxLv3">
+        SELECT Car_Model_Lv3.id as carLV3ID, Car_Model_Lv3.factoryPrice as price
+        FROM Car_Model_Lv3
+        where carModelLv2 = #{0}
+    </select>
+
+    <select id="queryCarPriceWx" resultType="WxCarPrice">
+       SELECT   Car_Model_Lv3.factoryPrice  FROM  Car_Model_Lv3 where id = #{0}
+    </select>
+
+    <select id="queryCarBrandName" resultType="WxCarBrandName">
+        SELECT   Car_Sub_Brand.ename as brandName  FROM  Car_Sub_Brand where id = #{0} and carBrand = #{1}
+    </select>
+
+
+    <select id="queryDetailCarBrandName" resultType="WxCarBrandName">
+        SELECT   Car_Sub_Brand.ename as brandName
+        FROM Car_Model_Lv1
+        LEFT join Car_Sub_Brand on Car_Model_Lv1.carBrand  = Car_Sub_Brand.carBrand and Car_Model_Lv1.carSubBrand = Car_Sub_Brand.id
+        where Car_Model_Lv1.id = #{0}
+    </select>
+
+    <select id="queryDetailCarSubBrandName" resultType="WxCarBrandName">
+        SELECT   Car_Model_Lv1.ename as brandName  FROM  Car_Model_Lv1 where id = #{0}
+    </select>
+
+    <select id="queryWxLV2Id" resultType="WxCarModelLv2ID">
+        SELECT Car_Model_Lv2.id as LV2Id FROM Car_Model_Lv2 where carModelLv1 = #{0}
+    </select>
+
+    <select id="queryWxFactoryPrice" resultType="WxCarFPrice">
+        SELECT Car_Model_Lv3.factoryPrice, Car_Model_Lv3.id as lv3Id FROM Car_Model_Lv3 where carModelLv2 = #{0}
+    </select>
+
+    <select id="queryWxCarPrice" resultType="WxWebCarPrice">
+        SELECT carPrice as webPrice FROM Shop_Stock where carModelLv3 = #{0}
+    </select>
+
+    <select id="queryWxColorNum" resultType="WxLV2">
+        SELECT colorOutsideCollection as colorNum FROM Car_Model_Lv3 where carModelLv2 = #{0} limit 1
+    </select>
+
+    <select id="queryWxColorRgb" resultType="WxLV2">
+        SELECT colorRgb as colorNum FROM Dic_Color  where id = #{0}
+    </select>
 </mapper>

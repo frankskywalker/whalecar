@@ -1,6 +1,7 @@
 package com.whalecar.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 // Generated 2013-7-5 22:40:38 by Hibernate Tools 3.4.0.CR1
 
@@ -26,6 +27,25 @@ public class CarModelLv1 implements Serializable {
     private String offprice;
     private String hotmodel;
     private String description;
+	private String price;
+	private List<CarModelLv2> carModelLv2List;
+
+	public List<CarModelLv2> getCarModelLv2List() {
+		return carModelLv2List;
+	}
+
+	public void setCarModelLv2List(List<CarModelLv2> carModelLv2List) {
+		this.carModelLv2List = carModelLv2List;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
 
 	public CarModelLv1() {
 	}

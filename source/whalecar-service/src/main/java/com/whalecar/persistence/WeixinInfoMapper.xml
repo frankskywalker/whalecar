@@ -57,4 +57,9 @@
     </update>
 
 
+    <insert id="insertWxDetail">
+        insert into whalecar_server.Golf7_Adv(name, tel, attentionModel, type) value (#{0}, #{1}, #{2},11)
+    </insert>
+
+
 </mapper>

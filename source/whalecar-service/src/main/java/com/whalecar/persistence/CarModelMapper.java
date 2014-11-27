@@ -1,6 +1,7 @@
 package com.whalecar.persistence;
 
 import com.whalecar.domain.*;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +17,8 @@ public interface CarModelMapper {
 
 	public List<CarModelLv1> queryCarModelLv1ByBrand(
 			Map<String, Object> conditionMap);
+
+    public List<CarModelLv1> queryCarModelLv1ByBrandId(Integer carBrand,Integer carSubBrand);
 
 	/**
 	 * 分页查询ModelView
@@ -109,5 +112,35 @@ public interface CarModelMapper {
     //返回所有汽车品牌
     public List<CarBrand> queryAllCarBrand();
 
+    public List<CarModelLv2> queryLv2BycarModelLv1(Integer carModelLv1);
 
+    public List<CarModelLv3> queryLv3BycarModelLv2(Integer carModelLv2);
+
+    public List<CarModelLv2> queryLv2BycarModelLv1ID(Integer carModelLv1);
+
+    public  List<CarModelLv3> queryLv3BycarModelLv2ID(Integer carModelLv2);
+
+    public List<WxCarModel> queryWxCarmodel(Integer carBrand, Integer carSubBrand);
+
+    public List<WxLV2> queryCarLV2Wx(Integer id);
+
+    public List<WxLv3> queryCarLv3Wx(Integer id);
+
+    public List<WxCarPrice> queryCarPriceWx(Integer id);
+
+    public WxCarBrandName queryCarBrandName(Integer id, Integer carBrand);
+
+    public WxCarBrandName queryDetailCarBrandName(Integer id);
+
+    public WxCarBrandName queryDetailCarSubBrandName(Integer id);
+
+    public List<WxCarModelLv2ID> queryWxLV2Id(Integer id);
+
+    public List<WxCarFPrice> queryWxFactoryPrice(Integer id);
+
+    public List<WxWebCarPrice> queryWxCarPrice(Integer id);
+
+    public WxLV2 queryWxColorNum(Integer id);
+
+    public WxLV2 queryWxColorRgb(Integer id);
 }

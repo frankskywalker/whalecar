@@ -97,4 +97,17 @@ public class WeixinInfoService {
         return weixinInfoMapper.queryAllWithRank();
     }
 
+
+    @RequestMapping(value="/wxDetailSave",method = RequestMethod.POST)
+    public @ResponseBody BooleanResult wxDetailSave(String name, String tel, String brandName , String subBrandName){
+        String car = brandName + " " + subBrandName;
+        int updateCount = weixinInfoMapper.insertWxDetail(name, tel, car);
+        if(updateCount == 1){
+            return new BooleanResult(true);
+        }
+        else{
+            return new BooleanResult(false);
+        }
+    }
+
 }
