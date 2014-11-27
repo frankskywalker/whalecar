@@ -606,17 +606,26 @@ public class CarModelService {
 
 
 	private List<WxCarModel> processList(List<WxCarModel> wxCarModelList) {
-		Integer price = 100000;
+		Integer price = null;
 		for(WxCarModel wxCarModel:wxCarModelList)
 		{
+			price = 10000;
 			List<WxLV2> wxLv2List = wxCarModel.getWxLV2List();
-			for(WxLV2 wxLV2:wxLv2List){
-				List<WxLv3> wxLv3List = wxLV2.getWxLv3List();
-				for(WxLv3 wxLv3:wxLv3List){
-					if(price > wxLv3.getPrice()){
-						price = wxLv3.getPrice();
+			if(wxLv2List !=null){
+				for(WxLV2 wxLV2:wxLv2List){
+					List<WxLv3> wxLv3List = wxLV2.getWxLv3List();
+					if(wxLv3List != null){
+						for(WxLv3 wxLv3:wxLv3List){
+							if(price > wxLv3.getPrice()){
+								price = wxLv3.getPrice();
+							}
+						}
+					}else {
+						price = 0;
 					}
 				}
+			}else {
+				price = 0;
 			}
 			wxCarModel.setWxCarPrice(price);
 		}
