@@ -238,7 +238,8 @@ h5{
 }
 
 #submit:hover,
-#submit:active{
+#submit:active,
+#submit:focus{
     background: url(../img/Btn-bg2.png);
 }
 
