@@ -43,11 +43,16 @@ block append content
                a.page_a_1(link='#',style="text-decoration: none;",onmouseover="scrollTo(3)") 底价购买
              li(style='border-right: 1px solid #FFFFFF;')
                a.page_a_1(link='./car?id=228',style="text-decoration: none;",onmouseover="scrollTo(4)") 新cc 孑然登场
-    div(style="height:170px;width:100%;background-color:#ffffff")
-        div(style="background-image: url(img/banner3.png);width:1200px;height:170px;margin:0 auto;")
-            div(id="news" style="padding-top:50px;padding-left:85px;font-size:12px;")
-                div(style="margin-left:80px;height:80px;overflow:hidden;width:300px;marign-top:20px;")
-                    ul
+
+    div(style="height:222px;width:100%;background-color:#d6e9fc")
+        div(style="width:1200px;height:222px;margin:0 auto;")
+            div(id="news" style="padding-top:1px;padding-left:0px;float:left;height:262px;background-color:#ffffff;")
+                div(style="background-image: url(img/blueBgFont.png);height:200px;width:193px;float:left;margin-left:0px;margin-top:0px;")
+                    //div(style="font-size:30px;color:#ffffff;margin-left:18px;margin-top:34px;") 网站最新
+                    //div(style="font-size:30px;color:#ffffff;margin-left:18px;margin-top:34px;") 成交记录
+                    //div(style="font-size:30px;color:#ffffff;margin-left:18px;margin-top:36px;") TEECAR
+                div(style="margin-left:28px;height:132px;overflow:hidden;width:300px;margin-top:36px;margin-left:36px;margin-right:0px;float:left;")
+                    ul(style="font-size:15px;color:#030303")
                         li(style="list-style-type:none;") 王**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫7
                         li(style="list-style-type:none;") 黄**先生&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;高尔夫6
                         li(style="list-style-type:none;") 周**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
@@ -65,20 +70,30 @@ block append content
                         li(style="list-style-type:none;") 江**女士&nbsp;&nbsp;&nbsp;&nbsp;网站指导价&nbsp;&nbsp;&nbsp;&nbsp;速腾
                         li(style="list-style-type:none;") 张**先生&nbsp;&nbsp;&nbsp;&nbsp;在线议价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝来
                         li(style="list-style-type:none;") 郑**先生&nbsp;&nbsp;&nbsp;&nbsp;优惠千元&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速腾
-                div(style="margin-top:-88px;padding-left:918px;width: 100px;height:90px;")
-                    form(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post")
-                        input(type="text" ,style="height:16.5px;width:90px;padding:0px;margin-bottom:3px;" ,id="username",name="username")
-                        input(type="text" ,style="height:16.5px;width:90px;padding:0px;margin-bottom:3px;margin-top:6px;",id="phoneNum",name="phoneNum")
-                        div(style="margin-top:6px")
-                            select(type="text",style="height:19.5px;width:92px;padding:0px;margin-bottom:10px;",id="carBrand",onchange="getCarBrand();")
-                                option(select="select") 选择品牌
-                                each carBrand in idAndCname
-                                    option(value="#{carBrand.id}") #{carBrand.cname}
-                        div
-                            select(id="idAndCname",style="height:19.5px;width:92px;padding:0px;margin-top:-7px;" ,name="idAndCname")
-                                option(value="") 选择车型
-                            input#allCars(type="hidden",value=JSON.stringify(idAndCname))
-                        input(type="button"  style="font-size:12px;padding-top:0px;padding-bottom:0px;margin-top:-100px;margin-left:130px;background-image:url(img/anniu.png);width:54px;height:28px", onclick="success();")
+                div(style="background-image: url(img/line.png);margin-top:26px;margin-left:0px;height:158px;float:left;width:2px;margin-right:0px;")
+                div(style="background-image: url(img/quxiantu.png);width:352px;margin-top:28px;margin-left:10px;margin-right:0px;height:156px;float:left;background-repeat:no-repeat;")
+                div(style="background-image: url(img/line.png);margin-top:26px;margin-left:10px;margin-right:0px;width:2px;height:158px;float:left;")
+                div(style="margin-top:25px;margin-left:930px;width: 246px;height:160px;")
+                    div(id="addUserCar", name="addUserCar" ,action="./addUserCar", method="post",style="font-size:23px;height:115px;width:246px;border:1px solid #e3e2e2;margin-top:0px;")
+                        div(style="margin-top:10px;margin-left:15px;")
+                            label(style="float:left;margin-left:0px;") 姓名：
+                            input(type="text" ,style="height:16.5px;width:120px;padding:0px;margin-bottom:3px;border:none;" ,id="username",name="username")
+                        div(style="margin-top:10px;margin-left:15px;")
+                            label(style="float:left;") 电话：
+                            input(type="text" ,style="height:16.5px;width:120px;padding:0px;border:none;",id="phoneNum",name="phoneNum")
+                        div(style="margin-top:10px;")
+                            label(style="float:left;margin-left:15px;") 意向：
+                            div(style="margin-top:6px")
+                                select(type="text",style="height:19.5px;width:92px;margin-bottom:10px;float:left;",id="carBrand",onchange="getCarBrand();")
+                                    option(select="select") 选择品牌
+                                    each carBrand in idAndCname
+                                        option(value="#{carBrand.id}") #{carBrand.cname}
+                                select(id="idAndCname",style="height:19.5px;width:92px;" ,name="idAndCname")
+                                    option(value="") 选择车型
+                                input#allCars(type="hidden",value=JSON.stringify(idAndCname))
+                        div(style="width:246px;height:34px;margin-top:18px;")
+                            input(id="submit",tagName="INPUT",type="button",style="font-size:20px;color:#ffffff;width:246px;height:34px;border:none;",value="提交",onclick="success()",onmouseover="change()",onmousedown="this.background-image='../img/Btn-bg2.png")
+                div(style="background-image: url(img/bottomImg.png);margin-top:14px;margin-left:0px;width:1200px;;height:22px;")
 
     div(style="background-color: #f6f6f6;height:496px")
         .container(style="padding: 0px 0;border-width:1px;border-style:solid;border-color:transparent;max-width: 1200px;width:1200px;")
@@ -269,6 +284,10 @@ block append content
                 break;
               }
           }
+        }
+        function change(){
+          var el=$("#submit");
+          document.getElementById("submit").background=url("img/Btn-bg2.png");
         }
         function success(){
           var username = $("#username").val();

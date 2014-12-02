@@ -289,7 +289,23 @@ exports.page_car_select = function (req, res) {
 }
 
 exports.page_car_sell = function(req,res){
-    res.render("wxsell");
+    service.client.get("/getPriceOffCarModelLv1",
+        function(error, request, response, data1) {
+            if (error) {
+                next(error);
+                return;
+            }
+            service.client.get("/queryCarBrandAndIdAndCname",
+                function(error, request, response, data2){
+                    if(error){
+                        next(error);
+                        return;
+                    }
+                    res.render("wxsell",{priceOffCarModelLv1:data1,idAndCname:data2});
+                    console.log(data1);
+                });
+        });
+
 }
 
 exports.page_car_detail = function(req,res){
@@ -342,3 +358,23 @@ exports.page_car_detail = function(req,res){
     });
 }
 
+
+//exports.wxDetailSave = function(req,res){
+//    var adver11 = req.body;
+//    service.client.post("/wxDetailSave?username=" + name + "&" + "tel=" + tel + "&" + "brandName=" + brandName + "&" + "subBrandName=" + subBrandName,function(error){
+//        res.render("wxcardetail");
+//    });
+//}
+
+
+
+exports.wxDetailSave = function(req,res,next){
+    var adver12 = req.body;
+    adver12.type = 12;
+    service.client.post("/saveGolf7Adv",adver12,function(error){
+        if(error){
+            next(error);
+            return;
+        }
+    });
+}
