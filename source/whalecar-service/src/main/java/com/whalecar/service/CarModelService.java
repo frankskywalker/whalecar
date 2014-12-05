@@ -512,8 +512,6 @@ public class CarModelService {
 					for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
 						if(price < wxWebCarPrice.getWebPrice() && wxWebCarPrice.getWebPrice() != 0 && wxWebCarPrice.getWebPrice() != null){
 							price = wxWebCarPrice.getWebPrice();
-						}else {
-							price = 0;
 						}
 					}
 				}
@@ -550,6 +548,9 @@ public class CarModelService {
 			}else {
 				price = 0;
 
+			}
+			if(price == 100000){
+				price =0;
 			}
 			wxCarDetailPrice.setWebPriceMin(price);
 		}
