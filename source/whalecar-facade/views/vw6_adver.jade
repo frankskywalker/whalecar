@@ -44,11 +44,11 @@ block append content
                                 input(type="checkbox",name="attentionModel",value="奥迪A3")
                                 span(style="font-size:13px;") 奥迪A3&nbsp;
                     div
-                        input.btn.btn-mini(type="submit",value="提交",style="margin-left:155px;font-size:17px",onclick="return submitCheck();")
+                        input.btn.btn-mini(type="submit",value="提交",style="margin-left:155px;font-size:17px",onclick="return submit();")
         div(style="margin:0 auto;margin-top:-5px;width:1200px;font-size:11px;")
             a(href="/",style="color:#FFFFFF;")
     script.
-        function submitCheck(){
+        function submit(){
            if(!$('#tel').val().match(/^1\d{10}$/)){
               alert("您输入的手机号码格式有误，请重新输入！");
               return false;
