@@ -512,8 +512,6 @@ public class CarModelService {
 					for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
 						if(price < wxWebCarPrice.getWebPrice() && wxWebCarPrice.getWebPrice() != 0 && wxWebCarPrice.getWebPrice() != null){
 							price = wxWebCarPrice.getWebPrice();
-						}else {
-							price = 0;
 						}
 					}
 				}
@@ -537,29 +535,24 @@ public class CarModelService {
 							List<WxWebCarPrice> wxWebCarPriceList = wxCarFPrice.getWxWebCarPriceList();
 							if(wxWebCarPriceList.size() > 0){
 								for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
-									if(price > wxWebCarPrice.getWebPrice() && wxWebCarPrice.getWebPrice() != 0 && wxWebCarPrice.getWebPrice() != null){
+									if(price > wxWebCarPrice.getWebPrice()){
 										price = wxWebCarPrice.getWebPrice();
-									}else {
-										price = 0;
-										wxCarDetailPrice.setWebPriceMin(price);
 									}
 								}
-							}else {
-								price = 0;
-								wxCarDetailPrice.setWebPriceMin(price);
 							}
 						}
 					}else {
 						price = 0;
-						wxCarDetailPrice.setWebPriceMin(price);
 					}
 				}
-				wxCarDetailPrice.setWebPriceMin(price);
 			}else {
 				price = 0;
-				wxCarDetailPrice.setWebPriceMin(price);
-			}
 
+			}
+			if(price == 100000){
+				price =0;
+			}
+			wxCarDetailPrice.setWebPriceMin(price);
 		}
 		return wxCarDetailPriceList;
 	}
@@ -575,25 +568,18 @@ public class CarModelService {
 					List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
 					if(wxCarFPriceList !=null){
 						for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
-							if(price > wxCarFPrice.getFactoryPrice() && wxCarFPrice.getFactoryPrice() != 0 && wxCarFPrice.getFactoryPrice() != null){
+							if(price > wxCarFPrice.getFactoryPrice()){
 								price = wxCarFPrice.getFactoryPrice();
-							}else {
-								price = 0;
-								wxCarDetailPrice.setFactoryPriceMin(price);
 							}
 						}
 					}else {
 						price	= 0 ;
-						wxCarDetailPrice.setFactoryPriceMin(price);
 					}
-
 				}
-				wxCarDetailPrice.setFactoryPriceMin(price);
 			}else {
 				price = 0 ;
-				wxCarDetailPrice.setFactoryPriceMin(price);
 			}
-
+			wxCarDetailPrice.setFactoryPriceMin(price);
 		}
 		return wxCarDetailPriceList;
 	}
@@ -621,17 +607,26 @@ public class CarModelService {
 
 
 	private List<WxCarModel> processList(List<WxCarModel> wxCarModelList) {
-		Integer price = 100000;
+		Integer price = null;
 		for(WxCarModel wxCarModel:wxCarModelList)
 		{
+			price = 10000;
 			List<WxLV2> wxLv2List = wxCarModel.getWxLV2List();
-			for(WxLV2 wxLV2:wxLv2List){
-				List<WxLv3> wxLv3List = wxLV2.getWxLv3List();
-				for(WxLv3 wxLv3:wxLv3List){
-					if(price > wxLv3.getPrice()){
-						price = wxLv3.getPrice();
+			if(wxLv2List !=null){
+				for(WxLV2 wxLV2:wxLv2List){
+					List<WxLv3> wxLv3List = wxLV2.getWxLv3List();
+					if(wxLv3List != null){
+						for(WxLv3 wxLv3:wxLv3List){
+							if(price > wxLv3.getPrice()){
+								price = wxLv3.getPrice();
+							}
+						}
+					}else {
+						price = 0;
 					}
 				}
+			}else {
+				price = 0;
 			}
 			wxCarModel.setWxCarPrice(price);
 		}
