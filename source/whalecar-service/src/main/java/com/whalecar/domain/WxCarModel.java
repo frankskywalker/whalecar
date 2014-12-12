@@ -1,5 +1,6 @@
 package com.whalecar.domain;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -11,15 +12,15 @@ public class WxCarModel {
     private List<WxLV2> wxLV2List;
 
 
-    public Integer getWxCarPrice() {
+    public BigDecimal getWxCarPrice() {
         return wxCarPrice;
     }
 
-    public void setWxCarPrice(Integer wxCarPrice) {
+    public void setWxCarPrice(BigDecimal wxCarPrice) {
         this.wxCarPrice = wxCarPrice;
     }
 
-    private Integer wxCarPrice;
+    private BigDecimal wxCarPrice;
 
     public List<WxLV2> getWxLV2List() {
         return wxLV2List;

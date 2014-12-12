@@ -501,7 +501,7 @@ public class CarModelService {
 
 
 	private List<WxCarDetailPrice> processWebPriceMax(List<WxCarDetailPrice> wxCarDetailPriceList) {
-		Integer price = 0;
+		BigDecimal price = new BigDecimal(0);
 		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
 		{
 			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
@@ -510,7 +510,7 @@ public class CarModelService {
 				for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
 					List<WxWebCarPrice> wxWebCarPriceList = wxCarFPrice.getWxWebCarPriceList();
 					for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
-						if(price < wxWebCarPrice.getWebPrice() && wxWebCarPrice.getWebPrice() != 0 && wxWebCarPrice.getWebPrice() != null){
+						if((price.compareTo(wxWebCarPrice.getWebPrice()) == -1) && wxWebCarPrice.getWebPrice().compareTo(new BigDecimal(0)) != 0 && wxWebCarPrice.getWebPrice() != null){
 							price = wxWebCarPrice.getWebPrice();
 						}
 					}
@@ -523,7 +523,7 @@ public class CarModelService {
 
 
 	private List<WxCarDetailPrice> processWebPriceMin(List<WxCarDetailPrice> wxCarDetailPriceList) {
-		Integer price = 100000;
+		BigDecimal price = new BigDecimal(1000000000);
 		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
 		{
 			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
@@ -535,22 +535,22 @@ public class CarModelService {
 							List<WxWebCarPrice> wxWebCarPriceList = wxCarFPrice.getWxWebCarPriceList();
 							if(wxWebCarPriceList.size() > 0){
 								for(WxWebCarPrice wxWebCarPrice:wxWebCarPriceList){
-									if(price > wxWebCarPrice.getWebPrice()){
+									if(price.compareTo(wxWebCarPrice.getWebPrice()) == 1){
 										price = wxWebCarPrice.getWebPrice();
 									}
 								}
 							}
 						}
 					}else {
-						price = 0;
+						price = new BigDecimal(0);
 					}
 				}
 			}else {
-				price = 0;
+				price = new BigDecimal(0);
 
 			}
-			if(price == 100000){
-				price =0;
+			if(price.compareTo(new BigDecimal(1000000000)) == 0){
+				price =new BigDecimal(0);;
 			}
 			wxCarDetailPrice.setWebPriceMin(price);
 		}
@@ -559,7 +559,7 @@ public class CarModelService {
 
 
 	private List<WxCarDetailPrice> processFPriceMin(List<WxCarDetailPrice> wxCarDetailPriceList) {
-		Integer price = 100000;
+		BigDecimal price = new BigDecimal(1000000000);
 		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
 		{
 			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
@@ -568,16 +568,16 @@ public class CarModelService {
 					List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
 					if(wxCarFPriceList !=null){
 						for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
-							if(price > wxCarFPrice.getFactoryPrice()){
+							if(price.compareTo(wxCarFPrice.getFactoryPrice()) == 1){
 								price = wxCarFPrice.getFactoryPrice();
 							}
 						}
 					}else {
-						price	= 0 ;
+						price = new BigDecimal(0) ;
 					}
 				}
 			}else {
-				price = 0 ;
+				price = new BigDecimal(0) ;
 			}
 			wxCarDetailPrice.setFactoryPriceMin(price);
 		}
@@ -585,17 +585,17 @@ public class CarModelService {
 	}
 
 	private List<WxCarDetailPrice> processFPriceMax(List<WxCarDetailPrice> wxCarDetailPriceList) {
-		Integer price = 0;
+		BigDecimal price = new BigDecimal(0);
 		for(WxCarDetailPrice wxCarDetailPrice:wxCarDetailPriceList)
 		{
 			List<WxCarModelLv2ID> wxCarModelLv2IDList = wxCarDetailPrice.getWxCarModelLv2IDList();
 			for(WxCarModelLv2ID wxCarModelLv2ID: wxCarModelLv2IDList){
 				List<WxCarFPrice> wxCarFPriceList = wxCarModelLv2ID.getWxCarFPriceList();
 				for(WxCarFPrice wxCarFPrice: wxCarFPriceList){
-					if(price < wxCarFPrice.getFactoryPrice() && wxCarFPrice.getFactoryPrice() != 0 && wxCarFPrice.getFactoryPrice() != null){
+					if(price.compareTo(wxCarFPrice.getFactoryPrice()) == -1 && wxCarFPrice.getFactoryPrice().compareTo(new BigDecimal(0)) != 0 && wxCarFPrice.getFactoryPrice() != null){
 						price = wxCarFPrice.getFactoryPrice();
 					}else {
-						price = 0;
+						price = new BigDecimal(0);
 					}
 				}
 			}
@@ -607,26 +607,26 @@ public class CarModelService {
 
 
 	private List<WxCarModel> processList(List<WxCarModel> wxCarModelList) {
-		Integer price = null;
+		BigDecimal price = null;
 		for(WxCarModel wxCarModel:wxCarModelList)
 		{
-			price = 10000;
+			price = new BigDecimal(1000000000);
 			List<WxLV2> wxLv2List = wxCarModel.getWxLV2List();
 			if(wxLv2List !=null){
 				for(WxLV2 wxLV2:wxLv2List){
 					List<WxLv3> wxLv3List = wxLV2.getWxLv3List();
 					if(wxLv3List != null){
 						for(WxLv3 wxLv3:wxLv3List){
-							if(price > wxLv3.getPrice()){
+							if(price.compareTo(wxLv3.getPrice())  == 1 ){
 								price = wxLv3.getPrice();
 							}
 						}
 					}else {
-						price = 0;
+						price = new BigDecimal(0);
 					}
 				}
 			}else {
-				price = 0;
+				price = new BigDecimal(0);
 			}
 			wxCarModel.setWxCarPrice(price);
 		}
