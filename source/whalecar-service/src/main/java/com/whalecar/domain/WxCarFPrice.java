@@ -1,5 +1,6 @@
 package com.whalecar.domain;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -7,11 +8,11 @@ import java.util.List;
  * Created by wufei on 14/11/24.
  */
 public class WxCarFPrice {
-    public Integer getFactoryPrice() {
+    public BigDecimal getFactoryPrice() {
         return factoryPrice;
     }
 
-    public void setFactoryPrice(Integer factoryPrice) {
+    public void setFactoryPrice(BigDecimal factoryPrice) {
         this.factoryPrice = factoryPrice;
     }
 
@@ -33,5 +34,5 @@ public class WxCarFPrice {
 
     private List<WxWebCarPrice> wxWebCarPriceList;
     private Integer Lv3Id;
-    private Integer factoryPrice;
+    private BigDecimal factoryPrice;
 }

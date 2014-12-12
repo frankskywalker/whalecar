@@ -1,5 +1,6 @@
 package com.whalecar.domain;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -14,14 +15,14 @@ public class WxLv3 {
         this.carLV3ID = carLV3ID;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    private Integer price;
+    private BigDecimal price;
     private  Integer carLV3ID;
 }
