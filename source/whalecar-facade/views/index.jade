@@ -84,11 +84,11 @@ block append content
                         div(style="margin-top:10px;")
                             label(style="float:left;margin-left:15px;") 意向：
                             div(style="margin-top:6px")
-                                select(type="text",style="height:23px;width:92px;margin-bottom:10px;float:left;",id="carBrand",onchange="getCarBrand();")
+                                select(type="text",style="height:27px;width:92px;margin-bottom:10px;float:left;",id="carBrand",onchange="getCarBrand();")
                                     option(select="select") 选择品牌
                                     each carBrand in idAndCname
                                         option(value="#{carBrand.id}") #{carBrand.cname}
-                                select(id="idAndCname",style="height:23px;width:92px;" ,name="idAndCname")
+                                select(id="idAndCname",style="height:27px;width:92px;" ,name="idAndCname")
                                     option(value="") 选择车型
                                 input#allCars(type="hidden",value=JSON.stringify(idAndCname))
                         div(style="width:246px;height:34px;margin-top:18px;")
