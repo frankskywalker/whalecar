@@ -88,12 +88,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //mode configure
 app.configure('development', function(){
     console.log("development mode now!");
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
     console.log("production mode now!");
-    app.use(express.errorHandler()); 
+    app.use(express.errorHandler());
 });
 
 //权限控制

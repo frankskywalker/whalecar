@@ -1,28 +1,29 @@
 package com.whalecar.domain;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * Created by wufei on 14/11/24.
  */
 public class WxCarDetail {
-    private Integer factoryPrice;
-    private Integer webPrice;
+    private BigDecimal factoryPrice;
+    private BigDecimal webPrice;
     private List<WxLV2> wxLV2List;
 
-    public Integer getWebPrice() {
+    public BigDecimal getWebPrice() {
         return webPrice;
     }
 
-    public void setWebPrice(Integer webPrice) {
+    public void setWebPrice(BigDecimal webPrice) {
         this.webPrice = webPrice;
     }
 
-    public Integer getFactoryPrice() {
+    public BigDecimal getFactoryPrice() {
         return factoryPrice;
     }
 
-    public void setFactoryPrice(Integer factoryPrice) {
+    public void setFactoryPrice(BigDecimal factoryPrice) {
         this.factoryPrice = factoryPrice;
     }
 

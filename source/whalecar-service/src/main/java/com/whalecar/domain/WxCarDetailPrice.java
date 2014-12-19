@@ -1,46 +1,47 @@
 package com.whalecar.domain;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * Created by wufei on 14/11/24.
  */
 public class WxCarDetailPrice {
-    private Integer factoryPriceMax;
-    private Integer factoryPriceMin;
-    private Integer webPriceMax;
-    private Integer webPriceMin;
+    private BigDecimal factoryPriceMax;
+    private BigDecimal factoryPriceMin;
+    private BigDecimal webPriceMax;
+    private BigDecimal webPriceMin;
     private List<WxCarModelLv2ID> wxCarModelLv2IDList;
 
-    public Integer getWebPriceMax() {
+    public BigDecimal getWebPriceMax() {
         return webPriceMax;
     }
 
-    public void setWebPriceMax(Integer webPriceMax) {
+    public void setWebPriceMax(BigDecimal webPriceMax) {
         this.webPriceMax = webPriceMax;
     }
 
-    public Integer getFactoryPriceMax() {
+    public BigDecimal getFactoryPriceMax() {
         return factoryPriceMax;
     }
 
-    public void setFactoryPriceMax(Integer factoryPriceMax) {
+    public void setFactoryPriceMax(BigDecimal factoryPriceMax) {
         this.factoryPriceMax = factoryPriceMax;
     }
 
-    public Integer getFactoryPriceMin() {
+    public BigDecimal getFactoryPriceMin() {
         return factoryPriceMin;
     }
 
-    public void setFactoryPriceMin(Integer factoryPriceMin) {
+    public void setFactoryPriceMin(BigDecimal factoryPriceMin) {
         this.factoryPriceMin = factoryPriceMin;
     }
 
-    public Integer getWebPriceMin() {
+    public BigDecimal getWebPriceMin() {
         return webPriceMin;
     }
 
-    public void setWebPriceMin(Integer webPriceMin) {
+    public void setWebPriceMin(BigDecimal webPriceMin) {
         this.webPriceMin = webPriceMin;
     }
 

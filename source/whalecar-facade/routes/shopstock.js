@@ -64,7 +64,7 @@ function saveShopStock(req, res, next) {
     var carAdditions = "";
     if(shopStock.carAdditions && shopStock.carAdditions.length != 0){
         for(i in shopStock.carAdditions){
-            carAdditions = carAdditions + shopStock.carAddtitions[i] + ",";
+            carAdditions = carAdditions + shopStock.carAdditions[i] + ",";
         }
     }
     if(carAdditions != ""){
